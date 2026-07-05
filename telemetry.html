@@ -247,7 +247,18 @@
 
     /* Responsive Scaling for Mobile Navigation */
     @media (max-width: 900px) {
-      .ffs-file-summary { min-height: auto; padding: 12px 14px; }
+      .ffs-file-summary{
+    min-height:72px;
+    padding:14px 14px;
+    align-items:center;
+}
+.ffs-file-copy{
+    min-width:0;
+}
+
+.ffs-file-copy strong{
+    line-height:1.2;
+}
       .ffs-file-copy strong { font-size: 18px; }
       .ffs-file-copy span { font-size: 14px; }
       .ffs-file-modal { padding: 0; align-items: stretch; }
