@@ -4821,12 +4821,12 @@ body > .bridge-body.disclaimer-body strong {
     font-size: 1.9rem;
     letter-spacing: .14em;
     text-indent: .14em;
-  }
-}
-@media (max-width: 900px) {
-
+    
     .lab-page .vault-card-copy{
         display: none;
     }
 
 }
+  }
+}
+
