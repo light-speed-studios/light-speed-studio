@@ -4810,3 +4810,10 @@ body > .bridge-body.disclaimer-body strong {
     opacity: .48;
   }
 }
+@media (max-width: 900px) {
+  .vault-archive-hero h1{
+    font-size: 1.9rem;
+    letter-spacing: .14em;
+    text-indent: .14em;
+  }
+}
