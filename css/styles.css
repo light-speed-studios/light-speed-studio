@@ -3504,8 +3504,8 @@ html::-webkit-scrollbar-corner {
 
   .vault-archive-hero h1{
     font-size: clamp(2rem, 9vw, 2.8rem);
-    letter-spacing: .15em;
-    text-indent: .15em;
+    letter-spacing: .4em;
+    text-indent: .4em;
   }
 
 }
