@@ -9,6 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css" rel="stylesheet"/>
   
 
+
+<link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.png" media="(min-width: 901px)" fetchpriority="high"/>
+<link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.png" media="(max-width: 900px)" fetchpriority="high"/>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -26,19 +29,12 @@
   <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
 </nav>
 </header>
-<div id="lss-splash">
-<div class="lss-splash-inner">
-<img alt="Light Speed Studios" class="lss-splash-logo" decoding="sync" fetchpriority="high" loading="eager" src="https://light-speed-studios.b-cdn.net/coverlogo%20copy11.png"/>
-<div class="lss-splash-title">
-      LIGHT SPEED STUDIOS
-    </div>
-<div class="lss-splash-divider"></div>
-<div class="lss-splash-line">
-      NO SPECTACLE WITHOUT SOUL
-    </div>
+<div id="lss-splash" aria-label="Light Speed Studios loading screen">
+<picture class="lss-splash-picture">
+<source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/SPLASHMOB.png"/>
+<img alt="Light Speed Studios | No Spectacle Without Soul" class="lss-splash-image" decoding="sync" fetchpriority="high" loading="eager" src="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.png"/>
+</picture>
 </div>
-</div>
-
 
 <!-- =======================================================
        SECTION 1: HERO CAROUSEL
