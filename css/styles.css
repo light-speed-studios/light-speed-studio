@@ -4653,12 +4653,8 @@ body > .bridge-body.disclaimer-body strong {
     scroll-snap-align: center !important;
   }
 
-  .lab-page .vault-card-copy {
-    opacity: 1 !important;
-    position: relative !important;
-    inset: auto !important;
-    background: transparent !important;
-    padding: 10px 4px 0 !important;
+  .lab-page .vault-card-copy { 
+    display: none !important;
   }
 
   .lab-page .vault-card-art {
