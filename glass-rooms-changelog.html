@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Glass Rooms Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+ margin: 0 auto; 
+    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/glassrooms-header3.png" alt="Glass Rooms" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">INTRO &amp; COLD OPEN</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added A24 and LSS logos</li>
+              <li>All “Ava Session” title cards replaced with "ENTRY // 001"–style text, reflecting Ava’s perspective</li>
+              <li>Film opens with Ava cold open</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GLASS ROOMS TITLE REVEAL</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed original opening sequence of Caleb being selected and surveilled at Blue Book</li>
+              <li>First narrative scene now begins with Caleb in helicopter en route to Nathan’s estate</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ARRIVAL AT NATHAN’S ESTATE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Nathan’s “you’re freaked out by the house” dialogue to calm Caleb down</li>
+              <li>Extended Nathan’s silent reaction after Caleb’s “there was no party!”</li>
+              <li>Trimmed room tour sequence to end on “this is a research facility” and hard cut to NDA papers appearing into view</li>
+              <li>Removed Caleb’s “history of man and the history of gods” line during Turing Test discussion</li>
+              <li>Replaced with new Caleb reaction shot as Nathan explains the importance of the Turing Test</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FIRST ENCOUNTER WITH AVA</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Caleb studying the crack in the glass before Ava appears; the crack is now presented only as a visual clue</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">CALEB’S FIRST MEETING WITH AVA OTHERWISE UNCHANGED</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed the first half of Caleb and Nathan’s discussion on Ava after first meeting</li>
+              <li>Removed Nathan’s “you’re not a man, you’re a god” story exchange</li>
+              <li>Removed mirror moment where Caleb studies himself before bed</li>
+              <li>Trimmed Caleb’s night surveillance sequence to remove Ava interacting with the charging terminal; blackout now interrupts observation before action is revealed</li>
+              <li>Replaced Kyoko corridor shot with a clean corridor plate to avoid early visual rhyme with Ava</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">CALEB &amp; AVA RELATIONSHIP DEVELOPMENT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed Ava dressing up montage to only show Caleb’s point of view</li>
+              <li>Added extended shots of Caleb waiting; Ava is only revealed fully dressed when she walks back</li>
+              <li>Removed surveillance montage of Ava undressing; Caleb’s attraction is now implied through Ava’s dialogue and reinforced later in Caleb/Nathan discussion</li>
+              <li>Removed Ava’s line “I don’t want to make you uncomfortable” and replaced it with a silent reaction shot of Ava giving Caleb a warm smile</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">NATHAN &amp; CALEB ESCALATION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Nathan/Kyoko dance sequence; scene now cuts from Nathan telling Caleb “You can’t talk to her” directly to Caleb helping Nathan to bed</li>
+              <li>Kept Caleb’s Oppenheimer quote but removed the banter that follows</li>
+              <li>Replaced nude Kyoko sofa shot with clothed insert, presented as a slow push-in reveal</li>
+              <li>Removed Caleb's mannequin storage room discovery sequence; Kyoko’s AI identity is now implied through Caleb’s realization rather than explicitly demonstrated</li>
+              <li>Removed scene where Caleb cuts himself in the bathroom to test if he is AI, removing an unnecessary subplot and keeping the narrative focused on Ava</li>
+              <li>Removed Nathan’s later comment referencing security footage of Caleb cutting himself</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FINAL CONFRONTATION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed two shots revealing Kyoko holding the knife during the final confrontation</li>
+              <li>Knife is now only revealed when Nathan backs into it, strengthening the surprise</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">AVA’S TRANSFORMATION &amp; ESCAPE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed Ava reconstruction sequence; retained arm replacement and skin application while removing extended mirror body reveal</li>
+              <li>Removed prolonged mirror shot showing Ava’s full body; mirror moment now shown only from the neck up</li>
+              <li>Removed interior house wandering sequence after Ava exits containment</li>
+              <li>Transition now cuts directly from Caleb calling for Ava to the exterior forest shot and Ava leaving the facility</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">NEW ENDING EPILOGUE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Extended original ending with custom epilogue of Ava observing the city through her point of view among humans, accompanied by a new ADR monologue and music cue</li>
+              <li>Visual concept inspired by a scene Alex Garland originally envisioned where Ava perceives the world through pulses and signals</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

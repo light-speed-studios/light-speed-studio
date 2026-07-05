@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>The Flash: Speed Trap | LSS</title>
+
+  <style>
+    .ffs-page {
+      --site-bg: #040e15;
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      --cyan: #00aede;
+      --cyan-faint: rgba(0, 174, 222, 0.13);
+      --text-main: #bac7d5;
+      --text-soft: rgba(186, 199, 213, 0.78);
+      --text-muted: rgba(186, 199, 213, 0.58);
+
+      width: 100%;
+      min-height: calc(100vh - 61px);
+      background: #040e15;
+      font-family: Rajdhani, Arial, sans-serif;
+      overflow-x: hidden;
+      padding: 1px 20px 58px;
+      box-sizing: border-box;
+    }
+
+    .ffs-page * {
+      box-sizing: border-box;
+    }
+
+    .ffs-shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .ffs-landing-panel {
+      position: relative;
+      display: block;
+      width: min(592px, 100%);
+      margin: 0 auto;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .ffs-main-row {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .ffs-landing-panel::before,
+    .ffs-landing-panel::after {
+      content: none;
+    }
+
+    .ffs-landing-panel > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .ffs-poster-panel {
+      position: relative;
+      flex: 0 0 266px;
+      max-width: 266px;
+      padding: 11px;
+      background:
+        linear-gradient(145deg, rgba(0, 174, 222, 0.18), rgba(255, 255, 255, 0.03)),
+        rgba(255, 255, 255, 0.035);
+      box-shadow:
+        0 0 32px rgba(0, 174, 222, 0.12),
+        inset 0 0 0 1px rgba(0, 174, 222, 0.28);
+    }
+
+    .ffs-changes-panel {
+      position: relative;
+      flex: 1 1 388px;
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 19px;
+      text-align: center;
+      background:
+        linear-gradient(145deg, rgba(0, 174, 222, 0.12), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.03);
+      box-shadow:
+        0 0 32px rgba(0, 174, 222, 0.10),
+        inset 0 0 0 1px rgba(0, 174, 222, 0.22);
+      overflow: hidden;
+    }
+
+    .ffs-changes-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 30px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 30px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 30px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 30px no-repeat;
+      opacity: .58;
+    }
+
+    .ffs-changes-text {
+      margin: 0;
+      font-family: Rajdhani, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 100;
+text-align: left;
+      letter-spacing: .08em;
+      color: var(--text-main);
+      text-shadow:
+        0 0 16px rgba(0, 174, 222, 0.18),
+        0 5px 22px rgba(0, 0, 0, 0.55);
+    }
+
+    .ffs-changes-text span {
+      display: block;
+      margin-top: 8px;
+      color: var(--cyan);
+      font-size: .72em;
+      letter-spacing: .14em;
+    }
+
+    .ffs-poster {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .ffs-poster-toggle {
+      display: none;
+    }
+
+    .ffs-poster-click {
+      display: block;
+      cursor: pointer;
+    }
+
+    .ffs-poster-full {
+      display: block;
+    }
+
+    .ffs-poster-crop {
+      display: none;
+    }
+
+    .ffs-poster-expand {
+      display: none;
+    }
+
+    .ffs-info-panel {
+      display: block;
+      padding: 20px 0 0;
+      text-align: center;
+    }
+
+    .ffs-status {
+      display: inline-flex;
+      width: fit-content;
+      margin: 0 0 12px;
+      padding: 8px 12px;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(0, 174, 222, 0.08);
+      box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.20);
+    }
+
+    .ffs-title {
+      margin: 0 0 10px;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      text-shadow:
+        0 0 16px rgba(0, 174, 222, 0.16),
+        0 5px 22px rgba(0, 0, 0, 0.55);
+    }
+
+    @media (max-width: 900px) {
+      .ffs-page {
+        padding: 14px 14px 42px;
+      }
+
+      .ffs-shell {
+        width: 100%;
+      }
+
+      .ffs-landing-panel {
+        display: block;
+        width: 100%;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .ffs-main-row {
+        display: block;
+      }
+
+      .ffs-landing-panel::before,
+      .ffs-landing-panel::after {
+        content: none;
+      }
+
+      .ffs-poster-panel {
+        max-width: none;
+        flex: none;
+        padding: 0;
+        background: transparent;
+        box-shadow: none;
+        position: relative;
+        z-index: 1000;
+      }
+
+      .ffs-changes-panel {
+        margin-top: 14px;
+        min-height: 100px;
+        padding: 16px;
+      }
+
+      .ffs-changes-text {
+        font-size: 18px;
+      }
+
+      .ffs-poster-full {
+        display: none;
+      }
+
+      .ffs-poster-crop {
+        display: block;
+      }
+
+      .ffs-poster {
+        width: 100%;
+        height: auto;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
+      }
+
+      .ffs-poster-expand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 34px;
+        margin-top: 8px;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.035);
+        box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+        font-family: Oxanium, Rajdhani, Arial, sans-serif;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+
+      .ffs-poster-toggle:checked ~ .ffs-poster-click {
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647 !important;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 18px;
+        padding-top: 22px;
+        background: rgba(0, 0, 0, 0.92);
+        cursor: zoom-out;
+      }
+
+      .ffs-poster-toggle:checked ~ .ffs-poster-click .ffs-poster-crop {
+        display: none;
+      }
+
+      .ffs-poster-toggle:checked ~ .ffs-poster-click .ffs-poster-full {
+        display: block;
+        width: auto;
+        max-width: 94vw;
+        max-height: 90vh;
+        margin-top: 0;
+        object-fit: contain;
+        box-shadow:
+          0 0 28px rgba(0, 174, 222, 0.22),
+          0 22px 70px rgba(0, 0, 0, 0.75);
+      }
+
+      .ffs-poster-panel:has(.ffs-poster-toggle:checked) {
+        z-index: 2147483647 !important;
+      }
+
+      .ffs-info-panel {
+        padding: 18px 0 0;
+      }
+
+      .ffs-status {
+        margin: 0 0 12px;
+        padding: 7px 10px;
+        font-size: 11px;
+        letter-spacing: 0.13em;
+      }
+
+      .ffs-title {
+        font-size: clamp(32px, 9vw, 44px);
+        line-height: 0.98;
+      }
+    }
+
+    .speed-trap-footer {
+      margin-top: -47px;
+    }
+
+  </style>
+</head>
+
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <div class="ffs-page">
+    <div class="ffs-shell">
+      <section class="ffs-landing-panel">
+        <div class="ffs-info-panel">
+          <p class="ffs-status">Pre-Production</p>
+          <h1 class="ffs-title">The Flash: Speed Trap</h1>
+        </div>
+
+        <div class="ffs-main-row">
+          <div class="ffs-poster-panel">
+            <input class="ffs-poster-toggle" type="checkbox" id="ffsPosterToggle">
+
+            <label class="ffs-poster-click" for="ffsPosterToggle">
+              <img class="ffs-poster ffs-poster-full" src="https://light-speed-studios.b-cdn.net/SPEED%20TRAP.png" alt="The Flash: Speed Trap poster">
+              <img class="ffs-poster ffs-poster-crop" src="https://light-speed-studios.b-cdn.net/SPEED%20TRAPmob.png" alt="The Flash: Speed Trap mobile poster">
+            </label>
+
+            <label class="ffs-poster-expand" for="ffsPosterToggle">
+              <span>Click Poster to Enlarge</span>
+            </label>
+          </div>
+
+          <div class="ffs-changes-panel">
+          <div class="ffs-changes-text">
+ <h3> <em>Preliminary Edit Overview</em></h3>
+
+  <p>
+    The Flash: Speed Trap is a two-part  restructure. This part is built around rise of The Flaah. Wells is reimagined as a true mentor, while Barry's growth is streamlined through montages.
+  </p>
+
+  <p>
+    The romance is reduced to strengthen the main narrative, allowing the season’s emotional weight to center on Barry, Wells, and the Man in Yellow. The edit ends with Barry’s bested by Reverse Flash  </p>
+</div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="footer-logo-block speed-trap-footer">
+    <picture class="footer-picture">
+      <source
+        media="(max-width: 900px)"
+        srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob.png">
+      <img
+        src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png"
+        alt="Light Speed Studios Logo">
+    </picture>
+  </div>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Superman: Son of Tomorrow Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+    margin: 0 auto;
+    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/SOTheader31.png" alt="Superman: Son of Tomorrow" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GLOBAL CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>All scenes have been color graded to add more warmth and reduce the blues.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SUNDAY</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>New alternate intro.</li>
+              <li>Color-graded Fortress of Solitude sequence.</li>
+              <li>Added establishing shot of Antarctica before Superman crashes down.</li>
+              <li>Added Sunday title card.</li>
+              <li>Trimmed Krypto scene after Superman pulls the cape over him.</li>
+              <li>Removed Robot #12’s “he looked at me” line.</li>
+              <li>Removed flying sequence post-recovery; relocated.</li>
+              <li>New title card.</li>
+              <li>Removed Hammer of Boravia saying "copy."</li>
+              <li>Removed Lex's goons discussing Lex knowing Superman’s moves.</li>
+              <li>Removed reveal of Ultraman as the Hammer by extending his walk without helmet removal, rescored scene.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">MONDAY</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added new recreated Daily Planet/Monday title card shot.</li>
+              <li>Replaced Clark’s reply to Steve Lombard to “you’re a loser,” matching the trailer.</li>
+              <li>Kept interns admiring Jimmy Olsen but cut the “omg he’s so fine” remark.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">DURING LEX AND DEFENSE DEPARTMENT MEETING</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added tense drone background music to the whole scene.</li>
+              <li>Removed Lex snapping at Ultraman to “turn on the lights.”</li>
+              <li>Removed reveal about Lex selling weapons to Boravia.</li>
+              <li>Want to keep his involvement with Boravia a secret until the end.</li>
+              <li>Recreated Rick Flag Sr. Shot: Converted a talking segment of Flag into a non-verbal reaction using sync reconstruction, maintaining natural facial motion during Lex’s “hose” metaphor.</li>
+              <li>Removed Kryptonite reference and “other ways” line.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">LOIS AND CLARK INTERVIEW SCENE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Rescored opening sequence.</li>
+              <li>Replaced camera angle with front-on framing (from trailers).</li>
+              <li>Cut tangent about Superman’s third-person speech and selfie banter.</li>
+              <li>Trimmed Lois’ “...is that a thing you can do” line.</li>
+              <li>Fortress attack: Removed Lex not flinching at flying debris.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">REWORKED KAIJU SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added custom night-to-day timelapse with escalating radio chatter about the creature’s growth and whereabout after its released. Fixes jarring transition. Rescored.</li>
+              <li>Inserted Tuesday title card as dawn rises over the Metropolis skyline.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">REBUILT JUSTICE GANG ARRIVAL AND FIGHT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed newsroom cutaway with Lois and Cat chatting.</li>
+              <li>Reworked Will Reeves cameo setting up the Justice Gang’s entrance. Not just on tv.</li>
+              <li>Trimmed Kaiju fight; cut comedic bits from Kendra and Guy Gardner.</li>
+              <li>Removed Lois and Cat relationship conversation (tonal mismatch during attack).</li>
+              <li>Trimmed Hawkgirl and Guy Gardner “Justice Gang” name argument.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ADJUSTED EL’S MESSAGE AND SUBSEQUENT SCENE CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Kept darker “rule the world” tone. Removed “wives” and all “harem” references.</li>
+              <li>Added tinnitus and rapid heartbeat SFX as Superman hears the 2nd part of the message.</li>
+              <li>Restored Superman’s flinch from the trailer as he's hit with a can.</li>
+              <li>Added a low bass hit to heighten the emotional impact, turning the moment into rejection rather than physical pain many misunderstood.</li>
+              <li>Replaced Lex’s “harem” remark with a new defining line.</li>
+              <li>Removed Guy’s “harem” joke entirely.</li>
+              <li>Replaced Mr. Terrific’s Krypton message verification line with more pertinent dialogue.</li>
+              <li>Rescored Superman’s flight to the Fortress.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">REORDERED SCENES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Fortress entry now follows flight directly.</li>
+              <li>Removed Boravian leader’s portal visit (again needs to be a secret until the end).</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">CONFRONTATION WITH LEX</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed “ugly dog in a cape” / “what did you say?” exchange.</li>
+              <li>Replaced with a smirky mug-slurp sfx.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">LOIS AND CLARK CONVERSATION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Updated in-TV clip to Lex and Superman debate instead of point-at-camera image.</li>
+              <li>Removed Lois’s “you were out there helping them?”</li>
+              <li>Cut Clark’s “oh that’s good” line.</li>
+              <li>Replaced “real punk rock” line with new ADR.</li>
+              <li>This edit's main theme isn't punk rock. It’s something more innate to Superman.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">WEDNESDAY</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Inserted Wednesday title card as Clark decides to surrender.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">POCKET UNIVERSE INCARCERATION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Lex’s “tall, dark, and Martian isn’t my type” and Superman’s “Kryptonian” retort.</li>
+              <li>Rescored scene.</li>
+              <li>Reworked Lex’s exposition: now briefer, more intellectual flex than info dump.</li>
+              <li>Removed monkey farm mocking Superman on social media.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">THURSDAY</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added Thursday title card as Lois arrives at the Hall of Justice.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">HALL OF JUSTICE SCENE ADJUSTMENTS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed “hypno glasses” gag.</li>
+              <li>Cut “300 chicks” joke about Guy’s haircut.</li>
+              <li>Removed Hawkgirl saying Justice Gang sounds like cowboys.</li>
+              <li>Removed slow garage-door gag.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">CAGE SCENE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Cut the first half where Superman thinks the guest is the Boravian leader.</li>
+              <li>Now it's straight to Ali’s capture reveal. Trimmed Lex’s quip.</li>
+              <li>Removed the part where Lois finds out Lex is selling weapons to Boriva for dirt cheap.</li>
+              <li>Still want to keep all this reveal of their involvement to this extent a secret.</li>
+              <li>Mr. Terrific vs. Lex’s Raptors sequence rescored.</li>
+              <li>Replaced Mr. Terrific’s reason for only helping Lois to “piss off Green Lantern” motivation with a new line fitting the tone.</li>
+              <li>Changed Metamorpho’s line from “gross-looking” to something less comedic.</li>
+              <li>Trimmed T-sphere tech chatter and condensed anti-proton river exposition.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">POST-KRYPTO RESCUE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Kept Krypto jump on Superman but trimmed the extended "bad boy" and him licking baby Joey clips.</li>
+              <li>Removed Rex’s “you’re weird” line.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">AT THE LUTHORCORP TOWER</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Scene ends after Lex throws pencils just once. removed repeat gag.</li>
+              <li>Cut “burden on Jimmy” banter during a serious moment.</li>
+              <li>Lex discovers Eve immediately after they decide on a date.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">AT THE KENT FARM</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Krypto sitting on Clark’s chest upon waking.</li>
+              <li>Cute but needlessly long and tonal mismatch.</li>
+              <li>Replaced with deleted scene of Lois promising to help Clark.</li>
+              <li>Removed Jimmy’s “hot?” line.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FRIDAY</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added Friday title card before Pa Kent scene.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">REDONE ADR FOR THE WHOLE SCENE. RESCORED</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>This new speech better reflects the values that shape Clark’s morality; now echoes in Clark’s later speech to Lex.</li>
+              <li>Removed gag of falling T-ship and re-rising with the Daily Planet gang.</li>
+              <li>Removed Lex's goon exclaiming having nowhere to land when they detach from the tower.</li>
+              <li>Rescored bridge rescue sequence just as Superman arrives.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FINAL BATTLES CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Superman v Ultraman/Engineer fight remains as is.</li>
+              <li>Trimmed Lex’s Einstein/Galileo rant.</li>
+              <li>Removed "anomaly detected at the border" alert dialogue.</li>
+              <li>Rescored Justice Gang fight sequence.</li>
+              <li>Reworked Krypto's arrival for his hero moment.</li>
+              <li>Removed Lex's goon callouts of drones going down. Rescored for transitions and pacing.</li>
+              <li>Redone ADR for Lex’s command to his Raptor army and Superman’s response.</li>
+              <li>Shifted the Look Up Soundtrack crescendo from Superman's takeoff to the moment he punches the goon's teeth out. Felt more impactful.</li>
+              <li>Removed Mr. Terrific/Superman banter after final assault.</li>
+              <li>Removed trio's flight shot to LuthorCorp Tower.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">LUTHORCORP SCENE CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Retained Superman’s closing speech.</li>
+              <li>Direct continuation of Pa Kent’s speech.</li>
+              <li>Removed Krypto attacking Lex (adjusted post-attack shots for continuity).</li>
+              <li>Removed injuries on Lex's face and fixed ripped clothes.</li>
+              <li>Added new ADR during Lex and Superman final standoff and close-ups.</li>
+              <li>Removed Lex prison escort.</li>
+              <li>It didn't match with the No-Krypto-Attack.</li>
+              <li>Rescored Lois and Clark closing scene.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">EPILOGUE CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added Saturday title card.</li>
+              <li>Rescored final scenes.</li>
+              <li>Reinserted early flying scene as finale payoff.</li>
+              <li>Added new ADR inspired by previous Superman iterations.</li>
+              <li>Redone Superman logo.</li>
+              <li>Added a scene from the movie's featurette as post-credit.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

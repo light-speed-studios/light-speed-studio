@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Star Trek: Genesis Project Files | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+<div class="ffs-files-page">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  background: #040e15;
+  overflow-x: hidden;
+}
+
+  .ffs-files-page {
+    --site-bg: #040e15;
+    --cyan: #00AEDE;
+    --cyan-faint: rgba(0, 174, 222, 0.13);
+    --text-main: #BAC7D5;
+
+    width: 100%;
+    background: #040e15;
+    font-family: Rajdhani, Arial, sans-serif;
+    overflow-x: hidden;
+     padding: 14px 20px 58px;
+    box-sizing: border-box;
+  }
+
+  .ffs-files-page * {
+    box-sizing: border-box;
+  }
+
+  .ffs-files-shell {
+    width: min(1280px, 100%);
+    margin: 0 auto;
+  padding: 8px 20px 40px;
+  }
+
+  .ffs-project-movie-header {
+    width: min(980px, 100%);
+    margin: 0 auto 18px;
+    padding: 6px 18px 8px;
+    text-align: center;
+  }
+
+.ffs-project-movie-header img {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: 0 auto;
+  opacity: 0.92;
+  filter:
+    drop-shadow(0 0 14px rgba(212, 243, 255, 0.10))
+    drop-shadow(0 0 26px rgba(0, 174, 222, 0.08));
+}
+  .ffs-files-header {
+    position: relative;
+    margin: 0 0 22px;
+    padding: 26px 34px;
+    text-align: center;
+    background:
+      linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+      rgba(4, 14, 21, 0.86);
+    box-shadow:
+      0 0 34px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+    overflow: hidden;
+  }
+
+  .ffs-files-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    opacity: 0.72;
+  }
+
+  .ffs-files-header > * {
+    position: relative;
+    z-index: 4;
+  }
+
+  .ffs-files-header h1 {
+    margin: 0;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: clamp(25px, 4.2vw, 42px);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    text-shadow:
+      0 0 16px rgba(0, 174, 222, 0.16),
+      0 5px 22px rgba(0, 0, 0, 0.55);
+  }
+
+  .ffs-files-header p {
+    margin: 8px 0 0;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+
+  .ffs-file-modal-toggle {
+    display: none;
+  }
+
+  .ffs-file-card {
+    margin: 0 0 14px;
+    background:
+      linear-gradient(90deg, rgba(0, 174, 222, 0.10), transparent),
+      rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
+  }
+
+  .ffs-file-summary {
+    min-height: 84px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .ffs-file-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .ffs-file-icon {
+    width: 70px;
+    height: 70px;
+    flex: 0 0 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ffs-file-icon img {
+    display: block;
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 8px rgba(0, 174, 222, 0.42))
+      drop-shadow(0 0 18px rgba(0, 174, 222, 0.22));
+  }
+
+  .ffs-file-copy strong {
+    display: block;
+    margin: 0 0 5px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-main);
+  }
+
+  .ffs-file-copy span {
+    display: block;
+    font-size: 19px;
+    line-height: 1.3;
+    color: var(--text-main);
+    opacity: 0.82;
+  }
+
+  .ffs-file-action {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+
+  .ffs-file-arrow {
+    display: inline-block;
+  }
+
+  .ffs-file-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: rgba(0, 0, 0, 0.72);
+  }
+
+  .ffs-file-modal-toggle:checked + .ffs-file-card + .ffs-file-modal {
+    display: flex;
+  }
+
+  .ffs-file-modal-box {
+    width: min(980px, 94vw);
+    max-height: 86vh;
+    background:
+      linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+      rgba(4, 14, 21, 0.96);
+    box-shadow:
+      0 0 34px rgba(0, 174, 222, 0.12),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.28);
+    overflow: hidden;
+  }
+
+  
+  .ffs-file-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .ffs-file-modal-icon {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ffs-file-modal-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 10px rgba(0,174,222,.45))
+      drop-shadow(0 0 22px rgba(0,174,222,.22));
+  }
+
+.ffs-file-modal-head {
+    min-height: 62px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border-bottom: 1px solid rgba(0, 174, 222, 0.18);
+  }
+
+  
+    .ffs-file-modal-header {
+      gap: 12px;
+    }
+
+    .ffs-file-modal-icon {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+    }
+
+    .ffs-file-modal-icon img {
+      width: 38px;
+      height: 38px;
+    }
+
+.ffs-file-modal-title strong {
+    display: block;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-main);
+  }
+
+  .ffs-file-modal-title span {
+    display: block;
+    margin-top: 4px;
+    font-size: 17px;
+    color: var(--text-main);
+    opacity: 0.82;
+  }
+
+  .ffs-file-modal-close {
+    flex: 0 0 auto;
+    cursor: pointer;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--cyan);
+  }
+
+  .ffs-file-content {
+    max-height: calc(86vh - 62px);
+    padding: 20px 24px 26px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #00AEDE rgba(255, 255, 255, 0.08);
+    scrollbar-gutter: stable;
+  }
+
+  .ffs-file-content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .ffs-file-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .ffs-file-content::-webkit-scrollbar-thumb {
+    background: #00AEDE;
+    border-radius: 999px;
+    box-shadow: 0 0 10px rgba(0, 174, 222, 0.45);
+  }
+
+  .ffs-file-content-inner {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--text-main);
+  }
+
+  .ffs-file-content-inner ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .ffs-file-content-inner li {
+    margin: 0 0 24px;
+  }
+
+  .ffs-file-content-inner li:last-child {
+    margin-bottom: 0;
+  }
+
+  .ffs-file-content-inner li > strong {
+    display: block;
+    margin: 0 0 10px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--text-main);
+  }
+
+  .ffs-file-content-inner p {
+    margin: 0 0 14px;
+  }
+
+  .ffs-file-content-inner p:last-child {
+    margin-bottom: 0;
+  }
+
+@media (max-width: 900px) {
+  .ffs-files-page {
+    padding: 0px 0 24px;
+  }
+
+  .ffs-files-shell {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .ffs-project-movie-header {
+    margin: 0 auto 10px;
+    padding: 2px 6px 0;
+  }
+
+  .ffs-files-header {
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+
+  .ffs-files-header::before {
+    content: none;
+  }
+
+  .ffs-files-header h1 {
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .ffs-files-header p {
+   font-size: 9px;
+    margin-top: 2px;
+    letter-spacing: 0.10em;
+  }
+
+  .ffs-file-card {
+    margin-bottom: 7px;
+  }
+
+  .ffs-file-summary {
+    min-height: auto;
+    padding: 9px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ffs-file-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .ffs-file-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+  .ffs-file-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ffs-file-copy {
+    min-width: 0;
+  }
+
+  .ffs-file-copy strong {
+    font-size: 14px;
+    margin-bottom: 2px;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+
+  .ffs-file-copy span {
+    font-size: 11px;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ffs-file-action {
+    margin-top: 0;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    gap: 5px;
+  }
+
+  .ffs-file-modal {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .ffs-file-modal-box {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    margin-top: 0;
+  }
+
+  .ffs-file-modal-head {
+    min-height: auto;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .ffs-file-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+  }
+
+  .ffs-file-modal-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+  .ffs-file-modal-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ffs-file-modal-title {
+    min-width: 0;
+  }
+
+  .ffs-file-modal-title strong {
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+
+  .ffs-file-modal-title span {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+
+  .ffs-file-modal-close {
+    font-size: 26px;
+    line-height: 1;
+    padding: 0 2px;
+  }
+
+  .ffs-file-content {
+    max-height: calc(100vh - 58px);
+    padding: 10px;
+  }
+
+  .ffs-file-content-inner {
+    font-size: 13px;
+    line-height: 1.38;
+  }
+
+  .ffs-file-content-inner ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .ffs-file-content-inner li {
+    margin: 0 0 8px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.12);
+  }
+
+  .ffs-file-content-inner li > strong {
+    font-size: 14px;
+    margin-bottom: 6px;
+    line-height: 1.15;
+  }
+
+  .ffs-file-content-inner p {
+    margin: 0 0 8px;
+  }
+
+  .ffs-file-content-inner p:last-child {
+    margin-bottom: 0;
+  }
+  }
+</style>
+
+  <div class="ffs-files-shell">
+
+    <div class="ffs-project-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/genesis-header1.png" alt="Star Trek: Genesis" loading="eager" decoding="async">
+    </div>
+
+    <div class="ffs-files-header">
+      <h1>PROJECT FILES</h1>
+    </div>
+
+    
+
+    <input class="ffs-file-modal-toggle" type="checkbox" id="ffsModalInsights">
+
+    <div class="ffs-file-card">
+      <label class="ffs-file-summary" for="ffsModalInsights">
+<div class="ffs-file-left">
+          <div class="ffs-file-icon">
+            <img src="https://light-speed-studios.b-cdn.net/insight2.png" alt="Insights icon">
+          </div>
+          <div class="ffs-file-copy">
+            <strong>Insights</strong>
+            <span>Annotations from the captain’s log</span>
+          </div>
+        </div>
+        <div class="ffs-file-action">
+          Open<span class="ffs-file-arrow">⧉</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ffs-file-modal">
+      <div class="ffs-file-modal-box">
+        <div class="ffs-file-modal-head">
+
+          <div class="ffs-file-modal-header">
+
+            <div class="ffs-file-modal-icon">
+              <img src="https://light-speed-studios.b-cdn.net/insight2.png" alt="Insights">
+            </div>
+
+            <div class="ffs-file-modal-title">
+              <strong>Insights</strong>
+              <span>Annotations from the captain’s log</span>
+            </div>
+
+          </div>
+
+          <label class="ffs-file-modal-close" for="ffsModalInsights">×</label>
+
+        </div>
+
+        <div class="ffs-file-content">
+          <div class="ffs-file-content-inner">
+<ul>
+<li><p><em>Star Trek</em> (2009) was already one of the cleanest movies I’ve ever worked with. Great pace, strong arcs, emotional clarity. But I kept thinking about how it would sit on my shelf alongside my other edits. What could I bring to it?</p></li>
+<li><p>Early on, two titles were in the running: <em>Between Worlds</em> or <em>Genesis</em>. <em>Genesis</em> ultimately won. That word carried a lot of weight here. It’s a story about timelines breaking and legacies forming.</p></li>
+<li><p>Some of the early changes came easy: removing all kids scenes, pulling the Spock romance, and reshaping a few exposition beats. All of those tightened the narrative without bloating it.</p></li>
+<li><p>One of the most meaningful shifts came from removing the conflicting orders Pike gives Kirk. Originally, he says to rendezvous with the fleet and to come get him. That later creates a clunky justification for Kirk's insubordination. I cut both lines. Now Pike gives a single clear command, and Kirk goes after Nero because it's in his nature. The moment becomes about growth.</p></li>
+<li><p>Nero's presence is also felt earlier. There's a quiet dread that builds before the mission even starts.</p></li>
+</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input class="ffs-file-modal-toggle" type="checkbox" id="ffsModalExecution">
+
+    <div class="ffs-file-card">
+      <label class="ffs-file-summary" for="ffsModalExecution">
+<div class="ffs-file-left">
+          <div class="ffs-file-icon">
+            <img src="https://light-speed-studios.b-cdn.net/grid2.png" alt="Execution icon">
+          </div>
+          <div class="ffs-file-copy">
+            <strong>Execution</strong>
+            <span>Technical breakdown from the transporter room</span>
+          </div>
+        </div>
+        <div class="ffs-file-action">
+          Open<span class="ffs-file-arrow">⧉</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ffs-file-modal">
+      <div class="ffs-file-modal-box">
+        <div class="ffs-file-modal-head">
+
+          <div class="ffs-file-modal-header">
+
+            <div class="ffs-file-modal-icon">
+              <img src="https://light-speed-studios.b-cdn.net/grid2.png" alt="Execution">
+            </div>
+
+            <div class="ffs-file-modal-title">
+              <strong>Execution</strong>
+              <span>Technical breakdown from the transporter room</span>
+            </div>
+
+          </div>
+
+          <label class="ffs-file-modal-close" for="ffsModalExecution">×</label>
+
+        </div>
+
+        <div class="ffs-file-content">
+          <div class="ffs-file-content-inner">
+<ul>
+<li><p>This was one of the lightest lifts I’ve done structurally. Most of the work came down to pacing, dialogue placement, audio smoothing, and tonal cleanup.</p></li>
+<li><p>The deleted Klingon prison scene was kept visually but restructured with new ADR. The original dialogue revealed too much too early of Nero’s mission, his purpose, and his mindset. In this cut, the scene preserves his mystery. It now serves as a subtle bridge, helping piece together where he’s been for over two decades after the Kelvin attack.</p></li>
+<li><p>Nero’s presence earlier in the film was achieved by reordering scenes and integrating a subtle audio bed to reinforce dread before the mission even begins. Vulcan’s fall was moved earlier to tighten the second act’s momentum and weight.</p></li>
+<li><p>The Saturn sequence, originally scored like a reveal, was reworked for tension. MVSEP helped isolate sound effects, and a more restrained cue was layered in to give it quiet weight.</p></li>
+</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input class="ffs-file-modal-toggle" type="checkbox" id="ffsModalSoundtrack">
+
+    <div class="ffs-file-card">
+      <label class="ffs-file-summary" for="ffsModalSoundtrack">
+<div class="ffs-file-left">
+          <div class="ffs-file-icon">
+            <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
+          </div>
+          <div class="ffs-file-copy">
+            <strong>Soundtrack</strong>
+            <span>One Pulse, Warp Factor 3</span>
+          </div>
+        </div>
+        <div class="ffs-file-action">
+          Open<span class="ffs-file-arrow">⧉</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ffs-file-modal">
+      <div class="ffs-file-modal-box">
+        <div class="ffs-file-modal-head">
+
+          <div class="ffs-file-modal-header">
+
+            <div class="ffs-file-modal-icon">
+              <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack">
+            </div>
+
+            <div class="ffs-file-modal-title">
+              <strong>Soundtrack</strong>
+              <span>One Pulse, Warp Factor 3</span>
+            </div>
+
+          </div>
+
+          <label class="ffs-file-modal-close" for="ffsModalSoundtrack">×</label>
+
+        </div>
+
+        <div class="ffs-file-content">
+          <div class="ffs-file-content-inner">
+<ul>
+<li><strong>Heroes | Gang of Youths</strong><p>Closing sequences and end credits.</p></li>
+</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+  
+
+  </div>
+</div>
+
+
+<script>
+document.querySelectorAll(".ffs-file-modal").forEach(modal => {
+  modal.addEventListener("click", function (e) {
+    if (e.target !== modal) return;
+
+    const checkbox =
+      modal.previousElementSibling &&
+      modal.previousElementSibling.previousElementSibling;
+
+    if (checkbox && checkbox.classList.contains("ffs-file-modal-toggle")) {
+      checkbox.checked = false;
+    }
+  });
+});
+</script>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

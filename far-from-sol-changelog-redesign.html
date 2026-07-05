@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Far From Sol Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+ margin: 0 auto;
+    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/ffs%20header11.png" alt="Far From Sol" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GLOBAL CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Reconstructed the film into a mostly linear narrative structure.</li>
+              <li>Added a recurring family flashback storyline for Grace, providing additional emotional context and motivation.</li>
+              <li>Introduced a recurring leitmotif adapted from <em>The Expanse's Docking at Lovell City OST</em>, rearranged and reorchestrated throughout the film to musically connect Grace's memories, mission acceptance, and final decision.</li>
+              <li>Corrected anamorphic light tower effects so bloom remains properly contained behind the letterbox bars.</li>
+              <li>Added new Light Speed Studios logo.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">OPENING &AMP; EARTH</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Rebuilt opening around the discovery of the Petrova Line and Astrophage.</li>
+              <li>Expanded Astrophage montage with additional footage.</li>
+              <li>Added new FAR FROM SOL title card after opening montage.</li>
+              <li>Moved Grace's classroom sequence to the beginning of the film.</li>
+              <li>Added Family Flashback #1 following the classroom sequence, scored with the family leitmotif.</li>
+              <li>Removed Grace asking Carl if the world is really ending.</li>
+              <li>Reduced humor throughout the quarantine lab scenes.</li>
+              <li>Removed Stratt consulting with delegates before responding to Grace's concern about being a guinea pig.</li>
+              <li>Removed Grace's false discovery and "nothing happened" exchange.</li>
+              <li>Removed Grace asking delegates if they are excited.</li>
+              <li>Kept Grace and Carl's shopping spree.</li>
+              <li>Streamlined Grace's discovery of Astrophage reproduction by removing the exchange with Carl about sitting down and being a dad.</li>
+              <li>Now the scene transitions to Grace on phone with Stratt.</li>
+              <li>Retained Project Hail Mary briefing on the ship, Tau Ceti discovery, and mission planning sequences.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GRACE&#X27;S RECRUITMENT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Retained Grace meeting the astronaut recruits and Astrophage experiment.</li>
+              <li>Added Family Flashback #2 after Grace's discussion with Yao about bravery.</li>
+              <li>Scored with rearranged family leitmotif.</li>
+              <li>Replaced Grace's awkward exchange with couple with a warmer smile.</li>
+              <li>Retained Stratt's singing scene.</li>
+              <li>Retained Stratt/Grace mission briefing and explosion.</li>
+              <li>Reworked Grace's mission acceptance.</li>
+              <li>Removed the implication that Grace was forcibly recruited.</li>
+              <li>Removed Stratt's line telling Grace he has "no immediate family... not even a dog."</li>
+              <li>The new family storyline now develops through the recurring flashbacks instead.</li>
+              <li>Reframed Grace's acceptance of the mission as a reluctant yes shown through a new launch montage.</li>
+              <li>Added launch preparation montage featuring custom countdown and launch sequences.</li>
+              <li>Reused the family leitmotif during this montage</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SHIP AWAKENING</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Streamlined Grace's awakening by reducing the amnesia-driven "figuring out" sequence and removing many of its comedic beats.</li>
+              <li>Repurposed existing footage into a new montage of Grace sorting through his crewmates' belongings, and visiting the ships plaques, rescored with "From Gold" by Novo Amor.</li>
+              <li>Added Grace saying "I commend you to the stars" during the crew burial sequence, restoring a fan-favorite line from the novel.</li>
+              <li>Added brief family memory insert while Grace observes the virtual beach.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FIRST CONTACT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed extended ships "playing tag" sequence between Grace and Rocky.</li>
+              <li>Rocky sends the bottle message immediately upon establishing contact.</li>
+              <li>Removed Grace tripping after restoring gravity.</li>
+              <li>Retained all of first contact and communication-development scenes.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ROCKY ABOARD</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Reduced recurring "dirty ship" jokes as Rocky explores Grace's ship.</li>
+              <li>Removed Rocky's request for Grace to demonstrate the sampling mission using ship figures and a puppet show.</li>
+              <li>Rest of interactions are mostly intact with minor tweaks.</li>
+              <li>Rescored the Tau Ceti E transit montage with Sugar Ray's "Someday" and restructured portions of the sequence to better align key visual beats with the song's emotional progression, further emphasizing Grace and Rocky's growing friendship.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FAMILY ARC</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added extended family confession sequence during Grace and Rocky's discussion of their mates.</li>
+              <li>Added Family Flashback #3.</li>
+              <li>Expanded use of the family leitmotif during Grace's confession to Rocky.</li>
+              <li>Introduced new ADR revealing Grace's family history and loss.</li>
+              <li>Restructured scenes and ADR to deepen Grace and Rocky's emotional bond.</li>
+              <li>Established new emotional foundation and motivations for Grace's later choices.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SCIENCE &AMP; DISCOVERY</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Retained Grace's Astrophage collection sequence.</li>
+              <li>Rescored Astrophage analysis montage with "Circles" by Vanic (instrumental).</li>
+              <li>Retained all of sample collection scenes and biosphere investigation sequences.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ROCKY&#X27;S SACRIFICE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed "That's just something people say" line following Rocky's Astrophage gift.</li>
+              <li>Removed dialogue regarding when a hug ends.</li>
+              <li>Allowed the hug sequence to play without comedic interruption.</li>
+              <li>Retained the full biosphere sampling sequence.</li>
+              <li>Retained Grace's injury and Rocky's rescue.</li>
+              <li>Retained Taumoeba breakthrough and mission success sequences.</li>
+              <li>Retained Rocky's recovery sequence and Grace's visit to Rocky's ship.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">NEW ENDING</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Completely restructured Grace's final decision.</li>
+              <li>Removed Grace's departure storyline, fuel-loss subplot, and eventual return to Rocky.</li>
+              <li>Added Family Flashback #4 and new montage contrasting Grace's family memories with his experiences alongside Rocky.</li>
+              <li>Reframed Grace's decision to remain on Erid as an emotional choice.</li>
+              <li>Reworked probe-launch sequence to reflect Grace's new decision.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FINAL SCENES &AMP; END CREDITS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Reworked Rocky's final conversation with Grace to support the revised ending.</li>
+              <li>Removed the implication that Grace remains on Erid because of ship limitations.</li>
+              <li>Reframed Grace's choice to make Erid his home.</li>
+              <li>Removed the scenes showing Grace teaching Eridian children, allowing the film to conclude on the relationship between Grace and Rocky.</li>
+              <li>Added custom LSS end credit and FAR FROM SOL title card.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

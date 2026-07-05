@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Speed Racer: Mach 6 Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+       margin: 0 auto;
+    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/mach6-header1.png" alt="Speed Racer: Mach 6" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">OPENING RESTRUCTURE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Combined all Rex material and childhood scenes into a single opening montage. Rescored.</li>
+              <li>Added the text “Eight Years Ago” during the montage.</li>
+              <li>Added “Present Day” when the film transitions to adult Speed.</li>
+              <li>The title card now appears after the first race.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">THUNDERHEAD &amp; EARLY FLASHBACKS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed the original Rex flashback from Thunderhead.</li>
+              <li>Removed Spritle and Chim Chim's binocular moment.</li>
+              <li>Removed Trixie’s childhood flashback.</li>
+              <li>Removed the shot of Racer X predicting Speed’s future.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">BREAKFAST &amp; ROYALTON INTRODUCTION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Spritle and Chim Chim "fight" and Spritle answering the phone.</li>
+              <li>The scene now begins with Sparky reading the newspaper the next day.</li>
+              <li>Cut the German lines from E.P. Royalton about “pancakes are love,” kept the English line.</li>
+              <li>Removed E.P. Royalton guessing ingredients and trying to buy the recipe.</li>
+              <li>Removed E.P. Royalton’s “meet my family” invitation.</li>
+              <li>Scene now ends on his “...to help” line.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">PLANE RIDE &amp; ROYALTON TOUR</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Spritle’s candy 'choir gag' on the plane.</li>
+              <li>Trimmed Royalton’s facility tour.</li>
+              <li>Removed Pops being asked how long he takes to build a car.</li>
+              <li>Removed long driver-training section.</li>
+              <li>Kept only the transponder demo.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">TOGOKAHN &amp; MAFIA SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed the interrogation buildup.</li>
+              <li>Trimmed parts of Racer X fighting with the goons.</li>
+              <li>Removed the piranha finger gag.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SPEED &amp; TRIXIE SCENE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Rescored the car conversation with Tokyo Nights by Digital Farm Animals (instrumental emphasis).</li>
+              <li>Replaced Speed’s kiss-setup line with a new line that closes the scene cleanly.</li>
+              <li>No Spritle interruption.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ROYALTON MONOLOGUE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed all history lessons and fixed race exposition.</li>
+              <li>Removed every reference to Burns, Dugazi, and the ‘43 Prix.</li>
+              <li>Kept only Royalton’s Iodyne engine worldview.</li>
+              <li>Removed Spritle/Chim Chim candy escapades in the tower.</li>
+              <li>Removed Royalton’s litigation speech and Speed confronting Burns.</li>
+              <li>Removed the entire Spritle-caught-by-guards section.</li>
+              <li>After the Racers are served, scene cuts directly to next morning with Sparky reading the news.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">MOM &amp; SPEED SCENE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Speed ripping Burn's poster.</li>
+              <li>Rescored Mom/Speed scene with Promises (Nils Frahm Rework) by The Presets (slowed + reverb).</li>
+              <li>Removed the full Speed/Rex flashback. Kept only a shot of Rex’s embarrassed reaction.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">INSPECTOR DETECTOR &amp; RACER X VISIT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Spritle opening the door and the Harbinger chaos.</li>
+              <li>Now Pops opens the door instead.</li>
+              <li>Retained Racer X’s quiet “This is a bad idea” line.</li>
+              <li>Mach 5 upgrades briefing &amp; Casa Cristo Race</li>
+              <li>Trimmed Inspector Detector’s rundown.</li>
+              <li>Kept the mention that modifications were done.</li>
+              <li>Removed the visual demo of each upgrade to avoid early spoilers.</li>
+              <li>Removed Snake Oiler’s sidebar about being promised wins and whining.</li>
+              <li>Trimmed part of the Speed vs. headhunters scene where they play with a blade and a shield.</li>
+              <li>Removed Speed saying, “This race is full of cheaters" and "has no one read the rule book?” He should already know that. This is Casa Cristo.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">CASA CRISTO 2ND LEG</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>When Speed tells Racer X about how they made a good team replaced Racer X’s response with something more still and revealing.</li>
+              <li>Removed the entire ninja fight scene.</li>
+              <li>Now it transitions from Togokahn being poisoned to all of them converging.</li>
+              <li>Removed all the comical fight scene during the rendezvous when Trixie and Togokahn switch spots.</li>
+              <li>Removed Trixie asking Sparky if the cave was where Rex died.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">POST CASA CRISTO RACE CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Sparky’s “So the whole race was for nothing.”</li>
+              <li>Rescored Speed and Racer X’s Thunderhead scene with Solar Sailer by Daft Punk (slowed and reverbed).</li>
+              <li>Rescored Pops/Speed scene with Mercury from Sunshine OST (slowed and reverbed).</li>
+              <li>Removed Speed telling Pops the Burns race was fixed (since no fixed races are mentioned).</li>
+              <li>Removed Pops saying to Speed “What do you think of that, Mr. It’s always fixed?”</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GRAND PRIX PREP &amp; MID RACE ADDITIONS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed the announcer line asking the makeup artist if she was there the year before.</li>
+              <li>Rescored Speed’s entrance with Sirius by The Alan Parsons Project (slowed and reverb)</li>
+              <li>Removed the part where EP is tells his driver to take Speed out.</li>
+              <li>Removed Speed's trek through the locker room.</li>
+              <li>The race remains as is.</li>
+              <li>Added Rex Racer ADR “Racing is in our blood, Speed!” line during Speed’s final racing montage.</li>
+              <li>Rescored the Racer X reveal of Rex Racer scene.</li>
+              <li>Added explosion sfx as Rex blows up his car during flashback.</li>
+              <li>Removed Spritle interrupting the kiss.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">END CREDITS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Replaced end credits with new footage and credits.</li>
+              <li>Scored with Days of Thunder by The Midnight.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

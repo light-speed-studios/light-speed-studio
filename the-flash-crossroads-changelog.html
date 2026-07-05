@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>The Flash: Crossroads Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 75%;
+      height: auto;
+ margin: 0 auto;
+         }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+      
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/the%20flash%20header1.png" alt="The Flash: Crossroads" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">VISUAL &amp; INTRO CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Custom Warner Bros. and DC Studios intros with lightning animation</li>
+              <li>Added Light Speed Studios logo</li>
+              <li>All flashtime and ChronoBowl scenes recolored (less red, more orange/yellow; reduced brightness)</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">OPENING SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>New Barry monologue over montage, rescored.</li>
+              <li>Barry runs through the city before reaching Gotham (TV show footage)</li>
+              <li>Alfred calls while Barry runs; AI-assisted dialogue implies Barry is hungry</li>
+              <li>Rescored city run.</li>
+              <li>First Flash run fully redone with new VFX by NomadR Productions; title card and cast credits integrated</li>
+              <li>Removed “fleeing the scene” line and water gag; Bat-chase trimmed and rescored</li>
+              <li>Audio reworked; “East wing’s fine” dubbed over “my speed is lagging”</li>
+              <li>Baby rescue scene streamlined, recolored, and rescored.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">BRIDGE CHASE TRIMMED; EXPLOSION HAPPENS SOONER</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed driver falling out, lasso of truth gag, Alfred breakfast line</li>
+              <li>Barry and Iris’ work interaction plays as is, rescored.</li>
+              <li>Rescored scene as Barry walks to his apartment.</li>
+              <li>Removed young Barry running outside in flashback.</li>
+              <li>Removed Barry running into the Speed Force. moved to later.</li>
+              <li>Transitioned directly from flashback to Barry and Bruce discussing time travel.</li>
+              <li>Recut dialogue to establish Barry has already traveled back in time</li>
+              <li>Ally scene rescored.</li>
+              <li>Modified Bruce’s dialogue to support the change.</li>
+              <li>Added a fun line from Barry about Bruce's car.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">IRIS APARTMENT &amp; TIME TRAVEL</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Rescored parts of when Iris arrives at Barry's apartment.</li>
+              <li>Rescored Barry’s dilemma explanation.</li>
+              <li>Moved Speed Force run (saving mom) to this section. Rescored.</li>
+              <li>Rescored “don’t forget the tomatoes” and “please work” scenes.</li>
+              <li>Reinserted and recolored deleted Mom/Dad/Barry scene.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">BARRY 1 &amp; 2 INTERACTION CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed/redubbed juvenile Barry 2 dialogue: “superhero,” “bug sputter,” “are you 40?”</li>
+              <li>Removed Barry 1 calling Barry 2 annoying, “Powers??” line.</li>
+              <li>Removed teeth gag post-accident.</li>
+              <li>Added lightning effect to Barry 2’s whole body during powers reveal.</li>
+              <li>Removed bed-jumping and Speedy Gonzales reference.</li>
+              <li>Recut entire powers scene; rescored.</li>
+              <li>Trimmed crash sequence and eating gag.</li>
+              <li>Removed Barry 1 explaining suit.</li>
+              <li>Cut suit size joke, Eric Stoltz and Back to the Future references.</li>
+              <li>Removed Barry 2’s screaming in the café when lights go out.</li>
+              <li>Trimmed Zod attack recap and rescored.</li>
+              <li>Removed roommates scene.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">WAYNE MANOR &amp; BATCAVE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added Barry line in taxi to Wayne Manor.</li>
+              <li>Removed “Is this hell?” and kitchen painting scene.</li>
+              <li>Rescored kitchen fight.</li>
+              <li>Removed “retro causal” and “ontological paradox” lines.</li>
+              <li>Trimmed chewing and “pass the salt?” bits.</li>
+              <li>Added Barry 2 deleted phasing scene and extended cave run.</li>
+              <li>Removed Batmobile scene and “being mean to me?” line.</li>
+              <li>Rescored Bruce/Barry cave convo.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">BULLET SCENE &amp; RUSSIA FIGHT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added deleted bullet scene (VFX finished byEcho27), rescored.</li>
+              <li>Rescored Bruce v Russians fight.</li>
+              <li>Added Barry 2 discovering Supergirl’s ship and suit.</li>
+              <li>Removed scrotum joke, “tried all the combinations,” and Batman intimidating scientist.</li>
+              <li>Trimmed tunnel chase and recolored.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SUPERGIRL &amp; TEAM DYNAMICS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Reworked Supergirl fight: replaced SFX, improved motion, rescored.</li>
+              <li>Included deleted Barry 2 scene of him covering Supergirl with blanket.</li>
+              <li>Trimmed roof scene; removed throat sound and Supergirl leaving.</li>
+              <li>Supergirl now stays with the team.</li>
+              <li>Added new Keaton retirement scene inspired by Dr. Flashpoint; rescored. Dialogue redone and trimmed.</li>
+              <li>Added deleted kite scene, recolored; removed sponge and “bad idea” line.</li>
+              <li>Rescored Supergirl helping Barry power up, added SFX.</li>
+              <li>Removed “scared the sh*t out of me” line.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FINAL BATTLE PREP &amp; COMBAT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Reworked Barry 2 suit scene.</li>
+              <li>Removed Barry 2's “dude” and Barry 1's “what are you doing?”</li>
+              <li>Removed Barry 1's “you came back” line.</li>
+              <li>Removed Barry 2’s comedic “Supergirl??” and “hope??” responses.</li>
+              <li>Supergirl speech and team-up scene rescored.</li>
+              <li>Added Barry 1's line about things getting nuts (inspired by Dr. Flashpoint).</li>
+              <li>Removed Barry 2/Supergirl kid talk in plane.</li>
+              <li>Removed Supergirl punching rocket, Barry 2 scream</li>
+              <li>Barbie line is replaced with AI-generated “Run, Barry, run” (Ezra voice), added SFX.</li>
+              <li>Final fight rescored, reordered scenes, redone SFX.</li>
+              <li>Trimmed Supergirl grunts and close-ups during fights.</li>
+              <li>Removed Barry 1 saying “yes please take him out” line.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">DARK FLASH &amp; FINAL ACT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed Dark Flash entrance; no electric shock, Scene flipped.</li>
+              <li>Removed Dark Flash's “living more than I can dream” line.</li>
+              <li>Major rewrite of Dark Flash motive and backstory (co-written with Thriller2Rayne)</li>
+              <li>Redone Dark Flash's voiceover.</li>
+              <li>Whole scene is rescored.</li>
+              <li>Removed all cameos.</li>
+              <li>Rescored Barry’s goodbye to his mom and courtroom scene.</li>
+              <li>Removed outside courtroom sequence.</li>
+              <li>Added final running montage and monologue as epilogue.</li>
+              <li>End credits redone and rescored.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SPECIAL THANKS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>NomadR Productions – for fully recreating the new Flash run</li>
+              <li>Echo27 – for completing and enhancing the deleted bullet scene</li>
+              <li>Thriller2Rayne – for collaborating on the Dark Flash rewrite</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

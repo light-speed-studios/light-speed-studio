@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Superman: Son of Tomorrow | LSS</title>
+
+  <style>
+    .lss-watch-page {
+      --site-bg: #040e15;
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      --cyan: #00aede;
+      --text-main: #bac7d5;
+      --text-soft: rgba(186, 199, 213, 0.72);
+      --text-muted: rgba(186, 199, 213, 0.54);
+
+      width: 100%;
+      min-height: calc(100vh - 61px);
+      padding: 38px 0 70px;
+      box-sizing: border-box;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(0, 174, 222, 0.06), transparent 34%),
+        #040e15;
+      font-family: Rajdhani, Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .lss-watch-page * {
+      box-sizing: border-box;
+    }
+
+    .lss-watch-shell {
+      width: min(1280px, calc(100vw - 40px));
+      max-width: calc(100vw - 40px);
+      margin: 0 auto;
+    }
+
+    .watch-header {
+      position: relative;
+      margin: 0 0 28px;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.11), transparent 55%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.22),
+        0 0 28px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+    }
+
+    .watch-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+      opacity: 0.64;
+    }
+
+    .watch-header > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .watch-kicker {
+      display: block;
+      margin-bottom: 4px;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .watch-header h1 {
+      margin: 0;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(24px, 2.4vw, 38px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      text-shadow:
+        0 0 16px rgba(0, 174, 222, 0.14),
+        0 5px 22px rgba(0, 0, 0, 0.45);
+    }
+
+    .watch-runtime {
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      white-space: nowrap;
+    }
+
+    .movie-video-wrap {
+      position: relative;
+      padding: 14px;
+      background:
+        linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+        rgba(255, 255, 255, 0.035);
+      box-shadow:
+        0 0 34px rgba(0, 174, 222, 0.10),
+        inset 0 0 0 1px rgba(0, 174, 222, 0.22);
+    }
+
+    .movie-video-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+      opacity: 0.72;
+    }
+
+.movie-video {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+}
+
+    .movie-video iframe {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #000;
+    }
+
+    .mobile-actions {
+      display: none;
+    }
+
+    .watch-actions {
+      margin: 28px auto 0;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .watch-button,
+    .watch-secondary {
+      min-width: 170px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
+    }
+
+    .watch-button {
+      color: var(--site-bg);
+      background: var(--cyan);
+      box-shadow: 0 0 18px rgba(0, 174, 222, 0.22);
+    }
+
+    .watch-secondary {
+      color: var(--cyan);
+      background: rgba(255, 255, 255, 0.035);
+      box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    }
+
+    .watch-button:hover,
+    .watch-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 26px rgba(0, 174, 222, 0.24);
+    }
+
+    .watch-note {
+      width: min(980px, 100%);
+      margin: 22px auto 0;
+      padding: 12px 16px;
+      text-align: center;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow: inset 0 0 0 1px rgba(186, 199, 213, 0.06);
+    }
+
+    @media (max-width: 700px) {
+      .lss-watch-page {
+        padding: 16px 12px 44px;
+      }
+
+      .lss-watch-shell {
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+      }
+
+      .watch-header {
+        padding: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .watch-runtime {
+        align-self: flex-start;
+      }
+
+      .watch-kicker {
+        font-size: 10px;
+      }
+
+.watch-header h1 {
+  font-size: clamp(24px, 2.4vw, 38px);
+}
+      .watch-runtime {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+      }
+
+      .movie-video-container,
+      .watch-actions {
+        display: none;
+      }
+
+      .mobile-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin: 18px auto 0;
+      }
+
+      .watch-button,
+      .watch-secondary {
+        width: 100%;
+      }
+
+      .watch-note {
+        font-size: 9px;
+        line-height: 1.45;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <div class="lss-watch-page">
+    <div class="lss-watch-shell">
+      <div class="watch-header">
+        <div>
+          <span class="watch-kicker">Now Playing</span>
+          <h1>Superman: Son of Tomorrow</h1>
+        </div>
+
+        <span class="watch-runtime">110 min</span>
+      </div>
+
+      <div class="movie-video-container">
+        <div class="movie-video-wrap">
+          <div class="movie-video">
+            <iframe
+              src="https://drive.google.com/file/d/1H_O_6Iww2GZtxgvbp3foOXWGgeEBF9Zp/preview"
+              title="Superman: Son of Tomorrow"
+              allow="autoplay; fullscreen"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="watch-actions">
+        <a
+          class="watch-button"
+          href="https://drive.usercontent.google.com/download?id=1H_O_6Iww2GZtxgvbp3foOXWGgeEBF9Zp&export=download&authuser=0"
+          target="_blank"
+          rel="noopener">
+          Download
+        </a>
+      </div>
+
+      <div class="mobile-actions">
+        <a
+          class="watch-secondary"
+          href="https://drive.google.com/file/d/1H_O_6Iww2GZtxgvbp3foOXWGgeEBF9Zp/view?t=4.756"
+          target="_blank"
+          rel="noopener">
+          Open in Google Drive
+        </a>
+
+        <a
+          class="watch-button"
+          href="https://drive.usercontent.google.com/download?id=1H_O_6Iww2GZtxgvbp3foOXWGgeEBF9Zp&export=download&authuser=0"
+          target="_blank"
+          rel="noopener">
+          Download
+        </a>
+      </div>
+
+        </div>
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

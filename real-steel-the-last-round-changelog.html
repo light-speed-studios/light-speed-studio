@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Real Steel: The Last Round Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+       margin: 0 auto;
+    
+    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/real%20steel%20header11.png" alt="Real Steel: The Last Round" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">OPENING RESTRUCTURE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added a Zeus promo cold open using repurposed promotional material.</li>
+              <li>This establishes the WRB world and Zeus as an inevitable foe. Scored.</li>
+              <li>Added new Dreamworks and LSS logo after the cold open.</li>
+              <li>Removed the original Charlie driving montage and repositioned it later.</li>
+              <li>Removed all Charlie interactions with the kids at the start.</li>
+              <li>Film now opens at the bull ring with Charlie inspecting the bull before the fight.</li>
+              <li>Removed Charlie telling Ricky to back off during their confrontation.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">BULL FIGHT &amp; FALLOUT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Charlie asking the kids for the Ambush leg and the $5 exchange.</li>
+              <li>During the notification of his ex-wife’s death, removed Charlie’s line asking if his son is dead as well.</li>
+              <li>Extended Charlie's reaction shot after he is told about Max.</li>
+              <li>Inserted new title card here.</li>
+              <li>Reintroduced the driving montage here, reframed as Charlie leaving the fair and heading to court. Rescored.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">COURT &amp; CUSTODY</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added the deleted scene of Max speaking with his aunt about the butterfly pin, keeping it as a sentimental object tied to his mother and removing the original hustling angle.</li>
+              <li>Cut the scene before Max offers the pin to his aunt.</li>
+              <li>Removed the jump cut of Charlie arriving at the courthouse.</li>
+              <li>Removed Charlie’s line about signing away his rights upon entering the courtroom.</li>
+              <li>Removed Judge's line about asking Charlie if he wants to meet Max.</li>
+              <li>Removed Debra retort to Charlie about being like one of the robots.</li>
+              <li>Trimmed dialogue between Charlie and Marvin regarding Max and payment.</li>
+              <li>Removed scene showing Charlie signing adoption papers.</li>
+              <li>Trimmed Bailey and Charlie’s early flirting.</li>
+              <li>During Charlie and Max’s first meeting, removed Max’s “you screwed me” line and Charlie’s “nice mouth” response.</li>
+              <li>Removed the conversation about Max being “sold” and Max going on his own with his cut of the money.</li>
+              <li>Now the conversation is implying instead that the money Charlie accepted was meant to take care of Max.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">NOISY BOY &amp; CRASH PALACE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>During Noisy Boy’s arrival at the gym, removed the sequence where Charlie can't control the robot and Max uses Japanese commands.</li>
+              <li>Charlie now issues commands in English, and it works.</li>
+              <li>At the Crash Palace, removed the sidebar between Charlie and Max about taking a low-pay undercard fight, moving directly to Charlie choosing Midas.</li>
+              <li>During the fight, removed Charlie’s sarcastic “undercard?” remark to Max.</li>
+              <li>Removed Max’s headset instruction line during the latter part of the fight.</li>
+              <li>Rest of fight plays out as is.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ATOM'S DISCOVERY &amp; EARLY FIGHTS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added deleted diner scene where Charlie learns more about Max and his knowledge of robot boxing, strengthening their bond.</li>
+              <li>Added a deleted moment showing Max with the butterfly pin to reinforce the motif of a personal token.</li>
+              <li>During the junkyard sequence, removed searchlight dodging and cut directly to scavenging.</li>
+              <li>Removed the scene of Max pulling Atom back to the truck.</li>
+              <li>Added night Tallet's Gym establishing shot</li>
+              <li>Removed the Max/Atom running sequence to eliminate unfulfilled implications of robot sentience.</li>
+              <li>Removed Max’s snarky "as anyone" reply to Bailey.</li>
+              <li>Removed the entirety of Zeus arrival sequence as these scenes were repurposed for the cold open.</li>
+              <li>Added night-day time-lapse as Charlie and Max are in the parking lot.</li>
+              <li>Fight at The Zoo plays as is.</li>
+              <li>Removed age-related banter during Charlie’s encouragement of Max’s pre-fight dance.</li>
+              <li>Montage of Atom climbing the ranks plays as is.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">TWIN CITIES &amp; ESCALATION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Charlie asking the usher to repeat himself when invited to Zeus’s suite.</li>
+              <li>Removed the scene of Atom sitting alone in the gym staring into a mirror, eliminating further implications of robot sentience.</li>
+              <li>Heavily trimmed Max/Atom dance sequence before the Twin Cities fight.</li>
+              <li>During the Twin Cities fight, removed the “hitch” and "reach" exposition by Charlie.</li>
+              <li>Trimmed Max’s victory speech to remove buyout and corruption callouts, keeping the challenge to Zeus direct.</li>
+              <li>Added the final deleted butterfly pin scene after Charlie is attacked by Ricky and his men.</li>
+              <li>This scene completes Charlie’s emotional arc and strengthens the father/son bond.</li>
+              <li>Deleted scene restoration included heavy audio cleanup.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">RESOLUTION &amp; ZEUS FIGHT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed the scene of Charlie approaching Bailey while she is sleeping.</li>
+              <li>The following scene now begins with Charlie and Bailey meeting on the rooftop of Tallet’s Gym.</li>
+              <li>During the rooftop conversation, removed the kiss after Bailey tells Charlie he knows what he needs to do.</li>
+              <li>During Charlie’s apology to Max, removed the line about Max’s mom being “the coolest”, as this sentiment is now carried through the butterfly storyline.</li>
+              <li>Removed the Finn–Ricky betting subplot during the Zeus fight.</li>
+              <li>Most of the Atom vs Zeus fight plays out as is.</li>
+              <li>Adjusted the Zeus power depletion reveal by removing the early slowing down cues.</li>
+              <li>This preserves the energy failure as a sudden turning point rather than telegraphed.</li>
+              <li>Final scenes and end credit rescored.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

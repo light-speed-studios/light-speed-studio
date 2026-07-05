@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Crisis: Red Skies Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+ margin: 0 auto;    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/crisis-header2.png" alt="Crisis: Red Skies" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GLOBAL / OPENING CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Added custom CW/DC hybrid logo using elements from Supergirl, Arrow, Flash, and Legends</li>
+              <li>Added LSS intro</li>
+              <li>Removed original Earth-X opening (city + Reich-style chorus)</li>
+              <li>Film now opens at the rebel base to establish tone immediately. Rescored</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">OPENING RESTRUCTURE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Kept Dark Arrow attack on rebel base and Guardian fight</li>
+              <li>Removed post-fight return to base and villain speech</li>
+              <li>Cut directly after Dark Arrow shoots Guardian</li>
+              <li>Inserted custom title: Crisis: Red Skies</li>
+              <li>Relocated Dark Arrow rebel-device scene to immediately follow title</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">HERO INTRODUCTION / WEDDING SETUP</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed all RSVP and discussion montages about the wedding</li>
+              <li>First hero introductions now occur upon arrival in Central City</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">PRE-WEDDING ADJUSTMENTS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Kept:</li>
+              <li>Trimmed ladies nail salon scene. cuts after Kara strong nails gag</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">CISCO SHOWCASING FIRESTORM SERUM</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed:</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">RECEPTION &amp; WEDDING RESTRUCTURE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Transition flows directly into reception after Stein and Jax scene</li>
+              <li>Kept Sara and Alex conversation</li>
+              <li>Kept Joe’s speech</li>
+              <li>Removed Stein/Jax serum subplot</li>
+              <li>Removed Barry/Kara song discussion. She doesn't sing.</li>
+              <li>Removed Alex/Sara hookup</li>
+              <li>Removed Felicity yelling “I don’t want to marry you." now the scene is trimmed before she yells but still says no to Oliver</li>
+              <li>Scene now ends with Iris subtly overhearing them</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">PRE &amp; AT WEDDING EVENTS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Reworked next-day material into a continuous montage with a lot of stuff taken out and kept only the Iris/Barry related scenes. Rescored with Song for Zula (instrumental)</li>
+              <li>Removed Kara singing at wedding, Nora Allen cameo, Mick comedic entrance and Alex/Kara discussion</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">NAZI FIGHTS REMAIN AS IS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Episode transition cleanup as the heroes plan to interrogate Prometheus by merging episode into continuous scenes</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">VILLAIN STRUCTURE &amp; REVEAL</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed early villain reveals, delaying them until confrontation with heroes</li>
+              <li>Removed villain infighting scenes after Prometheus' death</li>
+              <li>Removed early confirmation of Overgirl/Dark Arrow relationship</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">POST-WEDDING &amp; STAR LABS ADJUSTMENTS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Felicity/Curtis tracking conversation post Tommy's death</li>
+              <li>Scene now begins with Oliver talking to Felicity</li>
+              <li>Rescored Oliver/Felicity conversation with "Ride by Cary Brothers" (slowed)</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">JAX/STEIN CONVERSATION MOSTLY INTACT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Alex/Sara/Kara scenes</li>
+              <li>Trimmed Iris/Felicity conversation about the wedding</li>
+              <li>Heroes confrontation with the villains remains as is</li>
+              <li>Removed the “Getting ready” montage before battle at the warehouse</li>
+              <li>Removed Iris comforting Felicity (redundant)</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">WAREHOUSE &amp; CAPTURE SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Kept warehouse battle largely intact</li>
+              <li>Removed Caitlin/Mick mustard joke</li>
+              <li>Reworked audio and music when Dark flash arrives at STAR Labs and confronting Wells</li>
+              <li>Removed Curtis (Mr. Terrific) line about timing and entrance</li>
+              <li>Kept Dark Arrow fight at STAR Labs</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">EARTH-X PRISON &amp; RESISTANCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Cleaned transition into Earth-X prison sequence from episode 3 to 4</li>
+              <li>Removed Jax/Rey talking about why he is there (relationship revealed later)</li>
+              <li>Removed STAR Labs prisoner banter (Cisco/Wells humor)</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">RESISTANCE BASE EDITS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Kept Winn (General Schott) reveal</li>
+              <li>Removed Alex attempting to convince Winn to change his mind (no narrative payoff)</li>
+              <li>Removed Alex/Sara bunker scene</li>
+              <li>Focus shifted to Snart/Rey alliance after Jax/Stein scene</li>
+              <li>Removed Snart/Rey kiss</li>
+              <li>Major Structural Cut — “Lights Out” Subplot</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">COMPLETELY REMOVED STAR LABS BLACKOUT SUBPLOT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Narrative now flows directly from infiltration plan to Nazi base arrival</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">INFILTRATION &amp; EARTH-X BATTLE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Maintained Oliver infiltration</li>
+              <li>Removed intercutting with deleted subplot</li>
+              <li>Maintained Red Tornado setup and battle</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">STEIN DEATH &amp; ESCAPE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Fixed transition between episodes after Stein is shot</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ESCAPE FROM EARTH-X REMAINS INTACT</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Rescue Sequence at STAR Labs &amp; Stein's Sacrifice</li>
+              <li>Implied Iris and Felicity were captured (continuity compromise)</li>
+              <li>Atom (Rey) rescue retained and Legends arrival intact</li>
+              <li>Removed Cisco pop culture joke during Metallo fight</li>
+              <li>Kept post fight cool down scenes and Stein being treated</li>
+              <li>After Stein's sacrifice, rescored the following grieving scenes with "This time Around by Hellen Stellar." Dialogue removed.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FINAL BATTLE &amp; AFTERMATH</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Overgirl's “mausoleum” line</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">STEIN FUNERAL &amp; ENDING</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed scene between Leo/Rey and Cisco</li>
+              <li>Removed Snart/Mick funeral joke about crying and allergies.</li>
+              <li>Removed Sara/Alex follow-up after the funeral</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FINAL SCENES AND ENDING</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Diggle vomiting gag</li>
+              <li>Rescored wedding scenes with "Ride – Cary Brothers (Tiësto Remix)"</li>
+              <li>Added title card and redone end credits</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

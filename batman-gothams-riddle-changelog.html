@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Batman: Gotham&#x27;s Riddle Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+ margin: 0 auto;
+          }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/batman%20header2.png" alt="Batman: Gotham&#x27;s Riddle" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GLOBAL CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Retitled the film to Batman: Gotham’s Riddle.</li>
+              <li>Removed the entire third act involving the city flood and Riddler’s bomb plot.</li>
+              <li>Rescored with “Disoriented” (Annihilation OST).</li>
+              <li>Added dates and Location text overlays in multiple scenes.</li>
+              <li>Removed all on-screen Riddler attack scenes to preserve mystery and maintain tension.</li>
+              <li>Applied new LUTs to adjust color tone throughout the film</li>
+              <li>Recreated the Penguin series title card effect for Batman logo.</li>
+              <li>Replaced all lines referring to Batman as “vengeance.”</li>
+              <li>Each act is now bookmarked with one of Riddler's 3 riddles.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">OPENING &amp; ACT ONE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Opened with Bruce’s narration about Halloween night. All new ADR. Rescored</li>
+              <li>Trimmed dialogue. Added line about the Bat Symbol being forged by the gun that took his parents.</li>
+              <li>Removed civilian’s “Don’t hurt me” line. Moved Title Card to after fight with goons.</li>
+              <li>Trimmed Martinez’s interaction at the Mitchell crime scene. Now he only mutters “goddamn freak.”</li>
+              <li>Removed the Commissioner’s dialogue with Batman. Now he simply says, “I want him out... now.”</li>
+              <li>Extended Batman's point of view shot of entering the Batcave.</li>
+              <li>Removed the diary entry scene. Bruce goes to reviews lens footage now.</li>
+              <li>Cut Bruce’s “You’re not my father” exchange with Alfred.</li>
+              <li>Bruce exits after “I don’t care what happens to me.”</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">THUMB DRIVE &amp; CLUB INFILTRATION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Shortened USB thumb drive sequence.</li>
+              <li>After Batman identifies the USB, the scene transitions straight to the Batcave.</li>
+              <li>Removed the moment where Mitchell’s photos are emailed from Gordon’s account.</li>
+              <li>Rescored club fight scene.</li>
+              <li>Replaced Penguin "Vengeance here don't bite.”</li>
+              <li>Reworked Batman looking at Selina/Annika through the binoculars.</li>
+              <li>Removed guard interrupting Bat/Cat fight.</li>
+              <li>Skipped the bike riding transition. Now a quick engine rev leads directly to the apartment arrival.</li>
+              <li>Removed Riddler's comical "Goodbye"</li>
+              <li>Added Batman reaction shot.</li>
+              <li>Removed Batman's “You’ve got a lot of cats” lines.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">JOKER SCENE &amp; CLUB SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Inserted Joker’s deleted Arkham scene after Batman and Gordon scene. Rescored.</li>
+              <li>2nd Riddle Card marks the starts of the 2nd act after Joker scene.</li>
+              <li>Removed the scene where Batman gives Selina the lens.</li>
+              <li>Rescored the club sequence.</li>
+              <li>Added the deleted Catwoman and Penguin scene, showing her obtaining the hospitality card.</li>
+              <li>The Rat &amp; Funeral</li>
+              <li>Trimmed the DA’s “rat” explanation. The scene now moves more swiftly to the "Russian girl" reference.</li>
+              <li>Rescored the scene when Bruce arrives at the funeral.</li>
+              <li>Removed Falcone’s laugh about the Hippocratic Oath.</li>
+              <li>Removed Bruce’s interactions with the shady guy and Bella Real at the funeral.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">DA BOMB SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Riddler’s livestream footage during the DA’s interrogation.</li>
+              <li>Cut Riddler’s “You're a part of this too."</li>
+              <li>Overlaid the DA’s desperate “Jesus, can we get somebody in here?” during Riddler’s conversation with Batman.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GCPD ESCAPE &amp; CAR CHASE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed Batman’s police station fight; Gordon stops him earlier.</li>
+              <li>Reworked glide sequence. no comical crash. its implied through SFX he survived the landing.</li>
+              <li>Removed the “pulling your punch” joke.</li>
+              <li>Trimmed everyone waiting for Batmobile to restart. now the scene moves quick.</li>
+              <li>Trimmed the chase’s early beats; Penguin now rams the other car immediately.</li>
+              <li>Flipped Batman’s walk toward Penguin’s flipped car to be upright for visual impact.</li>
+              <li>Scene now fades out as Batman approaches, removing the slow head reveal inside the car.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">PENGUIN INTERROGATION &amp; ORPHANAGE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed Penguin’s interrogation; removed Gordon showing him photos and yelling "open your eyes.”</li>
+              <li>Removed the drophead encounter at the orphange. They now enter straight into the projector room.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">WAYNE TOWER &amp; FAMILY SECRETS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Shortened Batman’s return to Wayne Tower. Removed unanswered phone calls. Rescored</li>
+              <li>Trimmed rooftop conversation with Selina in a couple of parts . Rescored</li>
+              <li>Selina’s vengeance line changed to “I thought you believed me.”</li>
+              <li>Third riddle marks the start of the 3rd act as we hear Thomas Wayne political ad.</li>
+              <li>Removed Bruce’s visit to Falcone for answers.</li>
+              <li>Scene now transitions directly to Alfred’s hospital scene.</li>
+              <li>Trimmed redundant dialogue and empty reaction shots during Bruce/Alfred scene. Rescored</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FALCONE’S DEATH &amp; CLUB SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Catwoman’s “nine lives” line.</li>
+              <li>Batman’s arrival at the club to stop Catwoman is now a surprise</li>
+              <li>No buildup shots of Batman making his way through the club. just the one "tunnel gun lit” scene.</li>
+              <li>Removed Riddler’s question mark latte art.</li>
+              <li>Trimmed the apartment search scene. Now cuts straight to Riddler’s “My confession” card and immediate phone call.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">RIDDLER REVEAL &amp; FINAL CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Moved “black and blue” line earlier in the Riddler interrogation.</li>
+              <li>Removed “You should’ve seen me in my mask.”</li>
+              <li>As Riddler screams “No!”, added a new shot of batman with new line.</li>
+              <li>Affter Batman's line the scene transitions to Riddler sobbing in Arkham.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">ENDING SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed the bike riding scene. Rescored</li>
+              <li>Added new Batman ADR during bike ride.</li>
+              <li>New title card and end credits.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

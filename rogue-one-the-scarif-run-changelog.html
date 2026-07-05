@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Rogue One: The Scarif Run Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+ margin: 0 auto;    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/rogueone-header11.png" alt="Rogue One: The Scarif Run" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoiler Notice</h1>
+      <p>This changelog is best read after watching the movie. Experiencing the edit first provides the proper context for the changes discussed here.</p>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">OPENING SEQUENCE &amp; LAH’MU CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Replaced opening space and planet establishing shots with the LSS and Lucasfilm logos.</li>
+              <li>Retained the opening music, delaying the first planetary reveal until the score’s initial crescendo, which now introduces Lah’mu and Krennic’s ship.</li>
+              <li>Trimmed the Lah’mu approach sequence to cut directly from the reconnaissance drone observing Krennic’s ship to Galen viewing the approach inside the house.</li>
+              <li>Removed Young Jyn’s exterior run and redundant warning, introducing her already inside with Galen as the evacuation begins.</li>
+              <li>Removed Lyra Erso’s communication with Saw Gerrera, eliminating his involvement in Jyn’s life during the opening.</li>
+              <li>Removed the scene of Lyra Erso giving Jyn the kyber crystal necklace and referencing the Force.</li>
+              <li>Removed the brief shot implying that Jyn runs away and then turns back, maintaining her presence at the homestead until the later escape to the cave.</li>
+              <li>Removed the brief sequence of stormtroopers searching the cave and departing without finding Jyn.</li>
+              <li>Replaced Rogue on title reveal with new one.</li>
+              <li>Replaced the original Rogue One theme during the title reveal with a elegiac variation lifted from the trailer.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">JYN INTRODUCTION &amp; YAVIN 4</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Jyn’s opening shot in a jail cell.</li>
+              <li>Removed the sequence between Cassian and the informant in the alley.</li>
+              <li>Jyn’s introduction now begins with her capture and transport at the Imperial labor camp.</li>
+              <li>Retained the labor camp rescue sequence.</li>
+              <li>Redid the Yavin 4 planet shot by removing the on-screen location text, leaving only the establishing visual.</li>
+              <li>Left the Rebel council sequence intact.</li>
+              <li>Removed General Draven’s kill order to Cassian.</li>
+              <li>Removed K-2SO’s dialogue about Jyn carrying a blaster and follow-up discussion about the blaster.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">JEDHA SETUP &amp; TARKIN INTRODUCTION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>During Bodhi’s interrogation, replaced Saw Gerrera’s oxygen mask “breathing hit” with a more still reaction as Bodhi identifies Galen Erso as the sender of the message.</li>
+              <li>Replaced Tarkin’s initial appearance with select scene from Darken VFX's and Derpfake's deepfake footage. Color matched.</li>
+              <li>Inserted a new reaction shot of Krennic to bridge original and deepfake shots.</li>
+              <li>Reconstructed one Tarkin shot when he says delivers his "time and ally line," using deepfake footage only as visual reference to generate new facial composites.</li>
+              <li>Removed the lingering hold on Tarkin after Krennic exits.</li>
+              <li>Scene now ends cleanly on Krennic’s line: “I will not fail.”</li>
+              <li>Removed Jyn’s extended dream montage. Retained bunker door opening audio over black.</li>
+              <li>Hard cut from black to Jyn waking aboard the transport enroute to Jedha.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">JEDHA MARKET &amp; CAPTURE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed the Bor Gullet interrogation scene.</li>
+              <li>Removed the Ponda Baba and Evazan interaction.</li>
+              <li>Removed the PSA announcement regarding the missing cargo pilot.</li>
+              <li>Removed Cassian's line about rebellions being built on hope. Now the line comes from Jyn later on.</li>
+              <li>Retained the remainder of the market sequence and ensuing fight.</li>
+              <li>Removed Chirrut and Baze’s exchange following the market fight (“You almost shot me” / “You’re welcome”).</li>
+              <li>After Benthic orders “Take them!” only Jyn is shown being hooded before a hard cut to the next scene.</li>
+              <li>Removed cantina character imagery from the jail sequence, keeping the focus on the capture.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SAW GERRERA &amp; PRISON SEQUENCE</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed Jyn and Saw Gerrera’s conversation to remove Saw’s paranoia about Jyn being sent to kill him.</li>
+              <li>Adjusted Bodhi’s jail introduction so he immediately confirms he is the pilot, removing disoriented hesitation.</li>
+              <li>Rebuilt 2 Tarkin shots telling Krennic to bomb the Holy City. using deepfake footage only as visual reference to generate new facial composites.</li>
+              <li>Removed Saw Gerrera’s line instructing Jyn to “save the rebellion / save the dream."</li>
+              <li>Removed Saw Gerrera’s final acceptance-of-death moment, including the mask removal.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">TARKIN BRIEFING RECONSTRUCTION</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Rebuilt all Tarkin shots post Jedha scene using deepfake footage only as visual reference to generate new facial composites.</li>
+              <li>Dialogue remains unchanged, with new facial motion applied throughout the scene.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">JEDHA FALLOUT &amp; EADU SEQUENCES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed General Draven’s briefing following Jedha’s destruction, removing explicit dialogue ordering Galen Erso’s assassination.</li>
+              <li>Removed the scene explicitly showing Krennic enroute to Eadu.</li>
+              <li>Trimmed the Eadu approach shot to remove the on-screen location text, allowing the destination to be inferred visually.</li>
+              <li>Removed Cassian’s line “Hold on, we’re going down hard!” during the Eadu crash landing sequence.</li>
+              <li>Rest of Eadu scenes play out as is.</li>
+              <li>Trimmed the post-Eadu transport confrontation by removing Cassian’s line dismissing Jyn’s reaction as misplaced blame.</li>
+              <li>Removed the exchange where Jyn accuses Cassian of talking his way out and Cassian responds that he doesn’t have to.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">VADER &amp; COUNCIL REVISIONS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed the entirety of Darth Vader and Krennic scene on Mustafar.</li>
+              <li>Left the Rebel council debate regarding Scarif intact.</li>
+              <li>Retained the crew’s decision to regroup and proceed independently.</li>
+              <li>Removed Bodhi’s hesitation when assigning the call sign, stating “Rogue One” immediately.</li>
+              <li>Removed the follow-up scene between Mothma and Organa discussing Alderaan and Jedi.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">SCARIF ARRIVAL &amp; BATTLE REFINEMENTS</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Trimmed the Scarif arrival to remove the on-screen location text while retaining the establishing planet shot.</li>
+              <li>Trimmed Jyn’s necklace moment during the Scarif approach.</li>
+              <li>Removed Bodhi's exposition about the Citadel Tower and the satellite.</li>
+              <li>Removed Jyn’s approval nod to Cassian before the Scarif beach assault, allowing Cassian to give the command to light up the bombs independently.</li>
+              <li>Trimmed Krennic’s reaction after the beach explosion, cutting directly to his order to deploy the garrison.</li>
+              <li>Retained Jarkan’s Tarkin deepfake footage for the Scarif command scene with minor color grading adjustments.</li>
+              <li>Removed the R2-D2 and C-3PO cameo during the squadron takeoff.</li>
+              <li>Rest of the battle plays out as is.</li>
+              <li>Removed Jyn giving blaster to K-2SO and following conversation.</li>
+              <li>Removed Jyn’s line “You know who I am” during her confrontation with Krennic.</li>
+              <li>Removed Jyn attempting to pursue the wounded Krennic after the transmission is sent.</li>
+              <li>Dubbed over Cassian saying, "Let's go!"</li>
+              <li>Trimmed the Death Star command sequence to retain only rear-angle shots of Tarkin.</li>
+              </ul>
+            </div>
+          </section>
+          <section class="cl-log-row">
+            <div class="cl-log-heading">FINALE &amp; EPILOGUE CHANGES</div>
+            <div class="cl-log-copy">
+              <ul>
+              <li>Removed Darth Vader’s brief appearance overseeing the Scarif battle. He now appears only in the final fight sequence.</li>
+              <li>Retained the Darth Vader hallway fight as is.</li>
+              <li>Trimmed the ending to conclude after Vader watches Tantive IV escape, cutting directly to the hyperspace jump and end credits, removing Princess Leia’s cameo.</li>
+              <li>Added extra SFX as the ships flies away.</li>
+              <li>Replaced the original Rogue One theme during the end credits with a custom arrangement assembled from official trailer versions of the theme.</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>

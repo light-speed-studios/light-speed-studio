@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>Far From Sol Project Files | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">LSS | No Spectacle Without Soul</span>
+  </a>
+  <div class="hamburger">☰</div>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+<div class="ffs-files-page">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+  background: #040e15;
+  overflow-x: hidden;
+}
+
+  .ffs-files-page {
+    --site-bg: #040e15;
+    --cyan: #00AEDE;
+    --cyan-faint: rgba(0, 174, 222, 0.13);
+    --text-main: #BAC7D5;
+
+    width: 100%;
+    background: #040e15;
+    font-family: Rajdhani, Arial, sans-serif;
+    overflow-x: hidden;
+     padding: 14px 20px 58px;
+    box-sizing: border-box;
+  }
+
+  .ffs-files-page * {
+    box-sizing: border-box;
+  }
+
+  .ffs-files-shell {
+    width: min(1280px, 100%);
+    margin: 0 auto;
+  padding: 8px 20px 40px;
+  }
+
+  .ffs-project-movie-header {
+    width: min(980px, 100%);
+    margin: 0 auto 18px;
+    padding: 6px 18px 8px;
+    text-align: center;
+  }
+
+.ffs-project-movie-header img {
+  display: block;
+  width: 75%;
+  height: auto;
+  margin: 0 auto;
+  opacity: 0.92;
+  filter:
+    drop-shadow(0 0 14px rgba(212, 243, 255, 0.10))
+    drop-shadow(0 0 26px rgba(0, 174, 222, 0.08));
+}
+  .ffs-files-header {
+    position: relative;
+    margin: 0 0 22px;
+    padding: 26px 34px;
+    text-align: center;
+    background:
+      linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+      rgba(4, 14, 21, 0.86);
+    box-shadow:
+      0 0 34px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+    overflow: hidden;
+  }
+
+  .ffs-files-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    opacity: 0.72;
+  }
+
+  .ffs-files-header > * {
+    position: relative;
+    z-index: 4;
+  }
+
+  .ffs-files-header h1 {
+    margin: 0;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: clamp(25px, 4.2vw, 42px);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    text-shadow:
+      0 0 16px rgba(0, 174, 222, 0.16),
+      0 5px 22px rgba(0, 0, 0, 0.55);
+  }
+
+  .ffs-files-header p {
+    margin: 8px 0 0;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+
+  .ffs-file-modal-toggle {
+    display: none;
+  }
+
+  .ffs-file-card {
+    margin: 0 0 14px;
+    background:
+      linear-gradient(90deg, rgba(0, 174, 222, 0.10), transparent),
+      rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
+  }
+
+  .ffs-file-summary {
+    min-height: 84px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .ffs-file-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .ffs-file-icon {
+    width: 70px;
+    height: 70px;
+    flex: 0 0 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ffs-file-icon img {
+    display: block;
+    width: 76px;
+    height: 76px;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 8px rgba(0, 174, 222, 0.42))
+      drop-shadow(0 0 18px rgba(0, 174, 222, 0.22));
+  }
+
+  .ffs-file-copy strong {
+    display: block;
+    margin: 0 0 5px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-main);
+  }
+
+  .ffs-file-copy span {
+    display: block;
+    font-size: 19px;
+    line-height: 1.3;
+    color: var(--text-main);
+    opacity: 0.82;
+  }
+
+  .ffs-file-action {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+
+  .ffs-file-arrow {
+    display: inline-block;
+  }
+
+  .ffs-file-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483647;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: rgba(0, 0, 0, 0.72);
+  }
+
+  .ffs-file-modal-toggle:checked + .ffs-file-card + .ffs-file-modal {
+    display: flex;
+  }
+
+  .ffs-file-modal-box {
+    width: min(980px, 94vw);
+    max-height: 86vh;
+    background:
+      linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+      rgba(4, 14, 21, 0.96);
+    box-shadow:
+      0 0 34px rgba(0, 174, 222, 0.12),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.28);
+    overflow: hidden;
+  }
+
+  
+  .ffs-file-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .ffs-file-modal-icon {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ffs-file-modal-icon img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter:
+      drop-shadow(0 0 10px rgba(0,174,222,.45))
+      drop-shadow(0 0 22px rgba(0,174,222,.22));
+  }
+
+.ffs-file-modal-head {
+    min-height: 62px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border-bottom: 1px solid rgba(0, 174, 222, 0.18);
+  }
+
+  
+    .ffs-file-modal-header {
+      gap: 12px;
+    }
+
+    .ffs-file-modal-icon {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+    }
+
+    .ffs-file-modal-icon img {
+      width: 38px;
+      height: 38px;
+    }
+
+.ffs-file-modal-title strong {
+    display: block;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-main);
+  }
+
+  .ffs-file-modal-title span {
+    display: block;
+    margin-top: 4px;
+    font-size: 17px;
+    color: var(--text-main);
+    opacity: 0.82;
+  }
+
+  .ffs-file-modal-close {
+    flex: 0 0 auto;
+    cursor: pointer;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--cyan);
+  }
+
+  .ffs-file-content {
+    max-height: calc(86vh - 62px);
+    padding: 20px 24px 26px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #00AEDE rgba(255, 255, 255, 0.08);
+    scrollbar-gutter: stable;
+  }
+
+  .ffs-file-content::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .ffs-file-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .ffs-file-content::-webkit-scrollbar-thumb {
+    background: #00AEDE;
+    border-radius: 999px;
+    box-shadow: 0 0 10px rgba(0, 174, 222, 0.45);
+  }
+
+  .ffs-file-content-inner {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--text-main);
+  }
+
+  .ffs-file-content-inner ul {
+    margin: 0;
+    padding-left: 22px;
+  }
+
+  .ffs-file-content-inner li {
+    margin: 0 0 24px;
+  }
+
+  .ffs-file-content-inner li:last-child {
+    margin-bottom: 0;
+  }
+
+  .ffs-file-content-inner li > strong {
+    display: block;
+    margin: 0 0 10px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: var(--text-main);
+  }
+
+  .ffs-file-content-inner p {
+    margin: 0 0 14px;
+  }
+
+  .ffs-file-content-inner p:last-child {
+    margin-bottom: 0;
+  }
+
+@media (max-width: 900px) {
+  .ffs-files-page {
+    padding: 0px 0 24px;
+  }
+
+  .ffs-files-shell {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .ffs-project-movie-header {
+    margin: 0 auto 10px;
+    padding: 2px 6px 0;
+  }
+
+  .ffs-files-header {
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    text-align: center;
+  }
+
+  .ffs-files-header::before {
+    content: none;
+  }
+
+  .ffs-files-header h1 {
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: 0.03em;
+  }
+
+  .ffs-files-header p {
+   font-size: 9px;
+    margin-top: 2px;
+    letter-spacing: 0.10em;
+  }
+
+  .ffs-file-card {
+    margin-bottom: 7px;
+  }
+
+  .ffs-file-summary {
+    min-height: auto;
+    padding: 9px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ffs-file-left {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .ffs-file-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+  .ffs-file-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ffs-file-copy {
+    min-width: 0;
+  }
+
+  .ffs-file-copy strong {
+    font-size: 14px;
+    margin-bottom: 2px;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+
+  .ffs-file-copy span {
+    font-size: 11px;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ffs-file-action {
+    margin-top: 0;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    gap: 5px;
+  }
+
+  .ffs-file-modal {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .ffs-file-modal-box {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    margin-top: 0;
+  }
+
+  .ffs-file-modal-head {
+    min-height: auto;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .ffs-file-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+  }
+
+  .ffs-file-modal-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+  .ffs-file-modal-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ffs-file-modal-title {
+    min-width: 0;
+  }
+
+  .ffs-file-modal-title strong {
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+
+  .ffs-file-modal-title span {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+
+  .ffs-file-modal-close {
+    font-size: 26px;
+    line-height: 1;
+    padding: 0 2px;
+  }
+
+  .ffs-file-content {
+    max-height: calc(100vh - 58px);
+    padding: 10px;
+  }
+
+  .ffs-file-content-inner {
+    font-size: 13px;
+    line-height: 1.38;
+  }
+
+  .ffs-file-content-inner ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .ffs-file-content-inner li {
+    margin: 0 0 8px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.12);
+  }
+
+  .ffs-file-content-inner li > strong {
+    font-size: 14px;
+    margin-bottom: 6px;
+    line-height: 1.15;
+  }
+
+  .ffs-file-content-inner p {
+    margin: 0 0 8px;
+  }
+
+  .ffs-file-content-inner p:last-child {
+    margin-bottom: 0;
+  }
+  }
+</style>
+
+  <div class="ffs-files-shell">
+
+    <div class="ffs-project-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/ffs%20header11.png" alt="Far From Sol" loading="eager" decoding="async">
+    </div>
+
+    <div class="ffs-files-header">
+      <h1>PROJECT FILES</h1>
+    </div>
+
+    
+
+    <input class="ffs-file-modal-toggle" type="checkbox" id="ffsModalInsights">
+
+    <div class="ffs-file-card">
+      <label class="ffs-file-summary" for="ffsModalInsights">
+<div class="ffs-file-left">
+          <div class="ffs-file-icon">
+            <img src="https://light-speed-studios.b-cdn.net/insight2.png" alt="Insights icon">
+          </div>
+          <div class="ffs-file-copy">
+            <strong>Insights</strong>
+            <span>Reflections from the Observation Deck</span>
+          </div>
+        </div>
+        <div class="ffs-file-action">
+          Open<span class="ffs-file-arrow">⧉</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ffs-file-modal">
+      <div class="ffs-file-modal-box">
+        <div class="ffs-file-modal-head">
+
+          <div class="ffs-file-modal-header">
+
+            <div class="ffs-file-modal-icon">
+              <img src="https://light-speed-studios.b-cdn.net/insight2.png" alt="Insights">
+            </div>
+
+            <div class="ffs-file-modal-title">
+              <strong>Insights</strong>
+              <span>Reflections from the Observation Deck</span>
+            </div>
+
+          </div>
+
+          <label class="ffs-file-modal-close" for="ffsModalInsights">×</label>
+
+        </div>
+
+        <div class="ffs-file-content">
+          <div class="ffs-file-content-inner">
+<ul>
+
+  <li>
+    <strong>A Renewed Emotional Core</strong>
+    <p>One of the largest changes in <em>Far From Sol</em> is the introduction of a recurring family storyline for Grace. While the original film primarily defines him through his profession and relationship with his students, this edit explores a more personal side of the character through a series of brief flashbacks woven throughout the narrative.</p>
+
+    <p>These memories are intentionally reserved for key emotional turning points. Each appearance is designed to coincide with moments of isolation or uncertainty, gradually building a stronger emotional throughline across the film. The goal was to offer a different emotional lens through which those events are experienced.</p>
+  </li>
+
+  <li>
+    <strong>Grace's Mission Acceptance</strong>
+    <p>In the original film, Grace's recruitment concludes with a moment of hesitation, leaving his decision unresolved until later flashbacks reveal the outcome. <em>Far From Sol</em> reframes this sequence through a launch montage that visually connects Grace's contemplation with humanity's greatest undertaking.</p>
+
+    <p>By pairing his reaction with launch preparations, countdown audio, and liftoff imagery, the scene transforms a moment of uncertainty into one of commitment. Rather than waiting for Grace to verbally accept the mission, the audience is invited to experience the inevitability of that choice through the imagery itself.</p>
+  </li>
+
+  <li>
+    <strong>The Awakening</strong>
+    <p>Grace's awakening aboard the <em>Hail Mary</em> has been significantly streamlined to reach the emotional heart of the sequence more quickly. Elements of the original confusion and prolonged "figuring out" phase have been reduced, allowing the story to focus sooner on the gravity of his situation.</p>
+
+    <p>A new montage expands Grace's reaction to the loss of his crewmates as he organizes their belongings, visits the ship's memorial plaques, and prepares them for burial. These additions help establish a more grounded version of Grace while emphasizing the isolation and responsibility that define the early portion of his journey.</p>
+  </li>
+
+  <li>
+    <strong>Rocky Reframed</strong>
+    <p>One of the central goals of <em>Far From Sol</em> was to present Rocky less as a source of comic relief and more as a true counterpart to Grace. While the friendship between the two remains at the heart of the story, many moments that leaned into overt comedy have been reduced or removed in favor of a more measured dynamic.</p>
+
+    <p>The goal was to highlight the qualities that make Rocky such a compelling and smart character in the first place.</p>
+  </li>
+
+  <li>
+    <strong>The Journey to Tau Ceti E</strong>
+    <p>As Grace and Rocky travel toward Tau Ceti E, a redone montage has been introduced to expand a period of relative calm between the film's larger challenges. Rescored with Sugar Ray's <em>Someday</em>, the montage serves as a brief emotional respite within the narrative by emphasizing connection, reflection, and the comfort of friendship.</p>
+
+    <p>The goal was to create a moment where the audience could simply enjoy the company of the characters before the story moves into its next major chapter.</p>
+  </li>
+
+  <li>
+    <strong>A New Path Home</strong>
+    <p>The final act of <em>Far From Sol</em> underwent its most significant changes in pursuit of a more personal conclusion. While the overall destination of the story remains intact, the path leading there has been substantially reimagined.</p>
+
+    <p>Several late-stage plot developments were removed or restructured in order to place greater emphasis on character, companionship, and choice. By reducing narrative detours, the film remains focused on the relationship at its center and the emotional journey that has been developing throughout the story.</p>
+
+    <p>The result is an ending designed to feel less driven by circumstance and more by the characters themselves, allowing the film to conclude on a more intimate and emotionally focused note.</p>
+  </li>
+
+  <li>
+    <strong>A Different Final Note</strong>
+    <p>Unlike the original film, <em>Far From Sol</em> concludes with a featured song during the end credits. The final choice came down to <em>A-OK</em> by Tai Verdes and <em>This Too Shall Pass</em> by OK Go.</p>
+
+    <p><em>This Too Shall Pass</em> was ultimately selected for its balance of optimism and acceptance, allowing the film to end on a hopeful note while remaining consistent with the more personal and reflective tone established throughout the edit.</p>
+
+    <p>The goal was to leave the audience with one final emotional beat before the journey comes to an end.</p>
+  </li>
+
+</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input class="ffs-file-modal-toggle" type="checkbox" id="ffsModalExecution">
+
+    <div class="ffs-file-card">
+      <label class="ffs-file-summary" for="ffsModalExecution">
+<div class="ffs-file-left">
+          <div class="ffs-file-icon">
+            <img src="https://light-speed-studios.b-cdn.net/grid2.png" alt="Execution icon">
+          </div>
+          <div class="ffs-file-copy">
+            <strong>Execution</strong>
+            <span>Technical breakdown of engineering the journey</span>
+          </div>
+        </div>
+        <div class="ffs-file-action">
+          Open<span class="ffs-file-arrow">⧉</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ffs-file-modal">
+      <div class="ffs-file-modal-box">
+        <div class="ffs-file-modal-head">
+
+          <div class="ffs-file-modal-header">
+
+            <div class="ffs-file-modal-icon">
+              <img src="https://light-speed-studios.b-cdn.net/grid2.png" alt="Execution">
+            </div>
+
+            <div class="ffs-file-modal-title">
+              <strong>Execution</strong>
+              <span>Technical breakdown of engineering the journey</span>
+            </div>
+
+          </div>
+
+          <label class="ffs-file-modal-close" for="ffsModalExecution">×</label>
+
+        </div>
+
+        <div class="ffs-file-content">
+          <div class="ffs-file-content-inner">
+<p><ul>
+
+  <li>
+    <strong>Building Grace's Family Arc</strong>
+
+    <p>The emotional foundation of <em>Far From Sol</em> underwent several revisions during development. Early versions of the edit explored a much smaller backstory centered around a lost relationship with his wife. While the idea provided motivation for Grace, it ultimately felt too limited to support the emotional weight required by the story's later moments.</p>
+
+    <p>As the project evolved, the concept expanded into a broader family storyline. Rather than explaining Grace's past through dialogue, I chose to reveal it through recurring visual memories. This approach allowed the audience to gradually piece together the emotional context of his life without interrupting the primary narrative.</p>
+
+    <p>A recurring musical motif derived from <em>Docking at Lovell City</em> (<em>The Expanse OST</em>) was used to connect these appearances together. The intention was to create a subconscious emotional thread linking Grace's past, his present circumstances, and the choices that define his journey.</p>
+  </li>
+
+  <li>
+    <strong>Externalizing a Decision</strong>
+
+    <p>One challenge presented by the original recruitment sequence is that Grace's most important decision largely occurs offscreen. The film concludes the scene with him contemplating the offer before revealing the outcome later in the story.</p>
+
+    <p>To create a stronger transition into the mission, I employed cinematic ellipsis and visual metaphor. Grace's reaction was intercut with SpaceX launch footage and the <em>Interstellar</em> countdown sequence, performed by Bill Irwin. Rather than depicting the decision directly, the launch becomes a symbolic expression of it.</p>
+
+    <p>The countdown creates a sense of inevitability, while the rocket's ascent mirrors Grace's internal shift from uncertainty to commitment. By externalizing an internal decision, the sequence communicates acceptance through imagery rather than dialogue.</p>
+  </li>
+
+  <li>
+    <strong>Reframing the Awakening</strong>
+
+    <p>One of the earliest goals of the edit was to shorten the period between Grace's awakening and his acceptance of the mission's reality. While the original film spends considerable time exploring his confusion and amnesia, I wanted the emotional consequences of his situation to arrive sooner.</p>
+
+    <p>To accomplish this, portions of the prolonged "figuring out" phase were removed and repurposed into a new reflection montage. The montage was rescored with Novo Amor's <em>From Gold</em>, allowing Grace's interactions with the crew's belongings and memorial plaques to carry greater emotional weight.</p>
+
+    <p>The sequence also restores the novel's farewell, <em>"I commend your body to the stars,"</em> during the crew burial. Beyond serving as a nod to readers of Andy Weir's novel, the addition reinforces the more grounded and reflective characterization established throughout the edit.</p>
+  </li>
+
+  <li>
+    <strong>Reframing Rocky</strong>
+
+    <p>Throughout development, I found that many of the scenes I connected with most were the ones in which Rocky functioned as an engineer, problem solver, and equal collaborator. While the original film frequently balances these moments with humor, I wanted to explore a version of the story that leaned more heavily into Rocky's competence and sincerity.</p>
+
+    <p>Several comedic exchanges, reaction beats, and prolonged introductions were reduced or removed where possible. The result is a version of Rocky that feels less like comic relief and more like Grace's equal, making the emotional stakes of their relationship stronger as the story progresses.</p>
+  </li>
+
+  <li>
+    <strong>Reworking the Tau Ceti E Montage</strong>
+
+    <p>One area that remained largely untouched throughout most of development was the transit sequence leading to Tau Ceti E. Late in the editing process, the sequence was completely rescored with Sugar Ray's <em>Someday</em>. The song had been considered for several previous projects but never found a home until this montage. Its themes of companionship, memory, and acceptance aligned naturally with the emotional direction of <em>Far From Sol</em>.</p>
+
+    <p>The montage itself was restructured to align key visual moments with the song's progression, allowing specific character interactions and environmental transitions to coincide with its emotional peaks. Portions of the song were also subtly rearranged, moving select lyrics forward in the track to better reflect the themes of the film while maintaining the flow of the original recording.</p>
+  </li>
+
+  <li>
+    <strong>Reimagining the Ending</strong>
+
+    <p>The ending of <em>Far From Sol</em> evolved more than any other section of the project. The challenge was finding an ending that honored the relationship between Grace and Rocky while remaining consistent with the emotional foundation established throughout the edit.</p>
+
+    <p>As the family storyline, recurring musical motif, and revised character arc developed, it became clear that the original return-flight storyline no longer aligned with the version of Grace being presented. The emotional resolution increasingly centered on connection, belonging, and the relationships formed throughout the mission.</p>
+
+    <p>This ultimately led to the removal of Grace's departure storyline, fuel-loss subplot, and eventual return to Rocky. The focus shifted away from the mechanics of the journey and toward the emotional consequences of the choices being made.</p>
+
+    <p>The epilogue showing Grace teaching Eridian children was also removed. While effective within the context of the original film, the sequence redirected attention away from the relationship that had become the emotional centerpiece of <em>Far From Sol</em>. By concluding earlier, the film is allowed to end on the bond between Grace and Rocky rather than what follows afterward.</p>
+  </li>
+
+  <li>
+    <strong>Finding the Final Song</strong>
+
+    <p>Early versions experimented with Tai Verdes' <em>A-O-K</em>, which provided an upbeat and optimistic ending. While the song worked well in isolation, it gradually became clear that its tone was pulling the audience away from the emotional space created by the film's final moments.</p>
+
+    <p>The search eventually led to OK Go's <em>This Too Shall Pass</em>. Its themes of perseverance, acceptance, and moving forward felt more closely aligned with the journey Grace experiences throughout <em>Far From Sol</em>.</p>
+
+    <p>The song was then rebuilt around the scenes. Portions of the song were rearranged to better align musical transitions with key visual moments, while additional cleanup work was performed to remove unwanted noise and create a smoother listening experience.</p>
+  </li>
+
+</ul></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input class="ffs-file-modal-toggle" type="checkbox" id="ffsModalSoundtrack">
+
+    <div class="ffs-file-card">
+      <label class="ffs-file-summary" for="ffsModalSoundtrack">
+<div class="ffs-file-left">
+          <div class="ffs-file-icon">
+            <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
+          </div>
+          <div class="ffs-file-copy">
+            <strong>Soundtrack</strong>
+            <span>Signals and Soundwaves</span>
+          </div>
+        </div>
+        <div class="ffs-file-action">
+          Open<span class="ffs-file-arrow">⧉</span>
+        </div>
+      </label>
+    </div>
+
+    <div class="ffs-file-modal">
+      <div class="ffs-file-modal-box">
+        <div class="ffs-file-modal-head">
+
+          <div class="ffs-file-modal-header">
+
+            <div class="ffs-file-modal-icon">
+              <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack">
+            </div>
+
+            <div class="ffs-file-modal-title">
+              <strong>Soundtrack</strong>
+              <span>Signals and Soundwaves</span>
+            </div>
+
+          </div>
+
+          <label class="ffs-file-modal-close" for="ffsModalSoundtrack">×</label>
+
+        </div>
+
+        <div class="ffs-file-content">
+          <div class="ffs-file-content-inner">
+<p><ul>
+
+  <li>
+    <strong>From Gold | Novo Amor</strong>
+    <p>Grace's reflection and crew burial montage.</p>
+  </li>
+
+  <li>
+    <strong>Docking at Lovell City | Clinton Shorter (<em>The Expanse</em>)</strong>
+    <p>Adapted into a recurring emotional leitmotif associated with Grace's family memories and personal journey.</p>
+  </li>
+
+  <li>
+    <strong>Someday | Sugar Ray</strong>
+    <p>The Journey to Tau Ceti E montage, scoring the growing friendship between Grace and Rocky.</p>
+  </li>
+
+  <li>
+    <strong>Interstellar Countdown | Bill Irwin / <em>Interstellar</em></strong>
+    <p>Grace's mission acceptance montage and decision to join Project Hail Mary.</p>
+  </li>
+
+  <li>
+    <strong>This Too Shall Pass | OK Go</strong>
+    <p>Final scenes and end credits.</p>
+  </li>
+
+</ul></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+  
+
+  </div>
+</div>
+
+
+<script>
+document.querySelectorAll(".ffs-file-modal").forEach(modal => {
+  modal.addEventListener("click", function (e) {
+    if (e.target !== modal) return;
+
+    const checkbox =
+      modal.previousElementSibling &&
+      modal.previousElementSibling.previousElementSibling;
+
+    if (checkbox && checkbox.classList.contains("ffs-file-modal-toggle")) {
+      checkbox.checked = false;
+    }
+  });
+});
+</script>
+
+</main>
+
+<script src="js/main.js"></script>
+</body>
+</html>
