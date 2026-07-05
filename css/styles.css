@@ -3520,7 +3520,7 @@ isolation: isolate;
   }
 
   .vault-archive-heading h2 {
-    font-size: 1.12rem;
+    font-size: 1.28rem;
     letter-spacing: .18em;
   }
 
@@ -3540,28 +3540,27 @@ isolation: isolate;
     padding: 0 28px;
   }
 .vault-rail-window::before,
-.vault-rail-window::after {
-    width: 14px;
+.vault-rail-window::after{
+    width:18px;
 }
 
-.vault-rail-window::before {
-    background: linear-gradient(
+.vault-rail-window::before{
+    background:linear-gradient(
         to right,
-        rgba(4,14,21,.45),
-        rgba(4,14,21,.18),
-        rgba(4,14,21,0)
+        rgba(4,14,21,.30) 0%,
+        rgba(4,14,21,.12) 45%,
+        rgba(4,14,21,0) 100%
     );
 }
 
-.vault-rail-window::after {
-    background: linear-gradient(
+.vault-rail-window::after{
+    background:linear-gradient(
         to left,
-        rgba(4,14,21,.45),
-        rgba(4,14,21,.18),
-        rgba(4,14,21,0)
+        rgba(4,14,21,.30) 0%,
+        rgba(4,14,21,.12) 45%,
+        rgba(4,14,21,0) 100%
     );
-}
-  .vault-rail-arrow {
+}  .vault-rail-arrow {
     width: 28px;
   }
 
