@@ -4772,7 +4772,13 @@ body > .bridge-body.disclaimer-body strong {
     letter-spacing: 0.18em !important;
     line-height: 1.05 !important;
   }
+@media (max-width: 900px) {
 
+    .lab-page .vault-card-copy{
+        display: none;
+    }
+
+}
   .vault-archive-heading p,
   .lab-archive-heading p,
   .lab-page .vault-archive-heading p {
