@@ -4829,11 +4829,20 @@ body > .bridge-body.disclaimer-body strong {
 }
   }
 }
+@media (max-width:900px){
 
-@media (max-width: 900px) {
+  .lab-page .vault-card-copy{
+    display:none !important;
+  }
 
-    .lab-page .vault-card-copy{
-        display: none !important;
-    }
+  .lab-page .vault-archive-card{
+    aspect-ratio:1 / 1.52 !important;
+    height:auto !important;
+  }
+
+  .lab-page .vault-card-art{
+    height:100% !important;
+    aspect-ratio:1 / 1.52 !important;
+  }
 
 }
