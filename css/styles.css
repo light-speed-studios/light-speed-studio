@@ -4823,3 +4823,10 @@ body > .bridge-body.disclaimer-body strong {
     text-indent: .14em;
   }
 }
+@media (max-width: 900px) {
+
+    .lab-page .vault-card-copy{
+        display: none;
+    }
+
+}
