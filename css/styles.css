@@ -3032,57 +3032,62 @@ html::-webkit-scrollbar-corner {
   padding: 26px 0 24px;
   margin: 0 auto 20px;
   overflow: hidden;
-isolation: isolate;
+  isolation: isolate;
 }
-.vault-archive-hero::after {
-    content: "";
-    position: absolute;
-    inset: 8px 10%;
-    z-index: -1;
-    pointer-events: none;
 
+/* LSS HERO TITLE PILL FIX
+   ::before = glow behind the pill
+   ::after  = the actual pill */
+.vault-archive-hero::before {
+  content: "";
+  position: absolute;
+  
+  z-index: 0;
+  pointer-events: none;
+ inset: 8px 10%;
     border-radius: 18px;
 
-    background:
-        radial-gradient(
-            ellipse at center,
-            rgba(0,174,222,.12) 0%,
-            rgba(0,174,222,.05) 40%,
-            rgba(0,174,222,0) 75%
-        ),
-        linear-gradient(
-            180deg,
-            rgba(255,255,255,.03) 0%,
-            rgba(255,255,255,.01) 100%
-        );
+    background: rgba(0,174,222,.14);
 
     box-shadow:
-        inset 0 0 0 1px rgba(0,174,222,.08),
-        0 0 50px rgba(0,174,222,.08);
+        0 0 14px rgba(0,174,222,.18);
 
-    filter: blur(1px);
+    filter: blur(8px);
+    opacity: .55;
 }
 
-.vault-archive-hero::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    height: 220px;
-    pointer-events: none;
-    z-index: 0;
+.vault-archive-hero::after {
+  content: "";
+  position: absolute;
+  inset: 8px 10%;
+  z-index: 1;
+  pointer-events: none;
 
-    background: radial-gradient(
-        ellipse at center,
-        rgba(0,174,222,.14) 0%,
-        rgba(0,174,222,.06) 45%,
-        rgba(0,174,222,0) 75%
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0,174,222,.08) 0%,
+      rgba(0,174,222,.025) 48%,
+      rgba(0,174,222,0) 78%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.026) 0%,
+      rgba(255,255,255,.008) 100%
     );
 
-    filter: blur(24px);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,174,222,.075);
 }
+
+.vault-archive-hero h1,
+.vault-archive-hero p {
+  position: relative;
+  z-index: 2;
+}
+
 .vault-archive-hero h1 {
   margin: 0;
   font-family: 'Oxanium', sans-serif;
@@ -3520,7 +3525,7 @@ isolation: isolate;
   }
 
   .vault-archive-heading h2 {
-    font-size: 1.28rem;
+    font-size: 1rem;
     letter-spacing: .18em;
   }
 
@@ -4764,5 +4769,34 @@ body > .bridge-body.disclaimer-body strong {
     font-size: 0.82rem !important;
     letter-spacing: 0.17em !important;
     line-height: 1.18 !important;
+  }
+}
+
+/* Mobile refinement for the rebuilt hero pill/glow */
+@media (max-width: 900px) {
+  .vault-archive-hero::before,
+  .vault-archive-hero::after {
+    inset: 8px 6%;
+  }
+
+  .vault-archive-hero::before {
+    filter: blur(18px);
+    opacity: .55;
+  }
+
+  .vault-archive-hero::after {
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 430px) {
+  .vault-archive-hero::before,
+  .vault-archive-hero::after {
+    inset: 8px 3%;
+  }
+
+  .vault-archive-hero::before {
+    filter: blur(15px);
+    opacity: .48;
   }
 }
