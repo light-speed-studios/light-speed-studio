@@ -3035,25 +3035,27 @@ html::-webkit-scrollbar-corner {
   isolation: isolate;
 }
 
-/* LSS HERO TITLE PILL FIX
-   ::before = glow behind the pill
-   ::after  = the actual pill */
-.vault-archive-hero::before {
-  content: "";
-  position: absolute;
-  
-  z-index: 0;
-  pointer-events: none;
- inset: 8px 10%;
+.vault-archive-hero::after {
+    content: "";
+    position: absolute;
+    inset: 8px 10%;
+    z-index: -1;
+    pointer-events: none;
+
     border-radius: 18px;
 
-    background: rgba(0,174,222,.14);
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.03) 0%,
+            rgba(255,255,255,.01) 100%
+        );
+
+    border: 1px solid rgba(0,174,222,.10);
 
     box-shadow:
-        0 0 14px rgba(0,174,222,.18);
-
-    filter: blur(8px);
-    opacity: .55;
+        inset 0 0 18px rgba(0,174,222,.14),
+        inset 0 0 40px rgba(0,174,222,.06);
 }
 
 .vault-archive-hero::after {
