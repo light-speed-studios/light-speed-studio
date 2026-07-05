@@ -53,7 +53,7 @@
   margin-left: 12px; 
   font-family: 'Oxanium', sans-serif;
   font-weight: 400; 
-  font-size: .76rem;
+  font-size: 1rem;
   color: #BAC7D5; 
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -2504,123 +2504,60 @@ inset: 14px 14px 70px 14px;
 }
   
 
-/* ===== SPLIT FROM ORIGINAL INLINE STYLE ===== */
+/* ===== IMAGE SPLASH SCREEN ===== */
 
-
-#lss-splash{
-    position:fixed;
-    inset:0;
-    z-index:999999;
-    display:flex;
-    justify-content:center;
-    align-items:flex-start;
-    background:#040E15;
-    overflow:hidden;
-    transition:opacity .8s ease,visibility .8s ease;
+#lss-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #040E15;
+  overflow: hidden;
+  transition: opacity .8s ease, visibility .8s ease;
 }
 
-#lss-splash.hide{
-    opacity:0;
-    visibility:hidden;
+#lss-splash.hide {
+  opacity: 0;
+  visibility: hidden;
 }
 
-.lss-splash-inner{
-    width:100%;
-    text-align:center;
-    margin-top:56px;
-    padding:0 20px;
+.lss-splash-picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
-.lss-splash-logo{
-    display:block;
-    width:min(240px,46vw);
-    height:auto;
-    margin:0 auto 22px;
-    opacity:0;
-    animation:lssSplashFadeIn 1.4s ease forwards;
+.lss-splash-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  opacity: 0;
+  animation: lssSplashImageIn 1.15s ease forwards;
 }
 
-.lss-splash-title{
-    font-family:Oxanium, Rajdhani, Arial, sans-serif;
-    font-size:clamp(58px,5.8vw,90px);
-    font-weight:800;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:#BAC7D5;
-    margin-bottom:18px;
-    opacity:0;
-    animation:lssSplashFadeIn 1.4s ease forwards;
-animation-delay:.8s;
+@keyframes lssSplashImageIn {
+  from {
+    opacity: 0;
+    transform: scale(1.018);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.lss-splash-divider{
-    width:min(620px,68vw);
-    height:1px;
-    margin:0 auto 20px;
-    background:linear-gradient(
-        to right,
-        transparent,
-        rgba(186,199,213,.18) 12%,
-        rgba(186,199,213,.72) 50%,
-        rgba(186,199,213,.18) 88%,
-        transparent
-    );
-    opacity:0;
-   animation:lssSplashFadeIn 1.4s ease forwards;
-animation-delay:1.25s;
+@media (max-width: 900px) {
+  .lss-splash-image {
+    object-fit: cover;
+    object-position: center center;
+  }
 }
 
-.lss-splash-line{
-    font-family:Oxanium, Rajdhani, Arial, sans-serif;
-    font-size:clamp(42px,4.2vw,68px);
-    font-weight:700;
-    letter-spacing:.12em;
-    text-transform:uppercase;
-    color:rgba(186,199,213,.72);
-    opacity:0;
- animation:lssSplashFadeIn 1.4s ease forwards;
-animation-delay:1.6s;
-}
 
-@keyframes lssSplashFadeIn{
-    from{
-        opacity:0;
-        transform:translateY(8px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@media (max-width:700px){
-
-    .lss-splash-inner{
-        margin-top:36px;
-    }
-
-    .lss-splash-logo{
-        width:150px;
-        margin-bottom:16px;
-    }
-
-    .lss-splash-title{
-        font-size:44px;
-        letter-spacing:.08em;
-        margin-bottom:18px;
-    }
-
-    .lss-splash-divider{
-        width:280px;
-        margin:0 auto 18px;
-    }
-
-    .lss-splash-line{
-        font-size:33px;
-        letter-spacing:.08em;
-    }
-
-}
 /* =======================================================
    TEMPLATE HELPERS
    These are safe defaults for pages built from base.html.
@@ -4653,8 +4590,12 @@ body > .bridge-body.disclaimer-body strong {
     scroll-snap-align: center !important;
   }
 
-  .lab-page .vault-card-copy { 
-    display: none !important;
+  .lab-page .vault-card-copy {
+    opacity: 1 !important;
+    position: relative !important;
+    inset: auto !important;
+    background: transparent !important;
+    padding: 10px 4px 0 !important;
   }
 
   .lab-page .vault-card-art {
