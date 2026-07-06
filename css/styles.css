@@ -4816,3 +4816,8 @@ body > .bridge-body.disclaimer-body strong {
   }
 
 }
+.vault-archive-hero p {
+    max-width: 92%;
+    margin: 14px auto 0;
+    line-height: 1.45;
+}
