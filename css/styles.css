@@ -4800,3 +4800,21 @@ body > .bridge-body.disclaimer-body strong {
     display: none !important;
   }
 }
+@media (max-width: 900px) {
+
+  .vault-archive-card:hover .vault-card-art,
+  .lab-page .vault-archive-card:hover .vault-card-art,
+  .vault-combined-section .vault-item:hover > img {
+    filter: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .vault-archive-card:hover .vault-card-copy,
+  .vault-combined-section .vault-item:hover .vault-info,
+  .vault-combined-section .vault-item:hover::before,
+  .vault-combined-section .vault-item:hover::after {
+    opacity: 0 !important;
+  }
+
+}
