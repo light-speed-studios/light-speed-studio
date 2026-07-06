@@ -11,18 +11,27 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const splash = document.getElementById("lss-splash");
+    const splash =
+        document.getElementById("lss-page-splash") ||
+        document.getElementById("lss-splash");
+
+    if (!splash) return;
+
+    const isProjectSplash = splash.id === "lss-page-splash";
+    const splashDuration = Number(splash.dataset.duration) || (isProjectSplash ? 3000 : 5200);
 
     function closeSplash() {
         if (!splash || splash.classList.contains("hide")) return;
+
         splash.classList.add("hide");
+
         setTimeout(() => {
             splash.remove();
         }, 800);
     }
 
     document.addEventListener("pointerdown", closeSplash, { once: true });
-    setTimeout(closeSplash, 5200);
+    setTimeout(closeSplash, splashDuration);
 });
 
 (function () {
