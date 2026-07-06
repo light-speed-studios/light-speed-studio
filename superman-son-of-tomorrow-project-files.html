@@ -146,7 +146,7 @@ body {
   .ffs-file-modal-toggle {
     display: none;
   }
-
+  
   .ffs-file-card {
     margin: 0 0 14px;
     background:
@@ -296,7 +296,18 @@ body {
     gap: 18px;
     border-bottom: 1px solid rgba(0, 174, 222, 0.18);
   }
-
+.ffs-file-modal-box { 
+  display: flex; 
+  flex-direction: column; 
+} 
+.ffs-file-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
+  padding: 10px;
+  -webkit-overflow-scrolling: touch;
+}
   
     .ffs-file-modal-header {
       gap: 12px;
