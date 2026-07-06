@@ -1,4 +1,3 @@
-/* Force content container to align left */
 .hero-content-wrapper {
   display: flex !important;
   flex-direction: column !important;
@@ -7,7 +6,6 @@
   padding-left: 25px !important;      /* Maintains your desired offset from the frame */
 }
 
-/* Ensure the title and kicker align with the flex-start container */
 .hero-title-link, 
 .hero-content-wrapper .hero-title {
   text-align: left !important;
