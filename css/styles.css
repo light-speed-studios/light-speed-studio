@@ -4795,3 +4795,8 @@ body > .bridge-body.disclaimer-body strong {
   }
 
 }
+@media (max-width: 900px) {
+  .lab-page .vault-card-copy {
+    display: none !important;
+  }
+}
