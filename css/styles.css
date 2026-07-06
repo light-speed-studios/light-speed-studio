@@ -4819,3 +4819,52 @@ body > .bridge-body.disclaimer-body strong {
 .vault-archive-hero p {
     max-width: 86%;
 }
+
+
+/* =======================================================
+   PROJECT FILE MODAL SCROLL FIX
+   Keeps modal header fixed and makes modal body scroll
+======================================================= */
+
+.ffs-file-modal-box {
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 86vh !important;
+  overflow: hidden !important;
+}
+
+.ffs-file-content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+@media (max-width: 900px) {
+  .ffs-file-modal {
+    padding: 0 !important;
+    align-items: stretch !important;
+  }
+
+  .ffs-file-modal-box {
+    width: 100% !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+  }
+
+  .ffs-file-modal-head {
+    flex: 0 0 auto !important;
+  }
+
+  .ffs-file-content {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 10px !important;
+  }
+}
