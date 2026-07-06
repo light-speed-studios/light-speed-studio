@@ -296,18 +296,6 @@ body {
     gap: 18px;
     border-bottom: 1px solid rgba(0, 174, 222, 0.18);
   }
-.ffs-file-modal-box { 
-  display: flex; 
-  flex-direction: column; 
-} 
-.ffs-file-content {
-  flex: 1 1 auto;
-  min-height: 0;
-  max-height: none;
-  overflow-y: auto;
-  padding: 10px;
-  -webkit-overflow-scrolling: touch;
-}
   
     .ffs-file-modal-header {
       gap: 12px;
@@ -602,6 +590,73 @@ body {
     margin-bottom: 0;
   }
   }
+
+/* =======================================================
+   FINAL PROJECT FILE MODAL SCROLL FIX
+   Applies to Insights, Execution, and Soundtrack modals
+======================================================= */
+
+.ffs-file-modal {
+  overflow: hidden !important;
+}
+
+.ffs-file-modal-box {
+  display: flex !important;
+  flex-direction: column !important;
+  width: min(980px, 94vw) !important;
+  max-height: 86dvh !important;
+  overflow: hidden !important;
+}
+
+.ffs-file-modal-head {
+  flex: 0 0 auto !important;
+}
+
+.ffs-file-content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+  overscroll-behavior: contain !important;
+  padding: 20px 24px 26px !important;
+}
+
+@media (max-width: 900px) {
+  .ffs-file-modal {
+    padding: 0 !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    overflow: hidden !important;
+  }
+
+  .ffs-file-modal-box {
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+  }
+
+  .ffs-file-modal-head {
+    flex: 0 0 auto !important;
+  }
+
+  .ffs-file-content {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    overscroll-behavior: contain !important;
+    padding: 10px !important;
+    padding-bottom: 28px !important;
+  }
+}
+
 </style>
 
   <div class="ffs-files-shell">
