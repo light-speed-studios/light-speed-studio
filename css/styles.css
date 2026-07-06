@@ -3079,7 +3079,7 @@ html::-webkit-scrollbar-corner {
 .vault-archive-heading > div {
   display: flex;
   align-items: baseline;
-  gap: 38px;
+  gap: 18px;
 }
 
 .vault-archive-heading h2 {
