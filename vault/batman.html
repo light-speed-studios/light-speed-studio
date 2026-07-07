@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Batman: Gotham's Riddle | LSS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../css/styles.css" rel="stylesheet"/>
+<style>
+    #lss-splash {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+  </style>
+</head>
+<body>
+<div id="lss-page-splash" data-duration="3000" aria-label="Batman: Gotham's Riddle splash screen">
+  <picture class="lss-page-splash-picture">
+    <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/batmansplashmob.png">
+    <img
+      class="lss-page-splash-image"
+      src="https://light-speed-studios.b-cdn.net/batmansplashdesk.png"
+      alt="Batman: Gotham's Riddle"
+      decoding="sync"
+      fetchpriority="high"
+      loading="eager">
+  </picture>
+</div>
+<header class="lss-nav-bar">
+<a class="lss-nav-logo" href="../index.html">
+<img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+<span class="lss-brand-text">No Spectacle Without Soul</span>
+</a>
+<div class="hamburger">☰</div>
+<nav class="lss-nav-links">
+<a class="lss-nav-item" href="../index.html">Bridge</a>
+<a class="lss-nav-item active" href="../vault.html">Vault</a>
+<a class="lss-nav-item" href="../lab.html">Lab</a>
+<a class="lss-nav-item" href="../pulse.html">Pulse</a>
+<a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
+</nav>
+</header>
+<main class="page-content">
+<div class="ffs-page">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+  html,
+  body {
+    width: 100%;
+    margin: 0;
+    background: #040e15;
+    overflow-x: hidden;
+  }
+
+  body {
+    padding-top: 61px;
+  }
+
+  .ffs-page {
+    --site-bg: #040e15;
+      --panel-bg: rgba(4, 14, 21, 0.86);
+            --cyan: #00aede;
+            --cyan-faint: rgba(0, 174, 222, 0.13);
+      --text-main: #bac7d5;
+      --text-soft: rgba(186, 199, 213, 0.78);
+      --text-muted: rgba(186, 199, 213, 0.58);
+
+      width: 100%;
+      background: #040e15;
+      font-family: Rajdhani, Arial, sans-serif;
+      overflow-x: hidden;
+      overflow-y: visible;
+      padding: 34px 20px 58px;
+      box-sizing: border-box;
+    }
+
+    .ffs-page * {
+      box-sizing: border-box;
+    }
+
+    .ffs-shell {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+    }
+
+ .ffs-palette-wrap {
+  width: 100%;
+  margin: -10px auto 30px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.035);
+      box-shadow:
+        0 0 24px rgba(0, 174, 222, 0.08),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.08);
+    }
+
+ .ffs-palette {
+  display: block;
+  width: 100%;
+  height: 121px;
+  object-fit: fill;
+  opacity: 0.92;
+}
+.ffs-approach-box {
+  margin-top: auto;
+  margin-bottom: 22px;
+  padding: 18px 20px;
+  background:
+    linear-gradient(90deg, rgba(0, 174, 222, 0.10), transparent),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.16);
+}
+
+.ffs-approach-box span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.ffs-approach-box strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-main);
+}
+    .ffs-project-block {
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .ffs-title-panel {
+  position: relative;
+  margin-bottom: 28px;
+  padding: 26px 34px 26px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .ffs-title-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+      opacity: 0.72;
+    }
+
+    .ffs-title-panel::after {
+      content: "";
+      position: absolute;
+      left: -90px;
+      top: -90px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(0, 174, 222, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .ffs-title-panel > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .ffs-title-panel .ffs-meta-row {
+      margin-bottom: 0;
+    }
+
+    .ffs-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin: 0 0 10px;
+    }
+
+    .ffs-title-row .ffs-title {
+      margin: 0;
+    }
+
+    .ffs-title {
+      margin: 0;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(38px, 4vw, 58px);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      text-shadow:
+        0 0 16px rgba(0, 174, 222, 0.16),
+        0 5px 22px rgba(0, 0, 0, 0.55);
+    }
+
+    .ffs-title-logo {
+      width: 66px;
+      transform: translateY(-5px);
+      height: auto;
+      display: block;
+      opacity: 0.88;
+      filter:
+        drop-shadow(0 0 8px rgba(0, 174, 222, 0.22))
+        drop-shadow(0 0 18px rgba(0, 174, 222, 0.10));
+    }
+
+.ffs-meta-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 22px;
+}
+
+.ffs-title-panel .ffs-meta-card {
+  min-width: 0;
+  padding: 8px 9px;
+}
+
+.ffs-title-panel .ffs-meta-label {
+  font-size: 11px;
+  letter-spacing: 0.13em;
+}
+
+.ffs-title-panel .ffs-meta-value {
+  font-size: clamp(13px, 1.15vw, 16px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+    .ffs-meta-card {
+      min-height: 56px;
+      padding: 9px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.08),
+        0 0 14px rgba(0, 0, 0, 0.16);
+    }
+
+    .ffs-meta-label {
+      display: block;
+      margin-bottom: 5px;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+   .ffs-meta-value {
+  display: block;
+  font-size: clamp(11px, 3vw, 14px);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.ffs-mobile-meta {
+  display: none !important;
+}
+
+    .ffs-main-grid {
+      display: grid;
+      grid-template-columns: 430px 1fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .ffs-poster-panel {
+      position: relative;
+      padding: 18px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(145deg, rgba(0, 174, 222, 0.18), rgba(255, 255, 255, 0.03)),
+        rgba(255, 255, 255, 0.035);
+      box-shadow:
+        0 0 32px rgba(0, 174, 222, 0.12),
+        inset 0 0 0 1px rgba(0, 174, 222, 0.28);
+    }
+
+    .ffs-poster-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+      opacity: 0.86;
+    }
+
+    .ffs-poster {
+      display: block;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      object-fit: cover;
+      object-position: center top;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .ffs-poster-actions {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .ffs-poster-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      text-decoration: none;
+      color: var(--site-bg);
+      background: var(--cyan);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 0 18px rgba(0, 174, 222, 0.22);
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .ffs-poster-button:hover {
+      transform: translateY(-2px);
+      background: #7beaff;
+      box-shadow: 0 0 26px rgba(0, 174, 222, 0.34);
+    }
+
+    .ffs-info-panel {
+      position: relative;
+      padding: 44px 34px 34px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .ffs-info-panel::after {
+      content: "";
+      position: absolute;
+      left: -90px;
+      top: -90px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(0, 174, 222, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .ffs-info-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+      opacity: 0.72;
+    }
+
+    .ffs-info-panel > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .ffs-section-label {
+      margin: 0 0 9px;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .ffs-synopsis {
+      margin: 0 0 58px;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+ .ffs-synopsis p {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--text-soft);
+  text-align: justify;
+}
+
+.ffs-working-title {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 18px 20px;
+  background:
+    linear-gradient(90deg, var(--cyan-faint), transparent),
+    rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+}
+
+.ffs-working-title span {
+  display: block;
+  margin-bottom: 8px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.ffs-working-title strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-main);
+}
+
+    .ffs-link-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 11px;
+    }
+
+    .ffs-link-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      min-height: 58px;
+      padding: 0 18px;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.035);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.08),
+        0 0 0 rgba(0, 174, 222, 0);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .ffs-link-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--cyan);
+      opacity: 0.75;
+      transition: width 0.25s ease, opacity 0.25s ease;
+    }
+
+.ffs-link-card span {
+  position: relative;
+  z-index: 1;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+.ffs-link-card strong,
+.ffs-link-card strong span {
+  color: var(--cyan);
+}
+
+.ffs-link-card strong {
+  position: relative;
+  z-index: 1;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+    .ffs-link-card:hover {
+      transform: translateY(-2px);
+      background: rgba(0, 174, 222, 0.07);
+      box-shadow: 0 0 22px rgba(0, 174, 222, 0.12);
+    }
+
+    .ffs-link-card:hover::before {
+      width: 7px;
+      opacity: 1;
+    }
+
+    .ffs-trailer-section {
+      position: relative;
+      margin-top: 26px;
+      padding: 15px;
+      background:
+        linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+        rgba(255, 255, 255, 0.035);
+      box-shadow:
+        0 0 30px rgba(0, 174, 222, 0.08),
+        inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    }
+
+    .ffs-trailer-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+      opacity: 0.72;
+    }
+
+    .ffs-trailer-section > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .ffs-trailer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 0 0 14px;
+      padding: 0 2px;
+    }
+
+    .ffs-trailer-header h2 {
+      margin: 0;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .ffs-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.44);
+    }
+
+    .ffs-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+.ffs-poster-button {
+  border: 0;
+  cursor: pointer;
+}
+.ffs-links-panel {
+  position: relative;
+  margin-top: 26px;
+  padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 0 30px rgba(0, 174, 222, 0.08),
+    inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+}
+
+.ffs-links-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+  opacity: 0.72;
+}
+
+.ffs-links-panel > * {
+  position: relative;
+  z-index: 4;
+}
+.ffs-footer-logo-block {
+  width: 100%;
+  max-width: 1200px;
+  margin: 66px auto 0;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.ffs-footer-logo-block img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0.86;
+  filter:
+    drop-shadow(0 0 10px rgba(0, 174, 222, 0.16))
+    drop-shadow(0 0 28px rgba(0, 174, 222, 0.08));
+}
+
+.ffs-footer-tagline {
+  margin: 18px 0 0;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(186, 199, 213, 0.72);
+}
+.ffs-trailer-section,
+.ffs-links-panel,
+.ffs-footer-logo-block {
+  content-visibility:auto;
+  contain-intrinsic-size:400px;
+}
+.ffs-mobile-trailer-link {
+  display: none;
+}
+.ffs-poster-toggle {
+  display: none;
+}
+
+.ffs-poster-click {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.ffs-poster-full {
+  display: block;
+}
+
+.ffs-poster-crop {
+  display: none;
+}
+
+.ffs-poster-expand {
+  display: none;
+}
+.ffs-mobile-link-text {
+  display: none;
+}
+
+    @media (max-width: 900px) {
+      .ffs-page {
+        padding: 0 0 42px;
+      }
+
+      .ffs-page,
+      .ffs-shell,
+      .ffs-project-block,
+      .ffs-main-grid,
+      .ffs-info-panel,
+      .ffs-trailer-section {
+        overflow-x: hidden;
+        overflow-y: visible;
+      }
+
+      .ffs-shell {
+        width: 100%;
+      }
+
+      .ffs-palette-wrap {
+        display: none;
+      }
+.ffs-video {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
+}
+
+.ffs-approach-box {
+  display: none;
+}
+.ffs-mobile-trailer-link {
+  display: grid;
+}
+
+.ffs-trailer-section {
+  display: none;
+}
+     .ffs-project-block {
+  width: 100%;
+  margin: 0 auto;
+  padding: 14px;
+  position: relative;
+        background:
+          linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+          var(--panel-bg);
+        box-shadow:
+          0 0 34px rgba(0, 0, 0, 0.25),
+          inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      }
+
+      .ffs-project-block::before {
+        content: none;
+      }
+
+      .ffs-project-block > * {
+        position: relative;
+        z-index: 4;
+      }
+
+      .ffs-title-panel,
+      .ffs-info-panel,
+      .ffs-trailer-section {
+        background: transparent;
+        box-shadow: none;
+      }
+
+      .ffs-title-panel::before,
+      .ffs-title-panel::after,
+      .ffs-info-panel::before,
+      .ffs-info-panel::after,
+      .ffs-trailer-section::before {
+        content: none;
+      }
+
+     .ffs-title-panel {
+  display: none;
+}
+.ffs-footer-logo-block {
+  display: none;
+}
+.ffs-links-panel {
+  margin-top: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ffs-links-panel::before {
+  content: none;
+}
+      .ffs-title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        margin: 0 0 12px;
+      }
+
+      .ffs-title {
+        font-size: clamp(30px, 8.4vw, 40px);
+        line-height: 0.96;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .ffs-title-logo {
+        display: none;
+      }
+.ffs-desktop-meta {
+  display: none !important;
+}
+
+.ffs-mobile-meta {
+  display: block !important;
+  margin: 0 0 18px;
+  width: 100%;
+}
+
+.ffs-mobile-meta .ffs-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 2.35fr;
+  gap: 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(186, 199, 213, 0.08);
+  overflow: hidden;
+}
+
+.ffs-mobile-meta .ffs-meta-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 40px;
+  padding: 0 8px;
+  background: transparent;
+  box-shadow: none;
+  text-align: center;
+}
+
+.ffs-mobile-meta .ffs-meta-card:not(:last-child) {
+  border-right: 1px solid rgba(186, 199, 213, 0.08);
+}
+
+.ffs-mobile-meta .ffs-meta-label {
+  display: none;
+}
+
+.ffs-mobile-meta .ffs-meta-value {
+  display: block;
+  width: 100%;
+  font-size: clamp(11px, 2.8vw, 13px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.ffs-mobile-meta .ffs-meta-card:nth-child(3) {
+  justify-content: center;
+  text-align: center;
+}
+
+      .ffs-main-grid {
+        display: block;
+      }
+.ffs-poster-panel {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 8px;
+  padding: 14px 14px 10px;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 1000;
+        background:
+          linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+          var(--panel-bg);
+        box-shadow:
+          0 0 34px rgba(0, 0, 0, 0.25),
+          inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      }
+
+      .ffs-poster-panel::before {
+        content: none;
+      }
+
+
+
+.ffs-poster-click {
+  display: block;
+  cursor: pointer;
+}
+
+.ffs-poster-full {
+  display: none;
+}
+
+.ffs-poster-crop {
+  display: block;
+}
+
+.ffs-poster {
+  width: 100%;
+  height: auto;
+  flex: none;
+  object-fit: contain;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
+}
+
+.ffs-poster-expand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  margin-top: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.ffs-poster-toggle:checked ~ .ffs-poster-click {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647 !important;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18px;
+  padding-top: 22px;
+  background: rgba(0, 0, 0, 0.92);
+  cursor: zoom-out;
+}
+
+.ffs-poster-toggle:checked ~ .ffs-poster-click .ffs-poster-crop {
+  display: none;
+}
+
+.ffs-poster-toggle:checked ~ .ffs-poster-click .ffs-poster-full {
+  display: block;
+  width: auto;
+  max-width: 94vw;
+  max-height: 90vh;
+  margin-top: 0;
+  object-fit: contain;
+  box-shadow:
+    0 0 28px rgba(0, 174, 222, 0.22),
+    0 22px 70px rgba(0, 0, 0, 0.75);
+}
+.ffs-poster-panel:has(.ffs-poster-toggle:checked) {
+  z-index: 2147483647 !important;
+}
+.ffs-project-block:has(.ffs-poster-toggle:checked),
+.ffs-main-grid:has(.ffs-poster-toggle:checked),
+.ffs-poster-panel:has(.ffs-poster-toggle:checked) {
+  position: relative;
+  z-index: 2147483647 !important;
+}
+
+.ffs-project-block:has(.ffs-poster-toggle:checked) .ffs-mobile-meta,
+.ffs-project-block:has(.ffs-poster-toggle:checked) .ffs-info-panel,
+.ffs-project-block:has(.ffs-poster-toggle:checked) .ffs-links-panel {
+  z-index: 1 !important;
+}
+      .ffs-poster-actions {
+        display: none;
+      }
+
+      .ffs-info-panel {
+        padding: 0;
+        height: auto;
+        display: block;
+        overflow: visible;
+      }
+
+      .ffs-section-label {
+        margin: 0 0 8px;
+        font-size: 14px;
+      }
+
+      .ffs-synopsis {
+        margin: 0 0 22px;
+      }
+
+      .ffs-synopsis p {
+        font-size: 18px;
+        line-height: 1.48;
+        font-weight: 500;
+        text-align: justify;
+        color: var(--text-soft);
+      }
+.ffs-working-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 8px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.15);
+  overflow: hidden;
+}
+
+.ffs-working-title span {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.ffs-working-title span::after {
+  content: ":";
+}
+
+.ffs-working-title strong {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.15;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+  .ffs-link-stack {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+.ffs-mobile-trailer-link {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.ffs-link-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 8px;
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 0 0 0 1px rgba(186, 199, 213, 0.08);
+}
+
+.ffs-link-card::before {
+  width: 3px;
+}
+
+.ffs-link-card:not(.ffs-mobile-trailer-link)::before {
+  width: 0;
+}
+
+.ffs-link-card:not(.ffs-mobile-trailer-link) > span {
+  display: none;
+}
+
+.ffs-link-card:not(.ffs-mobile-trailer-link) strong {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--cyan);
+}
+
+.ffs-link-card:not(.ffs-mobile-trailer-link) strong span {
+  color: var(--cyan);
+}
+
+.ffs-mobile-trailer-link span {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.ffs-mobile-trailer-link strong {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.ffs-desktop-link-text {
+  display: none;
+}
+
+.ffs-mobile-link-text {
+  display: inline !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+  color: var(--cyan) !important;
+}
+
+    .ffs-trailer-section {
+  display: none;
+}
+
+      .ffs-trailer-header {
+        margin: 0 0 10px;
+        padding: 0;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .ffs-trailer-header h2 {
+        font-size: 16px;
+        letter-spacing: 0.12em;
+      }
+
+      .ffs-video {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
+      }
+    }
+  </style>
+<div class="ffs-shell">
+<div class="ffs-project-block">
+<div class="ffs-title-panel">
+<div class="ffs-title-row">
+<h1 class="ffs-title">Batman: Gotham's Riddle</h1>
+<img alt="Light Speed Studios logo" class="ffs-title-logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+</div>
+<div class="ffs-meta-row ffs-desktop-meta">
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
+    <span class="ffs-meta-value">117 min</span></div>
+
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
+    <span class="ffs-meta-value">20 May 2024</span></div>
+
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Category</span>
+    <span class="ffs-meta-value">Age of Heroes</span></div>
+
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
+    <span class="ffs-meta-value">The Batman 2022</span></div>
+
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span>
+    <span class="ffs-meta-value">175 min</span></div>
+</div>
+</div>
+<div class="ffs-palette-wrap">
+<img alt="Batman: Gotham's Riddle color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/NEW%20PALLETTE.PNG"/>
+</div>
+<div class="ffs-main-grid">
+<div class="ffs-poster-panel">
+<input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
+<label class="ffs-poster-click" for="ffsPosterToggle">
+<img alt="Batman: Gotham's Riddle poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/batmanposter%20copy.jpg"/>
+<img alt="Batman: Gotham's Riddle mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/batmanpostermob.png"/>
+</label>
+<label class="ffs-poster-expand" for="ffsPosterToggle">
+<span>Click to Enlarge</span>
+</label>
+</div>
+<div class="ffs-mobile-meta">
+<div class="ffs-meta-row">
+            <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
+              <span class="ffs-meta-value">117 min</span></div>
+
+            <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
+              <span class="ffs-meta-value">20 May 2024</span></div>
+
+            <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
+              <span class="ffs-meta-value">The Batman 2022</span></div>
+</div>
+</div>
+<div class="ffs-info-panel">
+<p class="ffs-section-label">Synopsis</p>
+<div class="ffs-synopsis">
+<p>
+    A leaner cut of Gotham’s darkest times. A detective unraveling. Each act turns with a riddle. No vengeance. No floods. The final act tightens into something quieter, letting silence settle where chaos lived.
+  </p>
+</div>
+<div class="ffs-approach-box">
+<span>Edit Approach</span>
+<strong>Pacing Refinement / Character Focus / Musical Overhaul</strong>
+</div>
+<div class="ffs-working-title">
+<span>Working Title</span>
+<strong>Batman: The Long Halloween</strong>
+</div>
+</div>
+</div>
+<div class="ffs-links-panel">
+<div class="ffs-link-stack"><a class="ffs-link-card" href="../batman-gothams-riddle-changelog.html">
+<span>Breakdown</span>
+<strong>Changelog ›</strong>
+</a>
+<a class="ffs-link-card" href="../batman-gothams-riddle-project-files.html">
+<span>Editor's Notes</span>
+<strong>Project Files ›</strong>
+</a>
+<a class="ffs-link-card" href="../batman-movie.html">
+<span>Feature</span>
+<strong>
+<span class="ffs-desktop-link-text">Watch Movie ›</span>
+<span class="ffs-mobile-link-text">Feature ›</span>
+</strong>
+</a>
+
+<a class="ffs-link-card ffs-mobile-trailer-link" href="https://youtu.be/QQl325S1qEo?si=Ev4wokbdVoNtplnk" rel="noopener" target="_blank">
+<span>Trailer</span>
+<strong>Watch on YouTube ›</strong>
+</a>
+</div>
+</div>
+<div class="ffs-trailer-section">
+<div class="ffs-trailer-header">
+<h2>Trailer</h2>
+</div>
+<div class="ffs-video">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/QQl325S1qEo" title="Batman: Gotham's Riddle Trailer">
+</iframe>
+</div>
+</div>
+<div class="ffs-footer-logo-block">
+  <img src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png" alt="Light Speed Studios logo" loading="lazy" decoding="async">
+</div>
+</div>
+</div>
+</div>
+</main>
+<script src="../js/main.js"></script>
+</body>
+</html>
