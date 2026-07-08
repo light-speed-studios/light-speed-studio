@@ -3910,21 +3910,16 @@ html::-webkit-scrollbar-corner {
 
 .vault-combined-section .index-vault-card .vault-metadata-bar {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 12px;
+  right: 12px;
   bottom: 10px;
   z-index: 5;
-
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 0;
-
-  width: 100%;
-  padding: 0 12px;
+  gap: 12px;
   opacity: .82;
   pointer-events: none;
-  text-align: center;
 
   font-family: 'Oxanium', sans-serif;
   font-size: 11px;
@@ -3939,12 +3934,6 @@ html::-webkit-scrollbar-corner {
   transition:
     opacity .25s ease,
     transform .25s ease;
-}
-
-.vault-combined-section .index-vault-card .vault-metadata-bar span {
-  display: block;
-  width: 100%;
-  text-align: center;
 }
 
 .vault-combined-section .index-vault-card:hover .vault-metadata-bar {
@@ -4074,12 +4063,12 @@ html::-webkit-scrollbar-corner {
     height: 18px;
   }
 
-.vault-combined-section .index-vault-card .vault-metadata-bar {
-  left: 10px;
-  right: 10px;
-  bottom: 8px;
-  font-size: 10px;
-}
+  .vault-combined-section .index-vault-card .vault-metadata-bar {
+    left: 10px;
+    right: 10px;
+    bottom: 8px;
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 420px) {
@@ -4878,35 +4867,4 @@ body > .bridge-body.disclaimer-body strong {
     -webkit-overflow-scrolling: touch !important;
     padding: 10px !important;
   }
-}
-/* FORCE PAGE SUBTITLE TO CENTER IN THE WHOLE FRAME */
-.lss-page-title {
-  width: 100% !important;
-  max-width: 1300px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  text-align: center !important;
-}
-
-.lss-page-title h1 {
-  display: block !important;
-  width: 100% !important;
-  text-align: center !important;
-}
-
-.lss-page-subtitle {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-
-  text-align: center !important;
-}
-
-.lss-page-subtitle > * {
-  text-align: center !important;
 }
