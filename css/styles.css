@@ -4893,3 +4893,27 @@ body > .bridge-body.disclaimer-body strong {
     text-align: center !important;
   }
 }
+/* =======================================================
+   FINAL FIX: CENTER VAULT / PULSE / TELEMETRY / LAB HERO SUBTITLE
+======================================================= */
+
+.vault-archive-hero p {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 14px auto 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-indent: .32em !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 900px) {
+  .vault-archive-hero p {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 10px auto 0 !important;
+    text-align: center !important;
+    text-indent: .18em !important;
+  }
+}
