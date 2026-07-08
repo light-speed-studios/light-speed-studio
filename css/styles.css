@@ -3910,16 +3910,21 @@ html::-webkit-scrollbar-corner {
 
 .vault-combined-section .index-vault-card .vault-metadata-bar {
   position: absolute;
-  left: 12px;
-  right: 12px;
+  left: 0;
+  right: 0;
   bottom: 10px;
   z-index: 5;
+
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 0;
+
+  width: 100%;
+  padding: 0 12px;
   opacity: .82;
   pointer-events: none;
+  text-align: center;
 
   font-family: 'Oxanium', sans-serif;
   font-size: 11px;
@@ -3934,6 +3939,12 @@ html::-webkit-scrollbar-corner {
   transition:
     opacity .25s ease,
     transform .25s ease;
+}
+
+.vault-combined-section .index-vault-card .vault-metadata-bar span {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
 
 .vault-combined-section .index-vault-card:hover .vault-metadata-bar {
