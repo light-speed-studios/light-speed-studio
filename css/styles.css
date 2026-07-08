@@ -4893,3 +4893,19 @@ body > .bridge-body.disclaimer-body strong {
     text-align: center !important;
   }
 }
+/* FIX: Center Vault subtitle/runtime text inside each rail card */
+.vault-combined-section .vault-info {
+  width: 100%;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.vault-combined-section .vault-tagline,
+.vault-combined-section .vault-runtime {
+  display: block;
+  width: 100%;
+  max-width: 88%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
