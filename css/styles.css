@@ -4879,3 +4879,34 @@ body > .bridge-body.disclaimer-body strong {
     padding: 10px !important;
   }
 }
+/* FORCE PAGE SUBTITLE TO CENTER IN THE WHOLE FRAME */
+.lss-page-title {
+  width: 100% !important;
+  max-width: 1300px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+.lss-page-title h1 {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.lss-page-subtitle {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  text-align: center !important;
+}
+
+.lss-page-subtitle > * {
+  text-align: center !important;
+}
