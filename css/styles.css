@@ -4917,3 +4917,34 @@ body > .bridge-body.disclaimer-body strong {
     text-indent: .18em !important;
   }
 }
+/* =======================================================
+   DESKTOP LONG NAV LOGO / MOBILE ORIGINAL LOGO
+======================================================= */
+
+.lss-nav-logo-picture {
+  display: flex;
+  align-items: center;
+}
+
+.lss-nav-logo-picture img {
+  display: block;
+  width: auto;
+  height: 40px;
+}
+
+@media (min-width: 901px) {
+  .lss-nav-logo-picture img {
+    height: 42px;
+    width: auto;
+    max-width: 260px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 900px) {
+  .lss-nav-logo-picture img {
+    height: 40px;
+    width: auto;
+    max-width: none;
+  }
+}
