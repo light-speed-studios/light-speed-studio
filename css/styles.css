@@ -4957,7 +4957,7 @@ body > .bridge-body.disclaimer-body strong {
 
 .ffs-project-side-nav {
   position: fixed;
-  top: 72%;
+  top: 82%;
   transform: translateY(-50%);
   z-index: 90;
   pointer-events: none;
