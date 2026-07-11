@@ -1614,7 +1614,7 @@ contain: paint;
       position: relative;
       width: 100%;
       height: 611px; 
-  min-height: 577px;
+  min-height: 577px;
       background: var(--site-bg);
       overflow: hidden;
       isolation: isolate;
@@ -5093,7 +5093,7 @@ body > .bridge-body.disclaimer-body strong {
   display: none;
 }
 
-@media (max-width: 1650px) {
+@media (max-width: 1180px) {
   .ffs-project-side-nav {
     display: none;
   }
@@ -5170,5 +5170,27 @@ body > .bridge-body.disclaimer-body strong {
   .ffs-side-next::after,
   .ffs-mobile-project-nav a {
     transition: none !important;
+  }
+}
+
+
+/* =======================================================
+   PROJECT SIDE NAV VISIBILITY FIX
+   Keeps side nav visible on desktop. Previous 1650px cutoff hid it.
+======================================================= */
+
+@media (min-width: 1181px) {
+  .ffs-project-side-nav {
+    display: block !important;
+  }
+
+  .ffs-project-side-nav-right {
+    display: grid !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  .ffs-project-side-nav {
+    display: none !important;
   }
 }
