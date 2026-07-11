@@ -5163,3 +5163,37 @@ body > .bridge-body.disclaimer-body strong {
     transition: none !important;
   }
 }
+
+/* =======================================================
+   SUPERMAN MOBILE TRAILER RESTORE
+   Keeps embedded trailers visible on project pages and removes
+   reliance on the mobile YouTube link card.
+======================================================= */
+
+.ffs-trailer-section {
+  content-visibility: visible !important;
+  contain-intrinsic-size: auto !important;
+  contain: none !important;
+  padding-bottom: 28px !important;
+}
+
+@media (max-width: 900px) {
+  .ffs-trailer-section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-top: 18px !important;
+    padding: 12px 12px 28px !important;
+    overflow: visible !important;
+  }
+
+  .ffs-trailer-section .ffs-video {
+    display: block !important;
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  .ffs-mobile-trailer-link {
+    display: none !important;
+  }
+}
