@@ -684,12 +684,6 @@
   content-visibility:auto;
   contain-intrinsic-size:400px;
 }
-.ffs-trailer-section {
-  content-visibility: visible;
-  contain-intrinsic-size: auto;
-  contain: none;
-  padding-bottom: 28px;
-}
 .ffs-mobile-trailer-link {
   display: none;
 }
@@ -750,7 +744,11 @@
 .ffs-mobile-trailer-link {
   display: grid;
 }
-.ffs-project-block {
+
+.ffs-trailer-section {
+  display: none;
+}
+     .ffs-project-block {
   width: 100%;
   margin: 0 auto;
   padding: 14px;
@@ -1129,7 +1127,12 @@
   letter-spacing: inherit !important;
   color: var(--cyan) !important;
 }
-.ffs-trailer-header {
+
+    .ffs-trailer-section {
+  display: none;
+}
+
+      .ffs-trailer-header {
         margin: 0 0 10px;
         padding: 0;
         display: flex;
@@ -1148,6 +1151,24 @@
       }
     }
   </style>
+
+  <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
+    <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
+      <span class="ffs-side-nav-line">Back to</span>
+      <span class="ffs-side-nav-line">Vault</span>
+    </a>
+  </nav>
+
+  <nav class="ffs-project-side-nav ffs-project-side-nav-right" aria-label="Project sequence navigation">
+    <a class="ffs-side-nav-link ffs-side-prev" href="../star-trek-genesis.html" data-project-nav-key="prev">Prev</a>
+    <a class="ffs-side-nav-link ffs-side-next" href="../speed-racer-mach-6.html" data-project-nav-key="next">Next</a>
+  </nav>
+
+  <nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
+    <a href="../vault.html" data-project-nav-key="vault-mobile">Vault</a>
+    <a href="../star-trek-genesis.html" data-project-nav-key="prev-mobile">Prev</a>
+    <a href="../speed-racer-mach-6.html" data-project-nav-key="next-mobile">Next</a>
+  </nav>
 
   <div class="ffs-shell">
     <div class="ffs-project-block">
@@ -1260,6 +1281,10 @@
   <span class="ffs-desktop-link-text">Watch Movie ›</span>
   <span class="ffs-mobile-link-text">Feature ›</span>
 </strong>
+    </a>
+<a class="ffs-link-card ffs-mobile-trailer-link" href="https://www.youtube.com/watch?v=on-A5FJEJDc" target="_blank" rel="noopener">
+      <span>Trailer</span>
+      <strong>Watch on YouTube ›</strong>
     </a>
 </div>
 </div>
