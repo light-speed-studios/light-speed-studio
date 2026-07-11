@@ -564,3 +564,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+/* =======================================================
+   PROJECT DETAIL SIDE NAV KEYBOARD SUPPORT
+   Alt + Left/Right moves between project pages.
+======================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const projectNav = document.querySelector(".ffs-project-side-nav-right");
+  if (!projectNav) return;
+
+  const prevLink = projectNav.querySelector('[data-project-nav-key="prev"]');
+  const nextLink = projectNav.querySelector('[data-project-nav-key="next"]');
+
+  document.addEventListener("keydown", event => {
+    const active = document.activeElement;
+    const isTyping =
+      active &&
+      (active.tagName === "INPUT" ||
+       active.tagName === "TEXTAREA" ||
+       active.isContentEditable);
+
+    if (isTyping || !event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+
+    if (event.key === "ArrowLeft" && prevLink) {
+      event.preventDefault();
+      window.location.href = prevLink.href;
+    }
+
+    if (event.key === "ArrowRight" && nextLink) {
+      event.preventDefault();
+      window.location.href = nextLink.href;
+    }
+  });
+});
+
