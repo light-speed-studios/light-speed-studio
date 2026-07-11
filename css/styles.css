@@ -1614,7 +1614,7 @@ contain: paint;
       position: relative;
       width: 100%;
       height: 611px; 
-  min-height: 577px;
+  min-height: 577px;
       background: var(--site-bg);
       overflow: hidden;
       isolation: isolate;
@@ -4957,23 +4957,23 @@ body > .bridge-body.disclaimer-body strong {
 
 .ffs-project-side-nav {
   position: fixed;
-  top: 68vh;
+  top: 72%;
   transform: translateY(-50%);
   z-index: 90;
   pointer-events: none;
   font-family: 'Oxanium', 'Rajdhani', Arial, sans-serif;
   text-transform: uppercase;
-  letter-spacing: .065em;
+  letter-spacing: .06em;
 }
 
 .ffs-project-side-nav-left {
-  left: clamp(12px, 1vw, 20px);
+  left: clamp(16px, 1.6vw, 30px);
 }
 
 .ffs-project-side-nav-right {
-  right: clamp(8px, .85vw, 18px);
+  right: clamp(16px, 1.6vw, 30px);
   display: grid;
-  gap: clamp(12px, 2.4vh, 22px);
+  gap: clamp(20px, 3vh, 34px);
 }
 
 .ffs-side-nav-link {
@@ -4982,15 +4982,15 @@ body > .bridge-body.disclaimer-body strong {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 58px;
-  min-height: 34px;
-  color: rgba(186, 199, 213, .66);
+  min-width: 84px;
+  min-height: 44px;
+  color: rgba(186, 199, 213, .72);
   text-decoration: none;
-  font-size: clamp(13px, .78vw, 16px);
+  font-size: clamp(15px, 1.05vw, 20px);
   font-weight: 800;
   line-height: 1.05;
   text-align: center;
-  text-shadow: 0 0 12px rgba(0, 0, 0, .72);
+  text-shadow: 0 0 18px rgba(0, 0, 0, .72);
   transition:
     color .25s ease,
     opacity .25s ease,
@@ -5004,22 +5004,22 @@ body > .bridge-body.disclaimer-body strong {
 
 .ffs-side-back {
   flex-direction: column;
-  min-width: 76px;
-  padding: 6px 4px;
+  min-width: 102px;
+  padding: 8px 4px;
 }
 
 .ffs-side-back::before {
   content: "";
   position: absolute;
   left: -8px;
-  top: 0;
-  width: 24px;
-  height: 24px;
-  border-top: 1px solid rgba(0, 174, 222, .68);
-  border-left: 1px solid rgba(0, 174, 222, .68);
+  top: 2px;
+  width: 34px;
+  height: 34px;
+  border-top: 1px solid rgba(0, 174, 222, .85);
+  border-left: 1px solid rgba(0, 174, 222, .85);
   box-shadow:
-    -4px -4px 12px rgba(0, 174, 222, .05),
-    inset 2px 2px 8px rgba(0, 174, 222, .035);
+    -6px -6px 18px rgba(0, 174, 222, .08),
+    inset 4px 4px 14px rgba(0, 174, 222, .05);
   transition:
     border-color .25s ease,
     box-shadow .25s ease,
@@ -5028,16 +5028,17 @@ body > .bridge-body.disclaimer-body strong {
 
 .ffs-side-prev,
 .ffs-side-next {
-  gap: 6px;
+  gap: 5px;
 }
 
 .ffs-side-prev::before,
 .ffs-side-next::after {
   content: "";
   display: block;
-  width: 19px;
-  height: 19px;
-  border-color: rgba(0, 174, 222, .68);
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border-color: rgba(0, 174, 222, .82);
   border-style: solid;
   transition:
     border-color .25s ease,
@@ -5058,54 +5059,44 @@ body > .bridge-body.disclaimer-body strong {
 .ffs-side-nav-link:hover {
   color: #bac7d5;
   text-shadow:
-    0 0 9px rgba(0, 174, 222, .38),
-    0 0 18px rgba(0, 174, 222, .14);
+    0 0 12px rgba(0, 174, 222, .48),
+    0 0 26px rgba(0, 174, 222, .18);
 }
 
 .ffs-side-back:hover {
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 .ffs-side-prev:hover {
-  transform: translateX(-2px);
+  transform: translateX(-4px);
 }
 
 .ffs-side-next:hover {
-  transform: translateX(2px);
+  transform: translateX(4px);
 }
 
 .ffs-side-back:hover::before,
 .ffs-side-prev:hover::before,
 .ffs-side-next:hover::after {
   border-color: #7beaff;
-  box-shadow: 0 0 12px rgba(0, 174, 222, .14);
+  box-shadow: 0 0 18px rgba(0, 174, 222, .18);
 }
 
 .ffs-side-prev:hover::before {
-  transform: rotate(45deg) translate(-1px, 1px);
+  transform: rotate(45deg) translate(-3px, 3px);
 }
 
 .ffs-side-next:hover::after {
-  transform: rotate(45deg) translate(1px, -1px);
+  transform: rotate(45deg) translate(3px, -3px);
 }
 
 .ffs-mobile-project-nav {
   display: none;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1450px) {
   .ffs-project-side-nav {
     display: none;
-  }
-}
-
-@media (max-height: 760px) and (min-width: 1651px) {
-  .ffs-project-side-nav {
-    top: 72vh;
-  }
-
-  .ffs-project-side-nav-right {
-    gap: 12px;
   }
 }
 
@@ -5170,27 +5161,5 @@ body > .bridge-body.disclaimer-body strong {
   .ffs-side-next::after,
   .ffs-mobile-project-nav a {
     transition: none !important;
-  }
-}
-
-
-/* =======================================================
-   PROJECT SIDE NAV VISIBILITY FIX
-   Keeps side nav visible on desktop. Previous 1650px cutoff hid it.
-======================================================= */
-
-@media (min-width: 1181px) {
-  .ffs-project-side-nav {
-    display: block !important;
-  }
-
-  .ffs-project-side-nav-right {
-    display: grid !important;
-  }
-}
-
-@media (max-width: 1180px) {
-  .ffs-project-side-nav {
-    display: none !important;
   }
 }
