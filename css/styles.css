@@ -4948,3 +4948,9 @@ body > .bridge-body.disclaimer-body strong {
     max-width: none;
   }
 }
+@media (min-width: 901px) {
+  .speed-trap-footer {
+    margin-top: -47px;
+    padding-top: 0 !important;
+  }
+}
