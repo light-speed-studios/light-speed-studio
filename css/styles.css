@@ -5011,7 +5011,7 @@ body > .bridge-body.disclaimer-body strong {
 .ffs-side-back::before {
   content: "";
   position: absolute;
-  left: 0px;
+  left: 3px;
   top: 2px;
   width: 34px;
   height: 34px;
