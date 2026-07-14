@@ -673,3 +673,20 @@ document.addEventListener("DOMContentLoaded", () => {
   syncProgressPosition();
   updateProgress();
 });
+// Automatically update image cache for all users
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. UPDATE THIS NUMBER whenever you change your image files
+    const currentVersion = "2"; 
+    
+    // 2. Loop through all HTML <img> tags on the page
+    document.querySelectorAll("img").forEach(img => {
+        let src = img.getAttribute("src");
+        
+        // 3. Only target images coming from your Bunny CDN link
+        if (src && src.includes("b-cdn.net")) {
+            // Strip any older version tags and apply the fresh one
+            let cleanSrc = src.split('?')[0];
+            img.src = `${cleanSrc}?v=${currentVersion}`;
+        }
+    });
+});
