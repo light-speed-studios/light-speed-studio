@@ -1614,7 +1614,7 @@ contain: paint;
       position: relative;
       width: 100%;
       height: 611px; 
-  min-height: 577px;
+  min-height: 577px;
       background: var(--site-bg);
       overflow: hidden;
       isolation: isolate;
@@ -5243,5 +5243,60 @@ body > .bridge-body.disclaimer-body strong {
     text-transform: uppercase !important;
     background: rgba(255, 255, 255, .035) !important;
     box-shadow: inset 0 0 0 1px rgba(186, 199, 213, .08) !important;
+  }
+}
+
+
+/* =======================================================
+   HOME PAGE SCROLL PROGRESS
+   Replaces the native scrollbar only on index/home.
+======================================================= */
+
+html.lss-home-progress,
+body.lss-home-progress {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html.lss-home-progress::-webkit-scrollbar,
+body.lss-home-progress::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.lss-home-scroll-progress {
+  position: fixed;
+  top: var(--lss-progress-top, 61px);
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 99998;
+  pointer-events: none;
+  overflow: hidden;
+  background: rgba(0, 174, 222, 0.10);
+  box-shadow: 0 1px 0 rgba(186, 199, 213, 0.04);
+}
+
+.lss-home-scroll-progress-fill {
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+  background: linear-gradient(
+    to right,
+    #0096c2 0%,
+    #00aede 65%,
+    #7beaff 100%
+  );
+  box-shadow:
+    0 0 8px rgba(0, 174, 222, 0.55),
+    0 0 16px rgba(0, 174, 222, 0.24);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lss-home-scroll-progress-fill {
+    transition: none !important;
   }
 }
