@@ -599,3 +599,77 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
+/* =======================================================
+   HOME PAGE SCROLL PROGRESS
+   Runs only on index/home and leaves all other pages alone.
+======================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const normalizedPath = window.location.pathname
+    .toLowerCase()
+    .replace(/\/+$/, "");
+
+  const lastSegment = normalizedPath.split("/").pop();
+  const isHomePage =
+    normalizedPath === "" ||
+    lastSegment === "index.html";
+
+  if (!isHomePage) return;
+
+  document.documentElement.classList.add("lss-home-progress");
+  document.body.classList.add("lss-home-progress");
+
+  const progressBar = document.createElement("div");
+  progressBar.className = "lss-home-scroll-progress";
+  progressBar.setAttribute("aria-hidden", "true");
+
+  const progressFill = document.createElement("div");
+  progressFill.className = "lss-home-scroll-progress-fill";
+
+  progressBar.appendChild(progressFill);
+  document.body.appendChild(progressBar);
+
+  const navBar = document.querySelector(".lss-nav-bar");
+  let ticking = false;
+
+  function syncProgressPosition() {
+    const navBottom = navBar
+      ? Math.max(0, Math.round(navBar.getBoundingClientRect().bottom))
+      : 61;
+
+    progressBar.style.setProperty("--lss-progress-top", `${navBottom}px`);
+  }
+
+  function updateProgress() {
+    const root = document.documentElement;
+    const maxScroll = Math.max(0, root.scrollHeight - window.innerHeight);
+    const currentScroll = Math.max(0, window.scrollY || root.scrollTop);
+    const ratio = maxScroll > 0 ? currentScroll / maxScroll : 0;
+    const clamped = Math.min(1, Math.max(0, ratio));
+
+    progressFill.style.transform = `scaleX(${clamped})`;
+    ticking = false;
+  }
+
+  function requestProgressUpdate() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateProgress);
+  }
+
+  window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+
+  window.addEventListener("resize", () => {
+    syncProgressPosition();
+    requestProgressUpdate();
+  });
+
+  window.addEventListener("load", () => {
+    syncProgressPosition();
+    requestProgressUpdate();
+  });
+
+  syncProgressPosition();
+  updateProgress();
+});
