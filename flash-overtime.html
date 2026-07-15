@@ -85,23 +85,29 @@
     }
 
     .ffs-changes-panel {
-      position: relative;
-      flex: 1 1 442px;
-      min-height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 19px;
-      text-align: center;
-      background:
-        linear-gradient(145deg, rgba(0, 174, 222, 0.12), rgba(255, 255, 255, 0.025)),
-        rgba(255, 255, 255, 0.03);
-      box-shadow:
-        0 0 32px rgba(0, 174, 222, 0.10),
-        inset 0 0 0 1px rgba(0, 174, 222, 0.22);
-      overflow: hidden;
-    }
+  position: relative;
+  flex: 1 1 442px;
+  min-height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 28px;
+  text-align: left;
+  background:
+    linear-gradient(145deg, rgba(0, 174, 222, 0.12), rgba(255, 255, 255, 0.025)),
+    rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 0 32px rgba(0, 174, 222, 0.10),
+    inset 0 0 0 1px rgba(0, 174, 222, 0.22);
+  overflow: hidden;
+}
+    .ffs-changes-text h3 {
+  margin: 0 0 18px;
+}
 
+.ffs-changes-text p:last-child {
+  margin-bottom: 0;
+}
     .ffs-changes-panel::before {
       content: "";
       position: absolute;
