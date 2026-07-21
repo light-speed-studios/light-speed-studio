@@ -605,17 +605,8 @@ document.addEventListener("DOMContentLoaded", () => {
    HOME PAGE SCROLL PROGRESS
    Runs only on index/home and leaves all other pages alone.
 ======================================================= */
+/* SCROLL PROGRESS */
 document.addEventListener("DOMContentLoaded", () => {
-  const normalizedPath = window.location.pathname
-    .toLowerCase()
-    .replace(/\/+$/, "");
-
-  const lastSegment = normalizedPath.split("/").pop();
-  const isHomePage =
-    normalizedPath === "" ||
-    lastSegment === "index.html";
-
-  if (!isHomePage) return;
 
   document.documentElement.classList.add("lss-home-progress");
   document.body.classList.add("lss-home-progress");
