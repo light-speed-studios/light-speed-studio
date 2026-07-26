@@ -2502,7 +2502,12 @@ inset: 14px 14px 70px 14px;
 }
   
 
-/* ===== IMAGE SPLASH SCREEN ===== */
+/* ===== CINEMATIC LIGHT-SPEED SPLASH SCREEN ===== */
+
+html.lss-splash-active,
+html.lss-splash-active body {
+  overflow: hidden;
+}
 
 #lss-splash,
 #lss-page-splash {
@@ -2512,50 +2517,345 @@ inset: 14px 14px 70px 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #040E15;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(0, 174, 222, .08), transparent 38%),
+    #02080e;
   overflow: hidden;
   cursor: pointer;
-  transition: opacity .8s ease, visibility .8s ease;
-}
-
-#lss-splash.hide,
-#lss-page-splash.hide {
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .lss-splash-picture,
 .lss-page-splash-picture {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .lss-splash-image,
 .lss-page-splash-image {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
   opacity: 0;
-  transform: scale(1.018);
-  animation: lssSplashImageIn 1.15s ease forwards;
-  transition: transform .8s ease;
+  transform: scale(1.026);
+  filter: brightness(.72) saturate(.9);
+  animation: lssSplashImageIn .95s cubic-bezier(.22, .72, .2, 1) forwards;
+  will-change: transform, opacity, filter;
 }
 
-#lss-page-splash.hide .lss-page-splash-image {
-  transform: scale(1.03);
+/* The FX wrapper is present in index.html and is also injected by main.js
+   on project pages that use #lss-page-splash. */
+.lss-splash-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lss-splash-starfield,
+.lss-splash-glow,
+.lss-splash-warp,
+.lss-splash-vignette,
+.lss-splash-flash {
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+}
+
+.lss-splash-starfield {
+  transform-origin: 50% 50%;
+  mix-blend-mode: screen;
+  will-change: transform, opacity, filter;
+}
+
+.lss-splash-starfield--one {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, .95) 0 1px, transparent 1.45px),
+    radial-gradient(circle, rgba(123, 234, 255, .9) 0 .8px, transparent 1.35px),
+    radial-gradient(circle, rgba(255, 255, 255, .65) 0 .65px, transparent 1.15px);
+  background-size: 97px 97px, 151px 151px, 223px 223px;
+  background-position: 17px 31px, 53px 8px, 109px 91px;
+  opacity: 0;
+  animation:
+    lssStarfieldIn .75s .12s ease forwards,
+    lssStarDriftOne 11s .87s linear infinite;
+}
+
+.lss-splash-starfield--two {
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, .9) 0 1.25px, transparent 1.8px),
+    radial-gradient(circle, rgba(0, 174, 222, .9) 0 1px, transparent 1.65px);
+  background-size: 281px 281px, 347px 347px;
+  background-position: 31px 117px, 183px 41px;
+  opacity: 0;
+  animation:
+    lssStarfieldTwoIn 1.1s .2s ease forwards,
+    lssStarDriftTwo 15s 1.3s linear infinite;
+}
+
+.lss-splash-glow {
+  z-index: 2;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(104, 226, 255, .24) 0%, rgba(0, 174, 222, .10) 18%, transparent 42%);
+  mix-blend-mode: screen;
+  opacity: .08;
+  animation: lssSplashGlowPulse 2.3s 1s ease-in-out infinite alternate;
+  will-change: opacity, transform;
+}
+
+.lss-splash-warp {
+  z-index: 3;
+  inset: -80%;
+  background:
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg 5.4deg,
+      rgba(189, 246, 255, .04) 5.55deg 5.72deg,
+      rgba(0, 174, 222, .28) 5.82deg 6.02deg,
+      transparent 6.18deg 10.8deg
+    );
+  -webkit-mask-image: radial-gradient(circle at center, transparent 0 6%, #000 18%, #000 68%, transparent 86%);
+  mask-image: radial-gradient(circle at center, transparent 0 6%, #000 18%, #000 68%, transparent 86%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: scale(.16) rotate(.001deg);
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+}
+
+.lss-splash-vignette {
+  z-index: 4;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, transparent 36%, rgba(1, 5, 10, .16) 66%, rgba(1, 5, 10, .7) 100%),
+    repeating-linear-gradient(to bottom, rgba(255, 255, 255, .012) 0 1px, transparent 1px 4px);
+}
+
+.lss-splash-flash {
+  z-index: 5;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, #ffffff 0%, #d8f9ff 18%, rgba(83, 222, 255, .94) 42%, rgba(0, 174, 222, .36) 66%, transparent 84%);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: scale(.74);
+  will-change: transform, opacity;
+}
+
+#lss-splash.is-exiting,
+#lss-page-splash.is-exiting {
+  animation: lssSplashClear .68s linear forwards;
+  pointer-events: none;
+}
+
+#lss-splash.is-exiting .lss-splash-image,
+#lss-splash.is-exiting .lss-page-splash-image,
+#lss-page-splash.is-exiting .lss-splash-image,
+#lss-page-splash.is-exiting .lss-page-splash-image {
+  animation: lssSplashImageLaunch .68s cubic-bezier(.18, .76, .16, 1) forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-starfield--one,
+#lss-page-splash.is-exiting .lss-splash-starfield--one {
+  animation: lssStarsLaunchOne .68s cubic-bezier(.12, .72, .15, 1) forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-starfield--two,
+#lss-page-splash.is-exiting .lss-splash-starfield--two {
+  animation: lssStarsLaunchTwo .68s cubic-bezier(.12, .72, .15, 1) forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-glow,
+#lss-page-splash.is-exiting .lss-splash-glow {
+  animation: lssGlowBurst .68s ease-out forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-warp,
+#lss-page-splash.is-exiting .lss-splash-warp {
+  animation: lssWarpBurst .68s cubic-bezier(.08, .7, .12, 1) forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-flash,
+#lss-page-splash.is-exiting .lss-splash-flash {
+  animation: lssFlashBurst .68s ease-out forwards;
+}
+
+/* Compatibility fallback for any older code that still adds .hide. */
+#lss-splash.hide,
+#lss-page-splash.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease, visibility .3s ease;
 }
 
 @keyframes lssSplashImageIn {
-  from {
+  0% {
     opacity: 0;
-    transform: scale(1.018);
+    transform: scale(1.026);
+    filter: brightness(.72) saturate(.9);
   }
-  to {
+  60% {
+    opacity: 1;
+  }
+  100% {
     opacity: 1;
     transform: scale(1);
+    filter: brightness(1) saturate(1);
+  }
+}
+
+@keyframes lssStarfieldIn {
+  from { opacity: 0; }
+  to { opacity: .28; }
+}
+
+@keyframes lssStarfieldTwoIn {
+  from { opacity: 0; }
+  to { opacity: .18; }
+}
+
+@keyframes lssStarDriftOne {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-7px, 5px, 0) scale(1.012); }
+  100% { transform: translate3d(-14px, 10px, 0) scale(1.025); }
+}
+
+@keyframes lssStarDriftTwo {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(8px, -6px, 0) scale(1.015); }
+  100% { transform: translate3d(16px, -12px, 0) scale(1.03); }
+}
+
+@keyframes lssSplashGlowPulse {
+  from {
+    opacity: .07;
+    transform: scale(.96);
+  }
+  to {
+    opacity: .18;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes lssSplashImageLaunch {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1) saturate(1) blur(0);
+  }
+  54% {
+    opacity: 1;
+    transform: scale(1.075);
+    filter: brightness(1.2) saturate(1.12) blur(0);
+  }
+  100% {
+    opacity: .12;
+    transform: scale(1.19);
+    filter: brightness(1.58) saturate(1.2) blur(2.4px);
+  }
+}
+
+@keyframes lssStarsLaunchOne {
+  0% {
+    opacity: .28;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  55% { opacity: .68; }
+  100% {
+    opacity: 0;
+    transform: scale(4.6);
+    filter: blur(1.2px);
+  }
+}
+
+@keyframes lssStarsLaunchTwo {
+  0% {
+    opacity: .18;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  48% { opacity: .55; }
+  100% {
+    opacity: 0;
+    transform: scale(3.8);
+    filter: blur(1.6px);
+  }
+}
+
+@keyframes lssGlowBurst {
+  0% {
+    opacity: .12;
+    transform: scale(1);
+  }
+  62% {
+    opacity: .72;
+    transform: scale(1.34);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.9);
+  }
+}
+
+@keyframes lssWarpBurst {
+  0% {
+    opacity: 0;
+    transform: scale(.16) rotate(.001deg);
+    filter: blur(2px);
+  }
+  28% { opacity: .72; }
+  68% {
+    opacity: .95;
+    filter: blur(.25px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(2.9) rotate(.001deg);
+    filter: blur(1.8px);
+  }
+}
+
+@keyframes lssFlashBurst {
+  0%, 48% {
+    opacity: 0;
+    transform: scale(.74);
+  }
+  68% {
+    opacity: .92;
+    transform: scale(1.04);
+  }
+  82% {
+    opacity: .54;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.34);
+  }
+}
+
+@keyframes lssSplashClear {
+  0%, 74% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -2565,8 +2865,56 @@ inset: 14px 14px 70px 14px;
     object-fit: cover;
     object-position: center center;
   }
+
+  .lss-splash-starfield--one {
+    opacity: .22;
+  }
+
+  .lss-splash-starfield--two {
+    opacity: .14;
+  }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .lss-splash-image,
+  .lss-page-splash-image,
+  .lss-splash-starfield--one,
+  .lss-splash-starfield--two,
+  .lss-splash-glow {
+    animation: none;
+  }
+
+  .lss-splash-image,
+  .lss-page-splash-image {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  #lss-splash.is-exiting,
+  #lss-page-splash.is-exiting {
+    animation: lssSplashReducedExit .28s ease forwards;
+  }
+
+  #lss-splash.is-exiting .lss-splash-image,
+  #lss-splash.is-exiting .lss-page-splash-image,
+  #lss-page-splash.is-exiting .lss-splash-image,
+  #lss-page-splash.is-exiting .lss-page-splash-image {
+    animation: none;
+  }
+
+  .lss-splash-warp,
+  .lss-splash-flash,
+  .lss-splash-glow,
+  .lss-splash-starfield {
+    display: none;
+  }
+}
+
+@keyframes lssSplashReducedExit {
+  from { opacity: 1; visibility: visible; }
+  to { opacity: 0; visibility: hidden; }
+}
 
 /* =======================================================
    TEMPLATE HELPERS
