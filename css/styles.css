@@ -2567,8 +2567,7 @@ html.lss-splash-active body {
 .lss-splash-starfield,
 .lss-splash-glow,
 .lss-splash-warp,
-.lss-splash-vignette,
-.lss-splash-flash {
+.lss-splash-vignette {
   position: absolute;
   inset: -12%;
   pointer-events: none;
@@ -2644,16 +2643,6 @@ html.lss-splash-active body {
     repeating-linear-gradient(to bottom, rgba(255, 255, 255, .012) 0 1px, transparent 1px 4px);
 }
 
-.lss-splash-flash {
-  z-index: 5;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 50%, #ffffff 0%, #d8f9ff 18%, rgba(83, 222, 255, .94) 42%, rgba(0, 174, 222, .36) 66%, transparent 84%);
-  mix-blend-mode: screen;
-  opacity: 0;
-  transform: scale(.74);
-  will-change: transform, opacity;
-}
 
 #lss-splash.is-exiting,
 #lss-page-splash.is-exiting {
@@ -2688,10 +2677,6 @@ html.lss-splash-active body {
   animation: lssWarpBurst .68s cubic-bezier(.08, .7, .12, 1) forwards;
 }
 
-#lss-splash.is-exiting .lss-splash-flash,
-#lss-page-splash.is-exiting .lss-splash-flash {
-  animation: lssFlashBurst .68s ease-out forwards;
-}
 
 /* Compatibility fallback for any older code that still adds .hide. */
 #lss-splash.hide,
@@ -2829,24 +2814,6 @@ html.lss-splash-active body {
   }
 }
 
-@keyframes lssFlashBurst {
-  0%, 48% {
-    opacity: 0;
-    transform: scale(.74);
-  }
-  68% {
-    opacity: .92;
-    transform: scale(1.04);
-  }
-  82% {
-    opacity: .54;
-    transform: scale(1.18);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.34);
-  }
-}
 
 @keyframes lssSplashClear {
   0%, 74% {
@@ -2904,7 +2871,6 @@ html.lss-splash-active body {
   }
 
   .lss-splash-warp,
-  .lss-splash-flash,
   .lss-splash-glow,
   .lss-splash-starfield {
     display: none;
