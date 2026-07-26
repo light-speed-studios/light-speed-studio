@@ -5614,3 +5614,142 @@ body.lss-home-progress::-webkit-scrollbar {
     transition: none !important;
   }
 }
+
+/* =======================================================
+   SYNCHRONIZED LIGHT-SPEED EXIT
+   The splash artwork and star FX now launch as one camera move.
+======================================================= */
+#lss-splash.is-exiting,
+#lss-page-splash.is-exiting {
+  animation: lssSplashClearTogether .65s cubic-bezier(.18, .76, .16, 1) forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-picture,
+#lss-splash.is-exiting .lss-page-splash-picture,
+#lss-page-splash.is-exiting .lss-splash-picture,
+#lss-page-splash.is-exiting .lss-page-splash-picture,
+#lss-splash.is-exiting .lss-splash-fx,
+#lss-page-splash.is-exiting .lss-splash-fx {
+  animation: lssUnifiedCameraLaunch .65s cubic-bezier(.18, .76, .16, 1) forwards;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, filter;
+}
+
+#lss-splash.is-exiting .lss-splash-image,
+#lss-splash.is-exiting .lss-page-splash-image,
+#lss-page-splash.is-exiting .lss-splash-image,
+#lss-page-splash.is-exiting .lss-page-splash-image {
+  animation: lssUnifiedArtworkExit .65s linear forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-starfield--one,
+#lss-page-splash.is-exiting .lss-splash-starfield--one,
+#lss-splash.is-exiting .lss-splash-starfield--two,
+#lss-page-splash.is-exiting .lss-splash-starfield--two {
+  animation: lssUnifiedStarsExit .65s linear forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-glow,
+#lss-page-splash.is-exiting .lss-splash-glow {
+  animation: lssUnifiedGlowExit .65s linear forwards;
+}
+
+#lss-splash.is-exiting .lss-splash-warp,
+#lss-page-splash.is-exiting .lss-splash-warp {
+  animation: lssUnifiedWarpExit .65s linear forwards;
+}
+
+@keyframes lssUnifiedCameraLaunch {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+  48% {
+    transform: scale(1.085);
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    transform: scale(1.24);
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes lssUnifiedArtworkExit {
+  0%, 48% {
+    opacity: 1;
+    transform: none;
+    filter: brightness(1) saturate(1);
+  }
+  100% {
+    opacity: 0;
+    transform: none;
+    filter: brightness(1.18) saturate(1.08);
+  }
+}
+
+@keyframes lssUnifiedStarsExit {
+  0% {
+    opacity: .28;
+    transform: none;
+    filter: blur(0);
+  }
+  48% {
+    opacity: .58;
+    transform: none;
+    filter: blur(.35px);
+  }
+  100% {
+    opacity: 0;
+    transform: none;
+    filter: blur(1.4px);
+  }
+}
+
+@keyframes lssUnifiedGlowExit {
+  0% { opacity: .12; transform: none; }
+  48% { opacity: .42; transform: none; }
+  100% { opacity: 0; transform: none; }
+}
+
+@keyframes lssUnifiedWarpExit {
+  0% {
+    opacity: 0;
+    transform: scale(.22) rotate(.001deg);
+    filter: blur(1.8px);
+  }
+  48% {
+    opacity: .72;
+    transform: scale(.62) rotate(.001deg);
+    filter: blur(.4px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35) rotate(.001deg);
+    filter: blur(1.4px);
+  }
+}
+
+@keyframes lssSplashClearTogether {
+  0%, 48% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #lss-splash.is-exiting .lss-splash-picture,
+  #lss-splash.is-exiting .lss-page-splash-picture,
+  #lss-page-splash.is-exiting .lss-splash-picture,
+  #lss-page-splash.is-exiting .lss-page-splash-picture,
+  #lss-splash.is-exiting .lss-splash-fx,
+  #lss-page-splash.is-exiting .lss-splash-fx {
+    animation: none;
+  }
+}
