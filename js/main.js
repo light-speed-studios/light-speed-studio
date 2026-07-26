@@ -16,7 +16,6 @@
             <span class="lss-splash-glow"></span>
             <span class="lss-splash-warp"></span>
             <span class="lss-splash-vignette"></span>
-            <span class="lss-splash-flash"></span>
         `;
 
         splash.insertBefore(effects, splash.firstChild);
