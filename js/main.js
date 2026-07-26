@@ -38,7 +38,7 @@
             (isProjectSplash ? 2500 : 2500);
 
         const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const exitDuration = prefersReducedMotion ? 300 : 700;
+        const exitDuration = prefersReducedMotion ? 300 : 650;
         let exitTimer = null;
         let hasClosed = false;
 
