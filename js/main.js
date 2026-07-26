@@ -1,38 +1,45 @@
 // Shared navigation toggle
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.querySelector(".hamburger");
-  const navLinks = document.querySelector(".lss-nav-links");
+/* =======================================================
+   LSS SPLASH SCREEN
+======================================================= */
+(function () {
 
-  if (hamburger && navLinks) {
-    hamburger.addEventListener("click", function () {
-      navLinks.classList.toggle("active");
-    });
-  }
-});
+    function initSplash() {
+        const splash =
+            document.getElementById("lss-page-splash") ||
+            document.getElementById("lss-splash");
 
-document.addEventListener("DOMContentLoaded", function () {
-    const splash =
-        document.getElementById("lss-page-splash") ||
-        document.getElementById("lss-splash");
+        if (!splash) return;
 
-    if (!splash) return;
+        const isProjectSplash = splash.id === "lss-page-splash";
+        const splashDuration =
+            Number(splash.dataset.duration) ||
+            (isProjectSplash ? 2500 : 2500);
 
-    const isProjectSplash = splash.id === "lss-page-splash";
-    const splashDuration = Number(splash.dataset.duration) || (isProjectSplash ? 2500 : 2500);
+        function closeSplash() {
+            if (splash.classList.contains("hide")) return;
 
-    function closeSplash() {
-        if (!splash || splash.classList.contains("hide")) return;
+            splash.classList.add("hide");
 
-        splash.classList.add("hide");
+            setTimeout(() => {
+                splash.remove();
+            }, 500);
+        }
 
-        setTimeout(() => {
-            splash.remove();
-        }, 800);
+        document.addEventListener("pointerdown", closeSplash, { once: true });
+        setTimeout(closeSplash, splashDuration);
     }
 
-    document.addEventListener("pointerdown", closeSplash, { once: true });
-    setTimeout(closeSplash, splashDuration);
-});
+    if (document.getElementById("lss-splash") ||
+        document.getElementById("lss-page-splash")) {
+        initSplash();
+    } else {
+        document.addEventListener("DOMContentLoaded", initSplash, { once: true });
+    }
+
+})();
+
+
 
 (function () {
   const carousel = document.getElementById('heroCarousel');
@@ -680,11 +687,4 @@ document.addEventListener("DOMContentLoaded", () => {
             img.src = `${cleanSrc}?v=${currentVersion}`;
         }
     });
-});
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOMContentLoaded", performance.now());
-});
-
-window.addEventListener("load", () => {
-    console.log("Load", performance.now());
 });
