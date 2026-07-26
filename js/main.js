@@ -681,3 +681,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOMContentLoaded", performance.now());
+});
+
+window.addEventListener("load", () => {
+    console.log("Load", performance.now());
+});
