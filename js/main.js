@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!splash) return;
 
     const isProjectSplash = splash.id === "lss-page-splash";
-    const splashDuration = Number(splash.dataset.duration) || (isProjectSplash ? 3000 : 5200);
+    const splashDuration = Number(splash.dataset.duration) || (isProjectSplash ? 2500 : 2500);
 
     function closeSplash() {
         if (!splash || splash.classList.contains("hide")) return;
