@@ -1155,7 +1155,20 @@
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
       }
     }
-  </style>
+  
+  .ffs-mobile-project-header {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .ffs-mobile-project-header {
+      display: block;
+      width: 98%;
+      height: auto;
+      margin: 0 auto 14px;
+    }
+  }
+</style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
       <span class="ffs-side-nav-line">Back to</span>
@@ -1169,6 +1182,7 @@
   </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
+<img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/the%20flash%20header1.png" alt="The Flash: Crossroads">
 <div class="ffs-title-panel">
 <div class="ffs-title-row">
 <h1 class="ffs-title">The Flash: Crossroads</h1>
