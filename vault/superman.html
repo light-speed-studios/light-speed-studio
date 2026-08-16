@@ -1173,6 +1173,32 @@
       }
     }
   
+
+/* SOUNDTRACK MODAL: RELEASE FROM LINKS PANEL CONTAINMENT */
+.ffs-links-panel:has(.ffs-soundtrack-modal-toggle:checked) {
+  content-visibility: visible !important;
+  contain: none !important;
+  overflow: visible !important;
+}
+
+.ffs-links-panel:has(.ffs-soundtrack-modal-toggle:checked) .ffs-link-stack {
+  contain: none !important;
+  overflow: visible !important;
+}
+
+.ffs-soundtrack-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
+  margin: 0 !important;
+  transform: none !important;
+  contain: none !important;
+  overflow: hidden !important;
+}
+
 /* LANDING PAGE SOUNDTRACK MODAL */
 .ffs-soundtrack-modal-toggle { display: none; }
 .ffs-soundtrack-link { cursor: pointer; }
