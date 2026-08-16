@@ -1166,7 +1166,244 @@
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38);
       }
     }
-  </style>
+  
+
+/* LANDING PAGE SOUNDTRACK MODAL */
+.ffs-soundtrack-modal-toggle { display: none; }
+.ffs-soundtrack-link { cursor: pointer; }
+
+.ffs-soundtrack-modal {
+  --cyan: #00aede;
+  --text-main: #bac7d5;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  display: none;
+  width: 100vw !important;
+  height: 100dvh !important;
+  padding: 72px 28px 48px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  isolation: isolate !important;
+  transform: none !important;
+  contain: none !important;
+  overflow: hidden !important;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
+  display: flex !important;
+}
+
+.ffs-soundtrack-modal-box {
+  position: relative !important;
+  z-index: 2147483647 !important;
+  display: flex;
+  flex-direction: column;
+  width: min(980px, 94vw) !important;
+  max-height: calc(100dvh - 120px) !important;
+  margin: 0 auto !important;
+  background:
+    linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+    rgba(4, 14, 21, 0.96);
+  box-shadow:
+    0 0 34px rgba(0, 174, 222, 0.12),
+    inset 0 0 0 1px rgba(0, 174, 222, 0.28);
+  overflow: hidden;
+}
+
+.ffs-soundtrack-modal-head {
+  flex: 0 0 auto;
+  min-height: 62px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(0, 174, 222, 0.18);
+}
+
+.ffs-soundtrack-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.ffs-soundtrack-modal-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ffs-soundtrack-modal-icon img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 10px rgba(0,174,222,.45))
+    drop-shadow(0 0 22px rgba(0,174,222,.22));
+}
+
+.ffs-soundtrack-modal-title strong {
+  display: block;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-main);
+}
+
+.ffs-soundtrack-modal-title span {
+  display: block;
+  margin-top: 4px;
+  font-size: 17px;
+  color: var(--text-main);
+  opacity: 0.82;
+}
+
+.ffs-soundtrack-modal-close {
+  flex: 0 0 auto;
+  cursor: pointer;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--cyan);
+}
+
+.ffs-soundtrack-modal-content {
+  flex: 1 1 auto;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+  padding: 20px 24px 26px;
+  scrollbar-width: thin;
+  scrollbar-color: #00AEDE rgba(255, 255, 255, 0.08);
+}
+
+.ffs-soundtrack-modal-content-inner {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--text-main);
+}
+
+.ffs-soundtrack-modal-content-inner ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.ffs-soundtrack-modal-content-inner li {
+  margin: 0 0 24px;
+}
+
+.ffs-soundtrack-modal-content-inner li:last-child {
+  margin-bottom: 0;
+}
+
+.ffs-soundtrack-modal-content-inner li > strong {
+  display: block;
+  margin: 0 0 10px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text-main);
+}
+
+.ffs-soundtrack-modal-content-inner p {
+  margin: 0 0 14px;
+}
+
+@media (max-width: 900px) {
+  .ffs-soundtrack-modal {
+    padding: 18px 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .ffs-soundtrack-modal-box {
+    width: 100% !important;
+    height: auto !important;
+    max-height: calc(100dvh - 36px) !important;
+  }
+
+  .ffs-soundtrack-modal-head {
+    min-height: auto;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .ffs-soundtrack-modal-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+  }
+
+  .ffs-soundtrack-modal-icon img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ffs-soundtrack-modal-title strong {
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    line-height: 1.05;
+  }
+
+  .ffs-soundtrack-modal-title span {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+
+  .ffs-soundtrack-modal-close {
+    font-size: 26px;
+    padding: 0 2px;
+  }
+
+  .ffs-soundtrack-modal-content {
+    padding: 10px 10px 28px;
+  }
+
+  .ffs-soundtrack-modal-content-inner {
+    font-size: 13px;
+    line-height: 1.38;
+  }
+
+  .ffs-soundtrack-modal-content-inner ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .ffs-soundtrack-modal-content-inner li {
+    margin: 0 0 8px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.12);
+  }
+
+  .ffs-soundtrack-modal-content-inner li > strong {
+    font-size: 14px;
+    margin-bottom: 6px;
+    line-height: 1.15;
+  }
+
+  .ffs-soundtrack-modal-content-inner p {
+    margin: 0 0 8px;
+  }
+}
+
+</style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
       <span class="ffs-side-nav-line">Back to</span>
@@ -1257,10 +1494,12 @@
 <span>Breakdown</span>
 <strong>Changelog ›</strong>
 </a>
-<a class="ffs-link-card" href="../star-trek-genesis-project-files.html">
-<span>Editor's Notes</span>
-<strong>Project Files ›</strong>
-</a>
+<input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
+
+<label class="ffs-link-card ffs-soundtrack-link" for="ffsLandingSoundtrack">
+  <span>Musical Notes</span>
+  <strong>Soundtrack ›</strong>
+</label>
 <a class="ffs-link-card" href="../star-trek-genesis-movie.html">
 <span>Feature</span>
 <strong>
@@ -1298,5 +1537,45 @@
 </main>
 
 <script src="../js/main.js"></script>
+
+
+<div class="ffs-soundtrack-modal">
+  <div class="ffs-soundtrack-modal-box">
+    <div class="ffs-soundtrack-modal-head">
+      <div class="ffs-soundtrack-modal-header">
+        <div class="ffs-soundtrack-modal-icon">
+          <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
+        </div>
+        <div class="ffs-soundtrack-modal-title">
+          <strong>Soundtrack</strong>
+          <span>One Pulse, Warp Factor 3</span>
+        </div>
+      </div>
+      <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
+    </div>
+
+    <div class="ffs-soundtrack-modal-content">
+      <div class="ffs-soundtrack-modal-content-inner">
+<ul>
+<li><strong>Heroes | Gang of Youths</strong><p>Closing sequences and end credits.</p></li>
+</ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+document.addEventListener("click", function (event) {
+  const modal = event.target.closest(".ffs-soundtrack-modal");
+  if (!modal) return;
+
+  if (event.target === modal) {
+    const toggle = document.getElementById("ffsLandingSoundtrack");
+    if (toggle) toggle.checked = false;
+  }
+});
+</script>
+
 </body>
 </html>
