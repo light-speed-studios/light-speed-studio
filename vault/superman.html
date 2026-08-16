@@ -1215,8 +1215,8 @@
   overflow: hidden;
 }
 
-.ffs-soundtrack-modal-toggle:checked + .ffs-soundtrack-link + .ffs-soundtrack-modal {
-  display: flex;
+body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
+  display: flex !important;
 }
 
 .ffs-soundtrack-modal-box {
@@ -1424,6 +1424,53 @@
   }
 }
 
+
+
+/* FINAL SOUNDTRACK MODAL POSITION / STACKING FIX */
+.ffs-soundtrack-modal {
+  --cyan: #00aede;
+  --text-main: #bac7d5;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 2147483647 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  padding: 72px 28px 48px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  isolation: isolate !important;
+  transform: none !important;
+  contain: none !important;
+  overflow: hidden !important;
+}
+
+.ffs-soundtrack-modal-box {
+  position: relative !important;
+  z-index: 2147483647 !important;
+  width: min(980px, 94vw) !important;
+  max-height: calc(100dvh - 120px) !important;
+  margin: 0 auto !important;
+}
+
+.ffs-soundtrack-modal-content {
+  min-height: 0 !important;
+  overflow-y: auto !important;
+}
+
+@media (max-width: 900px) {
+  .ffs-soundtrack-modal {
+    padding: 18px 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .ffs-soundtrack-modal-box {
+    width: 100% !important;
+    height: auto !important;
+    max-height: calc(100dvh - 36px) !important;
+  }
+}
+
 </style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
@@ -1543,40 +1590,7 @@
       <strong>Soundtrack ›</strong>
     </label>
 
-    <div class="ffs-soundtrack-modal">
-      <div class="ffs-soundtrack-modal-box">
-        <div class="ffs-soundtrack-modal-head">
-          <div class="ffs-soundtrack-modal-header">
-            <div class="ffs-soundtrack-modal-icon">
-              <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
-            </div>
-            <div class="ffs-soundtrack-modal-title">
-              <strong>Soundtrack</strong>
-              <span>The Sound of Hope</span>
-            </div>
-          </div>
-          <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
-        </div>
-
-        <div class="ffs-soundtrack-modal-content">
-          <div class="ffs-soundtrack-modal-content-inner">
-<ul>
-<li><strong>When the Lights Come On | Idles</strong><p>The Hammer’s return to Lex Luthor, intercut with scenes of LuthorCorp Tower.</p></li>
-<li><strong>Inch of Dust (Instrumental) | Future Islands</strong><p>The opening moments of Lois and Clark’s apartment kitchen scene.</p></li>
-<li><strong>The Game Has Changed | Daft Punk (Tron: Legacy OST)</strong><p>Night to day time-lapse as the Kaiju emerges across the city.</p></li>
-<li><strong>Superman & Lois Title Card Song | Blake Neely (Superman & Lois OST)</strong><p>Superman’s flight to the Fortress following the message reveal.</p></li>
-<li><strong>Keepin' The Faith (Just a Touch Mix) | De La Soul</strong><p>The fight between Mr. Terrific and the Lex Raptors.</p></li>
-<li><strong>Three Hops from Anyone | Craig Armstrong (Snowden OST)</strong><p>The reworked Pa Kent speech.</p></li>
-<li><strong>Enter Sandman | Metallica</strong><p>The Justice Gang clash with the Boravian army.</p></li>
-<li><strong>Superman 2 Theme | Ken Thorn</strong><p>A cover variation scoring the bridge rescue and Superman’s speech to Lex.</p></li>
-<li><strong>Look Up (Slowed & Reverb) | Superman 2025</strong><p>The final faceoff between Superman and Lex.</p></li>
-<li><strong>Inch of Dust (Chorus) | Future Islands</strong><p>The final scene between Lois and Clark.</p></li>
-<li><strong>Reunion (Mylo Mix) | M83</strong><p>The closing Superman scenes and end credits.</p></li>
-</ul>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <a class="ffs-link-card" href="../superman-movie.html">
       <span>Feature</span>
@@ -1620,5 +1634,40 @@
 </main>
 
 <script src="../js/main.js"></script>
+
+<div class="ffs-soundtrack-modal">
+      <div class="ffs-soundtrack-modal-box">
+        <div class="ffs-soundtrack-modal-head">
+          <div class="ffs-soundtrack-modal-header">
+            <div class="ffs-soundtrack-modal-icon">
+              <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
+            </div>
+            <div class="ffs-soundtrack-modal-title">
+              <strong>Soundtrack</strong>
+              <span>The Sound of Hope</span>
+            </div>
+          </div>
+          <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
+        </div>
+
+        <div class="ffs-soundtrack-modal-content">
+          <div class="ffs-soundtrack-modal-content-inner">
+<ul>
+<li><strong>When the Lights Come On | Idles</strong><p>The Hammer’s return to Lex Luthor, intercut with scenes of LuthorCorp Tower.</p></li>
+<li><strong>Inch of Dust (Instrumental) | Future Islands</strong><p>The opening moments of Lois and Clark’s apartment kitchen scene.</p></li>
+<li><strong>The Game Has Changed | Daft Punk (Tron: Legacy OST)</strong><p>Night to day time-lapse as the Kaiju emerges across the city.</p></li>
+<li><strong>Superman & Lois Title Card Song | Blake Neely (Superman & Lois OST)</strong><p>Superman’s flight to the Fortress following the message reveal.</p></li>
+<li><strong>Keepin' The Faith (Just a Touch Mix) | De La Soul</strong><p>The fight between Mr. Terrific and the Lex Raptors.</p></li>
+<li><strong>Three Hops from Anyone | Craig Armstrong (Snowden OST)</strong><p>The reworked Pa Kent speech.</p></li>
+<li><strong>Enter Sandman | Metallica</strong><p>The Justice Gang clash with the Boravian army.</p></li>
+<li><strong>Superman 2 Theme | Ken Thorn</strong><p>A cover variation scoring the bridge rescue and Superman’s speech to Lex.</p></li>
+<li><strong>Look Up (Slowed & Reverb) | Superman 2025</strong><p>The final faceoff between Superman and Lex.</p></li>
+<li><strong>Inch of Dust (Chorus) | Future Islands</strong><p>The final scene between Lois and Clark.</p></li>
+<li><strong>Reunion (Mylo Mix) | M83</strong><p>The closing Superman scenes and end credits.</p></li>
+</ul>
+          </div>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
