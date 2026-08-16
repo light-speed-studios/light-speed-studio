@@ -1669,5 +1669,20 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         </div>
       </div>
     </div>
+
+<script>
+document.addEventListener("click", function (event) {
+  const modal = event.target.closest(".ffs-soundtrack-modal");
+  if (!modal) return;
+
+  /* Only close when the dark backdrop itself is clicked,
+     not when clicking anywhere inside the modal window. */
+  if (event.target === modal) {
+    const toggle = document.getElementById("ffsLandingSoundtrack");
+    if (toggle) toggle.checked = false;
+  }
+});
+</script>
+
 </body>
 </html>
