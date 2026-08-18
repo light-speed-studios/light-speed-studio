@@ -1,22 +1,12 @@
 /* =======================================================
-   GOOGLE ANALYTICS 4
+   GOATCOUNTER
 ======================================================= */
 (function () {
-  const GA_ID = "G-DFPL9GX90X";
-
-  window.dataLayer = window.dataLayer || [];
-
-  window.gtag = function () {
-    window.dataLayer.push(arguments);
-  };
-
-  gtag("js", new Date());
-  gtag("config", GA_ID);
-
-  const gaScript = document.createElement("script");
-  gaScript.async = true;
-  gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-  document.head.appendChild(gaScript);
+  const goatScript = document.createElement("script");
+  goatScript.async = true;
+  goatScript.dataset.goatcounter = "https://lsstudios.goatcounter.com/count";
+  goatScript.src = "https://gc.zgo.at/count.js";
+  document.head.appendChild(goatScript);
 })();
 
 // Shared navigation toggle
