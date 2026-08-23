@@ -5290,16 +5290,24 @@ body.lss-home-progress::-webkit-scrollbar {
   .lss-home-scroll-progress-fill {
     transition: none !important;
   }
-}
 #lss-splash,
 #lss-page-splash {
-  opacity: 0;
-  animation: lssSplashFadeIn 0.6s ease forwards;
+  opacity: 1;
 }
 
-@keyframes lssSplashFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+#lss-splash .lss-splash-image,
+#lss-page-splash .lss-page-splash-image {
+  animation: lssSplashPushIn 0.5s ease-out both;
+}
+
+@keyframes lssSplashPushIn {
+  from {
+    transform: scale(1.025);
+  }
+
+  to {
+    transform: scale(1);
+  }
 }
 
 #lss-splash.is-exiting,
