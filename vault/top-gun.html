@@ -1412,6 +1412,143 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 }
 
+
+
+/* =======================================================
+   PROJECT CTA TILES
+   Changelog / Soundtrack / Watch Movie
+======================================================= */
+.ffs-cta-panel {
+  padding: 14px;
+}
+
+.ffs-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ffs-cta-tile {
+  position: relative;
+  min-height: 122px;
+  padding: 18px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--cyan);
+  background:
+    linear-gradient(180deg, rgba(0, 174, 222, 0.07), rgba(255, 255, 255, 0.018)),
+    rgba(4, 14, 21, 0.72);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+}
+
+.ffs-cta-tile::before {
+  content: none;
+}
+
+.ffs-cta-tile::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  height: 2px;
+  background: var(--cyan);
+  opacity: .65;
+  box-shadow: 0 0 12px rgba(0, 174, 222, .6);
+  transform: scaleX(.72);
+  transition: transform .22s ease, opacity .22s ease;
+}
+
+.ffs-cta-icon {
+  position: relative;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  filter:
+    drop-shadow(0 0 8px rgba(0, 174, 222, .34))
+    drop-shadow(0 0 18px rgba(0, 174, 222, .16));
+}
+
+.ffs-cta-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ffs-cta-tile strong {
+  position: relative;
+  z-index: 1;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--cyan);
+  white-space: nowrap;
+}
+
+.ffs-cta-tile:hover {
+  transform: translateY(-3px);
+  background:
+    linear-gradient(180deg, rgba(0, 174, 222, .14), rgba(255, 255, 255, .028)),
+    rgba(4, 14, 21, .82);
+  box-shadow:
+    0 0 26px rgba(0, 174, 222, .15),
+    0 12px 30px rgba(0, 0, 0, .24);
+}
+
+.ffs-cta-tile:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@media (max-width: 900px) {
+  .ffs-cta-panel {
+    margin-top: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .ffs-cta-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .ffs-cta-tile {
+    min-height: 82px;
+    padding: 10px 5px 9px;
+    gap: 6px;
+  }
+
+  .ffs-cta-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .ffs-cta-tile strong {
+    font-size: clamp(8px, 2.35vw, 10px);
+    letter-spacing: .06em;
+  }
+}
+
 </style>
 
     <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
@@ -1518,29 +1655,43 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </div>
       </div>
 
-      <div class="ffs-links-panel">
-  <div class="ffs-link-stack"><a class="ffs-link-card" href="../top-gun-ascension-changelog.html">
-      <span>Breakdown</span>
-      <strong>Changelog ›</strong>
-    </a>
+      <div class="ffs-links-panel ffs-cta-panel">
+<input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
 
-    <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
+<div class="ffs-cta-grid">
+  <a class="ffs-cta-tile" href="../top-gun-ascension-changelog.html">
+    <span class="ffs-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64">
+        <rect x="15" y="12" width="34" height="40" rx="2"></rect>
+        <path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
+      </svg>
+    </span>
+    <strong>Changelog</strong>
+  </a>
 
-<label class="ffs-link-card ffs-soundtrack-link" for="ffsLandingSoundtrack">
-  <span>Musical Notes</span>
-  <strong>Soundtrack ›</strong>
-</label>
+  <label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
+    <span class="ffs-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64">
+        <path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
+      </svg>
+    </span>
+    <strong>Soundtrack</strong>
+  </label>
 
-    <a class="ffs-link-card" href="../top-gun-ascension-movie.html">
-      <span>Feature</span>
-  <strong>
-  <span class="ffs-desktop-link-text">Watch Movie ›</span>
-  <span class="ffs-mobile-link-text">Feature ›</span>
-</strong>
-    </a>
+  <a class="ffs-cta-tile" href="../top-gun-ascension-movie.html">
+    <span class="ffs-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64">
+        <rect x="16" y="24" width="30" height="22" rx="3"></rect>
+        <circle cx="25" cy="35" r="5"></circle>
+        <circle cx="38" cy="35" r="5"></circle>
+        <path d="M46 30l10-6v22l-10-6z"></path>
+        <path d="M22 46l-4 8M40 46l4 8"></path>
+      </svg>
+    </span>
+    <strong>Watch Movie</strong>
+  </a>
 </div>
 </div>
-
 <div class="ffs-trailer-section">
         <div class="ffs-trailer-header">
           <h2>Trailer</h2>
