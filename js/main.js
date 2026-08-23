@@ -39,7 +39,7 @@
             window.setTimeout(() => {
                 splash.remove();
                 document.documentElement.classList.remove("lss-splash-active");
-            }, 300);
+            }, 600);
         }
 
         document.addEventListener("pointerdown", closeSplash, { once: true });
