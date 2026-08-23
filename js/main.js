@@ -11,27 +11,9 @@
 
 // Shared navigation toggle
 /* =======================================================
-   LSS CINEMATIC LIGHT-SPEED SPLASH SCREEN
+   LSS STATIC SPLASH SCREEN
 ======================================================= */
 (function () {
-
-    function ensureSplashEffects(splash) {
-        if (splash.querySelector(".lss-splash-fx")) return;
-
-        const effects = document.createElement("div");
-        effects.className = "lss-splash-fx";
-        effects.setAttribute("aria-hidden", "true");
-        effects.innerHTML = `
-            <span class="lss-splash-starfield lss-splash-starfield--one"></span>
-            <span class="lss-splash-starfield lss-splash-starfield--two"></span>
-            <span class="lss-splash-glow"></span>
-            <span class="lss-splash-warp"></span>
-            <span class="lss-splash-vignette"></span>
-        `;
-
-        splash.insertBefore(effects, splash.firstChild);
-    }
-
     function initSplash() {
         const splash =
             document.getElementById("lss-page-splash") ||
@@ -40,16 +22,9 @@
         if (!splash || splash.dataset.splashReady === "true") return;
 
         splash.dataset.splashReady = "true";
-        ensureSplashEffects(splash);
         document.documentElement.classList.add("lss-splash-active");
 
-        const isProjectSplash = splash.id === "lss-page-splash";
-        const splashDuration =
-            Number(splash.dataset.duration) ||
-            (isProjectSplash ? 2500 : 2500);
-
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        const exitDuration = prefersReducedMotion ? 300 : 650;
+        const splashDuration = Number(splash.dataset.duration) || 2500;
         let exitTimer = null;
         let hasClosed = false;
 
@@ -64,7 +39,7 @@
             window.setTimeout(() => {
                 splash.remove();
                 document.documentElement.classList.remove("lss-splash-active");
-            }, exitDuration);
+            }, 300);
         }
 
         document.addEventListener("pointerdown", closeSplash, { once: true });
@@ -77,7 +52,6 @@
     } else {
         document.addEventListener("DOMContentLoaded", initSplash, { once: true });
     }
-
 })();
 
 
