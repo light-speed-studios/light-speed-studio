@@ -1611,16 +1611,18 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 /* VERSION 2 / UPDATED COLOR GRADING */
 .ffs-color-grade-modal-toggle { display:none; }
-.ffs-version-note {
-  margin:-38px 0 28px;
-  font-family:Oxanium,Rajdhani,Arial,sans-serif;
-  font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--text-main);
+.ffs-color-grade-box {
+  cursor: pointer;
+  transition: background .2s ease, box-shadow .2s ease;
 }
-.ffs-version-note label {
-  cursor:pointer;color:var(--cyan);text-decoration:underline;
-  text-decoration-thickness:1px;text-underline-offset:4px;
+
+.ffs-color-grade-box:hover {
+  background: rgba(0,174,222,.06);
+  box-shadow:
+    inset 0 0 0 1px rgba(0,174,222,.22),
+    0 0 18px rgba(0,174,222,.06);
 }
-.ffs-version-note label:hover { color:#7beaff; text-shadow:0 0 12px rgba(0,174,222,.32); }
+
 .ffs-color-grade-modal {
   --cyan:#00aede;--text-main:#bac7d5;
   position:fixed!important;inset:0!important;z-index:2147483647!important;
@@ -1658,7 +1660,6 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 .ffs-color-grade-list li:last-child { margin-bottom:0; }
 .ffs-color-grade-list strong { color:var(--text-main);font-weight:800; }
 @media(max-width:900px){
-  .ffs-version-note{margin:-10px 0 18px;font-size:12px}
   .ffs-color-grade-modal{padding:18px 10px!important}
   .ffs-color-grade-modal-box{width:100%!important;height:auto!important;max-height:calc(100dvh - 36px)!important}
   .ffs-color-grade-modal-head{min-height:auto;padding:12px}
@@ -1764,9 +1765,10 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 </div>
 
 <input class="ffs-color-grade-modal-toggle" type="checkbox" id="ffsColorGradeModal">
-<div class="ffs-version-note">
-  <span>Version 2 - </span><label for="ffsColorGradeModal">Updated Color Grading</label>
-</div>
+<label class="ffs-approach-box ffs-color-grade-box" for="ffsColorGradeModal">
+  <span>Version 2</span>
+  <strong>Updated Color Grading</strong>
+</label>
 
 <div class="ffs-approach-box">
   <span>Edit Approach</span>
@@ -1895,13 +1897,13 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
       <label class="ffs-color-grade-modal-close" for="ffsColorGradeModal">×</label>
     </div>
     <div class="ffs-color-grade-modal-content">
-      <ol class="ffs-color-grade-list">
+      <ul class="ffs-color-grade-list">
         <li><strong>Deepened blacks and increased contrast</strong> to give the image greater depth, definition, and dimensionality.</li>
         <li><strong>Enriched the color palette</strong> with stronger blues, deeper reds, and more natural skin tones while retaining the film’s vibrant comic-book character.</li>
         <li><strong>Shifted Superman’s cape and suit reds toward deeper crimson tones</strong> for a richer, more cinematic appearance.</li>
         <li><strong>Introduced warmer highlights and refined cooler tones</strong> to create stronger separation between characters, environments, and lighting.</li>
         <li><strong>Reduced the washed-out appearance of the theatrical grade</strong> while preserving bright daylight, colorful environments, and the film’s optimistic visual identity.</li>
-      </ol>
+      </ul>
     </div>
   </div>
 </div>
