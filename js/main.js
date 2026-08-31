@@ -211,16 +211,9 @@ window.addEventListener("load", function () {
     });
   }
 
-  function getVaultStep() {
-    const item = track.querySelector(cardSelector);
-    if (!item) return 0;
-
-    const trackStyles = getComputedStyle(track);
-    const gap = parseFloat(trackStyles.columnGap || trackStyles.gap) || 0;
-
-    return item.getBoundingClientRect().width + gap;
-  }
-
+function getVaultStep() {
+  return track.clientWidth / getPostersPerJump();
+}
   function scrollToVaultPage(page) {
     const pageCount = getVaultPageCount();
     currentVaultPage = ((page % pageCount) + pageCount) % pageCount;
