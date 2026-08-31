@@ -239,14 +239,14 @@
   pointer-events: none;
 
   background:
-    linear-gradient(
-      to bottom,
-      var(--site-bg) 0%,
-      var(--bg-85) 4%,
-      var(--bg-45) 10%,
-      var(--bg-15) 16%,
-      var(--bg-00) 24%
-    ),
+linear-gradient(
+  to bottom,
+  var(--site-bg) 0%,
+  var(--bg-85) 10%,
+  var(--bg-45) 18%,
+  var(--bg-15) 26%,
+  var(--bg-00) 35%
+),
 linear-gradient(
   to right,
   var(--site-bg) 0%,
