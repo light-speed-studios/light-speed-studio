@@ -262,14 +262,15 @@ linear-gradient(
   var(--bg-70) 86%,
   var(--bg-85) 93%,
   var(--site-bg) 100%
-),    linear-gradient(
-      to top,
-      var(--site-bg) 0%,
-      var(--bg-85) 4%,
-      var(--bg-45) 10%,
-      var(--bg-15) 16%,
-      var(--bg-00) 24%
-    );
+),   
+    linear-gradient(
+  to top,
+  var(--site-bg) 0%,
+  var(--bg-85) 10%,
+  var(--bg-45) 18%,
+  var(--bg-15) 26%,
+  var(--bg-00) 35%
+);
 }
 .orbit-image-frame::before {
   content: "";
