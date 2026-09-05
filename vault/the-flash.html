@@ -1542,6 +1542,103 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 }
 
+
+
+/* =======================================================
+   DESKTOP PROJECT COMPOSITION
+   Poster + edit details left / title + synopsis + palette right
+======================================================= */
+@media (min-width: 901px) {
+  .ffs-desktop-composition {
+    display: grid;
+    grid-template-columns: 430px minmax(0, 1fr);
+    gap: 34px;
+    align-items: stretch;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ffs-left-column {
+    gap: 18px;
+  }
+
+  .ffs-right-column {
+    gap: 18px;
+  }
+
+  .ffs-title-panel,
+  .ffs-palette-wrap,
+  .ffs-approach-box,
+  .ffs-working-title {
+    margin: 0;
+  }
+
+  .ffs-poster-panel {
+    height: auto;
+  }
+
+  .ffs-poster-click {
+    display: block;
+    flex: none;
+  }
+
+  .ffs-poster {
+    width: 100%;
+    height: auto;
+    flex: none;
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  .ffs-info-panel {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    padding: 34px;
+  }
+
+  .ffs-synopsis {
+    margin: 0;
+  }
+
+  .ffs-palette-wrap {
+    flex: 0 0 auto;
+    padding: 10px;
+  }
+
+  .ffs-palette {
+    height: 110px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ffs-desktop-composition {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column {
+    display: contents;
+  }
+
+  .ffs-poster-panel { order: 1; }
+  .ffs-mobile-meta { order: 2; }
+  .ffs-info-panel { order: 3; }
+  .ffs-working-title { order: 4; }
+
+  .ffs-title-panel,
+  .ffs-palette-wrap,
+  .ffs-approach-box {
+    display: none !important;
+  }
+}
+
 </style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
@@ -1557,76 +1654,69 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-shell">
 <div class="ffs-project-block">
 <img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/the%20flash%20header1.png" alt="The Flash: Crossroads">
-<div class="ffs-title-panel">
-<div class="ffs-title-row">
-<h1 class="ffs-title">The Flash: Crossroads</h1>
-<img alt="Light Speed Studios logo" class="ffs-title-logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
-</div>
-<div class="ffs-meta-row ffs-desktop-meta">
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
-    <span class="ffs-meta-value">The Flash 2023</span></div>
+<div class="ffs-main-grid ffs-desktop-composition">
+  <div class="ffs-left-column">
+    <div class="ffs-poster-panel">
+      <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
+      <label class="ffs-poster-click" for="ffsPosterToggle">
+        <img alt="The Flash: Crossroads poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/theflashposterCross.png"/>
+        <img alt="The Flash: Crossroads mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/flashpostermob1.png"/>
+      </label>
+      <label class="ffs-poster-expand" for="ffsPosterToggle">
+        <span>Click to Enlarge</span>
+      </label>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
-    <span class="ffs-meta-value">117 min</span></div>
+    <div class="ffs-mobile-meta">
+      <div class="ffs-meta-row">
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
+          <span class="ffs-meta-value">117 min</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
+          <span class="ffs-meta-value">20 Sep 2023</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
+          <span class="ffs-meta-value">The Flash 2023</span></div>
+      </div>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span>
-    <span class="ffs-meta-value">144 min</span></div>
+    <div class="ffs-approach-box">
+      <span>Edit Approach</span>
+      <strong>Character Reconstruction | Musical Overhaul | Story Restructure</strong>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-    <span class="ffs-meta-value">20 Sep 2023</span></div>
+    <div class="ffs-working-title">
+      <span>Working Title</span>
+      <strong>The Flash: Out of Time</strong>
+    </div>
+  </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
-    <span class="ffs-meta-value">1.85:1</span></div>
+  <div class="ffs-right-column">
+    <div class="ffs-title-panel">
+      <div class="ffs-title-row">
+        <h1 class="ffs-title">The Flash: Crossroads</h1>
+        <img alt="Light Speed Studios logo" class="ffs-title-logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+      </div>
+      <div class="ffs-meta-row ffs-desktop-meta">
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span><span class="ffs-meta-value">The Flash 2023</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span><span class="ffs-meta-value">117 min</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span><span class="ffs-meta-value">144 min</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 Sep 2023</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.85:1</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Category</span><span class="ffs-meta-value">Age of Heroes</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">File Size</span><span class="ffs-meta-value">12 GB</span></div>
+      </div>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Category</span>
-    <span class="ffs-meta-value">Age of Heroes</span></div>
+    <div class="ffs-info-panel">
+      <p class="ffs-section-label">Synopsis</p>
+      <div class="ffs-synopsis">
+        <p>A story about grief and learning to let go. Barry’s journey is refocused around the cost of holding on. No roommates. No cameos. Dark Flash’s role is reworked to bring Barry’s journey back full circle.</p>
+      </div>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">File Size</span>
-    <span class="ffs-meta-value">12 GB</span></div>
-</div>
-</div>
-<div class="ffs-palette-wrap">
-<img alt="The Flash: Crossroads color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Flash%20Pallete.png"/>
-</div>
-<div class="ffs-main-grid">
-<div class="ffs-poster-panel">
-<input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
-<label class="ffs-poster-click" for="ffsPosterToggle">
-<img alt="The Flash: Crossroads poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/theflashposterCross.png"/>
-<img alt="The Flash: Crossroads mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/flashpostermob1.png"/>
-</label>
-<label class="ffs-poster-expand" for="ffsPosterToggle">
-<span>Click to Enlarge</span>
-</label>
-</div>
-<div class="ffs-mobile-meta">
-<div class="ffs-meta-row">
-            <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
-              <span class="ffs-meta-value">117 min</span></div>
-
-            <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-              <span class="ffs-meta-value">20 Sep 2023</span></div>
-
-            <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
-              <span class="ffs-meta-value">The Flash 2023</span></div>
-</div>
-</div>
-<div class="ffs-info-panel">
-<p class="ffs-section-label">Synopsis</p>
-<div class="ffs-synopsis">
-<p>
-    A story about grief and learning to let go. Barry’s journey is refocused around the cost of holding on. No roommates. No cameos. Dark Flash’s role is reworked to bring Barry’s journey back full circle.
-  </p>
-</div>
-<div class="ffs-approach-box">
-<span>Edit Approach</span>
-<strong>Character Reconstruction | Musical Overhaul | Story Restructure</strong>
-</div>
-<div class="ffs-working-title">
-<span>Working Title</span>
-<strong>The Flash: Out of Time</strong>
-</div>
-</div>
+    <div class="ffs-palette-wrap">
+      <img alt="The Flash: Crossroads color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Flash%20Pallete.png"/>
+    </div>
+  </div>
 </div>
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
