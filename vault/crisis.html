@@ -1543,6 +1543,185 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 }
 
+
+
+/* =======================================================
+   DESKTOP PROJECT COMPOSITION
+   Shared landing-page desktop composition
+======================================================= */
+@media (min-width: 901px) {
+  .ffs-page { padding-top: 25px; }
+
+  .ffs-desktop-composition {
+    display: grid;
+    grid-template-columns: 410px minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 32px;
+    row-gap: 15px;
+    align-items: stretch;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column {
+    display: contents;
+  }
+
+  .ffs-poster-panel {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ffs-poster-click {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .ffs-poster {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  .ffs-working-title {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+  }
+
+  .ffs-title-panel {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding: 16px 23px 15px;
+  }
+
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 1px;
+  }
+
+  .ffs-title-tagline {
+    margin: 0;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text-soft);
+  }
+
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: 14px;
+  }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 44px;
+    padding: 6px 8px;
+  }
+
+  .ffs-info-panel {
+    grid-column: 2;
+    grid-row: 2;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 29px 32px;
+  }
+
+  .ffs-palette-wrap {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  /* Same cyan corner treatment used on the other desktop modules */
+  .ffs-palette-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    opacity: .72;
+  }
+
+  .ffs-palette {
+    position: relative;
+    z-index: 1;
+    height: 97px;
+  }
+
+  .ffs-right-column .ffs-title {
+    font-size: clamp(32px, 3.05vw, 44px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* Five desktop metadata cards after removing Category + File Size */
+  .ffs-right-column .ffs-title-panel .ffs-meta-row {
+    grid-template-columns: 1.35fr .82fr 1fr 1fr .9fr;
+  }
+
+  /* +2px from the previous 26px desktop synopsis size */
+  .ffs-info-panel .ffs-synopsis p {
+    font-size: 26px;
+  }
+
+  .ffs-synopsis {
+    margin: 0;
+  }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: 26px 0 0;
+    padding: 15px 17px;
+  }
+
+  .ffs-info-panel .ffs-working-title strong {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ffs-desktop-composition {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column {
+    display: contents;
+  }
+
+  .ffs-poster-panel { order: 1; }
+  .ffs-mobile-meta { order: 2; }
+  .ffs-info-panel { order: 3; }
+
+  .ffs-title-panel,
+  .ffs-palette-wrap,
+  .ffs-approach-box {
+    display: none !important;
+  }
+}
+
+
 </style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
@@ -1558,76 +1737,63 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-shell">
 <div class="ffs-project-block">
 <img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/crisis-header2.png" alt="Crisis: Red Skies">
-<div class="ffs-title-panel">
-<div class="ffs-title-row">
-<h1 class="ffs-title">Crisis: Red Skies</h1>
-<img alt="Light Speed Studios logo" class="ffs-title-logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
-</div>
-<div class="ffs-meta-row ffs-desktop-meta">
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
-    <span class="ffs-meta-value">Crisis on Earth-X 2017</span></div>
+<div class="ffs-main-grid ffs-desktop-composition">
+  <div class="ffs-left-column">
+    <div class="ffs-poster-panel">
+      <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
+      <label class="ffs-poster-click" for="ffsPosterToggle">
+        <img alt="Crisis Red Skies poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/crisipostermob.png"/>
+        <img alt="Crisis Red Skies mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/crisiposter.png"/>
+      </label>
+      <label class="ffs-poster-expand" for="ffsPosterToggle">
+        <span>Click to Enlarge</span>
+      </label>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
-    <span class="ffs-meta-value">124 min</span></div>
+    <div class="ffs-mobile-meta">
+      <div class="ffs-meta-row">
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
+          <span class="ffs-meta-value">124 min</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
+          <span class="ffs-meta-value">11 Apr 2026</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
+          <span class="ffs-meta-value">Crisis on Earth-X 2017</span></div>
+      </div>
+    </div>
+  </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span>
-    <span class="ffs-meta-value">166 min</span></div>
+  <div class="ffs-right-column">
+    <div class="ffs-title-panel">
+      <div class="ffs-title-row">
+        <h1 class="ffs-title">Crisis: Red Skies</h1>
+        <img alt="Light Speed Studios logo" class="ffs-title-logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+      </div>
+      <p class="ffs-title-tagline">Two Worlds. One Stand.</p>
+      <div class="ffs-meta-row ffs-desktop-meta">
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span><span class="ffs-meta-value">Crisis on Earth-X 2017</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span><span class="ffs-meta-value">124 min</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">166 min</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">11 Apr 2026</span></div>
+        <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">2.00:1</span></div>
+      </div>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-    <span class="ffs-meta-value">11 Apr 2026</span></div>
+    <div class="ffs-info-panel">
+      <p class="ffs-section-label">Synopsis</p>
+      <div class="ffs-synopsis">
+        <p>A crossover restructured into a tight uninterrupted story. Less exposition. Less melodrama. The focus stays on the threat, letting the story play out without distracting subplots.</p>
+      </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
-    <span class="ffs-meta-value">2.00:1</span></div>
+      <div class="ffs-working-title">
+        <span>Working Title</span>
+        <strong>Crisis on Two Worlds</strong>
+      </div>
+    </div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Category</span>
-    <span class="ffs-meta-value">Age of Heroes</span></div>
-
-  <div class="ffs-meta-card"><span class="ffs-meta-label">File Size</span>
-    <span class="ffs-meta-value">2.8 GB</span></div>
-</div>
-</div>
-<div class="ffs-palette-wrap">
-<img alt="Crisis Red Skies color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/CrisisPalette.png"/>
-</div>
-<div class="ffs-main-grid">
-<div class="ffs-poster-panel">
-<input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
-<label class="ffs-poster-click" for="ffsPosterToggle">
-<img alt="Crisis Red Skies poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/crisipostermob.png"/>
-<img alt="Crisis Red Skies mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/crisiposter.png"/>
-</label>
-<label class="ffs-poster-expand" for="ffsPosterToggle">
-<span>Click to Enlarge</span>
-</label>
-</div>
-<div class="ffs-mobile-meta">
-<div class="ffs-meta-row">
-            <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
-              <span class="ffs-meta-value">124 min</span></div>
-
-            <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-              <span class="ffs-meta-value">11 Apr 2026</span></div>
-
-            <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
-              <span class="ffs-meta-value">Crisis on Earth-X 2017</span></div>
-</div>
-</div>
-<div class="ffs-info-panel">
-<p class="ffs-section-label">Synopsis</p>
-<div class="ffs-synopsis">
-<p>
-    A crossover restructured into a tight uninterrupted story. Less exposition. Less melodrama. The focus stays on the threat, letting the story play out without distracting subplots.
-  </p>
-</div>
-<div class="ffs-approach-box">
-<span>Edit Approach</span>
-<strong>Event Consolidation / Reveal Restructure / Tone Enhancement</strong>
-</div>
-<div class="ffs-working-title">
-<span>Working Title</span>
-<strong>Crisis on Two Worlds</strong>
-</div>
-</div>
+    <div class="ffs-palette-wrap">
+      <img alt="Crisis Red Skies color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/CrisisPalette.png"/>
+    </div>
+  </div>
 </div>
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
