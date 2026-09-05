@@ -1540,6 +1540,140 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 }
 
+
+/* =======================================================
+   SHARED DESKTOP PROJECT COMPOSITION — BATMAN REFERENCE
+   ======================================================= */
+@media (min-width: 901px) {
+  .ffs-page { padding-top: 25px; }
+
+  .ffs-desktop-composition {
+    display: grid;
+    grid-template-columns: 410px minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 32px;
+    row-gap: 15px;
+    align-items: stretch;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column { display: contents; }
+
+  .ffs-poster-panel {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ffs-poster-click {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .ffs-poster {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  .ffs-title-panel {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding: 16px 23px 15px;
+  }
+
+  .ffs-title-panel .ffs-title-row { margin-bottom: 4px; }
+
+  .ffs-title-tagline {
+    margin: 0;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text-soft);
+  }
+
+  .ffs-title-panel .ffs-meta-row { margin-top: 15px; }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 46px;
+    padding: 6px 8px;
+  }
+
+  .ffs-info-panel {
+    grid-column: 2;
+    grid-row: 2;
+    height: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 29px 32px;
+  }
+
+  .ffs-palette-wrap {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .ffs-palette {
+    position: relative;
+    z-index: 1;
+    height: 97px;
+  }
+
+  .ffs-right-column .ffs-title {
+    font-size: clamp(32px, 3.05vw, 44px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .ffs-right-column .ffs-title-panel .ffs-meta-row {
+    grid-template-columns: 1.35fr .82fr 1fr 1fr .9fr;
+  }
+
+  .ffs-info-panel .ffs-synopsis p { font-size: 26px; }
+  .ffs-synopsis { margin: 0; }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: 26px 0 0;
+    padding: 15px 17px;
+  }
+
+  .ffs-info-panel .ffs-working-title strong { font-size: 22px; }
+}
+
+@media (max-width: 900px) {
+  .ffs-desktop-composition {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column { display: contents; }
+
+  .ffs-poster-panel { order: 1; }
+  .ffs-mobile-meta { order: 2; }
+  .ffs-info-panel { order: 3; }
+
+  .ffs-title-panel,
+  .ffs-palette-wrap,
+  .ffs-approach-box {
+    display: none !important;
+  }
+}
+
 </style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
@@ -1555,11 +1689,26 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-shell">
 <div class="ffs-project-block">
 <img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/rogueone-header11.png" alt="Rogue One: The Scarif Run" decoding="async" fetchpriority="high"/>
+<div class="ffs-desktop-composition">
+<div class="ffs-left-column">
+<div class="ffs-poster-panel">
+<input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
+<label class="ffs-poster-click" for="ffsPosterToggle">
+<img alt="Rogue One: The Scarif Run poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/rogueoneSRposter.png"/>
+<img alt="Rogue One: The Scarif Run mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/rogueoneSRpostermob.png"/>
+</label>
+<label class="ffs-poster-expand" for="ffsPosterToggle">
+<span>Click to Enlarge</span>
+</label>
+</div>
+</div>
+<div class="ffs-right-column">
 <div class="ffs-title-panel">
 <div class="ffs-title-row">
 <h1 class="ffs-title">Rogue One: The Scarif Run</h1>
 <img alt="Light Speed Studios logo" class="ffs-title-logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
 </div>
+<p class="ffs-title-tagline">Rebellions are Built on Sacrifice</p>
 <div class="ffs-meta-row ffs-desktop-meta">
   <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
     <span class="ffs-meta-value">Rogue One 2016</span></div>
@@ -1575,27 +1724,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
   <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
     <span class="ffs-meta-value">2.39:1</span></div>
-
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Category</span>
-    <span class="ffs-meta-value">Future Worlds</span></div>
-
-  <div class="ffs-meta-card"><span class="ffs-meta-label">File Size</span>
-    <span class="ffs-meta-value">3.2 GB</span></div>
 </div>
-</div>
-<div class="ffs-palette-wrap">
-<img alt="Rogue One: The Scarif Run color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Rogue%20one%20Pallete.png"/>
-</div>
-<div class="ffs-main-grid">
-<div class="ffs-poster-panel">
-<input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
-<label class="ffs-poster-click" for="ffsPosterToggle">
-<img alt="Rogue One: The Scarif Run poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/rogueoneSRposter.png"/>
-<img alt="Rogue One: The Scarif Run mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/rogueoneSRpostermob.png"/>
-</label>
-<label class="ffs-poster-expand" for="ffsPosterToggle">
-<span>Click to Enlarge</span>
-</label>
 </div>
 <div class="ffs-mobile-meta">
 <div class="ffs-meta-row">
@@ -1616,14 +1745,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     A story about the inevitability of sacrifice. Keeping focus on the heroes, this edit reveals itself through Jyn’s perspective. With refined legacy characters, The Scarif Run centers around the cost of war.
   </p>
 </div>
-<div class="ffs-approach-box">
-<span>Edit Approach</span>
-<strong>Conflict Enhancement / Emotional Core / Story Streamlining</strong>
-</div>
 <div class="ffs-working-title">
 <span>Working Title</span>
 <strong>Rogue One: Battle at Scarif</strong>
 </div>
+</div>
+</div>
+<div class="ffs-palette-wrap">
+<img alt="Rogue One: The Scarif Run color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Rogue%20one%20Pallete.png"/>
 </div>
 </div>
 <div class="ffs-links-panel ffs-cta-panel">
