@@ -1418,7 +1418,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-desktop-composition {
     display: grid;
     grid-template-columns: 410px minmax(0, 1fr);
-    grid-template-rows: 190px 340px auto;
+    grid-template-rows: auto auto auto;
     column-gap: 32px;
     row-gap: 15px;
     align-items: stretch;
@@ -1455,13 +1455,12 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-title-panel {
     grid-column: 2;
     grid-row: 1;
-    height: 100%;
     margin: 0;
     padding: 16px 23px 15px;
     overflow: hidden;
   }
 
-  .ffs-title-panel .ffs-title-row { margin-bottom: 4px; }
+  .ffs-title-panel .ffs-title-row { margin-bottom: 1px; }
 
   .ffs-title-tagline {
     margin: 0;
@@ -1472,23 +1471,20 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     color: var(--text-soft);
   }
 
-  .ffs-title-panel .ffs-meta-row { margin-top: 15px; }
+  .ffs-title-panel .ffs-meta-row { margin-top: 14px; }
 
   .ffs-title-panel .ffs-meta-card {
-    min-height: 46px;
+    min-height: 44px;
     padding: 6px 8px;
   }
 
   .ffs-info-panel {
     grid-column: 2;
     grid-row: 2;
-    height: 100%;
+    height: auto;
     min-height: 0;
     margin: 0;
     padding: 29px 32px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
   }
 
   .ffs-palette-wrap {
@@ -1520,7 +1516,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-synopsis { margin: 0; }
 
   .ffs-info-panel .ffs-working-title {
-    margin: auto 0 0;
+    margin: 26px 0 0;
     padding: 15px 17px;
   }
 
@@ -1589,7 +1585,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
     <span class="ffs-meta-value">107 min</span></div>
 
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span>
     <span class="ffs-meta-value">127 min</span></div>
 
   <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
