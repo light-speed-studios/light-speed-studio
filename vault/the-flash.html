@@ -1549,12 +1549,24 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
    Poster spans Title + Synopsis / Working Title aligns with Palette
 ======================================================= */
 @media (min-width: 901px) {
+  /* STATIC BATMAN-BASE MODULE SIZING */
+  .ffs-title-panel,
+  .ffs-info-panel {
+    overflow: hidden;
+  }
+
+  .ffs-info-panel {
+    display: flex;
+    flex-direction: column;
+  }
+
+
   .ffs-page { padding-top: 25px; }
 
   .ffs-desktop-composition {
     display: grid;
     grid-template-columns: 410px minmax(0, 1fr);
-    grid-template-rows: auto auto auto;
+    grid-template-rows: 168px 340px auto;
     column-gap: 32px;
     row-gap: 15px;
     align-items: stretch;
@@ -1599,6 +1611,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-title-panel {
     grid-column: 2;
     grid-row: 1;
+    height: 100%;
     margin: 0;
     padding: 16px 23px 15px;
   }
@@ -1628,7 +1641,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-info-panel {
     grid-column: 2;
     grid-row: 2;
-    height: auto;
+    height: 100%;
     min-height: 0;
     margin: 0;
     padding: 29px 32px;
@@ -1689,7 +1702,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-info-panel .ffs-working-title {
-    margin: 26px 0 0;
+    margin: auto 0 0;
     padding: 15px 17px;
   }
 
