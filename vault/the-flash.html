@@ -141,18 +141,11 @@
     }
 
     .ffs-title-panel {
-  position: relative;
-  margin-bottom: 28px;
-  padding: 26px 34px 26px;
-      background:
-        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
-        var(--panel-bg);
-      box-shadow:
-        0 0 34px rgba(0, 0, 0, 0.25),
-        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
-      overflow: hidden;
-    }
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding: 18px 26px 16px;
+  }
 
     .ffs-title-panel::before {
       content: "";
@@ -1602,7 +1595,21 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-title-panel .ffs-title-row {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+  }
+
+  .ffs-title-tagline {
+    margin: 0 0 16px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.25;
+    color: rgba(186, 199, 213, 0.92);
+  }
+
+  .ffs-title-panel .ffs-meta-grid {
+    margin-top: 10px;
   }
 
   .ffs-title-panel .ffs-meta-card {
@@ -1995,3 +2002,19 @@ document.addEventListener("click", function (event) {
 
 </body>
 </html>
+
+/* Flash title module refinements */
+.ffs-title-tagline {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .ffs-title-tagline {
+    font-size: 18px;
+    margin: 2px 0 14px;
+  }
+
+  .ffs-title-panel .ffs-meta-grid {
+    margin-top: 8px;
+  }
+}
