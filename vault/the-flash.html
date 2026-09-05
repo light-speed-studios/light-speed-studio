@@ -1598,6 +1598,16 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     grid-column: 2;
     grid-row: 1;
     margin: 0;
+    padding: 18px 26px 16px;
+  }
+
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 8px;
+  }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 48px;
+    padding: 6px 8px;
   }
 
   .ffs-info-panel {
@@ -1610,7 +1620,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-palette-wrap {
-    grid-column: 2;
+    grid-column: 1 / -1;
     grid-row: 3;
     position: relative;
     margin: 0;
@@ -1662,6 +1672,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-synopsis {
     margin: 0;
   }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: 18px 0 0;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1678,7 +1692,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-poster-panel { order: 1; }
   .ffs-mobile-meta { order: 2; }
   .ffs-info-panel { order: 3; }
-  .ffs-working-title { order: 4; }
 
   .ffs-title-panel,
   .ffs-palette-wrap,
@@ -1725,10 +1738,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
           <span class="ffs-meta-value">The Flash 2023</span></div>
       </div>
     </div>
-<div class="ffs-working-title">
-      <span>Working Title</span>
-      <strong>The Flash: Out of Time</strong>
-    </div>
+
   </div>
 
   <div class="ffs-right-column">
@@ -1750,6 +1760,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <p class="ffs-section-label">Synopsis</p>
       <div class="ffs-synopsis">
         <p>A story about grief and learning to let go. Barry’s journey is refocused around the cost of holding on. No roommates. No cameos. Dark Flash’s role is reworked to bring Barry’s journey back full circle.</p>
+      </div>
+
+      <div class="ffs-working-title">
+        <span>Working Title</span>
+        <strong>The Flash: Out of Time</strong>
       </div>
     </div>
 
