@@ -1571,6 +1571,17 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     gap: 18px;
   }
 
+  /* Refined desktop title / metadata */
+  .ffs-right-column .ffs-title {
+    font-size: clamp(32px, 3.15vw, 46px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .ffs-right-column .ffs-title-panel .ffs-meta-row {
+    grid-template-columns: 1.35fr .8fr 1fr 1fr .9fr .8fr;
+  }
+
   .ffs-title-panel,
   .ffs-palette-wrap,
   .ffs-approach-box,
@@ -1677,13 +1688,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
           <span class="ffs-meta-value">The Flash 2023</span></div>
       </div>
     </div>
-
-    <div class="ffs-approach-box">
-      <span>Edit Approach</span>
-      <strong>Character Reconstruction | Musical Overhaul | Story Restructure</strong>
-    </div>
-
-    <div class="ffs-working-title">
+<div class="ffs-working-title">
       <span>Working Title</span>
       <strong>The Flash: Out of Time</strong>
     </div>
@@ -1701,7 +1706,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span><span class="ffs-meta-value">144 min</span></div>
         <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 Sep 2023</span></div>
         <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.85:1</span></div>
-        <div class="ffs-meta-card"><span class="ffs-meta-label">Category</span><span class="ffs-meta-value">Age of Heroes</span></div>
         <div class="ffs-meta-card"><span class="ffs-meta-label">File Size</span><span class="ffs-meta-value">12 GB</span></div>
       </div>
     </div>
