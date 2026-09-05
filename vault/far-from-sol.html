@@ -1550,24 +1550,12 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
    Shared landing-page desktop composition
 ======================================================= */
 @media (min-width: 901px) {
-  /* STATIC BATMAN-BASE MODULE SIZING */
-  .ffs-title-panel,
-  .ffs-info-panel {
-    overflow: hidden;
-  }
-
-  .ffs-info-panel {
-    display: flex;
-    flex-direction: column;
-  }
-
-
-  .ffs-page { padding-top: 25px; }
+.ffs-page { padding-top: 25px; }
 
   .ffs-desktop-composition {
     display: grid;
     grid-template-columns: 410px minmax(0, 1fr);
-    grid-template-rows: 168px 340px auto;
+    grid-template-rows: auto auto auto;
     column-gap: 32px;
     row-gap: 15px;
     align-items: stretch;
@@ -1612,7 +1600,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-title-panel {
     grid-column: 2;
     grid-row: 1;
-    height: 100%;
     margin: 0;
     padding: 16px 23px 15px;
   }
@@ -1642,7 +1629,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-info-panel {
     grid-column: 2;
     grid-row: 2;
-    height: 100%;
+    height: auto;
     min-height: 0;
     margin: 0;
     padding: 29px 32px;
