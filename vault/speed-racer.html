@@ -1566,17 +1566,32 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-title-panel {
     grid-column: 2; grid-row: 1; margin: 0;
     padding: 16px 23px 15px;
+    height: 190px;
+    min-height: 190px;
+    max-height: 190px;
+    display: flex;
+    flex-direction: column;
   }
-  .ffs-title-panel .ffs-title-row { margin-bottom: 1px; }
+  .ffs-title-panel .ffs-title-row { margin-bottom: 4px; }
   .ffs-title-tagline {
     margin: 0; font-size: 20px; font-style: italic; font-weight: 500;
     line-height: 1.25; color: var(--text-soft);
   }
-  .ffs-title-panel .ffs-meta-row { margin-top: 14px; }
-  .ffs-title-panel .ffs-meta-card { min-height: 44px; padding: 6px 8px; }
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: auto;
+    margin-bottom: 0;
+    transform: translateY(-6px);
+  }
+  .ffs-title-panel .ffs-meta-card { min-height: 46px; padding: 6px 8px; }
   .ffs-info-panel {
-    grid-column: 2; grid-row: 2; height: auto; min-height: 0;
-    margin: 0; padding: 29px 32px;
+    grid-column: 2; grid-row: 2;
+    height: 390px;
+    min-height: 390px;
+    max-height: 390px;
+    margin: 0;
+    padding: 29px 32px;
+    display: flex;
+    flex-direction: column;
   }
   .ffs-palette-wrap {
     grid-column: 1 / -1; grid-row: 3; position: relative;
@@ -1591,7 +1606,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
   .ffs-info-panel .ffs-synopsis p { font-size: 26px; }
   .ffs-synopsis { margin: 0; }
-  .ffs-info-panel .ffs-working-title { margin: 26px 0 0; padding: 15px 17px; }
+  .ffs-info-panel .ffs-working-title {
+    margin: auto 0 0;
+    padding: 15px 17px;
+    flex: 0 0 auto;
+  }
   .ffs-info-panel .ffs-working-title strong { font-size: 22px; }
 }
 @media (max-width: 900px) {
