@@ -59,6 +59,8 @@
     <div class="vault-rail-shell">
       <button class="vault-rail-arrow vault-rail-prev" type="button" aria-label="Previous Age of Heroes projects"></button>
 
+      <div class="vault-rail-dashes lab-rail-dashes" aria-label="Age of Heroes rail position"></div>
+
       <div class="vault-rail-window">
         <div class="vault-rail-track lss-vault-rail">
           <a class="vault-archive-card lab-poster-card" href="https://light-speed.studio/flash-overtime.html">
@@ -118,6 +120,8 @@
 
     <div class="vault-rail-shell">
       <button class="vault-rail-arrow vault-rail-prev" type="button" aria-label="Previous Future Worlds projects"></button>
+
+      <div class="vault-rail-dashes lab-rail-dashes" aria-label="Future Worlds rail position"></div>
 
       <div class="vault-rail-window">
         <div class="vault-rail-track lss-vault-rail">
@@ -234,5 +238,62 @@
 </main>
 
 <script src="js/main.js"></script>
+<script>
+(function () {
+  function initLabRailDashes() {
+    document.querySelectorAll('.lab-rail-dashes').forEach(function (dashWrap) {
+      var shell = dashWrap.closest('.vault-rail-shell');
+      if (!shell) return;
+
+      var win = shell.querySelector('.vault-rail-window');
+      var track = shell.querySelector('.vault-rail-track');
+      var prev = shell.querySelector('.vault-rail-prev');
+      var next = shell.querySelector('.vault-rail-next');
+      if (!win || !track) return;
+
+      function maxScroll() {
+        return Math.max(0, track.scrollWidth - win.clientWidth);
+      }
+
+      function update() {
+        var max = maxScroll();
+        if (max <= 2) {
+          dashWrap.innerHTML = '';
+          dashWrap.style.display = 'none';
+          return;
+        }
+
+        dashWrap.style.display = '';
+        if (dashWrap.children.length !== 2) {
+          dashWrap.innerHTML = '<button type="button" class="vault-rail-dash active" aria-label="Show first set"></button><button type="button" class="vault-rail-dash" aria-label="Show more projects"></button>';
+          dashWrap.children[0].addEventListener('click', function () {
+            win.scrollTo({ left: 0, behavior: 'smooth' });
+          });
+          dashWrap.children[1].addEventListener('click', function () {
+            win.scrollTo({ left: maxScroll(), behavior: 'smooth' });
+          });
+        }
+
+        var second = win.scrollLeft > max / 2;
+        dashWrap.children[0].classList.toggle('active', !second);
+        dashWrap.children[1].classList.toggle('active', second);
+      }
+
+      win.addEventListener('scroll', update, { passive: true });
+      if (prev) prev.addEventListener('click', function () { setTimeout(update, 80); });
+      if (next) next.addEventListener('click', function () { setTimeout(update, 80); });
+      window.addEventListener('resize', update);
+      update();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLabRailDashes);
+  } else {
+    initLabRailDashes();
+  }
+})();
+</script>
+
 </body>
 </html>
