@@ -17,7 +17,7 @@
 
 .lab-page .lab-rail-dashes {
   position: absolute;
-  top: 0;
+  top: -14px;
   right: 0;
   left: auto;
   z-index: 20;
@@ -293,39 +293,56 @@
       var next = shell.querySelector('.vault-rail-next');
       if (!win || !track) return;
 
-      function maxScroll() {
-        return Math.max(0, track.scrollWidth - win.clientWidth);
+      var cards = track.querySelectorAll('.vault-archive-card');
+      if (cards.length <= 4) {
+        dashWrap.innerHTML = '';
+        dashWrap.style.display = 'none';
+        return;
       }
 
-      function update() {
-        var max = maxScroll();
-        if (max <= 2) {
-          dashWrap.innerHTML = '';
-          dashWrap.style.display = 'none';
-          return;
-        }
+      dashWrap.style.display = 'flex';
+      dashWrap.innerHTML =
+        '<button type="button" class="vault-rail-dash active" aria-label="Show first set"></button>' +
+        '<button type="button" class="vault-rail-dash" aria-label="Show more projects"></button>';
 
-        dashWrap.style.display = '';
-        if (dashWrap.children.length !== 2) {
-          dashWrap.innerHTML = '<button type="button" class="vault-rail-dash active" aria-label="Show first set"></button><button type="button" class="vault-rail-dash" aria-label="Show more projects"></button>';
-          dashWrap.children[0].addEventListener('click', function () {
-            win.scrollTo({ left: 0, behavior: 'smooth' });
-          });
-          dashWrap.children[1].addEventListener('click', function () {
-            win.scrollTo({ left: maxScroll(), behavior: 'smooth' });
-          });
-        }
+      var dashes = dashWrap.querySelectorAll('.vault-rail-dash');
+      var currentPage = 0;
 
-        var second = win.scrollLeft > max / 2;
-        dashWrap.children[0].classList.toggle('active', !second);
-        dashWrap.children[1].classList.toggle('active', second);
+      function setActive(page) {
+        currentPage = page ? 1 : 0;
+        dashes[0].classList.toggle('active', currentPage === 0);
+        dashes[1].classList.toggle('active', currentPage === 1);
       }
 
-      win.addEventListener('scroll', update, { passive: true });
-      if (prev) prev.addEventListener('click', function () { setTimeout(update, 80); });
-      if (next) next.addEventListener('click', function () { setTimeout(update, 80); });
-      window.addEventListener('resize', update);
-      update();
+      dashes[0].addEventListener('click', function () {
+        setActive(0);
+        if (prev) prev.click();
+      });
+
+      dashes[1].addEventListener('click', function () {
+        setActive(1);
+        if (next) next.click();
+      });
+
+      if (prev) {
+        prev.addEventListener('click', function () {
+          setActive(0);
+        });
+      }
+
+      if (next) {
+        next.addEventListener('click', function () {
+          setActive(1);
+        });
+      }
+
+      /* Also support any native/manual horizontal scrolling. */
+      win.addEventListener('scroll', function () {
+        var max = Math.max(0, win.scrollWidth - win.clientWidth);
+        if (max > 2) setActive(win.scrollLeft > max / 2 ? 1 : 0);
+      }, { passive: true });
+
+      setActive(0);
     });
   }
 
