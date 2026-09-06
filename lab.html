@@ -8,6 +8,48 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <title>Lab | LSS</title>
+
+<style>
+/* LAB RAIL DASH INDICATORS */
+.lab-page .vault-rail-shell {
+  position: relative;
+}
+
+.lab-page .lab-rail-dashes {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  z-index: 20;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 7px;
+  padding: 0 0 2px 0;
+  margin: 0;
+  width: auto;
+}
+
+.lab-page .lab-rail-dashes .vault-rail-dash {
+  display: block;
+  width: 32px;
+  height: 3px;
+  min-width: 32px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: #B1B1B1;
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.lab-page .lab-rail-dashes .vault-rail-dash.active {
+  background: #00AEDE;
+}
+</style>
+
 </head>
 
   
