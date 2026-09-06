@@ -17,16 +17,6 @@
       pointer-events: none !important;
     }
   </style>
-
-<style>
-/* ABSOLUTE DESKTOP SPACING — META + WORKING TITLE */
-@media (min-width: 901px) {
-  .ffs-title-panel { position: relative; min-height: 190px; padding-bottom: 76px; }
-  .ffs-title-panel .ffs-meta-row { position: absolute; left: 23px; right: 23px; bottom: 15px; margin: 0; }
-  .ffs-info-panel { position: relative; min-height: 390px; padding: 29px 32px 125px; }
-  .ffs-info-panel .ffs-working-title { position: absolute; left: 32px; right: 32px; bottom: 29px; margin: 0; }
-}
-</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Rogue One: The Scarif Run splash screen">
@@ -1599,6 +1589,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     grid-row: 1;
     margin: 0;
     padding: 16px 23px 15px;
+    height: 190px;
+    min-height: 190px;
+    max-height: 190px;
+    display: flex;
+    flex-direction: column;
   }
 
   .ffs-title-panel .ffs-title-row { margin-bottom: 4px; }
@@ -1612,7 +1607,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     color: var(--text-soft);
   }
 
-  .ffs-title-panel .ffs-meta-row { margin-top: 15px; }
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: auto;
+    margin-bottom: 0;
+  }
 
   .ffs-title-panel .ffs-meta-card {
     min-height: 46px;
@@ -1622,10 +1620,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-info-panel {
     grid-column: 2;
     grid-row: 2;
-    height: auto;
-    min-height: 0;
+    height: 390px;
+    min-height: 390px;
+    max-height: 390px;
     margin: 0;
     padding: 29px 32px;
+    display: flex;
+    flex-direction: column;
   }
 
   .ffs-palette-wrap {
@@ -1657,8 +1658,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-synopsis { margin: 0; }
 
   .ffs-info-panel .ffs-working-title {
-    margin: 26px 0 0;
+    margin: auto 0 0;
     padding: 15px 17px;
+    flex: 0 0 auto;
   }
 
   .ffs-info-panel .ffs-working-title strong { font-size: 22px; }
