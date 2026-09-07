@@ -5446,3 +5446,52 @@ body::before {
     );
   }
 }
+
+/* =======================================================
+   FINAL LSS HEX SIDE STRIPS — CDN VERSION
+   ======================================================= */
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  top: 61px;
+  bottom: 0;
+  width: min(27vw, 527px);
+  pointer-events: none;
+  z-index: 60;
+  background-repeat: repeat-y !important;
+  background-size: 100% auto !important;
+  opacity: 1 !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+body::before {
+  left: 0 !important;
+  right: auto !important;
+  background-image: url("https://light-speed-studios.b-cdn.net/lefthex.png") !important;
+  background-position: left top !important;
+}
+
+body::after {
+  right: 0 !important;
+  left: auto !important;
+  background-image: url("https://light-speed-studios.b-cdn.net/righthex.png") !important;
+  background-position: right top !important;
+}
+
+.lss-nav-bar {
+  z-index: 99999 !important;
+}
+
+@media (max-width: 900px) {
+  body::before,
+  body::after {
+    width: min(34vw, 260px);
+    top: 61px;
+    opacity: .7 !important;
+    background-size: 100% auto !important;
+  }
+}
+
