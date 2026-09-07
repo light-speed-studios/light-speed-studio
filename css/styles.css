@@ -5376,3 +5376,73 @@ body {
   }
 }
 
+/* =======================================================
+   BEEHIVE VISIBILITY FIX
+   Fixed edge layer so section backgrounds cannot hide it.
+   ======================================================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 61px 0 0 0;
+  z-index: 50;
+  pointer-events: none;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='278' viewBox='0 0 320 278'%3E%3Cg fill='none' stroke='%2300AEDE' stroke-width='1.5' opacity='.22'%3E%3Cpath d='M80 1 159 47v92l-79 46L1 139V47z'/%3E%3Cpath d='M240 1 319 47v92l-79 46-79-46V47z'/%3E%3Cpath d='M160 140 239 186v92l-79 46-79-46v-92z'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='278' viewBox='0 0 320 278'%3E%3Cg fill='none' stroke='%2300AEDE' stroke-width='1.5' opacity='.22'%3E%3Cpath d='M80 1 159 47v92l-79 46L1 139V47z'/%3E%3Cpath d='M240 1 319 47v92l-79 46-79-46V47z'/%3E%3Cpath d='M160 140 239 186v92l-79 46-79-46v-92z'/%3E%3C/g%3E%3C/svg%3E");
+
+  background-repeat: repeat-y, repeat-y;
+  background-size: 320px 278px, 320px 278px;
+  background-position: left -95px top 18px, right -95px top 128px;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    #000 0%,
+    #000 5%,
+    rgba(0,0,0,.72) 10%,
+    transparent 18%,
+    transparent 82%,
+    rgba(0,0,0,.72) 90%,
+    #000 95%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    #000 0%,
+    #000 5%,
+    rgba(0,0,0,.72) 10%,
+    transparent 18%,
+    transparent 82%,
+    rgba(0,0,0,.72) 90%,
+    #000 95%,
+    #000 100%
+  );
+}
+
+/* Keep the nav above the decorative layer. */
+.lss-nav-bar {
+  z-index: 99999;
+}
+
+@media (max-width: 900px) {
+  body::before {
+    opacity: .55;
+    background-size: 260px 226px, 260px 226px;
+    background-position: left -125px top 12px, right -125px top 105px;
+
+    -webkit-mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      transparent 24%,
+      transparent 76%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      #000 0%,
+      transparent 24%,
+      transparent 76%,
+      #000 100%
+    );
+  }
+}
