@@ -17,8 +17,49 @@
 
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.png" media="(min-width: 901px)" fetchpriority="high"/>
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.png" media="(max-width: 900px)" fetchpriority="high"/>
+
+<style>
+/* =======================================================
+   LSS SIDE HEX BARS — EXPLICIT PAGE LAYER TEST
+   ======================================================= */
+.lss-side-hex {
+  position: fixed;
+  top: 61px;
+  bottom: 0;
+  width: min(27vw, 527px);
+  z-index: 80;
+  pointer-events: none;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  opacity: 1;
+}
+
+.lss-side-hex-left {
+  left: 0;
+  background-image: url("https://light-speed-studios.b-cdn.net/lefthex.png");
+  background-position: left top;
+}
+
+.lss-side-hex-right {
+  right: 0;
+  background-image: url("https://light-speed-studios.b-cdn.net/righthex.png");
+  background-position: right top;
+}
+
+@media (max-width: 900px) {
+  .lss-side-hex {
+    width: min(34vw, 260px);
+    opacity: .7;
+  }
+}
+</style>
+
 </head>
 <body>
+
+<div class="lss-side-hex lss-side-hex-left" aria-hidden="true"></div>
+<div class="lss-side-hex lss-side-hex-right" aria-hidden="true"></div>
+
 <header class="lss-nav-bar">
 <a class="lss-nav-logo" href="index.html">
   <picture class="lss-nav-logo-picture">
