@@ -5344,3 +5344,35 @@ body.lss-home-progress::-webkit-scrollbar {
   opacity: 0;
   transition: opacity 0.6s ease;
 }
+
+/* =======================================================
+   LSS GLOBAL EDGE BEEHIVE BACKGROUND
+   Large, subtle cyan hex geometry over the existing site color.
+   No splash artwork is used.
+   ======================================================= */
+html {
+  background: var(--site-bg);
+}
+
+body {
+  background-color: var(--site-bg) !important;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='312' viewBox='0 0 360 312'%3E%3Cg fill='none' stroke='%2300AEDE' stroke-width='1.35' opacity='.105'%3E%3Cpath d='M90 2 178 53v102l-88 51L2 155V53z'/%3E%3Cpath d='M270 2 358 53v102l-88 51-88-51V53z'/%3E%3Cpath d='M180 157 268 208v102l-88 51-88-51V208z'/%3E%3C/g%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='360' height='312' viewBox='0 0 360 312'%3E%3Cg fill='none' stroke='%2300AEDE' stroke-width='1.35' opacity='.105'%3E%3Cpath d='M90 2 178 53v102l-88 51L2 155V53z'/%3E%3Cpath d='M270 2 358 53v102l-88 51-88-51V53z'/%3E%3Cpath d='M180 157 268 208v102l-88 51-88-51V208z'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: left top, right 156px top 78px;
+  background-repeat: repeat-y, repeat-y;
+  background-size: 360px 312px, 360px 312px;
+  background-attachment: fixed, fixed;
+}
+
+@media (max-width: 900px) {
+  body {
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='260' viewBox='0 0 360 312'%3E%3Cg fill='none' stroke='%2300AEDE' stroke-width='1.25' opacity='.07'%3E%3Cpath d='M90 2 178 53v102l-88 51L2 155V53z'/%3E%3Cpath d='M270 2 358 53v102l-88 51-88-51V53z'/%3E%3Cpath d='M180 157 268 208v102l-88 51-88-51V208z'/%3E%3C/g%3E%3C/svg%3E");
+    background-position: center top;
+    background-repeat: repeat-y;
+    background-size: 300px 260px;
+    background-attachment: scroll;
+  }
+}
+
