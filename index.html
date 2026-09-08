@@ -680,6 +680,71 @@
   }
 }
 
+
+
+/* =======================================================
+   HERO + LAB IMAGE LINK CLICK FIX
+   Ensure overlay text never blocks the image anchors.
+======================================================= */
+@media (min-width: 901px) {
+
+  /* HERO: image anchor owns the artwork click area */
+  .home-hero-section .hero-image-link {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    display: block !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+
+  /* Decorative/text overlays must not intercept the image click */
+  .home-hero-section .hero-content,
+  .home-hero-section .hero-content *,
+  .home-hero-section .slide > .hero-meta {
+    pointer-events: none !important;
+  }
+
+  /* Keep actual carousel controls clickable above the image */
+  .home-hero-section .nav-arrow,
+  .home-hero-section .indicators,
+  .home-hero-section .indicator,
+  .home-hero-section .hero-vault-button {
+    pointer-events: auto !important;
+    z-index: 30 !important;
+  }
+
+  /* LAB: only the artwork is clickable */
+  .lab-hero-section .lab-image-link {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 2 !important;
+    display: block !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+
+  .lab-hero-section .hero-content,
+  .lab-hero-section .hero-content *,
+  .lab-hero-section .hero-single > .hero-meta {
+    pointer-events: none !important;
+  }
+}
+
+
+
+/* =======================================================
+   LAB FINAL HEIGHT
+   490px artwork + 18px top/bottom frame padding = 526px total
+======================================================= */
+@media (min-width: 901px) {
+  .lab-hero-section .lss-landscape-panel > .hero-single {
+    height: 490px !important;
+    min-height: 490px !important;
+    max-height: 490px !important;
+  }
+}
+
 </style>
 
 </head>
