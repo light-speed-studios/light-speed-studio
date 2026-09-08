@@ -1021,6 +1021,30 @@
 }
 </style>
 
+
+<style id="hero-single-line-title-fix">
+@media (min-width: 901px) {
+
+  /* Keep long hero titles on one line when there is room */
+  .home-hero-section .slide > .hero-content {
+    width: calc(100% - 180px) !important;
+    max-width: 1180px !important;
+  }
+
+  .home-hero-section .hero-title {
+    white-space: nowrap !important;
+    width: auto !important;
+    max-width: none !important;
+    display: inline-block !important;
+    font-size: clamp(34px, 3.2vw, 58px) !important;
+  }
+
+  .home-hero-section .hero-kicker {
+    width: auto !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
