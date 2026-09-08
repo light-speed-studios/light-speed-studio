@@ -446,6 +446,56 @@
   }
 }
 
+
+
+/* =======================================================
+   HERO FINAL HOVER + METADATA FIX
+======================================================= */
+@media (min-width: 901px) {
+
+  /* Kill every hover/focus/active visual change on Featured Edit + title */
+  .home-hero-section .hero-title-link,
+  .home-hero-section .hero-title-link:hover,
+  .home-hero-section .hero-title-link:focus,
+  .home-hero-section .hero-title-link:active,
+  .home-hero-section .slide:hover .hero-title-link,
+  .home-hero-section .hero-content:hover .hero-title-link {
+    pointer-events: none !important;
+    cursor: default !important;
+    transform: translateY(54px) !important;
+    opacity: 1 !important;
+    filter: none !important;
+    text-decoration: none !important;
+    transition: none !important;
+  }
+
+  .home-hero-section .hero-title-link .hero-title,
+  .home-hero-section .hero-title-link:hover .hero-title,
+  .home-hero-section .hero-title-link .hero-kicker,
+  .home-hero-section .hero-title-link:hover .hero-kicker {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    transition: none !important;
+  }
+
+  /* Metadata box hugs the content, while larger text/gaps make it wider naturally */
+  .home-hero-section .slide > .hero-meta {
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 260px) !important;
+    padding: 10px 24px !important;
+    gap: 1.45rem !important;
+    font-size: 1.18rem !important;
+    line-height: 1 !important;
+  }
+
+  .home-hero-section .slide > .hero-meta span {
+    font-size: inherit !important;
+    white-space: nowrap !important;
+  }
+}
+
 </style>
 
 </head>
