@@ -121,9 +121,9 @@
   }
 
   .home-hero-section .lss-landscape-panel > .hero-carousel {
-    height: 596px !important;
-    min-height: 596px !important;
-    max-height: 596px !important;
+    height: 566px !important;
+    min-height: 566px !important;
+    max-height: 566px !important;
   }
 
   .home-hero-section,
@@ -193,11 +193,13 @@
     transform: none !important;
   }
 
-  /* Crop only the bottom of Orbit by 15px while keeping its top fixed. */
+  /* Bottom-only crop. The negative bottom margin also shortens the panel,
+     so the cyan bottom frame rises with the artwork while the top stays fixed. */
   .lss-image-block.orbit-image-frame.lss-landscape-panel > picture {
     display: block !important;
     overflow: hidden !important;
-    max-height: calc(100% - 15px);
+    clip-path: inset(0 0 45px 0);
+    margin-bottom: -45px !important;
   }
 
   .lss-image-block.orbit-image-frame.lss-landscape-panel > picture > img {
