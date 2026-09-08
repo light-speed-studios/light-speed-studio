@@ -496,6 +496,44 @@
   }
 }
 
+
+
+/* =======================================================
+   HERO FINAL INTERACTION FIX
+   Wallpaper links + completely static accent bar
+======================================================= */
+@media (min-width: 901px) {
+
+  /* Full hero wallpaper links to that slide's landing page */
+  .home-hero-section .hero-image-link {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    display: block !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+  }
+
+  .home-hero-section .hero-image-link .slide-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Freeze the cyan bar at its normal size under every interaction state */
+  .home-hero-section .hero-accent-bar,
+  .home-hero-section .content-inner:hover .hero-accent-bar,
+  .home-hero-section .hero-content:hover .hero-accent-bar,
+  .home-hero-section .slide:hover .hero-accent-bar {
+    width: 6px !important;
+    height: 75px !important;
+    top: 4px !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 </style>
 
 </head>
@@ -540,7 +578,9 @@
 <section class="hero-carousel pulse-visual-box" id="heroCarousel">
 <button aria-label="Browse vault" class="hero-vault-button" onclick="window.location.href='vault.html'" type="button">VAULT</button>
 <article class="slide active">
+<a class="hero-image-link" href="vault/far-from-sol.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/ffshero.png');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <div class="hero-accent-bar"></div>
@@ -558,7 +598,9 @@
 </div>
 </article>
 <article class="slide">
+<a class="hero-image-link" href="vault/superman.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/SOTnewhero%20copy.jpg');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <div class="hero-accent-bar"></div>
@@ -576,7 +618,9 @@
 </div>
 </article>
 <article class="slide">
+<a class="hero-image-link" href="vault/glass-rooms.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/glassheroes1NEW.png');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <div class="hero-accent-bar"></div>
@@ -594,7 +638,9 @@
 </div>
 </article>
 <article class="slide">
+<a class="hero-image-link" href="vault/batman.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/batmanhero.png');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <div class="hero-accent-bar"></div>
@@ -612,7 +658,9 @@
 </div>
 </article>
 <article class="slide">
+<a class="hero-image-link" href="vault/rogue-one.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/rogueonehero1.png');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <div class="hero-accent-bar"></div>
@@ -630,7 +678,9 @@
 </div>
 </article>
 <article class="slide">
+<a class="hero-image-link" href="vault/the-flash.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/flashhero.png');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <div class="hero-accent-bar"></div>
@@ -648,7 +698,9 @@
 </div>
 </article>
 <article class="slide">
+<a class="hero-image-link" href="vault/real-steel.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/realsteelheroNEW.png');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <div class="hero-accent-bar"></div>
