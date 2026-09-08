@@ -109,7 +109,7 @@
 @media (min-width: 901px) {
 
   .home-hero-section .lss-hero-landscape-panel {
-    transform: translateY(-15px) !important;
+    transform: translateY(-34px) !important;
   }
 
   .lss-mobile-hero-landscape-panel,
@@ -122,7 +122,8 @@
 
   .home-hero-section .lss-landscape-panel > .hero-carousel {
     height: 611px !important;
-    min-height: 577px !important;
+    min-height: 611px !important;
+    max-height: 611px !important;
   }
 
   .home-hero-section,
@@ -174,6 +175,23 @@
   box-shadow:
     0 2px 5px rgba(0,0,0,.72),
     0 0 7px rgba(0,0,0,.42) !important;
+}
+
+
+
+/* Keep Orbit artwork fully contained inside the same framed panel geometry. */
+.lss-image-block.orbit-image-frame.lss-landscape-panel > picture,
+.lss-image-block.orbit-image-frame.lss-landscape-panel > picture > img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+@media (min-width: 901px) {
+  .lss-image-block.orbit-image-frame.lss-landscape-panel {
+    transform: translateY(-18px) !important;
+  }
 }
 
 </style>
