@@ -5495,3 +5495,152 @@ body::after {
   }
 }
 
+
+/* =======================================================
+   FINAL BRIDGE VISUAL FRAME OVERRIDE
+   Pulse-style enclosure for Hero, Lab, and Orbit.
+   Keeps Vault untouched and removes image-edge fade masks.
+   ======================================================= */
+
+:root {
+  --lss-frame-cyan: #00AEDE;
+  --lss-frame-line: rgba(186, 199, 213, 0.09);
+}
+
+/* The visible modules themselves become hard-edged enclosures. */
+.home-hero-section .hero-carousel,
+.lab-hero-section .hero-single,
+.lss-image-block.orbit-image-frame,
+.home-hero-section .mobile-hero-carousel,
+.lab-hero-section .mobile-hero-single {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: rgba(4, 14, 21, 0.86) !important;
+}
+
+/* Kill every legacy fade layer on the three requested modules. */
+.home-hero-section .slide::before,
+.home-hero-section .slide::after,
+.home-hero-section .slide .slide-bg::before,
+.home-hero-section .slide .slide-bg::after,
+.lab-hero-section .hero-single::before,
+.lab-hero-section .hero-single::after,
+.home-hero-section .mobile-slide::before,
+.home-hero-section .mobile-slide::after,
+.lab-hero-section .mobile-hero-single::after,
+.lss-image-block.orbit-image-frame::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* HERO: exact Pulse-style subtle enclosure + cyan corner accents. */
+.home-hero-section .hero-carousel::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  box-shadow:
+    0 0 34px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px var(--lss-frame-line) !important;
+  background:
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 2px 42px no-repeat !important;
+}
+
+/* LAB: use the existing dedicated frame element so it cannot conflict with content overlays. */
+.lab-hero-section .hero-single-frame {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  box-shadow:
+    0 0 34px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px var(--lss-frame-line) !important;
+  background:
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 2px 42px no-repeat !important;
+}
+
+/* ORBIT: replace the old fade pseudo-element pair with the Pulse frame. */
+body .lss-image-block.orbit-image-frame::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+  opacity: 1 !important;
+  box-shadow:
+    0 0 34px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px var(--lss-frame-line) !important;
+  background:
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 2px 42px no-repeat !important;
+}
+
+/* Mobile Hero and Lab use separate markup, so give those visible elements their own frame. */
+@media (max-width: 900px) {
+  .home-hero-section .mobile-hero-carousel::before,
+  .lab-hero-section .mobile-hero-single::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 50 !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    box-shadow:
+      0 0 34px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 1px var(--lss-frame-line) !important;
+    background:
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 2px 30px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 2px 30px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 2px 30px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 2px 30px no-repeat !important;
+  }
+
+  body .lss-image-block.orbit-image-frame::before {
+    content: "" !important;
+    display: block !important;
+    inset: 0 !important;
+    background:
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left top / 2px 30px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right top / 2px 30px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) left bottom / 2px 30px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 30px 2px no-repeat,
+      linear-gradient(var(--lss-frame-cyan), var(--lss-frame-cyan)) right bottom / 2px 30px no-repeat !important;
+  }
+}
