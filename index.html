@@ -19,41 +19,35 @@
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.png" media="(max-width: 900px)" fetchpriority="high"/>
 
 <style id="bridge-pulse-visual-box-fix">
-/* Pulse box treatment applied directly in index so it cannot be missed by a cached stylesheet. */
-.pulse-visual-box {
+/* =======================================================
+   LANDING-PAGE STYLE LANDSCAPE PANELS
+   Matches the project poster-panel treatment in landscape.
+======================================================= */
+
+.lss-landscape-panel {
   --pulse-frame-cyan: #00AEDE;
   position: relative !important;
-  overflow: hidden !important;
+  width: min(1220px, calc(100% - 40px)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 18px !important;
   background:
-    linear-gradient(45deg, rgba(0,174,222,.08), transparent 38%),
-    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018)),
-    rgba(4,14,21,.86) !important;
+    linear-gradient(145deg, rgba(0,174,222,.18), rgba(255,255,255,.03)),
+    rgba(255,255,255,.035) !important;
   box-shadow:
-    0 0 34px rgba(0,0,0,.25),
-    inset 0 0 0 1px rgba(186,199,213,.09) !important;
+    0 0 32px rgba(0,174,222,.12),
+    inset 0 0 0 1px rgba(0,174,222,.28) !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
 }
 
-/* Remove the old image-edge fades. */
-.home-hero-section .slide::before,
-.home-hero-section .slide::after,
-.lab-hero-section .hero-single::before,
-.lab-hero-section .hero-single::after,
-.lab-hero-section .mobile-hero-single::after,
-.lss-image-block.orbit-image-frame::after {
-  content: none !important;
-  display: none !important;
-  background: none !important;
-}
-
-/* Rebuild the Pulse cyan corners as a dedicated overlay on every framed module. */
-.pulse-visual-box::before {
+.lss-landscape-panel::before {
   content: "" !important;
-  display: block !important;
   position: absolute !important;
   inset: 0 !important;
   z-index: 100 !important;
   pointer-events: none !important;
-  opacity: .72 !important;
+  opacity: .86 !important;
   background:
     linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 42px 2px no-repeat,
     linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 2px 42px no-repeat,
@@ -65,13 +59,76 @@
     linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 2px 42px no-repeat !important;
 }
 
-/* The Lab already contains an older frame element. Disable it so there is one frame only. */
+/* Inner artwork sits inside the panel and carries the poster-like drop shadow. */
+.lss-landscape-panel > .hero-carousel,
+.lss-landscape-panel > .hero-single,
+.lss-landscape-panel > .mobile-hero-carousel,
+.lss-landscape-panel > .mobile-hero-single,
+.lss-landscape-panel > picture {
+  width: 100% !important;
+  margin: 0 !important;
+  box-shadow: 0 18px 40px rgba(0,0,0,.50) !important;
+}
+
+/* Remove old fade overlays and old frame systems. */
+.home-hero-section .slide::before,
+.home-hero-section .slide::after,
+.lab-hero-section .hero-single::before,
+.lab-hero-section .hero-single::after,
+.lab-hero-section .mobile-hero-single::after,
+.lss-image-block.orbit-image-frame::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+
 .lab-hero-section .hero-single-frame {
   display: none !important;
 }
 
+/* Remove the older frame class from the actual artwork surfaces. */
+.pulse-visual-box {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.pulse-visual-box::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* HERO: trim 10px from the bottom of the visible artwork while preserving
+   the original downstream Bridge position with reserved space below. */
+@media (min-width: 901px) {
+  .home-hero-section .lss-landscape-panel {
+    margin-bottom: 10px !important;
+  }
+
+  .home-hero-section .lss-landscape-panel > .hero-carousel {
+    height: 601px !important;
+    min-height: 567px !important;
+  }
+
+  .home-hero-section,
+  .lab-hero-section {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .lss-image-block.orbit-image-frame.lss-landscape-panel {
+    max-width: 1220px !important;
+  }
+}
+
 @media (max-width: 900px) {
-  .pulse-visual-box::before {
+  .lss-landscape-panel {
+    width: calc(100% - 28px) !important;
+    padding: 14px !important;
+    box-shadow:
+      0 0 24px rgba(0,174,222,.10),
+      inset 0 0 0 1px rgba(0,174,222,.24) !important;
+  }
+
+  .lss-landscape-panel::before {
     background:
       linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 30px 2px no-repeat,
       linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 2px 30px no-repeat,
@@ -83,41 +140,12 @@
       linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 2px 30px no-repeat !important;
   }
 
-  .lss-image-block.orbit-image-frame.pulse-visual-box {
-    overflow: hidden !important;
+  .lss-landscape-panel > .mobile-hero-carousel,
+  .lss-landscape-panel > .mobile-hero-single,
+  .lss-landscape-panel > picture {
+    box-shadow: 0 14px 28px rgba(0,0,0,.38) !important;
   }
 }
-
-/* Added spacing + depth for framed visual modules */
-@media (min-width: 901px) {
-  .home-hero-section .hero-carousel.pulse-visual-box,
-  .lab-hero-section .hero-single.pulse-visual-box,
-  .lss-image-block.orbit-image-frame.pulse-visual-box {
-    width: calc(100% - 96px) !important;
-    max-width: 1300px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    box-shadow:
-      0 22px 50px rgba(0,0,0,.42),
-      0 6px 18px rgba(0,0,0,.28),
-      inset 0 0 0 1px rgba(186,199,213,.09) !important;
-  }
-}
-
-@media (max-width: 900px) {
-  .mobile-hero-carousel.pulse-visual-box,
-  .lab-hero-section .mobile-hero-single.pulse-visual-box,
-  .lss-image-block.orbit-image-frame.pulse-visual-box {
-    width: calc(100% - 28px) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    box-shadow:
-      0 14px 30px rgba(0,0,0,.40),
-      0 4px 12px rgba(0,0,0,.24),
-      inset 0 0 0 1px rgba(186,199,213,.09) !important;
-  }
-}
-
 </style>
 
 </head>
@@ -158,6 +186,7 @@
        SECTION 1: HERO CAROUSEL
   ======================================================= -->
 <section class="home-hero-section">
+<div class="lss-landscape-panel lss-hero-landscape-panel">
 <section class="hero-carousel pulse-visual-box" id="heroCarousel">
 <article class="slide active">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/ffshero.png');"></div>
@@ -347,6 +376,8 @@
 <button class="indicator"></button>
 </div>
 </section>
+</div>
+<div class="lss-landscape-panel lss-mobile-hero-landscape-panel">
 <section aria-label="Mobile hero carousel" class="mobile-hero-carousel pulse-visual-box" id="mobileHeroCarousel">
 <div class="mobile-hero-track">
 <article class="mobile-slide active">
@@ -396,6 +427,7 @@
 </button>
 </div>
 </section>
+</div>
 <div class="section-heading orbit-desktop-only">
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
@@ -626,6 +658,7 @@
 </a>
 </div>
 <section class="lab-hero-section">
+<div class="lss-landscape-panel lss-lab-landscape-panel">
 <section class="hero-single pulse-visual-box">
 <div class="hero-single-frame"></div>
 <div class="hero-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/THEFLASHTCVSHOWPROD.png');"></div>
@@ -647,16 +680,19 @@
 </div>
 </div>
 </section>
+</div>
+<div class="lss-landscape-panel lss-mobile-lab-landscape-panel">
 <section class="mobile-hero-single pulse-visual-box">
 <a href="flash-overtime.html">
 <img alt="Mobile" src="https://light-speed-studios.b-cdn.net/FLASHMOB1PROD.png">
 </img></a>
 </section>
+</div>
 </section>
 <div class="section-heading orbit-desktop-only">
 <span class="lead">O</span><span class="rest">RBIT</span>
 </div>
-<div class="lss-image-block orbit-image-frame pulse-visual-box">
+<div class="lss-image-block orbit-image-frame pulse-visual-box lss-landscape-panel">
   <picture>
     <source
       media="(max-width: 900px)"
