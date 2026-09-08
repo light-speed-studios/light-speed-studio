@@ -339,6 +339,50 @@
   }
 }
 
+
+
+/* =======================================================
+   HERO FINAL TUNING
+   Separate title and metadata, widen metadata strip,
+   remove title hover/click behavior.
+======================================================= */
+@media (min-width: 901px) {
+
+  /* Lower only the title cluster, not the whole overlay */
+  .home-hero-section .hero-content {
+    transform: none !important;
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .home-hero-section .hero-accent-bar,
+  .home-hero-section .hero-title-link {
+    transform: translateY(54px) !important;
+  }
+
+  /* Disable title hover/click action */
+  .home-hero-section .hero-title-link {
+    pointer-events: none !important;
+    cursor: default !important;
+    text-decoration: none !important;
+  }
+
+  /* Keep metadata truly separate and make it wider */
+  .home-hero-section .hero-meta {
+    left: 50% !important;
+    right: auto !important;
+    bottom: 16px !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 420px) !important;
+    max-width: 760px !important;
+    min-width: 540px !important;
+    justify-content: center !important;
+    gap: 1.15rem !important;
+    padding: 10px 22px !important;
+  }
+}
+
 </style>
 
 </head>
