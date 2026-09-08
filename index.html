@@ -980,6 +980,47 @@
 }
 </style>
 
+
+<style id="hero-true-center-fix">
+@media (min-width: 901px) {
+
+  /* Center both title cluster and metadata against the full hero image */
+  .home-hero-section .slide > .hero-content {
+    left: 50% !important;
+    right: auto !important;
+    width: calc(100% - 260px) !important;
+    max-width: 980px !important;
+    transform: translateX(-50%) !important;
+    text-align: center !important;
+  }
+
+  .home-hero-section .slide > .hero-content .content-inner,
+  .home-hero-section .slide > .hero-content .hero-content-wrapper,
+  .home-hero-section .hero-title-link {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .home-hero-section .hero-kicker,
+  .home-hero-section .hero-title {
+    display: block !important;
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  .home-hero-section .slide > .hero-meta {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
