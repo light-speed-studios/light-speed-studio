@@ -121,9 +121,9 @@
   }
 
   .home-hero-section .lss-landscape-panel > .hero-carousel {
-    height: 596px !important;
-    min-height: 596px !important;
-    max-height: 596px !important;
+    height: 536px !important;
+    min-height: 536px !important;
+    max-height: 536px !important;
   }
 
   .home-hero-section,
@@ -193,11 +193,13 @@
     transform: none !important;
   }
 
-  /* Crop only the bottom of Orbit by 15px while keeping its top fixed. */
+  /* Bottom-only crop. The negative bottom margin also shortens the panel,
+     so the cyan bottom frame rises with the artwork while the top stays fixed. */
   .lss-image-block.orbit-image-frame.lss-landscape-panel > picture {
     display: block !important;
     overflow: hidden !important;
-    max-height: calc(100% - 15px);
+    clip-path: none !important;
+    margin-bottom: 0 !important;
   }
 
   .lss-image-block.orbit-image-frame.lss-landscape-panel > picture > img {
@@ -205,6 +207,32 @@
     width: 100% !important;
     height: auto !important;
     margin: 0 !important;
+  }
+}
+
+
+
+/* Re-center Hero controls and text inside the shorter framed box. */
+@media (min-width: 901px) {
+  .home-hero-section .nav-arrow {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .home-hero-section .hero-content {
+    transform: none !important;
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+
+
+/* HERO wallpaper recenters naturally inside the shorter overall frame. */
+@media (min-width: 901px) {
+  .home-hero-section .slide-bg {
+    background-position: center center !important;
   }
 }
 
