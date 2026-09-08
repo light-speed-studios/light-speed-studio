@@ -1045,6 +1045,23 @@
 }
 </style>
 
+
+<style id="hero-meta-extra-bars-fix">
+@media (min-width: 901px) {
+  /* Remove inherited trailing separators after each metadata label. */
+  .home-hero-section .slide > .hero-meta span::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Keep only the two separators BETWEEN the three metadata items. */
+  .home-hero-section .slide > .hero-meta span + span::before {
+    content: "" !important;
+    display: block !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
