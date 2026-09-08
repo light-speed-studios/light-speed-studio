@@ -240,8 +240,9 @@
 
 /* =======================================================
    HERO LAYOUT CLEANUP
-   Indicators top-right, metadata separated at bottom,
-   main title block lowered slightly. No hover behavior.
+   No hover or dropdown behavior.
+   Indicators top-right, universal VAULT button top-left,
+   title block lowered, metadata centered along the bottom.
 ======================================================= */
 @media (min-width: 901px) {
 
@@ -253,40 +254,88 @@
     bottom: auto !important;
     transform: none !important;
     justify-content: flex-end !important;
+    z-index: 15 !important;
   }
 
-  /* Main Featured Edit / title block sits a little lower */
+  /* Universal VAULT button opposite the indicators */
+  .home-hero-section .hero-vault-button {
+    position: absolute !important;
+    left: 30px !important;
+    top: 28px !important;
+    z-index: 16 !important;
+    min-width: 96px !important;
+    height: 64px !important;
+    padding: 0 22px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 16px !important;
+    background: rgba(12, 16, 24, 0.58) !important;
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    box-shadow:
+      0 12px 26px rgba(0,0,0,.28),
+      inset 0 0 0 1px rgba(123,234,255,.10) !important;
+    color: #7beaff !important;
+    font-family: Oxanium, Arial, sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    letter-spacing: .09em !important;
+    cursor: pointer !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Lower the main text block more inside the shorter hero box */
+  .home-hero-section .hero-content {
+    transform: translateY(42px) !important;
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
   .home-hero-section .hero-accent-bar,
-  .home-hero-section .hero-title-link,
-  .home-hero-section .hero-description {
-    transform: translateY(18px) !important;
+  .home-hero-section .hero-title-link {
+    transform: none !important;
   }
 
-  /* Pull metadata away from the title and anchor it to the image bottom */
+  /* Keep arrows vertically centered in the new shorter hero box */
+  .home-hero-section .nav-arrow {
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 15 !important;
+  }
+
+  /* Metadata separated and centered across the bottom middle */
   .home-hero-section .hero-meta {
     position: absolute !important;
     left: 50% !important;
     bottom: 18px !important;
     transform: translateX(-50%) !important;
-    z-index: 8 !important;
+    z-index: 14 !important;
 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
     flex-wrap: nowrap !important;
-    gap: .85rem !important;
+    gap: .95rem !important;
 
     width: max-content !important;
-    max-width: calc(100% - 120px) !important;
+    max-width: calc(100% - 180px) !important;
     margin: 0 !important;
-    padding: 7px 13px !important;
+    padding: 9px 18px !important;
 
-    background: rgba(4,14,21,.62) !important;
+    background: rgba(4,14,21,.58) !important;
     box-shadow:
       inset 0 0 0 1px rgba(186,199,213,.12),
-      0 6px 18px rgba(0,0,0,.34) !important;
+      0 6px 18px rgba(0,0,0,.30) !important;
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(7px);
+  }
+
+  /* Hide taglines and hero action buttons entirely */
+  .home-hero-section .hero-description,
+  .home-hero-section .hero-actions {
+    display: none !important;
   }
 }
 
@@ -332,6 +381,7 @@
 <section class="home-hero-section">
 <div class="lss-landscape-panel lss-hero-landscape-panel">
 <section class="hero-carousel pulse-visual-box" id="heroCarousel">
+<button aria-label="Browse vault" class="hero-vault-button" onclick="window.location.href='vault.html'" type="button">VAULT</button>
 <article class="slide active">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/ffshero.png');"></div>
 <div class="hero-content">
@@ -345,13 +395,6 @@
 <span>2026</span>
 <span>2h 10m</span>
 <span>FUTURE WORLDS</span>
-</div>
-<p class="hero-description">
-              Into the Dying Light
-            </p>
-<div class="hero-actions">
-<a class="hero-button details" href="vault/far-from-sol.html">DETAILS</a>
-<a class="hero-button browse" href="vault.html">BROWSE</a>
 </div>
 </div>
 </div>
@@ -370,13 +413,6 @@
 <span>1h 50m</span>
 <span>AGE OF HEROES</span>
 </div>
-<p class="hero-description">
-              Tomorrow Begins with Hope
-            </p>
-<div class="hero-actions">
-<a class="hero-button details" href="vault/superman.html">DETAILS</a>
-<a class="hero-button browse" href="vault.html">BROWSE</a>
-</div>
 </div>
 </div>
 </article>
@@ -393,13 +429,6 @@
 <span>2026</span>
 <span>1h 32m</span>
 <span>FUTURE WORLDS</span>
-</div>
-<p class="hero-description">
-              Observation is Absolute
-            </p>
-<div class="hero-actions">
-<a class="hero-button details" href="vault/glass-rooms.html">DETAILS</a>
-<a class="hero-button browse" href="vault.html">BROWSE</a>
 </div>
 </div>
 </div>
@@ -418,13 +447,6 @@
 <span>1h 59m</span>
 <span>AGE OF HEROES</span>
 </div>
-<p class="hero-description">
-              Riddle Me This
-            </p>
-<div class="hero-actions">
-<a class="hero-button details" href="vault/batman.html">DETAILS</a>
-<a class="hero-button browse" href="vault.html">BROWSE</a>
-</div>
 </div>
 </div>
 </article>
@@ -441,13 +463,6 @@
 <span>2026</span>
 <span>1h 47m</span>
 <span>FUTURE WORLDS</span>
-</div>
-<p class="hero-description">
-             Rebellions Are Built on Sacrifice
-            </p>
-<div class="hero-actions">
-<a class="hero-button details" href="vault/rogue-one.html">DETAILS</a>
-<a class="hero-button browse" href="vault.html">BROWSE</a>
 </div>
 </div>
 </div>
@@ -466,13 +481,6 @@
 <span>1h 57m</span>
 <span>AGE OF HEROES</span>
 </div>
-<p class="hero-description">
-              No Choice Left But to Run
-            </p>
-<div class="hero-actions">
-<a class="hero-button details" href="vault/the-flash.html">DETAILS</a>
-<a class="hero-button browse" href="vault.html">BROWSE</a>
-</div>
 </div>
 </div>
 </article>
@@ -489,13 +497,6 @@
 <span>2026</span>
 <span>1h 47m</span>
 <span>METALLIC MAYHEM</span>
-</div>
-<p class="hero-description">
-              Fight for Redemption
-            </p>
-<div class="hero-actions">
-<a class="hero-button details" href="vault/real-steel.html">DETAILS</a>
-<a class="hero-button browse" href="vault.html">BROWSE</a>
 </div>
 </div>
 </div>
@@ -814,12 +815,6 @@
 <div class="hero-meta">
 <span>25 SEPT 2026</span>
 <span>AGE OF HEROES</span>
-</div>
-<p class="hero-description">
-            Running Around the Clock
-          </p>
-<div class="hero-actions">
-<a class="hero-button details" href="flash-overtime.html">DETAILS</a>
 </div>
 </div>
 </div>
