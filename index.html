@@ -32,8 +32,8 @@
   margin-right: auto !important;
   padding: 18px !important;
   background:
-    linear-gradient(145deg, rgba(0,174,222,.18), rgba(255,255,255,.03)),
-    rgba(255,255,255,.035) !important;
+    linear-gradient(145deg, rgba(0,174,222,.14), rgba(255,255,255,.022)),
+    rgba(255,255,255,.026) !important;
   box-shadow:
     0 0 32px rgba(0,174,222,.12),
     inset 0 0 0 1px rgba(0,174,222,.28) !important;
@@ -108,6 +108,10 @@
    the original downstream Bridge position with reserved space below. */
 @media (min-width: 901px) {
 
+  .home-hero-section .lss-hero-landscape-panel {
+    transform: translateY(-15px) !important;
+  }
+
   .lss-mobile-hero-landscape-panel,
   .lss-mobile-lab-landscape-panel {
     display: none !important;
@@ -117,8 +121,8 @@
   }
 
   .home-hero-section .lss-landscape-panel > .hero-carousel {
-    height: 586px !important;
-    min-height: 552px !important;
+    height: 611px !important;
+    min-height: 577px !important;
   }
 
   .home-hero-section,
@@ -164,6 +168,14 @@
     box-shadow: 0 14px 28px rgba(0,0,0,.38) !important;
   }
 }
+
+/* Give the seven hero navigation bars a little more separation from the image. */
+.home-hero-section .indicator {
+  box-shadow:
+    0 2px 5px rgba(0,0,0,.72),
+    0 0 7px rgba(0,0,0,.42) !important;
+}
+
 </style>
 
 </head>
