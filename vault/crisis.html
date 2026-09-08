@@ -1815,6 +1815,23 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 
+
+/* REMOVE INNER PALETTE FRAME — OUTER COMBINED BOX REMAINS */
+@media (min-width: 901px) {
+  .ffs-palette-cta-group .ffs-palette-wrap {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .ffs-palette-cta-group .ffs-palette-wrap::before,
+  .ffs-palette-cta-group .ffs-palette-wrap::after {
+    content: none !important;
+    display: none !important;
+  }
+}
+
 </style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
