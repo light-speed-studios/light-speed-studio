@@ -636,6 +636,50 @@
   }
 }
 
+
+
+/* =======================================================
+   HERO + LAB TEXT / SIZE TUNING
+======================================================= */
+@media (min-width: 901px) {
+
+  /* Keep Hero at current approved size */
+  .home-hero-section .lss-landscape-panel > .hero-carousel {
+    height: 536px !important;
+    min-height: 536px !important;
+    max-height: 536px !important;
+  }
+
+  /* Make Lab shorter: 500px artwork + 18px top/bottom frame padding = 536px total */
+  .lab-hero-section .lss-landscape-panel > .hero-single {
+    height: 500px !important;
+    min-height: 500px !important;
+    max-height: 500px !important;
+  }
+
+  /* Move Hero and Lab title clusters slightly farther left */
+  .home-hero-section .hero-content .content-inner,
+  .lab-hero-section .hero-content .content-inner {
+    transform: translateX(-14px) !important;
+  }
+
+  /* Stronger readability for all FEATURED EDIT labels */
+  .home-hero-section .hero-kicker {
+    text-shadow:
+      0 2px 4px rgba(0,0,0,.95),
+      0 0 8px rgba(0,0,0,.85),
+      0 0 14px rgba(0,0,0,.65) !important;
+  }
+
+  /* Stronger readability for the Lab IN-PRODUCTION label */
+  .lab-hero-section .lab-kicker {
+    text-shadow:
+      0 2px 4px rgba(0,0,0,.95),
+      0 0 8px rgba(0,0,0,.85),
+      0 0 14px rgba(0,0,0,.65) !important;
+  }
+}
+
 </style>
 
 </head>
