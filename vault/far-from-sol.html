@@ -1483,7 +1483,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   background:
     linear-gradient(180deg, rgba(0, 174, 222, 0.07), rgba(255, 255, 255, 0.018)),
     rgba(4, 14, 21, 0.72);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 174, 222, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.18);
   transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
 }
 
@@ -1549,6 +1551,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     linear-gradient(180deg, rgba(0, 174, 222, .14), rgba(255, 255, 255, .028)),
     rgba(4, 14, 21, .82);
   box-shadow:
+    inset 0 0 0 1px rgba(0, 174, 222, 0.28),
     0 0 26px rgba(0, 174, 222, .15),
     0 12px 30px rgba(0, 0, 0, .24);
 }
@@ -1589,6 +1592,84 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 
+
+
+/* PALETTE + CTA COMBINED MODULE */
+.ffs-palette-cta-group {
+  position: relative;
+  margin-top: 21px;
+  padding: 14px;
+  background:
+    linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 0 30px rgba(0, 174, 222, 0.08),
+    inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+  overflow: hidden;
+}
+
+.ffs-palette-cta-group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+  opacity: 0.72;
+}
+
+.ffs-palette-cta-group > * {
+  position: relative;
+  z-index: 4;
+}
+
+.ffs-palette-cta-group .ffs-palette-wrap {
+  margin: 0 0 14px;
+  padding: 10px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ffs-palette-cta-group .ffs-links-panel {
+  margin: 0;
+  padding: 14px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ffs-palette-cta-group .ffs-links-panel::before {
+  content: none;
+}
+
+@media (max-width: 900px) {
+  .ffs-palette-cta-group {
+    margin-top: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .ffs-palette-cta-group::before {
+    content: none;
+  }
+
+  .ffs-palette-cta-group .ffs-palette-wrap {
+    display: none !important;
+  }
+
+  .ffs-palette-cta-group .ffs-links-panel {
+    padding: 0;
+  }
+}
 
 /* =======================================================
    DESKTOP PROJECT COMPOSITION
@@ -1837,12 +1918,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <strong>The Astrophage Paradox</strong>
       </div>
     </div>
-
-    <div class="ffs-palette-wrap">
-      <img alt="Far From Sol color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/movie%20pallete.png"/>
-    </div>
   </div>
 </div>
+
+<div class="ffs-palette-cta-group">
+  <div class="ffs-palette-wrap">
+    <img alt="Far From Sol color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/movie%20pallete.png"/>
+  </div>
+
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
 
@@ -1880,6 +1963,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </a>
 </div>
 </div>
+</div>
+
 <div class="ffs-trailer-section">
 <div class="ffs-trailer-header">
 <h2>Trailer</h2>
