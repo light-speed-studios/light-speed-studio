@@ -1671,6 +1671,84 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 }
 
 
+
+/* PALETTE + CTA COMBINED MODULE */
+.ffs-palette-cta-group {
+  position: relative;
+  margin-top: 21px;
+  padding: 14px;
+  background:
+    linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 0 30px rgba(0, 174, 222, 0.08),
+    inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+  overflow: hidden;
+}
+
+.ffs-palette-cta-group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+  opacity: 0.72;
+}
+
+.ffs-palette-cta-group > * {
+  position: relative;
+  z-index: 4;
+}
+
+.ffs-palette-cta-group .ffs-palette-wrap {
+  margin: 0 0 14px;
+  padding: 10px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ffs-palette-cta-group .ffs-links-panel {
+  margin: 0;
+  padding: 14px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.ffs-palette-cta-group .ffs-links-panel::before {
+  content: none;
+}
+
+@media (max-width: 900px) {
+  .ffs-palette-cta-group {
+    margin-top: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .ffs-palette-cta-group::before {
+    content: none;
+  }
+
+  .ffs-palette-cta-group .ffs-palette-wrap {
+    display: none !important;
+  }
+
+  .ffs-palette-cta-group .ffs-links-panel {
+    padding: 0;
+  }
+}
+
 /* BATMAN REFERENCE DESKTOP COMPOSITION */
 @media (min-width: 901px) {
   .ffs-page { padding-top: 25px; }
@@ -1829,11 +1907,14 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 </div>
 </div>
 </div>
-<div class="ffs-palette-wrap">
-        <img class="ffs-palette" src="https://light-speed-studios.b-cdn.net/SUPERMANMOVIEPALLETE.png" alt="Superman: Son of Tomorrow color palette" loading="lazy" decoding="async">
-      </div>
 </div>
-<div class="ffs-links-panel ffs-cta-panel">
+
+<div class="ffs-palette-cta-group">
+  <div class="ffs-palette-wrap">
+    <img class="ffs-palette" src="https://light-speed-studios.b-cdn.net/SUPERMANMOVIEPALLETE.png" alt="Superman: Son of Tomorrow color palette" loading="lazy" decoding="async">
+  </div>
+
+  <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
 
 <div class="ffs-cta-grid">
@@ -1870,6 +1951,8 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   </a>
 </div>
 </div>
+</div>
+
 <div class="ffs-trailer-section">
         <div class="ffs-trailer-header">
           <h2>Trailer</h2>
