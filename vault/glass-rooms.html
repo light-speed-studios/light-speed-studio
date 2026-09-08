@@ -1876,7 +1876,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-palette-wrap">
 <img alt="Glass Rooms color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/GDpallette.png"/>
 </div>
-</div>
+
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
 
@@ -1913,7 +1913,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <strong>Watch Movie</strong>
   </a>
 </div>
-</div></div>
+</div>
+</div>
 
 <div class="ffs-trailer-section">
 <div class="ffs-trailer-header">
@@ -2022,6 +2023,23 @@ document.addEventListener("click", function (event) {
     flex: 0 0 auto !important;
   }
 }
+
+/* REMOVE INNER PALETTE FRAME — OUTER COMBINED BOX REMAINS */
+@media (min-width: 901px) {
+  .ffs-palette-cta-group .ffs-palette-wrap {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .ffs-palette-cta-group .ffs-palette-wrap::before,
+  .ffs-palette-cta-group .ffs-palette-wrap::after {
+    content: none !important;
+    display: none !important;
+  }
+}
+
 </style>
 
 </body>
