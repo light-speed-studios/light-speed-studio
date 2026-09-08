@@ -13,10 +13,82 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=6" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=5" rel="stylesheet"/>
 
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.png" media="(min-width: 901px)" fetchpriority="high"/>
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.png" media="(max-width: 900px)" fetchpriority="high"/>
+
+<style id="bridge-pulse-visual-box-fix">
+/* Pulse box treatment applied directly in index so it cannot be missed by a cached stylesheet. */
+.pulse-visual-box {
+  --pulse-frame-cyan: #00AEDE;
+  position: relative !important;
+  overflow: hidden !important;
+  background:
+    linear-gradient(45deg, rgba(0,174,222,.08), transparent 38%),
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018)),
+    rgba(4,14,21,.86) !important;
+  box-shadow:
+    0 0 34px rgba(0,0,0,.25),
+    inset 0 0 0 1px rgba(186,199,213,.09) !important;
+}
+
+/* Remove the old image-edge fades. */
+.home-hero-section .slide::before,
+.home-hero-section .slide::after,
+.lab-hero-section .hero-single::before,
+.lab-hero-section .hero-single::after,
+.lab-hero-section .mobile-hero-single::after,
+.lss-image-block.orbit-image-frame::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+}
+
+/* Rebuild the Pulse cyan corners as a dedicated overlay on every framed module. */
+.pulse-visual-box::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 100 !important;
+  pointer-events: none !important;
+  opacity: .72 !important;
+  background:
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 2px 42px no-repeat !important;
+}
+
+/* The Lab already contains an older frame element. Disable it so there is one frame only. */
+.lab-hero-section .hero-single-frame {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  .pulse-visual-box::before {
+    background:
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 30px 2px no-repeat,
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 2px 30px no-repeat,
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 30px 2px no-repeat,
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 2px 30px no-repeat,
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 30px 2px no-repeat,
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 2px 30px no-repeat,
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 30px 2px no-repeat,
+      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 2px 30px no-repeat !important;
+  }
+
+  .lss-image-block.orbit-image-frame.pulse-visual-box {
+    overflow: hidden !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -55,7 +127,7 @@
        SECTION 1: HERO CAROUSEL
   ======================================================= -->
 <section class="home-hero-section">
-<section class="hero-carousel" id="heroCarousel">
+<section class="hero-carousel pulse-visual-box" id="heroCarousel">
 <article class="slide active">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/ffshero.png');"></div>
 <div class="hero-content">
@@ -244,7 +316,7 @@
 <button class="indicator"></button>
 </div>
 </section>
-<section aria-label="Mobile hero carousel" class="mobile-hero-carousel" id="mobileHeroCarousel">
+<section aria-label="Mobile hero carousel" class="mobile-hero-carousel pulse-visual-box" id="mobileHeroCarousel">
 <div class="mobile-hero-track">
 <article class="mobile-slide active">
 <a href="vault/far-from-sol.html">
@@ -523,7 +595,7 @@
 </a>
 </div>
 <section class="lab-hero-section">
-<section class="hero-single">
+<section class="hero-single pulse-visual-box">
 <div class="hero-single-frame"></div>
 <div class="hero-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/THEFLASHTCVSHOWPROD.png');"></div>
 <div class="hero-content">
@@ -544,7 +616,7 @@
 </div>
 </div>
 </section>
-<section class="mobile-hero-single">
+<section class="mobile-hero-single pulse-visual-box">
 <a href="flash-overtime.html">
 <img alt="Mobile" src="https://light-speed-studios.b-cdn.net/FLASHMOB1PROD.png">
 </img></a>
@@ -553,7 +625,7 @@
 <div class="section-heading orbit-desktop-only">
 <span class="lead">O</span><span class="rest">RBIT</span>
 </div>
-<div class="lss-image-block orbit-image-frame">
+<div class="lss-image-block orbit-image-frame pulse-visual-box">
   <picture>
     <source
       media="(max-width: 900px)"
