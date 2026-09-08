@@ -534,6 +534,108 @@
   }
 }
 
+
+
+/* =======================================================
+   HERO + LAB FINAL MATCH
+   Same height, no accent bars, Lab metadata separated,
+   only Lab artwork clickable.
+======================================================= */
+@media (min-width: 901px) {
+
+  /* Hero and Lab use the same inner artwork height */
+  .home-hero-section .lss-landscape-panel > .hero-carousel,
+  .lab-hero-section .lss-landscape-panel > .hero-single {
+    height: 536px !important;
+    min-height: 536px !important;
+    max-height: 536px !important;
+  }
+
+  /* Remove cyan accent bars from both Hero and Lab */
+  .home-hero-section .hero-accent-bar,
+  .lab-hero-section .hero-accent-bar {
+    display: none !important;
+  }
+
+  /* Lab title block sits independently above the metadata */
+  .lab-hero-section .hero-content {
+    transform: none !important;
+    align-items: center !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .lab-hero-section .hero-title,
+  .lab-hero-section .lab-kicker {
+    transform: translateY(54px) !important;
+  }
+
+  /* Lab metadata matches Hero treatment at bottom center */
+  .lab-hero-section .hero-single > .hero-meta {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 16px !important;
+    top: auto !important;
+    transform: translateX(-50%) !important;
+    z-index: 20 !important;
+
+    width: fit-content !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 260px) !important;
+    margin: 0 !important;
+    padding: 10px 24px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    gap: 1.45rem !important;
+
+    font-size: 1.18rem !important;
+    line-height: 1 !important;
+
+    background: rgba(42,45,50,.72) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(186,199,213,.14),
+      0 8px 20px rgba(0,0,0,.34) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .lab-hero-section .hero-single > .hero-meta span {
+    font-size: inherit !important;
+    white-space: nowrap !important;
+  }
+
+  /* Remove Lab details/action controls */
+  .lab-hero-section .hero-actions {
+    display: none !important;
+  }
+
+  /* Only the Lab artwork itself is clickable */
+  .lab-hero-section .lab-image-link {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    display: block !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+  }
+
+  .lab-hero-section .lab-image-link .hero-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .lab-hero-section .hero-content,
+  .lab-hero-section .hero-single > .hero-meta {
+    pointer-events: none !important;
+  }
+}
+
 </style>
 
 </head>
@@ -583,7 +685,6 @@
 </a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <a class="hero-title-link" href="vault/far-from-sol.html">
 <span class="hero-kicker">FEATURED EDIT</span>
 <h1 class="hero-title">FAR FROM SOL</h1>
@@ -603,7 +704,6 @@
 </a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <a class="hero-title-link" href="vault/superman.html">
 <span class="hero-kicker">FEATURED EDIT</span>
 <h1 class="hero-title">SUPERMAN: SON OF TOMORROW</h1>
@@ -623,7 +723,6 @@
 </a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <a class="hero-title-link" href="vault/glass-rooms.html">
 <span class="hero-kicker">FEATURED EDIT</span>
 <h1 class="hero-title">GLASS ROOMS</h1>
@@ -643,7 +742,6 @@
 </a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <a class="hero-title-link" href="vault/batman.html">
 <span class="hero-kicker">FEATURED EDIT</span>
 <h1 class="hero-title">BATMAN: GOTHAM'S RIDDLE</h1>
@@ -663,7 +761,6 @@
 </a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <a class="hero-title-link" href="vault/rogue-one.html">
 <span class="hero-kicker">FEATURED EDIT</span>
 <h1 class="hero-title">ROGUE ONE: THE SCARIF RUN</h1>
@@ -683,7 +780,6 @@
 </a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <a class="hero-title-link" href="vault/the-flash.html">
 <span class="hero-kicker">FEATURED EDIT</span>
 <h1 class="hero-title">THE FLASH: CROSSROADS</h1>
@@ -703,7 +799,6 @@
 </a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <a class="hero-title-link" href="vault/real-steel.html">
 <span class="hero-kicker">FEATURED EDIT</span>
 <h1 class="hero-title">REAL STEEL: THE LAST ROUND</h1>
@@ -1022,18 +1117,20 @@
 <div class="lss-landscape-panel lss-lab-landscape-panel">
 <section class="hero-single pulse-visual-box">
 <div class="hero-single-frame"></div>
+<a class="lab-image-link" href="flash-overtime.html" aria-label="Open The Flash: Overtime landing page">
 <div class="hero-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/THEFLASHTCVSHOWPROD.png');"></div>
+</a>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
-<div class="hero-accent-bar"></div>
 <span class="lab-kicker">IN-PRODUCTION</span>
 <h1 class="hero-title">THE FLASH: OVERTIME</h1>
+</div>
+</div>
 <div class="hero-meta">
 <span>25 SEPT 2026</span>
 <span>AGE OF HEROES</span>
 </div>
-</div>
-</div>
+
 </section>
 </div>
 <div class="lss-landscape-panel lss-mobile-lab-landscape-panel">
