@@ -1503,7 +1503,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   background:
     linear-gradient(180deg, rgba(0, 174, 222, 0.07), rgba(255, 255, 255, 0.018)),
     rgba(4, 14, 21, 0.72);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 174, 222, 0.18),
+    0 10px 24px rgba(0, 0, 0, 0.18);
   transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
 }
 
@@ -1569,6 +1571,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     linear-gradient(180deg, rgba(0, 174, 222, .14), rgba(255, 255, 255, .028)),
     rgba(4, 14, 21, .82);
   box-shadow:
+    inset 0 0 0 1px rgba(0, 174, 222, 0.28),
     0 0 26px rgba(0, 174, 222, .15),
     0 12px 30px rgba(0, 0, 0, .24);
 }
