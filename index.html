@@ -109,7 +109,7 @@
 @media (min-width: 901px) {
 
   .home-hero-section .lss-hero-landscape-panel {
-    transform: translateY(-34px) !important;
+    transform: none !important;
   }
 
   .lss-mobile-hero-landscape-panel,
@@ -121,9 +121,9 @@
   }
 
   .home-hero-section .lss-landscape-panel > .hero-carousel {
-    height: 611px !important;
-    min-height: 611px !important;
-    max-height: 611px !important;
+    height: 596px !important;
+    min-height: 596px !important;
+    max-height: 596px !important;
   }
 
   .home-hero-section,
@@ -190,7 +190,21 @@
 
 @media (min-width: 901px) {
   .lss-image-block.orbit-image-frame.lss-landscape-panel {
-    transform: translateY(-18px) !important;
+    transform: none !important;
+  }
+
+  /* Crop only the bottom of Orbit by 15px while keeping its top fixed. */
+  .lss-image-block.orbit-image-frame.lss-landscape-panel > picture {
+    display: block !important;
+    overflow: hidden !important;
+    max-height: calc(100% - 15px);
+  }
+
+  .lss-image-block.orbit-image-frame.lss-landscape-panel > picture > img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
   }
 }
 
