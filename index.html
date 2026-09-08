@@ -41,6 +41,14 @@
   box-sizing: border-box !important;
 }
 
+
+.lss-image-block.orbit-image-frame.lss-landscape-panel {
+  width: min(1220px, calc(100% - 40px)) !important;
+  max-width: 1220px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 .lss-landscape-panel::before {
   content: "" !important;
   position: absolute !important;
@@ -99,13 +107,18 @@
 /* HERO: trim 10px from the bottom of the visible artwork while preserving
    the original downstream Bridge position with reserved space below. */
 @media (min-width: 901px) {
+
+  .lss-mobile-hero-landscape-panel,
+  .lss-mobile-lab-landscape-panel {
+    display: none !important;
+  }
   .home-hero-section .lss-landscape-panel {
-    margin-bottom: 10px !important;
+    margin-bottom: 0 !important;
   }
 
   .home-hero-section .lss-landscape-panel > .hero-carousel {
-    height: 601px !important;
-    min-height: 567px !important;
+    height: 586px !important;
+    min-height: 552px !important;
   }
 
   .home-hero-section,
@@ -120,6 +133,11 @@
 }
 
 @media (max-width: 900px) {
+
+  .lss-hero-landscape-panel,
+  .lss-lab-landscape-panel {
+    display: none !important;
+  }
   .lss-landscape-panel {
     width: calc(100% - 28px) !important;
     padding: 14px !important;
