@@ -782,6 +782,124 @@
 
 </style>
 
+
+<style id="hero-centered-title-meta-and-round-indicators">
+/* =======================================================
+   HERO CENTERED TITLE + METADATA / ROUND INACTIVE INDICATORS
+   Desktop only
+======================================================= */
+@media (min-width: 901px) {
+
+  /* Center the Featured Edit + title above the metadata */
+  .home-hero-section .hero-content {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 72px !important;
+    top: auto !important;
+    width: max-content !important;
+    max-width: calc(100% - 260px) !important;
+    transform: translateX(-50%) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    z-index: 21 !important;
+  }
+
+  .home-hero-section .hero-content .content-inner {
+    transform: none !important;
+    text-align: center !important;
+  }
+
+  .home-hero-section .hero-title-link,
+  .home-hero-section .hero-title-link:hover,
+  .home-hero-section .hero-title-link:focus,
+  .home-hero-section .hero-title-link:active,
+  .home-hero-section .slide:hover .hero-title-link,
+  .home-hero-section .hero-content:hover .hero-title-link {
+    transform: none !important;
+    text-align: center !important;
+  }
+
+  .home-hero-section .hero-kicker,
+  .home-hero-section .hero-title {
+    transform: none !important;
+    text-align: center !important;
+  }
+
+  /* Metadata directly below title, dark pill, evenly spread, no icons */
+  .home-hero-section .slide > .hero-meta {
+    left: 50% !important;
+    right: auto !important;
+    bottom: 18px !important;
+    top: auto !important;
+    transform: translateX(-50%) !important;
+
+    width: min(720px, calc(100% - 300px)) !important;
+    min-width: 560px !important;
+    max-width: 720px !important;
+    padding: 10px 24px !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    justify-items: center !important;
+    gap: 0 !important;
+
+    background: rgba(4,14,21,.78) !important;
+    border: 1px solid rgba(123,234,255,.22) !important;
+    border-radius: 999px !important;
+    box-shadow:
+      0 8px 20px rgba(0,0,0,.34),
+      inset 0 0 18px rgba(0,174,222,.05) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    overflow: hidden !important;
+  }
+
+  .home-hero-section .slide > .hero-meta span {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 24px !important;
+    padding: 0 22px !important;
+    font-size: 1.18rem !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  .home-hero-section .slide > .hero-meta span + span::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    width: 1px !important;
+    height: 22px !important;
+    transform: translateY(-50%) !important;
+    background: rgba(186,199,213,.38) !important;
+  }
+
+  /* Inactive indicators become dots; only active remains a dash */
+  .home-hero-section .indicator {
+    width: 10px !important;
+    height: 10px !important;
+    min-width: 10px !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+  }
+
+  .home-hero-section .indicator.active {
+    width: 38px !important;
+    min-width: 38px !important;
+    height: 6px !important;
+    border-radius: 999px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
