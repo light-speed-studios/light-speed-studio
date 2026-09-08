@@ -1961,49 +1961,148 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </div>
 </div>
 
-<div class="ffs-palette-cta-group">
+<style>
+/* SEPARATE PALETTE + VERTICAL CTA / TRAILER ROW */
+@media (min-width: 901px) {
+  .ffs-palette-module {
+    position: relative;
+    margin-top: 21px;
+    padding: 14px;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+      rgba(255, 255, 255, 0.035);
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
+  }
+
+  .ffs-palette-module::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    opacity: 0.72;
+  }
+
+  .ffs-palette-module > * {
+    position: relative;
+    z-index: 4;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap::before,
+  .ffs-palette-module .ffs-palette-wrap::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-cta-trailer-row {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 28px;
+    align-items: stretch;
+    margin-top: 26px;
+  }
+
+  .ffs-cta-trailer-row .ffs-links-panel,
+  .ffs-cta-trailer-row .ffs-trailer-section {
+    margin-top: 0;
+  }
+
+  .ffs-cta-trailer-row .ffs-links-panel {
+    padding: 14px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ffs-cta-trailer-row .ffs-cta-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 14px;
+    height: 100%;
+    align-content: stretch;
+  }
+
+  .ffs-cta-trailer-row .ffs-cta-tile {
+    min-height: 0;
+    height: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .ffs-palette-module {
+    display: none;
+  }
+
+  .ffs-cta-trailer-row {
+    display: block;
+  }
+}
+</style>
+
+<div class="ffs-palette-module">
   <div class="ffs-palette-wrap">
     <img alt="Batman: Gotham's Riddle color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/NEW%20PALLETTE.PNG"/>
   </div>
+</div>
 
+<div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
-<input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack">
+    <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack"/>
 
-<div class="ffs-cta-grid">
-  <a class="ffs-cta-tile" href="../batman-gothams-riddle-changelog.html">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <rect x="15" y="12" width="34" height="40" rx="2"></rect>
-        <path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
-      </svg>
-    </span>
-    <strong>Changelog</strong>
-  </a>
+    <div class="ffs-cta-grid">
+      <a class="ffs-cta-tile" href="../batman-gothams-riddle-changelog.html">
+        <span class="ffs-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <rect x="15" y="12" width="34" height="40" rx="2"></rect>
+            <path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
+          </svg>
+        </span>
+        <strong>Changelog</strong>
+      </a>
 
-  <label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
-      </svg>
-    </span>
-    <strong>Soundtrack</strong>
-  </label>
+      <label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
+        <span class="ffs-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
+          </svg>
+        </span>
+        <strong>Soundtrack</strong>
+      </label>
 
-  <a class="ffs-cta-tile" href="../batman-movie.html">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <rect x="16" y="24" width="30" height="22" rx="3"></rect>
-        <circle cx="25" cy="35" r="5"></circle>
-        <circle cx="38" cy="35" r="5"></circle>
-        <path d="M46 30l10-6v22l-10-6z"></path>
-        <path d="M22 46l-4 8M40 46l4 8"></path>
-      </svg>
-    </span>
-    <strong>Watch Movie</strong>
-  </a>
-</div>
-</div>
-</div>
+      <a class="ffs-cta-tile" href="../batman-movie.html">
+        <span class="ffs-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <rect x="16" y="24" width="30" height="22" rx="3"></rect>
+            <circle cx="25" cy="35" r="5"></circle>
+            <circle cx="38" cy="35" r="5"></circle>
+            <path d="M46 30l10-6v22l-10-6z"></path>
+            <path d="M22 46l-4 8M40 46l4 8"></path>
+          </svg>
+        </span>
+        <strong>Watch Movie</strong>
+      </a>
+    </div>
+  </div>
 
 <div class="ffs-trailer-section">
 <div class="ffs-trailer-header">
@@ -2014,6 +2113,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </iframe>
 </div>
 </div>
+</div>
+
 <nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
     <a href="../vault.html" data-project-nav-key="vault-mobile">Vault</a>
     <a href="superman.html" data-project-nav-key="prev-mobile">Prev</a>
