@@ -1395,6 +1395,43 @@
 }
 </style>
 
+
+<style id="orbit-corner-brackets-fix">
+/* Match the cyan corner brackets used around Hero and Lab */
+.lss-image-block.orbit-image-frame.lss-landscape-panel.orbit-year-switcher::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 150 !important;
+  pointer-events: none !important;
+  opacity: .86 !important;
+  display: block !important;
+  background:
+    linear-gradient(#00AEDE,#00AEDE) left top / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left top / 2px 42px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 2px 42px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 42px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 42px no-repeat !important;
+}
+
+@media (max-width: 900px) {
+  .lss-image-block.orbit-image-frame.lss-landscape-panel.orbit-year-switcher::before {
+    background:
+      linear-gradient(#00AEDE,#00AEDE) left top / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left top / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 30px no-repeat !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
