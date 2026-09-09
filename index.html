@@ -1197,6 +1197,85 @@
 }
 </style>
 
+
+<style id="lab-title-visibility-hard-fix">
+@media (min-width: 901px) {
+  /* Force the Lab title cluster visibly above the artwork/link layer. */
+  .lab-hero-section .hero-single {
+    position: relative !important;
+  }
+
+  .lab-hero-section .hero-single > .hero-content {
+    position: absolute !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 78px !important;
+
+    width: calc(100% - 180px) !important;
+    max-width: 1180px !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    transform: translateX(-50%) !important;
+    z-index: 60 !important;
+    text-align: center !important;
+    pointer-events: none !important;
+  }
+
+  .lab-hero-section .hero-single > .hero-content .content-inner,
+  .lab-hero-section .hero-single > .hero-content .hero-content-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    transform: none !important;
+    text-align: center !important;
+  }
+
+  .lab-hero-section .lab-kicker {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    margin: 0 0 5px !important;
+    transform: none !important;
+    text-align: center !important;
+    color: #00aede !important;
+  }
+
+  .lab-hero-section .hero-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    transform: none !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    color: #bac7d5 !important;
+    font-size: clamp(34px, 3.2vw, 58px) !important;
+  }
+
+  /* Keep metadata below the title and above the artwork. */
+  .lab-hero-section .hero-single > .hero-meta {
+    z-index: 61 !important;
+  }
+
+  .lab-hero-section .lab-image-link {
+    z-index: 2 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
