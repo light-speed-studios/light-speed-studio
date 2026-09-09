@@ -1276,6 +1276,50 @@
 }
 </style>
 
+
+<style id="mobile-desktop-experience-note-style">
+.mobile-desktop-experience-note {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-desktop-experience-note {
+    display: block;
+    width: calc(100% - 28px);
+    margin: 12px auto 24px;
+    padding: 14px 16px 15px;
+    background:
+      linear-gradient(90deg, rgba(0,174,222,.08), transparent),
+      rgba(255,255,255,.028);
+    border: 1px solid rgba(0,174,222,.18);
+    box-shadow:
+      0 0 18px rgba(0,174,222,.06),
+      inset 0 0 0 1px rgba(255,255,255,.015);
+    color: #bac7d5;
+    box-sizing: border-box;
+  }
+
+  .mobile-desktop-experience-note strong {
+    display: block;
+    margin: 0 0 6px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #00aede;
+  }
+
+  .mobile-desktop-experience-note p {
+    margin: 0;
+    font-family: Rajdhani, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(186,199,213,.78);
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -1796,6 +1840,12 @@
 <div class="bridge-body disclaimer-body">
 <p><strong>DISCLAIMER</strong> Light Speed Studios respects intellectual property rights and does not support piracy. These edits are transformative, non-profit works. To support the original filmmakers, viewers should have a legal copy or official streaming access to the original film.
   </p></div>
+
+<div class="mobile-desktop-experience-note">
+  <strong>DESKTOP EXPERIENCE RECOMMENDED</strong>
+  <p>The mobile site is streamlined for quick browsing. For the full Light Speed Studios experience, including expanded project features and viewing options, visit on desktop.</p>
+</div>
+
 <div class="footer-logo-block">
 
 <div class="footer-socials">
