@@ -17,7 +17,6 @@
       pointer-events: none !important;
     }
   </style>
-
 <style id="mobile-poster-lightbox-isolation-fix">
 @media (max-width: 900px) {
 
@@ -84,26 +83,60 @@
   }
 }
 </style>
+<style id="rogue-mobile-structure-order-fix">
+@media (max-width: 900px) {
+  .ffs-mobile-meta { display: none !important; }
 
-</head>
+  .ffs-project-block {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-mobile-project-header { order: 1 !important; }
+
+  .ffs-desktop-composition {
+    order: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column {
+    display: contents !important;
+  }
+
+  .ffs-poster-panel { order: 1 !important; }
+  .ffs-title-panel { display: none !important; }
+  .ffs-info-panel { order: 2 !important; }
+
+  .ffs-palette-module { display: none !important; }
+
+  .ffs-cta-trailer-row {
+    order: 3 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-links-panel { order: 1 !important; }
+  .ffs-trailer-section { order: 2 !important; }
+
+  .ffs-mobile-project-nav { order: 4 !important; }
+  .ffs-footer-logo-block { order: 5 !important; }
+}
+</style></head>
 <body>
-<div id="lss-page-splash" data-duration="3000" aria-label="Rogue One: The Scarif Run splash screen">
-  <picture class="lss-page-splash-picture">
-    <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ROGUEONEsplashmob.png">
-    <img
-      class="lss-page-splash-image"
-      src="https://light-speed-studios.b-cdn.net/ROGUEONEsplashdesk.png"
-      alt="Rogue One: The Scarif Run"
-      decoding="sync"
-      fetchpriority="high"
-      loading="eager">
-  </picture>
+<div aria-label="Rogue One: The Scarif Run splash screen" data-duration="3000" id="lss-page-splash">
+<picture class="lss-page-splash-picture">
+<source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ROGUEONEsplashmob.png"/>
+<img alt="Rogue One: The Scarif Run" class="lss-page-splash-image" decoding="sync" fetchpriority="high" loading="eager" src="https://light-speed-studios.b-cdn.net/ROGUEONEsplashdesk.png"/>
+</picture>
 </div>
 <header class="lss-nav-bar">
 <a class="lss-nav-logo" href="../index.html">
-<img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+<img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png">
 <span class="lss-brand-text">No Spectacle Without Soul</span>
-</a>
+</img></a>
 <div class="hamburger">☰</div>
 <nav class="lss-nav-links">
 <a class="lss-nav-item" href="../index.html">Bridge</a>
@@ -1844,20 +1877,19 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 </style>
-  <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
-    <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
-      <span class="ffs-side-nav-line">Back to</span>
-      <span class="ffs-side-nav-line">Vault</span>
-    </a>
-  </nav>
-
-  <nav class="ffs-project-side-nav ffs-project-side-nav-right" aria-label="Project sequence navigation">
-    <a class="ffs-side-nav-link ffs-side-prev" href="glass-rooms.html" data-project-nav-key="prev">Prev</a>
-    <a class="ffs-side-nav-link ffs-side-next" href="star-trek.html" data-project-nav-key="next">Next</a>
-  </nav>
+<nav aria-label="Project back navigation" class="ffs-project-side-nav ffs-project-side-nav-left">
+<a class="ffs-side-nav-link ffs-side-back" data-project-nav-key="vault" href="../vault.html">
+<span class="ffs-side-nav-line">Back to</span>
+<span class="ffs-side-nav-line">Vault</span>
+</a>
+</nav>
+<nav aria-label="Project sequence navigation" class="ffs-project-side-nav ffs-project-side-nav-right">
+<a class="ffs-side-nav-link ffs-side-prev" data-project-nav-key="prev" href="glass-rooms.html">Prev</a>
+<a class="ffs-side-nav-link ffs-side-next" data-project-nav-key="next" href="star-trek.html">Next</a>
+</nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
-<img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/rogueone-header11.png" alt="Rogue One: The Scarif Run" decoding="async" fetchpriority="high"/>
+<img alt="Rogue One: The Scarif Run" class="ffs-mobile-project-header" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/rogueone-header11.png"/>
 <div class="ffs-main-grid ffs-desktop-composition">
 <div class="ffs-left-column">
 <div class="ffs-poster-panel">
@@ -1878,20 +1910,16 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </div>
 <p class="ffs-title-tagline">Rebellions are Built on Sacrifice</p>
 <div class="ffs-meta-row ffs-desktop-meta">
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
-    <span class="ffs-meta-value">Rogue One 2016</span></div>
-
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
-    <span class="ffs-meta-value">107 min</span></div>
-
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span>
-    <span class="ffs-meta-value">133 min</span></div>
-
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-    <span class="ffs-meta-value">13 Feb ’26</span></div>
-
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
-    <span class="ffs-meta-value">2.39:1</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Source Film</span>
+<span class="ffs-meta-value">Rogue One 2016</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Runtime</span>
+<span class="ffs-meta-value">107 min</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span>
+<span class="ffs-meta-value">133 min</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
+<span class="ffs-meta-value">13 Feb ’26</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
+<span class="ffs-meta-value">2.39:1</span></div>
 </div>
 </div>
 <div class="ffs-info-panel">
@@ -1908,7 +1936,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </div>
 </div>
 
-<style>
+
+
+
+
+</div><style>
 /* SEPARATE PALETTE + VERTICAL CTA / TRAILER ROW */
 @media (min-width: 901px) {
   .ffs-palette-module {
@@ -2004,53 +2036,45 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     display: block;
   }
 }
-</style>
-
-<div class="ffs-palette-module">
-  <div class="ffs-palette-wrap">
-    <img alt="Rogue One: The Scarif Run color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Rogue%20one%20Pallete.png"/>
-  </div>
+</style><div class="ffs-palette-module">
+<div class="ffs-palette-wrap">
+<img alt="Rogue One: The Scarif Run color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Rogue%20one%20Pallete.png"/>
 </div>
-
-<div class="ffs-cta-trailer-row">
+</div><div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
-<input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack"/>
-
+<input class="ffs-soundtrack-modal-toggle" id="ffsLandingSoundtrack" type="checkbox"/>
 <div class="ffs-cta-grid">
-  <a class="ffs-cta-tile" href="../rogue-one-the-scarif-run-changelog.html">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <rect x="15" y="12" width="34" height="40" rx="2"></rect>
-        <path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
-      </svg>
-    </span>
-    <strong>Changelog</strong>
-  </a>
-
-  <label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
-      </svg>
-    </span>
-    <strong>Soundtrack</strong>
-  </label>
-
-  <a class="ffs-cta-tile" href="../rogue-one-scarif-run-movie.html">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <rect x="16" y="24" width="30" height="22" rx="3"></rect>
-        <circle cx="25" cy="35" r="5"></circle>
-        <circle cx="38" cy="35" r="5"></circle>
-        <path d="M46 30l10-6v22l-10-6z"></path>
-        <path d="M22 46l-4 8M40 46l4 8"></path>
-      </svg>
-    </span>
-    <strong>Watch Movie</strong>
-  </a>
+<a class="ffs-cta-tile" href="../rogue-one-the-scarif-run-changelog.html">
+<span aria-hidden="true" class="ffs-cta-icon">
+<svg viewbox="0 0 64 64">
+<rect height="40" rx="2" width="34" x="15" y="12"></rect>
+<path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
+</svg>
+</span>
+<strong>Changelog</strong>
+</a>
+<label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
+<span aria-hidden="true" class="ffs-cta-icon">
+<svg viewbox="0 0 64 64">
+<path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
+</svg>
+</span>
+<strong>Soundtrack</strong>
+</label>
+<a class="ffs-cta-tile" href="../rogue-one-scarif-run-movie.html">
+<span aria-hidden="true" class="ffs-cta-icon">
+<svg viewbox="0 0 64 64">
+<rect height="22" rx="3" width="30" x="16" y="24"></rect>
+<circle cx="25" cy="35" r="5"></circle>
+<circle cx="38" cy="35" r="5"></circle>
+<path d="M46 30l10-6v22l-10-6z"></path>
+<path d="M22 46l-4 8M40 46l4 8"></path>
+</svg>
+</span>
+<strong>Watch Movie</strong>
+</a>
 </div>
 </div>
-
 <div class="ffs-trailer-section">
 <div class="ffs-trailer-header">
 <h2>Trailer</h2>
@@ -2060,55 +2084,41 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </iframe>
 </div>
 </div>
+</div><nav aria-label="Project mobile navigation" class="ffs-mobile-project-nav">
+<a data-project-nav-key="vault-mobile" href="../vault.html">Vault</a>
+<a data-project-nav-key="prev-mobile" href="glass-rooms.html">Prev</a>
+<a data-project-nav-key="next-mobile" href="star-trek.html">Next</a>
+</nav><div class="ffs-footer-logo-block">
+<img alt="Light Speed Studios logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png"/>
 </div>
-
-<nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
-    <a href="../vault.html" data-project-nav-key="vault-mobile">Vault</a>
-    <a href="glass-rooms.html" data-project-nav-key="prev-mobile">Prev</a>
-    <a href="star-trek.html" data-project-nav-key="next-mobile">Next</a>
-  </nav>
-
-
-<div class="ffs-footer-logo-block">
-  <img src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png" alt="Light Speed Studios logo" loading="lazy" decoding="async">
 </div>
-
 </div>
-  </div>
-</div>
-
-</main>
-
+</div></main>
 <script src="../js/main.js"></script>
-
-
 <div class="ffs-soundtrack-modal">
-  <div class="ffs-soundtrack-modal-box">
-    <div class="ffs-soundtrack-modal-head">
-      <div class="ffs-soundtrack-modal-header">
-        <div class="ffs-soundtrack-modal-icon">
-          <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
-        </div>
-        <div class="ffs-soundtrack-modal-title">
-          <strong>Soundtrack</strong>
-          <span>The Sound of Sacrifice</span>
-        </div>
-      </div>
-      <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
-    </div>
-
-    <div class="ffs-soundtrack-modal-content">
-      <div class="ffs-soundtrack-modal-content-inner">
+<div class="ffs-soundtrack-modal-box">
+<div class="ffs-soundtrack-modal-head">
+<div class="ffs-soundtrack-modal-header">
+<div class="ffs-soundtrack-modal-icon">
+<img alt="Soundtrack icon" src="https://light-speed-studios.b-cdn.net/wave1.png"/>
+</div>
+<div class="ffs-soundtrack-modal-title">
+<strong>Soundtrack</strong>
+<span>The Sound of Sacrifice</span>
+</div>
+</div>
+<label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
+</div>
+<div class="ffs-soundtrack-modal-content">
+<div class="ffs-soundtrack-modal-content-inner">
 <ul>
 <li><strong>Rogue One Trailer #2 Soundtrack | Star Wars</strong><p>Opening snippet used during the <em>Rogue One</em> title reveal and the Tantive IV escape.</p></li>
 <li><strong>Rogue One Teaser Trailer Soundtrack | Star Wars</strong><p>End credits.</p></li>
 </ul>
-      </div>
-    </div>
-  </div>
 </div>
-
-
+</div>
+</div>
+</div>
 <script>
 document.addEventListener("click", function (event) {
   const modal = event.target.closest(".ffs-soundtrack-modal");
@@ -2120,6 +2130,5 @@ document.addEventListener("click", function (event) {
   }
 });
 </script>
-
 </body>
 </html>
