@@ -67,7 +67,7 @@
 
   let current = 0;
   let autoPlay = null;
-  const autoDelay = 6900;
+  const autoDelay = 3700;
 
   function showSlide(index) {
     current = (index + slides.length) % slides.length;
