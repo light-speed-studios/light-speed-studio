@@ -1347,6 +1347,40 @@
 }
 </style>
 
+
+<style id="orbit-year-switcher-style">
+.orbit-year-switcher{position:relative!important}
+.orbit-year-stage{position:relative;width:100%;overflow:hidden}
+.orbit-year-art{display:block;width:100%;margin:0;opacity:0;pointer-events:none;transition:opacity .32s ease}
+.orbit-year-art:first-child{position:relative}
+.orbit-year-art:not(:first-child){position:absolute;inset:0}
+.orbit-year-art.active{opacity:1;pointer-events:auto}
+.orbit-year-art img{display:block;width:100%;height:auto}
+
+.orbit-year-toggle{
+  position:absolute;top:30px;left:30px;z-index:140;
+  display:inline-flex;align-items:center;gap:5px;padding:5px;
+  background:rgba(4,14,21,.76);
+  border:1px solid rgba(123,234,255,.20);
+  box-shadow:0 8px 20px rgba(0,0,0,.32),inset 0 0 16px rgba(0,174,222,.04);
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)
+}
+.orbit-year-button{
+  min-width:58px;height:30px;padding:0 11px;border:0;background:transparent;
+  color:rgba(186,199,213,.68);
+  font-family:Oxanium,Rajdhani,Arial,sans-serif;
+  font-size:12px;font-weight:700;letter-spacing:.11em;cursor:pointer
+}
+.orbit-year-button.active{
+  color:#00AEDE;background:rgba(0,174,222,.11);
+  box-shadow:inset 0 0 0 1px rgba(0,174,222,.22)
+}
+@media (max-width:900px){
+  .orbit-year-toggle{top:22px;left:22px;gap:3px;padding:4px}
+  .orbit-year-button{min-width:50px;height:28px;padding:0 8px;font-size:11px}
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -1853,16 +1887,23 @@
 <div class="section-heading orbit-desktop-only">
 <span class="lead">O</span><span class="rest">RBIT</span>
 </div>
-<div class="lss-image-block orbit-image-frame pulse-visual-box lss-landscape-panel">
-  <picture>
-    <source
-      media="(max-width: 900px)"
-      srcset="https://light-speed-studios.b-cdn.net/orbitmob11.png">
+<div class="lss-image-block orbit-image-frame pulse-visual-box lss-landscape-panel orbit-year-switcher" id="orbitYearSwitcher">
+  <div class="orbit-year-toggle" role="group" aria-label="Select Orbit slate year">
+    <button class="orbit-year-button active" type="button" data-orbit-year="2026" aria-pressed="true">2026</button>
+    <button class="orbit-year-button" type="button" data-orbit-year="2027" aria-pressed="false">2027</button>
+  </div>
 
-    <img
-      alt="Light Speed Studios Upcoming Slate"
-      src="https://light-speed-studios.b-cdn.net/ORBITNEWWAL.png">
-  </picture>
+  <div class="orbit-year-stage">
+    <picture class="orbit-year-art active" data-orbit-art="2026">
+      <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/orbitmob11.png">
+      <img alt="Light Speed Studios 2026 Orbit Slate" src="https://light-speed-studios.b-cdn.net/ORBITNEWWAL.png">
+    </picture>
+
+    <picture class="orbit-year-art" data-orbit-art="2027" aria-hidden="true">
+      <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ORBITNEW2027.png">
+      <img alt="Light Speed Studios 2027 Orbit Slate" src="https://light-speed-studios.b-cdn.net/ORBITNEW2027.png">
+    </picture>
+  </div>
 </div>
 <div class="bridge-body disclaimer-body">
 <p><strong>DISCLAIMER</strong> Light Speed Studios respects intellectual property rights and does not support piracy. These edits are transformative, non-profit works. To support the original filmmakers, viewers should have a legal copy or official streaming access to the original film.
@@ -1944,6 +1985,40 @@
       });
     }
   </script>
+
+
+<script>
+(function(){
+  function initOrbitYearSwitcher(){
+    const switcher=document.getElementById("orbitYearSwitcher");
+    if(!switcher)return;
+    const buttons=[...switcher.querySelectorAll(".orbit-year-button")];
+    const artworks=[...switcher.querySelectorAll(".orbit-year-art")];
+
+    function setYear(year){
+      buttons.forEach(button=>{
+        const active=button.dataset.orbitYear===year;
+        button.classList.toggle("active",active);
+        button.setAttribute("aria-pressed",active?"true":"false");
+      });
+      artworks.forEach(art=>{
+        const active=art.dataset.orbitArt===year;
+        art.classList.toggle("active",active);
+        art.setAttribute("aria-hidden",active?"false":"true");
+      });
+    }
+
+    buttons.forEach(button=>button.addEventListener("click",()=>setYear(button.dataset.orbitYear)));
+    setYear("2026");
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",initOrbitYearSwitcher,{once:true});
+  }else{
+    initOrbitYearSwitcher();
+  }
+})();
+</script>
 
 </body>
 </html>
