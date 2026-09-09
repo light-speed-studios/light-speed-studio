@@ -1320,6 +1320,33 @@
 }
 </style>
 
+
+<style id="mobile-hero-lab-frame-removal">
+@media (max-width: 900px) {
+  /* Remove only the outer framed-panel treatment from the mobile Hero and Lab. */
+  .lss-mobile-hero-landscape-panel,
+  .lss-mobile-lab-landscape-panel {
+    width: 100% !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .lss-mobile-hero-landscape-panel::before,
+  .lss-mobile-lab-landscape-panel::before {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+  }
+
+  /* Remove the panel-style drop shadow from the mobile artwork itself. */
+  .lss-mobile-hero-landscape-panel > .mobile-hero-carousel,
+  .lss-mobile-lab-landscape-panel > .mobile-hero-single {
+    box-shadow: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
