@@ -48,6 +48,50 @@
 .lab-page .lab-rail-dashes .vault-rail-dash.active {
   background: #00AEDE;
 }
+
+@media (max-width: 900px) {
+  /* Mobile: show exactly one poster at a time */
+  .lab-page .vault-rail-window {
+    overflow: hidden !important;
+  }
+
+  .lab-page .vault-rail-track {
+    gap: 0 !important;
+    column-gap: 0 !important;
+  }
+
+  .lab-page .vault-rail-track .vault-archive-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Mobile: dots instead of long dash indicators */
+  .lab-page .lab-rail-dashes {
+    top: -25px !important;
+    right: 34px !important;
+    gap: 7px !important;
+    padding: 0 0 2px 0 !important;
+  }
+
+  .lab-page .lab-rail-dashes .vault-rail-dash {
+    width: 7px !important;
+    height: 7px !important;
+    min-width: 7px !important;
+    border-radius: 50% !important;
+    background: #B1B1B1 !important;
+    opacity: .72 !important;
+  }
+
+  .lab-page .lab-rail-dashes .vault-rail-dash.active {
+    background: #00AEDE !important;
+    opacity: 1 !important;
+    box-shadow: 0 0 8px rgba(0, 174, 222, .5) !important;
+  }
+}
+
 </style>
 
 </head>
@@ -282,7 +326,7 @@
 <script src="js/main.js"></script>
 <script>
 (function () {
-  function initLabRailDashes() {
+  function initLabRailIndicators() {
     document.querySelectorAll('.lab-rail-dashes').forEach(function (dashWrap) {
       var shell = dashWrap.closest('.vault-rail-shell');
       if (!shell) return;
@@ -293,63 +337,138 @@
       var next = shell.querySelector('.vault-rail-next');
       if (!win || !track) return;
 
-      var cards = track.querySelectorAll('.vault-archive-card');
+      var cards = Array.from(track.querySelectorAll('.vault-archive-card'));
       if (cards.length <= 4) {
         dashWrap.innerHTML = '';
         dashWrap.style.display = 'none';
         return;
       }
 
-      dashWrap.style.display = 'flex';
-      dashWrap.innerHTML =
-        '<button type="button" class="vault-rail-dash active" aria-label="Show first set"></button>' +
-        '<button type="button" class="vault-rail-dash" aria-label="Show more projects"></button>';
+      var isMobile = window.matchMedia('(max-width: 900px)').matches;
 
-      var dashes = dashWrap.querySelectorAll('.vault-rail-dash');
-      var currentPage = 0;
+      if (!isMobile) {
+        /* Desktop remains exactly as before: two dash indicators. */
+        dashWrap.style.display = 'flex';
+        dashWrap.innerHTML =
+          '<button type="button" class="vault-rail-dash active" aria-label="Show first set"></button>' +
+          '<button type="button" class="vault-rail-dash" aria-label="Show more projects"></button>';
 
-      function setActive(page) {
-        currentPage = page ? 1 : 0;
-        dashes[0].classList.toggle('active', currentPage === 0);
-        dashes[1].classList.toggle('active', currentPage === 1);
+        var dashes = dashWrap.querySelectorAll('.vault-rail-dash');
+        var currentPage = 0;
+
+        function setDesktopActive(page) {
+          currentPage = page ? 1 : 0;
+          dashes[0].classList.toggle('active', currentPage === 0);
+          dashes[1].classList.toggle('active', currentPage === 1);
+        }
+
+        dashes[0].addEventListener('click', function () {
+          setDesktopActive(0);
+          if (prev) prev.click();
+        });
+
+        dashes[1].addEventListener('click', function () {
+          setDesktopActive(1);
+          if (next) next.click();
+        });
+
+        if (prev) {
+          prev.addEventListener('click', function () {
+            setDesktopActive(0);
+          });
+        }
+
+        if (next) {
+          next.addEventListener('click', function () {
+            setDesktopActive(1);
+          });
+        }
+
+        win.addEventListener('scroll', function () {
+          var max = Math.max(0, win.scrollWidth - win.clientWidth);
+          if (max > 2) setDesktopActive(win.scrollLeft > max / 2 ? 1 : 0);
+        }, { passive: true });
+
+        setDesktopActive(0);
+        return;
       }
 
-      dashes[0].addEventListener('click', function () {
-        setActive(0);
-        if (prev) prev.click();
-      });
+      /* Mobile: one poster per frame + one dot per poster. */
+      dashWrap.style.display = 'flex';
+      dashWrap.innerHTML = cards.map(function (_, i) {
+        return '<button type="button" class="vault-rail-dash' +
+          (i === 0 ? ' active' : '') +
+          '" aria-label="Show project ' + (i + 1) + '"></button>';
+      }).join('');
 
-      dashes[1].addEventListener('click', function () {
-        setActive(1);
-        if (next) next.click();
-      });
+      var dots = Array.from(dashWrap.querySelectorAll('.vault-rail-dash'));
+      var currentIndex = 0;
 
-      if (prev) {
-        prev.addEventListener('click', function () {
-          setActive(0);
+      function setActive(index) {
+        currentIndex = Math.max(0, Math.min(cards.length - 1, index));
+        dots.forEach(function (dot, i) {
+          dot.classList.toggle('active', i === currentIndex);
         });
+      }
+
+      function goTo(index, smooth) {
+        var target = Math.max(0, Math.min(cards.length - 1, index));
+        setActive(target);
+        win.scrollTo({
+          left: cards[target].offsetLeft,
+          behavior: smooth === false ? 'auto' : 'smooth'
+        });
+      }
+
+      dots.forEach(function (dot, i) {
+        dot.addEventListener('click', function (e) {
+          e.preventDefault();
+          goTo(i, true);
+        });
+      });
+
+      /* Capture arrow clicks so main.js cannot move the mobile rail by a partial desktop-sized step. */
+      if (prev) {
+        prev.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          goTo(currentIndex - 1, true);
+        }, true);
       }
 
       if (next) {
-        next.addEventListener('click', function () {
-          setActive(1);
-        });
+        next.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          goTo(currentIndex + 1, true);
+        }, true);
       }
 
-      /* Also support any native/manual horizontal scrolling. */
+      var scrollTimer;
       win.addEventListener('scroll', function () {
-        var max = Math.max(0, win.scrollWidth - win.clientWidth);
-        if (max > 2) setActive(win.scrollLeft > max / 2 ? 1 : 0);
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(function () {
+          var nearest = 0;
+          var best = Infinity;
+          cards.forEach(function (card, i) {
+            var dist = Math.abs(win.scrollLeft - card.offsetLeft);
+            if (dist < best) {
+              best = dist;
+              nearest = i;
+            }
+          });
+          setActive(nearest);
+        }, 60);
       }, { passive: true });
 
-      setActive(0);
+      goTo(0, false);
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLabRailDashes);
+    document.addEventListener('DOMContentLoaded', initLabRailIndicators);
   } else {
-    initLabRailDashes();
+    initLabRailIndicators();
   }
 })();
 </script>
