@@ -1358,12 +1358,26 @@
 .orbit-year-art img{display:block;width:100%;height:auto}
 
 .orbit-year-toggle{
-  position:absolute;top:30px;left:30px;z-index:140;
-  display:inline-flex;align-items:center;gap:5px;padding:5px;
+  position:absolute;
+  left:50%;
+  bottom:30px;
+  top:auto;
+  transform:translateX(-50%);
+  z-index:140;
+
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:5px;
+
   background:rgba(4,14,21,.76);
   border:1px solid rgba(123,234,255,.20);
-  box-shadow:0 8px 20px rgba(0,0,0,.32),inset 0 0 16px rgba(0,174,222,.04);
-  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px)
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.32),
+    inset 0 0 16px rgba(0,174,222,.04);
+
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
 }
 .orbit-year-button{
   min-width:58px;height:30px;padding:0 11px;border:0;background:transparent;
