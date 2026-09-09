@@ -17,6 +17,74 @@
       pointer-events: none !important;
     }
   </style>
+
+<style id="mobile-poster-lightbox-isolation-fix">
+@media (max-width: 900px) {
+
+  html:has(.ffs-poster-toggle:checked),
+  body:has(.ffs-poster-toggle:checked) {
+    overflow: hidden !important;
+  }
+
+  .ffs-poster-toggle:checked ~ .ffs-poster-click {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 2147483647 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    padding: 18px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    background: #000 !important;
+    cursor: zoom-out !important;
+    isolation: isolate !important;
+  }
+
+  .ffs-poster-toggle:checked ~ .ffs-poster-click .ffs-poster-crop {
+    display: none !important;
+  }
+
+  .ffs-poster-toggle:checked ~ .ffs-poster-click .ffs-poster-full {
+    position: relative !important;
+    z-index: 2 !important;
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: 94vw !important;
+    max-height: calc(100dvh - 36px) !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+  }
+
+  body:has(.ffs-poster-toggle:checked) .lss-nav-bar,
+  body:has(.ffs-poster-toggle:checked) #lss-page-splash,
+  body:has(.ffs-poster-toggle:checked) .ffs-mobile-movie-header,
+  body:has(.ffs-poster-toggle:checked) .ffs-mobile-project-header,
+  body:has(.ffs-poster-toggle:checked) .ffs-mobile-meta,
+  body:has(.ffs-poster-toggle:checked) .ffs-info-panel,
+  body:has(.ffs-poster-toggle:checked) .ffs-poster-expand,
+  body:has(.ffs-poster-toggle:checked) .ffs-links-panel,
+  body:has(.ffs-poster-toggle:checked) .ffs-cta-trailer-row,
+  body:has(.ffs-poster-toggle:checked) .ffs-palette-module,
+  body:has(.ffs-poster-toggle:checked) .ffs-palette-cta-group,
+  body:has(.ffs-poster-toggle:checked) .ffs-trailer-section,
+  body:has(.ffs-poster-toggle:checked) .ffs-mobile-project-nav,
+  body:has(.ffs-poster-toggle:checked) .ffs-footer-logo-block,
+  body:has(.ffs-poster-toggle:checked) footer {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  body:has(.ffs-poster-toggle:checked) .ffs-poster-panel,
+  body:has(.ffs-poster-toggle:checked) .ffs-poster-click,
+  body:has(.ffs-poster-toggle:checked) .ffs-poster-full {
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Speed Racer: Mach 6 splash screen">
