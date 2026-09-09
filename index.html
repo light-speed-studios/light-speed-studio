@@ -1062,6 +1062,141 @@
 }
 </style>
 
+
+<style id="lab-bottom-center-and-orbit-frame-fix">
+/* =======================================================
+   LAB: MATCH HERO BOTTOM-CENTER TITLE / META TREATMENT
+   ORBIT: STRONG LANDSCAPE PANEL BACKING
+======================================================= */
+@media (min-width: 901px) {
+
+  /* LAB title cluster sits centered near the bottom, above metadata */
+  .lab-hero-section .hero-single > .hero-content {
+    position: absolute !important;
+    inset: auto !important;
+    left: 50% !important;
+    bottom: 78px !important;
+    width: calc(100% - 180px) !important;
+    max-width: 1180px !important;
+    height: auto !important;
+    transform: translateX(-50%) !important;
+    display: block !important;
+    z-index: 21 !important;
+    text-align: center !important;
+    pointer-events: none !important;
+  }
+
+  .lab-hero-section .hero-single > .hero-content .content-inner,
+  .lab-hero-section .hero-single > .hero-content .hero-content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    transform: none !important;
+    text-align: center !important;
+  }
+
+  .lab-hero-section .lab-kicker,
+  .lab-hero-section .hero-title {
+    transform: none !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .lab-hero-section .hero-title {
+    display: inline-block !important;
+    width: auto !important;
+    max-width: none !important;
+    white-space: nowrap !important;
+    font-size: clamp(34px, 3.2vw, 58px) !important;
+  }
+
+  /* LAB metadata pill */
+  .lab-hero-section .hero-single > .hero-meta {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: 18px !important;
+    top: auto !important;
+    transform: translateX(-50%) !important;
+    z-index: 20 !important;
+
+    width: min(620px, calc(100% - 360px)) !important;
+    min-width: 460px !important;
+    max-width: 620px !important;
+    margin: 0 !important;
+    padding: 10px 24px !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    justify-items: center !important;
+    gap: 0 !important;
+
+    background: rgba(4,14,21,.78) !important;
+    border: 1px solid rgba(123,234,255,.22) !important;
+    border-radius: 999px !important;
+    box-shadow:
+      0 8px 20px rgba(0,0,0,.34),
+      inset 0 0 18px rgba(0,174,222,.05) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    overflow: hidden !important;
+  }
+
+  .lab-hero-section .hero-single > .hero-meta span {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 24px !important;
+    padding: 0 22px !important;
+    font-size: 1.18rem !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  .lab-hero-section .hero-single > .hero-meta span::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .lab-hero-section .hero-single > .hero-meta span + span::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 50% !important;
+    width: 1px !important;
+    height: 22px !important;
+    transform: translateY(-50%) !important;
+    background: rgba(186,199,213,.38) !important;
+  }
+
+  /* ORBIT gets the same visible backing/frame box as the Hero/Lab panels */
+  .lss-image-block.orbit-image-frame.lss-landscape-panel {
+    position: relative !important;
+    padding: 18px !important;
+    background:
+      linear-gradient(145deg, rgba(0,174,222,.14), rgba(255,255,255,.022)),
+      rgba(255,255,255,.026) !important;
+    box-shadow:
+      0 0 32px rgba(0,174,222,.12),
+      inset 0 0 0 1px rgba(0,174,222,.28) !important;
+  }
+
+  .lss-image-block.orbit-image-frame.lss-landscape-panel > picture {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    background: #040e15 !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,.50) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
