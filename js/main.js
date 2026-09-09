@@ -67,7 +67,7 @@
 
   let current = 0;
   let autoPlay = null;
-  const autoDelay = 5000;
+  const autoDelay = 6000;
 
   function showSlide(index) {
     current = (index + slides.length) % slides.length;
@@ -108,7 +108,7 @@
   });
 
   showSlide(0);
-  setTimeout(() => { startAutoPlay(); }, 3400);
+  setTimeout(() => { startAutoPlay(); }, 2400);
 })();
 
 (function () {
