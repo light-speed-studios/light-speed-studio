@@ -8,12 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
+  
   <link rel="stylesheet" href="css/styles.css" />
   <title>Pulse | LSS</title>
 </head>
 
 <body>
+
 <header class="lss-nav-bar">
   <a class="lss-nav-logo" href="index.html">
     <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
@@ -32,10 +33,12 @@
 </header>
 
 <main class="page-content">
+
   <style>
     .pulse-shell {
       --cyan: #00AEDE;
       --text-main: #BAC7D5;
+
       width: min(1280px, 100%);
       margin: 0 auto;
       padding: 34px 20px 60px;
@@ -49,13 +52,16 @@
     .pulse-box {
       position: relative;
       margin: 0 0 22px;
+
       background:
         linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
         rgba(4, 14, 21, 0.86);
+
       box-shadow:
         0 0 34px rgba(0, 0, 0, 0.25),
         inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+
       overflow: hidden;
     }
 
@@ -65,6 +71,7 @@
       inset: 0;
       pointer-events: none;
       z-index: 3;
+
       background:
         linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
         linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
@@ -74,6 +81,7 @@
         linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
         linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
         linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+
       opacity: 0.72;
     }
 
@@ -115,15 +123,20 @@
     }
   </style>
 
+
   <div class="pulse-shell">
 
     <section class="vault-archive-hero">
       <div class="vault-archive-frame"></div>
+
       <h1>Pulse</h1>
+
       <p>About the Editor</p>
     </section>
 
+
     <div class="pulse-box pulse-text-bar">
+
       <div class="pulse-text-wall">
 
         <p>
@@ -143,10 +156,16 @@
         </p>
 
       </div>
+
     </div>
 
   </div>
+
 </main>
+
+<!-- KEEP GLOBAL SITE JS:
+     handles existing navigation / progress / scroll behavior -->
+<script src="js/main.js"></script>
 
 </body>
 </html>
