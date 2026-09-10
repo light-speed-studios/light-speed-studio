@@ -1447,7 +1447,7 @@
   /* Use the EXISTING Orbit title and place the year controls beside it. */
   .orbit-heading-row {
     width: calc(100% - 28px);
-    margin: 0 auto 8px;
+    margin: 18px auto 8px;
     display: flex !important;
     align-items: center;
     justify-content: space-between;
@@ -1477,6 +1477,99 @@
   /* The desktop controls inside the wallpaper stay hidden on mobile. */
   #orbitYearSwitcher > .orbit-year-toggle {
     display: none !important;
+  }
+}
+</style>
+
+
+<style id="mobile-framed-hero-lab-orbit-and-arrow-boost">
+@media (max-width: 900px) {
+
+  /* =======================================================
+     MOBILE HERO + LAB + ORBIT
+     Restore the same framed-panel language used on desktop.
+     ======================================================= */
+  .lss-mobile-hero-landscape-panel,
+  .lss-mobile-lab-landscape-panel,
+  .lss-image-block.orbit-image-frame.lss-landscape-panel {
+    position: relative !important;
+    width: calc(100% - 28px) !important;
+    max-width: none !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 14px !important;
+    background:
+      linear-gradient(145deg, rgba(0,174,222,.14), rgba(255,255,255,.022)),
+      rgba(255,255,255,.026) !important;
+    box-shadow:
+      0 0 24px rgba(0,174,222,.10),
+      inset 0 0 0 1px rgba(0,174,222,.24) !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  /* Restore artwork shadow inside the framed box. */
+  .lss-mobile-hero-landscape-panel > .mobile-hero-carousel,
+  .lss-mobile-lab-landscape-panel > .mobile-hero-single,
+  .lss-image-block.orbit-image-frame.lss-landscape-panel > .orbit-year-stage {
+    box-shadow: 0 14px 28px rgba(0,0,0,.38) !important;
+  }
+
+  /* Cyan corner brackets for all three mobile modules. */
+  .lss-mobile-hero-landscape-panel::before,
+  .lss-mobile-lab-landscape-panel::before,
+  .lss-image-block.orbit-image-frame.lss-landscape-panel::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 150 !important;
+    pointer-events: none !important;
+    opacity: .86 !important;
+    background:
+      linear-gradient(#00AEDE,#00AEDE) left top / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left top / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 30px no-repeat !important;
+  }
+
+  /* =======================================================
+     MOBILE HERO ARROWS
+     Larger, cyan, and easier to see against bright wallpapers.
+     ======================================================= */
+  .mobile-hero-carousel .mobile-nav-arrow {
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(4,14,21,.42) !important;
+    border: 1px solid rgba(0,174,222,.32) !important;
+    border-radius: 0 !important;
+    box-shadow:
+      0 5px 16px rgba(0,0,0,.55),
+      0 0 12px rgba(0,174,222,.18) !important;
+    z-index: 170 !important;
+  }
+
+  .mobile-hero-carousel .mobile-nav-arrow svg {
+    width: 34px !important;
+    height: 34px !important;
+    filter:
+      drop-shadow(0 2px 3px rgba(0,0,0,.95))
+      drop-shadow(0 0 5px rgba(0,174,222,.55)) !important;
+  }
+
+  .mobile-hero-carousel .mobile-nav-arrow svg path {
+    stroke: #00AEDE !important;
+    stroke-width: 3.2 !important;
   }
 }
 </style>
