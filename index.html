@@ -1432,6 +1432,54 @@
 }
 </style>
 
+
+<style id="orbit-mobile-year-controls-above">
+.orbit-mobile-heading-row {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  /* Keep the original desktop Orbit heading hidden on mobile. */
+  .section-heading.orbit-desktop-only {
+    display: none !important;
+  }
+
+  /* New mobile heading + year controls live above the wallpaper. */
+  .orbit-mobile-heading-row {
+    width: calc(100% - 28px);
+    margin: 0 auto 8px;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .orbit-mobile-heading-row .section-heading {
+    margin: 0 !important;
+    width: auto !important;
+    flex: 0 0 auto;
+  }
+
+  .orbit-mobile-heading-row .orbit-mobile-year-toggle {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    flex: 0 0 auto;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 3px;
+    padding: 4px;
+    z-index: auto;
+  }
+
+  /* Hide the duplicate controls that sit over the Orbit artwork on desktop. */
+  #orbitYearSwitcher > .orbit-year-toggle {
+    display: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -1938,6 +1986,18 @@
 <div class="section-heading orbit-desktop-only">
 <span class="lead">O</span><span class="rest">RBIT</span>
 </div>
+
+<div class="orbit-mobile-heading-row">
+  <div class="section-heading orbit-mobile-heading">
+    <span class="lead">O</span><span class="rest">RBIT</span>
+  </div>
+
+  <div class="orbit-year-toggle orbit-mobile-year-toggle" role="group" aria-label="Select Orbit slate year">
+    <button class="orbit-year-button active" type="button" data-orbit-year="2026" aria-pressed="true">2026</button>
+    <button class="orbit-year-button" type="button" data-orbit-year="2027" aria-pressed="false">2027</button>
+  </div>
+</div>
+
 <div class="lss-image-block orbit-image-frame pulse-visual-box lss-landscape-panel orbit-year-switcher" id="orbitYearSwitcher">
   <div class="orbit-year-toggle" role="group" aria-label="Select Orbit slate year">
     <button class="orbit-year-button active" type="button" data-orbit-year="2026" aria-pressed="true">2026</button>
@@ -2043,7 +2103,7 @@
   function initOrbitYearSwitcher(){
     const switcher=document.getElementById("orbitYearSwitcher");
     if(!switcher)return;
-    const buttons=[...switcher.querySelectorAll(".orbit-year-button")];
+    const buttons=[...document.querySelectorAll(".orbit-year-button")];
     const artworks=[...switcher.querySelectorAll(".orbit-year-art")];
 
     function setYear(year){
