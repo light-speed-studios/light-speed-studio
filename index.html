@@ -1434,18 +1434,18 @@
 
 
 <style id="orbit-mobile-year-controls-above">
-.orbit-mobile-heading-row {
+/* Desktop keeps the original Orbit heading placement. */
+.orbit-heading-row {
+  display: contents;
+}
+
+.orbit-mobile-year-toggle {
   display: none;
 }
 
 @media (max-width: 900px) {
-  /* Keep the original desktop Orbit heading hidden on mobile. */
-  .section-heading.orbit-desktop-only {
-    display: none !important;
-  }
-
-  /* New mobile heading + year controls live above the wallpaper. */
-  .orbit-mobile-heading-row {
+  /* Use the EXISTING Orbit title and place the year controls beside it. */
+  .orbit-heading-row {
     width: calc(100% - 28px);
     margin: 0 auto 8px;
     display: flex !important;
@@ -1454,13 +1454,14 @@
     gap: 12px;
   }
 
-  .orbit-mobile-heading-row .section-heading {
-    margin: 0 !important;
+  .orbit-heading-row .section-heading.orbit-desktop-only {
+    display: flex !important;
     width: auto !important;
+    margin: 0 !important;
     flex: 0 0 auto;
   }
 
-  .orbit-mobile-heading-row .orbit-mobile-year-toggle {
+  .orbit-heading-row .orbit-mobile-year-toggle {
     position: static !important;
     inset: auto !important;
     transform: none !important;
@@ -1473,7 +1474,7 @@
     z-index: auto;
   }
 
-  /* Hide the duplicate controls that sit over the Orbit artwork on desktop. */
+  /* The desktop controls inside the wallpaper stay hidden on mobile. */
   #orbitYearSwitcher > .orbit-year-toggle {
     display: none !important;
   }
@@ -1983,12 +1984,8 @@
 </section>
 </div>
 </section>
-<div class="section-heading orbit-desktop-only">
-<span class="lead">O</span><span class="rest">RBIT</span>
-</div>
-
-<div class="orbit-mobile-heading-row">
-  <div class="section-heading orbit-mobile-heading">
+<div class="orbit-heading-row">
+  <div class="section-heading orbit-desktop-only">
     <span class="lead">O</span><span class="rest">RBIT</span>
   </div>
 
