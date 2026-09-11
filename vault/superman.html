@@ -2064,9 +2064,9 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 
 .ffs-cta-trailer-row .ffs-trailer-section {
   order: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  height: auto;
+  display: block;
+  padding: 15px;
 }
 
 .ffs-cta-trailer-row .ffs-links-panel {
@@ -2075,9 +2075,11 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 
   .ffs-cta-trailer-row .ffs-links-panel {
     padding: 14px;
-    height: 100%;
+    min-height: 0;
+    height: auto;
     display: flex;
     flex-direction: column;
+    contain: size;
   }
 
   .ffs-cta-trailer-row .ffs-cta-grid {
