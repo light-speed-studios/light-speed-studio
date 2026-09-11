@@ -679,20 +679,39 @@ document.addEventListener("DOMContentLoaded", () => {
   syncProgressPosition();
   updateProgress();
 });
-// Automatically update image cache for all users
+
+// Automatically update image cache for all users across images, sources, and backgrounds
 document.addEventListener("DOMContentLoaded", () => {
     // 1. UPDATE THIS NUMBER whenever you change your image files
-    const currentVersion = "2"; 
+    const currentVersion = "3"; 
     
-    // 2. Loop through all HTML <img> tags on the page
+    // 2. Target standard <img> tags
     document.querySelectorAll("img").forEach(img => {
         let src = img.getAttribute("src");
-        
-        // 3. Only target images coming from your Bunny CDN link
         if (src && src.includes("b-cdn.net")) {
-            // Strip any older version tags and apply the fresh one
             let cleanSrc = src.split('?')[0];
             img.src = `${cleanSrc}?v=${currentVersion}`;
+        }
+    });
+
+    // 3. Target <source> tags inside <picture> elements
+    document.querySelectorAll("source").forEach(source => {
+        let srcset = source.getAttribute("srcset");
+        if (srcset && srcset.includes("b-cdn.net")) {
+            let cleanSrc = srcset.split('?')[0];
+            source.srcset = `${cleanSrc}?v=${currentVersion}`;
+        }
+    });
+
+    // 4. Target inline CSS background images (Hero wallpapers, etc.)
+    document.querySelectorAll("[style*='background-image']").forEach(el => {
+        let style = el.getAttribute("style");
+        if (style && style.includes("b-cdn.net")) {
+            let updatedStyle = style.replace(/url\(['"]?(https:\/\/[^'"]+b-cdn\.net[^'"]*)['"]?\)/g, (match, url) => {
+                let cleanUrl = url.split('?')[0];
+                return `url('${cleanUrl}?v=${currentVersion}')`;
+            });
+            el.setAttribute("style", updatedStyle);
         }
     });
 });
