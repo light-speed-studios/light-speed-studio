@@ -677,6 +677,7 @@
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
+      flex: 0 0 auto;
       background: #000;
       overflow: hidden;
       box-shadow: 0 22px 50px rgba(0, 0, 0, 0.44);
@@ -2050,7 +2051,7 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 
   .ffs-cta-trailer-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-columns: minmax(0, 1fr) 270px;
     gap: 28px;
     align-items: stretch;
     margin-top: 26px;
@@ -2063,6 +2064,9 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 
 .ffs-cta-trailer-row .ffs-trailer-section {
   order: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .ffs-cta-trailer-row .ffs-links-panel {
