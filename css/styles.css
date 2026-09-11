@@ -5688,5 +5688,5 @@ body .lss-image-block.orbit-image-frame::before {
 }
 
 .ffs-reddit-review .ffs-cta-sub {
-  display: none;
+  display: none !important;
 }
