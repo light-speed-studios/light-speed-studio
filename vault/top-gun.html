@@ -2025,7 +2025,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
   .ffs-cta-trailer-row {
     display: grid;
-    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 320px;
     gap: 28px;
     align-items: stretch;
     margin-top: 26px;
@@ -2035,6 +2035,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-cta-trailer-row .ffs-trailer-section {
     margin-top: 0;
   }
+
+.ffs-cta-trailer-row .ffs-trailer-section {
+  order: 1;
+}
+
+.ffs-cta-trailer-row .ffs-links-panel {
+  order: 2;
+}
 
   .ffs-cta-trailer-row .ffs-links-panel {
     padding: 14px;
