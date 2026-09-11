@@ -5652,7 +5652,7 @@ body .lss-image-block.orbit-image-frame::before {
 @media (min-width: 901px) {
   .lss-nav-links .lss-nav-item + .lss-nav-item::before {
     content: "|";
-    color: rgba(186, 199, 213, 0.35);
+    color: #C0C7CE !important;
     margin-right: 14px;
     margin-left: 14px;
     font-weight: 400;
