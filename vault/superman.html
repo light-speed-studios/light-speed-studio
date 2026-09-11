@@ -84,17 +84,6 @@
 </style>
 
 
-<style id="superman-mobile-flash-spacing-match">
-@media (max-width: 900px) {
-  .ffs-poster-panel {
-    margin-bottom: 0 !important;
-  }
-
-  .ffs-info-panel {
-    margin-top: 0 !important;
-  }
-}
-</style>
 
 </head>
 <body>
@@ -134,9 +123,12 @@
   body {
     width: 100%;
     margin: 0;
-    padding: 50;
     background: #040e15;
     overflow-x: hidden;
+  }
+
+  body {
+    padding-top: 61px;
   }
 
   .ffs-page {
@@ -1891,12 +1883,23 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   .ffs-info-panel .ffs-working-title strong { font-size: 22px; }
 }
 @media (max-width: 900px) {
-  .ffs-desktop-composition { display: flex !important; flex-direction: column; }
-  .ffs-left-column, .ffs-right-column { display: contents; }
+  .ffs-desktop-composition {
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column { display: contents; }
+
   .ffs-poster-panel { order: 1; }
   .ffs-mobile-meta { order: 2; }
   .ffs-info-panel { order: 3; }
-  .ffs-title-panel, .ffs-palette-wrap { display: none !important; }
+
+  .ffs-title-panel,
+  .ffs-palette-wrap,
+  .ffs-approach-box {
+    display: none !important;
+  }
 }
 
 </style>
@@ -1935,38 +1938,39 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 </div>
 <div class="ffs-right-column">
 <div class="ffs-title-panel">
-        <div class="ffs-title-row">
-          <h1 class="ffs-title">Superman: Son of Tomorrow</h1>
-        </div>
-<p class="ffs-title-tagline">Tomorrow Begins with Hope</p>
-
-<div class="ffs-meta-row ffs-desktop-meta">
-   <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
-    <span class="ffs-meta-value">110 min</span></div>
-    <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-    <span class="ffs-meta-value">30 Oct 2025</span></div>
- <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span>
-    <span class="ffs-meta-value">Superman 2025</span></div>
-  
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span>
-    <span class="ffs-meta-value">129 min</span></div>
-  
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
-    <span class="ffs-meta-value">1.90:1 IMAX</span></div>
+<div class="ffs-title-row">
+<h1 class="ffs-title">Superman: Son of Tomorrow</h1>
 </div>
-      </div>
+<p class="ffs-title-tagline">Tomorrow Begins with Hope</p>
+<div class="ffs-meta-row ffs-desktop-meta">
+<div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
+  <span class="ffs-meta-value">110 min</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
+  <span class="ffs-meta-value">30 Oct 2025</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span>
+  <span class="ffs-meta-value">Superman 2025</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span>
+  <span class="ffs-meta-value">129 min</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
+  <span class="ffs-meta-value">1.90:1 IMAX</span></div>
+</div>
+</div>
+<div class="ffs-mobile-meta">
+<div class="ffs-meta-row">
+    
+</div>
+</div>
 <div class="ffs-info-panel">
-  <p class="ffs-section-label">Synopsis</p>
-
-  <div class="ffs-synopsis">
-  <p>
+<p class="ffs-section-label">Synopsis</p>
+<div class="ffs-synopsis">
+<p>
     A reimagining of the warmth, morality, and humanity behind the world’s greatest hero. No forced comedy, just heart. With a renewed emotional core, this edit reminds us that even the strongest longs to belong.
   </p>
 </div>
-
 <div class="ffs-working-title">
-  <span>Working Title</span>
-  <strong>Superman: Flyby</strong>
+<span>Working Title</span>
+<strong>Superman: Flyby</strong>
+</div>
 </div>
 </div>
 </div>
