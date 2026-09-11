@@ -5649,3 +5649,12 @@ body .lss-image-block.orbit-image-frame::before {
     display: none !important;
   }
 }
+@media (min-width: 901px) {
+  .lss-nav-links .lss-nav-item + .lss-nav-item::before {
+    content: "|";
+    color: rgba(186, 199, 213, 0.35);
+    margin-right: 14px;
+    margin-left: 14px;
+    font-weight: 400;
+  }
+}
