@@ -5686,7 +5686,6 @@ body .lss-image-block.orbit-image-frame::before {
     pointer-events: none;
   }
 }
-
-.ffs-reddit-review .ffs-cta-sub {
+.ffs-cta-sub {
   display: none !important;
 }
