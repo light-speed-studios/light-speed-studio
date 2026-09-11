@@ -13,1585 +13,15 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=6" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/styles.css?v=6" rel="stylesheet"/>
 
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.png" media="(min-width: 901px)" fetchpriority="high"/>
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.png" media="(max-width: 900px)" fetchpriority="high"/>
-
-<style id="bridge-pulse-visual-box-fix">
-/* =======================================================
-   LANDING-PAGE STYLE LANDSCAPE PANELS
-   Matches the project poster-panel treatment in landscape.
-======================================================= */
-
-.lss-landscape-panel {
-  --pulse-frame-cyan: #00AEDE;
-  position: relative !important;
-  width: min(1220px, calc(100% - 40px)) !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding: 18px !important;
-  background:
-    linear-gradient(145deg, rgba(0,174,222,.14), rgba(255,255,255,.022)),
-    rgba(255,255,255,.026) !important;
-  box-shadow:
-    0 0 32px rgba(0,174,222,.12),
-    inset 0 0 0 1px rgba(0,174,222,.28) !important;
-  overflow: visible !important;
-  box-sizing: border-box !important;
-}
-
-
-.lss-image-block.orbit-image-frame.lss-landscape-panel {
-  width: min(1220px, calc(100% - 40px)) !important;
-  max-width: 1220px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.lss-landscape-panel::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 100 !important;
-  pointer-events: none !important;
-  opacity: .86 !important;
-  background:
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 42px 2px no-repeat,
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 2px 42px no-repeat,
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 42px 2px no-repeat,
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 2px 42px no-repeat,
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 42px 2px no-repeat,
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 2px 42px no-repeat,
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 42px 2px no-repeat,
-    linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 2px 42px no-repeat !important;
-}
-
-/* Inner artwork sits inside the panel and carries the poster-like drop shadow. */
-.lss-landscape-panel > .hero-carousel,
-.lss-landscape-panel > .hero-single,
-.lss-landscape-panel > .mobile-hero-carousel,
-.lss-landscape-panel > .mobile-hero-single,
-.lss-landscape-panel > picture {
-  width: 100% !important;
-  margin: 0 !important;
-  box-shadow: 0 18px 40px rgba(0,0,0,.50) !important;
-}
-
-/* Remove old fade overlays and old frame systems. */
-.home-hero-section .slide::before,
-.home-hero-section .slide::after,
-.lab-hero-section .hero-single::before,
-.lab-hero-section .hero-single::after,
-.lab-hero-section .mobile-hero-single::after,
-.lss-image-block.orbit-image-frame::after {
-  content: none !important;
-  display: none !important;
-  background: none !important;
-}
-
-.lab-hero-section .hero-single-frame {
-  display: none !important;
-}
-
-/* Remove the older frame class from the actual artwork surfaces. */
-.pulse-visual-box {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-.pulse-visual-box::before {
-  content: none !important;
-  display: none !important;
-}
-
-/* HERO: trim 10px from the bottom of the visible artwork while preserving
-   the original downstream Bridge position with reserved space below. */
-@media (min-width: 901px) {
-
-  .home-hero-section .lss-hero-landscape-panel {
-    transform: none !important;
-  }
-
-  .lss-mobile-hero-landscape-panel,
-  .lss-mobile-lab-landscape-panel {
-    display: none !important;
-  }
-  .home-hero-section .lss-landscape-panel {
-    margin-bottom: 0 !important;
-  }
-
-  .home-hero-section .lss-landscape-panel > .hero-carousel {
-    height: 536px !important;
-    min-height: 536px !important;
-    max-height: 536px !important;
-  }
-
-  .home-hero-section,
-  .lab-hero-section {
-    width: 100% !important;
-    max-width: none !important;
-  }
-
-  .lss-image-block.orbit-image-frame.lss-landscape-panel {
-    max-width: 1220px !important;
-  }
-}
-
-@media (max-width: 900px) {
-
-  .lss-hero-landscape-panel,
-  .lss-lab-landscape-panel {
-    display: none !important;
-  }
-  .lss-landscape-panel {
-    width: calc(100% - 28px) !important;
-    padding: 14px !important;
-    box-shadow:
-      0 0 24px rgba(0,174,222,.10),
-      inset 0 0 0 1px rgba(0,174,222,.24) !important;
-  }
-
-  .lss-landscape-panel::before {
-    background:
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 30px 2px no-repeat,
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left top / 2px 30px no-repeat,
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 30px 2px no-repeat,
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right top / 2px 30px no-repeat,
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 30px 2px no-repeat,
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) left bottom / 2px 30px no-repeat,
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 30px 2px no-repeat,
-      linear-gradient(var(--pulse-frame-cyan),var(--pulse-frame-cyan)) right bottom / 2px 30px no-repeat !important;
-  }
-
-  .lss-landscape-panel > .mobile-hero-carousel,
-  .lss-landscape-panel > .mobile-hero-single,
-  .lss-landscape-panel > picture {
-    box-shadow: 0 14px 28px rgba(0,0,0,.38) !important;
-  }
-}
-
-/* Give the seven hero navigation bars a little more separation from the image. */
-.home-hero-section .indicator {
-  box-shadow:
-    0 2px 5px rgba(0,0,0,.72),
-    0 0 7px rgba(0,0,0,.42) !important;
-}
-
-
-
-/* Keep Orbit artwork fully contained inside the same framed panel geometry. */
-.lss-image-block.orbit-image-frame.lss-landscape-panel > picture,
-.lss-image-block.orbit-image-frame.lss-landscape-panel > picture > img {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  margin: 0 !important;
-}
-
-@media (min-width: 901px) {
-  .lss-image-block.orbit-image-frame.lss-landscape-panel {
-    transform: none !important;
-  }
-
-  /* Bottom-only crop. The negative bottom margin also shortens the panel,
-     so the cyan bottom frame rises with the artwork while the top stays fixed. */
-  .lss-image-block.orbit-image-frame.lss-landscape-panel > picture {
-    display: block !important;
-    overflow: hidden !important;
-    clip-path: none !important;
-    margin-bottom: 0 !important;
-  }
-
-  .lss-image-block.orbit-image-frame.lss-landscape-panel > picture > img {
-    display: block !important;
-    width: 100% !important;
-    height: auto !important;
-    margin: 0 !important;
-  }
-}
-
-
-
-/* Re-center Hero controls and text inside the shorter framed box. */
-@media (min-width: 901px) {
-  .home-hero-section .nav-arrow {
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-  }
-
-  .home-hero-section .hero-content {
-    transform: none !important;
-    align-items: center !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-}
-
-
-
-/* HERO wallpaper recenters naturally inside the shorter overall frame. */
-@media (min-width: 901px) {
-  .home-hero-section .slide-bg {
-    background-position: center center !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO LAYOUT CLEANUP
-   No hover or dropdown behavior.
-   Indicators top-right, universal VAULT button top-left,
-   title block lowered, metadata centered along the bottom.
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Seven slide bars in the top-right corner */
-  .home-hero-section .indicators {
-    left: auto !important;
-    right: 28px !important;
-    top: 22px !important;
-    bottom: auto !important;
-    transform: none !important;
-    justify-content: flex-end !important;
-    z-index: 15 !important;
-  }
-
-  /* Universal VAULT button opposite the indicators */
-  .home-hero-section .hero-vault-button {
-    position: absolute !important;
-    left: 30px !important;
-    top: 28px !important;
-    z-index: 16 !important;
-    min-width: 96px !important;
-    height: 64px !important;
-    padding: 0 22px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    border-radius: 16px !important;
-    background: rgba(12, 16, 24, 0.58) !important;
-    border: 1px solid rgba(255,255,255,0.18) !important;
-    box-shadow:
-      0 12px 26px rgba(0,0,0,.28),
-      inset 0 0 0 1px rgba(123,234,255,.10) !important;
-    color: #7beaff !important;
-    font-family: Oxanium, Arial, sans-serif !important;
-    font-size: 24px !important;
-    font-weight: 700 !important;
-    letter-spacing: .09em !important;
-    cursor: pointer !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-
-  /* Lower the main text block more inside the shorter hero box */
-  .home-hero-section .hero-content {
-    transform: translateY(42px) !important;
-    align-items: center !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .home-hero-section .hero-accent-bar,
-  .home-hero-section .hero-title-link {
-    transform: none !important;
-  }
-
-  /* Keep arrows vertically centered in the new shorter hero box */
-  .home-hero-section .nav-arrow {
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    z-index: 15 !important;
-  }
-
-  /* Metadata separated and centered across the bottom middle */
-  .home-hero-section .hero-meta {
-    position: absolute !important;
-    left: 50% !important;
-    bottom: 18px !important;
-    transform: translateX(-50%) !important;
-    z-index: 14 !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-wrap: nowrap !important;
-    gap: .95rem !important;
-
-    width: max-content !important;
-    max-width: calc(100% - 180px) !important;
-    margin: 0 !important;
-    padding: 9px 18px !important;
-
-    background: rgba(4,14,21,.58) !important;
-    box-shadow:
-      inset 0 0 0 1px rgba(186,199,213,.12),
-      0 6px 18px rgba(0,0,0,.30) !important;
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
-  }
-
-  /* Hide taglines and hero action buttons entirely */
-  .home-hero-section .hero-description,
-  .home-hero-section .hero-actions {
-    display: none !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO FINAL TUNING
-   Separate title and metadata, widen metadata strip,
-   remove title hover/click behavior.
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Lower only the title cluster, not the whole overlay */
-  .home-hero-section .hero-content {
-    transform: none !important;
-    align-items: center !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .home-hero-section .hero-accent-bar,
-  .home-hero-section .hero-title-link {
-    transform: translateY(54px) !important;
-  }
-
-  /* Disable title hover/click action */
-  .home-hero-section .hero-title-link {
-    pointer-events: none !important;
-    cursor: default !important;
-    text-decoration: none !important;
-  }
-
-  /* Keep metadata truly separate and make it wider */
-  .home-hero-section .hero-meta {
-    left: 50% !important;
-    right: auto !important;
-    bottom: 16px !important;
-    transform: translateX(-50%) !important;
-    width: calc(100% - 420px) !important;
-    max-width: 760px !important;
-    min-width: 540px !important;
-    justify-content: center !important;
-    gap: 1.15rem !important;
-    padding: 10px 22px !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO METADATA SEPARATION FIX
-   Metadata is now a direct child of each slide and is
-   anchored independently to the bottom center.
-======================================================= */
-@media (min-width: 901px) {
-
-  .home-hero-section .slide {
-    position: absolute !important;
-  }
-
-  /* Main title cluster stays lower in the image */
-  .home-hero-section .hero-content {
-    transform: translateY(52px) !important;
-  }
-
-  /* Metadata is independent from title and spans wider */
-  .home-hero-section .slide > .hero-meta {
-    position: absolute !important;
-    left: 50% !important;
-    bottom: 18px !important;
-    top: auto !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    z-index: 20 !important;
-
-    width: min(820px, calc(100% - 260px)) !important;
-    min-width: 620px !important;
-    max-width: 820px !important;
-    margin: 0 !important;
-    padding: 10px 24px !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-wrap: nowrap !important;
-    gap: 1.35rem !important;
-
-    background: rgba(42, 45, 50, .72) !important;
-    box-shadow:
-      inset 0 0 0 1px rgba(186,199,213,.14),
-      0 8px 20px rgba(0,0,0,.34) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .home-hero-section .slide > .hero-meta span {
-    white-space: nowrap !important;
-  }
-
-  /* Prevent any inherited title-hover effect */
-  .home-hero-section .hero-title-link,
-  .home-hero-section .hero-title-link:hover,
-  .home-hero-section .hero-title-link:focus {
-    pointer-events: none !important;
-    transform: translateY(54px) !important;
-    opacity: 1 !important;
-    text-decoration: none !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO FINAL HOVER + METADATA FIX
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Kill every hover/focus/active visual change on Featured Edit + title */
-  .home-hero-section .hero-title-link,
-  .home-hero-section .hero-title-link:hover,
-  .home-hero-section .hero-title-link:focus,
-  .home-hero-section .hero-title-link:active,
-  .home-hero-section .slide:hover .hero-title-link,
-  .home-hero-section .hero-content:hover .hero-title-link {
-    pointer-events: none !important;
-    cursor: default !important;
-    transform: translateY(54px) !important;
-    opacity: 1 !important;
-    filter: none !important;
-    text-decoration: none !important;
-    transition: none !important;
-  }
-
-  .home-hero-section .hero-title-link .hero-title,
-  .home-hero-section .hero-title-link:hover .hero-title,
-  .home-hero-section .hero-title-link .hero-kicker,
-  .home-hero-section .hero-title-link:hover .hero-kicker {
-    transform: none !important;
-    opacity: 1 !important;
-    filter: none !important;
-    transition: none !important;
-  }
-
-  /* Metadata box hugs the content, while larger text/gaps make it wider naturally */
-  .home-hero-section .slide > .hero-meta {
-    width: fit-content !important;
-    min-width: 0 !important;
-    max-width: calc(100% - 260px) !important;
-    padding: 10px 24px !important;
-    gap: 1.45rem !important;
-    font-size: 1.18rem !important;
-    line-height: 1 !important;
-  }
-
-  .home-hero-section .slide > .hero-meta span {
-    font-size: inherit !important;
-    white-space: nowrap !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO FINAL INTERACTION FIX
-   Wallpaper links + completely static accent bar
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Full hero wallpaper links to that slide's landing page */
-  .home-hero-section .hero-image-link {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 1 !important;
-    display: block !important;
-    cursor: pointer !important;
-    text-decoration: none !important;
-  }
-
-  .home-hero-section .hero-image-link .slide-bg {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  /* Freeze the cyan bar at its normal size under every interaction state */
-  .home-hero-section .hero-accent-bar,
-  .home-hero-section .content-inner:hover .hero-accent-bar,
-  .home-hero-section .hero-content:hover .hero-accent-bar,
-  .home-hero-section .slide:hover .hero-accent-bar {
-    width: 6px !important;
-    height: 75px !important;
-    top: 4px !important;
-    transition: none !important;
-    transform: none !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO + LAB FINAL MATCH
-   Same height, no accent bars, Lab metadata separated,
-   only Lab artwork clickable.
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Hero and Lab use the same inner artwork height */
-  .home-hero-section .lss-landscape-panel > .hero-carousel,
-  .lab-hero-section .lss-landscape-panel > .hero-single {
-    height: 536px !important;
-    min-height: 536px !important;
-    max-height: 536px !important;
-  }
-
-  /* Remove cyan accent bars from both Hero and Lab */
-  .home-hero-section .hero-accent-bar,
-  .lab-hero-section .hero-accent-bar {
-    display: none !important;
-  }
-
-  /* Lab title block sits independently above the metadata */
-  .lab-hero-section .hero-content {
-    transform: none !important;
-    align-items: center !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .lab-hero-section .hero-title,
-  .lab-hero-section .lab-kicker {
-    transform: translateY(54px) !important;
-  }
-
-  /* Lab metadata matches Hero treatment at bottom center */
-  .lab-hero-section .hero-single > .hero-meta {
-    position: absolute !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: 16px !important;
-    top: auto !important;
-    transform: translateX(-50%) !important;
-    z-index: 20 !important;
-
-    width: fit-content !important;
-    min-width: 0 !important;
-    max-width: calc(100% - 260px) !important;
-    margin: 0 !important;
-    padding: 10px 24px !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-wrap: nowrap !important;
-    gap: 1.45rem !important;
-
-    font-size: 1.18rem !important;
-    line-height: 1 !important;
-
-    background: rgba(42,45,50,.72) !important;
-    box-shadow:
-      inset 0 0 0 1px rgba(186,199,213,.14),
-      0 8px 20px rgba(0,0,0,.34) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .lab-hero-section .hero-single > .hero-meta span {
-    font-size: inherit !important;
-    white-space: nowrap !important;
-  }
-
-  /* Remove Lab details/action controls */
-  .lab-hero-section .hero-actions {
-    display: none !important;
-  }
-
-  /* Only the Lab artwork itself is clickable */
-  .lab-hero-section .lab-image-link {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 1 !important;
-    display: block !important;
-    cursor: pointer !important;
-    text-decoration: none !important;
-  }
-
-  .lab-hero-section .lab-image-link .hero-bg {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  .lab-hero-section .hero-content,
-  .lab-hero-section .hero-single > .hero-meta {
-    pointer-events: none !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO + LAB TEXT / SIZE TUNING
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Keep Hero at current approved size */
-  .home-hero-section .lss-landscape-panel > .hero-carousel {
-    height: 536px !important;
-    min-height: 536px !important;
-    max-height: 536px !important;
-  }
-
-  /* Make Lab shorter: 500px artwork + 18px top/bottom frame padding = 536px total */
-  .lab-hero-section .lss-landscape-panel > .hero-single {
-    height: 500px !important;
-    min-height: 500px !important;
-    max-height: 500px !important;
-  }
-
-  /* Move Hero and Lab title clusters slightly farther left */
-  .home-hero-section .hero-content .content-inner,
-  .lab-hero-section .hero-content .content-inner {
-    transform: translateX(-14px) !important;
-  }
-
-  /* Stronger readability for all FEATURED EDIT labels */
-  .home-hero-section .hero-kicker {
-    text-shadow:
-      0 2px 4px rgba(0,0,0,.95),
-      0 0 8px rgba(0,0,0,.85),
-      0 0 14px rgba(0,0,0,.65) !important;
-  }
-
-  /* Stronger readability for the Lab IN-PRODUCTION label */
-  .lab-hero-section .lab-kicker {
-    text-shadow:
-      0 2px 4px rgba(0,0,0,.95),
-      0 0 8px rgba(0,0,0,.85),
-      0 0 14px rgba(0,0,0,.65) !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO + LAB IMAGE LINK CLICK FIX
-   Ensure overlay text never blocks the image anchors.
-======================================================= */
-@media (min-width: 901px) {
-
-  /* HERO: image anchor owns the artwork click area */
-  .home-hero-section .hero-image-link {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 2 !important;
-    display: block !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-  }
-
-  /* Decorative/text overlays must not intercept the image click */
-  .home-hero-section .hero-content,
-  .home-hero-section .hero-content *,
-  .home-hero-section .slide > .hero-meta {
-    pointer-events: none !important;
-  }
-
-  /* Keep actual carousel controls clickable above the image */
-  .home-hero-section .nav-arrow,
-  .home-hero-section .indicators,
-  .home-hero-section .indicator,
-  .home-hero-section .hero-vault-button {
-    pointer-events: auto !important;
-    z-index: 30 !important;
-  }
-
-  /* LAB: only the artwork is clickable */
-  .lab-hero-section .lab-image-link {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 2 !important;
-    display: block !important;
-    pointer-events: auto !important;
-    cursor: pointer !important;
-  }
-
-  .lab-hero-section .hero-content,
-  .lab-hero-section .hero-content *,
-  .lab-hero-section .hero-single > .hero-meta {
-    pointer-events: none !important;
-  }
-}
-
-
-
-/* =======================================================
-   LAB FINAL HEIGHT
-   490px artwork + 18px top/bottom frame padding = 526px total
-======================================================= */
-@media (min-width: 901px) {
-  .lab-hero-section .lss-landscape-panel > .hero-single {
-    height: 490px !important;
-    min-height: 490px !important;
-    max-height: 490px !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO METADATA WORKING-TITLE TREATMENT
-   Matches the landing-page Working Title box background effect.
-======================================================= */
-@media (min-width: 901px) {
-  .home-hero-section .slide > .hero-meta {
-    background:
-      linear-gradient(90deg, rgba(0, 174, 222, 0.13), transparent),
-      rgba(255, 255, 255, 0.035) !important;
-
-    box-shadow:
-      inset 0 0 0 1px rgba(0, 174, 222, 0.18),
-      0 8px 20px rgba(0, 0, 0, 0.28) !important;
-
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-}
-
-
-
-/* =======================================================
-   HERO METADATA OPACITY
-   Raise grey base opacity to 80% while keeping cyan gradient.
-======================================================= */
-@media (min-width: 901px) {
-  .home-hero-section .slide > .hero-meta {
-    background:
-      linear-gradient(90deg, rgba(0, 174, 222, 0.13), transparent),
-      rgba(18, 28, 34, 0.80) !important;
-  }
-}
-@media (max-width: 900px) {
-  /* Force the scroll window to hide overflow and act as a strict viewport */
-  .vault-rail-window.index-vault-window {
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    -webkit-overflow-scrolling: touch !important;
-  }
-
-  /* Force each card to take up 100% of the visible container width */
-  .vault-rail-track.index-vault-track .vault-archive-card {
-    flex: 0 0 100% !important;
-    width: 100% !important;
-    scroll-snap-align: start !important;
-  }
-}
-</style>
-
-
-<style id="hero-centered-title-meta-and-round-indicators">
-/* =======================================================
-   HERO CENTERED TITLE + METADATA / ROUND INACTIVE INDICATORS
-   Desktop only
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Center the Featured Edit + title above the metadata */
-  .home-hero-section .hero-content {
-    position: absolute !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: 72px !important;
-    top: auto !important;
-    width: max-content !important;
-    max-width: calc(100% - 260px) !important;
-    transform: translateX(-50%) !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    z-index: 21 !important;
-  }
-
-  .home-hero-section .hero-content .content-inner {
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .hero-title-link,
-  .home-hero-section .hero-title-link:hover,
-  .home-hero-section .hero-title-link:focus,
-  .home-hero-section .hero-title-link:active,
-  .home-hero-section .slide:hover .hero-title-link,
-  .home-hero-section .hero-content:hover .hero-title-link {
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .hero-kicker,
-  .home-hero-section .hero-title {
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  /* Metadata directly below title, dark pill, evenly spread, no icons */
-  .home-hero-section .slide > .hero-meta {
-    left: 50% !important;
-    right: auto !important;
-    bottom: 18px !important;
-    top: auto !important;
-    transform: translateX(-50%) !important;
-
-    width: min(720px, calc(100% - 300px)) !important;
-    min-width: 560px !important;
-    max-width: 720px !important;
-    padding: 10px 24px !important;
-
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    align-items: center !important;
-    justify-items: center !important;
-    gap: 0 !important;
-
-    background: rgba(4,14,21,.78) !important;
-    border: 1px solid rgba(123,234,255,.22) !important;
-    border-radius: 0 !important;
-    box-shadow:
-      0 8px 20px rgba(0,0,0,.34),
-      inset 0 0 18px rgba(0,174,222,.05) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    overflow: hidden !important;
-  }
-
-  .home-hero-section .slide > .hero-meta span {
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    min-height: 24px !important;
-    padding: 0 22px !important;
-    font-size: 1.18rem !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .slide > .hero-meta span + span::before {
-    content: "" !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    width: 1px !important;
-    height: 22px !important;
-    transform: translateY(-50%) !important;
-    background: rgba(186,199,213,.38) !important;
-  }
-
-  /* Inactive indicators become dots; only active remains a dash */
-  .home-hero-section .indicator {
-    width: 10px !important;
-    height: 10px !important;
-    min-width: 10px !important;
-    border-radius: 50% !important;
-    padding: 0 !important;
-  }
-
-  .home-hero-section .indicator.active {
-    width: 38px !important;
-    min-width: 38px !important;
-    height: 6px !important;
-    border-radius: 999px !important;
-  }
-}
-</style>
-
-
-<style id="hero-bottom-title-and-indicator-morph-fix">
-/* =======================================================
-   HERO TITLE POSITION + INDICATOR MORPH
-======================================================= */
-@media (min-width: 901px) {
-
-  /* Lock the title cluster to the lower center, directly above metadata */
-  .home-hero-section .slide > .hero-content {
-    position: absolute !important;
-    inset: auto !important;
-    left: 50% !important;
-    bottom: 78px !important;
-    width: auto !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-    transform: translateX(-50%) !important;
-    display: block !important;
-    z-index: 21 !important;
-    pointer-events: none !important;
-  }
-
-  .home-hero-section .slide > .hero-content .content-inner,
-  .home-hero-section .slide > .hero-content .hero-content-wrapper {
-    width: max-content !important;
-    max-width: calc(100vw - 360px) !important;
-    height: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .hero-title-link,
-  .home-hero-section .hero-title-link:hover,
-  .home-hero-section .hero-title-link:focus,
-  .home-hero-section .hero-title-link:active,
-  .home-hero-section .slide:hover .hero-title-link,
-  .home-hero-section .hero-content:hover .hero-title-link {
-    display: block !important;
-    width: max-content !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .hero-kicker,
-  .home-hero-section .hero-title {
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  /* Smooth dot <-> dash morph when the active slide changes */
-  .home-hero-section .indicator {
-    width: 10px !important;
-    min-width: 10px !important;
-    height: 10px !important;
-    border-radius: 50% !important;
-    padding: 0 !important;
-    transition:
-      width .32s ease,
-      min-width .32s ease,
-      height .32s ease,
-      border-radius .32s ease,
-      background-color .32s ease,
-      box-shadow .32s ease,
-      opacity .32s ease !important;
-  }
-
-  .home-hero-section .indicator.active {
-    width: 38px !important;
-    min-width: 38px !important;
-    height: 6px !important;
-    border-radius: 999px !important;
-  }
-}
-</style>
-
-
-<style id="hero-true-center-fix">
-@media (min-width: 901px) {
-
-  /* Center both title cluster and metadata against the full hero image */
-  .home-hero-section .slide > .hero-content {
-    left: 50% !important;
-    right: auto !important;
-    width: calc(100% - 260px) !important;
-    max-width: 980px !important;
-    transform: translateX(-50%) !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .slide > .hero-content .content-inner,
-  .home-hero-section .slide > .hero-content .hero-content-wrapper,
-  .home-hero-section .hero-title-link {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .hero-kicker,
-  .home-hero-section .hero-title {
-    display: block !important;
-    width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-  }
-
-  .home-hero-section .slide > .hero-meta {
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-  }
-}
-</style>
-
-
-<style id="hero-single-line-title-fix">
-@media (min-width: 901px) {
-
-  /* Keep long hero titles on one line when there is room */
-  .home-hero-section .slide > .hero-content {
-    width: calc(100% - 180px) !important;
-    max-width: 1180px !important;
-  }
-
-  .home-hero-section .hero-title {
-    white-space: nowrap !important;
-    width: auto !important;
-    max-width: none !important;
-    display: inline-block !important;
-    font-size: clamp(34px, 3.2vw, 58px) !important;
-  }
-
-  .home-hero-section .hero-kicker {
-    width: auto !important;
-  }
-}
-</style>
-
-
-<style id="hero-meta-extra-bars-fix">
-@media (min-width: 901px) {
-  /* Remove inherited trailing separators after each metadata label. */
-  .home-hero-section .slide > .hero-meta span::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  /* Keep only the two separators BETWEEN the three metadata items. */
-  .home-hero-section .slide > .hero-meta span + span::before {
-    content: "" !important;
-    display: block !important;
-  }
-}
-</style>
-
-
-<style id="lab-bottom-center-and-orbit-frame-fix">
-/* =======================================================
-   LAB: MATCH HERO BOTTOM-CENTER TITLE / META TREATMENT
-   ORBIT: STRONG LANDSCAPE PANEL BACKING
-======================================================= */
-@media (min-width: 901px) {
-
-  /* LAB title cluster sits centered near the bottom, above metadata */
-  .lab-hero-section .hero-single > .hero-content {
-    position: absolute !important;
-    inset: auto !important;
-    left: 50% !important;
-    bottom: 78px !important;
-    width: calc(100% - 180px) !important;
-    max-width: 1180px !important;
-    height: auto !important;
-    transform: translateX(-50%) !important;
-    display: block !important;
-    z-index: 21 !important;
-    text-align: center !important;
-    pointer-events: none !important;
-  }
-
-  .lab-hero-section .hero-single > .hero-content .content-inner,
-  .lab-hero-section .hero-single > .hero-content .hero-content-wrapper {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  .lab-hero-section .lab-kicker,
-  .lab-hero-section .hero-title {
-    transform: none !important;
-    text-align: center !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
-
-  .lab-hero-section .hero-title {
-    display: inline-block !important;
-    width: auto !important;
-    max-width: none !important;
-    white-space: nowrap !important;
-    font-size: clamp(34px, 3.2vw, 58px) !important;
-  }
-
-  /* LAB metadata pill */
-  .lab-hero-section .hero-single > .hero-meta {
-    position: absolute !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: 18px !important;
-    top: auto !important;
-    transform: translateX(-50%) !important;
-    z-index: 20 !important;
-
-    width: min(620px, calc(100% - 360px)) !important;
-    min-width: 460px !important;
-    max-width: 620px !important;
-    margin: 0 !important;
-    padding: 10px 24px !important;
-
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    align-items: center !important;
-    justify-items: center !important;
-    gap: 0 !important;
-
-    background: rgba(4,14,21,.78) !important;
-    border: 1px solid rgba(123,234,255,.22) !important;
-    border-radius: 999px !important;
-    box-shadow:
-      0 8px 20px rgba(0,0,0,.34),
-      inset 0 0 18px rgba(0,174,222,.05) !important;
-    backdrop-filter: blur(8px) !important;
-    -webkit-backdrop-filter: blur(8px) !important;
-    overflow: hidden !important;
-  }
-
-  .lab-hero-section .hero-single > .hero-meta span {
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    min-height: 24px !important;
-    padding: 0 22px !important;
-    font-size: 1.18rem !important;
-    line-height: 1 !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-  }
-
-  .lab-hero-section .hero-single > .hero-meta span::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  .lab-hero-section .hero-single > .hero-meta span + span::before {
-    content: "" !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 50% !important;
-    width: 1px !important;
-    height: 22px !important;
-    transform: translateY(-50%) !important;
-    background: rgba(186,199,213,.38) !important;
-  }
-
-  /* ORBIT gets the same visible backing/frame box as the Hero/Lab panels */
-  .lss-image-block.orbit-image-frame.lss-landscape-panel {
-    position: relative !important;
-    padding: 18px !important;
-    background:
-      linear-gradient(145deg, rgba(0,174,222,.14), rgba(255,255,255,.022)),
-      rgba(255,255,255,.026) !important;
-    box-shadow:
-      0 0 32px rgba(0,174,222,.12),
-      inset 0 0 0 1px rgba(0,174,222,.28) !important;
-  }
-
-  .lss-image-block.orbit-image-frame.lss-landscape-panel > picture {
-    display: block !important;
-    width: 100% !important;
-    margin: 0 !important;
-    background: #040e15 !important;
-    box-shadow: 0 18px 40px rgba(0,0,0,.50) !important;
-  }
-}
-</style>
-
-
-<style id="lab-title-visibility-hard-fix">
-@media (min-width: 901px) {
-  /* Force the Lab title cluster visibly above the artwork/link layer. */
-  .lab-hero-section .hero-single {
-    position: relative !important;
-  }
-
-  .lab-hero-section .hero-single > .hero-content {
-    position: absolute !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-
-    left: 50% !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: 78px !important;
-
-    width: calc(100% - 180px) !important;
-    max-width: 1180px !important;
-    height: auto !important;
-    min-height: 0 !important;
-
-    transform: translateX(-50%) !important;
-    z-index: 60 !important;
-    text-align: center !important;
-    pointer-events: none !important;
-  }
-
-  .lab-hero-section .hero-single > .hero-content .content-inner,
-  .lab-hero-section .hero-single > .hero-content .hero-content-wrapper {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-    transform: none !important;
-    text-align: center !important;
-  }
-
-  .lab-hero-section .lab-kicker {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    margin: 0 0 5px !important;
-    transform: none !important;
-    text-align: center !important;
-    color: #00aede !important;
-  }
-
-  .lab-hero-section .hero-title {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 !important;
-    transform: none !important;
-    white-space: nowrap !important;
-    text-align: center !important;
-    color: #bac7d5 !important;
-    font-size: clamp(34px, 3.2vw, 58px) !important;
-  }
-
-  /* Keep metadata below the title and above the artwork. */
-  .lab-hero-section .hero-single > .hero-meta {
-    z-index: 61 !important;
-  }
-
-  .lab-hero-section .lab-image-link {
-    z-index: 2 !important;
-  }
-}
-</style>
-
-
-<style id="mobile-desktop-experience-note-style">
-.mobile-desktop-experience-note {
-  display: none;
-}
-
-@media (max-width: 900px) {
-  .mobile-desktop-experience-note {
-    display: block;
-    width: calc(100% - 28px);
-    margin: 12px auto 24px;
-    padding: 14px 16px 15px;
-    background:
-      linear-gradient(90deg, rgba(0,174,222,.08), transparent),
-      rgba(255,255,255,.028);
-    border: 1px solid rgba(0,174,222,.18);
-    box-shadow:
-      0 0 18px rgba(0,174,222,.06),
-      inset 0 0 0 1px rgba(255,255,255,.015);
-    color: #bac7d5;
-    box-sizing: border-box;
-  }
-
-  .mobile-desktop-experience-note strong {
-    display: block;
-    margin: 0 0 6px;
-    font-family: Oxanium, Rajdhani, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: #00aede;
-  }
-
-  .mobile-desktop-experience-note p {
-    margin: 0;
-    font-family: Rajdhani, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.4;
-    color: rgba(186,199,213,.78);
-  }
-}
-</style>
-
-
-<style id="mobile-hero-lab-frame-removal">
-@media (max-width: 900px) {
-  /* Remove only the outer framed-panel treatment from the mobile Hero and Lab. */
-  .lss-mobile-hero-landscape-panel,
-  .lss-mobile-lab-landscape-panel {
-    width: 100% !important;
-    padding: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-
-  .lss-mobile-hero-landscape-panel::before,
-  .lss-mobile-lab-landscape-panel::before {
-    content: none !important;
-    display: none !important;
-    background: none !important;
-  }
-
-  /* Remove the panel-style drop shadow from the mobile artwork itself. */
-  .lss-mobile-hero-landscape-panel > .mobile-hero-carousel,
-  .lss-mobile-lab-landscape-panel > .mobile-hero-single {
-    box-shadow: none !important;
-  }
-}
-</style>
-
-
-<style id="orbit-year-switcher-style">
-.orbit-year-switcher{position:relative!important}
-.orbit-year-stage{position:relative;width:100%;overflow:hidden}
-.orbit-year-art{display:block;width:100%;margin:0;opacity:0;pointer-events:none;transition:opacity .32s ease}
-.orbit-year-art:first-child{position:relative}
-.orbit-year-art:not(:first-child){position:absolute;inset:0}
-.orbit-year-art.active{opacity:1;pointer-events:auto}
-.orbit-year-art img{display:block;width:100%;height:auto}
-
-.orbit-year-toggle{
-  position:absolute;
-  left:50%;
-  bottom:30px;
-  top:auto;
-  transform:translateX(-50%);
-  z-index:140;
-
-  display:inline-flex;
-  align-items:center;
-  gap:5px;
-  padding:5px;
-
-  background:rgba(4,14,21,.76);
-  border:1px solid rgba(123,234,255,.20);
-  box-shadow:
-    0 8px 20px rgba(0,0,0,.32),
-    inset 0 0 16px rgba(0,174,222,.04);
-
-  backdrop-filter:blur(7px);
-  -webkit-backdrop-filter:blur(7px);
-}
-.orbit-year-button{
-  min-width:58px;height:30px;padding:0 11px;border:0;background:transparent;
-  color:rgba(186,199,213,.68);
-  font-family:Oxanium,Rajdhani,Arial,sans-serif;
-  font-size:12px;font-weight:700;letter-spacing:.11em;cursor:pointer
-}
-.orbit-year-button.active{
-  color:#00AEDE;background:rgba(0,174,222,.11);
-  box-shadow:inset 0 0 0 1px rgba(0,174,222,.22)
-}
-@media (max-width:900px){
-  .orbit-year-toggle{top:22px;left:22px;gap:3px;padding:4px}
-  .orbit-year-button{min-width:50px;height:28px;padding:0 8px;font-size:11px}
-}
-</style>
-
-
-<style id="orbit-corner-brackets-fix">
-/* Match the cyan corner brackets used around Hero and Lab */
-.lss-image-block.orbit-image-frame.lss-landscape-panel.orbit-year-switcher::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  z-index: 150 !important;
-  pointer-events: none !important;
-  opacity: .86 !important;
-  display: block !important;
-  background:
-    linear-gradient(#00AEDE,#00AEDE) left top / 42px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) left top / 2px 42px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right top / 42px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right top / 2px 42px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) left bottom / 42px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 42px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right bottom / 42px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 42px no-repeat !important;
-}
-
-@media (max-width: 900px) {
-  .lss-image-block.orbit-image-frame.lss-landscape-panel.orbit-year-switcher::before {
-    background:
-      linear-gradient(#00AEDE,#00AEDE) left top / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) left top / 2px 30px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right top / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right top / 2px 30px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) left bottom / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 30px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right bottom / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 30px no-repeat !important;
-  }
-}
-</style>
-
-
-<style id="orbit-mobile-year-controls-above">
-/* Desktop keeps the original Orbit heading placement. */
-.orbit-heading-row {
-  display: contents;
-}
-
-.orbit-mobile-year-toggle {
-  display: none;
-}
-
-@media (max-width: 900px) {
-  /* Use the EXISTING Orbit title and place the year controls beside it. */
-  .orbit-heading-row {
-    width: calc(100% - 28px);
-    margin: 18px auto 8px;
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .orbit-heading-row .section-heading.orbit-desktop-only {
-    display: flex !important;
-    width: auto !important;
-    margin: 0 !important;
-    flex: 0 0 auto;
-  }
-
-  .orbit-heading-row .orbit-mobile-year-toggle {
-    position: static !important;
-    inset: auto !important;
-    transform: none !important;
-    margin: 0 !important;
-    flex: 0 0 auto;
-    display: inline-flex !important;
-    align-items: center;
-    gap: 3px;
-    padding: 4px;
-    z-index: auto;
-  }
-
-  /* The desktop controls inside the wallpaper stay hidden on mobile. */
-  #orbitYearSwitcher > .orbit-year-toggle {
-    display: none !important;
-  }
-}
-</style>
-
-
-<style id="mobile-framed-hero-lab-orbit-and-arrow-boost">
-@media (max-width: 900px) {
-
-  /* =======================================================
-     MOBILE HERO + LAB + ORBIT
-     Restore the same framed-panel language used on desktop.
-     ======================================================= */
-  .lss-mobile-hero-landscape-panel,
-  .lss-mobile-lab-landscape-panel,
-  .lss-image-block.orbit-image-frame.lss-landscape-panel {
-    position: relative !important;
-    width: calc(100% - 28px) !important;
-    max-width: none !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 14px !important;
-    background:
-      linear-gradient(145deg, rgba(0,174,222,.14), rgba(255,255,255,.022)),
-      rgba(255,255,255,.026) !important;
-    box-shadow:
-      0 0 24px rgba(0,174,222,.10),
-      inset 0 0 0 1px rgba(0,174,222,.24) !important;
-    box-sizing: border-box !important;
-    overflow: visible !important;
-  }
-
-  /* Restore artwork shadow inside the framed box. */
-  .lss-mobile-hero-landscape-panel > .mobile-hero-carousel,
-  .lss-mobile-lab-landscape-panel > .mobile-hero-single,
-  .lss-image-block.orbit-image-frame.lss-landscape-panel > .orbit-year-stage {
-    box-shadow: 0 14px 28px rgba(0,0,0,.38) !important;
-  }
-
-  /* Cyan corner brackets for all three mobile modules. */
-  .lss-mobile-hero-landscape-panel::before,
-  .lss-mobile-lab-landscape-panel::before,
-  .lss-image-block.orbit-image-frame.lss-landscape-panel::before {
-    content: "" !important;
-    display: block !important;
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 150 !important;
-    pointer-events: none !important;
-    opacity: .86 !important;
-    background:
-      linear-gradient(#00AEDE,#00AEDE) left top / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) left top / 2px 30px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right top / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right top / 2px 30px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) left bottom / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 30px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right bottom / 30px 2px no-repeat,
-      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 30px no-repeat !important;
-  }
-
-  /* =======================================================
-     MOBILE HERO ARROWS
-     Larger, cyan, and easier to see against bright wallpapers.
-     ======================================================= */
-  .mobile-hero-carousel .mobile-nav-arrow {
-    width: 42x !important;
-    height: 42px !important;
-    min-width: 42px !important;
-    min-height: 42px !important;
-    padding: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background: rgba(4,14,21,.42) !important;
-    border: 1px solid rgba(0,174,222,.32) !important;
-    border-radius: 0 !important;
-    box-shadow:
-      0 5px 16px rgba(0,0,0,.55),
-      0 0 12px rgba(0,174,222,.18) !important;
-    z-index: 170 !important;
-  }
-
-  .mobile-hero-carousel .mobile-nav-arrow svg {
-    width: 29px !important;
-    height: 29px !important;
-    filter:
-      drop-shadow(0 2px 3px rgba(0,0,0,.95))
-      drop-shadow(0 0 5px rgba(0,174,222,.55)) !important;
-  }
-
-  .mobile-hero-carousel .mobile-nav-arrow svg path {
-    stroke: #00AEDE !important;
-    stroke-width: 3.2 !important;
-  }
-}
-</style>
-
 </head>
 <body>
 <header class="lss-nav-bar">
-<a class="lss-nav-logo"  href="index.html?v=4">
+<a class="lss-nav-logo" href="index.html?v=4">
   <picture class="lss-nav-logo-picture">
     <source
       media="(min-width: 901px)"
@@ -1608,13 +38,14 @@
 
 <div class="hamburger">☰</div>
 <nav class="lss-nav-links">
-  <a class="lss-nav-item active"  href="index.html?v=4">Bridge</a>
+  <a class="lss-nav-item active" href="index.html?v=4">Bridge</a>
   <a class="lss-nav-item" href="vault.html">Vault</a>
   <a class="lss-nav-item" href="lab.html">Lab</a>
   <a class="lss-nav-item" href="pulse.html">Pulse</a>
   <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
 </nav>
 </header>
+
 <div id="lss-splash" aria-label="Light Speed Studios loading screen">
 <picture class="lss-splash-picture">
 <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/SPLASHMOB.png"/>
@@ -1668,7 +99,6 @@
 </div>
 </article>
 <article class="slide">
-
 <a class="hero-image-link" href="vault/glass-rooms.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/glassheroes1NEW.png');"></div>
 </a>
@@ -1839,13 +269,11 @@
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
 <div class="bridge-body">
-<p>Every edit begins with an emotional connection. Each cut is made to reveal a clearer, more focused version of the story while honoring the original vision. The result is a fresh perspective on films that already mean so much to their fans.
-  </p></div>
+<p>Every edit begins with an emotional connection. Each cut is made to reveal a clearer, more focused version of the story while honoring the original vision. The result is a fresh perspective on films that already mean so much to their fans.</p>
+</div>
 <section id="home-signup-wrap" class="home-signup-wrap">
 <div class="lss-embed">
-<!-- Updated Formspark Action Endpoint -->
 <form action="https://submit-form.com/Es2Ypoxuk" class="lss-form" method="POST">
-<!-- Custom Thank You Page Redirect Directive -->
 <input name="_redirect" type="hidden" value="https://light-speed.studio/email-landing-page.html"/>
 <label class="lss-label" for="email">ALERTS</label>
 <input class="lss-input" id="email" name="email" placeholder="ENTER EMAIL" required="" type="email"/>
@@ -1855,6 +283,7 @@
 </div>
 </section>
 </section>
+
 <!-- =======================================================
        SECTION 2: VAULT
   ======================================================= -->
@@ -1873,8 +302,7 @@
       <div class="vault-rail-track lss-vault-rail index-vault-track" id="vaultTrack">
         <a class="vault-archive-card index-vault-card vault-item signature" href="vault/batman.html">
         <img src="https://light-speed-studios.b-cdn.net/Batman%20logo.png"/>
-        <div class="vault-metadata-bar">
-        </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Riddle Me This</div>
         <div class="vault-divider">
@@ -1889,8 +317,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item signature" href="vault/far-from-sol.html">
         <img src="https://light-speed-studios.b-cdn.net/FFSrail.png"/>
-        <div class="vault-metadata-bar">
-        </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Into the Dying Light</div>
         <div class="vault-divider">
@@ -1905,8 +332,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item signature" href="vault/superman.html">
         <img src="https://light-speed-studios.b-cdn.net/sot%20logo11.png"/>
-        <div class="vault-metadata-bar">
-        </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Tomorrow Begins with Hope</div>
         <div class="vault-divider">
@@ -1921,8 +347,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item signature" href="vault/crisis.html">
         <img src="https://light-speed-studios.b-cdn.net/Crisis%20logo.png"/>
-        <div class="vault-metadata-bar">
-        </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Two Worlds, One Stand</div>
         <div class="vault-divider">
@@ -1937,8 +362,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item precision" href="vault/glass-rooms.html">
         <img src="https://light-speed-studios.b-cdn.net/GlassRooms1.png"/>
-        <div class="vault-metadata-bar">
-               </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Observation is Absolute</div>
         <div class="vault-divider">
@@ -1953,10 +377,9 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item precision" href="vault/rogue-one.html">
         <img src="https://light-speed-studios.b-cdn.net/ROGUE%20logo1112.png"/>
-        <div class="vault-metadata-bar">
-                </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
-        <div class="vault-tagline"> Rebellions Are Built on Sacrifice</div>
+        <div class="vault-tagline">Rebellions Are Built on Sacrifice</div>
         <div class="vault-divider">
         <span></span>
         <span class="mark">
@@ -1969,9 +392,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item precision" href="vault/real-steel.html">
         <img src="https://light-speed-studios.b-cdn.net/rs%20LOGO.png"/>
-        <div class="vault-metadata-bar">
-     
-        </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Fight for Redemption</div>
         <div class="vault-divider">
@@ -1986,9 +407,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item precision" href="vault/speed-racer.html">
         <img src="https://light-speed-studios.b-cdn.net/SR%20ACTION.png"/>
-        <div class="vault-metadata-bar">
-       
-        </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Built for Speed</div>
         <div class="vault-divider">
@@ -2003,9 +422,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item signature" href="vault/the-flash.html">
         <img src="https://light-speed-studios.b-cdn.net/flash%20logo1.png"/>
-        <div class="vault-metadata-bar">
-
-        </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">No Choice Left But to Run</div>
         <div class="vault-divider">
@@ -2020,8 +437,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item precision" href="vault/star-trek.html">
         <img src="https://light-speed-studios.b-cdn.net/gen%20logo1.png"/>
-        <div class="vault-metadata-bar">
-               </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">The Future Begins Again</div>
         <div class="vault-divider">
@@ -2036,8 +452,7 @@
         </a>
         <a class="vault-archive-card index-vault-card vault-item precision" href="vault/top-gun.html">
         <img src="https://light-speed-studios.b-cdn.net/tga%20logo.png"/>
-        <div class="vault-metadata-bar">
-              </div>
+        <div class="vault-metadata-bar"></div>
         <div class="vault-info">
         <div class="vault-tagline">Trust Your Wing</div>
         <div class="vault-divider">
@@ -2056,8 +471,9 @@
     <button class="vault-rail-arrow vault-rail-next" id="vaultNext" type="button" aria-label="Next Vault projects"></button>
   </div>
 </section>
+
 <!-- =======================================================
-       SECTION 3: F1 HERO
+       SECTION 3: LAB HERO
   ======================================================= -->
 <div class="section-heading">
 <a class="heading-link" href="lab.html">
@@ -2081,17 +497,17 @@
 <span>25 SEPT 2026</span>
 <span>AGE OF HEROES</span>
 </div>
-
 </section>
 </div>
 <div class="lss-landscape-panel lss-mobile-lab-landscape-panel">
 <section class="mobile-hero-single pulse-visual-box">
 <a href="flash-overtime.html">
-<img alt="Mobile" src="https://light-speed-studios.b-cdn.net/FLASHMOB1PROD.png">
-</img></a>
+<img alt="Mobile" src="https://light-speed-studios.b-cdn.net/FLASHMOB1PROD.png"/>
+</a>
 </section>
 </div>
 </section>
+
 <div class="orbit-heading-row">
   <div class="section-heading orbit-desktop-only">
     <span class="lead">O</span><span class="rest">RBIT</span>
@@ -2121,9 +537,10 @@
     </picture>
   </div>
 </div>
+
 <div class="bridge-body disclaimer-body">
-<p><strong>DISCLAIMER</strong> Light Speed Studios respects intellectual property rights and does not support piracy. These edits are transformative, non-profit works. To support the original filmmakers, viewers should have a legal copy or official streaming access to the original film.
-  </p></div>
+<p><strong>DISCLAIMER</strong> Light Speed Studios respects intellectual property rights and does not support piracy. These edits are transformative, non-profit works. To support the original filmmakers, viewers should have a legal copy or official streaming access to the original film.</p>
+</div>
 
 <div class="mobile-desktop-experience-note">
   <strong>DESKTOP EXPERIENCE RECOMMENDED</strong>
@@ -2131,65 +548,47 @@
 </div>
 
 <div class="footer-logo-block">
-
 <div class="footer-socials">
-
   <a href="https://www.youtube.com/@LSpeedStudios" target="_blank" rel="noopener">
     <img src="https://light-speed-studios.b-cdn.net/yt.png" alt="YouTube">
   </a>
-
   <a href="https://x.com/LightSpeedCuts" target="_blank" rel="noopener">
     <img src="https://light-speed-studios.b-cdn.net/x.png" alt="X">
   </a>
-
 <button class="footer-email-trigger" id="footerEmailTrigger" type="button" aria-label="Email Light Speed Studios">
   <img src="https://light-speed-studios.b-cdn.net/mail.png" alt="Email">
 </button>
   <a href="#home-signup-wrap">
     <img src="https://light-speed-studios.b-cdn.net/newsletter4.png" alt="Newsletter">
   </a>
-
 </div>
 
 <picture class="footer-picture">
-  <source
-    media="(max-width: 900px)"
-    srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob1.png">
-  <img
-    src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png"
-    alt="Light Speed Studios Logo">
+  <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob1.png">
+  <img src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png" alt="Light Speed Studios Logo">
 </picture>
+
 <button class="lss-page-jump" id="lssPageJump" aria-label="Jump to next section"></button>
+
 <div class="email-choice-modal" id="emailChoiceModal" aria-hidden="true">
   <div class="email-choice-backdrop" id="emailChoiceBackdrop"></div>
-
   <div class="email-choice-box" role="dialog" aria-modal="true" aria-label="Choose email service">
     <button class="email-choice-close" id="emailChoiceClose" type="button" aria-label="Close email options">×</button>
-
     <div class="email-choice-title">CONTACT LSS</div>
     <div class="email-choice-subtitle">Choose your email service</div>
-
     <div class="email-choice-links">
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=lightspeedcuts@gmail.com" target="_blank" rel="noopener">Gmail</a>
-
       <a href="https://compose.mail.yahoo.com/?to=lightspeedcuts@gmail.com" target="_blank" rel="noopener">Yahoo Mail</a>
-
       <a href="https://outlook.live.com/mail/0/deeplink/compose?to=lightspeedcuts@gmail.com" target="_blank" rel="noopener">Outlook</a>
-
       <a href="https://www.icloud.com/mail/" target="_blank" rel="noopener">iCloud Mail</a>
-
       <a href="mailto:lightspeedcuts@gmail.com">Default Mail App</a>
-
-      <button class="email-copy-button" id="emailCopyButton" type="button">
-        Copy Email
-      </button>
+      <button class="email-copy-button" id="emailCopyButton" type="button">Copy Email</button>
     </div>
-
     <div class="email-copy-status" id="emailCopyStatus"></div>
   </div>
 </div>
 
-  <script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=5"></script>
 <script>
 (function(){
   function initOrbitYearSwitcher(){
@@ -2222,6 +621,5 @@
   }
 })();
 </script>
-
 </body>
 </html>
