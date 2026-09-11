@@ -1422,7 +1422,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 /* =======================================================
    PROJECT CTA TILES
-   Changelog / Soundtrack / Watch Movie
+   Changelog / Soundtrack / Watch Movie / Leave Review
 ======================================================= */
 .ffs-cta-panel {
   padding: 14px;
@@ -1512,6 +1512,20 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   white-space: nowrap;
 }
 
+.ffs-cta-sub {
+  position: relative;
+  z-index: 1;
+  margin-top: -4px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(186, 199, 213, .66);
+  white-space: nowrap;
+}
+
 .ffs-cta-tile:hover {
   transform: translateY(-3px);
   background:
@@ -1537,7 +1551,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-cta-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
   }
 
@@ -1555,6 +1569,12 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-cta-tile strong {
     font-size: clamp(8px, 2.35vw, 10px);
     letter-spacing: .06em;
+  }
+
+  .ffs-cta-sub {
+    margin-top: -2px;
+    font-size: 7px;
+    letter-spacing: .10em;
   }
 }
 
@@ -1936,7 +1956,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
   .ffs-cta-trailer-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-columns: minmax(0, 1fr) 270px;
     gap: 28px;
     align-items: stretch;
     margin-top: 26px;
@@ -1949,6 +1969,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 .ffs-cta-trailer-row .ffs-trailer-section {
   order: 1;
+  height: auto;
+  display: block;
+  padding: 15px;
 }
 
 .ffs-cta-trailer-row .ffs-links-panel {
@@ -1957,9 +1980,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
   .ffs-cta-trailer-row .ffs-links-panel {
     padding: 14px;
-    height: 100%;
+    min-height: 0;
+    height: auto;
     display: flex;
     flex-direction: column;
+    contain: size;
   }
 
   .ffs-cta-trailer-row .ffs-cta-grid {
@@ -2029,6 +2054,28 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     </span>
     <strong>Watch Movie</strong>
   </a>
+
+      <a
+        class="ffs-cta-tile ffs-reddit-review"
+        href="https://www.reddit.com/r/fanedits/comments/1j7gl72/the_flash_crossroads/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Leave a review on Reddit"
+      >
+        <span class="ffs-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <circle cx="32" cy="34" r="17"></circle>
+            <circle cx="25" cy="33" r="2.2"></circle>
+            <circle cx="39" cy="33" r="2.2"></circle>
+            <path d="M24 40c2.5 2.2 5.2 3.2 8 3.2s5.5-1 8-3.2"></path>
+            <path d="M31 17l4-8 9 2"></path>
+            <circle cx="46" cy="12" r="3"></circle>
+            <path d="M17 29c-4-2-8 0-8 4 0 3 2 5 5 6M47 29c4-2 8 0 8 4 0 3-2 5-5 6"></path>
+          </svg>
+        </span>
+        <strong>Leave Review</strong>
+        <span class="ffs-cta-sub">Reddit ↗</span>
+      </a>
 </div>
 </div>
 
