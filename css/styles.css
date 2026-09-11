@@ -5658,3 +5658,32 @@ body .lss-image-block.orbit-image-frame::before {
     font-weight: 400;
   }
 }
+
+/* =======================================================
+   TOP NAV SEPARATORS
+   Desktop only: BRIDGE | VAULT | LAB | PULSE | TELEMETRY
+======================================================= */
+@media (min-width: 901px) {
+  .lss-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0 !important;
+  }
+
+  .lss-nav-item {
+    margin-left: 0 !important;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .lss-nav-item + .lss-nav-item::before {
+    content: "|" !important;
+    display: inline-block;
+    margin: 0 18px;
+    color: rgba(186, 199, 213, 0.38);
+    font-weight: 300;
+    line-height: 1;
+    pointer-events: none;
+  }
+}
+
