@@ -1531,7 +1531,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 
 
-/* GLASS ROOMS CTA TILES */
+/* =======================================================
+   PROJECT CTA TILES
+   Changelog / Soundtrack / Watch Movie / Leave Review
+======================================================= */
 .ffs-cta-panel {
   padding: 14px;
 }
@@ -1606,12 +1609,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   stroke-linejoin: round;
 }
 
-.ffs-cta-icon .ffs-cta-play-fill,
-.ffs-cta-icon .ffs-cta-icon-fill {
-  fill: currentColor;
-  stroke: none;
-}
-
 .ffs-cta-tile strong {
   position: relative;
   z-index: 1;
@@ -1623,6 +1620,20 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   text-transform: uppercase;
   text-align: center;
   color: var(--cyan);
+  white-space: nowrap;
+}
+
+.ffs-cta-sub {
+  position: relative;
+  z-index: 1;
+  margin-top: -4px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(186, 199, 213, .66);
   white-space: nowrap;
 }
 
@@ -1651,7 +1662,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-cta-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
   }
 
@@ -1659,10 +1670,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     min-height: 82px;
     padding: 10px 5px 9px;
     gap: 6px;
-  }
-
-  .ffs-cta-tile::before {
-    content: none;
   }
 
   .ffs-cta-icon {
@@ -1674,7 +1681,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     font-size: clamp(8px, 2.35vw, 10px);
     letter-spacing: .06em;
   }
+
+  .ffs-cta-sub {
+    margin-top: -2px;
+    font-size: 7px;
+    letter-spacing: .10em;
+  }
 }
+
 
 
 
@@ -1963,6 +1977,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </div>
 
 <style>
+/* SEPARATE PALETTE + VERTICAL CTA / TRAILER ROW */
 @media (min-width: 901px) {
   .ffs-palette-module {
     position: relative;
@@ -2016,7 +2031,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
   .ffs-cta-trailer-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-columns: minmax(0, 1fr) 270px;
     gap: 28px;
     align-items: stretch;
     margin-top: 26px;
@@ -2027,19 +2042,24 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     margin-top: 0;
   }
 
-  .ffs-cta-trailer-row .ffs-trailer-section {
-    order: 1;
-  }
+.ffs-cta-trailer-row .ffs-trailer-section {
+  order: 1;
+  height: auto;
+  display: block;
+  padding: 15px;
+}
 
-  .ffs-cta-trailer-row .ffs-links-panel {
-    order: 2;
-  }
+.ffs-cta-trailer-row .ffs-links-panel {
+  order: 2;
+}
 
   .ffs-cta-trailer-row .ffs-links-panel {
     padding: 14px;
-    height: 100%;
+    min-height: 0;
+    height: auto;
     display: flex;
     flex-direction: column;
+    contain: size;
   }
 
   .ffs-cta-trailer-row .ffs-cta-grid {
@@ -2108,6 +2128,28 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
           </svg>
         </span>
         <strong>Watch Movie</strong>
+      </a>
+
+      <a
+        class="ffs-cta-tile ffs-reddit-review"
+        href="https://www.reddit.com/r/fanedits/comments/1ru1hxq/glass_rooms_ex_machina_fan_edit_lss/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Leave a review on Reddit"
+      >
+        <span class="ffs-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64">
+            <circle cx="32" cy="34" r="17"></circle>
+            <circle cx="25" cy="33" r="2.2"></circle>
+            <circle cx="39" cy="33" r="2.2"></circle>
+            <path d="M24 40c2.5 2.2 5.2 3.2 8 3.2s5.5-1 8-3.2"></path>
+            <path d="M31 17l4-8 9 2"></path>
+            <circle cx="46" cy="12" r="3"></circle>
+            <path d="M17 29c-4-2-8 0-8 4 0 3 2 5 5 6M47 29c4-2 8 0 8 4 0 3-2 5-5 6"></path>
+          </svg>
+        </span>
+        <strong>Leave Review</strong>
+        <span class="ffs-cta-sub">Reddit ↗</span>
       </a>
     </div>
   </div>
