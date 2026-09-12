@@ -98,9 +98,66 @@
 
     .hamburger {
       display: none;
-      font-size: 24px;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 0;
+      background: transparent;
       cursor: pointer;
-      color: #BAC7D5;
+      position: relative;
+      z-index: 1001;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .hamburger span {
+      position: absolute;
+      left: 50%;
+      width: 24px;
+      height: 2px;
+      background: #BAC7D5;
+      border-radius: 2px;
+      transform-origin: center;
+      transition:
+        top .3s ease,
+        width .3s ease,
+        transform .3s ease,
+        opacity .2s ease;
+    }
+
+    .hamburger span:nth-child(1) {
+      top: 11px;
+      transform: translateX(-50%);
+    }
+
+    .hamburger span:nth-child(2) {
+      top: 18px;
+      transform: translateX(-50%);
+    }
+
+    .hamburger span:nth-child(3) {
+      top: 25px;
+      transform: translateX(-50%);
+    }
+
+    .hamburger.active span:nth-child(1),
+    .hamburger.active span:nth-child(3) {
+      top: 18px;
+      width: 14px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform-origin: right center;
+      transform: translateX(-100%) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+      transform: translateX(-50%) scaleX(0);
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform-origin: left center;
+      transform: rotate(-45deg);
     }
 
     .lss-watch-page {
@@ -240,21 +297,21 @@
       }
 
       .lss-nav-links {
-        display: none;
+        display: none !important;
         flex-direction: column;
         position: absolute;
-        top: 61px;
+        top: 100%;
         left: 0;
         width: 100%;
         background: #040E15;
         padding: 20px;
         text-align: center;
-        border-bottom: 2px solid #00aede;
+        border-bottom: 1px solid #00AEDE;
         z-index: 1000;
       }
 
       .lss-nav-links.active {
-        display: flex;
+        display: flex !important;
       }
 
       .hamburger {
@@ -293,7 +350,11 @@
     <span class="lss-brand-text">No Spectacle Without Soul</span>
   </a>
 
-  <div class="hamburger">☰</div>
+  <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
   <nav class="lss-nav-links">
     <a class="lss-nav-item" href="index.html">Bridge</a>
@@ -327,16 +388,30 @@
   </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".lss-nav-links");
+function toggleMobileMenu(button) {
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!navLinks) return;
 
-    if (hamburger && navLinks) {
-      hamburger.addEventListener("click", function () {
-        navLinks.classList.toggle("active");
-      });
-    }
+  const isOpen = navLinks.classList.toggle('active');
+  button.classList.toggle('active', isOpen);
+  button.setAttribute('aria-expanded', String(isOpen));
+  button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!hamburger || !navLinks) return;
+
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
   });
+});
 </script>
 
 </body>
