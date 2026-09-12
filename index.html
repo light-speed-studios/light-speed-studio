@@ -1597,6 +1597,35 @@
 }
 </style>
 
+
+<style id="mobile-brand-header-above-hero">
+/* Mobile-only Light Speed Studios brand header above the Hero */
+.mobile-brand-header {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .mobile-brand-header {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    margin: 18px 0 10px;
+    padding: 12px 18px;
+    background: #040e15;
+  }
+
+  .mobile-brand-header img {
+    display: block;
+    width: min(72vw, 420px);
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -1638,6 +1667,14 @@
 <!-- =======================================================
        SECTION 1: HERO CAROUSEL
   ======================================================= -->
+
+<div class="mobile-brand-header" aria-label="Light Speed Studios">
+  <img
+    src="https://light-speed-studios.b-cdn.net/mobheader.png"
+    alt="Light Speed Studios"
+  />
+</div>
+
 <section class="home-hero-section">
 <div class="lss-landscape-panel lss-hero-landscape-panel">
 <section class="hero-carousel pulse-visual-box" id="heroCarousel">
