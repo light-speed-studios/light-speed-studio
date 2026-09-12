@@ -1,516 +1,717 @@
 /* =======================================================
-   GLOBAL MOBILE NAV
-   Works across every page using .lss-nav-bar
+   GOATCOUNTER
 ======================================================= */
+(function () {
+  const goatScript = document.createElement("script");
+  goatScript.async = true;
+  goatScript.dataset.goatcounter = "https://lsstudios.goatcounter.com/count";
+  goatScript.src = "https://gc.zgo.at/count.js";
+  document.head.appendChild(goatScript);
+})();
 
-document.addEventListener("DOMContentLoaded", function () {
-  const navBars = document.querySelectorAll(".lss-nav-bar");
+// Shared navigation toggle
+/* =======================================================
+   LSS STATIC SPLASH SCREEN
+======================================================= */
+(function () {
+    function initSplash() {
+        const splash =
+            document.getElementById("lss-page-splash") ||
+            document.getElementById("lss-splash");
 
-  navBars.forEach(function (navBar) {
-    const navLinks = navBar.querySelector(".lss-nav-links");
-    let hamburger = navBar.querySelector(".hamburger");
+        if (!splash || splash.dataset.splashReady === "true") return;
 
-    if (!navLinks) return;
+        splash.dataset.splashReady = "true";
+        document.documentElement.classList.add("lss-splash-active");
 
-    /* Create hamburger if page somehow does not have one */
-    if (!hamburger) {
-      hamburger = document.createElement("button");
-      hamburger.className = "hamburger";
-      navLinks.before(hamburger);
+        const splashDuration = Number(splash.dataset.duration) || 2500;
+        let exitTimer = null;
+        let hasClosed = false;
+
+        function closeSplash() {
+            if (hasClosed) return;
+            hasClosed = true;
+
+            window.clearTimeout(exitTimer);
+            splash.setAttribute("aria-hidden", "true");
+            splash.classList.add("is-exiting");
+
+            window.setTimeout(() => {
+                splash.remove();
+                document.documentElement.classList.remove("lss-splash-active");
+            }, 600);
+        }
+
+        document.addEventListener("pointerdown", closeSplash, { once: true });
+        exitTimer = window.setTimeout(closeSplash, splashDuration);
     }
 
-    /* Convert old ☰ hamburger into animated 3-line button */
-    hamburger.innerHTML = `
-      <span></span>
-      <span></span>
-      <span></span>
-    `;
-
-    hamburger.setAttribute("type", "button");
-    hamburger.setAttribute("aria-label", "Open navigation menu");
-    hamburger.setAttribute("aria-expanded", "false");
-
-    /* Remove old inline click behavior if present */
-    hamburger.removeAttribute("onclick");
-
-    hamburger.addEventListener("click", function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const isOpen = navLinks.classList.toggle("active");
-
-      hamburger.classList.toggle("active", isOpen);
-      hamburger.setAttribute("aria-expanded", String(isOpen));
-      hamburger.setAttribute(
-        "aria-label",
-        isOpen ? "Close navigation menu" : "Open navigation menu"
-      );
-    });
-
-    /* Close menu after selecting a page */
-    navLinks.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navLinks.classList.remove("active");
-        hamburger.classList.remove("active");
-        hamburger.setAttribute("aria-expanded", "false");
-        hamburger.setAttribute("aria-label", "Open navigation menu");
-      });
-    });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const splash = document.getElementById("lss-splash");
-
-    function closeSplash() {
-        if (!splash || splash.classList.contains("hide")) return;
-
-        splash.classList.add("hide");
-
-        setTimeout(() => {
-            splash.remove();
-        }, 800);
+    if (document.getElementById("lss-splash") ||
+        document.getElementById("lss-page-splash")) {
+        initSplash();
+    } else {
+        document.addEventListener("DOMContentLoaded", initSplash, { once: true });
     }
-
-    document.addEventListener("pointerdown", closeSplash, { once: true });
-
-    setTimeout(closeSplash, 5200);
-
-});
+})();
 
 
 
-    (function () {
-      const carousel = document.getElementById('heroCarousel');
-      if (!carousel) return;
+(function () {
+  const carousel = document.getElementById('heroCarousel');
+  if (!carousel) return;
 
-      const slides = carousel.querySelectorAll('.slide');
-      const indicators = carousel.querySelectorAll('.indicator');
-      const prevBtn = carousel.querySelector('.nav-arrow.left');
-      const nextBtn = carousel.querySelector('.nav-arrow.right');
+  const slides = carousel.querySelectorAll('.slide');
+  const indicators = carousel.querySelectorAll('.indicator');
+  const prevBtn = carousel.querySelector('.nav-arrow.left');
+  const nextBtn = carousel.querySelector('.nav-arrow.right');
 
-      let current = 0;
-      let autoPlay = null;
-      const autoDelay = 6900;
+  let current = 0;
+  let autoPlay = null;
+  const autoDelay = 6000;
 
-      function showSlide(index) {
-        current = (index + slides.length) % slides.length;
-
-        slides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === current);
-        });
-
-        indicators.forEach((dot, i) => {
-          dot.classList.toggle('active', i === current);
-        });
-      }
-
-      function nextSlide() {
-        showSlide(current + 1);
-      }
-
-      function prevSlide() {
-        showSlide(current - 1);
-      }
-
-      function startAutoPlay() {
-        stopAutoPlay();
-        autoPlay = setInterval(nextSlide, autoDelay);
-      }
-
-      function stopAutoPlay() {
-        if (autoPlay) {
-          clearInterval(autoPlay);
-          autoPlay = null;
-        }
-      }
-
-      if (prevBtn) {
-        prevBtn.addEventListener('click', function () {
-          prevSlide();
-          startAutoPlay();
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener('click', function () {
-          nextSlide();
-          startAutoPlay();
-        });
-      }
-
-      indicators.forEach((dot, index) => {
-        dot.addEventListener('click', function () {
-          showSlide(index);
-          startAutoPlay();
-        });
-      });
-document.querySelectorAll('.home-hero-section .hero-content-wrapper').forEach(wrapper => {
-  wrapper.addEventListener('mouseenter', stopAutoPlay);
-  wrapper.addEventListener('mouseleave', startAutoPlay);
-});
-
-    showSlide(0);
-
-setTimeout(() => {
-    startAutoPlay();
-}, 5000);
-    })();
-
-    (function () {
-      const mobileCarousel = document.getElementById('mobileHeroCarousel');
-      if (!mobileCarousel) return;
-
-      const mobileSlides = mobileCarousel.querySelectorAll('.mobile-slide');
-      const mobilePrevBtn = mobileCarousel.querySelector('.mobile-nav-arrow.left');
-      const mobileNextBtn = mobileCarousel.querySelector('.mobile-nav-arrow.right');
-
-      let mobileCurrent = 0;
-      let mobileAutoPlay = null;
-      const mobileAutoDelay = 6000;
-
-      function showMobileSlide(index) {
-        mobileCurrent = (index + mobileSlides.length) % mobileSlides.length;
-
-        mobileSlides.forEach((slide, i) => {
-          slide.classList.toggle('active', i === mobileCurrent);
-        });
-      }
-
-      function nextMobileSlide() {
-        showMobileSlide(mobileCurrent + 1);
-      }
-
-      function prevMobileSlide() {
-        showMobileSlide(mobileCurrent - 1);
-      }
-
-      function startMobileAutoPlay() {
-        stopMobileAutoPlay();
-        mobileAutoPlay = setInterval(nextMobileSlide, mobileAutoDelay);
-      }
-
-      function stopMobileAutoPlay() {
-        if (mobileAutoPlay) {
-          clearInterval(mobileAutoPlay);
-          mobileAutoPlay = null;
-        }
-      }
-
-      if (mobilePrevBtn) {
-        mobilePrevBtn.addEventListener('click', function () {
-          prevMobileSlide();
-          startMobileAutoPlay();
-        });
-      }
-
-      if (mobileNextBtn) {
-        mobileNextBtn.addEventListener('click', function () {
-          nextMobileSlide();
-          startMobileAutoPlay();
-        });
-      }
-
-      mobileCarousel.addEventListener('mouseenter', stopMobileAutoPlay);
-      mobileCarousel.addEventListener('mouseleave', startMobileAutoPlay);
-
-      showMobileSlide(0);
-      startMobileAutoPlay();
-    })();
-
-    window.addEventListener("load", function () {
-      const track = document.getElementById("vaultTrack");
-      const prev = document.getElementById("vaultPrev");
-      const next = document.getElementById("vaultNext");
-const dashes = document.getElementById("vaultRailDashes");
-const postersPerJump = 4;
-let currentVaultPage = 0;
-function setupVaultDashes() {
-const totalPosterCount = track.querySelectorAll(".vault-item").length;
-const realPosterCount = track.dataset.realPosterCount
-  ? Number(track.dataset.realPosterCount)
-  : totalPosterCount;
-const pageCount = Math.ceil(realPosterCount / postersPerJump);
-  dashes.innerHTML = "";
-
-  for (let i = 0; i < pageCount; i++) {
-    const dash = document.createElement("button");
-    dash.className = "vault-rail-dash";
-    dash.setAttribute("aria-label", `Go to vault page ${i + 1}`);
-
-    dash.addEventListener("click", () => {
-      currentVaultPage = i;
-      scrollToVaultPage(currentVaultPage);
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === current);
     });
-
-    dashes.appendChild(dash);
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
   }
 
-  updateVaultDashes();
-}
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlay = setInterval(nextSlide, autoDelay);
+  }
+  function stopAutoPlay() {
+    if (autoPlay) {
+      clearInterval(autoPlay);
+      autoPlay = null;
+    }
+  }
 
-function updateVaultDashes() {
-  const allDashes = dashes.querySelectorAll(".vault-rail-dash");
+  if (prevBtn) { prevBtn.addEventListener('click', function () { prevSlide(); startAutoPlay(); }); }
+  if (nextBtn) { nextBtn.addEventListener('click', function () { nextSlide(); startAutoPlay(); }); }
 
-  allDashes.forEach((dash, index) => {
-    dash.classList.toggle("active", index === currentVaultPage);
+  indicators.forEach((dot, index) => {
+    dot.addEventListener('click', function () {
+      showSlide(index);
+      startAutoPlay();
+    });
   });
-}
+
+  document.querySelectorAll('.home-hero-section .hero-content-wrapper').forEach(wrapper => {
+    wrapper.addEventListener('mouseenter', stopAutoPlay);
+    wrapper.addEventListener('mouseleave', startAutoPlay);
+  });
+
+  showSlide(0);
+  setTimeout(() => { startAutoPlay(); }, 2400);
+})();
+
+(function () {
+  const mobileCarousel = document.getElementById('mobileHeroCarousel');
+  if (!mobileCarousel) return;
+
+  const mobileSlides = mobileCarousel.querySelectorAll('.mobile-slide');
+  const mobilePrevBtn = mobileCarousel.querySelector('.mobile-nav-arrow.left');
+  const mobileNextBtn = mobileCarousel.querySelector('.mobile-nav-arrow.right');
+
+  let mobileCurrent = 0;
+  let mobileAutoPlay = null;
+  const mobileAutoDelay = 6000;
+
+  function showMobileSlide(index) {
+    mobileCurrent = (index + mobileSlides.length) % mobileSlides.length;
+    mobileSlides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === mobileCurrent);
+    });
+  }
+
+  function nextMobileSlide() { showMobileSlide(mobileCurrent + 1); }
+  function prevMobileSlide() { showMobileSlide(mobileCurrent - 1); }
+  function startMobileAutoPlay() {
+    stopMobileAutoPlay();
+    mobileAutoPlay = setInterval(nextMobileSlide, mobileAutoDelay);
+  }
+  function stopMobileAutoPlay() {
+    if (mobileAutoPlay) {
+      clearInterval(mobileAutoPlay);
+      mobileAutoPlay = null;
+    }
+  }
+
+  if (mobilePrevBtn) { mobilePrevBtn.addEventListener('click', function () { prevMobileSlide(); startMobileAutoPlay(); }); }
+  if (mobileNextBtn) { mobileNextBtn.addEventListener('click', function () { nextMobileSlide(); startMobileAutoPlay(); }); }
+
+  mobileCarousel.addEventListener('mouseenter', stopMobileAutoPlay);
+  mobileCarousel.addEventListener('mouseleave', startMobileAutoPlay);
+
+  showMobileSlide(0);
+  startMobileAutoPlay();
+})();
+
+window.addEventListener("load", function () {
+  const track = document.getElementById("vaultTrack");
+  const prev = document.getElementById("vaultPrev");
+  const next = document.getElementById("vaultNext");
+  const dashes = document.getElementById("vaultRailDashes");
+
+  if (!track || !prev || !next || !dashes) return;
+
+  const cardSelector = ".index-vault-card, .vault-item";
+  let currentVaultPage = 0;
+
+  function getPostersPerJump() {
+    return window.innerWidth <= 900 ? 1 : 4;
+  }
+
+  function getVaultCards() {
+    return Array.from(track.querySelectorAll(cardSelector));
+  }
+
+  const originals = Array.from(track.children);
+  track.dataset.realPosterCount = originals.length;
+  originals.forEach(el => track.appendChild(el.cloneNode(true)));
+  track.scrollLeft = 1;
+
+  function getRealPosterCount() {
+    return track.dataset.realPosterCount ? Number(track.dataset.realPosterCount) : getVaultCards().length;
+  }
+
+  function getVaultPageCount() {
+    return Math.max(1, Math.ceil(getRealPosterCount() / getPostersPerJump()));
+  }
+
+  function setupVaultDashes() {
+    const pageCount = getVaultPageCount();
+    dashes.innerHTML = "";
+
+    for (let i = 0; i < pageCount; i++) {
+      const dash = document.createElement("button");
+      dash.className = "vault-rail-dash";
+      dash.type = "button";
+      dash.setAttribute("aria-label", `Go to vault page ${i + 1}`);
+      dash.addEventListener("click", () => {
+        currentVaultPage = i;
+        scrollToVaultPage(currentVaultPage);
+      });
+      dashes.appendChild(dash);
+    }
+
+    updateVaultDashes();
+  }
+
+  function updateVaultDashes() {
+    const allDashes = dashes.querySelectorAll(".vault-rail-dash");
+    allDashes.forEach((dash, index) => {
+      dash.classList.toggle("active", index === currentVaultPage);
+    });
+  }
 
 function getVaultStep() {
-  const item = track.querySelector(".vault-item");
-  if (!item) return 0;
-
-  const gap = parseFloat(getComputedStyle(item).marginRight) || 0;
-  return item.getBoundingClientRect().width + gap;
+  return track.clientWidth / getPostersPerJump();
 }
+  function scrollToVaultPage(page) {
+    const pageCount = getVaultPageCount();
+    currentVaultPage = ((page % pageCount) + pageCount) % pageCount;
 
-function scrollToVaultPage(page) {
- const realPosterCount = track.querySelectorAll(".vault-item").length / 2;
-const pageCount = Math.ceil(realPosterCount / postersPerJump);
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const target = Math.min(
+      currentVaultPage * getPostersPerJump() * getVaultStep(),
+      maxScroll
+    );
 
-currentVaultPage = ((page % pageCount) + pageCount) % pageCount;
+    track.scrollTo({ left: target, behavior: "smooth" });
+    updateVaultDashes();
+  }
 
-  const maxScroll = track.scrollWidth - track.clientWidth;
-  const target = Math.min(currentVaultPage * postersPerJump * getVaultStep(), maxScroll);
+  const railShell =
+    track.closest(".vault-rail-shell") ||
+    track.closest(".vault-rail-wrapper");
 
-  track.scrollTo({
-    left: target,
-    behavior: "smooth"
+  let fadesActivated = false;
+
+  function updateVaultFades() {
+    if (!railShell || !fadesActivated) return;
+
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const currentScroll = track.scrollLeft;
+
+    railShell.classList.toggle("show-left-fade", currentScroll > 5);
+    railShell.classList.toggle("show-right-fade", currentScroll < maxScroll - 5);
+  }
+
+  function activateFades() {
+    if (fadesActivated) return;
+    fadesActivated = true;
+    updateVaultFades();
+  }
+
+  next.addEventListener("click", () => {
+    activateFades();
+    currentVaultPage++;
+    scrollToVaultPage(currentVaultPage);
   });
 
-  updateVaultDashes();
-}
-if (!track || !prev || !next || !dashes) return;
-setupVaultDashes();
-const railWrapper = track.closest('.vault-rail-wrapper');
+  prev.addEventListener("click", () => {
+    activateFades();
+    currentVaultPage--;
+    scrollToVaultPage(currentVaultPage);
+  });
 
-let fadesActivated = false;
+  track.addEventListener("scroll", activateFades, { passive: true });
+  track.addEventListener("scroll", updateVaultFades, { passive: true });
 
-function updateVaultFades() {
-  if (!fadesActivated) return;
+  window.addEventListener("resize", () => {
+    setupVaultDashes();
+    scrollToVaultPage(currentVaultPage);
+    updateVaultFades();
+  });
 
-  const maxScroll = track.scrollWidth - track.clientWidth;
-  const currentScroll = track.scrollLeft;
-
-  railWrapper.classList.toggle('show-left-fade', currentScroll > 5);
-  railWrapper.classList.toggle('show-right-fade', currentScroll < maxScroll - 5);
-}
-
-function activateFades() {
-  if (fadesActivated) return;
-  fadesActivated = true;
-  updateVaultFades();
-}
-
-next.addEventListener('click', activateFades);
-prev.addEventListener('click', activateFades);
-track.addEventListener('scroll', activateFades);
-
-track.addEventListener('scroll', updateVaultFades);
-window.addEventListener('resize', updateVaultFades);
-const originals = Array.from(track.children);
-track.dataset.realPosterCount = originals.length;
-originals.forEach(el => track.appendChild(el.cloneNode(true)));
-      track.scrollLeft = 1;
-
-      function halfWidth() {
-        return track.scrollWidth / 2;
-      }
-
-      function normalizeScroll() {
-        const half = halfWidth();
-        if (half <= 0) return;
-
-        if (track.scrollLeft >= half) track.scrollLeft -= half;
-        if (track.scrollLeft < 0) track.scrollLeft += half;
-      }
-
-      function getPosterStep() {
-        const item = track.querySelector(".vault-item");
-        if (!item) return 0;
-
-        const styles = getComputedStyle(item);
-        const gap = parseFloat(styles.marginRight) || 0;
-        return item.getBoundingClientRect().width + gap;
-      }
-
-      function smoothJump(dir) {
-        const step = getPosterStep();
-        if (!step) return;
-
-        const start = track.scrollLeft;
-        const target = start + dir * step * 4;
-        const duration = 320;
-        const startTime = performance.now();
-
-        function animate(now) {
-          const t = Math.min(1, (now - startTime) / duration);
-          const eased = 1 - Math.pow(1 - t, 3);
-
-          track.scrollLeft = start + (target - start) * eased;
-          normalizeScroll();
-
-          if (t < 1) {
-            requestAnimationFrame(animate);
-          } else {
-            track.scrollLeft = target;
-            normalizeScroll();
-          }
-        }
-
-        requestAnimationFrame(animate);
-      }
-next.addEventListener("click", () => {
-  currentVaultPage++;
-  scrollToVaultPage(currentVaultPage);
+  setupVaultDashes();
 });
 
-prev.addEventListener("click", () => {
-  currentVaultPage--;
-  scrollToVaultPage(currentVaultPage);
+window.addEventListener("DOMContentLoaded", () => {
+  const vaultSection = document.getElementById("vaultSection");
+  if (!vaultSection) return;
+  const stage = document.getElementById("vaultStage");
+  const dots = vaultSection.querySelectorAll(".dot");
+  const navPrev = document.getElementById("navPrev");
+  const navNext = document.getElementById("navNext");
+  const swipeLeft = vaultSection.querySelector(".swipe-hint.left");
+  const swipeRight = vaultSection.querySelector(".swipe-hint.right");
+  const mobileList = vaultSection.querySelector("#mobile-list");
+
+  if (!stage || !mobileList || !navPrev || !navNext || !swipeLeft || !swipeRight) return;
+
+  let currentIndex = 3;
+  let startX = null;
+
+  function applyMode() {
+    const mobile = window.innerWidth <= 900 || window.matchMedia("(pointer:coarse)").matches;
+    vaultSection.classList.toggle("mobile-mode", mobile);
+  }
+
+  function updateDots(i) { dots.forEach((d, idx) => d.classList.toggle("active", idx === i)); }
+
+  function setActiveByLayout() {
+    const boxes = mobileList.querySelectorAll(".box");
+    boxes.forEach(b => b.classList.remove("active"));
+    if (vaultSection.classList.contains("mobile-mode")) { if (boxes[0]) boxes[0].classList.add("active"); } 
+    else { if (boxes[3]) boxes[3].classList.add("active"); }
+  }
+
+  function shiftLeft() {
+    if (vaultSection.classList.contains("mobile-mode")) { nextMobile(); return; }
+    const boxes = mobileList.querySelectorAll(".box");
+    const first = boxes[0];
+    setTimeout(() => { first.remove(); mobileList.appendChild(first); setActiveByLayout(); }, 400);
+    currentIndex = (currentIndex + 1) % dots.length;
+    updateDots(currentIndex);
+  }
+
+  function shiftRight() {
+    if (vaultSection.classList.contains("mobile-mode")) { prevMobile(); return; }
+    const boxes = mobileList.querySelectorAll(".box");
+    const last = boxes[boxes.length - 1];
+    setTimeout(() => { last.remove(); mobileList.insertBefore(last, mobileList.firstChild); setActiveByLayout(); }, 400);
+    currentIndex = (currentIndex - 1 + dots.length) % dots.length;
+    updateDots(currentIndex);
+  }
+
+  function nextMobile() { const first = mobileList.querySelector(".box:first-child"); if (first) { mobileList.appendChild(first); setActiveByLayout(); } }
+  function prevMobile() { const last = mobileList.querySelector(".box:last-child"); if (last) { mobileList.insertBefore(last, mobileList.firstChild); setActiveByLayout(); } }
+
+  navPrev.onclick = () => vaultSection.classList.contains("mobile-mode") ? prevMobile() : shiftRight();
+  navNext.onclick = () => vaultSection.classList.contains("mobile-mode") ? nextMobile() : shiftLeft();
+  swipeLeft.onclick = () => prevMobile();
+  swipeRight.onclick = () => nextMobile();
+
+  stage.addEventListener("touchstart", e => { startX = e.changedTouches[0].clientX; }, { passive: true });
+  stage.addEventListener("touchend", e => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 30) {
+      if (vaultSection.classList.contains("mobile-mode")) { dx < 0 ? nextMobile() : prevMobile(); } 
+      else { dx < 0 ? shiftLeft() : shiftRight(); }
+    }
+    startX = null;
+  }, { passive: true });
+
+  dots.forEach((dot, targetIndex) => {
+    dot.addEventListener("click", () => {
+      const total = dots.length;
+      if (targetIndex === currentIndex) return;
+      let diff = (targetIndex - currentIndex + total) % total;
+      const goLeft = diff <= total / 2;
+      const steps = goLeft ? diff : total - diff;
+      let k = 0;
+      const go = () => {
+        if (k >= steps) return;
+        goLeft ? shiftLeft() : shiftRight();
+        k++;
+        setTimeout(go, 420);
+      };
+      go();
+    });
+  });
+
+  window.addEventListener("resize", applyMode);
+  applyMode();
+  setActiveByLayout();
+  updateDots(currentIndex);
 });
+
+let scrollTimer;
+window.addEventListener('scroll', () => {
+  document.documentElement.classList.add('is-scrolling');
+  clearTimeout(scrollTimer);
+  scrollTimer = setTimeout(() => {
+    document.documentElement.classList.remove('is-scrolling');
+  }, 500);
+}, { passive: true });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const jumpButton = document.getElementById("lssPageJump");
+  if (!jumpButton) return;
+
+  const topButton = document.createElement("button");
+  topButton.type = "button";
+  topButton.className = "lss-page-top";
+  topButton.setAttribute("aria-label", "Jump to top");
+  document.body.appendChild(topButton);
+
+  let jumpButtonHasBeenUsed = false;
+
+  function getPageTargets() {
+    const disclaimerBlocks = document.querySelectorAll(".bridge-body");
+
+    return [
+      {
+        name: "hero",
+        element: document.getElementById("heroCarousel"),
+        offset: 95
+      },
+      {
+        name: "bridge-module",
+        element: document.querySelector(".section-heading"),
+        offset: 70
+      },
+      {
+        name: "lab",
+        element: document.querySelector(".lab-hero-section"),
+        offset: 151
+      },
+      {
+        name: "orbit",
+        element: document.querySelector(".orbit-image-frame"),
+        offset: 155
+      },
+      {
+        name: "disclaimer",
+        element: disclaimerBlocks[disclaimerBlocks.length - 1],
+        offset: 130
+      },
+      {
+        name: "footer",
+        element: document.querySelector(".footer-logo-block"),
+        offset: 95
+      }
+    ].filter(target => target.element);
+  }
+
+  function getTargetTop(target) {
+    return target.element.getBoundingClientRect().top + window.scrollY - target.offset;
+  }
+
+  function getNextTarget() {
+    const targets = getPageTargets();
+    const currentY = window.scrollY;
+
+    const nextTarget = targets.find(target => {
+      return getTargetTop(target) > currentY + 30;
     });
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const vaultSection = document.getElementById("vaultSection");
-      if (!vaultSection) return;
+    return nextTarget || {
+      name: "top",
+      element: document.body,
+      offset: 0
+    };
+  }
 
-      const stage = document.getElementById("vaultStage");
-      const dots = vaultSection.querySelectorAll(".dot");
-      const navPrev = document.getElementById("navPrev");
-      const navNext = document.getElementById("navNext");
-      const swipeLeft = vaultSection.querySelector(".swipe-hint.left");
-      const swipeRight = vaultSection.querySelector(".swipe-hint.right");
-      const mobileList = vaultSection.querySelector("#mobile-list");
+  function updateJumpButtons() {
+    const shouldShowTopButton = window.scrollY > 120;
 
-      if (!stage || !mobileList || !navPrev || !navNext || !swipeLeft || !swipeRight) return;
+    topButton.classList.toggle("is-visible", shouldShowTopButton);
 
-      let currentIndex = 3;
-      let startX = null;
+    jumpButton.classList.remove("is-up");
+    jumpButton.setAttribute("aria-label", "Jump to next section");
+  }
 
-      function applyMode() {
-        const mobile = window.innerWidth <= 900 || window.matchMedia("(pointer:coarse)").matches;
-        vaultSection.classList.toggle("mobile-mode", mobile);
-      }
+  jumpButton.addEventListener("click", () => {
+    const target = getNextTarget();
 
-      function updateDots(i) {
-        dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
-      }
+    jumpButtonHasBeenUsed = true;
 
-      function setActiveByLayout() {
-        const boxes = mobileList.querySelectorAll(".box");
-        boxes.forEach(b => b.classList.remove("active"));
+    window.scrollTo({
+      top: target.name === "top" ? 0 : getTargetTop(target),
+      behavior: "smooth"
+    });
 
-        if (vaultSection.classList.contains("mobile-mode")) {
-          if (boxes[0]) boxes[0].classList.add("active");
-        } else {
-          if (boxes[3]) boxes[3].classList.add("active");
-        }
-      }
+    updateJumpButtons();
+    setTimeout(updateJumpButtons, 450);
+  });
 
-      function shiftLeft() {
-        if (vaultSection.classList.contains("mobile-mode")) {
-          nextMobile();
-          return;
-        }
+  topButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
 
-        const boxes = mobileList.querySelectorAll(".box");
-        const first = boxes[0];
+    setTimeout(updateJumpButtons, 450);
+  });
 
-        setTimeout(() => {
-          first.remove();
-          mobileList.appendChild(first);
-          setActiveByLayout();
-        }, 400);
+  window.addEventListener("scroll", updateJumpButtons, { passive: true });
+  window.addEventListener("resize", updateJumpButtons);
 
-        currentIndex = (currentIndex + 1) % dots.length;
-        updateDots(currentIndex);
-      }
+  updateJumpButtons();
+});
 
-      function shiftRight() {
-        if (vaultSection.classList.contains("mobile-mode")) {
-          prevMobile();
-          return;
-        }
 
-        const boxes = mobileList.querySelectorAll(".box");
-        const last = boxes[boxes.length - 1];
+/* =======================================================
+   VAULT ARCHIVE RAILS
+======================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".vault-rail-shell").forEach(shell => {
+    const track = shell.querySelector(".lss-vault-rail");
+    const prev = shell.querySelector(".vault-rail-prev");
+    const next = shell.querySelector(".vault-rail-next");
 
-        setTimeout(() => {
-          last.remove();
-          mobileList.insertBefore(last, mobileList.firstChild);
-          setActiveByLayout();
-        }, 400);
+    if (!track || !prev || !next) return;
 
-        currentIndex = (currentIndex - 1 + dots.length) % dots.length;
-        updateDots(currentIndex);
-      }
+    if (track.id === "vaultTrack") return;
 
-      function nextMobile() {
-        const first = mobileList.querySelector(".box:first-child");
-        if (!first) return;
+    function getScrollAmount() {
+      const firstCard = track.querySelector(".vault-archive-card");
+      if (!firstCard) return track.clientWidth * 0.85;
 
-        mobileList.appendChild(first);
-        setActiveByLayout();
-      }
+      const gap = parseFloat(getComputedStyle(track).gap) || 12;
+      const cardWidth = firstCard.getBoundingClientRect().width;
+      const cardsPerMove = window.innerWidth <= 900 ? 1 : 2;
 
-      function prevMobile() {
-        const last = mobileList.querySelector(".box:last-child");
-        if (!last) return;
+      return (cardWidth + gap) * cardsPerMove;
+    }
 
-        mobileList.insertBefore(last, mobileList.firstChild);
-        setActiveByLayout();
-      }
-
-      navPrev.onclick = () => vaultSection.classList.contains("mobile-mode") ? prevMobile() : shiftRight();
-      navNext.onclick = () => vaultSection.classList.contains("mobile-mode") ? nextMobile() : shiftLeft();
-
-      swipeLeft.onclick = () => prevMobile();
-      swipeRight.onclick = () => nextMobile();
-
-      stage.addEventListener("touchstart", e => {
-        startX = e.changedTouches[0].clientX;
-      }, { passive: true });
-
-      stage.addEventListener("touchend", e => {
-        if (startX === null) return;
-        const dx = e.changedTouches[0].clientX - startX;
-
-        if (Math.abs(dx) > 30) {
-          if (vaultSection.classList.contains("mobile-mode")) {
-            dx < 0 ? nextMobile() : prevMobile();
-          } else {
-            dx < 0 ? shiftLeft() : shiftRight();
-          }
-        }
-        startX = null;
-      }, { passive: true });
-
-      dots.forEach((dot, targetIndex) => {
-        dot.addEventListener("click", () => {
-          const total = dots.length;
-          if (targetIndex === currentIndex) return;
-
-          let diff = (targetIndex - currentIndex + total) % total;
-          const goLeft = diff <= total / 2;
-          const steps = goLeft ? diff : total - diff;
-          let k = 0;
-
-          const go = () => {
-            if (k >= steps) return;
-            goLeft ? shiftLeft() : shiftRight();
-            k++;
-            setTimeout(go, 420);
-          };
-          go();
-        });
+    prev.addEventListener("click", () => {
+      track.scrollBy({
+        left: -getScrollAmount(),
+        behavior: "smooth"
       });
-
-      window.addEventListener("resize", applyMode);
-
-      applyMode();
-      setActiveByLayout();
-      updateDots(currentIndex);
     });
+
+    next.addEventListener("click", () => {
+      track.scrollBy({
+        left: getScrollAmount(),
+        behavior: "smooth"
+      });
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const email = "lightspeedcuts@gmail.com";
+
+  const modal = document.getElementById("emailChoiceModal");
+  const trigger = document.getElementById("footerEmailTrigger");
+  const close = document.getElementById("emailChoiceClose");
+  const backdrop = document.getElementById("emailChoiceBackdrop");
+  const copyButton = document.getElementById("emailCopyButton");
+  const copyStatus = document.getElementById("emailCopyStatus");
+
+  if (!modal || !trigger) return;
+
+  function openModal() {
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    if (copyStatus) {
+      copyStatus.textContent = "";
+    }
+  }
+
+  trigger.addEventListener("click", openModal);
+
+  if (close) {
+    close.addEventListener("click", closeModal);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener("click", closeModal);
+  }
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeModal();
+    }
+  });
+
+  if (copyButton) {
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+
+        if (copyStatus) {
+          copyStatus.textContent = "Email copied.";
+        }
+      } catch {
+        if (copyStatus) {
+          copyStatus.textContent = email;
+        }
+      }
+    });
+  }
+});
+
+
+/* =======================================================
+   PROJECT DETAIL SIDE NAV KEYBOARD SUPPORT
+   Alt + Left/Right moves between project pages.
+======================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const projectNav = document.querySelector(".ffs-project-side-nav-right");
+  if (!projectNav) return;
+
+  const prevLink = projectNav.querySelector('[data-project-nav-key="prev"]');
+  const nextLink = projectNav.querySelector('[data-project-nav-key="next"]');
+
+  document.addEventListener("keydown", event => {
+    const active = document.activeElement;
+    const isTyping =
+      active &&
+      (active.tagName === "INPUT" ||
+       active.tagName === "TEXTAREA" ||
+       active.isContentEditable);
+
+    if (isTyping || !event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+
+    if (event.key === "ArrowLeft" && prevLink) {
+      event.preventDefault();
+      window.location.href = prevLink.href;
+    }
+
+    if (event.key === "ArrowRight" && nextLink) {
+      event.preventDefault();
+      window.location.href = nextLink.href;
+    }
+  });
+});
+
+
+
+/* =======================================================
+   HOME PAGE SCROLL PROGRESS
+   Runs only on index/home and leaves all other pages alone.
+======================================================= */
+/* SCROLL PROGRESS */
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.documentElement.classList.add("lss-home-progress");
+  document.body.classList.add("lss-home-progress");
+
+  const progressBar = document.createElement("div");
+  progressBar.className = "lss-home-scroll-progress";
+  progressBar.setAttribute("aria-hidden", "true");
+
+  const progressFill = document.createElement("div");
+  progressFill.className = "lss-home-scroll-progress-fill";
+
+  progressBar.appendChild(progressFill);
+  document.body.appendChild(progressBar);
+
+  const navBar = document.querySelector(".lss-nav-bar");
+  let ticking = false;
+
+  function syncProgressPosition() {
+    const navBottom = navBar
+      ? Math.max(0, Math.round(navBar.getBoundingClientRect().bottom))
+      : 61;
+
+    progressBar.style.setProperty("--lss-progress-top", `${navBottom}px`);
+  }
+
+  function updateProgress() {
+    const root = document.documentElement;
+    const maxScroll = Math.max(0, root.scrollHeight - window.innerHeight);
+    const currentScroll = Math.max(0, window.scrollY || root.scrollTop);
+    const ratio = maxScroll > 0 ? currentScroll / maxScroll : 0;
+    const clamped = Math.min(1, Math.max(0, ratio));
+
+    progressFill.style.transform = `scaleX(${clamped})`;
+    ticking = false;
+  }
+
+  function requestProgressUpdate() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateProgress);
+  }
+
+  window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+
+  window.addEventListener("resize", () => {
+    syncProgressPosition();
+    requestProgressUpdate();
+  });
+
+  window.addEventListener("load", () => {
+    syncProgressPosition();
+    requestProgressUpdate();
+  });
+
+  syncProgressPosition();
+  updateProgress();
+});
+
+// Automatically update image cache for all users across images, sources, and backgrounds
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. UPDATE THIS NUMBER whenever you change your image files
+    const currentVersion = "3"; 
+    
+    // 2. Target standard <img> tags
+    document.querySelectorAll("img").forEach(img => {
+        let src = img.getAttribute("src");
+        if (src && src.includes("b-cdn.net")) {
+            let cleanSrc = src.split('?')[0];
+            img.src = `${cleanSrc}?v=${currentVersion}`;
+        }
+    });
+
+    // 3. Target <source> tags inside <picture> elements
+    document.querySelectorAll("source").forEach(source => {
+        let srcset = source.getAttribute("srcset");
+        if (srcset && srcset.includes("b-cdn.net")) {
+            let cleanSrc = srcset.split('?')[0];
+            source.srcset = `${cleanSrc}?v=${currentVersion}`;
+        }
+    });
+
+    // 4. Target inline CSS background images (Hero wallpapers, etc.)
+    document.querySelectorAll("[style*='background-image']").forEach(el => {
+        let style = el.getAttribute("style");
+        if (style && style.includes("b-cdn.net")) {
+            let updatedStyle = style.replace(/url\(['"]?(https:\/\/[^'"]+b-cdn\.net[^'"]*)['"]?\)/g, (match, url) => {
+                let cleanUrl = url.split('?')[0];
+                return `url('${cleanUrl}?v=${currentVersion}')`;
+            });
+            el.setAttribute("style", updatedStyle);
+        }
+    });
+});
