@@ -30,6 +30,71 @@
 }
 </style>
 
+
+<style id="mobile-clean-poster-flow">
+@media (max-width: 900px) {
+  .ffs-mobile-project-header {
+    display: block !important;
+    width: 98% !important;
+    height: auto !important;
+    margin: 0 auto 14px !important;
+  }
+
+  .ffs-poster-panel {
+    width: 100% !important;
+    margin: 0 0 16px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    z-index: auto !important;
+  }
+
+  .ffs-poster-panel::before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-poster-toggle,
+  .ffs-poster-expand {
+    display: none !important;
+  }
+
+  .ffs-poster-click {
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    padding: 0 !important;
+    background: transparent !important;
+    cursor: default !important;
+    pointer-events: none !important;
+  }
+
+  .ffs-poster-full {
+    display: none !important;
+  }
+
+  .ffs-poster-crop {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    object-fit: contain !important;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38) !important;
+  }
+
+  .ffs-info-panel {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .ffs-section-label {
+    margin-top: 0 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Batman: Gotham's Riddle splash screen">
