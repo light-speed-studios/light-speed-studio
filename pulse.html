@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  
+
   <link rel="stylesheet" href="css/styles.css" />
   <title>Pulse | LSS</title>
 </head>
@@ -21,7 +21,11 @@
     <span class="lss-brand-text">No Spectacle Without Soul</span>
   </a>
 
-  <div class="hamburger">☰</div>
+  <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
   <nav class="lss-nav-links">
     <a class="lss-nav-item" href="index.html">Bridge</a>
@@ -162,6 +166,33 @@
   </div>
 
 </main>
+
+<script>
+function toggleMobileMenu(button) {
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!navLinks) return;
+
+  const isOpen = navLinks.classList.toggle('active');
+  button.classList.toggle('active', isOpen);
+  button.setAttribute('aria-expanded', String(isOpen));
+  button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!hamburger || !navLinks) return;
+
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+});
+</script>
 
 <!-- KEEP GLOBAL SITE JS:
      handles existing navigation / progress / scroll behavior -->
