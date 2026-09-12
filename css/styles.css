@@ -112,8 +112,10 @@
   font-weight: 620 !important;
 }
 
-/* Mobile Hamburger Menu */
-/* Mobile Hamburger Menu */
+/* =======================================================
+   MOBILE HAMBURGER MENU
+======================================================= */
+
 .hamburger {
   display: none;
   width: 38px;
@@ -127,7 +129,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Three-line icon */
 .hamburger span {
   position: absolute;
   left: 50%;
@@ -180,16 +181,26 @@
   .hamburger {
     display: block;
   }
-}
+
+  .lss-nav-links {
+    display: none !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #040E15;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #00AEDE;
+    z-index: 1000;
+  }
 
   .lss-nav-links.active {
-    display: flex;
-  }
-
-  .hamburger {
-    display: flex;
+    display: flex !important;
   }
 }
+
     * {
       box-sizing: border-box;
     }
