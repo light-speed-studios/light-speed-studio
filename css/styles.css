@@ -5780,3 +5780,36 @@ body .lss-image-block.orbit-image-frame::before {
     margin-top: -18px !important;
   }
 }
+
+/* =======================================================
+   FINAL MOBILE DISCLAIMER TITLE + SOCIAL/URL SPACING
+======================================================= */
+@media (max-width: 900px) {
+  .mobile-desktop-experience-note {
+    text-align: left !important;
+  }
+
+  .mobile-desktop-experience-note > strong {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    text-align-last: left !important;
+    word-spacing: 0 !important;
+    letter-spacing: .06em !important;
+    white-space: normal !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  .mobile-desktop-experience-note > p {
+    text-align: left !important;
+    text-align-last: left !important;
+  }
+
+  .footer-socials {
+    margin-bottom: 44px !important;
+  }
+
+  .footer-picture {
+    margin-top: 0 !important;
+  }
+}
