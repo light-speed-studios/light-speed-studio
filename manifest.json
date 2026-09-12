@@ -3,14 +3,14 @@
   "short_name": "LSS",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#040e15",
-  "theme_color": "#040e15",
+  "background_color": "#080E18",
+  "theme_color": "#080E18",
   "icons": [
     {
       "src": "2337.png",
-      "sizes": "900x1444",
+      "sizes": "990x990",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }
