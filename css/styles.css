@@ -5813,3 +5813,40 @@ body .lss-image-block.orbit-image-frame::before {
     margin-top: 0 !important;
   }
 }
+
+
+/* =======================================================
+   FINAL MOBILE DISCLAIMER + SOCIAL URL GAP FIX V5
+======================================================= */
+@media (max-width: 900px) {
+  .mobile-desktop-experience-note,
+  .mobile-desktop-experience-note > strong {
+    text-align: left !important;
+    text-align-last: left !important;
+  }
+
+  .mobile-desktop-experience-note > strong {
+    display: block !important;
+    width: auto !important;
+    max-width: 100% !important;
+    word-spacing: normal !important;
+    letter-spacing: .10em !important;
+    white-space: normal !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  .mobile-desktop-experience-note > p {
+    text-align: left !important;
+    text-align-last: left !important;
+  }
+
+  .footer-socials {
+    margin-bottom: 18px !important;
+  }
+
+  .footer-picture {
+    margin-top: 0 !important;
+    padding-top: 34px !important;
+    box-sizing: border-box !important;
+  }
+}
