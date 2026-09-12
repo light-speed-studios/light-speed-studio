@@ -24,7 +24,7 @@
         splash.dataset.splashReady = "true";
         document.documentElement.classList.add("lss-splash-active");
 
-        const splashDuration = Number(splash.dataset.duration) || 2500;
+        const splashDuration = Number(splash.dataset.duration) || 3800;
         let exitTimer = null;
         let hasClosed = false;
 
