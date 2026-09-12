@@ -17,7 +17,11 @@
     <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
     <span class="lss-brand-text">No Spectacle Without Soul</span>
   </a>
-  <div class="hamburger">☰</div>
+  <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
   <nav class="lss-nav-links">
     <a class="lss-nav-item" href="index.html">Bridge</a>
     <a class="lss-nav-item" href="vault.html">Vault</a>
@@ -701,6 +705,33 @@
     });
   });
 </script>
+<script>
+function toggleMobileMenu(button) {
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!navLinks) return;
+
+  const isOpen = navLinks.classList.toggle('active');
+  button.classList.toggle('active', isOpen);
+  button.setAttribute('aria-expanded', String(isOpen));
+  button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!hamburger || !navLinks) return;
+
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+});
+</script>
+
 <script src="js/main.js"></script>
 </body>
 </html>
