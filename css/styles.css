@@ -119,34 +119,48 @@
   height: 38px;
   padding: 0;
   border: 0;
+  outline: 0;
+  appearance: none;
+  -webkit-appearance: none;
   background: transparent;
   cursor: pointer;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
   position: relative;
   z-index: 1001;
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Three-line icon */
 .hamburger span {
-  display: block;
+  position: absolute;
+  left: 50%;
   width: 24px;
   height: 2px;
+  margin-left: -12px;
   background: #BAC7D5;
-  border-radius: 2px;
+  border-radius: 999px;
   transform-origin: center;
   transition:
+    top .3s ease,
     transform .3s ease,
     width .3s ease,
+    margin-left .3s ease,
     opacity .2s ease;
 }
 
-/* Open state: three lines morph into a downward chevron */
-.hamburger.active span:nth-child(1) {
+.hamburger span:nth-child(1) { top: 11px; }
+.hamburger span:nth-child(2) { top: 18px; }
+.hamburger span:nth-child(3) { top: 25px; }
+
+/* Open state: centered downward chevron */
+.hamburger.active span:nth-child(1),
+.hamburger.active span:nth-child(3) {
+  top: 18px;
   width: 16px;
-  transform: translate(-5px, 5px) rotate(45deg);
+  margin-left: -8px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: translateX(-5px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -155,8 +169,7 @@
 }
 
 .hamburger.active span:nth-child(3) {
-  width: 16px;
-  transform: translate(5px, -2px) rotate(-45deg);
+  transform: translateX(5px) rotate(-45deg);
 }
 
 @media (max-width: 900px) {
@@ -5737,4 +5750,33 @@ body .lss-image-block.orbit-image-frame::before {
 }
 .ffs-cta-sub {
   display: none !important;
+}
+
+
+/* =======================================================
+   FINAL MOBILE FOOTER ALIGNMENT + SPACING FIX
+======================================================= */
+@media (max-width: 900px) {
+  .mobile-desktop-experience-note > strong {
+    display: block !important;
+    width: 100% !important;
+    text-align: left !important;
+    text-align-last: left !important;
+    word-spacing: normal !important;
+    white-space: normal !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  .mobile-desktop-experience-note > p {
+    text-align: justify !important;
+    text-align-last: left !important;
+  }
+
+  .footer-socials {
+    margin-bottom: 34px !important;
+  }
+
+  .footer-picture {
+    margin-top: -18px !important;
+  }
 }
