@@ -1849,8 +1849,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 /* =======================================================
-   SHARED DESKTOP PROJECT COMPOSITION — BATMAN REFERENCE
-   ======================================================= */
+   DESKTOP PROJECT COMPOSITION
+   Shared landing-page desktop composition
+======================================================= */
 @media (min-width: 901px) {
   .ffs-page { padding-top: 25px; }
 
@@ -1864,13 +1865,16 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-left-column,
-  .ffs-right-column { display: contents; }
+  .ffs-right-column {
+    display: contents;
+  }
 
   .ffs-poster-panel {
     grid-column: 1;
     grid-row: 1 / 3;
-    height: 100%;
-    min-height: 0;
+    height: 601px;
+    min-height: 601px;
+    max-height: 601px;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -1891,6 +1895,12 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     object-position: center top;
   }
 
+  .ffs-working-title {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+  }
+
   .ffs-title-panel {
     grid-column: 2;
     grid-row: 1;
@@ -1903,7 +1913,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     flex-direction: column;
   }
 
-  .ffs-title-panel .ffs-title-row { margin-bottom: 4px; }
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 4px;
+  }
 
   .ffs-title-tagline {
     margin: 0;
@@ -1946,6 +1958,25 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     overflow: hidden;
   }
 
+  /* Same cyan corner treatment used on the other desktop modules */
+  .ffs-palette-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    opacity: .72;
+  }
+
   .ffs-palette {
     position: relative;
     z-index: 1;
@@ -1958,12 +1989,19 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     white-space: nowrap;
   }
 
+  /* Five desktop metadata cards after removing Category + File Size */
   .ffs-right-column .ffs-title-panel .ffs-meta-row {
-    grid-template-columns:.9fr .92fr 1.35fr 1fr .9fr;
+    grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
   }
 
-  .ffs-info-panel .ffs-synopsis p { font-size: 26px; }
-  .ffs-synopsis { margin: 0; }
+  /* +2px from the previous 26px desktop synopsis size */
+  .ffs-info-panel .ffs-synopsis p {
+    font-size: 26px;
+  }
+
+  .ffs-synopsis {
+    margin: 0;
+  }
 
   .ffs-info-panel .ffs-working-title {
     margin: auto 0 0;
@@ -1971,7 +2009,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     flex: 0 0 auto;
   }
 
-  .ffs-info-panel .ffs-working-title strong { font-size: 22px; }
+  .ffs-info-panel .ffs-working-title strong {
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1981,7 +2021,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-left-column,
-  .ffs-right-column { display: contents; }
+  .ffs-right-column {
+    display: contents;
+  }
 
   .ffs-poster-panel { order: 1; }
   .ffs-mobile-meta { order: 2; }
@@ -1990,6 +2032,24 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-title-panel,
   .ffs-palette-wrap,
   .ffs-approach-box {
+    display: none !important;
+  }
+}
+
+
+
+/* REMOVE INNER PALETTE FRAME — OUTER COMBINED BOX REMAINS */
+@media (min-width: 901px) {
+  .ffs-palette-cta-group .ffs-palette-wrap {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .ffs-palette-cta-group .ffs-palette-wrap::before,
+  .ffs-palette-cta-group .ffs-palette-wrap::after {
+    content: none !important;
     display: none !important;
   }
 }
@@ -2283,5 +2343,107 @@ document.addEventListener("click", function (event) {
   }
 });
 </script>
+
+
+<style id="mobile-bottom-gap-border-fix">
+@media (max-width: 900px) {
+  html,
+  body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  main.page-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page,
+  .ffs-shell,
+  .ffs-project-block {
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page {
+    padding-bottom: 0 !important;
+  }
+
+  .ffs-project-block {
+    padding-bottom: 14px !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .ffs-project-block::before,
+  .ffs-project-block::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-mobile-project-nav {
+    margin-bottom: 0 !important;
+  }
+
+  .ffs-footer-logo-block {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    contain-intrinsic-size: 0 !important;
+  }
+}
+</style>
+
+
+<style id="far-from-sol-desktop-geometry-lock">
+@media (min-width: 901px) {
+  .ffs-title-panel {
+    height: 190px !important;
+    min-height: 190px !important;
+    max-height: 190px !important;
+    padding: 16px 23px 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 4px !important;
+  }
+
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    transform: translateY(-6px) !important;
+  }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 46px !important;
+    padding: 6px 8px !important;
+  }
+
+  .ffs-info-panel {
+    height: 390px !important;
+    min-height: 390px !important;
+    max-height: 390px !important;
+    padding: 29px 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: auto 0 0 !important;
+    padding: 15px 17px !important;
+    flex: 0 0 auto !important;
+  }
+}
+</style>
+
 </body>
 </html>
