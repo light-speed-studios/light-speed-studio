@@ -2356,72 +2356,44 @@ document.addEventListener("click", function (event) {
 });
 </script>
 
-
-
-
-
-
-
 <style id="mobile-bottom-gap-hard-reset">
 @media (max-width: 900px) {
 
   html {
-    height: auto !important;
-    min-height: 0 !important;
+    height: 100% !important;
+    background: #040e15 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
 
   body {
     display: block !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
+    height: 100% !important;
+    background: #040e15 !important;
     margin: 0 !important;
     padding-bottom: 0 !important;
   }
 
   main.page-content {
     display: block !important;
-    flex: 0 0 auto !important;
-    height: fit-content !important;
-    min-height: 0 !important;
-    max-height: none !important;
     margin: 0 !important;
     padding-bottom: 0 !important;
-    overflow: visible !important;
-  }
-
-  main.page-content::before,
-  main.page-content::after {
-    content: none !important;
-    display: none !important;
+    background: #040e15 !important;
   }
 
   .ffs-page {
-    display: block !important;
-    height: fit-content !important;
-    min-height: 0 !important;
-    max-height: none !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
 
   .ffs-shell {
-    display: block !important;
-    height: fit-content !important;
-    min-height: 0 !important;
-    max-height: none !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
 
   .ffs-project-block {
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
     margin-bottom: 0 !important;
-    padding: 14px 14px 0px !important;
+    padding: 14px 14px 0 !important;
   }
 
   .ffs-links-panel,
@@ -2432,42 +2404,25 @@ document.addEventListener("click", function (event) {
   .ffs-mobile-project-nav {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
     margin: 0 !important;
-    padding: 10px 14px 14px 14px !important;
+    padding: 10px 14px 0 14px !important; /* Removes bottom padding from the nav block itself */
+    background: #040e15 !important;
   }
 
   .ffs-mobile-project-nav a {
     height: 56px !important;
     min-height: 56px !important;
-    max-height: none !important;
     margin: 0 !important;
-    padding: 0 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
   }
 
-  .ffs-mobile-project-nav + *,
-  .ffs-shell > .ffs-mobile-project-nav ~ * {
-    margin-top: 0 !important;
-  }
-
-  .ffs-footer-logo-block {
-    display: none !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
+  .ffs-footer-logo-block,
   main.page-content + footer,
   main.page-content ~ footer {
     display: none !important;
     height: 0 !important;
-    min-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
   }
