@@ -2259,11 +2259,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <a href="superman.html" data-project-nav-key="prev-mobile">Prev</a>
     <a href="the-flash.html" data-project-nav-key="next-mobile">Next</a>
   </nav>
-
-
-<div class="ffs-footer-logo-block">
-  <img src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png" alt="Light Speed Studios logo" loading="lazy" decoding="async">
-</div>
 </div>
 </div>
 </div>
@@ -2362,58 +2357,64 @@ document.addEventListener("click", function (event) {
 });
 </script>
 
-<style id="mobile-bottom-gap-border-fix">
+
+
+
+<style id="mobile-bottom-final-fix">
 @media (max-width: 900px) {
-  /* Let the page end naturally after the mobile project nav */
-  html,
-  body,
-  main.page-content,
-  .ffs-page,
-  .ffs-shell,
-  .ffs-project-block {
+  /* Stop the site's global flex layout from stretching the project page to viewport height */
+  main.page-content {
+    flex: 0 0 auto !important;
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    align-self: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
-    min-height: 0 !important;
-    height: auto !important;
   }
 
-  /* Remove the faint bottom frame around the project area */
+  .ffs-page {
+    flex: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ffs-shell,
   .ffs-project-block {
-    box-shadow: none !important;
-    border-bottom: 0 !important;
-  }
-
-  /* Mobile CTA/nav: keep a small intentional cushion underneath only */
-  .ffs-mobile-project-nav {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 10px !important;
-    width: calc(100% - 22px) !important;
-    height: auto !important;
     min-height: 0 !important;
-    max-height: none !important;
-    margin: 34px 11px 0 !important;
-    padding: 10px 10px 13px !important;
-    align-items: stretch !important;
-    align-content: start !important;
-    box-sizing: border-box !important;
+    height: auto !important;
+    margin-bottom: 0 !important;
   }
 
-  .ffs-mobile-project-nav > a {
-    height: 50px !important;
-    min-height: 50px !important;
-    margin: 0 !important;
+  /* Keep a little breathing room after the 2x2 mobile CTA tiles */
+  .ffs-cta-panel {
+    margin-bottom: 18px !important;
   }
 
-  /* Hidden desktop footer must consume zero mobile space */
+  /* Keep only a small cushion below the mobile project nav */
+  .ffs-mobile-project-nav {
+    margin-bottom: 10px !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Remove the large inherited bottom area from the project block */
+  .ffs-project-block {
+    padding-bottom: 10px !important;
+  }
+
+  /* Prevent hidden/offscreen footer rules from reserving space */
   .ffs-footer-logo-block {
     display: none !important;
+    content-visibility: hidden !important;
+    contain-intrinsic-size: 0 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     width: 0 !important;
     height: 0 !important;
     min-height: 0 !important;
-    overflow: hidden !important;
   }
 }
 </style>
