@@ -2365,28 +2365,32 @@ document.addEventListener("click", function (event) {
 
 <style id="mobile-bottom-gap-hard-reset">
 @media (max-width: 900px) {
-  html,
-  body {
+
+  html {
     height: auto !important;
     min-height: 0 !important;
-    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   body {
     display: block !important;
-    flex: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
     padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
   }
 
   main.page-content {
     display: block !important;
-    flex: none !important;
-    height: auto !important;
+    flex: 0 0 auto !important;
+    height: fit-content !important;
     min-height: 0 !important;
     max-height: none !important;
+    margin: 0 !important;
     padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
+    overflow: visible !important;
   }
 
   main.page-content::before,
@@ -2395,14 +2399,22 @@ document.addEventListener("click", function (event) {
     display: none !important;
   }
 
-  .ffs-page,
-  .ffs-shell {
+  .ffs-page {
     display: block !important;
-    height: auto !important;
+    height: fit-content !important;
     min-height: 0 !important;
     max-height: none !important;
-    padding-bottom: 0 !important;
     margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .ffs-shell {
+    display: block !important;
+    height: fit-content !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   .ffs-project-block {
@@ -2413,7 +2425,11 @@ document.addEventListener("click", function (event) {
     padding: 14px !important;
   }
 
-  /* Keep the nav buttons full height and end the section right after them */
+  .ffs-links-panel,
+  .ffs-cta-panel {
+    margin-bottom: 0 !important;
+  }
+
   .ffs-mobile-project-nav {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
@@ -2422,7 +2438,6 @@ document.addEventListener("click", function (event) {
     max-height: none !important;
     margin: 0 !important;
     padding: 10px !important;
-    padding-bottom: 10px !important;
   }
 
   .ffs-mobile-project-nav a {
@@ -2436,6 +2451,11 @@ document.addEventListener("click", function (event) {
     justify-content: center !important;
   }
 
+  .ffs-mobile-project-nav + *,
+  .ffs-shell > .ffs-mobile-project-nav ~ * {
+    margin-top: 0 !important;
+  }
+
   .ffs-footer-logo-block {
     display: none !important;
     height: 0 !important;
@@ -2444,7 +2464,6 @@ document.addEventListener("click", function (event) {
     padding: 0 !important;
   }
 
-  /* Kill any global spacer/footer element that follows the page content */
   main.page-content + footer,
   main.page-content ~ footer {
     display: none !important;
