@@ -2364,20 +2364,10 @@ document.addEventListener("click", function (event) {
 
 <style id="mobile-bottom-gap-border-fix">
 @media (max-width: 900px) {
+  /* Let the page end naturally after the mobile project nav */
   html,
-  body {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    min-height: 0 !important;
-  }
-
-  main.page-content {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    min-height: 0 !important;
-    height: auto !important;
-  }
-
+  body,
+  main.page-content,
   .ffs-page,
   .ffs-shell,
   .ffs-project-block {
@@ -2387,23 +2377,43 @@ document.addEventListener("click", function (event) {
     height: auto !important;
   }
 
+  /* Remove the faint bottom frame around the project area */
   .ffs-project-block {
     box-shadow: none !important;
     border-bottom: 0 !important;
   }
 
+  /* Mobile CTA/nav: keep a small intentional cushion underneath only */
   .ffs-mobile-project-nav {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    width: calc(100% - 22px) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 34px 11px 0 !important;
+    padding: 10px 10px 13px !important;
+    align-items: stretch !important;
+    align-content: start !important;
+    box-sizing: border-box !important;
   }
 
+  .ffs-mobile-project-nav > a {
+    height: 50px !important;
+    min-height: 50px !important;
+    margin: 0 !important;
+  }
+
+  /* Hidden desktop footer must consume zero mobile space */
   .ffs-footer-logo-block {
     display: none !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 0 !important;
     height: 0 !important;
     min-height: 0 !important;
+    overflow: hidden !important;
   }
 }
 </style>
