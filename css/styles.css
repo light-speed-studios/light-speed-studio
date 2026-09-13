@@ -5786,11 +5786,3 @@ body .lss-image-block.orbit-image-frame::before {
     margin-top: -18px !important;
   }
 }
-
-@media (max-width: 900px) {
-  .ffs-page,
-  .vault-page {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-}
