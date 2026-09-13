@@ -2343,42 +2343,27 @@ document.addEventListener("click", function (event) {
 
 <style id="mobile-bottom-gap-border-fix">
 @media (max-width: 900px) {
+
   html,
-  body {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  main.page-content {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    min-height: 0 !important;
-    height: auto !important;
-  }
-
+  body,
+  main.page-content,
   .ffs-page,
-  .ffs-shell,
-  .ffs-project-block {
+  .ffs-shell {
     margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
     min-height: 0 !important;
     height: auto !important;
-  }
-
-  .ffs-page {
-    padding-bottom: 0 !important;
+    max-height: none !important;
   }
 
   .ffs-project-block {
-    padding-bottom: 14px !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 1px !important;
+    min-height: 0 !important;
+    height: auto !important;
     border: 0 !important;
     outline: 0 !important;
     box-shadow: none !important;
-  }
-
-  .ffs-project-block::before,
-  .ffs-project-block::after {
-    content: none !important;
-    display: none !important;
   }
 
   .ffs-mobile-project-nav {
@@ -2389,10 +2374,18 @@ document.addEventListener("click", function (event) {
     display: none !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 0 !important;
     height: 0 !important;
     min-height: 0 !important;
     max-height: 0 !important;
+    overflow: hidden !important;
+    content-visibility: hidden !important;
     contain-intrinsic-size: 0 !important;
+  }
+
+  body > main.page-content {
+    border-radius: 0 !important;
+    overflow: visible !important;
   }
 }
 </style>
