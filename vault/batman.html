@@ -2354,18 +2354,32 @@ document.addEventListener("click", function (event) {
     margin-bottom: 0 !important;
   }
 
+  /* MOBILE FOOTER: visually occupies the existing bottom area
+     without increasing the page's document height */
+  .ffs-shell {
+    position: relative !important;
+  }
+
   .ffs-footer-logo-block {
     display: block !important;
-    width: 84% !important;
-    max-width: 360px !important;
+    position: absolute !important;
+    left: 50% !important;
+    bottom: -2px !important;
+    transform: translateX(-50%) !important;
+
+    width: 88% !important;
+    max-width: 380px !important;
     height: auto !important;
     min-height: 0 !important;
-    max-height: none !important;
-    margin: 14px auto 6px !important;
+
+    margin: 0 !important;
     padding: 0 !important;
     text-align: center !important;
+
     content-visibility: visible !important;
     contain-intrinsic-size: auto !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
   }
 
   .ffs-footer-logo-block img {
