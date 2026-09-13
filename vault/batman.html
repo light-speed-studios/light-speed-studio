@@ -2360,61 +2360,104 @@ document.addEventListener("click", function (event) {
 
 
 
-<style id="mobile-bottom-final-fix">
+
+
+
+<style id="mobile-bottom-gap-hard-reset">
 @media (max-width: 900px) {
-  /* Stop the site's global flex layout from stretching the project page to viewport height */
-  main.page-content {
-    flex: 0 0 auto !important;
-    flex-grow: 0 !important;
-    flex-shrink: 0 !important;
-    align-self: auto !important;
-    min-height: 0 !important;
+  html,
+  body {
     height: auto !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    max-height: none !important;
   }
 
-  .ffs-page {
+  body {
+    display: block !important;
     flex: none !important;
-    min-height: 0 !important;
-    height: auto !important;
-    margin-bottom: 0 !important;
     padding-bottom: 0 !important;
-  }
-
-  .ffs-shell,
-  .ffs-project-block {
-    min-height: 0 !important;
-    height: auto !important;
     margin-bottom: 0 !important;
   }
 
-  /* Keep a little breathing room after the 2x2 mobile CTA tiles */
+  main.page-content {
+    display: block !important;
+    flex: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  main.page-content::before,
+  main.page-content::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-page,
+  .ffs-shell {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .ffs-project-block {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 14px !important;
+  }
+
+  /* A little more breathing room after the 2x2 CTA grid */
+  .ffs-links-panel,
   .ffs-cta-panel {
-    margin-bottom: 18px !important;
+    margin-bottom: 24px !important;
   }
 
-  /* Keep only a small cushion below the mobile project nav */
+  /* Keep the nav buttons full height and end the section right after them */
   .ffs-mobile-project-nav {
-    margin-bottom: 10px !important;
-    padding-bottom: 0 !important;
-  }
-
-  /* Remove the large inherited bottom area from the project block */
-  .ffs-project-block {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 10px !important;
     padding-bottom: 10px !important;
   }
 
-  /* Prevent hidden/offscreen footer rules from reserving space */
+  .ffs-mobile-project-nav a {
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
   .ffs-footer-logo-block {
     display: none !important;
-    content-visibility: hidden !important;
-    contain-intrinsic-size: 0 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 0 !important;
     height: 0 !important;
     min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Kill any global spacer/footer element that follows the page content */
+  main.page-content + footer,
+  main.page-content ~ footer {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
 </style>
