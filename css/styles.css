@@ -5160,10 +5160,7 @@ body > .bridge-body.disclaimer-body strong {
   }
 }
 
-@media (max-width: 900px) {
-  body:has(.ffs-mobile-project-nav) .ffs-page {
-    padding-bottom: 106px !important;
-  }
+
 
   .ffs-mobile-project-nav {
     position: fixed;
@@ -5263,10 +5260,7 @@ body > .bridge-body.disclaimer-body strong {
    Mobile uses normal page flow instead of sticky bottom nav.
 ======================================================= */
 
-@media (max-width: 900px) {
-  body:has(.ffs-mobile-project-nav) .ffs-page {
-    padding-bottom: 58px !important;
-  }
+
 
   .ffs-mobile-project-nav {
     position: relative !important;
