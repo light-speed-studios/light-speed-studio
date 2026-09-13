@@ -5786,3 +5786,18 @@ body .lss-image-block.orbit-image-frame::before {
     margin-top: -18px !important;
   }
 }
+  @media (max-width: 900px) {
+  /* Reset mobile page padding and container gaps */
+  .ffs-page {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+
+  .ffs-shell,
+  .ffs-project-block,
+  .vault-combined-section,
+  .home-hero-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
