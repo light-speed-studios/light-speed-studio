@@ -31,8 +31,9 @@
 </style>
 
 
-<style id="mobile-clean-poster-flow">
+<style id="mobile-clean-full-poster-flow">
 @media (max-width: 900px) {
+
   .ffs-mobile-project-header {
     display: block !important;
     width: 98% !important;
@@ -42,8 +43,12 @@
 
   .ffs-poster-panel {
     width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
     margin: 0 0 16px !important;
     padding: 0 !important;
+    display: block !important;
+    position: relative !important;
     background: transparent !important;
     box-shadow: none !important;
     z-index: auto !important;
@@ -63,6 +68,8 @@
     display: block !important;
     position: static !important;
     inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
     padding: 0 !important;
     background: transparent !important;
     cursor: default !important;
@@ -77,18 +84,12 @@
     max-height: none !important;
     margin: 0 !important;
     object-fit: contain !important;
+    object-position: center top !important;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38) !important;
   }
 
   .ffs-poster-crop {
     display: none !important;
-    width: 100% !important;
-    height: auto !important;
-    max-width: none !important;
-    max-height: none !important;
-    margin: 0 !important;
-    object-fit: contain !important;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.38) !important;
   }
 
   .ffs-info-panel {
@@ -777,11 +778,12 @@
   content-visibility:auto;
   contain-intrinsic-size:400px;
 }
-    .ffs-trailer-section {
+
+.ffs-trailer-section {
   content-visibility: visible;
   contain-intrinsic-size: auto;
   contain: none;
-
+  
 }
 .ffs-mobile-trailer-link {
   display: none;
@@ -811,18 +813,7 @@
   display: none;
 }
 
-
-.ffs-mobile-project-header {
-  display: none;
-}
-
     @media (max-width: 900px) {
-      .ffs-mobile-project-header {
-        display: block;
-        width: 98%;
-        height: auto;
-        margin: 0 auto 14px;
-      }
       .ffs-page {
         padding: 0 0 42px;
       }
@@ -854,7 +845,7 @@
 .ffs-mobile-trailer-link {
   display: grid;
 }
-     .ffs-project-block {
+.ffs-project-block {
   width: 100%;
   margin: 0 auto;
   padding: 14px;
@@ -1233,8 +1224,7 @@
   letter-spacing: inherit !important;
   color: var(--cyan) !important;
 }
-
-      .ffs-trailer-header {
+.ffs-trailer-header {
         margin: 0 0 10px;
         padding: 0;
         display: flex;
@@ -1253,46 +1243,41 @@
       }
     }
   
+  .ffs-mobile-project-header {
+    display: none;
+  }
 
-/* SOUNDTRACK MODAL: RELEASE FROM LINKS PANEL CONTAINMENT */
-.ffs-links-panel:has(.ffs-soundtrack-modal-toggle:checked) {
-  content-visibility: visible !important;
-  contain: none !important;
-  overflow: visible !important;
-}
+  @media (max-width: 900px) {
+    .ffs-mobile-project-header {
+      display: block;
+      width: 98%;
+      height: auto;
+      margin: 0 auto 14px;
+    }
+  }
 
-.ffs-links-panel:has(.ffs-soundtrack-modal-toggle:checked) .ffs-link-stack {
-  contain: none !important;
-  overflow: visible !important;
-}
-
-.ffs-soundtrack-modal {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  max-width: none !important;
-  max-height: none !important;
-  margin: 0 !important;
-  transform: none !important;
-  contain: none !important;
-  overflow: hidden !important;
-}
 
 /* LANDING PAGE SOUNDTRACK MODAL */
 .ffs-soundtrack-modal-toggle { display: none; }
 .ffs-soundtrack-link { cursor: pointer; }
 
 .ffs-soundtrack-modal {
+  --cyan: #00aede;
+  --text-main: #bac7d5;
   position: fixed !important;
   inset: 0 !important;
   z-index: 2147483647 !important;
   display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 28px;
+  width: 100vw !important;
+  height: 100dvh !important;
+  padding: 72px 28px 48px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  isolation: isolate !important;
+  transform: none !important;
+  contain: none !important;
+  overflow: hidden !important;
   background: rgba(0, 0, 0, 0.72);
-  overflow: hidden;
 }
 
 body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
@@ -1300,10 +1285,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 .ffs-soundtrack-modal-box {
+  position: relative !important;
+  z-index: 2147483647 !important;
   display: flex;
   flex-direction: column;
-  width: min(770px, 94vw); 
-  max-height: 86dvh;
+  width: min(770px, 94vw) !important;
+  max-height: calc(100dvh - 120px) !important;
+  margin: 0 auto !important;
   background:
     linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
@@ -1381,8 +1369,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 .ffs-soundtrack-modal-content {
   flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
+  min-height: 0 !important;
+  overflow-y: auto !important;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
   touch-action: pan-y;
@@ -1427,15 +1415,15 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 @media (max-width: 900px) {
   .ffs-soundtrack-modal {
-    padding: 0;
-    align-items: stretch;
-    justify-content: stretch;
+    padding: 18px 10px !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
   .ffs-soundtrack-modal-box {
-    width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
+    width: 100% !important;
+    height: auto !important;
+    max-height: calc(100dvh - 36px) !important;
   }
 
   .ffs-soundtrack-modal-head {
@@ -1501,53 +1489,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
   .ffs-soundtrack-modal-content-inner p {
     margin: 0 0 8px;
-  }
-}
-
-
-
-/* FINAL SOUNDTRACK MODAL POSITION / STACKING FIX */
-.ffs-soundtrack-modal {
-  --cyan: #00aede;
-  --text-main: #bac7d5;
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 2147483647 !important;
-  width: 100vw !important;
-  height: 100dvh !important;
-  padding: 72px 28px 48px !important;
-  align-items: center !important;
-  justify-content: center !important;
-  isolation: isolate !important;
-  transform: none !important;
-  contain: none !important;
-  overflow: hidden !important;
-}
-
-.ffs-soundtrack-modal-box {
-  position: relative !important;
-  z-index: 2147483647 !important;
-  width: min(980px, 94vw) !important;
-  max-height: calc(100dvh - 120px) !important;
-  margin: 0 auto !important;
-}
-
-.ffs-soundtrack-modal-content {
-  min-height: 0 !important;
-  overflow-y: auto !important;
-}
-
-@media (max-width: 900px) {
-  .ffs-soundtrack-modal {
-    padding: 18px 10px !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .ffs-soundtrack-modal-box {
-    width: 100% !important;
-    height: auto !important;
-    max-height: calc(100dvh - 36px) !important;
   }
 }
 
@@ -2024,7 +1965,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
-<img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/batman%20header2.png" alt="Batman: Gotham\'s Riddle" decoding="async" fetchpriority="high"/>
+<img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/batman%20header2.png" alt="Batman: Gotham's Riddle" decoding="async" fetchpriority="high"/>
 <div class="ffs-main-grid ffs-desktop-composition">
   <div class="ffs-left-column">
     <div class="ffs-poster-panel">
@@ -2037,7 +1978,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <span>Click to Enlarge</span>
       </label>
     </div>
-
   </div>
 
   <div class="ffs-right-column">
@@ -2046,14 +1986,15 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <h1 class="ffs-title">Batman: Gotham's Riddle</h1>
       </div>
       <p class="ffs-title-tagline">Riddle Me This!</p>
-      <div class="ffs-meta-row ffs-desktop-meta">
-<div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">117 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 May 2024</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">The Batman 2022</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">175 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">2.39:1</span></div>
-    </div>
+ <div class="ffs-meta-row ffs-desktop-meta">
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">117 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 May 2024</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">The Batman 2022</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">175 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">2.39:1</span></div>
 </div>
+    </div>
+
     <div class="ffs-info-panel">
       <p class="ffs-section-label">Synopsis</p>
       <div class="ffs-synopsis">
@@ -2065,6 +2006,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <strong>Batman: The Long Halloween</strong>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -2252,6 +2194,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </iframe>
 </div>
 </div>
+
 </div>
 
 <nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
@@ -2264,11 +2207,15 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-footer-logo-block">
   <img src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png" alt="Light Speed Studios logo" loading="lazy" decoding="async">
 </div>
+
 </div>
+  </div>
 </div>
-</div>
+
 </main>
+
 <script src="../js/main.js"></script>
+
 
 <div class="ffs-soundtrack-modal">
   <div class="ffs-soundtrack-modal-box">
@@ -2362,14 +2309,103 @@ document.addEventListener("click", function (event) {
 });
 </script>
 
+
 <style id="mobile-bottom-gap-border-fix">
 @media (max-width: 900px) {
+  html,
+  body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  main.page-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page,
+  .ffs-shell,
+  .ffs-project-block {
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
   .ffs-page {
     padding-bottom: 0 !important;
   }
 
   .ffs-project-block {
+    padding-bottom: 14px !important;
+    border: 0 !important;
+    outline: 0 !important;
     box-shadow: none !important;
+  }
+
+  .ffs-project-block::before,
+  .ffs-project-block::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-mobile-project-nav {
+    margin-bottom: 0 !important;
+  }
+
+  .ffs-footer-logo-block {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    contain-intrinsic-size: 0 !important;
+  }
+}
+</style>
+
+
+<style id="far-from-sol-desktop-geometry-lock">
+@media (min-width: 901px) {
+  .ffs-title-panel {
+    height: 190px !important;
+    min-height: 190px !important;
+    max-height: 190px !important;
+    padding: 16px 23px 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 4px !important;
+  }
+
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    transform: translateY(-6px) !important;
+  }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 46px !important;
+    padding: 6px 8px !important;
+  }
+
+  .ffs-info-panel {
+    height: 390px !important;
+    min-height: 390px !important;
+    max-height: 390px !important;
+    padding: 29px 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: auto 0 0 !important;
+    padding: 15px 17px !important;
+    flex: 0 0 auto !important;
   }
 }
 </style>
