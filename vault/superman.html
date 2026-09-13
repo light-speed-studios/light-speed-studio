@@ -1941,9 +1941,13 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   }
 }
 
-/* BATMAN REFERENCE DESKTOP COMPOSITION */
+/* =======================================================
+   DESKTOP PROJECT COMPOSITION
+   Shared landing-page desktop composition
+======================================================= */
 @media (min-width: 901px) {
   .ffs-page { padding-top: 25px; }
+
   .ffs-desktop-composition {
     display: grid;
     grid-template-columns: 410px minmax(0, 1fr);
@@ -1952,53 +1956,157 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
     row-gap: 21px;
     align-items: stretch;
   }
-  .ffs-left-column, .ffs-right-column { display: contents; }
+
+  .ffs-left-column,
+  .ffs-right-column {
+    display: contents;
+  }
+
   .ffs-poster-panel {
-    grid-column: 1; grid-row: 1 / 3;
-    height: 601px; min-height: 601px;
-    max-height: 601px; margin: 0;
-    display: flex; flex-direction: column;
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: 601px;
+    min-height: 601px;
+    max-height: 601px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
-  .ffs-poster-click { display: flex; flex: 1 1 auto; min-height: 0; }
+
+  .ffs-poster-click {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
   .ffs-poster {
-    width: 100%; height: 100%; min-height: 0; flex: 1 1 auto;
-    object-fit: contain; object-position: center top;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    object-fit: contain;
+    object-position: center top;
   }
+
+  .ffs-working-title {
+    grid-column: 1;
+    grid-row: 3;
+    margin: 0;
+  }
+
   .ffs-title-panel {
-    grid-column: 2; grid-row: 1; margin: 0;
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
     padding: 16px 23px 15px;
-    height: 190px; min-height: 190px; max-height: 190px;
-    display: flex; flex-direction: column;
+    height: 190px;
+    min-height: 190px;
+    max-height: 190px;
+    display: flex;
+    flex-direction: column;
   }
-  .ffs-title-panel .ffs-title-row { margin-bottom: 4px; }
+
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 4px;
+  }
+
   .ffs-title-tagline {
-    margin: 0; font-size: 20px; font-style: italic; font-weight: 500;
-    line-height: 1.25; color: var(--text-soft);
+    margin: 0;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text-soft);
   }
-  .ffs-title-panel .ffs-meta-row { margin-top: auto; margin-bottom: 0; transform: translateY(-6px); }
-  .ffs-title-panel .ffs-meta-card { min-height: 46px; padding: 6px 8px; }
+
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: auto;
+    margin-bottom: 0;
+    transform: translateY(-6px);
+  }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 46px;
+    padding: 6px 8px;
+  }
+
   .ffs-info-panel {
-    grid-column: 2; grid-row: 2;
-    height: 390px; min-height: 390px; max-height: 390px;
-    margin: 0; padding: 29px 32px;
-    display: flex; flex-direction: column;
+    grid-column: 2;
+    grid-row: 2;
+    height: 390px;
+    min-height: 390px;
+    max-height: 390px;
+    margin: 0;
+    padding: 29px 32px;
+    display: flex;
+    flex-direction: column;
   }
+
   .ffs-palette-wrap {
-    grid-column: 1 / -1; grid-row: 3; position: relative;
-    margin: 0; padding: 10px; overflow: hidden;
+    grid-column: 1 / -1;
+    grid-row: 3;
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
   }
-  .ffs-palette { position: relative; z-index: 1; height: 97px; }
+
+  /* Same cyan corner treatment used on the other desktop modules */
+  .ffs-palette-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    opacity: .72;
+  }
+
+  .ffs-palette {
+    position: relative;
+    z-index: 1;
+    height: 97px;
+  }
+
   .ffs-right-column .ffs-title {
-    font-size: clamp(32px, 3.05vw, 44px); line-height: 1; white-space: nowrap;
+    font-size: clamp(32px, 3.05vw, 44px);
+    line-height: 1;
+    white-space: nowrap;
   }
+
+  /* Five desktop metadata cards after removing Category + File Size */
   .ffs-right-column .ffs-title-panel .ffs-meta-row {
     grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
   }
-  .ffs-info-panel .ffs-synopsis p { font-size: 26px; }
-  .ffs-synopsis { margin: 0; }
-  .ffs-info-panel .ffs-working-title { margin: auto 0 0; padding: 15px 17px; flex: 0 0 auto; }
-  .ffs-info-panel .ffs-working-title strong { font-size: 22px; }
+
+  /* +2px from the previous 26px desktop synopsis size */
+  .ffs-info-panel .ffs-synopsis p {
+    font-size: 26px;
+  }
+
+  .ffs-synopsis {
+    margin: 0;
+  }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: auto 0 0;
+    padding: 15px 17px;
+    flex: 0 0 auto;
+  }
+
+  .ffs-info-panel .ffs-working-title strong {
+    font-size: 22px;
+  }
 }
+
 @media (max-width: 900px) {
   .ffs-desktop-composition {
     display: flex !important;
@@ -2006,7 +2114,9 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   }
 
   .ffs-left-column,
-  .ffs-right-column { display: contents; }
+  .ffs-right-column {
+    display: contents;
+  }
 
   .ffs-poster-panel { order: 1; }
   .ffs-mobile-meta { order: 2; }
@@ -2015,6 +2125,24 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   .ffs-title-panel,
   .ffs-palette-wrap,
   .ffs-approach-box {
+    display: none !important;
+  }
+}
+
+
+
+/* REMOVE INNER PALETTE FRAME — OUTER COMBINED BOX REMAINS */
+@media (min-width: 901px) {
+  .ffs-palette-cta-group .ffs-palette-wrap {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .ffs-palette-cta-group .ffs-palette-wrap::before,
+  .ffs-palette-cta-group .ffs-palette-wrap::after {
+    content: none !important;
     display: none !important;
   }
 }
@@ -2378,6 +2506,108 @@ document.addEventListener("click", function (event) {
   }
 });
 </script>
+
+
+
+<style id="mobile-bottom-gap-border-fix">
+@media (max-width: 900px) {
+  html,
+  body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  main.page-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page,
+  .ffs-shell,
+  .ffs-project-block {
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page {
+    padding-bottom: 0 !important;
+  }
+
+  .ffs-project-block {
+    padding-bottom: 14px !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .ffs-project-block::before,
+  .ffs-project-block::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-mobile-project-nav {
+    margin-bottom: 0 !important;
+  }
+
+  .ffs-footer-logo-block {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    contain-intrinsic-size: 0 !important;
+  }
+}
+</style>
+
+
+<style id="far-from-sol-desktop-geometry-lock">
+@media (min-width: 901px) {
+  .ffs-title-panel {
+    height: 190px !important;
+    min-height: 190px !important;
+    max-height: 190px !important;
+    padding: 16px 23px 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 4px !important;
+  }
+
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    transform: translateY(-6px) !important;
+  }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 46px !important;
+    padding: 6px 8px !important;
+  }
+
+  .ffs-info-panel {
+    height: 390px !important;
+    min-height: 390px !important;
+    max-height: 390px !important;
+    padding: 29px 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: auto 0 0 !important;
+    padding: 15px 17px !important;
+    flex: 0 0 auto !important;
+  }
+}
+</style>
 
 </body>
 </html>
