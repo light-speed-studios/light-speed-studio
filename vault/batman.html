@@ -2359,31 +2359,26 @@ document.addEventListener("click", function (event) {
 <style id="mobile-bottom-gap-hard-reset">
 @media (max-width: 900px) {
 
-  html {
-    height: 100% !important;
+  html, body {
+    height: auto !important;
+    min-height: 100% !important;
     background: #040e15 !important;
     margin: 0 !important;
     padding: 0 !important;
-  }
-
-  body {
-    display: block !important;
-    height: 100% !important;
-    background: #040e15 !important;
-    margin: 0 !important;
-    padding-bottom: 0 !important;
+    overflow-x: hidden !important;
   }
 
   main.page-content {
     display: block !important;
     margin: 0 !important;
-    padding-bottom: 0 !important;
+    padding: 0 !important;
     background: #040e15 !important;
   }
 
+  /* This targets the 58px bottom padding causing the gap */
   .ffs-page {
     margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    padding: 0 0 0 0 !important; 
   }
 
   .ffs-shell {
@@ -2405,7 +2400,7 @@ document.addEventListener("click", function (event) {
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     margin: 0 !important;
-    padding: 10px 14px 0 14px !important; /* Removes bottom padding from the nav block itself */
+    padding: 10px 14px 0 14px !important;
     background: #040e15 !important;
   }
 
@@ -2428,6 +2423,5 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-
 </body>
 </html>
