@@ -2355,7 +2355,6 @@ document.addEventListener("click", function (event) {
   }
 });
 </script>
-
 <style id="mobile-bottom-gap-hard-reset">
 @media (max-width: 900px) {
 
@@ -2375,10 +2374,10 @@ document.addEventListener("click", function (event) {
     background: #040e15 !important;
   }
 
-  /* This targets the 58px bottom padding causing the gap */
   .ffs-page {
     margin-bottom: 0 !important;
-    padding: 0 0 0 0 !important; 
+    /* Restored top/side padding so the header doesn't clip, kept bottom 0 */
+    padding: 34px 20px 0 20px !important; 
   }
 
   .ffs-shell {
