@@ -18,51 +18,6 @@
     }
   </style>
 
-<style>
-/* FINAL ROGUE ONE LOCKED DESKTOP GEOMETRY */
-@media (min-width: 901px) {
-  .ffs-title-panel {
-    height: 190px;
-    min-height: 190px;
-    max-height: 190px;
-    padding: 16px 23px 15px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ffs-title-panel .ffs-title-row {
-    margin-bottom: 4px;
-  }
-
-  .ffs-title-panel .ffs-meta-row {
-    margin-top: auto;
-    margin-bottom: 0;
-    transform: translateY(-6px);
-  }
-
-  .ffs-title-panel .ffs-meta-card {
-    min-height: 46px;
-    padding: 6px 8px;
-  }
-
-  .ffs-info-panel {
-    height: 390px;
-    min-height: 390px;
-    max-height: 390px;
-    padding: 29px 32px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ffs-info-panel .ffs-working-title {
-    margin: auto 0 0;
-    padding: 15px 17px;
-    flex: 0 0 auto;
-  }
-}
-</style>
-
-
 <style id="far-from-sol-mobile-synopsis-gap-fix">
 @media (max-width: 900px) {
   .ffs-poster-panel {
@@ -319,16 +274,7 @@
       z-index: 4;
     }
 
-    .ffs-title-tagline {
-    margin: 0;
-    font-size: 20px;
-    font-style: italic;
-    font-weight: 500;
-    line-height: 1.25;
-    color: var(--text-soft);
-  }
-
-  .ffs-title-panel .ffs-meta-row {
+    .ffs-title-panel .ffs-meta-row {
       margin-bottom: 0;
     }
 
@@ -371,7 +317,14 @@
 
 .ffs-meta-row {
   display: grid;
-  grid-template-columns: 1.35fr 0.75fr 0.95fr 0.90fr 0.90fr 1.05fr 0.80fr;
+  grid-template-columns:
+    1.35fr
+    0.75fr
+    0.95fr
+    0.90fr
+    0.90fr
+    1.05fr
+    0.80fr;
   gap: 8px;
   margin: 0 0 22px;
 }
@@ -825,13 +778,13 @@
   content-visibility:auto;
   contain-intrinsic-size:400px;
 }
+
 .ffs-trailer-section {
   content-visibility: visible;
   contain-intrinsic-size: auto;
   contain: none;
   
 }
-
 .ffs-mobile-trailer-link {
   display: none;
 }
@@ -860,18 +813,7 @@
   display: none;
 }
 
-    .ffs-mobile-project-header {
-      display: none;
-    }
-
     @media (max-width: 900px) {
-      .ffs-mobile-project-header {
-        display: block;
-        width: 98%;
-        height: auto;
-        margin: 0 auto 14px;
-      }
-
       .ffs-page {
         padding: 0 0 42px;
       }
@@ -1301,6 +1243,19 @@
       }
     }
   
+  .ffs-mobile-project-header {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .ffs-mobile-project-header {
+      display: block;
+      width: 98%;
+      height: auto;
+      margin: 0 auto 14px;
+    }
+  }
+
 
 /* LANDING PAGE SOUNDTRACK MODAL */
 .ffs-soundtrack-modal-toggle { display: none; }
@@ -1616,6 +1571,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
 /* REDDIT ICON OPTICAL SIZE MATCH */
 .ffs-reddit-review .ffs-cta-icon {
   width: 44px;
@@ -1690,6 +1646,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     width: 34px;
     height: 34px;
   }
+
   .ffs-reddit-review .ffs-cta-icon {
     width: 28px;
     height: 28px;
@@ -1793,7 +1750,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
    Shared landing-page desktop composition
 ======================================================= */
 @media (min-width: 901px) {
-.ffs-page { padding-top: 25px; }
+  .ffs-page { padding-top: 25px; }
 
   .ffs-desktop-composition {
     display: grid;
@@ -1846,10 +1803,15 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     grid-row: 1;
     margin: 0;
     padding: 16px 23px 15px;
+    height: 190px;
+    min-height: 190px;
+    max-height: 190px;
+    display: flex;
+    flex-direction: column;
   }
 
   .ffs-title-panel .ffs-title-row {
-    margin-bottom: 1px;
+    margin-bottom: 4px;
   }
 
   .ffs-title-tagline {
@@ -1862,21 +1824,26 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-title-panel .ffs-meta-row {
-    margin-top: 14px;
+    margin-top: auto;
+    margin-bottom: 0;
+    transform: translateY(-6px);
   }
 
   .ffs-title-panel .ffs-meta-card {
-    min-height: 44px;
+    min-height: 46px;
     padding: 6px 8px;
   }
 
   .ffs-info-panel {
     grid-column: 2;
     grid-row: 2;
-    height: auto;
-    min-height: 0;
+    height: 390px;
+    min-height: 390px;
+    max-height: 390px;
     margin: 0;
     padding: 29px 32px;
+    display: flex;
+    flex-direction: column;
   }
 
   .ffs-palette-wrap {
@@ -1936,6 +1903,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   .ffs-info-panel .ffs-working-title {
     margin: auto 0 0;
     padding: 15px 17px;
+    flex: 0 0 auto;
   }
 
   .ffs-info-panel .ffs-working-title strong {
@@ -1966,6 +1934,22 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 
+
+/* REMOVE INNER PALETTE FRAME — OUTER COMBINED BOX REMAINS */
+@media (min-width: 901px) {
+  .ffs-palette-cta-group .ffs-palette-wrap {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .ffs-palette-cta-group .ffs-palette-wrap::before,
+  .ffs-palette-cta-group .ffs-palette-wrap::after {
+    content: none !important;
+    display: none !important;
+  }
+}
 
 </style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
@@ -2001,15 +1985,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <div class="ffs-title-row">
         <h1 class="ffs-title">Far From Sol</h1>
       </div>
-
       <p class="ffs-title-tagline">Into the Dying Light</p>
-
-      <div class="ffs-meta-row ffs-desktop-meta">
-     <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">130 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">28 Jun 2026</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">Project Hail Mary 2026</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">156 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.43:1 IMAX</span></div>
+ <div class="ffs-meta-row ffs-desktop-meta">
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">130 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">28 Jun 2026</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">Project Hail Mary 2026</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">156 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.43:1 IMAX</span></div>
 </div>
     </div>
 
@@ -2024,6 +2006,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <strong>The Astrophage Paradox</strong>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -2210,6 +2193,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </iframe>
 </div>
 </div>
+
 </div>
 
 <nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
@@ -2246,35 +2230,30 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       </div>
       <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
     </div>
+
     <div class="ffs-soundtrack-modal-content">
       <div class="ffs-soundtrack-modal-content-inner">
 <ul>
-
   <li>
     <strong>From Gold | Novo Amor</strong>
-    <p>Grace's ship exploring and crew reflection </p>
+    <p>Grace's ship exploring and crew reflection</p>
   </li>
-
   <li>
     <strong>Docking at Lovell City | Clinton Shorter (<em>The Expanse</em>)</strong>
     <p>Adapted into a recurring emotional leitmotif associated with Grace's family memories.</p>
   </li>
-
   <li>
     <strong>Someday | Sugar Ray</strong>
     <p>The Journey to Tau Ceti E montage.</p>
   </li>
-
   <li>
     <strong>Interstellar Countdown | Bill Irwin / <em>Interstellar</em></strong>
     <p>Grace's mission acceptance montage and decision to join Project Hail Mary.</p>
   </li>
-
   <li>
     <strong>This Too Shall Pass | OK Go</strong>
     <p>Final scenes and end credits.</p>
   </li>
-
 </ul>
       </div>
     </div>
@@ -2295,9 +2274,64 @@ document.addEventListener("click", function (event) {
 </script>
 
 
+<style id="mobile-bottom-gap-border-fix">
+@media (max-width: 900px) {
+  html,
+  body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
 
-<style>
-/* FINAL ROGUE ONE DESKTOP GEOMETRY — AUTHORITATIVE LOCK */
+  main.page-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page,
+  .ffs-shell,
+  .ffs-project-block {
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page {
+    padding-bottom: 0 !important;
+  }
+
+  .ffs-project-block {
+    padding-bottom: 14px !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .ffs-project-block::before,
+  .ffs-project-block::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-mobile-project-nav {
+    margin-bottom: 0 !important;
+  }
+
+  .ffs-footer-logo-block {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    contain-intrinsic-size: 0 !important;
+  }
+}
+</style>
+
+
+<style id="far-from-sol-desktop-geometry-lock">
 @media (min-width: 901px) {
   .ffs-title-panel {
     height: 190px !important;
@@ -2307,16 +2341,22 @@ document.addEventListener("click", function (event) {
     display: flex !important;
     flex-direction: column !important;
   }
-  .ffs-title-panel .ffs-title-row { margin-bottom: 4px !important; }
+
+  .ffs-title-panel .ffs-title-row {
+    margin-bottom: 4px !important;
+  }
+
   .ffs-title-panel .ffs-meta-row {
     margin-top: auto !important;
     margin-bottom: 0 !important;
     transform: translateY(-6px) !important;
   }
+
   .ffs-title-panel .ffs-meta-card {
     min-height: 46px !important;
     padding: 6px 8px !important;
   }
+
   .ffs-info-panel {
     height: 390px !important;
     min-height: 390px !important;
@@ -2325,29 +2365,13 @@ document.addEventListener("click", function (event) {
     display: flex !important;
     flex-direction: column !important;
   }
+
   .ffs-info-panel .ffs-working-title {
     margin: auto 0 0 !important;
     padding: 15px 17px !important;
     flex: 0 0 auto !important;
   }
 }
-
-/* REMOVE INNER PALETTE FRAME — OUTER COMBINED BOX REMAINS */
-@media (min-width: 901px) {
-  .ffs-palette-cta-group .ffs-palette-wrap {
-    padding: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border: 0 !important;
-  }
-
-  .ffs-palette-cta-group .ffs-palette-wrap::before,
-  .ffs-palette-cta-group .ffs-palette-wrap::after {
-    content: none !important;
-    display: none !important;
-  }
-}
-
 </style>
 
 </body>
