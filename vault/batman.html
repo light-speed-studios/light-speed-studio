@@ -2355,13 +2355,24 @@ document.addEventListener("click", function (event) {
   }
 
   .ffs-footer-logo-block {
-    display: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    height: 0 !important;
+    display: block !important;
+    width: 58% !important;
+    max-width: 230px !important;
+    height: auto !important;
     min-height: 0 !important;
-    max-height: 0 !important;
-    contain-intrinsic-size: 0 !important;
+    max-height: none !important;
+    margin: 8px auto 4px !important;
+    padding: 0 !important;
+    text-align: center !important;
+    content-visibility: visible !important;
+    contain-intrinsic-size: auto !important;
+  }
+
+  .ffs-footer-logo-block img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
   }
 }
 </style>
