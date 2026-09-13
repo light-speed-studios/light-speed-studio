@@ -2345,5 +2345,62 @@ document.addEventListener("click", function (event) {
 
 </style>
 
+
+<style id="mobile-bottom-gap-border-fix">
+@media (max-width: 900px) {
+  html,
+  body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  main.page-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page,
+  .ffs-shell,
+  .ffs-project-block {
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .ffs-page {
+    padding-bottom: 0 !important;
+  }
+
+  .ffs-project-block {
+    padding-bottom: 14px !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .ffs-project-block::before,
+  .ffs-project-block::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .ffs-mobile-project-nav {
+    margin-bottom: 0 !important;
+  }
+
+  .ffs-footer-logo-block {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    contain-intrinsic-size: 0 !important;
+  }
+}
+</style>
+
 </body>
 </html>
