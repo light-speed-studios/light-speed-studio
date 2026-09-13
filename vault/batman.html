@@ -2368,6 +2368,7 @@ document.addEventListener("click", function (event) {
   body {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
+    min-height: 0 !important;
   }
 
   main.page-content {
@@ -2381,29 +2382,20 @@ document.addEventListener("click", function (event) {
   .ffs-shell,
   .ffs-project-block {
     margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
     min-height: 0 !important;
     height: auto !important;
   }
 
-  .ffs-page {
-    padding-bottom: 0 !important;
-  }
-
   .ffs-project-block {
-    padding-bottom: 14px !important;
-    border: 0 !important;
-    outline: 0 !important;
     box-shadow: none !important;
-  }
-
-  .ffs-project-block::before,
-  .ffs-project-block::after {
-    content: none !important;
-    display: none !important;
+    border-bottom: 0 !important;
   }
 
   .ffs-mobile-project-nav {
+    margin-top: 0 !important;
     margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   .ffs-footer-logo-block {
@@ -2412,8 +2404,6 @@ document.addEventListener("click", function (event) {
     padding: 0 !important;
     height: 0 !important;
     min-height: 0 !important;
-    max-height: 0 !important;
-    contain-intrinsic-size: 0 !important;
   }
 }
 </style>
