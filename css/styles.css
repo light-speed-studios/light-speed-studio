@@ -5810,3 +5810,18 @@ body .lss-image-block.orbit-image-frame::before {
 .home-signup-wrap .lss-disclaimer {
   margin-top: 14px !important;
 }
+/* SHRINK TURNSTILE */
+
+.home-signup-wrap .lss-turnstile-row {
+  width: 210px !important;
+  height: 46px !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  flex: 0 0 210px !important;
+}
+
+.home-signup-wrap .lss-turnstile-row .cf-turnstile {
+  transform: scale(0.70) !important;
+  transform-origin: left center !important;
+  width: 300px !important;
+}
