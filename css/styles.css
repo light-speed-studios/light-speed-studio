@@ -5780,3 +5780,58 @@ body .lss-image-block.orbit-image-frame::before {
     margin-top: -18px !important;
   }
 }
+/* =======================================================
+   NEWSLETTER + TURNSTILE LAYOUT
+======================================================= */
+
+.lss-form {
+  display: block;
+  width: 100%;
+}
+
+/* Preserve original horizontal form */
+.lss-form-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.lss-form-row .lss-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.lss-form-row .lss-button {
+  flex: 0 0 auto;
+}
+
+/* Turnstile gets its own row */
+.lss-turnstile-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 14px;
+  min-height: 65px;
+}
+
+/* Keep Cloudflare from affecting surrounding layout */
+.lss-turnstile-row .cf-turnstile {
+  display: block;
+  max-width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+
+  .lss-form-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .lss-turnstile-row {
+    margin-top: 12px;
+  }
+}
