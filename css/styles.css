@@ -5832,3 +5832,19 @@ body .lss-image-block.orbit-image-frame::before {
 .home-signup-wrap .cf-turnstile {
   width: 210px !important;
 }
+/* =======================================================
+   MOBILE: HIDE TURNSTILE OFFSCREEN
+======================================================= */
+
+@media (max-width: 900px) {
+
+  #home-signup-wrap .lss-turnstile-row {
+    position: absolute !important;
+    left: -10000px !important;
+    top: 0 !important;
+    width: 300px !important;
+    height: 65px !important;
+    margin: 0 !important;
+  }
+
+}
