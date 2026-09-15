@@ -5781,140 +5781,32 @@ body .lss-image-block.orbit-image-frame::before {
   }
 }
 /* =======================================================
-   NEWSLETTER + TURNSTILE LAYOUT
-======================================================= */
-
-.lss-form {
-  display: block;
-  width: 100%;
-}
-
-/* Preserve original horizontal form */
-.lss-form-row {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 12px;
-}
-
-.lss-form-row .lss-input {
-  flex: 1;
-  min-width: 0;
-}
-
-.lss-form-row .lss-button {
-  flex: 0 0 auto;
-}
-
-/* Turnstile gets its own row */
-.lss-turnstile-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 14px;
-  min-height: 65px;
-}
-
-/* Keep Cloudflare from affecting surrounding layout */
-.lss-turnstile-row .cf-turnstile {
-  display: block;
-  max-width: 100%;
-}
-
-/* Mobile */
-@media (max-width: 900px) {
-
-  .lss-form-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .lss-turnstile-row {
-    margin-top: 12px;
-  }
-}
-/* =======================================================
-   NEWSLETTER + TURNSTILE FINAL POSITION FIX
+   NEWSLETTER TURNSTILE
 ======================================================= */
 
 .home-signup-wrap .lss-form {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  grid-template-rows: auto auto !important;
-  width: 100% !important;
-  justify-items: center !important;
-  align-items: center !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
 }
 
-/* ROW 1: ALERTS + EMAIL + JOIN */
-.home-signup-wrap .lss-form-row {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: center !important;
-
-  width: 100% !important;
-  gap: 8px !important;
-}
-
-/* Keep original email proportions */
-.home-signup-wrap .lss-form-row .lss-input {
-  flex: 0 1 265px !important;
-  min-width: 0 !important;
-}
-
-.home-signup-wrap .lss-form-row .lss-button {
-  flex: 0 0 auto !important;
-}
-
-/* ROW 2: TURNSTILE */
 .home-signup-wrap .lss-turnstile-row {
-  grid-column: 1 !important;
-  grid-row: 2 !important;
-
-  position: static !important;
-  float: none !important;
-  transform: none !important;
-
   display: flex !important;
+  width: 100% !important;
   justify-content: center !important;
   align-items: center !important;
-
-  width: 100% !important;
-  margin: 14px 0 0 !important;
+  margin: 14px auto 0 !important;
+  padding: 0 !important;
+  clear: both !important;
 }
 
-/* Cloudflare widget */
 .home-signup-wrap .lss-turnstile-row .cf-turnstile {
-  position: static !important;
-  float: none !important;
-  transform: none !important;
+  display: block !important;
   margin: 0 auto !important;
-  flex: none !important;
 }
 
-/* Disclaimer */
 .home-signup-wrap .lss-disclaimer {
   margin-top: 14px !important;
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-
-  .home-signup-wrap .lss-form-row {
-    gap: 6px !important;
-  }
-
-  .home-signup-wrap .lss-form-row .lss-input {
-    flex: 1 1 auto !important;
-  }
-
-  .home-signup-wrap .lss-turnstile-row {
-    margin-top: 12px !important;
-  }
 }
