@@ -5824,3 +5824,11 @@ body .lss-image-block.orbit-image-frame::before {
   transform-origin: left center !important;
   width: 300px !important;
 }
+.home-signup-wrap .lss-turnstile-row {
+  width: 210px !important;
+  margin: 0 !important;
+}
+
+.home-signup-wrap .cf-turnstile {
+  width: 210px !important;
+}
