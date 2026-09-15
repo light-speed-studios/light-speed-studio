@@ -5836,73 +5836,85 @@ body .lss-image-block.orbit-image-frame::before {
   }
 }
 /* =======================================================
-   NEWSLETTER + TURNSTILE FINAL LAYOUT
+   NEWSLETTER + TURNSTILE FINAL POSITION FIX
 ======================================================= */
 
-/* Form itself stacks the signup row and Turnstile */
-.lss-form {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
+.home-signup-wrap .lss-form {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: auto auto !important;
   width: 100% !important;
+  justify-items: center !important;
+  align-items: center !important;
 }
 
-/* Keep ALERTS + EMAIL + JOIN together */
-.lss-form-row {
+/* ROW 1: ALERTS + EMAIL + JOIN */
+.home-signup-wrap .lss-form-row {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 8px !important;
+
   width: 100% !important;
+  gap: 8px !important;
 }
 
-/* Email field */
-.lss-form-row .lss-input {
+/* Keep original email proportions */
+.home-signup-wrap .lss-form-row .lss-input {
   flex: 0 1 265px !important;
   min-width: 0 !important;
 }
 
-/* Join button */
-.lss-form-row .lss-button {
+.home-signup-wrap .lss-form-row .lss-button {
   flex: 0 0 auto !important;
 }
 
-/* Force Turnstile onto its OWN row */
-.lss-turnstile-row {
+/* ROW 2: TURNSTILE */
+.home-signup-wrap .lss-turnstile-row {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+
+  position: static !important;
+  float: none !important;
+  transform: none !important;
+
   display: flex !important;
-  width: 100% !important;
   justify-content: center !important;
   align-items: center !important;
-  margin-top: 14px !important;
-  clear: both !important;
+
+  width: 100% !important;
+  margin: 14px 0 0 !important;
 }
 
-/* Turnstile widget */
-.lss-turnstile-row .cf-turnstile {
-  display: block !important;
+/* Cloudflare widget */
+.home-signup-wrap .lss-turnstile-row .cf-turnstile {
+  position: static !important;
+  float: none !important;
+  transform: none !important;
+  margin: 0 auto !important;
   flex: none !important;
 }
 
 /* Disclaimer */
-.lss-disclaimer {
+.home-signup-wrap .lss-disclaimer {
   margin-top: 14px !important;
 }
 
 /* MOBILE */
 @media (max-width: 900px) {
 
-  .lss-form-row {
-    width: 100% !important;
+  .home-signup-wrap .lss-form-row {
     gap: 6px !important;
   }
 
-  .lss-form-row .lss-input {
+  .home-signup-wrap .lss-form-row .lss-input {
     flex: 1 1 auto !important;
-    min-width: 0 !important;
   }
 
-  .lss-turnstile-row {
+  .home-signup-wrap .lss-turnstile-row {
     margin-top: 12px !important;
   }
 }
