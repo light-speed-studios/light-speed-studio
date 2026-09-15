@@ -5821,7 +5821,6 @@ body .lss-image-block.orbit-image-frame::before {
 }
 
 .home-signup-wrap .lss-turnstile-row .cf-turnstile {
-  transform: scale(0.70) !important;
   transform-origin: left center !important;
   width: 300px !important;
 }
