@@ -1637,11 +1637,12 @@
 </style>
 
 
-<style id="bridge-desktop-spacing-tighten">
+<style id="bridge-desktop-hero-up">
 @media (min-width: 901px) {
-  /* Cut the desktop space above the Hero roughly in half. */
+  /* Pull the entire Hero upward into the existing top gap. */
   .home-hero-section {
-    padding-top: 24px !important;
+    transform: translateY(-24px) !important;
+    margin-bottom: -24px !important;
   }
 }
 </style>
