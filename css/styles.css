@@ -492,6 +492,12 @@ border: 1px solid rgba(4,12,21,.55);
   text-align: left;
 }
 
+/* Move the entire index Vault block up 5px through normal document flow. */
+.vault-section-heading {
+  margin-top: 30px;
+}
+
+
 .section-heading::before {
   content: "";
  width: 11px;
@@ -5880,4 +5886,3 @@ body .lss-image-block.orbit-image-frame::before {
     top: -5px !important;
   }
 }
-
