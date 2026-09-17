@@ -5848,3 +5848,19 @@ body .lss-image-block.orbit-image-frame::before {
   }
 
 }
+/* =======================================================
+   DESKTOP VERTICAL SPACING TWEAK
+   ======================================================= */
+@media (min-width: 901px) {
+
+  /* Move entire ALERTS + Turnstile + disclaimer area up 6px */
+  .home-signup-wrap {
+    transform: translateY(-6px) !important;
+  }
+
+  /* Move VAULT heading + rail up 5px */
+  .section-heading,
+  .vault-combined-section {
+    transform: translateY(-5px) !important;
+  }
+}
