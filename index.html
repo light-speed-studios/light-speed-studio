@@ -1707,6 +1707,11 @@
 }
 
 @media (min-width: 901px) {
+  /* 3px breathing room directly under the desktop BRIDGE title */
+  .bridge-studio-log {
+    padding-top: 3px !important;
+  }
+
   .bridge-mobile-blurb,
   .bridge-mobile-newsletter {
     display: none !important;
@@ -1749,28 +1754,8 @@
     opacity: .86;
   }
 
-  .bridge-studio-blurb {
-    margin: 0 0 18px;
-    padding: 0 2px 18px;
-    border-bottom: 1px solid rgba(0,174,222,.18);
-    color: #bac7d5;
-    font-family: Rajdhani, Arial, sans-serif;
-    font-size: clamp(20px, 1.55vw, 27px);
-    line-height: 1.55;
-    letter-spacing: .015em;
-  }
-
   .bridge-studio-meta {
     position: relative;
-  }
-
-  .bridge-studio-meta-title {
-    margin: 0 0 8px;
-    color: #00AEDE;
-    font-family: Oxanium, Rajdhani, Arial, sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: .12em;
   }
 
   .bridge-studio-meta-row {
@@ -2091,15 +2076,15 @@
 <div class="section-heading orbit-desktop-only">
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
+<div class="bridge-body bridge-mobile-blurb">
+<p>Every edit begins with an emotional connection. Each cut is made to reveal a clearer, more focused version of the story while honoring the original vision. The result is a fresh perspective on films that already mean so much to their fans.
+  </p></div>
+
 <!-- DESKTOP ONLY: Bridge blurb + Studio Log -->
 <section class="bridge-studio-log" aria-label="Light Speed Studios overview">
   <div class="bridge-studio-log-inner">
-    <p class="bridge-studio-blurb">Every edit begins with an emotional connection. Each cut is made to reveal a clearer, more focused version of the story while honoring the original vision. The result is a fresh perspective on films that already mean so much to their fans.</p>
-
-    <div class="bridge-studio-meta">
-      <div class="bridge-studio-meta-title">STUDIO LOG</div>
-
-      <div class="bridge-studio-meta-row">
+<div class="bridge-studio-meta">
+<div class="bridge-studio-meta-row">
         <span class="bridge-studio-dot"></span>
         <span class="bridge-studio-label">FINISHED EDITS</span>
         <span class="bridge-studio-value">06</span>
