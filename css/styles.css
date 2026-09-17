@@ -1433,9 +1433,6 @@ background:
       filter: brightness(.75);
       z-index: 2;
     }
-.section-heading.orbit-desktop-only {
-  margin-bottom: 5px !important; /* Adjust this to move text closer */
-}
     .vault-combined-section.mobile-mode #mobile-list .box:nth-child(n+4) {
       display: none;
     }
