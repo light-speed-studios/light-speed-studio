@@ -5887,14 +5887,10 @@ body .lss-image-block.orbit-image-frame::before {
   }
 }
 
-
-/* =======================================================
-   DESKTOP BRIDGE META GAP
-   Match the spacing under BRIDGE to the VAULT heading.
-======================================================= */
+/* Desktop Bridge heading: match Vault spacing above the metadata box */
 @media (min-width: 901px) {
-  .bridge-studio-log {
-    margin-top: 45px !important;
-    padding-top: 0 !important;
+  .section-heading.orbit-desktop-only {
+    margin-bottom: 0 !important;
+    padding-bottom: 3px !important;
   }
 }
