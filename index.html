@@ -1694,6 +1694,141 @@
 }
 </style>
 
+
+<style id="bridge-studio-log-and-newsletter-relocation">
+/* =======================================================
+   BRIDGE STUDIO LOG + DESKTOP NEWSLETTER RELOCATION
+   Mobile layout remains on the existing Bridge treatment.
+======================================================= */
+
+.bridge-studio-log,
+.orbit-desktop-newsletter {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .bridge-mobile-blurb,
+  .bridge-mobile-newsletter {
+    display: none !important;
+  }
+
+  .bridge-studio-log {
+    display: block;
+    width: min(1220px, calc(100% - 40px));
+    margin: 12px auto 38px;
+    box-sizing: border-box;
+  }
+
+  .bridge-studio-log-inner {
+    position: relative;
+    padding: 22px 28px 20px;
+    box-sizing: border-box;
+    background:
+      linear-gradient(90deg, rgba(0,174,222,.075), transparent 46%),
+      rgba(255,255,255,.022);
+    border: 1px solid rgba(0,174,222,.30);
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.012),
+      0 0 24px rgba(0,174,222,.07);
+  }
+
+  .bridge-studio-log-inner::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    background:
+      linear-gradient(#00AEDE,#00AEDE) left top / 42px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left top / 2px 42px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 42px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 2px 42px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 42px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 42px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 42px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 42px no-repeat;
+    opacity: .86;
+  }
+
+  .bridge-studio-blurb {
+    margin: 0 0 18px;
+    padding: 0 2px 18px;
+    border-bottom: 1px solid rgba(0,174,222,.18);
+    color: #bac7d5;
+    font-family: Rajdhani, Arial, sans-serif;
+    font-size: clamp(20px, 1.55vw, 27px);
+    line-height: 1.55;
+    letter-spacing: .015em;
+  }
+
+  .bridge-studio-meta {
+    position: relative;
+  }
+
+  .bridge-studio-meta-title {
+    margin: 0 0 8px;
+    color: #00AEDE;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+
+  .bridge-studio-meta-row {
+    display: grid;
+    grid-template-columns: 14px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    min-height: 34px;
+    border-top: 1px solid rgba(0,174,222,.13);
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    letter-spacing: .10em;
+  }
+
+  .bridge-studio-meta-row:last-child {
+    border-bottom: 1px solid rgba(0,174,222,.13);
+  }
+
+  .bridge-studio-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #00AEDE;
+    box-shadow: 0 0 8px rgba(0,174,222,.42);
+  }
+
+  .bridge-studio-label {
+    color: #bac7d5;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bridge-studio-value {
+    color: #7beaff;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .orbit-desktop-newsletter {
+    display: block !important;
+    width: min(1220px, calc(100% - 40px));
+    margin: 34px auto 42px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .bridge-mobile-blurb,
+  .bridge-mobile-newsletter {
+    display: block;
+  }
+
+  .bridge-studio-log,
+  .orbit-desktop-newsletter {
+    display: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -1956,10 +2091,46 @@
 <div class="section-heading orbit-desktop-only">
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
-<div class="bridge-body">
+<div class="bridge-body bridge-mobile-blurb">
 <p>Every edit begins with an emotional connection. Each cut is made to reveal a clearer, more focused version of the story while honoring the original vision. The result is a fresh perspective on films that already mean so much to their fans.
   </p></div>
-<section id="home-signup-wrap" class="home-signup-wrap">
+
+<!-- DESKTOP ONLY: Bridge blurb + Studio Log -->
+<section class="bridge-studio-log" aria-label="Light Speed Studios overview">
+  <div class="bridge-studio-log-inner">
+    <p class="bridge-studio-blurb">Every edit begins with an emotional connection. Each cut is made to reveal a clearer, more focused version of the story while honoring the original vision. The result is a fresh perspective on films that already mean so much to their fans.</p>
+
+    <div class="bridge-studio-meta">
+      <div class="bridge-studio-meta-title">STUDIO LOG</div>
+
+      <div class="bridge-studio-meta-row">
+        <span class="bridge-studio-dot"></span>
+        <span class="bridge-studio-label">FINISHED EDITS</span>
+        <span class="bridge-studio-value">06</span>
+      </div>
+
+      <div class="bridge-studio-meta-row">
+        <span class="bridge-studio-dot"></span>
+        <span class="bridge-studio-label">IN PRODUCTION</span>
+        <span class="bridge-studio-value">02</span>
+      </div>
+
+      <div class="bridge-studio-meta-row">
+        <span class="bridge-studio-dot"></span>
+        <span class="bridge-studio-label">UPCOMING EDITS</span>
+        <span class="bridge-studio-value">14</span>
+      </div>
+
+      <div class="bridge-studio-meta-row">
+        <span class="bridge-studio-dot"></span>
+        <span class="bridge-studio-label">ESTABLISHED</span>
+        <span class="bridge-studio-value">2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="home-signup-wrap" class="home-signup-wrap bridge-mobile-newsletter">
   <div class="lss-embed">
 
     <form action="https://submit-form.com/Es2Ypoxuk" class="lss-form" method="POST">
@@ -2271,6 +2442,54 @@
     </picture>
   </div>
 </div>
+
+<!-- DESKTOP ONLY: Newsletter moved below Orbit -->
+<section id="home-signup-wrap-desktop" class="home-signup-wrap orbit-desktop-newsletter">
+  <div class="lss-embed">
+
+    <form action="https://submit-form.com/Es2Ypoxuk" class="lss-form" method="POST">
+
+      <input
+        name="_redirect"
+        type="hidden"
+        value="https://light-speed.studio/email-landing-page.html"
+      />
+
+      <!-- ORIGINAL FORM ROW -->
+      <div class="lss-form-row">
+        <label class="lss-label" for="email-desktop">ALERTS</label>
+
+        <input
+          class="lss-input"
+          id="email-desktop"
+          name="email"
+          placeholder="ENTER EMAIL"
+          required
+          type="email"
+        />
+
+        <button class="lss-button" type="submit">JOIN</button>
+      </div>
+
+      <!-- TURNSTILE ROW -->
+      <div class="lss-turnstile-row">
+        <div
+          class="cf-turnstile"
+          data-sitekey="0x4AAAAAAE1MyN5U_qewG4Qt"
+          data-theme="dark"
+          data-size="flexible">
+        </div>
+      </div>
+
+    </form>
+
+    <p class="lss-disclaimer">
+      Twice-monthly newsletter on edits. No SPAM!
+    </p>
+
+  </div>
+</section>
+
 <div class="bridge-body disclaimer-body">
 <p><strong>DISCLAIMER</strong> Light Speed Studios respects intellectual property rights and does not support piracy. These edits are transformative, non-profit works created for entertainment purposes only. To support the original filmmakers, viewers should have a legal copy or official streaming access to the original film. Fanedits are never sold or monetized.
 
