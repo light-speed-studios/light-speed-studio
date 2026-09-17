@@ -5864,3 +5864,20 @@ body .lss-image-block.orbit-image-frame::before {
     transform: translateY(-5px) !important;
   }
 }
+
+/* =======================================================
+   FINAL DESKTOP ALERTS + VAULT POSITION NUDGES
+   ======================================================= */
+@media (min-width: 901px) {
+  body .home-signup-wrap {
+    position: relative !important;
+    top: -6px !important;
+  }
+
+  body .section-heading.vault-heading,
+  body .vault-combined-section {
+    position: relative !important;
+    top: -5px !important;
+  }
+}
+
