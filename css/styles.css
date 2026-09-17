@@ -494,7 +494,7 @@ border: 1px solid rgba(4,12,21,.55);
 
 /* Move the entire index Vault block up 5px through normal document flow. */
 .vault-section-heading {
-  margin-top: 30px;
+  margin-top: 25px !important;
 }
 
 
