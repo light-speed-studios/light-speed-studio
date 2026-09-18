@@ -1821,6 +1821,62 @@
 }
 </style>
 
+
+<style id="mobile-bridge-meta-and-desktop-social-fix">
+.bridge-mobile-meta { display: none; }
+
+@media (max-width: 900px) {
+  .bridge-mobile-meta {
+    display: block !important;
+    width: calc(100% - 28px);
+    margin: 0 auto 18px;
+    box-sizing: border-box;
+  }
+  .bridge-mobile-meta .bridge-studio-meta {
+    position: relative;
+    padding: 12px 14px;
+    background: linear-gradient(90deg, rgba(0,174,222,.075), transparent 46%), rgba(255,255,255,.022);
+    border: 1px solid rgba(0,174,222,.30);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.012), 0 0 18px rgba(0,174,222,.07);
+  }
+  .bridge-mobile-meta .bridge-studio-meta::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    background:
+      linear-gradient(#00AEDE,#00AEDE) left top / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left top / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 30px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 30px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 30px no-repeat;
+    opacity: .86;
+  }
+  .bridge-mobile-meta .bridge-studio-meta-row {
+    display: grid;
+    grid-template-columns: 12px 1fr auto;
+    align-items: center;
+    gap: 9px;
+    min-height: 38px;
+    border-top: 1px solid rgba(0,174,222,.13);
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    letter-spacing: .08em;
+  }
+  .bridge-mobile-meta .bridge-studio-meta-row:last-child { border-bottom: 1px solid rgba(0,174,222,.13); }
+  .bridge-mobile-meta .bridge-studio-dot { width: 6px; height: 6px; border-radius: 50%; background: #00AEDE; box-shadow: 0 0 7px rgba(0,174,222,.42); }
+  .bridge-mobile-meta .bridge-studio-label { color: #bac7d5; font-size: 11px; font-weight: 600; }
+  .bridge-mobile-meta .bridge-studio-value { color: #7beaff; font-size: 12px; font-weight: 600; text-align: right; }
+}
+
+@media (min-width: 901px) {
+  .footer-socials > a[href="#home-signup-wrap"] { display: none !important; }
+  .footer-socials { justify-content: center !important; }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -2083,9 +2139,14 @@
 <div class="section-heading orbit-desktop-only">
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
-<div class="bridge-body bridge-mobile-blurb">
-<p>Every edit begins with an emotional connection. Each cut is made to reveal a clearer, more focused version of the story while honoring the original vision. The result is a fresh perspective on films that already mean so much to their fans.
-  </p></div>
+<section class="bridge-mobile-meta" aria-label="Light Speed Studios overview">
+  <div class="bridge-studio-meta">
+    <div class="bridge-studio-meta-row"><span class="bridge-studio-dot"></span><span class="bridge-studio-label">FINISHED EDITS</span><span class="bridge-studio-value">11</span></div>
+    <div class="bridge-studio-meta-row"><span class="bridge-studio-dot"></span><span class="bridge-studio-label">IN PRODUCTION</span><span class="bridge-studio-value">02</span></div>
+    <div class="bridge-studio-meta-row"><span class="bridge-studio-dot"></span><span class="bridge-studio-label">UPCOMING EDITS</span><span class="bridge-studio-value">14</span></div>
+    <div class="bridge-studio-meta-row"><span class="bridge-studio-dot"></span><span class="bridge-studio-label">ESTABLISHED</span><span class="bridge-studio-value">2023</span></div>
+  </div>
+</section>
 
 <!-- DESKTOP ONLY: Bridge blurb + Studio Log -->
 <section class="bridge-studio-log" aria-label="Light Speed Studios overview">
