@@ -1797,7 +1797,14 @@
   .orbit-desktop-newsletter {
     display: block !important;
     width: min(1220px, calc(100% - 40px));
-    margin: 34px auto 42px !important;
+    margin: 90px auto 90px !important;
+  }
+
+  .orbit-desktop-newsletter .orbit-newsletter-alerts {
+    display: block !important;
+    width: 100%;
+    margin: 0 auto 18px !important;
+    text-align: center !important;
   }
 }
 
@@ -2435,10 +2442,11 @@
         value="https://light-speed.studio/email-landing-page.html"
       />
 
-      <!-- ORIGINAL FORM ROW -->
-      <div class="lss-form-row">
-        <label class="lss-label" for="email-desktop">ALERTS</label>
+      <!-- DESKTOP NEWSLETTER TITLE -->
+      <label class="lss-label orbit-newsletter-alerts" for="email-desktop">ALERTS</label>
 
+      <!-- FORM ROW -->
+      <div class="lss-form-row">
         <input
           class="lss-input"
           id="email-desktop"
