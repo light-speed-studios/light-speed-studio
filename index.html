@@ -1814,6 +1814,29 @@
     display: block;
   }
 
+  /* Mobile newsletter: keep ALERTS/email/JOIN on row one, Turnstile on row two. */
+  .bridge-mobile-newsletter .lss-form {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .bridge-mobile-newsletter .lss-form-row {
+    width: 100% !important;
+  }
+
+  .bridge-mobile-newsletter .lss-turnstile-row {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 10px !important;
+  }
+
+  .bridge-mobile-newsletter .cf-turnstile {
+    max-width: 100% !important;
+  }
+
   .bridge-studio-log,
   .orbit-desktop-newsletter {
     display: none !important;
