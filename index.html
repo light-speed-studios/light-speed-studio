@@ -1900,6 +1900,31 @@
 }
 </style>
 
+
+<style id="mobile-section-heading-alignment-fix">
+@media (max-width: 900px) {
+  /* Keep VAULT, LAB and ORBIT titles on the same left edge. */
+  .vault-section-heading,
+  .lab-mobile-section-heading {
+    width: calc(100% - 28px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Give all three titles the same 14px gap before their content. */
+  .vault-section-heading,
+  .lab-mobile-section-heading {
+    margin-bottom: 14px !important;
+  }
+
+  .orbit-heading-row {
+    width: calc(100% - 28px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 14px !important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -2451,7 +2476,7 @@
 <!-- =======================================================
        SECTION 3: F1 HERO
   ======================================================= -->
-<div class="section-heading">
+<div class="section-heading lab-mobile-section-heading">
 <a class="heading-link" href="lab.html">
 <span class="lead">L</span><span class="rest">AB</span>
 </a>
