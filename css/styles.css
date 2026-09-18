@@ -5891,3 +5891,25 @@ body .lss-image-block.orbit-image-frame::before {
     padding-bottom: 3px !important;
   }
 }
+@media (max-width: 900px) {
+
+  /* Keep ALERTS + email + JOIN together */
+  .bridge-mobile-newsletter .lss-form-row {
+    width: 100% !important;
+  }
+
+  /* Put Turnstile on its own line below */
+  .bridge-mobile-newsletter .lss-turnstile-row {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 12px !important;
+    clear: both !important;
+  }
+
+  /* Give Turnstile its full available width */
+  .bridge-mobile-newsletter .cf-turnstile {
+    width: min(300px, 100%) !important;
+    max-width: 100% !important;
+  }
+}
