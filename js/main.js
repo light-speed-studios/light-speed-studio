@@ -146,6 +146,7 @@
 
     welcomeSlide.classList.remove('active');
     carousel.classList.remove('welcome-active');
+    setWelcomeControls(false);
 
     /* The welcome is removed after the crossfade, so it cannot return. */
     window.setTimeout(() => {
@@ -153,6 +154,19 @@
     }, welcomeFadeTime);
 
     startAutoPlay();
+  }
+
+  function setWelcomeControls(isWelcome) {
+    const vaultButton = carousel.querySelector('.hero-vault-button');
+    const indicatorGroup = carousel.querySelector('.indicators');
+
+    if (vaultButton) {
+      vaultButton.style.setProperty('display', isWelcome ? 'none' : '', 'important');
+    }
+
+    if (indicatorGroup) {
+      indicatorGroup.style.setProperty('display', isWelcome ? 'none' : '', 'important');
+    }
   }
 
   function startWelcomeTimer() {
@@ -208,6 +222,7 @@
 
     welcomeSlide.classList.add('active');
     carousel.classList.add('welcome-active');
+    setWelcomeControls(true);
 
     /*
       IMPORTANT:
