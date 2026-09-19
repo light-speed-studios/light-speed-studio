@@ -60,43 +60,98 @@
   const carousel = document.getElementById('heroCarousel');
   if (!carousel) return;
 
-  const slides = carousel.querySelectorAll('.slide');
-  const indicators = carousel.querySelectorAll('.indicator');
+  const welcomeSlide = carousel.querySelector('.hero-welcome-slide');
+  const slides = Array.from(carousel.querySelectorAll('.slide:not(.hero-welcome-slide)'));
+  const indicators = Array.from(carousel.querySelectorAll('.indicator'));
   const prevBtn = carousel.querySelector('.nav-arrow.left');
   const nextBtn = carousel.querySelector('.nav-arrow.right');
 
   let current = 0;
   let autoPlay = null;
+  let welcomeTimer = null;
+  let welcomeActive = Boolean(welcomeSlide);
+
   const autoDelay = 6000;
+  const welcomeDuration = 3200;
+  const welcomeFadeTime = 950;
 
   function showSlide(index) {
+    if (!slides.length) return;
+
     current = (index + slides.length) % slides.length;
+
     slides.forEach((slide, i) => {
       slide.classList.toggle('active', i === current);
     });
+
     indicators.forEach((dot, i) => {
       dot.classList.toggle('active', i === current);
     });
   }
 
-  function nextSlide() { showSlide(current + 1); }
-  function prevSlide() { showSlide(current - 1); }
-  function startAutoPlay() {
-    stopAutoPlay();
-    autoPlay = setInterval(nextSlide, autoDelay);
+  function nextSlide() {
+    if (welcomeActive) return;
+    showSlide(current + 1);
   }
+
+  function prevSlide() {
+    if (welcomeActive) return;
+    showSlide(current - 1);
+  }
+
+  function startAutoPlay() {
+    if (welcomeActive || !slides.length) return;
+
+    stopAutoPlay();
+    autoPlay = window.setInterval(nextSlide, autoDelay);
+  }
+
   function stopAutoPlay() {
     if (autoPlay) {
-      clearInterval(autoPlay);
+      window.clearInterval(autoPlay);
       autoPlay = null;
     }
   }
 
-  if (prevBtn) { prevBtn.addEventListener('click', function () { prevSlide(); startAutoPlay(); }); }
-  if (nextBtn) { nextBtn.addEventListener('click', function () { nextSlide(); startAutoPlay(); }); }
+  function finishWelcome() {
+    if (!welcomeSlide || !welcomeActive) return;
+
+    welcomeActive = false;
+    window.clearTimeout(welcomeTimer);
+
+    /* Bring Superman in as the first real carousel slide. */
+    showSlide(0);
+    welcomeSlide.classList.remove('active');
+    carousel.classList.remove('welcome-active');
+
+    /* Remove the welcome from the DOM after its fade finishes.
+       It can never appear again during this page visit. */
+    window.setTimeout(() => {
+      welcomeSlide.remove();
+    }, welcomeFadeTime);
+
+    startAutoPlay();
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      if (welcomeActive) return;
+      prevSlide();
+      startAutoPlay();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      if (welcomeActive) return;
+      nextSlide();
+      startAutoPlay();
+    });
+  }
 
   indicators.forEach((dot, index) => {
     dot.addEventListener('click', function () {
+      if (welcomeActive) return;
       showSlide(index);
       startAutoPlay();
     });
@@ -107,8 +162,18 @@
     wrapper.addEventListener('mouseleave', startAutoPlay);
   });
 
-  showSlide(0);
-  setTimeout(() => { startAutoPlay(); }, 2400);
+  if (welcomeSlide) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(dot => dot.classList.remove('active'));
+
+    welcomeSlide.classList.add('active');
+    carousel.classList.add('welcome-active');
+
+    welcomeTimer = window.setTimeout(finishWelcome, welcomeDuration);
+  } else {
+    showSlide(0);
+    window.setTimeout(startAutoPlay, 2400);
+  }
 })();
 
 (function () {
