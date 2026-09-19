@@ -5914,14 +5914,19 @@ body .lss-image-block.orbit-image-frame::before {
   }
 }
 /* =======================================================
-   LSS SPLASH — 0.8s ENTRANCE + 0.8s EXIT
+   LSS SPLASH — SOFT ENTRANCE + EXIT
 ======================================================= */
 
 #lss-splash,
 #lss-page-splash {
-  opacity: 0;
   background: #000;
-  animation: lssSplashEntrance 0.8s ease forwards;
+}
+
+/* Softly bring the artwork in */
+#lss-splash .lss-splash-image,
+#lss-page-splash .lss-splash-image {
+  opacity: 0;
+  animation: lssSplashEntrance 1.3s ease forwards;
 }
 
 @keyframes lssSplashEntrance {
@@ -5934,9 +5939,10 @@ body .lss-image-block.orbit-image-frame::before {
   }
 }
 
+/* Softly fade the whole splash away */
 #lss-splash.is-exiting,
 #lss-page-splash.is-exiting {
-  animation: lssSplashExit 0.8s ease forwards;
+  animation: lssSplashExit 1.3s ease forwards;
 }
 
 @keyframes lssSplashExit {
