@@ -5913,3 +5913,38 @@ body .lss-image-block.orbit-image-frame::before {
     max-width: 100% !important;
   }
 }
+/* =======================================================
+   LSS SPLASH — 0.8s ENTRANCE + 0.8s EXIT
+======================================================= */
+
+#lss-splash,
+#lss-page-splash {
+  opacity: 0;
+  background: #000;
+  animation: lssSplashEntrance 0.8s ease forwards;
+}
+
+@keyframes lssSplashEntrance {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#lss-splash.is-exiting,
+#lss-page-splash.is-exiting {
+  animation: lssSplashExit 0.8s ease forwards;
+}
+
+@keyframes lssSplashExit {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
