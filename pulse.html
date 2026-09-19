@@ -116,6 +116,117 @@
       font-style: italic;
     }
 
+
+    /* =======================================================
+       PULSE NEWSLETTER
+    ======================================================= */
+
+    .pulse-newsletter {
+      width: 100%;
+      margin: 30px auto 0;
+      text-align: center;
+    }
+
+    .pulse-newsletter .lss-embed {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pulse-newsletter .lss-form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pulse-newsletter .lss-label {
+      margin: 0;
+      padding: 0;
+      color: #00AEDE;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .pulse-newsletter .lss-form-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pulse-newsletter .lss-input {
+      width: 215px;
+      height: 30px;
+      padding: 4px 12px;
+      box-sizing: border-box;
+
+      background: transparent;
+      border: 2px solid #d9d9d9;
+      border-radius: 8px;
+
+      color: #d9d9d9;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 0.8em;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .pulse-newsletter .lss-input::placeholder {
+      color: #9aa1b3;
+    }
+
+    .pulse-newsletter .lss-button {
+      width: auto;
+      height: 30px;
+      padding: 4px 10px;
+
+      background: #00AEDE;
+      border: none;
+      border-radius: 8px;
+
+      color: #020015;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 0.9em;
+      font-weight: 400;
+
+      cursor: pointer;
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .pulse-newsletter .lss-button:hover {
+      background: #0095c2;
+    }
+
+    .pulse-newsletter .lss-turnstile-row {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .pulse-newsletter .lss-turnstile-row .cf-turnstile {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .pulse-newsletter .lss-disclaimer {
+      margin: 14px 0 0;
+      color: #bdbdbd;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+
+    /* =======================================================
+       MOBILE
+    ======================================================= */
+
     @media (max-width: 900px) {
       .pulse-text-bar {
         padding: 24px 20px;
@@ -123,6 +234,24 @@
 
       .pulse-text-wall p {
         font-size: 18px;
+      }
+
+      .pulse-newsletter {
+        margin-top: 26px;
+      }
+
+      .pulse-newsletter .lss-form {
+        width: 100%;
+      }
+
+      .pulse-newsletter .lss-turnstile-row {
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .pulse-newsletter .cf-turnstile {
+        width: min(300px, 100%);
+        max-width: 100%;
       }
     }
   </style>
@@ -163,9 +292,79 @@
 
     </div>
 
+
+    <!-- =====================================================
+         NEWSLETTER SIGNUP
+    ====================================================== -->
+
+    <section class="pulse-newsletter">
+
+      <div class="lss-embed">
+
+        <form
+          action="https://submit-form.com/Es2Ypoxuk"
+          class="lss-form"
+          method="POST"
+        >
+
+          <input
+            name="_redirect"
+            type="hidden"
+            value="https://light-speed.studio/email-landing-page.html"
+          />
+
+          <label
+            class="lss-label"
+            for="pulse-email"
+          >
+            ALERTS
+          </label>
+
+          <div class="lss-form-row">
+
+            <input
+              class="lss-input"
+              id="pulse-email"
+              name="email"
+              placeholder="ENTER EMAIL"
+              required
+              type="email"
+            />
+
+            <button
+              class="lss-button"
+              type="submit"
+            >
+              JOIN
+            </button>
+
+          </div>
+
+          <div class="lss-turnstile-row">
+
+            <div
+              class="cf-turnstile"
+              data-sitekey="0x4AAAAAAE1MyN5U_qewG4Qt"
+              data-theme="dark"
+              data-size="flexible">
+            </div>
+
+          </div>
+
+        </form>
+
+        <p class="lss-disclaimer">
+          Twice-monthly newsletter on edits. No SPAM!
+        </p>
+
+      </div>
+
+    </section>
+
   </div>
 
 </main>
+
 
 <script>
 function toggleMobileMenu(button) {
@@ -193,6 +392,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
+
+<!-- CLOUDFLARE TURNSTILE -->
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer>
+</script>
+
 
 <!-- KEEP GLOBAL SITE JS:
      handles existing navigation / progress / scroll behavior -->
