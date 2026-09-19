@@ -5954,3 +5954,24 @@ body .lss-image-block.orbit-image-frame::before {
     opacity: 0;
   }
 }
+/* =======================================================
+   PROJECT NAV RESPONSIVE FIX
+   Desktop = side nav
+   Mobile = bottom project nav
+======================================================= */
+
+@media (min-width: 901px) {
+  .ffs-mobile-project-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .ffs-project-side-nav {
+    display: none !important;
+  }
+
+  .ffs-mobile-project-nav {
+    display: grid !important;
+  }
+}
