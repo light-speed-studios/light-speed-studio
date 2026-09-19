@@ -24,7 +24,7 @@
         splash.dataset.splashReady = "true";
         document.documentElement.classList.add("lss-splash-active");
 
-        const splashDuration = Number(splash.dataset.duration) || 3800;
+        const splashDuration = Number(splash.dataset.duration) || 2800;
         let exitTimer = null;
         let hasClosed = false;
 
@@ -39,7 +39,7 @@
             window.setTimeout(() => {
                 splash.remove();
                 document.documentElement.classList.remove("lss-splash-active");
-            }, 900);
+            }, 1300);
         }
 
         document.addEventListener("pointerdown", closeSplash, { once: true });
