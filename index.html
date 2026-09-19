@@ -1925,6 +1925,80 @@
   }
 }
 </style>
+
+<style id="desktop-locked-viewports">
+/* =======================================================
+   DESKTOP LOCKED VIEWPORTS
+   One intentional composition per scroll stop.
+   Mobile remains on the existing free-flow layout.
+======================================================= */
+@media (min-width: 901px) {
+  html {
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: var(--lss-nav-height, 72px);
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .home-hero-section,
+  .lss-viewport-screen {
+    height: calc(100svh - var(--lss-nav-height, 72px)) !important;
+    min-height: calc(100svh - var(--lss-nav-height, 72px)) !important;
+    max-height: calc(100svh - var(--lss-nav-height, 72px)) !important;
+    box-sizing: border-box !important;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .home-hero-section {
+    transform: none !important;
+    margin-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .lss-viewport-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lss-viewport-inner {
+    width: 100%;
+    transform-origin: center center;
+    will-change: transform;
+  }
+
+  /* Keep the section titles toward the top like the supplied targets. */
+  .bridge-vault-viewport,
+  .lab-viewport,
+  .orbit-viewport {
+    align-items: flex-start;
+  }
+
+  .final-viewport .lss-viewport-inner {
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 900px) {
+  html { scroll-snap-type: none !important; }
+  .lss-viewport-screen,
+  .lss-viewport-inner {
+    display: contents !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -2190,6 +2264,10 @@
 </div>
 </section>
 </div>
+</section>
+
+<section class="lss-viewport-screen bridge-vault-viewport">
+<div class="lss-viewport-inner">
 <div class="section-heading orbit-desktop-only">
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
@@ -2276,7 +2354,6 @@
     </p>
 
   </div>
-</section>
 </section>
 <!-- =======================================================
        SECTION 2: VAULT
@@ -2479,9 +2556,13 @@
     <button class="vault-rail-arrow vault-rail-next" id="vaultNext" type="button" aria-label="Next Vault projects"></button>
   </div>
 </section>
+</div>
+</section>
 <!-- =======================================================
        SECTION 3: F1 HERO
   ======================================================= -->
+<section class="lss-viewport-screen lab-viewport">
+<div class="lss-viewport-inner">
 <div class="section-heading lab-mobile-section-heading">
 <a class="heading-link" href="lab.html">
 <span class="lead">L</span><span class="rest">AB</span>
@@ -2515,6 +2596,11 @@
 </section>
 </div>
 </section>
+</div>
+</section>
+
+<section class="lss-viewport-screen orbit-viewport">
+<div class="lss-viewport-inner">
 <div class="orbit-heading-row">
   <div class="section-heading orbit-desktop-only">
     <span class="lead">O</span><span class="rest">RBIT</span>
@@ -2544,7 +2630,11 @@
     </picture>
   </div>
 </div>
+</div>
+</section>
 
+<section class="lss-viewport-screen final-viewport">
+<div class="lss-viewport-inner">
 <!-- DESKTOP ONLY: Newsletter moved below Orbit -->
 <section id="home-signup-wrap-desktop" class="home-signup-wrap orbit-desktop-newsletter">
   <div class="lss-embed">
@@ -2634,6 +2724,10 @@
     src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png"
     alt="Light Speed Studios Logo">
 </picture>
+</div>
+</div>
+</div>
+</section>
 <button class="lss-page-jump" id="lssPageJump" aria-label="Jump to next section"></button>
 <div class="email-choice-modal" id="emailChoiceModal" aria-hidden="true">
   <div class="email-choice-backdrop" id="emailChoiceBackdrop"></div>
@@ -2725,5 +2819,56 @@
 })();
 </script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<script id="desktop-viewport-fit-script">
+(function () {
+  const DESKTOP = window.matchMedia('(min-width: 901px)');
+
+  function fitLockedViewports() {
+    const nav = document.querySelector('.lss-nav-bar');
+    const navHeight = nav ? Math.ceil(nav.getBoundingClientRect().height) : 72;
+    document.documentElement.style.setProperty('--lss-nav-height', navHeight + 'px');
+
+    if (!DESKTOP.matches) {
+      document.querySelectorAll('.lss-viewport-inner').forEach(inner => {
+        inner.style.transform = '';
+        inner.style.width = '';
+      });
+      return;
+    }
+
+    const availableHeight = Math.max(320, window.innerHeight - navHeight);
+    const availableWidth = window.innerWidth;
+
+    document.querySelectorAll('.lss-viewport-screen').forEach(screen => {
+      const inner = screen.querySelector(':scope > .lss-viewport-inner');
+      if (!inner) return;
+
+      inner.style.transform = 'none';
+      inner.style.width = '100%';
+
+      const naturalHeight = Math.ceil(inner.scrollHeight);
+      const naturalWidth = Math.ceil(inner.scrollWidth);
+      const heightScale = naturalHeight > 0 ? availableHeight / naturalHeight : 1;
+      const widthScale = naturalWidth > 0 ? availableWidth / naturalWidth : 1;
+      const scale = Math.min(1, heightScale, widthScale);
+
+      inner.style.transform = `scale(${scale})`;
+      inner.dataset.viewportScale = scale.toFixed(4);
+    });
+  }
+
+  let resizeTimer;
+  function queueFit() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(fitLockedViewports, 80);
+  }
+
+  window.addEventListener('load', fitLockedViewports);
+  window.addEventListener('resize', queueFit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLockedViewports);
+  DESKTOP.addEventListener?.('change', fitLockedViewports);
+})();
+</script>
 </body>
 </html>
