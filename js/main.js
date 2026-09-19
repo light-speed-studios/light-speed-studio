@@ -14,12 +14,27 @@
    LSS STATIC SPLASH SCREEN
 ======================================================= */
 (function () {
+    window.lssSplashFinished = false;
+
+    function announceSplashFinished() {
+        if (window.lssSplashFinished) return;
+
+        window.lssSplashFinished = true;
+        window.dispatchEvent(new Event("lssSplashFinished"));
+    }
+
     function initSplash() {
         const splash =
             document.getElementById("lss-page-splash") ||
             document.getElementById("lss-splash");
 
-        if (!splash || splash.dataset.splashReady === "true") return;
+        /* Pages without a splash can begin their content immediately. */
+        if (!splash) {
+            announceSplashFinished();
+            return;
+        }
+
+        if (splash.dataset.splashReady === "true") return;
 
         splash.dataset.splashReady = "true";
         document.documentElement.classList.add("lss-splash-active");
@@ -39,6 +54,9 @@
             window.setTimeout(() => {
                 splash.remove();
                 document.documentElement.classList.remove("lss-splash-active");
+
+                /* The hero welcome timer begins only after the splash is fully gone. */
+                announceSplashFinished();
             }, 2000);
         }
 
@@ -49,8 +67,10 @@
     if (document.getElementById("lss-splash") ||
         document.getElementById("lss-page-splash")) {
         initSplash();
-    } else {
+    } else if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", initSplash, { once: true });
+    } else {
+        initSplash();
     }
 })();
 
@@ -69,6 +89,7 @@
   let current = 0;
   let autoPlay = null;
   let welcomeTimer = null;
+  let welcomeTimerStarted = false;
   let welcomeActive = Boolean(welcomeSlide);
 
   const autoDelay = 6000;
@@ -118,14 +139,15 @@
 
     welcomeActive = false;
     window.clearTimeout(welcomeTimer);
+    welcomeTimer = null;
 
-    /* Bring Superman in as the first real carousel slide. */
+    /* Superman is always the first real featured slide. */
     showSlide(0);
+
     welcomeSlide.classList.remove('active');
     carousel.classList.remove('welcome-active');
 
-    /* Remove the welcome from the DOM after its fade finishes.
-       It can never appear again during this page visit. */
+    /* The welcome is removed after the crossfade, so it cannot return. */
     window.setTimeout(() => {
       welcomeSlide.remove();
     }, welcomeFadeTime);
@@ -133,9 +155,21 @@
     startAutoPlay();
   }
 
+  function startWelcomeTimer() {
+    if (!welcomeSlide || !welcomeActive || welcomeTimerStarted) return;
+
+    welcomeTimerStarted = true;
+    welcomeTimer = window.setTimeout(finishWelcome, welcomeDuration);
+  }
+
   if (prevBtn) {
     prevBtn.addEventListener('click', function () {
-      if (welcomeActive) return;
+      /* During the welcome, either arrow skips directly to Superman. */
+      if (welcomeActive) {
+        finishWelcome();
+        return;
+      }
+
       prevSlide();
       startAutoPlay();
     });
@@ -143,7 +177,12 @@
 
   if (nextBtn) {
     nextBtn.addEventListener('click', function () {
-      if (welcomeActive) return;
+      /* During the welcome, either arrow skips directly to Superman. */
+      if (welcomeActive) {
+        finishWelcome();
+        return;
+      }
+
       nextSlide();
       startAutoPlay();
     });
@@ -152,6 +191,7 @@
   indicators.forEach((dot, index) => {
     dot.addEventListener('click', function () {
       if (welcomeActive) return;
+
       showSlide(index);
       startAutoPlay();
     });
@@ -169,10 +209,26 @@
     welcomeSlide.classList.add('active');
     carousel.classList.add('welcome-active');
 
-    welcomeTimer = window.setTimeout(finishWelcome, welcomeDuration);
+    /*
+      IMPORTANT:
+      The welcome is already sitting behind the splash, but its countdown
+      does NOT begin until the splash has completely finished.
+    */
+    if (window.lssSplashFinished) {
+      startWelcomeTimer();
+    } else {
+      window.addEventListener("lssSplashFinished", startWelcomeTimer, { once: true });
+    }
   } else {
     showSlide(0);
-    window.setTimeout(startAutoPlay, 2400);
+
+    if (window.lssSplashFinished) {
+      window.setTimeout(startAutoPlay, 2400);
+    } else {
+      window.addEventListener("lssSplashFinished", function () {
+        window.setTimeout(startAutoPlay, 2400);
+      }, { once: true });
+    }
   }
 })();
 
