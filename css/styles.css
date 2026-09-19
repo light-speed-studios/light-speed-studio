@@ -5991,6 +5991,7 @@ body .lss-image-block.orbit-image-frame::before {
    VAULT and the carousel indicators return with Superman. */
 .home-hero-section #heroCarousel.welcome-active .hero-vault-button,
 .home-hero-section #heroCarousel.welcome-active .indicators {
+  display: none !important;
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
