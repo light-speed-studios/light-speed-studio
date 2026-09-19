@@ -5987,16 +5987,22 @@ body .lss-image-block.orbit-image-frame::before {
   background-repeat: no-repeat !important;
 }
 
-/* Keep the branded opening clean. Normal hero UI appears with Superman. */
+/* Welcome keeps only the left/right arrows.
+   VAULT and the carousel indicators return with Superman. */
 .home-hero-section #heroCarousel.welcome-active .hero-vault-button,
-.home-hero-section #heroCarousel.welcome-active .nav-arrow,
 .home-hero-section #heroCarousel.welcome-active .indicators {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
 
-/* The regular carousel controls return cleanly after the welcome. */
+.home-hero-section #heroCarousel.welcome-active .nav-arrow {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* The regular carousel UI returns cleanly after the welcome. */
 .home-hero-section #heroCarousel .hero-vault-button,
 .home-hero-section #heroCarousel .nav-arrow,
 .home-hero-section #heroCarousel .indicators {
