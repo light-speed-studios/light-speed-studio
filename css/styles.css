@@ -3572,7 +3572,7 @@ html::-webkit-scrollbar-corner {
 .vault-rail-window::before{
     background:linear-gradient(
         to right,
-        rgba(4,14,21,.30) 0%,
+        rgba(4,14,21,.18) 0%,
         rgba(4,14,21,.12) 45%,
         rgba(4,14,21,0) 100%
     );
@@ -3581,7 +3581,7 @@ html::-webkit-scrollbar-corner {
 .vault-rail-window::after{
     background:linear-gradient(
         to left,
-        rgba(4,14,21,.30) 0%,
+        rgba(4,14,21,.18) 0%,
         rgba(4,14,21,.12) 45%,
         rgba(4,14,21,0) 100%
     );
