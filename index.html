@@ -1925,6 +1925,242 @@
   }
 }
 </style>
+
+<style id="lab-two-slide-carousel">
+/* =======================================================
+   LAB TWO-SLIDE CAROUSEL
+   Flash remains IN-PRODUCTION.
+   Beware My Power is PRE PRODUCTION.
+======================================================= */
+
+.lab-carousel {
+  position: relative !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+
+.lab-carousel .lab-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .38s ease, visibility .38s ease;
+}
+
+.lab-carousel .lab-slide.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.lab-carousel .lab-image-link {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 2 !important;
+  display: block !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+}
+
+.lab-carousel .hero-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+
+.lab-carousel .hero-content {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 72px !important;
+  width: calc(100% - 180px) !important;
+  max-width: 1180px !important;
+  transform: translateX(-50%) !important;
+  z-index: 60 !important;
+  text-align: center !important;
+  pointer-events: none !important;
+}
+
+.lab-carousel .hero-content .content-inner,
+.lab-carousel .hero-content .hero-content-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+  text-align: center !important;
+}
+
+.lab-carousel .lab-kicker {
+  display: block !important;
+  margin: 0 0 5px !important;
+  color: #00AEDE !important;
+  text-align: center !important;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,.95),
+    0 0 8px rgba(0,0,0,.85),
+    0 0 14px rgba(0,0,0,.65) !important;
+}
+
+.lab-carousel .hero-title {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  color: #bac7d5 !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  font-size: clamp(34px, 3.2vw, 58px) !important;
+}
+
+.lab-nav-arrow,
+.mobile-lab-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 80;
+  width: 44px;
+  height: 64px;
+  transform: translateY(-50%);
+  border: 0;
+  background: rgba(4,14,21,.48);
+  cursor: pointer;
+}
+
+.lab-nav-arrow::before,
+.mobile-lab-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid #00AEDE;
+  border-right: 2px solid #00AEDE;
+}
+
+.lab-prev { left: 14px; }
+.lab-next { right: 14px; }
+
+.lab-prev::before,
+.mobile-lab-prev::before {
+  left: 17px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+.lab-next::before,
+.mobile-lab-next::before {
+  right: 17px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.lab-indicators {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lab-indicator,
+.mobile-lab-indicator {
+  width: 10px;
+  min-width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(186,199,213,.55);
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,.72), 0 0 7px rgba(0,0,0,.42);
+  transition:
+    width .32s ease,
+    min-width .32s ease,
+    height .32s ease,
+    border-radius .32s ease,
+    background-color .32s ease,
+    box-shadow .32s ease,
+    opacity .32s ease;
+}
+
+.lab-indicator.active,
+.mobile-lab-indicator.active {
+  width: 38px;
+  min-width: 38px;
+  height: 6px;
+  border-radius: 999px;
+  background: #00AEDE;
+}
+
+@media (min-width: 901px) {
+  .lab-hero-section .lss-landscape-panel > .lab-carousel {
+    height: 490px !important;
+    min-height: 490px !important;
+    max-height: 490px !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,.50) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .lss-mobile-lab-landscape-panel > .mobile-lab-carousel {
+    position: relative !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    box-shadow: 0 14px 28px rgba(0,0,0,.38) !important;
+  }
+
+  .mobile-lab-track {
+    position: relative;
+    width: 100%;
+  }
+
+  .mobile-lab-slide {
+    display: none;
+    width: 100%;
+  }
+
+  .mobile-lab-slide.active {
+    display: block;
+  }
+
+  .mobile-lab-slide a,
+  .mobile-lab-slide img {
+    display: block;
+    width: 100%;
+  }
+
+  .mobile-lab-slide img {
+    height: auto;
+  }
+
+  .mobile-lab-prev { left: 6px; }
+  .mobile-lab-next { right: 6px; }
+
+  .mobile-lab-arrow {
+    width: 38px;
+    height: 54px;
+  }
+
+  .mobile-lab-prev::before { left: 15px; }
+  .mobile-lab-next::before { right: 15px; }
+
+  .mobile-lab-indicators {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -2488,32 +2724,75 @@
 </a>
 </div>
 <section class="lab-hero-section">
+
 <div class="lss-landscape-panel lss-lab-landscape-panel">
-<section class="hero-single pulse-visual-box">
-<div class="hero-single-frame"></div>
-<a class="lab-image-link" href="flash-overtime.html" aria-label="Open The Flash: Overtime landing page">
-<div class="hero-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/THEFLASHTCVSHOWPROD.jpg');"></div>
-</a>
-<div class="hero-content">
-<div class="content-inner hero-content-wrapper">
-<span class="lab-kicker">IN-PRODUCTION</span>
-<h1 class="hero-title">THE FLASH: OVERTIME</h1>
-</div>
-</div>
-<div class="hero-meta">
-<span>25 SEPT 2026</span>
-<span>AGE OF HEROES</span>
+<section class="lab-carousel pulse-visual-box" id="labCarousel" aria-label="Lab projects carousel">
+
+<article class="lab-slide active">
+  <a class="lab-image-link" href="flash-overtime.html" aria-label="Open The Flash: Overtime landing page">
+    <div class="hero-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/THEFLASHTCVSHOWPROD.jpg');"></div>
+  </a>
+
+  <div class="hero-content">
+    <div class="content-inner hero-content-wrapper">
+      <span class="lab-kicker">IN-PRODUCTION</span>
+      <h1 class="hero-title">THE FLASH: OVERTIME</h1>
+    </div>
+  </div>
+</article>
+
+<article class="lab-slide">
+  <a class="lab-image-link" href="https://light-speed.studio/beware-my-power-wip.html" aria-label="Open Beware My Power work in progress page">
+    <div class="hero-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/BMPHERO.jpg');"></div>
+  </a>
+
+  <div class="hero-content">
+    <div class="content-inner hero-content-wrapper">
+      <span class="lab-kicker">PRE PRODUCTION</span>
+      <h1 class="hero-title">BEWARE MY POWER</h1>
+    </div>
+  </div>
+</article>
+
+<button class="lab-nav-arrow lab-prev" type="button" aria-label="Previous Lab project"></button>
+<button class="lab-nav-arrow lab-next" type="button" aria-label="Next Lab project"></button>
+
+<div class="lab-indicators" aria-label="Lab project slides">
+  <button class="lab-indicator active" type="button" aria-label="Show The Flash: Overtime"></button>
+  <button class="lab-indicator" type="button" aria-label="Show Beware My Power"></button>
 </div>
 
 </section>
 </div>
+
 <div class="lss-landscape-panel lss-mobile-lab-landscape-panel">
-<section class="mobile-hero-single pulse-visual-box">
-<a href="flash-overtime.html">
-<img alt="Mobile" src="https://light-speed-studios.b-cdn.net/FLASHMOB1PROD.jpg">
-</img></a>
+<section class="mobile-lab-carousel pulse-visual-box" id="mobileLabCarousel" aria-label="Mobile Lab projects carousel">
+
+<div class="mobile-lab-track">
+  <article class="mobile-lab-slide active">
+    <a href="flash-overtime.html" aria-label="Open The Flash: Overtime landing page">
+      <img alt="The Flash: Overtime" src="https://light-speed-studios.b-cdn.net/FLASHMOB1PROD.jpg">
+    </a>
+  </article>
+
+  <article class="mobile-lab-slide">
+    <a href="https://light-speed.studio/beware-my-power-wip.html" aria-label="Open Beware My Power work in progress page">
+      <img alt="Beware My Power" src="https://light-speed-studios.b-cdn.net/BMPMOBHERORAIL.jpg">
+    </a>
+  </article>
+</div>
+
+<button class="mobile-lab-arrow mobile-lab-prev" type="button" aria-label="Previous Lab project"></button>
+<button class="mobile-lab-arrow mobile-lab-next" type="button" aria-label="Next Lab project"></button>
+
+<div class="mobile-lab-indicators" aria-label="Mobile Lab project slides">
+  <button class="mobile-lab-indicator active" type="button" aria-label="Show The Flash: Overtime"></button>
+  <button class="mobile-lab-indicator" type="button" aria-label="Show Beware My Power"></button>
+</div>
+
 </section>
 </div>
+
 </section>
 <div class="orbit-heading-row">
   <div class="section-heading orbit-desktop-only">
@@ -2724,6 +3003,73 @@
   }
 })();
 </script>
+
+<script>
+(function () {
+  function makeLabCarousel(root, slideSelector, indicatorSelector, prevSelector, nextSelector) {
+    if (!root) return;
+
+    const slides = Array.from(root.querySelectorAll(slideSelector));
+    const indicators = Array.from(root.querySelectorAll(indicatorSelector));
+    const prev = root.querySelector(prevSelector);
+    const next = root.querySelector(nextSelector);
+
+    if (slides.length < 2) return;
+
+    let current = 0;
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        const active = i === current;
+        slide.classList.toggle("active", active);
+        slide.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+
+      indicators.forEach((indicator, i) => {
+        const active = i === current;
+        indicator.classList.toggle("active", active);
+        indicator.setAttribute("aria-current", active ? "true" : "false");
+      });
+    }
+
+    if (prev) prev.addEventListener("click", function () { show(current - 1); });
+    if (next) next.addEventListener("click", function () { show(current + 1); });
+
+    indicators.forEach((indicator, i) => {
+      indicator.addEventListener("click", function () { show(i); });
+    });
+
+    show(0);
+  }
+
+  function initLabCarousels() {
+    makeLabCarousel(
+      document.getElementById("labCarousel"),
+      ".lab-slide",
+      ".lab-indicator",
+      ".lab-prev",
+      ".lab-next"
+    );
+
+    makeLabCarousel(
+      document.getElementById("mobileLabCarousel"),
+      ".mobile-lab-slide",
+      ".mobile-lab-indicator",
+      ".mobile-lab-prev",
+      ".mobile-lab-next"
+    );
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLabCarousels, { once: true });
+  } else {
+    initLabCarousels();
+  }
+})();
+</script>
+
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>
