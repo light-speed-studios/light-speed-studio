@@ -2714,5 +2714,41 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+
+<style id="working-version-row-final-fix">
+/* FINAL FIX: keep Working Title and Version 2 side by side.
+   Earlier desktop composition rules force every .ffs-working-title into grid cell 1/3.
+   Reset that placement inside the nested split row. */
+.ffs-info-panel .ffs-working-version-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin: auto 0 0 !important;
+  flex: 0 0 auto !important;
+}
+
+.ffs-info-panel .ffs-working-version-row > .ffs-working-title {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 15px 17px !important;
+}
+
+@media (max-width: 900px) {
+  .ffs-info-panel .ffs-working-version-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 8px !important;
+    margin: 12px 0 8px !important;
+  }
+
+  .ffs-info-panel .ffs-working-version-row > .ffs-working-title {
+    padding: 10px 12px !important;
+  }
+}
+</style>
+
 </body>
 </html>
