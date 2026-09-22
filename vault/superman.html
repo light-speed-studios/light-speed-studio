@@ -1807,6 +1807,16 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 /* VERSION 2 / UPDATED COLOR GRADING */
 .ffs-color-grade-modal-toggle { display:none; }
+.ffs-version-note {
+  margin:-38px 0 28px;
+  font-family:Oxanium,Rajdhani,Arial,sans-serif;
+  font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--text-main);
+}
+.ffs-version-note label {
+  cursor:pointer;color:var(--cyan);text-decoration:underline;
+  text-decoration-thickness:1px;text-underline-offset:4px;
+}
+.ffs-version-note label:hover { color:#7beaff; text-shadow:0 0 12px rgba(0,174,222,.32); }
 .ffs-color-grade-box {
   cursor: pointer;
   transition: background .2s ease, box-shadow .2s ease;
@@ -1856,6 +1866,7 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 .ffs-color-grade-list li:last-child { margin-bottom:0; }
 .ffs-color-grade-list strong { color:var(--text-main);font-weight:800; }
 @media(max-width:900px){
+  .ffs-version-note{margin:-10px 0 18px;font-size:12px}
   .ffs-color-grade-modal{padding:18px 10px!important}
   .ffs-color-grade-modal-box{width:100%!important;height:auto!important;max-height:calc(100dvh - 36px)!important}
   .ffs-color-grade-modal-head{min-height:auto;padding:12px}
@@ -2216,6 +2227,10 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
     A reimagining of the warmth, morality, and humanity behind the world’s greatest hero. No forced comedy, just heart. With a renewed emotional core, this edit reminds us that even the strongest longs to belong.
   </p>
 </div>
+<input class="ffs-color-grade-modal-toggle" type="checkbox" id="ffsColorGradeModal">
+<div class="ffs-version-note">
+  <span>Version 2 - </span><label for="ffsColorGradeModal">Updated Color Grading</label>
+</div>
 <div class="ffs-working-title">
 <span>Working Title</span>
 <strong>Superman: Flyby</strong>
@@ -2506,10 +2521,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="ffs-color-grade-modal-content">
       <ul class="ffs-color-grade-list">
         <li><strong>Deepened blacks and increased contrast.</strong></li>
-        <li><strong>Shifted Superman’s cape and suit reds toward deeper crimson tones.</li>
-        <li><strong>Introduced warmer highlights and refined cooler toneS.</li>
-        <li><strong>Reduced the washed-out appearance of the theatrical grade.</li>
-        <li><strong>Enriched the color palette.</li>
+        <li><strong>Shifted Superman’s cape and suit reds toward deeper crimson tones.</strong></li>
+        <li><strong>Introduced warmer highlights and refined cooler tones.</strong></li>
+        <li><strong>Reduced the washed-out appearance of the theatrical grade.</strong></li>
+        <li><strong>Enriched the color palette.</strong></li>
       </ul> 
     </div>
   </div>
