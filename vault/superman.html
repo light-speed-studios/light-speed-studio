@@ -1805,6 +1805,63 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 
+
+/* WORKING TITLE + VERSION 2 SPLIT ROW */
+.ffs-working-version-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: auto 0 0;
+  flex: 0 0 auto;
+}
+.ffs-working-version-row .ffs-working-title {
+  margin: 0 !important;
+  min-width: 0;
+}
+.ffs-version-box {
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.ffs-version-box:hover {
+  background: linear-gradient(90deg, var(--cyan-faint), transparent), rgba(255,255,255,.045);
+  box-shadow: inset 0 0 0 1px rgba(0,174,222,.25);
+}
+@media (min-width: 901px) {
+  .ffs-info-panel .ffs-working-version-row .ffs-working-title {
+    padding: 15px 17px;
+  }
+  .ffs-info-panel .ffs-working-version-row .ffs-working-title strong {
+    font-size: 22px;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-working-version-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0 8px;
+  }
+  .ffs-working-version-row .ffs-working-title {
+    display: block;
+    padding: 10px 12px;
+  }
+  .ffs-working-version-row .ffs-working-title span {
+    display: block;
+    margin: 0 0 5px;
+    white-space: nowrap;
+  }
+  .ffs-working-version-row .ffs-working-title span::after {
+    content: none;
+  }
+  .ffs-working-version-row .ffs-working-title strong {
+    font-size: 15px;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 /* VERSION 2 / UPDATED COLOR GRADING */
 .ffs-color-grade-modal-toggle { display:none; }
 .ffs-version-note {
@@ -1866,7 +1923,6 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 .ffs-color-grade-list li:last-child { margin-bottom:0; }
 .ffs-color-grade-list strong { color:var(--text-main);font-weight:800; }
 @media(max-width:900px){
-  .ffs-version-note{margin:-10px 0 18px;font-size:12px}
   .ffs-color-grade-modal{padding:18px 10px!important}
   .ffs-color-grade-modal-box{width:100%!important;height:auto!important;max-height:calc(100dvh - 36px)!important}
   .ffs-color-grade-modal-head{min-height:auto;padding:12px}
@@ -2228,12 +2284,15 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   </p>
 </div>
 <input class="ffs-color-grade-modal-toggle" type="checkbox" id="ffsColorGradeModal">
-<div class="ffs-version-note">
-  <span>Version 2 - </span><label for="ffsColorGradeModal">Updated Color Grading</label>
-</div>
-<div class="ffs-working-title">
-<span>Working Title</span>
-<strong>Superman: Flyby</strong>
+<div class="ffs-working-version-row">
+  <div class="ffs-working-title">
+    <span>Working Title</span>
+    <strong>Superman: Flyby</strong>
+  </div>
+  <label class="ffs-working-title ffs-version-box" for="ffsColorGradeModal">
+    <span>Version 2</span>
+    <strong>Updated Changes</strong>
+  </label>
 </div>
 </div>
 </div>
