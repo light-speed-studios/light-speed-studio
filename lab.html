@@ -50,7 +50,6 @@
 }
 
 @media (max-width: 900px) {
-  /* Mobile: show exactly one poster at a time */
   .lab-page .vault-rail-window {
     overflow: hidden !important;
   }
@@ -68,30 +67,6 @@
     margin: 0 !important;
   }
 
-  .lab-page .lab-rail-dashes {
-    top: -25px !important;
-    right: 34px !important;
-    gap: 7px !important;
-    padding: 0 0 2px 0 !important;
-  }
-
-  .lab-page .lab-rail-dashes .vault-rail-dash {
-    width: 7px !important;
-    height: 7px !important;
-    min-width: 7px !important;
-    border-radius: 50% !important;
-    background: #B1B1B1 !important;
-    opacity: .72 !important;
-  }
-
-  .lab-page .lab-rail-dashes .vault-rail-dash.active {
-    background: #00AEDE !important;
-    opacity: 1 !important;
-    box-shadow: 0 0 8px rgba(0, 174, 222, .5) !important;
-  }
-}
-
-@media (max-width: 900px) {
   .lab-page .lab-rail-dashes {
     display: none !important;
   }
@@ -122,7 +97,12 @@
     <span class="lss-brand-text">No Spectacle Without Soul</span>
   </a>
 
-  <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+  <button
+    class="hamburger"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
     <span></span>
     <span></span>
     <span></span>
@@ -146,10 +126,7 @@
   </section>
 
 
-  <!-- ==================================================
-       UPCOMING PROJECTS
-       1 - 4
-       ================================================== -->
+  <!-- UPCOMING PROJECTS -->
 
   <section class="vault-archive-section">
     <div class="vault-archive-heading">
@@ -160,62 +137,99 @@
 
     <div class="vault-rail-shell">
 
-      <button class="vault-rail-arrow vault-rail-prev" type="button" aria-label="Previous Upcoming Projects"></button>
+      <button
+        class="vault-rail-arrow vault-rail-prev"
+        type="button"
+        aria-label="Previous Upcoming Projects">
+      </button>
 
-      <div class="vault-rail-dashes lab-rail-dashes" aria-label="Upcoming Projects rail position"></div>
+      <div
+        class="vault-rail-dashes lab-rail-dashes"
+        aria-label="Upcoming Projects rail position">
+      </div>
 
       <div class="vault-rail-window">
         <div class="vault-rail-track lss-vault-rail">
 
           <!-- 1. THE FLASH: OVERTIME -->
-          <a class="vault-archive-card lab-poster-card" href="https://light-speed.studio/vault/overtime.html">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/TheflashOvertimePoster1.jpg');"></div>
+          <a
+            class="vault-archive-card lab-poster-card"
+            href="https://light-speed.studio/vault/overtime.html">
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/TheflashOvertimePoster1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>SEPTEMBER 2026</span>
             </div>
+
           </a>
+
 
           <!-- 2. BEWARE MY POWER -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/bmp1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/bmp1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>NOVEMBER 2026</span>
             </div>
+
           </div>
+
 
           <!-- 3. SOL ONE -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/SolOne1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/SolOne1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>DECEMBER 2026</span>
             </div>
+
           </div>
+
 
           <!-- 4. ICARUS -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/ICARUS-lab1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/ICARUS-lab1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>FEBRUARY 2027</span>
             </div>
+
           </div>
 
         </div>
       </div>
 
-      <button class="vault-rail-arrow vault-rail-next" type="button" aria-label="Next Upcoming Projects"></button>
+      <button
+        class="vault-rail-arrow vault-rail-next"
+        type="button"
+        aria-label="Next Upcoming Projects">
+      </button>
 
     </div>
   </section>
 
 
-  <!-- ==================================================
-       IN THE PIPELINE
-       5 - 9
-       ================================================== -->
+  <!-- IN THE PIPELINE -->
 
   <section class="vault-archive-section">
     <div class="vault-archive-heading">
@@ -226,73 +240,115 @@
 
     <div class="vault-rail-shell">
 
-      <button class="vault-rail-arrow vault-rail-prev" type="button" aria-label="Previous In the Pipeline projects"></button>
+      <button
+        class="vault-rail-arrow vault-rail-prev"
+        type="button"
+        aria-label="Previous In the Pipeline projects">
+      </button>
 
-      <div class="vault-rail-dashes lab-rail-dashes" aria-label="In the Pipeline rail position"></div>
+      <div
+        class="vault-rail-dashes lab-rail-dashes"
+        aria-label="In the Pipeline rail position">
+      </div>
 
       <div class="vault-rail-window">
         <div class="vault-rail-track lss-vault-rail">
 
           <!-- 5. BATMAN BEYOND -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/BBGDlogo21.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/BBGDlogo21.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>APRIL 2027</span>
             </div>
+
           </div>
+
 
           <!-- 6. FLASH: SPEED TRAP -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/FlashSpeedTRAP1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/FlashSpeedTRAP1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>JUNE 2027</span>
             </div>
+
           </div>
+
 
           <!-- 7. DISS -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/Diss-poster1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/Diss-poster1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>AUGUST 2027</span>
             </div>
+
           </div>
+
 
           <!-- 8. TRANSFORMERS -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/tfslab1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/tfslab1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>OCTOBER 2027</span>
             </div>
+
           </div>
+
 
           <!-- 9. HARRY POTTER TRILOGY -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/PosterHP123lab1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/PosterHP123lab1.jpg');">
+            </div>
+
             <div class="vault-card-copy lab-trilogy-copy">
               <strong>ETA</strong>
               <span>Part I: LATE 2027</span>
               <span>Part II: MID 2028</span>
               <span>Part III: LATE 2028</span>
             </div>
+
           </div>
 
         </div>
       </div>
 
-      <button class="vault-rail-arrow vault-rail-next" type="button" aria-label="Next In the Pipeline projects"></button>
+      <button
+        class="vault-rail-arrow vault-rail-next"
+        type="button"
+        aria-label="Next In the Pipeline projects">
+      </button>
 
     </div>
   </section>
 
 
-  <!-- ==================================================
-       FUTURE PROSPECTS
-       TBD PROJECTS
-       ================================================== -->
+  <!-- FUTURE PROSPECTS -->
 
   <section class="vault-archive-section">
     <div class="vault-archive-heading">
@@ -303,62 +359,107 @@
 
     <div class="vault-rail-shell">
 
-      <button class="vault-rail-arrow vault-rail-prev" type="button" aria-label="Previous Future Prospects"></button>
+      <button
+        class="vault-rail-arrow vault-rail-prev"
+        type="button"
+        aria-label="Previous Future Prospects">
+      </button>
 
-      <div class="vault-rail-dashes lab-rail-dashes" aria-label="Future Prospects rail position"></div>
+      <div
+        class="vault-rail-dashes lab-rail-dashes"
+        aria-label="Future Prospects rail position">
+      </div>
 
       <div class="vault-rail-window">
         <div class="vault-rail-track lss-vault-rail">
 
           <!-- PILGRIM -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/Pilgrim-poster1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/Pilgrim-poster1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>TBD</span>
             </div>
+
           </div>
+
 
           <!-- ARRIVAL -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/arrival-lab1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/arrival-lab1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>TBD</span>
             </div>
+
           </div>
+
 
           <!-- PACIFIC RIM -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/gipsetdangerlab1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/gipsetdangerlab1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>TBD</span>
             </div>
+
           </div>
+
 
           <!-- ALLSPARK -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/allspark1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/allspark1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>TBD</span>
             </div>
+
           </div>
+
 
           <!-- ELYSIUM -->
           <div class="vault-archive-card lab-poster-card">
-            <div class="vault-card-art" style="background-image: url('https://light-speed-studios.b-cdn.net/elysiumposter1.jpg');"></div>
+
+            <div
+              class="vault-card-art"
+              style="background-image: url('https://light-speed-studios.b-cdn.net/elysiumposter1.jpg');">
+            </div>
+
             <div class="vault-card-copy">
               <strong>ETA</strong>
               <span>TBD</span>
             </div>
+
           </div>
 
         </div>
       </div>
 
-      <button class="vault-rail-arrow vault-rail-next" type="button" aria-label="Next Future Prospects"></button>
+      <button
+        class="vault-rail-arrow vault-rail-next"
+        type="button"
+        aria-label="Next Future Prospects">
+      </button>
 
     </div>
   </section>
@@ -368,12 +469,15 @@
 
   <div class="footer-logo-block speed-trap-footer">
     <picture class="footer-picture">
+
       <source
         media="(max-width: 900px)"
         srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob1.png">
+
       <img
         src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png"
         alt="Light Speed Studios Logo">
+
     </picture>
   </div>
 
@@ -382,247 +486,374 @@
 
 <script>
 function toggleMobileMenu(button) {
+
   const navLinks = document.querySelector('.lss-nav-links');
+
   if (!navLinks) return;
 
   const isOpen = navLinks.classList.toggle('active');
+
   button.classList.toggle('active', isOpen);
-  button.setAttribute('aria-expanded', String(isOpen));
-  button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+
+  button.setAttribute(
+    'aria-expanded',
+    String(isOpen)
+  );
+
+  button.setAttribute(
+    'aria-label',
+    isOpen
+      ? 'Close navigation menu'
+      : 'Open navigation menu'
+  );
 }
 
+
 document.addEventListener('DOMContentLoaded', function () {
+
   const hamburger = document.querySelector('.hamburger');
   const navLinks = document.querySelector('.lss-nav-links');
 
   if (!hamburger || !navLinks) return;
 
   navLinks.querySelectorAll('a').forEach(function (link) {
+
     link.addEventListener('click', function () {
+
       navLinks.classList.remove('active');
+
       hamburger.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-      hamburger.setAttribute('aria-label', 'Open navigation menu');
+
+      hamburger.setAttribute(
+        'aria-expanded',
+        'false'
+      );
+
+      hamburger.setAttribute(
+        'aria-label',
+        'Open navigation menu'
+      );
+
     });
+
   });
+
 });
 </script>
 
+
 <script src="js/main.js"></script>
+
 
 <script>
 (function () {
 
-  function initLabRailIndicators() {
+  function initLabRails() {
 
-    document.querySelectorAll('.lab-rail-dashes').forEach(function (dashWrap) {
-
-      var shell = dashWrap.closest('.vault-rail-shell');
-      if (!shell) return;
+    document.querySelectorAll('.lab-page .vault-rail-shell').forEach(function (shell) {
 
       var win = shell.querySelector('.vault-rail-window');
       var track = shell.querySelector('.vault-rail-track');
       var prev = shell.querySelector('.vault-rail-prev');
       var next = shell.querySelector('.vault-rail-next');
+      var dashWrap = shell.querySelector('.lab-rail-dashes');
 
       if (!win || !track) return;
 
-      var cards = Array.from(track.querySelectorAll('.vault-archive-card'));
+      var cards = Array.from(
+        track.querySelectorAll('.vault-archive-card')
+      );
 
-      if (cards.length <= 4) {
-        dashWrap.innerHTML = '';
-        dashWrap.style.display = 'none';
-        return;
-      }
+      if (!cards.length) return;
 
       var isMobile = window.matchMedia('(max-width: 900px)').matches;
 
-      if (!isMobile) {
 
-        /* Desktop remains exactly as before: two dash indicators. */
+      /* ==========================================
+         MOBILE
+         ========================================== */
 
-        dashWrap.style.display = 'flex';
+      if (isMobile) {
 
-        dashWrap.innerHTML =
-          '<button type="button" class="vault-rail-dash active" aria-label="Show first set"></button>' +
-          '<button type="button" class="vault-rail-dash" aria-label="Show more projects"></button>';
+        /*
+          Every mobile rail is handled here,
+          including rails containing four cards.
+        */
 
-        var dashes = dashWrap.querySelectorAll('.vault-rail-dash');
-        var currentPage = 0;
-
-        function setDesktopActive(page) {
-
-          currentPage = page ? 1 : 0;
-
-          dashes[0].classList.toggle('active', currentPage === 0);
-          dashes[1].classList.toggle('active', currentPage === 1);
+        if (dashWrap) {
+          dashWrap.innerHTML = '';
+          dashWrap.style.display = 'none';
         }
 
-        dashes[0].addEventListener('click', function () {
-          setDesktopActive(0);
-          if (prev) prev.click();
-        });
+        var currentIndex = 0;
+        var scrollTimer = null;
 
-        dashes[1].addEventListener('click', function () {
-          setDesktopActive(1);
-          if (next) next.click();
-        });
+
+        function clampIndex(index) {
+
+          return Math.max(
+            0,
+            Math.min(cards.length - 1, index)
+          );
+
+        }
+
+
+        function getNearestIndex() {
+
+          var nearest = 0;
+          var bestDistance = Infinity;
+
+          cards.forEach(function (card, index) {
+
+            var distance = Math.abs(
+              win.scrollLeft - card.offsetLeft
+            );
+
+            if (distance < bestDistance) {
+
+              bestDistance = distance;
+              nearest = index;
+
+            }
+
+          });
+
+          return nearest;
+
+        }
+
+
+        function updateArrowState() {
+
+          if (prev) {
+            prev.disabled = currentIndex <= 0;
+            prev.setAttribute(
+              'aria-disabled',
+              currentIndex <= 0 ? 'true' : 'false'
+            );
+          }
+
+          if (next) {
+            next.disabled = currentIndex >= cards.length - 1;
+            next.setAttribute(
+              'aria-disabled',
+              currentIndex >= cards.length - 1 ? 'true' : 'false'
+            );
+          }
+
+        }
+
+
+        function goTo(index, smooth) {
+
+          currentIndex = clampIndex(index);
+
+          var targetCard = cards[currentIndex];
+
+          win.scrollTo({
+            left: targetCard.offsetLeft,
+            behavior: smooth === false ? 'auto' : 'smooth'
+          });
+
+          updateArrowState();
+
+        }
+
+
+        /*
+          Capture phase prevents main.js from also
+          processing the same arrow click.
+        */
 
         if (prev) {
-          prev.addEventListener('click', function () {
-            setDesktopActive(0);
-          });
+
+          prev.addEventListener('click', function (event) {
+
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            currentIndex = getNearestIndex();
+
+            goTo(
+              currentIndex - 1,
+              true
+            );
+
+          }, true);
+
         }
 
+
         if (next) {
-          next.addEventListener('click', function () {
-            setDesktopActive(1);
-          });
+
+          next.addEventListener('click', function (event) {
+
+            event.preventDefault();
+            event.stopImmediatePropagation();
+
+            currentIndex = getNearestIndex();
+
+            goTo(
+              currentIndex + 1,
+              true
+            );
+
+          }, true);
+
         }
+
+
+        /*
+          Keep the internal index synchronized if
+          the user swipes the rail manually.
+        */
 
         win.addEventListener('scroll', function () {
 
-          var max = Math.max(0, win.scrollWidth - win.clientWidth);
+          clearTimeout(scrollTimer);
 
-          if (max > 2) {
-            setDesktopActive(win.scrollLeft > max / 2 ? 1 : 0);
-          }
+          scrollTimer = setTimeout(function () {
+
+            currentIndex = getNearestIndex();
+
+            updateArrowState();
+
+          }, 80);
 
         }, { passive: true });
 
-        setDesktopActive(0);
+
+        currentIndex = getNearestIndex();
+
+        updateArrowState();
 
         return;
+
       }
 
 
-      /* Mobile: one poster per frame + one dot per poster. */
+      /* ==========================================
+         DESKTOP
+         ========================================== */
+
+      if (!dashWrap) return;
+
+
+      /*
+        Four or fewer projects fit in the desktop
+        row, so no page indicators are required.
+      */
+
+      if (cards.length <= 4) {
+
+        dashWrap.innerHTML = '';
+        dashWrap.style.display = 'none';
+
+        return;
+
+      }
+
+
+      /*
+        Desktop keeps the original two-dash
+        navigation.
+      */
 
       dashWrap.style.display = 'flex';
 
-      dashWrap.innerHTML = cards.map(function (_, i) {
+      dashWrap.innerHTML =
+        '<button type="button" class="vault-rail-dash active" aria-label="Show first set"></button>' +
+        '<button type="button" class="vault-rail-dash" aria-label="Show more projects"></button>';
 
-        return '<button type="button" class="vault-rail-dash' +
-          (i === 0 ? ' active' : '') +
-          '" aria-label="Show project ' + (i + 1) + '"></button>';
 
-      }).join('');
-
-      var dots = Array.from(
-        dashWrap.querySelectorAll('.vault-rail-dash')
+      var dashes = dashWrap.querySelectorAll(
+        '.vault-rail-dash'
       );
 
-      var currentIndex = 0;
+      var currentPage = 0;
 
 
-      function setActive(index) {
+      function setDesktopActive(page) {
 
-        currentIndex = Math.max(
-          0,
-          Math.min(cards.length - 1, index)
+        currentPage = page ? 1 : 0;
+
+        dashes[0].classList.toggle(
+          'active',
+          currentPage === 0
         );
 
-        dots.forEach(function (dot, i) {
-          dot.classList.toggle(
-            'active',
-            i === currentIndex
-          );
-        });
+        dashes[1].classList.toggle(
+          'active',
+          currentPage === 1
+        );
+
       }
 
 
-      function goTo(index, smooth) {
+      dashes[0].addEventListener('click', function () {
 
-        var target = Math.max(
-          0,
-          Math.min(cards.length - 1, index)
-        );
+        setDesktopActive(0);
 
-        setActive(target);
-
-        win.scrollTo({
-          left: cards[target].offsetLeft,
-          behavior: smooth === false ? 'auto' : 'smooth'
-        });
-      }
-
-
-      dots.forEach(function (dot, i) {
-
-        dot.addEventListener('click', function (e) {
-
-          e.preventDefault();
-
-          goTo(i, true);
-
-        });
+        if (prev) {
+          prev.click();
+        }
 
       });
 
 
-      /*
-       Capture arrow clicks so main.js cannot move
-       the mobile rail by a partial desktop-sized step.
-      */
+      dashes[1].addEventListener('click', function () {
+
+        setDesktopActive(1);
+
+        if (next) {
+          next.click();
+        }
+
+      });
+
 
       if (prev) {
 
-        prev.addEventListener('click', function (e) {
+        prev.addEventListener('click', function () {
 
-          e.preventDefault();
-          e.stopImmediatePropagation();
+          setDesktopActive(0);
 
-          goTo(currentIndex - 1, true);
+        });
 
-        }, true);
       }
 
 
       if (next) {
 
-        next.addEventListener('click', function (e) {
+        next.addEventListener('click', function () {
 
-          e.preventDefault();
-          e.stopImmediatePropagation();
+          setDesktopActive(1);
 
-          goTo(currentIndex + 1, true);
+        });
 
-        }, true);
       }
 
 
-      var scrollTimer;
-
       win.addEventListener('scroll', function () {
 
-        clearTimeout(scrollTimer);
+        var max = Math.max(
+          0,
+          win.scrollWidth - win.clientWidth
+        );
 
-        scrollTimer = setTimeout(function () {
+        if (max > 2) {
 
-          var nearest = 0;
-          var best = Infinity;
+          setDesktopActive(
+            win.scrollLeft > max / 2 ? 1 : 0
+          );
 
-          cards.forEach(function (card, i) {
-
-            var dist = Math.abs(
-              win.scrollLeft - card.offsetLeft
-            );
-
-            if (dist < best) {
-              best = dist;
-              nearest = i;
-            }
-
-          });
-
-          setActive(nearest);
-
-        }, 60);
+        }
 
       }, { passive: true });
 
 
-      goTo(0, false);
+      setDesktopActive(0);
 
     });
 
@@ -633,12 +864,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener(
       'DOMContentLoaded',
-      initLabRailIndicators
+      initLabRails
     );
 
   } else {
 
-    initLabRailIndicators();
+    initLabRails();
 
   }
 
