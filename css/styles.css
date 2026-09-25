@@ -4615,31 +4615,17 @@ body > .bridge-body.disclaimer-body strong {
   transition: opacity .35s ease !important;
 }
 
-.lab-page .vault-card-copy {
-  display: none !important;
-}
-
-.lab-page .vault-archive-card {
-  transition: transform .3s ease !important;
-}
-
-.lab-page .vault-archive-card:hover {
-  transform: translateY(-5px) !important;
+.lab-page .vault-archive-card:hover .vault-card-copy {
+  opacity: 1 !important;
 }
 
 .lab-page .vault-archive-card:hover .vault-card-art {
-  filter: none !important;
-  transform: none !important;
+  filter: brightness(1.18) grayscale(55%) blur(3px) !important;
+  transform: scale(1.01) !important;
 }
 
 .lab-page .vault-card-art {
-  transition: none !important;
-}
-
-@media (max-width: 900px) {
-  .lab-page .vault-archive-card:hover {
-    transform: none !important;
-  }
+  transition: filter .45s ease, transform .55s ease !important;
 }
 
 .lab-page .vault-card-copy strong {
