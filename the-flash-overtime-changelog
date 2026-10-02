@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <title>The Flash: Overtime Change Log | LSS</title>
+</head>
+<body>
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">No Spectacle Without Soul</span>
+  </a>
+  <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item active" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+  <style>
+    .cl-shell {
+      --cyan: #00AEDE;
+      --cyan-soft: rgba(0, 174, 222, 0.16);
+      --text-main: #BAC7D5;
+      --text-soft: rgba(186, 199, 213, 0.82);
+      --text-muted: rgba(186, 199, 213, 0.58);
+      --panel-bg: rgba(4, 14, 21, 0.86);
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 12px 20px 72px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .cl-movie-header {
+      width: min(980px, 100%);
+      margin: 0 auto 18px;
+      padding: 6px 18px 8px;
+      text-align: center;
+    }
+
+    .cl-movie-header img {
+      display: block;
+      width: 66%;
+      height: auto;
+ margin: 0 auto; 
+    }
+
+    .cl-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .cl-shell .vault-archive-hero h1 {
+      font-size: clamp(30px, 4.1vw, 54px);
+      letter-spacing: 0.18em;
+    }
+
+    .cl-shell .vault-archive-hero p {
+      width: min(820px, 100%);
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
+    }
+
+    .cl-box {
+      position: relative;
+      margin: 0 0 22px;
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        var(--panel-bg);
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+      overflow: hidden;
+    }
+
+    .cl-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+    }
+
+    .cl-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .cl-details {
+      display: block;
+    }
+
+    .cl-details summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cl-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .cl-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 70px 0 70px;
+      background:
+        linear-gradient(90deg, rgba(0, 174, 222, 0.14), rgba(255, 255, 255, 0.035), rgba(0, 174, 222, 0.14));
+      box-shadow:
+        inset 0 0 0 1px rgba(0, 174, 222, 0.20),
+        0 0 20px rgba(0, 174, 222, 0.07);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .cl-toggle-label {
+      display: block;
+      text-align: center;
+    }
+
+    .cl-toggle-arrow {
+      position: absolute;
+      right: 34px;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid var(--cyan);
+      border-bottom: 2px solid var(--cyan);
+      font-size: 0;
+      line-height: 0;
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.25s ease;
+    }
+
+    .cl-details[open] .cl-toggle-arrow {
+      transform: translateY(-35%) rotate(225deg);
+    }
+
+    .cl-log-wrap {
+      padding: 26px 28px 30px;
+    }
+
+    .cl-log-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 280px) 1fr;
+      gap: 28px;
+      margin: 0 0 12px;
+      padding: 22px 24px;
+      background: rgba(255, 255, 255, 0.025);
+      box-shadow:
+        inset 0 0 0 1px rgba(186, 199, 213, 0.075),
+        inset 4px 0 0 rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-heading {
+      display: flex;
+      align-items: flex-start;
+      min-height: 100%;
+      padding: 2px 24px 2px 0;
+      border-right: 1px solid rgba(186, 199, 213, 0.13);
+      color: var(--text-main);
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cl-log-copy ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .cl-log-copy li {
+      position: relative;
+      margin: 0 0 11px;
+      padding-left: 18px;
+      color: var(--text-soft);
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.45;
+    }
+
+    .cl-log-copy li:last-child {
+      margin-bottom: 0;
+    }
+
+    .cl-log-copy li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 5px;
+      height: 5px;
+      background: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 174, 222, 0.55);
+    }
+
+    .cl-log-copy em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .cl-shell {
+        padding: 8px 14px 48px;
+      }
+
+      .cl-movie-header {
+        margin-top: 0;
+        margin-bottom: 10px;
+        padding: 2px 6px 0;
+      }
+
+      .cl-shell .vault-archive-hero h1 {
+        font-size: clamp(24px, 7vw, 34px);
+        letter-spacing: 0.12em;
+      }
+
+      .cl-toggle {
+        min-height: 54px;
+        padding: 0 46px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+      }
+
+      .cl-toggle-arrow {
+        right: 20px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .cl-log-wrap {
+        padding: 16px 14px 18px;
+      }
+
+      .cl-log-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 16px;
+      }
+
+      .cl-log-heading {
+        padding: 0 0 10px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(186, 199, 213, 0.13);
+        font-size: 14px;
+      }
+
+      .cl-log-copy li {
+        font-size: 17px;
+        line-height: 1.45;
+      }
+    }
+
+  </style>
+
+  <div class="cl-shell">
+
+    <div class="cl-movie-header">
+      <img src="https://light-speed-studios.b-cdn.net/flashpvertimetopper.png" alt="The Flash: Overtime" loading="eager" decoding="async" />
+    </div>
+
+    <section class="vault-archive-hero cl-spoiler-hero">
+      <div class="vault-archive-frame"></div>
+      <h1>Spoilers Ahead</h1>
+    </section>
+
+    <div class="cl-box">
+      <details class="cl-details">
+        <summary class="cl-toggle">
+          <span class="cl-toggle-label">Access Change Log</span>
+          <span class="cl-toggle-arrow">⌄</span>
+        </summary>
+
+        <div class="cl-log-wrap">
+          <section class="cl-log-row">
+            <div class="cl-log-heading">GENERAL<br>PRESENTATION &amp; RESTRUCTURING</div>
+            <div class="cl-log-copy"><ul>
+              <li><strong>Episodes Used:</strong> Episodes 1, 2, 6, 7, and 9 of <em>The Flash</em> Season 1.</li>
+              <li>Restructured the selected episodes into a three-act feature: Act I uses Episode 1, Act II uses Episodes 2 and 6, and Act III uses Episodes 7 and 9.</li>
+              <li>Regraded the film with richer reds, reduced green and blue tones, increased contrast, and deeper blacks.</li>
+              <li>Added 2.39:1 letterboxing throughout.</li>
+              <li>Reworked episodic transitions throughout the film with extended reaction shots, establishing shots, and reconstructed day/night transitions.</li>
+              <li>Removed all early reveals of Dr. Harrison Wells entering the Time Vault, standing from his wheelchair, and his connection to the Reverse-Flash, withholding these revelations until the film's ending.</li>
+              <li>Removed several standalone scenes between Iris and Eddie, keeping their relationship primarily within Barry's perspective.</li>
+            </ul></div>
+          </section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT I<br>OPENING &amp; CRIME SCENE</div><div class="cl-log-copy"><ul>
+            <li>Reworked the opening to begin directly with Barry's everyday life rather than his childhood.</li>
+            <li>Reworked the opening crime scene to begin with Joe and CCPD investigating the Mardon brothers before Barry arrives late.</li>
+            <li>Restored the deleted Joe and Barry walk-and-talk following the crime scene.</li>
+            <li><strong>Source Note:</strong> This deleted scene was only available from a lower-quality source and required frame-rate conversion. A brief change in image quality and smoothness remains.</li>
+            <li>Removed Barry and Iris' conversation about Barry needing a girlfriend and Iris finding someone for him.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT I<br>BARRY'S CHILDHOOD</div><div class="cl-log-copy"><ul>
+            <li>Relocated the childhood/Nora material from the opening and reconstructed it as a continuous flashback sequence when Barry returns to his lab and looks at his hidden investigation board.</li>
+            <li>Rescored the childhood flashback sequence with <em>“Epilogue”</em> by Ólafur Arnalds.</li>
+            <li>Restored the deleted childhood scene in which Barry tells Iris that his father didn't kill his mother and Iris tells him she believes him.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT I<br>BECOMING THE FLASH</div><div class="cl-log-copy"><ul>
+            <li>Retained the first confrontation with Clyde Mardon / Weather Wizard, with minor trims and transition adjustments.</li>
+            <li>Removed Barry's detour to Starling City to speak with Oliver Queen.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT I<br>BARRY &amp; HENRY</div><div class="cl-log-copy"><ul>
+            <li>Combined two separate Barry and Henry prison visits into a single continuous scene, incorporating Henry's story about Barry taking his first steps and running to his mother.</li>
+            <li>Rescored the combined Barry/Henry sequence with a reprise of <em>“Epilogue”</em> by Ólafur Arnalds.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT II<br>THREE WEEKS LATER</div><div class="cl-log-copy"><ul>
+            <li>Added “THREE WEEKS LATER” following the Act I break.</li>
+            <li>Created a new hero montage from footage across several omitted episodes, showing Barry becoming comfortable with his powers, stopping crimes, saving civilians, and multitasking at STAR Labs.</li>
+            <li>Rescored the hero montage with <em>“Walking on a Dream”</em> by Empire of the Sun.</li>
+            <li>Reworked the end of the montage to transition directly into Barry experiencing the physical consequences of his speed and STAR Labs discovering his increased metabolic requirements.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT II<br>MULTIPLEX</div><div class="cl-log-copy"><ul>
+            <li>Streamlined the Multiplex storyline, removing Barry and Iris attending Simon Stagg's ceremony and Barry's subsequent power-loss episode.</li>
+            <li>Removed additional material surrounding Caitlin's conflict with Barry over his continued use of his powers.</li>
+            <li>Retained the remainder of the Multiplex storyline with minor trims and transition adjustments.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT II<br>BARRY &amp; JOE</div><div class="cl-log-copy"><ul>
+            <li>Rescored Barry and Joe's reconciliation at STAR Labs with <em>“Home,”</em> a custom arrangement of <em>The Flash</em> theme.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT II<br>IRIS &amp; THE FLASH</div><div class="cl-log-copy"><ul>
+            <li>Reworked the transition into the next storyline around Iris narrating her blog.</li>
+            <li>Streamlined Barry and Iris' rooftop conversation, removing dialogue dependent on omitted episodes.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT II<br>TONY WOODWARD</div><div class="cl-log-copy"><ul>
+            <li>Removed the extended Barry, Caitlin, and Cisco conversation about childhood bullies before Barry begins training to fight Tony Woodward.</li>
+            <li>Removed Eddie questioning Barry about Iris avoiding his calls during the Tony investigation.</li>
+            <li>Retained the majority of the Tony Woodward storyline, including Barry's training and the supersonic punch, with minor trims and transition adjustments.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT II<br>THE MAN IN YELLOW</div><div class="cl-log-copy"><ul>
+            <li>Act II concludes after Tony's capture with Reverse-Flash confronting Joe at his home and threatening Iris.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT III<br>BLACKOUT</div><div class="cl-log-copy"><ul>
+            <li>Reworked Episode 7 to focus entirely on Farooq Gibran / Blackout, completely removing the Clock King storyline and all related material.</li>
+            <li>Streamlined the Blackout storyline with additional dialogue trims and reconstructed transitions.</li>
+            <li>Removed the ending in which Wells secretly studies Farooq's ability to drain Barry's speed, withholding this material from Part I.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT III<br>CHRISTMAS IN CENTRAL CITY</div><div class="cl-log-copy"><ul>
+            <li>Removed Episode 9's opening Flash/Reverse-Flash confrontation and its “Five Days Earlier” structure.</li>
+            <li>Removed the earlier Christmas gathering at Joe's house, including Barry and Iris exchanging gifts and Eddie's arrival.</li>
+            <li>Reworked the beginning of the Episode 9 material to transition directly into Caitlin encountering Ronnie at the mall.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT III<br>BARRY &amp; IRIS</div><div class="cl-log-copy"><ul>
+            <li>Removed the Eddie and Iris scene at CC Jitters, including their discussion about Barry's feelings for Iris and Eddie asking Iris to move in with him.</li>
+            <li>Streamlined the Barry/Iris relationship storyline, retaining Iris confronting Barry after Eddie suggests Barry may have feelings for her.</li>
+            <li>Rescored Barry's confession of his feelings to Iris with <em>“Lightning Rod,”</em> a custom softer arrangement of <em>The Flash</em> theme.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT III<br>THE REVERSE-FLASH</div><div class="cl-log-copy"><ul>
+            <li>Streamlined the remainder of the Reverse-Flash storyline with additional dialogue and secondary-material trims.</li>
+            <li>Rescored Barry and Joe's conversation following the Reverse-Flash confrontation with a reprise of <em>“Home.”</em></li>
+            <li>Retained the Christmas gathering following the confrontation, including Cisco and Joe realizing that two speedsters were present the night Nora Allen was murdered.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">ACT III<br>11 MONTHS EARLIER</div><div class="cl-log-copy"><ul>
+            <li>Reconstructed the film's ending around a new “11 MONTHS EARLIER” sequence, combining previously withheld Time Vault material with the present-day aftermath of the Reverse-Flash confrontation.</li>
+            <li>Restored Wells entering the Time Vault, rising from his wheelchair, accessing Gideon, and revealing the future Flash newspaper for the first time.</li>
+            <li>Created a temporal transition from the flashback into the injured present-day Wells.</li>
+            <li>Reworked the sequence to continue into Wells approaching the Reverse-Flash suit and attaching the tachyon device.</li>
+            <li>Changed Wells' final line from “Merry Christmas” to “See you soon.”</li>
+            <li>Added a Reverse-Flash title reveal, transitioning into “TO BE CONTINUED…” to close Part I.</li>
+          </ul></div></section>
+
+          <section class="cl-log-row"><div class="cl-log-heading">IN LOVING MEMORY</div><div class="cl-log-copy"><ul>
+            <li>Added an “In Loving Memory of Logan Williams” tribute immediately before the end credits.</li>
+          </ul></div></section>
+        </div>
+      </details>
+    </div>
+
+  </div>
+</main>
+
+<script>
+function toggleMobileMenu(button) {
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!navLinks) return;
+
+  const isOpen = navLinks.classList.toggle('active');
+  button.classList.toggle('active', isOpen);
+  button.setAttribute('aria-expanded', String(isOpen));
+  button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!hamburger || !navLinks) return;
+
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+});
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>
