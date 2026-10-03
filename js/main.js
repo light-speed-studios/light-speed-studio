@@ -48,12 +48,15 @@
             hasClosed = true;
 
             window.clearTimeout(exitTimer);
+
+            /* Unlock page scrolling as soon as the splash begins to exit. */
+            document.documentElement.classList.remove("lss-splash-active");
+
             splash.setAttribute("aria-hidden", "true");
             splash.classList.add("is-exiting");
 
             window.setTimeout(() => {
                 splash.remove();
-                document.documentElement.classList.remove("lss-splash-active");
 
                 /* The hero welcome timer begins only after the splash is fully gone. */
                 announceSplashFinished();
