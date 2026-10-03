@@ -2251,6 +2251,22 @@
 }
 </style>
 
+
+<style id="vault-rail-side-fade-removal">
+/* Remove the left/right fade overlays from the Bridge Vault rail. */
+.vault-combined-section .vault-rail-window::before,
+.vault-combined-section .vault-rail-window::after,
+.vault-combined-section .index-vault-window::before,
+.vault-combined-section .index-vault-window::after {
+  content: none !important;
+  display: none !important;
+  opacity: 0 !important;
+  background: none !important;
+  box-shadow: none !important;
+  pointer-events: none !important;
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
