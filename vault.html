@@ -10,6 +10,46 @@
   <link rel="stylesheet" href="css/styles.css" />
 
   <title>Vault | LSS</title>
+
+<style id="vault-age-dash-nav">
+  .vault-age-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .vault-age-dashes {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+    flex: 0 0 auto;
+  }
+
+  .vault-age-dash {
+    width: 22px;
+    height: 4px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(186, 199, 213, 0.28);
+    cursor: pointer;
+    transition: width .22s ease, background .22s ease;
+  }
+
+  .vault-age-dash.active {
+    width: 38px;
+    background: #00AEDE;
+  }
+
+  @media (max-width: 900px) {
+    .vault-age-dashes { gap: 6px; }
+    .vault-age-dash { width: 18px; height: 4px; }
+    .vault-age-dash.active { width: 30px; }
+  }
+</style>
+
 </head>
 <body>
 <div id="lss-page-splash" data-duration="2500" aria-label="Vault splash screen">
@@ -55,13 +95,18 @@
   </section>
 
   <section class="vault-archive-section">
-    <div class="vault-archive-heading">
+    <div class="vault-archive-heading vault-age-heading">
       <div>
         <h2>Age of Heroes</h2>
       </div>
+
+      <div class="vault-age-dashes" aria-label="Age of Heroes rail position">
+        <button class="vault-age-dash active" type="button" aria-label="Show first Age of Heroes group" aria-current="true"></button>
+        <button class="vault-age-dash" type="button" aria-label="Show second Age of Heroes group" aria-current="false"></button>
+      </div>
     </div>
 
-    <div class="vault-rail-shell">
+    <div class="vault-rail-shell vault-age-rail">
       <button class="vault-rail-arrow vault-rail-prev" type="button" aria-label="Previous Age of Heroes projects"></button>
 
       <div class="vault-rail-window">
@@ -269,5 +314,48 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script src="js/main.js"></script>
+
+<script id="vault-age-dash-nav-js">
+document.addEventListener('DOMContentLoaded', function () {
+  const shell = document.querySelector('.vault-age-rail');
+  const dashes = Array.from(document.querySelectorAll('.vault-age-dash'));
+  if (!shell || dashes.length !== 2) return;
+
+  const railWindow = shell.querySelector('.vault-rail-window');
+  if (!railWindow) return;
+
+  function maxScroll() {
+    return Math.max(0, railWindow.scrollWidth - railWindow.clientWidth);
+  }
+
+  function activate(index) {
+    dashes.forEach(function (dash, i) {
+      const isActive = i === index;
+      dash.classList.toggle('active', isActive);
+      dash.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  }
+
+  function sync() {
+    const max = maxScroll();
+    activate(max > 1 && railWindow.scrollLeft >= max / 2 ? 1 : 0);
+  }
+
+  dashes.forEach(function (dash, index) {
+    dash.addEventListener('click', function () {
+      railWindow.scrollTo({
+        left: index === 0 ? 0 : maxScroll(),
+        behavior: 'smooth'
+      });
+      activate(index);
+    });
+  });
+
+  railWindow.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+});
+</script>
+
 </body>
 </html>
