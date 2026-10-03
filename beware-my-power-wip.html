@@ -211,6 +211,68 @@
         0 5px 22px rgba(0, 0, 0, 0.55);
     }
 
+
+    .ffs-teaser-panel {
+      position: relative;
+      width: 100%;
+      margin: 20px auto 0;
+      padding: 18px;
+      background:
+        linear-gradient(145deg, rgba(0, 174, 222, 0.12), rgba(255, 255, 255, 0.025)),
+        rgba(255, 255, 255, 0.03);
+      box-shadow:
+        0 0 32px rgba(0, 174, 222, 0.10),
+        inset 0 0 0 1px rgba(0, 174, 222, 0.22);
+      overflow: hidden;
+    }
+
+    .ffs-teaser-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 30px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 30px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 30px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 30px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 30px no-repeat;
+      opacity: .58;
+    }
+
+    .ffs-teaser-title {
+      position: relative;
+      z-index: 4;
+      margin: 0 0 14px;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .ffs-teaser-video {
+      position: relative;
+      z-index: 4;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.42);
+    }
+
+    .ffs-teaser-video iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     @media (max-width: 900px) {
       .ffs-page {
         padding: 14px 14px 42px;
@@ -336,10 +398,20 @@
         font-size: clamp(32px, 9vw, 44px);
         line-height: 0.98;
       }
+
+      .ffs-teaser-panel {
+        margin-top: 14px;
+        padding: 14px;
+      }
+
+      .ffs-teaser-title {
+        margin-bottom: 11px;
+        font-size: 15px;
+      }
     }
 
   .speed-trap-footer {
-    margin-top: -47px;
+    margin-top: 20px;
 }
 
 @media (max-width: 900px) {
@@ -399,6 +471,19 @@
 
           </div>
         </div>
+
+        <section class="ffs-teaser-panel" aria-labelledby="ffsTeaserIntroTitle">
+          <h2 class="ffs-teaser-title" id="ffsTeaserIntroTitle">Teaser Intro</h2>
+          <div class="ffs-teaser-video">
+            <iframe
+              src="https://www.youtube.com/embed/RKUtRJkfpBA"
+              title="Beware My Power Teaser Intro"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </section>
       </section>
     </div>
   </div>
