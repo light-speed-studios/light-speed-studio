@@ -2252,25 +2252,194 @@
 </style>
 
 
-<style id="vault-rail-side-fade-removal">
-/* Remove the left/right fade overlays from the Bridge Vault rail. */
-.vault-combined-section .vault-rail-window::before,
-.vault-combined-section .vault-rail-window::after,
-.vault-combined-section .index-vault-window::before,
-.vault-combined-section .index-vault-window::after {
-  content: none !important;
-  display: none !important;
-  opacity: 0 !important;
-  background: none !important;
-  box-shadow: none !important;
-  pointer-events: none !important;
+<style id="vault-intro-block-styles">
+/* =======================================================
+   BRIDGE VAULT INTRO
+   Replaces the project rail while retaining its footprint.
+======================================================= */
+.vault-intro-section {
+  width: 100%;
+  background: #040E15;
+  padding: 6px 0 12px !important;
+  font-family: 'Oxanium', sans-serif;
+}
+
+.vault-intro-shell {
+  width: min(1220px, calc(100% - 76px));
+  margin: 0 auto;
+}
+
+.vault-intro-panel {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 190px;
+  padding: 24px 30px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+
+  border: 1px solid rgba(0,174,222,.30);
+  background:
+    linear-gradient(90deg, rgba(0,174,222,.075), transparent 48%),
+    rgba(255,255,255,.022);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.012),
+    0 0 24px rgba(0,174,222,.07);
+}
+
+.vault-intro-panel::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  background:
+    linear-gradient(#00AEDE,#00AEDE) left top / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left top / 2px 42px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 2px 42px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 42px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 42px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 42px no-repeat;
+  opacity: .82;
+}
+
+.vault-intro-eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 13px;
+  color: rgba(123,234,255,.78);
+  font-family: 'Oxanium', sans-serif;
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .20em;
+  text-transform: uppercase;
+}
+
+.vault-intro-eyebrow span {
+  margin: 0 8px;
+  color: rgba(186,199,213,.42);
+}
+
+.vault-intro-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  padding-right: 190px;
+}
+
+.vault-intro-lead {
+  margin: 0 0 8px;
+  color: #e8f8ff;
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(1.08rem, 1.55vw, 1.42rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: .025em;
+}
+
+.vault-intro-body {
+  margin: 0;
+  max-width: 930px;
+  color: #BAC7D5;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.13rem);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.vault-intro-cta {
+  position: absolute;
+  right: 30px;
+  bottom: 24px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  color: #7beaff;
+  font-family: 'Oxanium', sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .22s ease, transform .22s ease;
+}
+
+.vault-intro-cta:hover,
+.vault-intro-cta:focus-visible {
+  color: #ffffff;
+  transform: translateX(3px);
+}
+
+.vault-intro-arrow {
+  font-size: 1.05rem;
+  line-height: 1;
+  color: #00AEDE;
+}
+
+@media (max-width: 900px) {
+  .vault-intro-section {
+    padding-top: 0 !important;
+  }
+
+  .vault-intro-shell {
+    width: calc(100% - 28px);
+  }
+
+  .vault-intro-panel {
+    min-height: 220px;
+    padding: 22px 20px 20px;
+    justify-content: flex-start;
+  }
+
+  .vault-intro-panel::before {
+    background:
+      linear-gradient(#00AEDE,#00AEDE) left top / 28px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left top / 2px 28px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 28px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 2px 28px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 28px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 28px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 28px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 28px no-repeat;
+  }
+
+  .vault-intro-eyebrow {
+    margin-bottom: 12px;
+    font-size: .58rem;
+    letter-spacing: .15em;
+  }
+
+  .vault-intro-copy {
+    padding-right: 0;
+  }
+
+  .vault-intro-lead {
+    margin-bottom: 8px;
+    font-size: 1.02rem;
+  }
+
+  .vault-intro-body {
+    font-size: .97rem;
+    line-height: 1.48;
+  }
+
+  .vault-intro-cta {
+    position: static;
+    margin-top: auto;
+    padding-top: 17px;
+    align-self: flex-start;
+    font-size: .66rem;
+  }
 }
 </style>
 
 </head>
 <body>
 <header class="lss-nav-bar">
-<a class="lss-nav-logo"  href="index.html?v=4">
+<a class="lss-nav-logo"  href="index.html?v=5">
   <picture class="lss-nav-logo-picture">
     <source
       media="(min-width: 901px)"
@@ -2558,216 +2727,26 @@
        SECTION 2: VAULT
   ======================================================= -->
 <div class="section-heading vault-section-heading">
-<a class="heading-link" href="vault.html">
-<span class="lead">V</span><span class="rest">AULT</span>
-</a>
+  <a class="heading-link" href="vault.html">
+    <span class="lead">V</span><span class="rest">AULT</span>
+  </a>
 </div>
-<section class="vault-combined-section" id="vaultSection">
-  <div class="vault-rail-shell index-vault-shell">
-    <button class="vault-rail-arrow vault-rail-prev" id="vaultPrev" type="button" aria-label="Previous Vault projects"></button>
 
-    <div class="vault-rail-dashes" id="vaultRailDashes"></div>
+<section class="vault-combined-section vault-intro-section" id="vaultSection" aria-label="Light Speed Studios editing philosophy">
+  <div class="vault-intro-shell">
+    <div class="vault-intro-panel">
+      <div class="vault-intro-eyebrow">LIGHT SPEED STUDIOS <span aria-hidden="true">//</span> EDITING PHILOSOPHY</div>
 
-    <div class="vault-rail-window index-vault-window">
-      <div class="vault-rail-track lss-vault-rail index-vault-track" id="vaultTrack">
-        <a class="vault-archive-card index-vault-card vault-item signature" href="vault/batman.html">
-        <img src="https://light-speed-studios.b-cdn.net/Batman%20logo.jpg"/>
-        <div class="vault-metadata-bar">
-        </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Riddle Me This</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img alt="LSS" src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 57M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item signature" href="vault/overtime.html">
-        <img src="https://light-speed-studios.b-cdn.net/overtimevault.png" alt="The Flash: Overtime"/>
-        <div class="vault-metadata-bar"></div>
-        <div class="vault-info">
-        <div class="vault-tagline">Running Around the Clock</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img alt="LSS" src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 2H 40M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item signature" href="vault/far-from-sol.html">
-        <img src="https://light-speed-studios.b-cdn.net/FFSrail.jpg"/>
-        <div class="vault-metadata-bar">
-        </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Into the Dying Light</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img alt="LSS" src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 2H 10M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item signature" href="vault/superman.html">
-        <img src="https://light-speed-studios.b-cdn.net/sot%20logo11.jpg"/>
-        <div class="vault-metadata-bar">
-        </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Tomorrow Begins with Hope</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 50M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item signature" href="vault/crisis.html">
-        <img src="https://light-speed-studios.b-cdn.net/Crisis%20logo.jpg"/>
-        <div class="vault-metadata-bar">
-        </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Two Worlds, One Stand</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 2H 04M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item precision" href="vault/glass-rooms.html">
-        <img src="https://light-speed-studios.b-cdn.net/GlassRooms1.jpg"/>
-        <div class="vault-metadata-bar">
-               </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Observation is Absolute</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 32M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item precision" href="vault/rogue-one.html">
-        <img src="https://light-speed-studios.b-cdn.net/ROGUE%20logo1112.jpg"/>
-        <div class="vault-metadata-bar">
-                </div>
-        <div class="vault-info">
-        <div class="vault-tagline"> Rebellions Are Built on Sacrifice</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 47M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item precision" href="vault/real-steel.html">
-        <img src="https://light-speed-studios.b-cdn.net/rs%20LOGO.jpg"/>
-        <div class="vault-metadata-bar">
-     
-        </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Fight for Redemption</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 47M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item precision" href="vault/speed-racer.html">
-        <img src="https://light-speed-studios.b-cdn.net/SRACTION.jpg"/>
-        <div class="vault-metadata-bar">
-       
-        </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Built for Speed</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 37M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item signature" href="vault/the-flash.html">
-        <img src="https://light-speed-studios.b-cdn.net/flash%20logo1.jpg"/>
-        <div class="vault-metadata-bar">
-
-        </div>
-        <div class="vault-info">
-        <div class="vault-tagline">No Choice Left But to Run</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 58M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item precision" href="vault/star-trek.html">
-        <img src="https://light-speed-studios.b-cdn.net/gen%20logo1.jpg"/>
-        <div class="vault-metadata-bar">
-               </div>
-        <div class="vault-info">
-        <div class="vault-tagline">The Future Begins Again</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 52M</div>
-        </div>
-        </a>
-        <a class="vault-archive-card index-vault-card vault-item precision" href="vault/top-gun.html">
-        <img src="https://light-speed-studios.b-cdn.net/tga%20logo.jpg"/>
-        <div class="vault-metadata-bar">
-              </div>
-        <div class="vault-info">
-        <div class="vault-tagline">Trust Your Wing</div>
-        <div class="vault-divider">
-        <span></span>
-        <span class="mark">
-        <img src="https://light-speed-studios.b-cdn.net/favinew%20low%20copy.png"/>
-        </span>
-        <span></span>
-        </div>
-        <div class="vault-runtime">RUNTIME • 1H 43M</div>
-        </div>
-        </a>
+      <div class="vault-intro-copy">
+        <p class="vault-intro-lead">Every edit begins with an emotional connection.</p>
+        <p class="vault-intro-body">By stripping away noise, the goal is to reveal a clearer, more focused version of the story. By honoring the original vision, Light Speed Studios aims to offer fresh perspectives on films that already mean so much to their fans.</p>
       </div>
-    </div>
 
-    <button class="vault-rail-arrow vault-rail-next" id="vaultNext" type="button" aria-label="Next Vault projects"></button>
+      <a class="vault-intro-cta" href="vault.html" aria-label="Explore the Vault">
+        <span>EXPLORE THE VAULT</span>
+        <span class="vault-intro-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
   </div>
 </section>
 <!-- =======================================================
