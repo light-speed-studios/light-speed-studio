@@ -2766,6 +2766,32 @@
 }
 
 </style>
+
+<style id="bridge-newsletter-panel-final-tune">
+@media (min-width: 901px) {
+  /* Pull the newsletter upward slightly inside the shared Bridge panel. */
+  .vault-intro-panel > .orbit-desktop-newsletter {
+    margin: 55px auto 45px !important;
+    background: transparent !important;
+  }
+
+  /* Remove the old dark newsletter slab so the Bridge panel background continues through. */
+  .vault-intro-panel > .orbit-desktop-newsletter,
+  .vault-intro-panel > .orbit-desktop-newsletter .lss-embed,
+  .vault-intro-panel > .orbit-desktop-newsletter .lss-form {
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Give the philosophy copy more visual weight and use more of the open space. */
+  .vault-intro-body {
+    font-size: clamp(1.28rem, 1.60vw, 1.50rem) !important;
+    line-height: 1.55 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
