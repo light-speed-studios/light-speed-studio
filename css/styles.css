@@ -6016,3 +6016,282 @@ body .lss-image-block.orbit-image-frame::before {
 .vault-rail-window::after{
     display:none !important;
 }
+
+/* =======================================================
+   LSS CLOSED PROJECT SEARCH
+   Searches only the approved Vault project titles/subtitles.
+======================================================= */
+.lss-nav-links {
+  align-items: center;
+}
+
+.lss-project-search-trigger {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #BAC7D5;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: color .2s ease, transform .2s ease, opacity .2s ease;
+}
+
+.lss-project-search-trigger svg,
+.lss-project-search-field-icon {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lss-project-search-trigger:hover,
+.lss-project-search-trigger:focus-visible {
+  color: #00AEDE;
+}
+
+.lss-project-search-trigger:focus-visible,
+.lss-project-search-close:focus-visible,
+.lss-project-search-result:focus-visible,
+.lss-project-search-input:focus-visible {
+  outline: 2px solid #00AEDE;
+  outline-offset: 3px;
+}
+
+.lss-project-search-trigger-mobile {
+  display: none;
+}
+
+.lss-project-search-trigger-desktop {
+  margin-left: -4px;
+}
+
+.lss-project-search-shell {
+  display: none;
+  position: relative;
+  width: min(680px, 56vw);
+  margin-left: auto;
+  z-index: 1004;
+}
+
+.lss-nav-bar.lss-search-active .lss-nav-links {
+  display: none !important;
+}
+
+.lss-nav-bar.lss-search-active .lss-project-search-shell,
+.lss-project-search-shell.is-open {
+  display: block;
+}
+
+.lss-project-search-field {
+  position: relative;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 0 13px;
+  background: rgba(4,14,21,.96);
+  border: 1px solid rgba(0,174,222,.72);
+  box-shadow:
+    0 0 0 1px rgba(0,174,222,.08) inset,
+    0 10px 30px rgba(0,0,0,.28);
+}
+
+.lss-project-search-field-icon {
+  flex: 0 0 auto;
+  color: #00AEDE;
+}
+
+.lss-project-search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #F2F7FA;
+  font-family: 'Oxanium', sans-serif;
+  font-size: .86rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.lss-project-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.lss-project-search-input::placeholder {
+  color: rgba(186,199,213,.65);
+  opacity: 1;
+}
+
+.lss-project-search-close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #BAC7D5;
+  font-family: Arial, sans-serif;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color .2s ease;
+}
+
+.lss-project-search-close:hover {
+  color: #00AEDE;
+}
+
+.lss-project-search-results {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  max-height: min(430px, calc(100vh - 95px));
+  overflow-y: auto;
+  background: rgba(4,14,21,.985);
+  border: 1px solid rgba(0,174,222,.42);
+  box-shadow: 0 22px 45px rgba(0,0,0,.48);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.lss-project-search-results.has-content {
+  display: block;
+}
+
+.lss-project-search-result {
+  min-height: 62px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: #E8F0F5;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(186,199,213,.10);
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+
+.lss-project-search-result:last-child {
+  border-bottom: 0;
+}
+
+.lss-project-search-result:hover,
+.lss-project-search-result:focus-visible {
+  background: rgba(0,174,222,.10);
+  color: #FFFFFF;
+  box-shadow: inset 3px 0 0 #00AEDE;
+}
+
+.lss-project-search-result-copy {
+  min-width: 0;
+}
+
+.lss-project-search-result-title {
+  display: block;
+  color: inherit;
+  font-family: 'Oxanium', sans-serif;
+  font-size: .90rem;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.lss-project-search-result-meta {
+  display: block;
+  margin-top: 4px;
+  color: rgba(186,199,213,.72);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: .76rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.lss-project-search-result-arrow {
+  flex: 0 0 auto;
+  color: #00AEDE;
+  font-family: Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.lss-project-search-empty {
+  padding: 20px 16px;
+  color: rgba(186,199,213,.78);
+  font-family: 'Oxanium', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .lss-project-search-trigger-desktop {
+    display: none !important;
+  }
+
+  .lss-project-search-trigger-mobile {
+    display: inline-flex;
+    position: absolute;
+    top: 50%;
+    right: calc(5vw + 48px);
+    transform: translateY(-50%);
+    z-index: 1002;
+  }
+
+  .lss-nav-bar.lss-search-active .lss-nav-logo,
+  .lss-nav-bar.lss-search-active .hamburger,
+  .lss-nav-bar.lss-search-active .lss-project-search-trigger-mobile {
+    display: none !important;
+  }
+
+  .lss-project-search-shell {
+    width: 100%;
+    margin: 0;
+  }
+
+  .lss-project-search-field {
+    width: 100%;
+    height: 41px;
+  }
+
+  .lss-project-search-input {
+    font-size: .78rem;
+  }
+
+  .lss-project-search-results {
+    top: calc(100% + 10px);
+    max-height: min(430px, calc(100vh - 82px));
+  }
+
+  .lss-project-search-result {
+    min-height: 60px;
+    padding: 12px 14px;
+  }
+
+  .lss-project-search-result-title {
+    font-size: .82rem;
+  }
+}
