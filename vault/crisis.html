@@ -2125,45 +2125,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 
-/* EDITOR'S NOTE */
-.ffs-editors-note {
-  position: relative;
-  margin-top: 18px;
-  padding: 24px 28px;
-  background:
-    linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
-    rgba(255, 255, 255, 0.035);
-  box-shadow:
-    0 0 30px rgba(0, 174, 222, 0.08),
-    inset 0 0 0 1px rgba(0, 174, 222, 0.18);
-  overflow: hidden;
-}
-
-.ffs-editors-note::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 3;
-  background:
-    linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
-    linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
-    linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
-    linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
-    linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
-    linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
-    linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
-    linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
-  opacity: 0.72;
-}
-
-.ffs-editors-note > * {
-  position: relative;
-  z-index: 4;
-}
-
-.ffs-editors-note h2 {
-  margin: 0 0 10px;
+/* EDITOR'S NOTE INSIDE PALETTE MODULE */
+.ffs-palette-module .ffs-editors-note-title {
+  margin: 0 0 14px;
   font-family: Oxanium, Rajdhani, Arial, sans-serif;
   font-size: 18px;
   font-weight: 800;
@@ -2172,8 +2136,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   color: var(--cyan);
 }
 
-.ffs-editors-note p {
-  margin: 0;
+.ffs-palette-module .ffs-editors-note-text {
+  margin: 18px 14px 6px;
   font-family: Rajdhani, Arial, sans-serif;
   font-size: 21px;
   font-weight: 500;
@@ -2184,17 +2148,66 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 @media (max-width: 900px) {
-  .ffs-editors-note {
+  .ffs-palette-module {
+    display: block;
+    position: relative;
     margin: 14px 14px 18px;
     padding: 16px;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      rgba(255, 255, 255, 0.035);
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
   }
 
-  .ffs-editors-note h2 {
-    margin-bottom: 8px;
+  .ffs-palette-module::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 28px no-repeat;
+    opacity: 0.72;
+  }
+
+  .ffs-palette-module > * {
+    position: relative;
+    z-index: 4;
+  }
+
+  .ffs-palette-module .ffs-editors-note-title {
+    margin-bottom: 10px;
     font-size: 14px;
   }
 
-  .ffs-editors-note p {
+  .ffs-palette-module .ffs-palette-wrap {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .ffs-palette-module .ffs-palette {
+    width: 100%;
+    height: auto;
+    min-height: 72px;
+    object-fit: fill;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 14px 0 0;
     font-size: 17px;
     line-height: 1.48;
   }
@@ -2202,15 +2215,12 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 </style>
 
-<div class="ffs-palette-module">
+<section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
+  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
   <div class="ffs-palette-wrap">
     <img alt="Crisis: Red Skies color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/CrisisPalette.png"/>
   </div>
-</div>
-
-<section class="ffs-editors-note" aria-labelledby="ffsEditorsNoteTitle">
-  <h2 id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p><em>Crisis on Earth-X</em> was one of my favorite Arrowverse crossovers. I loved the scale of the story, but what always stuck with me most were its emotional beats and the relationships between these characters. I wanted to accentuate those moments and give them more room to resonate, while shaping the crossover into one continuous film. More than anything, I wanted the emotion to carry the story just as much as the spectacle.</p>
+  <p class="ffs-editors-note-text"><em>Crisis on Earth-X</em> was one of my favorite Arrowverse crossovers. I loved the scale of the story, but what always stuck with me most were its emotional beats and the relationships between these characters. I wanted to accentuate those moments and give them more room to resonate, while shaping the crossover into one continuous film. More than anything, I wanted the emotion to carry the story just as much as the spectacle.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
