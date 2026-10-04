@@ -863,18 +863,18 @@ document.addEventListener("DOMContentLoaded", () => {
 ======================================================= */
 (function () {
   const projects = [
-    { title: "BATMAN: GOTHAM'S RIDDLE", url: "/vault/batman.html" },
-    { title: "CRISIS EARTH-X: RED SKIES", url: "/vault/crisis.html" },
-    { title: "PROJECT HAIL MARY: FAR FROM SOL", url: "/vault/far-from-sol.html" },
-    { title: "EX MACHINA: GLASS ROOMS", url: "/vault/glass-rooms.html" },
-    { title: "THE FLASH: OVERTIME", url: "/vault/overtime.html" },
-    { title: "REAL STEEL: LAST ROUND", url: "/vault/real-steel.html" },
-    { title: "STAR WARS: ROGUE ONE", url: "/vault/rogue-one.html" },
-    { title: "SPEED RACER: MACH 6", url: "/vault/speed-racer.html" },
-    { title: "STAR TREK: GENESIS", url: "/vault/star-trek.html" },
-    { title: "SUPERMAN: SON OF TOMORROW", url: "/vault/superman.html" },
-    { title: "THE FLASH: CROSSROADS", url: "/vault/the-flash.html" },
-    { title: "TOP GUN: ASCENSION", url: "/vault/top-gun.html" }
+    { title: "BATMAN: GOTHAM'S RIDDLE", url: "/vault/batman.html", image: "https://light-speed-studios.b-cdn.net/batman-main.jpg" },
+    { title: "CRISIS EARTH-X: RED SKIES", url: "/vault/crisis.html", image: "https://light-speed-studios.b-cdn.net/crisismain1.jpg" },
+    { title: "PROJECT HAIL MARY: FAR FROM SOL", url: "/vault/far-from-sol.html", image: "https://light-speed-studios.b-cdn.net/Solvaulmob.jpg" },
+    { title: "EX MACHINA: GLASS ROOMS", url: "/vault/glass-rooms.html", image: "https://light-speed-studios.b-cdn.net/glassrooms11111.jpg" },
+    { title: "THE FLASH: OVERTIME", url: "/vault/overtime.html", image: "https://light-speed-studios.b-cdn.net/overtimevaultmob.jpg" },
+    { title: "REAL STEEL: LAST ROUND", url: "/vault/real-steel.html", image: "https://light-speed-studios.b-cdn.net/RS-rail-text.jpg" },
+    { title: "STAR WARS: ROGUE ONE", url: "/vault/rogue-one.html", image: "https://light-speed-studios.b-cdn.net/rogueonemain.jpg" },
+    { title: "SPEED RACER: MACH 6", url: "/vault/speed-racer.html", image: "https://light-speed-studios.b-cdn.net/SRACTION.jpg" },
+    { title: "STAR TREK: GENESIS", url: "/vault/star-trek.html", image: "https://light-speed-studios.b-cdn.net/star-trek-logo.jpg" },
+    { title: "SUPERMAN: SON OF TOMORROW", url: "/vault/superman.html", image: "https://light-speed-studios.b-cdn.net/sotmain1.jpg" },
+    { title: "THE FLASH: CROSSROADS", url: "/vault/the-flash.html", image: "https://light-speed-studios.b-cdn.net/flashmain1.jpg" },
+    { title: "TOP GUN: ASCENSION", url: "/vault/top-gun.html", image: "https://light-speed-studios.b-cdn.net/TOPGUN-text.jpg" }
   ];
 
   function normalize(value) {
@@ -993,6 +993,17 @@ document.addEventListener("DOMContentLoaded", () => {
         link.setAttribute("role", "option");
         link.setAttribute("aria-label", `Open ${project.title}`);
 
+        const imageWrap = document.createElement("span");
+        imageWrap.className = "lss-project-search-result-image-wrap";
+
+        const image = document.createElement("img");
+        image.className = "lss-project-search-result-image";
+        image.src = project.image;
+        image.alt = "";
+        image.loading = "lazy";
+        image.decoding = "async";
+        imageWrap.appendChild(image);
+
         const copy = document.createElement("span");
         copy.className = "lss-project-search-result-copy";
 
@@ -1000,17 +1011,13 @@ document.addEventListener("DOMContentLoaded", () => {
         title.className = "lss-project-search-result-title";
         title.textContent = project.title;
 
-        const meta = document.createElement("span");
-        meta.className = "lss-project-search-result-meta";
-        meta.textContent = "VAULT";
-
         const arrow = document.createElement("span");
         arrow.className = "lss-project-search-result-arrow";
         arrow.setAttribute("aria-hidden", "true");
         arrow.textContent = "›";
 
         copy.appendChild(title);
-        copy.appendChild(meta);
+        link.appendChild(imageWrap);
         link.appendChild(copy);
         link.appendChild(arrow);
         results.appendChild(link);
