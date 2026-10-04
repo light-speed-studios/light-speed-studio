@@ -854,3 +854,244 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+/* =======================================================
+   LSS CLOSED PROJECT SEARCH
+   Only the project title/subtitle text below is searchable.
+   Filenames, page copy, characters, actors, genres, and other
+   hidden keywords are intentionally excluded.
+======================================================= */
+(function () {
+  const projects = [
+    { title: "BATMAN: GOTHAM'S RIDDLE", url: "/vault/batman.html" },
+    { title: "CRISIS EARTH-X: RED SKIES", url: "/vault/crisis.html" },
+    { title: "PROJECT HAIL MARY: FAR FROM SOL", url: "/vault/far-from-sol.html" },
+    { title: "EX MACHINA: GLASS ROOMS", url: "/vault/glass-rooms.html" },
+    { title: "THE FLASH: OVERTIME", url: "/vault/overtime.html" },
+    { title: "REAL STEEL: LAST ROUND", url: "/vault/real-steel.html" },
+    { title: "STAR WARS: ROGUE ONE", url: "/vault/rogue-one.html" },
+    { title: "SPEED RACER: MACH 6", url: "/vault/speed-racer.html" },
+    { title: "STAR TREK: GENESIS", url: "/vault/star-trek.html" },
+    { title: "SUPERMAN: SON OF TOMORROW", url: "/vault/superman.html" },
+    { title: "THE FLASH: CROSSROADS", url: "/vault/the-flash.html" },
+    { title: "TOP GUN: ASCENSION", url: "/vault/top-gun.html" }
+  ];
+
+  function normalize(value) {
+    return String(value || "")
+      .toLowerCase()
+      .normalize("NFKD")
+      .replace(/[’']/g, "")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+
+  projects.forEach(project => {
+    project.searchText = normalize(project.title);
+  });
+
+  function initProjectSearch() {
+    const navBar = document.querySelector(".lss-nav-bar");
+    const shell = document.getElementById("lssProjectSearchShell");
+    const input = document.getElementById("lssProjectSearchInput");
+    const results = document.getElementById("lssProjectSearchResults");
+    const closeButton = document.getElementById("lssProjectSearchClose");
+    const triggers = Array.from(document.querySelectorAll(".lss-project-search-trigger"));
+
+    if (!navBar || !shell || !input || !results || !closeButton || !triggers.length) return;
+
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".lss-nav-links");
+
+    function setTriggersExpanded(expanded) {
+      triggers.forEach(trigger => {
+        trigger.setAttribute("aria-expanded", expanded ? "true" : "false");
+      });
+    }
+
+    function closeMobileMenu() {
+      if (navLinks) navLinks.classList.remove("active");
+      if (hamburger) {
+        hamburger.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", "false");
+        hamburger.setAttribute("aria-label", "Open navigation menu");
+      }
+    }
+
+    function clearResults() {
+      results.innerHTML = "";
+      results.classList.remove("has-content");
+    }
+
+    function openSearch() {
+      closeMobileMenu();
+      navBar.classList.add("lss-search-active");
+      shell.classList.add("is-open");
+      shell.setAttribute("aria-hidden", "false");
+      setTriggersExpanded(true);
+
+      window.requestAnimationFrame(() => {
+        input.focus({ preventScroll: true });
+      });
+    }
+
+    function closeSearch(options = {}) {
+      const restoreFocus = options.restoreFocus === true;
+      navBar.classList.remove("lss-search-active");
+      shell.classList.remove("is-open");
+      shell.setAttribute("aria-hidden", "true");
+      setTriggersExpanded(false);
+      input.value = "";
+      clearResults();
+
+      if (restoreFocus) {
+        const visibleTrigger = triggers.find(trigger => {
+          const style = window.getComputedStyle(trigger);
+          return style.display !== "none" && style.visibility !== "hidden";
+        });
+        if (visibleTrigger) visibleTrigger.focus({ preventScroll: true });
+      }
+    }
+
+    function getMatches(query) {
+      const normalizedQuery = normalize(query);
+      if (!normalizedQuery) return [];
+
+      const terms = normalizedQuery.split(" ").filter(Boolean);
+
+      return projects.filter(project =>
+        terms.every(term => project.searchText.includes(term))
+      );
+    }
+
+    function renderResults() {
+      const query = input.value;
+      const normalizedQuery = normalize(query);
+
+      if (!normalizedQuery) {
+        clearResults();
+        return;
+      }
+
+      const matches = getMatches(query);
+      results.innerHTML = "";
+      results.classList.add("has-content");
+
+      if (!matches.length) {
+        const empty = document.createElement("div");
+        empty.className = "lss-project-search-empty";
+        empty.textContent = "NO PROJECTS FOUND";
+        results.appendChild(empty);
+        return;
+      }
+
+      matches.forEach(project => {
+        const link = document.createElement("a");
+        link.className = "lss-project-search-result";
+        link.href = project.url;
+        link.setAttribute("role", "option");
+        link.setAttribute("aria-label", `Open ${project.title}`);
+
+        const copy = document.createElement("span");
+        copy.className = "lss-project-search-result-copy";
+
+        const title = document.createElement("span");
+        title.className = "lss-project-search-result-title";
+        title.textContent = project.title;
+
+        const meta = document.createElement("span");
+        meta.className = "lss-project-search-result-meta";
+        meta.textContent = "VAULT";
+
+        const arrow = document.createElement("span");
+        arrow.className = "lss-project-search-result-arrow";
+        arrow.setAttribute("aria-hidden", "true");
+        arrow.textContent = "›";
+
+        copy.appendChild(title);
+        copy.appendChild(meta);
+        link.appendChild(copy);
+        link.appendChild(arrow);
+        results.appendChild(link);
+      });
+    }
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener("click", event => {
+        event.preventDefault();
+        event.stopPropagation();
+        openSearch();
+      });
+    });
+
+    closeButton.addEventListener("click", () => {
+      closeSearch({ restoreFocus: true });
+    });
+
+    input.addEventListener("input", renderResults);
+
+    input.addEventListener("keydown", event => {
+      /* Search has no submit behavior. Visitors must choose a valid dropdown result. */
+      if (event.key === "Enter") {
+        event.preventDefault();
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSearch({ restoreFocus: true });
+      }
+
+      if (event.key === "ArrowDown") {
+        const firstResult = results.querySelector(".lss-project-search-result");
+        if (firstResult) {
+          event.preventDefault();
+          firstResult.focus();
+        }
+      }
+    });
+
+    results.addEventListener("keydown", event => {
+      const links = Array.from(results.querySelectorAll(".lss-project-search-result"));
+      if (!links.length) return;
+
+      const currentIndex = links.indexOf(document.activeElement);
+
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        links[(currentIndex + 1 + links.length) % links.length].focus();
+      }
+
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        if (currentIndex <= 0) input.focus();
+        else links[currentIndex - 1].focus();
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeSearch({ restoreFocus: true });
+      }
+    });
+
+    document.addEventListener("pointerdown", event => {
+      if (!navBar.classList.contains("lss-search-active")) return;
+      if (shell.contains(event.target) || triggers.some(trigger => trigger.contains(event.target))) return;
+      closeSearch();
+    });
+
+    window.addEventListener("resize", () => {
+      if (!navBar.classList.contains("lss-search-active")) return;
+      closeMobileMenu();
+    });
+
+    /* Expose a tiny hook so the existing nav can close search if needed later. */
+    window.closeLssProjectSearch = closeSearch;
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initProjectSearch, { once: true });
+  } else {
+    initProjectSearch();
+  }
+})();
