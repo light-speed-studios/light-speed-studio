@@ -969,7 +969,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const query = input.value;
       const normalizedQuery = normalize(query);
 
-      if (!normalizedQuery) {
+      if (!normalizedQuery || normalizedQuery.replace(/\s/g, "").length < 2) {
         clearResults();
         return;
       }
