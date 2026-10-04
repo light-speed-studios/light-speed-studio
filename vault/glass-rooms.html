@@ -1998,6 +1998,107 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 }
 
+
+/* PALETTE + EDITOR'S NOTE */
+@media (min-width: 901px) {
+  .ffs-palette-module {
+    position: relative;
+    margin-top: 21px;
+    padding: 14px;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+      rgba(255, 255, 255, 0.035);
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+  }
+
+  .ffs-palette-module .ffs-palette {
+    width: 100%;
+    height: 121px;
+    object-fit: fill;
+  }
+}
+
+.ffs-palette-module .ffs-editors-note-title {
+  margin: 14px 14px 14px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.ffs-palette-module .ffs-editors-note-text {
+  margin: 18px 14px 6px;
+  font-family: Rajdhani, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-soft);
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 900px) {
+  .ffs-palette-module {
+    display: block;
+    position: relative;
+    margin: 14px 14px 18px;
+    padding: 16px;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      rgba(255, 255, 255, 0.035);
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
+  }
+
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 0 10px;
+    font-size: 18px;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .ffs-palette-module .ffs-palette {
+    width: 100%;
+    height: auto;
+    min-height: 72px;
+    object-fit: fill;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 14px 0 0;
+    font-size: 17px;
+    line-height: 1.48;
+  }
+}
+
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-palette-wrap {
+    display: block !important;
+  }
+}
+
 </style>
   <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
     <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
@@ -2176,9 +2277,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </style>
 
 <div class="ffs-palette-module">
+  <section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
   <div class="ffs-palette-wrap">
     <img alt="Glass Rooms color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/GDpallette.png"/>
   </div>
+  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
+  <p class="ffs-editors-note-text"><em>Ex Machina</em> was a film I admired more for its ideas than its execution. The conversations between Caleb and Ava were compelling, but I felt the story sometimes revealed too much too early and lingered beyond the point where its tension was strongest. With <em>Glass Rooms</em>, I wanted to tighten that experience while subtly shifting the perspective toward Ava, gradually revealing that the humans may have been the subjects all along.</p>
+</section>
 </div>
 
 <div class="ffs-cta-trailer-row">
