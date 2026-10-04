@@ -22,7 +22,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=6" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=7" rel="stylesheet"/>
 
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.jpg" media="(min-width: 901px)" fetchpriority="high"/>
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.jpg" media="(max-width: 900px)" fetchpriority="high"/>
@@ -2454,18 +2454,56 @@
   <span class="lss-brand-text">No Spectacle Without Soul</span>
 </a>
 
+<button class="lss-project-search-trigger lss-project-search-trigger-mobile" type="button" aria-label="Search projects" aria-controls="lssProjectSearchShell" aria-expanded="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <circle cx="11" cy="11" r="6.5"></circle>
+    <path d="M16 16l4.2 4.2"></path>
+  </svg>
+</button>
+
 <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
   <span></span>
   <span></span>
   <span></span>
 </button>
+
 <nav class="lss-nav-links">
   <a class="lss-nav-item active"  href="index.html?v=4">Bridge</a>
   <a class="lss-nav-item" href="vault.html">Vault</a>
   <a class="lss-nav-item" href="lab.html">Lab</a>
   <a class="lss-nav-item" href="pulse.html">Pulse</a>
   <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  <button class="lss-project-search-trigger lss-project-search-trigger-desktop" type="button" aria-label="Search projects" aria-controls="lssProjectSearchShell" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="11" cy="11" r="6.5"></circle>
+      <path d="M16 16l4.2 4.2"></path>
+    </svg>
+  </button>
 </nav>
+
+<div class="lss-project-search-shell" id="lssProjectSearchShell" role="search" aria-hidden="true">
+  <div class="lss-project-search-field">
+    <svg class="lss-project-search-field-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="11" cy="11" r="6.5"></circle>
+      <path d="M16 16l4.2 4.2"></path>
+    </svg>
+    <input
+      id="lssProjectSearchInput"
+      class="lss-project-search-input"
+      type="search"
+      inputmode="search"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="SEARCH PROJECTS..."
+      aria-label="Search Light Speed Studios projects"
+      aria-controls="lssProjectSearchResults"
+      aria-autocomplete="list"
+    />
+    <button class="lss-project-search-close" id="lssProjectSearchClose" type="button" aria-label="Close project search">×</button>
+  </div>
+  <div class="lss-project-search-results" id="lssProjectSearchResults" role="listbox" aria-label="Project search results"></div>
+</div>
 </header>
 <div id="lss-splash" aria-label="Light Speed Studios loading screen">
 <picture class="lss-splash-picture">
@@ -3017,7 +3055,7 @@
   });
   </script>
 
-  <script src="js/main.js?v=5"></script>
+  <script src="js/main.js?v=6"></script>
 <script>
 (function(){
   function initOrbitYearSwitcher(){
