@@ -2123,6 +2123,79 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     display: block;
   }
 }
+
+/* EDITOR'S NOTE */
+.ffs-editors-note {
+  position: relative;
+  margin-top: 18px;
+  padding: 24px 28px;
+  background:
+    linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 0 30px rgba(0, 174, 222, 0.08),
+    inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+  overflow: hidden;
+}
+
+.ffs-editors-note::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+  opacity: 0.72;
+}
+
+.ffs-editors-note > * {
+  position: relative;
+  z-index: 4;
+}
+
+.ffs-editors-note h2 {
+  margin: 0 0 10px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.ffs-editors-note p {
+  margin: 0;
+  font-family: Rajdhani, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-soft);
+}
+
+@media (max-width: 900px) {
+  .ffs-editors-note {
+    margin: 14px 14px 18px;
+    padding: 16px;
+  }
+
+  .ffs-editors-note h2 {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .ffs-editors-note p {
+    font-size: 17px;
+    line-height: 1.48;
+  }
+}
 </style>
 
 <div class="ffs-palette-module">
@@ -2130,6 +2203,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <img alt="Batman: Gotham's Riddle color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/NEW%20PALLETTE.PNG"/>
   </div>
 </div>
+
+<section class="ffs-editors-note" aria-labelledby="ffsEditorsNoteTitle">
+  <h2 id="ffsEditorsNoteTitle">Editor's Note</h2>
+  <p><em>The Batman</em> was already a film I loved, and I saw a huge opportunity to edit it and lean even further into the detective story. I wanted to keep the Riddler’s activities hidden while bringing Bruce’s loneliness to the forefront. Inspired by <em>The Long Halloween</em> animated series and, later, <em>Collateral</em>, I wanted to find the colder, more restrained version of this story that I could feel sitting just beneath the surface.</p>
+</section>
 
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
