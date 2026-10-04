@@ -2596,6 +2596,27 @@
   box-shadow: 0 22px 45px rgba(0,0,0,.48);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+
+  /* LSS-styled results scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(186,199,213,.48) transparent;
+}
+
+.lss-project-search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lss-project-search-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lss-project-search-results::-webkit-scrollbar-thumb {
+  background: rgba(186,199,213,.48);
+  border-radius: 999px;
+}
+
+.lss-project-search-results::-webkit-scrollbar-thumb:hover {
+  background: #00AEDE;
 }
 
 .lss-project-search-results.has-content {
@@ -3341,7 +3362,7 @@
   });
   </script>
 
-  <script src="js/main.js?v=7"></script>
+  <script src="js/main.js?v=8"></script>
 <script>
 (function(){
   function initOrbitYearSwitcher(){
