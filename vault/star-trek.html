@@ -2137,6 +2137,28 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     display: none !important;
   }
 
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 14px 14px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-align: center;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 18px 14px 6px;
+    font-family: Rajdhani, Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--text-soft);
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
   .ffs-cta-trailer-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 270px;
@@ -2186,7 +2208,79 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 @media (max-width: 900px) {
   .ffs-palette-module {
-    display: none;
+    display: block;
+    position: relative;
+    margin: 14px 14px 18px;
+    padding: 16px;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      rgba(255, 255, 255, 0.035);
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
+  }
+
+  .ffs-palette-module::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 28px no-repeat;
+    opacity: 0.72;
+  }
+
+  .ffs-palette-module > * {
+    position: relative;
+    z-index: 4;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap {
+    display: block !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+  }
+
+  .ffs-palette-module .ffs-palette {
+    width: 100%;
+    height: auto;
+    min-height: 72px;
+    object-fit: fill;
+  }
+
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 0 10px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-align: center;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 14px 0 0;
+    font-family: Rajdhani, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.48;
+    color: var(--text-soft);
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   .ffs-cta-trailer-row {
@@ -2195,11 +2289,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 </style>
 
-<div class="ffs-palette-module">
+<section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
   <div class="ffs-palette-wrap">
     <img alt="Star Trek: Genesis color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FINAL%20PALLETTEST.png"/>
   </div>
-</div>
+  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
+  <p class="ffs-editors-note-text"><em>Star Trek</em> was never a franchise I considered myself a fan of, which made the 2009 film such a surprise. It pulled me in immediately with its energy, emotion, and characters, while still making the world completely accessible to someone unfamiliar with its history. With <em>Genesis</em>, I wanted to preserve what already worked while tightening the story around Kirk’s journey and the formation of this crew. The film was already one of the cleanest I had worked with, so this became a more restrained edit, focused on sharpening character choices, preserving more of Nero’s mystery, and letting Kirk’s growth drive the story.</p>
+</section>
 
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
