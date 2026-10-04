@@ -2236,9 +2236,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 }
 </style><div class="ffs-palette-module">
+<section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
 <div class="ffs-palette-wrap">
 <img alt="Rogue One: The Scarif Run color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Rogue%20one%20Pallete.png"/>
 </div>
+<h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
+<p class="ffs-editors-note-text"><em>Rogue One</em> is one of my favorite <em>Star Wars</em> films because of how seriously it treats sacrifice. Beneath the scale of the story is a fractured, desperate rebellion and a group of people slowly realizing what they are willing to give for something larger than themselves. With <em>The Scarif Run</em>, I wanted to lean further into that feeling by stripping away some of the exposition and legacy framing, allowing the story to unfold more through Jyn’s experience.</p>
+</section>
 </div><div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" id="ffsLandingSoundtrack" type="checkbox"/>
@@ -2474,6 +2478,88 @@ document.addEventListener("click", function (event) {
     flex: 0 0 auto !important;
   }
 }
+
+/* PALETTE + EDITOR'S NOTE */
+.ffs-palette-module {
+  position: relative;
+  margin-top: 21px;
+  padding: 14px;
+  background:
+    linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
+    rgba(255, 255, 255, 0.035);
+  box-shadow:
+    0 0 30px rgba(0, 174, 222, 0.08),
+    inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+  overflow: hidden;
+}
+
+.ffs-palette-module::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background:
+    linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+    linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+  opacity: 0.72;
+}
+
+.ffs-palette-module > * {
+  position: relative;
+  z-index: 4;
+}
+
+.ffs-palette-module .ffs-palette-wrap {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+}
+
+.ffs-palette-module .ffs-editors-note-title {
+  margin: 14px 14px 14px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-align: center;
+}
+
+.ffs-palette-module .ffs-editors-note-text {
+  margin: 18px 14px 6px;
+  font-family: Rajdhani, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-soft);
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 0 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 14px 0 0;
+    font-size: 17px;
+    line-height: 1.48;
+  }
+}
+
 </style>
 
 </body>
