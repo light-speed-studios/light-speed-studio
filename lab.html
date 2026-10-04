@@ -81,6 +81,20 @@
     }
 
 
+    /* LAB RAILS: REMOVE LEFT / RIGHT SIDE FADES */
+    .lab-page .vault-rail-window::before,
+    .lab-page .vault-rail-window::after {
+      content: none !important;
+      display: none !important;
+      background: none !important;
+      opacity: 0 !important;
+    }
+
+    .lab-page .vault-rail-window {
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+    }
+
     /* LAB POSTER HOVER: CLEAN PUSH-OUT ONLY */
     @media (min-width: 901px) {
       .lab-page .vault-archive-card {
