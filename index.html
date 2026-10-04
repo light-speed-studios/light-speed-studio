@@ -2866,6 +2866,38 @@
 }
 </style>
 
+
+<style id="bridge-inner-card-update">
+@media (min-width: 901px) {
+  /* Slightly shorten the overall Bridge panel. */
+  .vault-intro-panel {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  /* Everything inside the light-blue Bridge frame now sits on one inset card. */
+  .vault-intro-content {
+    margin: 18px !important;
+    padding: 22px 28px 18px !important;
+    background: #081B21 !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,.34) !important;
+  }
+
+  /* Keep the newsletter portion on the same card surface. */
+  .vault-intro-panel > .bridge-newsletter-divider,
+  .vault-intro-panel > .bridge-newsletter-context,
+  .vault-intro-panel > .orbit-desktop-newsletter {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Pull the lower Bridge content upward to reduce total height by about 10px. */
+  .orbit-desktop-newsletter {
+    margin-bottom: -10px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
