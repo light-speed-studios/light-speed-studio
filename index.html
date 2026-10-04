@@ -2792,6 +2792,80 @@
 }
 </style>
 
+<style id="bridge-divider-context-and-alert-alignment">
+/* Combo of the divider + brief info line, desktop only. */
+.bridge-newsletter-divider,
+.bridge-newsletter-context {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .bridge-newsletter-divider {
+    position: relative;
+    z-index: 11;
+    display: block;
+    width: calc(100% - 80px);
+    height: 1px;
+    margin: 34px auto 0;
+    background: linear-gradient(90deg, rgba(0,174,222,.28), rgba(123,234,255,.92) 50%, rgba(0,174,222,.28));
+    box-shadow: 0 0 8px rgba(0,174,222,.18);
+  }
+
+  .bridge-newsletter-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: #7beaff;
+    box-shadow: 0 0 9px rgba(123,234,255,.85);
+  }
+
+  .bridge-newsletter-context {
+    position: relative;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 23px auto 0;
+    color: rgba(186,199,213,.82);
+    font-family: 'Oxanium', sans-serif;
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .20em;
+    text-transform: uppercase;
+  }
+
+  .bridge-newsletter-context b {
+    color: #00AEDE;
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  /* Keep the newsletter close to the new context line. */
+  .vault-intro-panel > .orbit-desktop-newsletter {
+    margin: 22px auto 38px !important;
+  }
+
+  /* Vertically center ALERTS against the 50px email/JOIN row. */
+  .vault-intro-panel > .orbit-desktop-newsletter .orbit-newsletter-alerts {
+    display: flex !important;
+    width: auto !important;
+    height: 50px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -3092,11 +3166,17 @@
     </form>
 
     <p class="lss-disclaimer">
-      Twice-monthly newsletter on edits. No SPAM!
+      Twice-monthly newsletter. No SPAM!
     </p>
 
   </div>
 </section>
+<!-- DESKTOP ONLY: Divider + newsletter context -->
+<div class="bridge-newsletter-divider" aria-hidden="true"></div>
+<div class="bridge-newsletter-context">
+  <span>STAY CONNECTED</span><b aria-hidden="true">•</b><span>PROJECT UPDATES</span><b aria-hidden="true">•</b><span>RELEASE ALERTS</span>
+</div>
+
 <!-- DESKTOP ONLY: Newsletter -->
 <section id="home-signup-wrap-desktop" class="home-signup-wrap orbit-desktop-newsletter">
   <div class="lss-embed">
@@ -3139,7 +3219,7 @@
     </form>
 
     <p class="lss-disclaimer">
-      Twice-monthly newsletter on edits. No SPAM!
+      Twice-monthly newsletter. No SPAM!
     </p>
 
   </div>
