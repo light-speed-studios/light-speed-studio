@@ -2031,11 +2031,106 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 </style>
 
-<div class="ffs-palette-module">
+<style>
+.ffs-palette-module .ffs-editors-note-title {
+  margin: 14px 14px 14px;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  text-align: center;
+}
+
+.ffs-palette-module .ffs-editors-note-text {
+  margin: 18px 14px 6px;
+  font-family: Rajdhani, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--text-soft);
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 900px) {
+  .ffs-palette-module {
+    display: block;
+    position: relative;
+    margin: 14px 14px 18px;
+    padding: 16px;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      rgba(255, 255, 255, 0.035);
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18);
+    overflow: hidden;
+  }
+
+  .ffs-palette-module::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background:
+      linear-gradient(var(--cyan), var(--cyan)) left top / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left top / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right top / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 28px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 28px 2px no-repeat,
+      linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 28px no-repeat;
+    opacity: 0.72;
+  }
+
+  .ffs-palette-module > * {
+    position: relative;
+    z-index: 4;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap {
+    display: block !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: 0;
+  }
+
+  .ffs-palette-module .ffs-palette {
+    width: 100%;
+    height: auto;
+    min-height: 72px;
+    object-fit: fill;
+  }
+
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 0 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 14px 0 0;
+    font-size: 17px;
+    line-height: 1.48;
+  }
+}
+</style>
+
+
+<section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
   <div class="ffs-palette-wrap">
     <img alt="Real Steel: The Last Round color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Real%20steel%20pallaete.png"/>
   </div>
-</div>
+  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
+  <p class="ffs-editors-note-text"><em>Real Steel</em> is a film I wish I had discovered earlier. What begins as a flashy robot-boxing movie gradually reveals itself as a story about connection, belief, and a father learning how to be present for his son. With <em>The Last Round</em>, I wanted to bring that relationship even further forward, softening some of Charlie and Max’s rougher edges and giving their bond more room to grow. Restoring the butterfly storyline became a big part of that, giving Max’s connection to his mother and eventually Charlie a stronger emotional throughline.</p>
+</section>
 
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
