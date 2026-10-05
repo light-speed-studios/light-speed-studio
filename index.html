@@ -3098,13 +3098,15 @@
 
 
 
-<style id="bridge-desktop-frame-bottom-extension">
+
+<style id="bridge-desktop-more-bottom-room">
 @media (min-width: 901px) {
+  /* More visible breathing room below the signup row. */
   .vault-intro-panel {
-    margin-bottom: -6px !important;
-    min-height: calc(100% + 6px) !important;
+    padding-bottom: 12px !important;
   }
 
+  /* Extend the inner dark card downward with the outer box. */
   .vault-intro-panel::after {
     bottom: 18px !important;
   }
