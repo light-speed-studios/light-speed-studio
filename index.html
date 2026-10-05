@@ -2986,6 +2986,44 @@
 }
 </style>
 
+
+<style id="bridge-card-through-newsletter">
+@media (min-width: 901px) {
+  /* Make the inset dark card visually continue through the newsletter area. */
+  .vault-intro-panel {
+    background: #0A232E !important;
+  }
+
+  .vault-intro-panel::after {
+    content: "" !important;
+    position: absolute !important;
+    z-index: 1 !important;
+    left: 18px !important;
+    right: 18px !important;
+    top: 18px !important;
+    bottom: 18px !important;
+    background: #081B21 !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,.34) !important;
+    pointer-events: none !important;
+  }
+
+  .vault-intro-content {
+    position: relative !important;
+    z-index: 11 !important;
+    margin: 18px 18px 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .bridge-newsletter-divider,
+  .bridge-newsletter-context,
+  .vault-intro-panel > .orbit-desktop-newsletter {
+    position: relative !important;
+    z-index: 11 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
