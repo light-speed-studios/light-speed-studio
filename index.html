@@ -2922,6 +2922,43 @@
 }
 </style>
 
+
+<style id="bridge-viewport-fit-solid-bg">
+@media (min-width: 901px) {
+  /* Solid outer Bridge surface. */
+  .vault-intro-panel {
+    background: #0B2A35 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Keep the inset card treatment. */
+  .vault-intro-content {
+    background: #081B21 !important;
+  }
+
+  /* Remove more of the empty vertical gap above the newsletter divider. */
+  .bridge-newsletter-divider {
+    transform: translateY(-58px) !important;
+  }
+
+  .bridge-newsletter-context {
+    transform: translateY(-58px) !important;
+  }
+
+  /* Raise the complete newsletter row and collapse the space it leaves behind. */
+  .orbit-desktop-newsletter {
+    transform: translateY(-58px) !important;
+    margin-bottom: -78px !important;
+  }
+
+  /* Collapse the panel around the raised lower section so it fits the viewport. */
+  .vault-intro-shell,
+  .vault-intro-panel {
+    min-height: 0 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
