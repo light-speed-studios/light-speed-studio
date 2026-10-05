@@ -118,6 +118,17 @@
       }
     }
   </style>
+
+<style id="lab-mobile-arrow-tap-fix">
+@media (max-width: 900px) {
+  .lab-page .vault-rail-arrow {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    z-index: 40 !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -752,17 +763,30 @@
                   function (event) {
 
                     event.preventDefault();
-
+                    event.stopPropagation();
                     event.stopImmediatePropagation();
 
+                    currentIndex = findCurrentCard();
+                    goToCard(currentIndex - 1);
 
-                    currentIndex =
-                      findCurrentCard();
+                  },
 
+                  true
+                );
 
-                    goToCard(
-                      currentIndex - 1
-                    );
+                prev.addEventListener(
+                  'pointerup',
+
+                  function (event) {
+
+                    if (event.pointerType === 'mouse') return;
+
+                    event.preventDefault();
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+
+                    currentIndex = findCurrentCard();
+                    goToCard(currentIndex - 1);
 
                   },
 
@@ -781,17 +805,30 @@
                   function (event) {
 
                     event.preventDefault();
-
+                    event.stopPropagation();
                     event.stopImmediatePropagation();
 
+                    currentIndex = findCurrentCard();
+                    goToCard(currentIndex + 1);
 
-                    currentIndex =
-                      findCurrentCard();
+                  },
 
+                  true
+                );
 
-                    goToCard(
-                      currentIndex + 1
-                    );
+                next.addEventListener(
+                  'pointerup',
+
+                  function (event) {
+
+                    if (event.pointerType === 'mouse') return;
+
+                    event.preventDefault();
+                    event.stopPropagation();
+                    event.stopImmediatePropagation();
+
+                    currentIndex = findCurrentCard();
+                    goToCard(currentIndex + 1);
 
                   },
 
