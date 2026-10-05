@@ -2959,6 +2959,38 @@
 }
 </style>
 
+
+<style id="bridge-actual-height-reduction">
+@media (min-width: 901px) {
+  /* Updated solid Bridge background. */
+  .vault-intro-panel {
+    background: #0A232E !important;
+
+    /* Remove excess bottom height from the module itself. */
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .vault-intro-shell {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Keep the lower content high, then remove the empty layout space below it. */
+  .orbit-desktop-newsletter {
+    margin-bottom: -145px !important;
+  }
+
+  /* Reduce any section-level height/padding still keeping the outer frame tall. */
+  .vault-combined-section.vault-intro-section {
+    min-height: 0 !important;
+    height: auto !important;
+    padding-bottom: 0 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
