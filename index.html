@@ -2867,95 +2867,79 @@
 </style>
 
 
-<style id="bridge-inner-card-update">
+<style id="bridge-final-tight-viewport">
 @media (min-width: 901px) {
-  /* Slightly shorten the overall Bridge panel. */
-  .vault-intro-panel {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+  /* Move the complete Bridge module up 4px. */
+  .vault-intro-shell {
+    transform: translateY(-4px) !important;
   }
 
-  /* Everything inside the light-blue Bridge frame now sits on one inset card. */
+  /* Solid outer panel. */
+  .vault-intro-panel {
+    background: #0A232E !important;
+    padding: 0 !important;
+  }
+
+  /* Dark inset card with tighter bottom spacing. */
   .vault-intro-content {
-    margin: 18px !important;
+    min-height: 0 !important;
+    margin: 18px 18px 8px !important;
     padding: 22px 28px 18px !important;
     background: #081B21 !important;
     box-shadow: 0 18px 40px rgba(0,0,0,.34) !important;
   }
 
-  /* Keep the newsletter portion on the same card surface. */
-  .vault-intro-panel > .bridge-newsletter-divider,
-  .vault-intro-panel > .bridge-newsletter-context,
+  /* Restore the divider clearly and keep it close to the card. */
+  .bridge-newsletter-divider {
+    display: block !important;
+    position: relative !important;
+    z-index: 20 !important;
+    width: calc(100% - 80px) !important;
+    height: 1px !important;
+    margin: 8px auto 0 !important;
+    transform: none !important;
+    background: linear-gradient(90deg,
+      rgba(0,174,222,.28),
+      rgba(123,234,255,.92) 50%,
+      rgba(0,174,222,.28)) !important;
+    box-shadow: 0 0 8px rgba(0,174,222,.18) !important;
+  }
+
+  .bridge-newsletter-divider::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 50% !important;
+    width: 5px !important;
+    height: 5px !important;
+    border-radius: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background: #7beaff !important;
+    box-shadow: 0 0 9px rgba(123,234,255,.85) !important;
+  }
+
+  /* Keep the context line visible with no overlap into the card. */
+  .bridge-newsletter-context {
+    display: flex !important;
+    transform: none !important;
+    margin: 14px auto 0 !important;
+  }
+
+  /* Compact the newsletter itself instead of visually translating it. */
   .vault-intro-panel > .orbit-desktop-newsletter {
-    position: relative;
-    z-index: 2;
+    transform: none !important;
+    margin: 14px auto 18px !important;
+    background: transparent !important;
   }
 
-  /* Pull the lower Bridge content upward to reduce total height by about 10px. */
-  .orbit-desktop-newsletter {
-    margin-bottom: -10px !important;
-  }
-}
-</style>
-
-
-<style id="bridge-newsletter-tighter-final">
-@media (min-width: 901px) {
-  /* Pull the divider and entire newsletter area upward. */
-  .bridge-newsletter-divider {
-    transform: translateY(-24px) !important;
-  }
-
-  .bridge-newsletter-context {
-    transform: translateY(-24px) !important;
-  }
-
-  .orbit-desktop-newsletter {
-    transform: translateY(-24px) !important;
-    margin-bottom: -34px !important;
-  }
-
-  /* Shorten the outer Bridge frame to follow the raised newsletter. */
-  .vault-intro-panel {
-    padding-bottom: 0 !important;
-  }
-}
-</style>
-
-
-<style id="bridge-viewport-fit-solid-bg">
-@media (min-width: 901px) {
-  /* Solid outer Bridge surface, replacing the light-blue gradient. */
-  .vault-intro-panel {
-    background: #0A232E !important;
-    padding-bottom: 0 !important;
-  }
-
-  /* Keep the inset philosophy card. */
-  .vault-intro-content {
-    background: #081B21 !important;
-  }
-
-  /* Pull the entire lower half much closer to the philosophy card. */
-  .bridge-newsletter-divider {
-    margin-top: -18px !important;
-    transform: translateY(-34px) !important;
-  }
-
-  .bridge-newsletter-context {
-    transform: translateY(-34px) !important;
-    margin-bottom: -8px !important;
-  }
-
-  .orbit-desktop-newsletter {
-    transform: translateY(-42px) !important;
-    margin-bottom: -58px !important;
-  }
-
-  /* Remove excess vertical reservation around the desktop signup area. */
-  .vault-intro-panel .orbit-desktop-newsletter,
-  .vault-intro-panel .orbit-desktop-newsletter .lss-embed {
+  .vault-intro-panel > .orbit-desktop-newsletter,
+  .vault-intro-panel > .orbit-desktop-newsletter .lss-embed,
+  .vault-intro-panel > .orbit-desktop-newsletter .lss-form {
     min-height: 0 !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
   }
 }
 </style>
