@@ -3024,6 +3024,46 @@
 }
 </style>
 
+
+<style id="bridge-desktop-newsletter-final-tighten">
+@media (min-width: 901px) {
+  /* Keep the inset card exactly 18px from every edge of the outer Bridge frame. */
+  .vault-intro-panel::after {
+    left: 18px !important;
+    right: 18px !important;
+    top: 18px !important;
+    bottom: 18px !important;
+  }
+
+  /* Pull the newsletter row upward a few more pixels and remove excess bottom height. */
+  .vault-intro-panel > .orbit-desktop-newsletter {
+    margin: 8px auto 10px !important;
+  }
+
+  /* Tighten the space below the newsletter while preserving the card's 18px bottom inset. */
+  .vault-intro-panel > .orbit-desktop-newsletter .lss-embed,
+  .vault-intro-panel > .orbit-desktop-newsletter .lss-form {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+</style>
+
+
+<style id="bridge-mobile-newsletter-background-fix">
+@media (max-width: 900px) {
+  /* Remove the separate dark slab behind the mobile newsletter. */
+  .bridge-mobile-newsletter,
+  .bridge-mobile-newsletter .lss-embed,
+  .bridge-mobile-newsletter .lss-form {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
