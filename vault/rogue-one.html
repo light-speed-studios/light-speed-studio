@@ -2560,5 +2560,83 @@ document.addEventListener("click", function (event) {
 
 </style>
 
+
+<style id="rogue-one-mobile-editors-note-visible-fix">
+@media (max-width: 900px) {
+  .ffs-palette-module {
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    width: auto !important;
+    height: auto !important;
+    order: 3 !important;
+    margin: 14px 14px 18px !important;
+    padding: 16px !important;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      rgba(255, 255, 255, 0.035) !important;
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18) !important;
+    overflow: hidden !important;
+  }
+
+  .ffs-palette-module::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+    background:
+      linear-gradient(#00aede, #00aede) left top / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) left top / 2px 28px no-repeat,
+      linear-gradient(#00aede, #00aede) right top / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) right top / 2px 28px no-repeat,
+      linear-gradient(#00aede, #00aede) left bottom / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) left bottom / 2px 28px no-repeat,
+      linear-gradient(#00aede, #00aede) right bottom / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) right bottom / 2px 28px no-repeat !important;
+    opacity: .72 !important;
+  }
+
+  .ffs-palette-module > * {
+    position: relative !important;
+    z-index: 4 !important;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap,
+  .ffs-palette-module .ffs-palette {
+    display: none !important;
+  }
+
+  .ffs-palette-module .ffs-editors-note-title {
+    display: block !important;
+    visibility: visible !important;
+    margin: 14px 0 10px !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    letter-spacing: .16em !important;
+    text-transform: uppercase !important;
+    color: #00aede !important;
+    text-align: center !important;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    display: block !important;
+    visibility: visible !important;
+    margin: 14px 0 0 !important;
+    font-family: Rajdhani, Arial, sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    line-height: 1.48 !important;
+    color: rgba(186, 199, 213, .78) !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+  }
+}
+</style>
+
 </body>
 </html>
