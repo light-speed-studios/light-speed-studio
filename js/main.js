@@ -34,8 +34,21 @@
             return;
         }
 
+        /*
+           Show only one LSS splash per browser-tab session.
+           The first LSS page with a splash shows it. Later pages skip theirs.
+        */
+        const splashSessionKey = "lssSplashSeen";
+
+        if (sessionStorage.getItem(splashSessionKey) === "true") {
+            splash.remove();
+            announceSplashFinished();
+            return;
+        }
+
         if (splash.dataset.splashReady === "true") return;
 
+        sessionStorage.setItem(splashSessionKey, "true");
         splash.dataset.splashReady = "true";
         document.documentElement.classList.add("lss-splash-active");
 
