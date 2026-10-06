@@ -2561,27 +2561,29 @@ document.addEventListener("click", function (event) {
     text-align: center;
   }
 
-  .ffs-palette-module .ffs-palette-wrap {
-    display: block !important;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-    border: 0;
+  /* Batman mobile Editor's Note reference: no palette on mobile */
+  .ffs-palette-module .ffs-palette-wrap,
+  .ffs-palette-module .ffs-palette {
+    display: none !important;
   }
 
-  .ffs-palette-module .ffs-palette {
-    width: 100%;
-    height: auto;
-    min-height: 72px;
-    object-fit: fill;
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 18px 0 18px;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: #00aede;
+    text-align: center;
   }
 
   .ffs-palette-module .ffs-editors-note-text {
-    margin: 14px 0 0;
+    margin: 0;
     font-size: 17px;
+    font-weight: 500;
     line-height: 1.48;
+    color: rgba(186, 199, 213, 0.78);
+    text-align: justify;
+    text-justify: inter-word;
   }
 }
 
