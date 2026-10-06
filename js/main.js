@@ -35,10 +35,13 @@
         }
 
         /*
-           Show only one LSS splash per browser-tab session.
-           The first LSS page with a splash shows it. Later pages skip theirs.
+           Show each page's splash once per browser-tab session.
+           Unvisited pages still show their own splash.
         */
-        const splashSessionKey = "lssSplashSeen";
+        let splashPagePath = window.location.pathname || "/";
+        splashPagePath = splashPagePath.replace(/\/index\.html$/i, "/");
+
+        const splashSessionKey = "lssSplashSeen:" + splashPagePath;
 
         if (sessionStorage.getItem(splashSessionKey) === "true") {
             splash.remove();
