@@ -6295,3 +6295,8 @@ body .lss-image-block.orbit-image-frame::before {
     font-size: .82rem;
   }
 }
+@media (max-width: 900px) {
+  .lss-brand-text {
+    display: none !important;
+  }
+}
