@@ -103,6 +103,25 @@
 }
 </style>
 
+<style id="lss-desktop-inline-editors-note">
+@media (min-width: 901px) {
+  .ffs-palette-module > .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-inline-title {
+    display: inline;
+    margin-right: 0.5em;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Batman: Gotham's Riddle splash screen">
@@ -2147,18 +2166,6 @@ text-align: center;
   text-justify: inter-word;
 }
 
-/* Desktop Editor's Note inline with its paragraph. Mobile remains unchanged. */
-@media (min-width: 901px) {
-  .ffs-palette-module .ffs-editors-note-title {
-    display: inline;
-    margin: 0 10px 0 14px;
-    vertical-align: baseline;
-  }
-  .ffs-palette-module .ffs-editors-note-text {
-    display: inline;
-    margin: 0;
-  }
-}
 
 @media (max-width: 900px) {
   .ffs-palette-module {
@@ -2234,7 +2241,7 @@ text-align: center;
        
   </div>
      <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>The Batman</em> was already a film I loved, and I saw a huge opportunity to edit it and lean even further into the detective story. I wanted to keep the Riddler’s activities hidden while bringing Bruce’s loneliness to the forefront. Inspired by <em>The Long Halloween</em> animated series and, later, <em>Collateral</em>, I wanted to find the colder, more restrained version of this story that I could feel sitting just beneath the surface.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>The Batman</em> was already a film I loved, and I saw a huge opportunity to edit it and lean even further into the detective story. I wanted to keep the Riddler’s activities hidden while bringing Bruce’s loneliness to the forefront. Inspired by <em>The Long Halloween</em> animated series and, later, <em>Collateral</em>, I wanted to find the colder, more restrained version of this story that I could feel sitting just beneath the surface.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
