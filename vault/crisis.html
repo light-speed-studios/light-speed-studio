@@ -2125,6 +2125,24 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 
+/* Desktop inline Editor's Note, mobile layout preserved */
+@media (min-width: 901px) {
+  .ffs-palette-module > .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-text .ffs-editors-note-inline {
+    display: inline;
+    margin: 0 0.35em 0 0;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-inline { display: none; }
+}
+
 /* EDITOR'S NOTE INSIDE PALETTE MODULE */
 .ffs-palette-module .ffs-editors-note-title {
   margin: 14px 14px 14px;
@@ -2221,7 +2239,7 @@ text-align: center;
     <img alt="Crisis: Red Skies color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/CrisisPalette.png"/>
   </div>
   <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>Crisis on Earth-X</em> was one of my favorite Arrowverse crossovers. But what always stuck with me most were its emotional beats and the relationships between these characters. I wanted to accentuate those moments and give them more room to resonate, while shaping the crossover into one continuous film. More than anything, I wanted the emotion to carry the story just as much as the spectacle.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline" aria-hidden="true">Editor's Note</span><em>Crisis on Earth-X</em> was one of my favorite Arrowverse crossovers. But what always stuck with me most were its emotional beats and the relationships between these characters. I wanted to accentuate those moments and give them more room to resonate, while shaping the crossover into one continuous film. More than anything, I wanted the emotion to carry the story just as much as the spectacle.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
