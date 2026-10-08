@@ -282,6 +282,26 @@
 }
 </style>
 
+<style id="editors-note-desktop-inline-only">
+@media (min-width: 901px) {
+  .ffs-palette-module > .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-inline-title {
+    display: inline;
+    margin: 0 0.5em 0 0;
+    padding: 0;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Top Gun: Ascension splash screen">
@@ -2433,7 +2453,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <img alt="Top Gun: Ascension color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FINAL%20PALLETTE%20copy.png"/>
   </div>
   <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>Top Gun: Maverick</em> was already a film I loved, which made <em>Ascension</em> a very different kind of project for me. The story, characters, and emotion were already there, so I approached the edit with restraint, looking for places where the film could carry a little more weight and trust the audience a little more. I wanted to sharpen Maverick and Rooster’s relationship, pull back some of the legacy fan service, and let their trust in each other become the heart of the film.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Top Gun: Maverick</em> was already a film I loved, which made <em>Ascension</em> a very different kind of project for me. The story, characters, and emotion were already there, so I approached the edit with restraint, looking for places where the film could carry a little more weight and trust the audience a little more. I wanted to sharpen Maverick and Rooster’s relationship, pull back some of the legacy fan service, and let their trust in each other become the heart of the film.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
