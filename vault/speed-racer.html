@@ -2276,6 +2276,18 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     display: block;
   }
 }
+/* Desktop only: Editor's Note begins on the same line as its paragraph. */
+@media (min-width: 901px) {
+  .ffs-palette-module .ffs-editors-note-title {
+    display: inline;
+    margin: 0 10px 0 14px;
+    vertical-align: baseline;
+  }
+  .ffs-palette-module .ffs-editors-note-text {
+    display: inline;
+    margin: 0;
+  }
+}
 </style>
 
 <section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
