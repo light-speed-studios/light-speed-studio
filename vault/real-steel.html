@@ -2112,12 +2112,33 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </style>
 
 
+<style id="editors-note-desktop-inline-only">
+@media (min-width: 901px) {
+  .ffs-palette-module > .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-inline-title {
+    display: inline;
+    margin: 0 0.5em 0 0;
+    padding: 0;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
+}
+</style>
+
 <section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
   <div class="ffs-palette-wrap">
     <img alt="Real Steel: The Last Round color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Real%20steel%20pallaete.png"/>
   </div>
   <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>Real Steel</em> is a film I wish I had discovered earlier. What begins as a flashy robot-boxing movie gradually reveals itself as a story about connection, belief, and a father learning how to be present for his son. With <em>The Last Round</em>, I wanted to bring that relationship even further forward, softening some of Charlie and Max’s rougher edges and giving their bond more room to grow. Restoring the butterfly storyline became a big part of that, giving Max’s connection to his mother and eventually Charlie a stronger emotional throughline.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Real Steel</em> is a film I wish I had discovered earlier. What begins as a flashy robot-boxing movie gradually reveals itself as a story about connection, belief, and a father learning how to be present for his son. With <em>The Last Round</em>, I wanted to bring that relationship even further forward, softening some of Charlie and Max’s rougher edges and giving their bond more room to grow. Restoring the butterfly storyline became a big part of that, giving Max’s connection to his mother and eventually Charlie a stronger emotional throughline.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
