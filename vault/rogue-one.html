@@ -2240,7 +2240,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <img alt="Rogue One: The Scarif Run color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Rogue%20one%20Pallete.png"/>
 </div>
 <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-<p class="ffs-editors-note-text"><em>Rogue One</em> is one of my favorite <em>Star Wars</em> films because of how seriously it treats sacrifice. Beneath the scale of the story is a fractured, desperate rebellion and a group of people slowly realizing what they are willing to give for something larger than themselves. With <em>The Scarif Run</em>, I wanted to lean further into that feeling by stripping away some of the exposition and legacy framing, allowing the story to unfold more through Jyn’s experience. Most importantly, I wanted the ending to remain with the cost of their sacrifice, letting hope exist in what they accomplished rather than needing to say it aloud.</p>
+<p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Rogue One</em> is one of my favorite <em>Star Wars</em> films because of how seriously it treats sacrifice. Beneath the scale of the story is a fractured, desperate rebellion and a group of people slowly realizing what they are willing to give for something larger than themselves. With <em>The Scarif Run</em>, I wanted to lean further into that feeling by stripping away some of the exposition and legacy framing, allowing the story to unfold more through Jyn’s experience. Most importantly, I wanted the ending to remain with the cost of their sacrifice, letting hope exist in what they accomplished rather than needing to say it aloud.</p>
 </section><div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" id="ffsLandingSoundtrack" type="checkbox"/>
@@ -2544,17 +2544,23 @@ document.addEventListener("click", function (event) {
   text-justify: inter-word;
 }
 
-/* Desktop Editor's Note inline with its paragraph. Mobile remains unchanged. */
+/* Desktop-only inline heading; preserve the paragraph's block layout and justification. */
 @media (min-width: 901px) {
-  .ffs-palette-module .ffs-editors-note-title {
+  .ffs-palette-module .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-inline-title {
     display: inline;
-    margin: 0 10px 0 14px;
-    vertical-align: baseline;
+    margin-right: 0.5em;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
   }
-  .ffs-palette-module .ffs-editors-note-text {
-    display: inline;
-    margin: 0;
-  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
 }
 
 @media (max-width: 900px) {
