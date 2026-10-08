@@ -157,6 +157,25 @@
 }
 </style>
 
+<style id="desktop-inline-editors-note-only">
+@media (min-width: 901px) {
+  .ffs-palette-module > .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-inline-title {
+    display: inline;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-right: 0.5em;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Star Trek: Genesis splash screen">
@@ -2282,7 +2301,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <img alt="Star Trek: Genesis color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FINAL%20PALLETTEST.png"/>
   </div>
   <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>Star Trek</em> was never a franchise I considered myself a fan of, which made the 2009 film such a surprise. It pulled me in immediately with its energy, emotion, and characters, while still making the world completely accessible to someone unfamiliar with its history. With <em>Genesis</em>, I wanted to preserve what already worked while tightening the story around Kirk’s journey and the formation of this crew. The film was already one of the cleanest I had worked with, so this became a more restrained edit, focused on sharpening character choices, preserving more of Nero’s mystery, and letting Kirk’s growth drive the story.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Star Trek</em> was never a franchise I considered myself a fan of, which made the 2009 film such a surprise. It pulled me in immediately with its energy, emotion, and characters, while still making the world completely accessible to someone unfamiliar with its history. With <em>Genesis</em>, I wanted to preserve what already worked while tightening the story around Kirk’s journey and the formation of this crew. The film was already one of the cleanest I had worked with, so this became a more restrained edit, focused on sharpening character choices, preserving more of Nero’s mystery, and letting Kirk’s growth drive the story.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
