@@ -2276,16 +2276,21 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     display: block;
   }
 }
-/* Desktop only: Editor's Note begins on the same line as its paragraph. */
+/* Desktop only: keep the paragraph's block alignment and place the heading within its text flow. */
+.ffs-palette-module .ffs-editors-note-inline-title { display: none; }
 @media (min-width: 901px) {
-  .ffs-palette-module .ffs-editors-note-title {
+  .ffs-palette-module > .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-text { display: block; margin: 18px 14px 6px; }
+  .ffs-palette-module .ffs-editors-note-inline-title {
     display: inline;
-    margin: 0 10px 0 14px;
-    vertical-align: baseline;
-  }
-  .ffs-palette-module .ffs-editors-note-text {
-    display: inline;
-    margin: 0;
+    margin-right: 0.5em;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    white-space: nowrap;
   }
 }
 </style>
@@ -2295,7 +2300,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <img alt="Speed Racer: Mach 6 color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Speed%20racer%20pallete.png"/>
   </div>
   <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>Speed Racer</em> was a film I loved as a kid for its colors and chaos, but revisiting it as an adult made me appreciate how much heart was always underneath it. At its core, it is a story about family, legacy, and understanding why you keep moving forward. With <em>Mach 6</em>, I wanted to bring that emotional foundation closer to the surface, centering Speed’s journey around Rex and the influence his brother left behind.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Speed Racer</em> was a film I loved as a kid for its colors and chaos, but revisiting it as an adult made me appreciate how much heart was always underneath it. At its core, it is a story about family, legacy, and understanding why you keep moving forward. With <em>Mach 6</em>, I wanted to bring that emotional foundation closer to the surface, centering Speed’s journey around Rex and the influence his brother left behind.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
