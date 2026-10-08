@@ -216,6 +216,23 @@
 }
 </style>
 
+<style id="glass-rooms-inline-editors-note-desktop">
+@media (min-width: 901px) {
+  .ffs-palette-module .ffs-editors-note-text .ffs-editors-note-title {
+    display: inline;
+    margin: 0 0.5em 0 0;
+    padding: 0;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-text .ffs-editors-note-title {
+    display: block;
+    margin: 14px 0 10px;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Glass Rooms splash screen">
@@ -2281,8 +2298,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-palette-wrap">
     <img alt="Glass Rooms color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/GDpallette.png"/>
   </div>
-  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>Ex Machina</em> was a film I admired more for its ideas than its execution. The conversations between Caleb and Ava were compelling, but I felt the story sometimes revealed too much too early and lingered beyond the point where its tension was strongest. With <em>Glass Rooms</em>, I wanted to tighten that experience while shifting the perspective toward Ava. The goal was to make her feel more like the one quietly observing everyone around her, gradually revealing that the humans may have been the subjects all along.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</span> <em>Ex Machina</em> was a film I admired more for its ideas than its execution. The conversations between Caleb and Ava were compelling, but I felt the story sometimes revealed too much too early and lingered beyond the point where its tension was strongest. With <em>Glass Rooms</em>, I wanted to tighten that experience while shifting the perspective toward Ava. The goal was to make her feel more like the one quietly observing everyone around her, gradually revealing that the humans may have been the subjects all along.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
