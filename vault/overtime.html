@@ -103,6 +103,22 @@
 }
 </style>
 
+
+<style id="editors-note-inline-heading">
+/* Keep the existing heading typography while flowing it into the paragraph. */
+.ffs-palette-module .ffs-editors-note-text .ffs-editors-note-title {
+  display: inline !important;
+  margin: 0 0.5em 0 0 !important;
+  padding: 0 !important;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-text .ffs-editors-note-title {
+    font-size: 18px;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Overtime splash screen">
@@ -2199,8 +2215,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-palette-wrap">
     <img alt="The Flash: Overtime color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/overtime-pallete.jpg"/>
   </div>
-  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>The Flash</em> Season 1 has always been my favorite era of the series, but I felt its larger story was often buried beneath episodic television. <em>Overtime</em> became my attempt to reshape that first year into a focused coming-of-age superhero film, centered on Barry learning to balance two lives. I reshaped the Reverse-Flash mystery around Barry’s perspective, letting Wells feel like a genuine mentor before his true nature is revealed.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</span> <em>The Flash</em> Season 1 has always been my favorite era of the series, but I felt its larger story was often buried beneath episodic television. <em>Overtime</em> became my attempt to reshape that first year into a focused coming-of-age superhero film, centered on Barry learning to balance two lives. I reshaped the Reverse-Flash mystery around Barry’s perspective, letting Wells feel like a genuine mentor before his true nature is revealed.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
