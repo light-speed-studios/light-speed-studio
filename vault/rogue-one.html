@@ -2544,6 +2544,19 @@ document.addEventListener("click", function (event) {
   text-justify: inter-word;
 }
 
+/* Desktop Editor's Note inline with paragraph. Mobile unchanged. */
+@media (min-width: 901px) {
+  .ffs-palette-module .ffs-editors-note-title {
+    display: inline;
+    margin: 0 10px 0 14px;
+    vertical-align: baseline;
+  }
+  .ffs-palette-module .ffs-editors-note-text {
+    display: inline;
+    margin: 0;
+  }
+}
+
 @media (max-width: 900px) {
   .ffs-palette-module .ffs-editors-note-title {
     margin: 14px 0 10px;
