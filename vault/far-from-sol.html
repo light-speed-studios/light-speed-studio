@@ -172,6 +172,26 @@
 }
 </style>
 
+<style id="desktop-inline-editors-note-only">
+@media (min-width: 901px) {
+  .ffs-palette-module > .ffs-editors-note-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-inline-title {
+    display: inline;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-right: 0.5em;
+    white-space: nowrap;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none !important; }
+}
+</style>
+
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Far From Sol splash screen">
@@ -2284,7 +2304,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <img alt="Far From Sol color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/movie%20pallete.png"/>
   </div>
   <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><em>Project Hail Mary</em> was a frustrating watch. I loved the premise but felt the film never reached its potential. The ideas were compelling, but I struggled to connect with Grace or believe the emotional weight of his journey. <em>Far From Sol</em> became my attempt to change that by giving Grace a family throughline and a more personal reason for the choices he ultimately makes. I also wanted to pull back the humor, treat Rocky as a genuine intellectual counterpart, and give the story the more grounded emotional weight I felt its premise deserved.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Project Hail Mary</em> was a frustrating watch. I loved the premise but felt the film never reached its potential. The ideas were compelling, but I struggled to connect with Grace or believe the emotional weight of his journey. <em>Far From Sol</em> became my attempt to change that by giving Grace a family throughline and a more personal reason for the choices he ultimately makes. I also wanted to pull back the humor, treat Rocky as a genuine intellectual counterpart, and give the story the more grounded emotional weight I felt its premise deserved.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
