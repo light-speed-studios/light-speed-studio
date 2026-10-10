@@ -30,3 +30,24 @@
 @media(max-width:900px){.wave-shell{padding:24px 16px 55px}.wave-player-layout{grid-template-columns:1fr;gap:27px;margin-top:29px}.wave-feature{padding:24px}.wave-feature-copy{padding-left:13px}.wave-feature-copy>p:not(.wave-overline){max-width:none}.wave-library{margin-top:45px}.wave-list-head,.wave-track{grid-template-columns:minmax(0,1fr) minmax(90px,.65fr) 55px;gap:12px}.wave-track{padding:15px 12px}.wave-list-head{padding:10px 12px}}
 @media(max-width:540px){.wave-feature{padding:21px 17px}.wave-feature-top{gap:9px}.wave-feature-status{font-size:9px}.wave-section-eyebrow{font-size:10px;letter-spacing:1px}.wave-page-hero{margin-bottom:14px}.wave-intro{margin-bottom:31px}.wave-player-layout{margin-top:27px}.wave-feature-copy h2{font-size:29px}.wave-feature-copy>p:not(.wave-overline){font-size:18px}.wave-player-caption{font-size:9px}.waveform-wrap{height:92px}#waveform,.waveform-placeholder{height:86px}.wave-volume input{width:70px}.wave-transport{gap:8px}.wave-play-button{height:46px;width:46px}.wave-library-header{align-items:stretch}.wave-library-search{width:100%}.wave-library-search input{max-width:none;width:100%}.wave-list-head{grid-template-columns:1fr 55px}.wave-list-head span:nth-child(2){display:none}.wave-track{grid-template-columns:minmax(0,1fr) 55px}.wave-mini{display:none}.wave-track-name{font-size:13px}.wave-track-left{gap:11px}.wave-list-play{width:29px;height:29px}.wave-track-sub{font-size:10px}.wave-filter{font-size:9px;padding:8px 10px}.wave-library-footer{flex-direction:column;align-items:flex-start;gap:8px}.wave-intro p{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.wave-page *{transition:none!important;animation:none!important}}
+
+/* WAVE library refinements */
+.wave-page .wave-shell { padding-bottom: 20px; }
+.wave-page-hero { margin-bottom: 26px; }
+.wave-artist { font-family: 'Oxanium', sans-serif; font-size: 11px !important; font-weight: 600; color: #00AEDE !important; letter-spacing: 2px; margin: -4px 0 13px !important; }
+.wave-feature-copy .wave-overline { text-transform: uppercase; }
+.wave-track-meta { flex-wrap: wrap; gap: 10px; }
+.wave-library { margin-top: 39px; }
+.wave-library-header { padding-bottom: 8px; }
+.wave-filters { padding: 12px 0 17px; }
+.wave-track-list { height: 370px; max-height: 370px; overflow-y: auto; overscroll-behavior: contain; scrollbar-color: #25586e #091b27; scrollbar-width: thin; }
+.wave-track-list::-webkit-scrollbar { width: 7px; }
+.wave-track-list::-webkit-scrollbar-thumb { background: #25586e; border-radius: 8px; }
+.wave-track-list::-webkit-scrollbar-track { background: #091b27; }
+.wave-track { min-height: 74px; padding-top: 11px; padding-bottom: 11px; }
+.wave-track-sub { font-size: 12px; letter-spacing: .6px; margin-top: 4px; }
+.wave-track-artist { display: block; margin-top: 4px; color: #00AEDE; font: 500 10px 'Oxanium', sans-serif; letter-spacing: 1px; }
+.wave-track-name { white-space: normal; }
+.wave-empty-state[hidden] { display: none; }
+@media (max-width: 900px) { .wave-page .wave-shell { padding-bottom: 12px; } .wave-library { margin-top: 35px; } }
+@media (max-width: 540px) { .wave-track-list { height: 350px; max-height: 350px; } .wave-track { min-height: 70px; } }
