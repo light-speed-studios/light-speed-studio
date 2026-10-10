@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#040E15">
+  <meta name="description" content="WAVE, a new instrumental remix collection from Light Speed Studios. Currently in development.">
+  <title>WAVE | Light Speed Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .wave-coming-soon {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 34px 20px 100px;
+      color: #BAC7D5;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .wave-coming-soon .vault-archive-hero { margin-bottom: 34px; }
+    .wave-preview {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 355px;
+      padding: 55px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 52%, rgba(0, 174, 222, .09), transparent 62%), #040E15;
+      box-shadow: inset 0 0 0 1px rgba(186,199,213,.12);
+    }
+    .wave-preview::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(#00AEDE,#00AEDE) left top / 42px 2px no-repeat,
+        linear-gradient(#00AEDE,#00AEDE) left top / 2px 42px no-repeat,
+        linear-gradient(#00AEDE,#00AEDE) right top / 42px 2px no-repeat,
+        linear-gradient(#00AEDE,#00AEDE) right top / 2px 42px no-repeat,
+        linear-gradient(#00AEDE,#00AEDE) left bottom / 42px 2px no-repeat,
+        linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 42px no-repeat,
+        linear-gradient(#00AEDE,#00AEDE) right bottom / 42px 2px no-repeat,
+        linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 42px no-repeat;
+      opacity: .75;
+    }
+    .wave-status {
+      margin: 0 0 20px;
+      color: #00AEDE;
+      font: 600 12px 'Oxanium', sans-serif;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+    .wave-preview h2 {
+      margin: 0;
+      font: 700 clamp(26px, 4vw, 48px)/1.16 'Oxanium', sans-serif;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: #e7f3f9;
+    }
+    .wave-preview p {
+      margin: 15px auto 0;
+      max-width: 620px;
+      font-size: clamp(18px, 2vw, 23px);
+      font-weight: 500;
+      line-height: 1.5;
+      color: #BAC7D5;
+    }
+    .wave-bars {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      width: min(100%, 580px);
+      height: 76px;
+      margin: 24px auto 10px;
+      overflow: hidden;
+    }
+    .wave-bars span {
+      flex: 1 0 2px;
+      max-width: 3px;
+      height: var(--bar-height);
+      border-radius: 2px;
+      background: linear-gradient(180deg, #00AEDE, #356a83);
+      opacity: .8;
+      transform-origin: center;
+      animation: wave-pulse 2.4s ease-in-out infinite alternate;
+      animation-delay: var(--delay);
+    }
+    @keyframes wave-pulse { from { transform: scaleY(.68); opacity: .5; } to { transform: scaleY(1); opacity: 1; } }
+    .wave-home-link {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 11px 22px;
+      border: 1px solid rgba(0,174,222,.7);
+      color: #00AEDE;
+      text-decoration: none;
+      font: 600 13px 'Oxanium', sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: background .2s, color .2s;
+    }
+    .wave-home-link:hover, .wave-home-link:focus-visible { background: #00AEDE; color: #040E15; }
+    @media (max-width: 900px) {
+      .wave-coming-soon { padding: 26px 16px 65px; }
+      .wave-preview { min-height: 320px; padding: 48px 24px; }
+      .wave-bars { gap: 2px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .wave-bars span { animation: none; } }
+  </style>
+</head>
+<body>
+  <header class="lss-nav-bar">
+    <a class="lss-nav-logo" href="index.html">
+      <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png">
+      <span class="lss-brand-text">No Spectacle Without Soul</span>
+    </a>
+    <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="lss-nav-links" aria-label="Main navigation">
+      <a class="lss-nav-item" href="index.html">Bridge</a>
+      <a class="lss-nav-item" href="vault.html">Vault</a>
+      <a class="lss-nav-item" href="lab.html">Lab</a>
+      <a class="lss-nav-item active" href="wave.html" aria-current="page">Wave</a>
+      <a class="lss-nav-item" href="pulse.html">Pulse</a>
+      <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+    </nav>
+  </header>
+  <main class="wave-coming-soon">
+    <section class="vault-archive-hero" aria-label="Wave">
+      <div class="vault-archive-frame"></div>
+      <h1>Wave</h1>
+      <p>Instrumental Remixes</p>
+    </section>
+    <section class="wave-preview" aria-labelledby="wave-announcement">
+      <p class="wave-status">New Frequency Incoming</p>
+      <h2 id="wave-announcement">Work in Progress</h2>
+      <div class="wave-bars" aria-hidden="true" id="wave-decoration"></div>
+      <p>A collection of reimagined instrumentals is taking shape. Stay tuned.</p>
+      <a class="wave-home-link" href="index.html">Return to Bridge &rarr;</a>
+    </section>
+    <div class="footer-logo-block speed-trap-footer">
+      <picture class="footer-picture">
+        <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob1.png">
+        <img src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png" alt="Light Speed Studios Logo" loading="lazy">
+      </picture>
+    </div>
+  </main>
+  <script>
+    function toggleMobileMenu(button) {
+      const navLinks = document.querySelector('.lss-nav-links');
+      if (!navLinks) return;
+      const isOpen = navLinks.classList.toggle('active');
+      button.classList.toggle('active', isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+      button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.lss-nav-links');
+      if (hamburger && navLinks) navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('active');
+          hamburger.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open navigation menu');
+        });
+      });
+      const decoration = document.getElementById('wave-decoration');
+      if (decoration) {
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < 100; i++) {
+          const bar = document.createElement('span');
+          const envelope = Math.pow(Math.sin((i + 1) / 101 * Math.PI), 1.1);
+          const height = 6 + envelope * (10 + Math.abs(Math.sin(i * .46) * Math.cos(i * .117)) * 55);
+          bar.style.setProperty('--bar-height', height.toFixed(1) + 'px');
+          bar.style.setProperty('--delay', (-i * .037).toFixed(3) + 's');
+          fragment.appendChild(bar);
+        }
+        decoration.appendChild(fragment);
+      }
+    });
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>
