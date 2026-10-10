@@ -2,122 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#040E15">
-  <meta name="description" content="WAVE, a new instrumental remix collection from Light Speed Studios. Currently in development.">
-  <title>WAVE | Light Speed Studios</title>
+  <title>Wave | Light Speed Studios</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    .wave-coming-soon {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 34px 20px 100px;
-      color: #BAC7D5;
-      font-family: 'Rajdhani', sans-serif;
-    }
-    .wave-coming-soon .vault-archive-hero { margin-bottom: 34px; }
-    .wave-preview {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      min-height: 355px;
-      padding: 55px 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: radial-gradient(ellipse at 50% 52%, rgba(0, 174, 222, .09), transparent 62%), #040E15;
-      box-shadow: inset 0 0 0 1px rgba(186,199,213,.12);
-    }
-    .wave-preview::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(#00AEDE,#00AEDE) left top / 42px 2px no-repeat,
-        linear-gradient(#00AEDE,#00AEDE) left top / 2px 42px no-repeat,
-        linear-gradient(#00AEDE,#00AEDE) right top / 42px 2px no-repeat,
-        linear-gradient(#00AEDE,#00AEDE) right top / 2px 42px no-repeat,
-        linear-gradient(#00AEDE,#00AEDE) left bottom / 42px 2px no-repeat,
-        linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 42px no-repeat,
-        linear-gradient(#00AEDE,#00AEDE) right bottom / 42px 2px no-repeat,
-        linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 42px no-repeat;
-      opacity: .75;
-    }
-    .wave-status {
-      margin: 0 0 20px;
-      color: #00AEDE;
-      font: 600 12px 'Oxanium', sans-serif;
-      letter-spacing: .24em;
-      text-transform: uppercase;
-    }
-    .wave-preview h2 {
-      margin: 0;
-      font: 700 clamp(26px, 4vw, 48px)/1.16 'Oxanium', sans-serif;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-      color: #e7f3f9;
-    }
-    .wave-preview p {
-      margin: 15px auto 0;
-      max-width: 620px;
-      font-size: clamp(18px, 2vw, 23px);
-      font-weight: 500;
-      line-height: 1.5;
-      color: #BAC7D5;
-    }
-    .wave-bars {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      width: min(100%, 580px);
-      height: 76px;
-      margin: 24px auto 10px;
-      overflow: hidden;
-    }
-    .wave-bars span {
-      flex: 1 0 2px;
-      max-width: 3px;
-      height: var(--bar-height);
-      border-radius: 2px;
-      background: linear-gradient(180deg, #00AEDE, #356a83);
-      opacity: .8;
-      transform-origin: center;
-      animation: wave-pulse 2.4s ease-in-out infinite alternate;
-      animation-delay: var(--delay);
-    }
-    @keyframes wave-pulse { from { transform: scaleY(.68); opacity: .5; } to { transform: scaleY(1); opacity: 1; } }
-    .wave-home-link {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 11px 22px;
-      border: 1px solid rgba(0,174,222,.7);
-      color: #00AEDE;
-      text-decoration: none;
-      font: 600 13px 'Oxanium', sans-serif;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      transition: background .2s, color .2s;
-    }
-    .wave-home-link:hover, .wave-home-link:focus-visible { background: #00AEDE; color: #040E15; }
-    @media (max-width: 900px) {
-      .wave-coming-soon { padding: 26px 16px 65px; }
-      .wave-preview { min-height: 320px; padding: 48px 24px; }
-      .wave-bars { gap: 2px; }
-    }
-    @media (prefers-reduced-motion: reduce) { .wave-bars span { animation: none; } }
-  </style>
+  <link rel="stylesheet" href="css/wave.css">
 </head>
 <body>
+  <!-- Shared site navigation. Add the WAVE link to other pages' navigation as well. -->
   <header class="lss-nav-bar">
     <a class="lss-nav-logo" href="index.html">
-      <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png">
+      <img src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png" alt="Light Speed Studios">
       <span class="lss-brand-text">No Spectacle Without Soul</span>
     </a>
     <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
@@ -132,23 +30,76 @@
       <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
     </nav>
   </header>
-  <main class="wave-coming-soon">
-    <section class="vault-archive-hero" aria-label="Wave">
-      <div class="vault-archive-frame"></div>
-      <h1>Wave</h1>
-      <p>Instrumental Remixes</p>
-    </section>
-    <section class="wave-preview" aria-labelledby="wave-announcement">
-      <p class="wave-status">New Frequency Incoming</p>
-      <h2 id="wave-announcement">Work in Progress</h2>
-      <div class="wave-bars" aria-hidden="true" id="wave-decoration"></div>
-      <p>A collection of reimagined instrumentals is taking shape. Stay tuned.</p>
-      <a class="wave-home-link" href="index.html">Return to Bridge &rarr;</a>
-    </section>
+
+  <main class="wave-page">
+    <div class="wave-shell">
+      <section class="vault-archive-hero wave-page-hero" aria-labelledby="wave-title">
+        <div class="vault-archive-frame"></div>
+        <h1 id="wave-title">Wave</h1>
+        <p>Instrumental Remixes</p>
+      </section>
+
+      <section class="wave-feature wave-corners" aria-labelledby="player-heading">
+        <div class="wave-feature-top">
+          <div class="wave-section-eyebrow"><span class="wave-live-dot"></span> SOUND STATION</div>
+          <span class="wave-feature-status" id="wave-status-label">SELECTED TRACK</span>
+        </div>
+        <div class="wave-player-layout">
+          <div class="wave-feature-copy">
+            <p class="wave-overline" id="wave-source">SLINGSHOT OST / INSTRUMENTAL REMIX</p>
+            <h2 id="player-heading">Wide Awake</h2>
+            <p class="wave-artist">DIGITAL SALVATION</p>
+            <p id="wave-description">Remix of Wake Up from the Slingshot soundtrack.</p>
+            <div class="wave-track-meta"><span id="wave-category">CINEMATIC</span><span class="wave-meta-separator">/</span><span id="wave-type">FEATURED REMIXES</span><span class="wave-meta-separator">/</span><span id="wave-track-number">TRACK 19</span></div>
+          </div>
+          <div class="wave-player">
+            <div class="wave-player-caption"><span>FREQUENCY / AUDIO VISUALIZATION</span><span id="wave-player-mode">WAVEFORM</span></div>
+            <div class="waveform-wrap">
+              <div id="waveform" aria-label="Interactive audio waveform"></div>
+              <div id="waveform-placeholder" class="waveform-placeholder" aria-hidden="true"></div>
+            </div>
+            <div class="wave-time"><span id="wave-current-time">0:00</span><span id="wave-duration">0:00</span></div>
+            <div class="wave-controls">
+              <div class="wave-transport">
+                <button class="wave-icon-button" id="wave-previous" type="button" aria-label="Previous track" title="Previous track">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14M19 5 8 12l11 7z"/></svg>
+                </button>
+                <button class="wave-play-button" id="wave-play" type="button" aria-label="Play track" title="Play track">
+                  <svg class="wave-play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>
+                  <svg class="wave-pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+                </button>
+                <button class="wave-icon-button" id="wave-next" type="button" aria-label="Next track" title="Next track">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14M5 5l11 7-11 7z"/></svg>
+                </button>
+              </div>
+              <div class="wave-volume"><button id="wave-mute" class="wave-icon-button wave-volume-icon" type="button" aria-label="Mute" title="Mute"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4ZM17 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></button><input id="wave-volume" aria-label="Volume" type="range" min="0" max="100" value="75"></div>
+            </div>
+            <p id="wave-player-message" class="wave-player-message" role="status" aria-live="polite">Select a track to listen.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wave-library" aria-labelledby="wave-library-title">
+        <div class="wave-library-header">
+          <div><span class="wave-small-label">COLLECTION</span><h2 id="wave-library-title">Recent Remixes <span id="wave-library-count">/ 19</span></h2></div>
+        </div>
+        <div class="wave-filters" id="wave-filters" aria-label="Filter remixes">
+          <button type="button" class="wave-filter active" data-filter="all" aria-pressed="true">ALL TRACKS</button>
+          <button type="button" class="wave-filter" data-filter="cinematic" aria-pressed="false">CINEMATIC</button>
+          <button type="button" class="wave-filter" data-filter="ambient" aria-pressed="false">AMBIENT</button>
+          <button type="button" class="wave-filter" data-filter="electronic" aria-pressed="false">ELECTRONIC</button>
+          <button type="button" class="wave-filter" data-filter="original" aria-pressed="false">ORIGINAL TRACKS</button>
+          <button type="button" class="wave-filter" data-filter="featured" aria-pressed="false">FEATURED REMIXES</button>
+        </div>
+        <div class="wave-list-head" aria-hidden="true"><span>TRACK</span><span>VISUAL FREQUENCY</span><span>LENGTH</span></div>
+        <div id="wave-track-list" class="wave-track-list" aria-label="Remix track listing" tabindex="0"></div>
+        <p id="wave-empty-state" class="wave-empty-state" hidden>No remixes match your search.</p>
+      </section>
+    </div>
     <div class="footer-logo-block speed-trap-footer">
       <picture class="footer-picture">
         <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob1.png">
-        <img src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png" alt="Light Speed Studios Logo" loading="lazy">
+        <img src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png" alt="Light Speed Studios">
       </picture>
     </div>
   </main>
@@ -161,32 +112,16 @@
       button.setAttribute('aria-expanded', String(isOpen));
       button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     }
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', () => {
       const hamburger = document.querySelector('.hamburger');
-      const navLinks = document.querySelector('.lss-nav-links');
-      if (hamburger && navLinks) navLinks.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          navLinks.classList.remove('active');
-          hamburger.classList.remove('active');
-          hamburger.setAttribute('aria-expanded', 'false');
-          hamburger.setAttribute('aria-label', 'Open navigation menu');
-        });
-      });
-      const decoration = document.getElementById('wave-decoration');
-      if (decoration) {
-        const fragment = document.createDocumentFragment();
-        for (let i = 0; i < 100; i++) {
-          const bar = document.createElement('span');
-          const envelope = Math.pow(Math.sin((i + 1) / 101 * Math.PI), 1.1);
-          const height = 6 + envelope * (10 + Math.abs(Math.sin(i * .46) * Math.cos(i * .117)) * 55);
-          bar.style.setProperty('--bar-height', height.toFixed(1) + 'px');
-          bar.style.setProperty('--delay', (-i * .037).toFixed(3) + 's');
-          fragment.appendChild(bar);
-        }
-        decoration.appendChild(fragment);
-      }
+      const nav = document.querySelector('.lss-nav-links');
+      if (hamburger && nav) nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('active'); hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false'); hamburger.setAttribute('aria-label', 'Open navigation menu');
+      }));
     });
   </script>
   <script src="js/main.js"></script>
+  <script type="module" src="js/wave.js"></script>
 </body>
 </html>
