@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#040E15">
+  <title>Wave | Light Speed Studios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/wave.css">
+</head>
+<body>
+  <!-- Shared site navigation. Add the WAVE link to other pages' navigation as well. -->
+  <header class="lss-nav-bar">
+    <a class="lss-nav-logo" href="index.html">
+      <img src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png" alt="Light Speed Studios">
+      <span class="lss-brand-text">No Spectacle Without Soul</span>
+    </a>
+    <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="lss-nav-links" aria-label="Main navigation">
+      <a class="lss-nav-item" href="index.html">Bridge</a>
+      <a class="lss-nav-item" href="vault.html">Vault</a>
+      <a class="lss-nav-item" href="lab.html">Lab</a>
+      <a class="lss-nav-item active" href="wave.html" aria-current="page">Wave</a>
+      <a class="lss-nav-item" href="pulse.html">Pulse</a>
+      <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+    </nav>
+  </header>
+
+  <main class="wave-page">
+    <div class="wave-shell">
+      <section class="vault-archive-hero wave-page-hero" aria-labelledby="wave-title">
+        <div class="vault-archive-frame"></div>
+        <h1 id="wave-title">Wave</h1>
+        <p>Instrumental Remixes</p>
+      </section>
+
+      <section class="wave-intro" aria-label="About Wave">
+        <div class="wave-intro-rule"></div>
+        <p>A collection of instrumental reinterpretations. Familiar sounds, reshaped through a different atmosphere.</p>
+        <div class="wave-intro-rule"></div>
+      </section>
+
+      <section class="wave-feature wave-corners" aria-labelledby="player-heading">
+        <div class="wave-feature-top">
+          <div class="wave-section-eyebrow"><span class="wave-live-dot"></span> SOUND STATION <span class="wave-muted">/ 001</span></div>
+          <span class="wave-feature-status" id="wave-status-label">SELECTED TRACK</span>
+        </div>
+        <div class="wave-player-layout">
+          <div class="wave-feature-copy">
+            <p class="wave-overline" id="wave-source">SUNSHINE / INSTRUMENTAL REMIX</p>
+            <h2 id="player-heading">Into the Light</h2>
+            <p id="wave-description">An atmospheric instrumental reimagining.</p>
+            <div class="wave-track-meta"><span id="wave-category">CINEMATIC</span><span class="wave-meta-separator">/</span><span id="wave-track-number">TRACK 01</span></div>
+          </div>
+          <div class="wave-player">
+            <div class="wave-player-caption"><span>FREQUENCY / AUDIO VISUALIZATION</span><span id="wave-player-mode">WAVEFORM</span></div>
+            <div class="waveform-wrap">
+              <div id="waveform" aria-label="Interactive audio waveform"></div>
+              <div id="waveform-placeholder" class="waveform-placeholder" aria-hidden="true"></div>
+            </div>
+            <div class="wave-time"><span id="wave-current-time">0:00</span><span id="wave-duration">0:00</span></div>
+            <div class="wave-controls">
+              <div class="wave-transport">
+                <button class="wave-icon-button" id="wave-previous" type="button" aria-label="Previous track" title="Previous track">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14M19 5 8 12l11 7z"/></svg>
+                </button>
+                <button class="wave-play-button" id="wave-play" type="button" aria-label="Play track" title="Play track">
+                  <svg class="wave-play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>
+                  <svg class="wave-pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+                </button>
+                <button class="wave-icon-button" id="wave-next" type="button" aria-label="Next track" title="Next track">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14M5 5l11 7-11 7z"/></svg>
+                </button>
+              </div>
+              <div class="wave-volume"><button id="wave-mute" class="wave-icon-button wave-volume-icon" type="button" aria-label="Mute" title="Mute"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4ZM17 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg></button><input id="wave-volume" aria-label="Volume" type="range" min="0" max="100" value="75"></div>
+            </div>
+            <p id="wave-player-message" class="wave-player-message" role="status" aria-live="polite">Preview tracks are ready for your BunnyCDN audio links.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wave-library" aria-labelledby="wave-library-title">
+        <div class="wave-library-header">
+          <div><span class="wave-small-label">THE COLLECTION</span><h2 id="wave-library-title">Recent Remixes <span id="wave-library-count">/ 04</span></h2></div>
+          <div class="wave-library-search"><label class="sr-only" for="wave-search">Search remixes</label><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="wave-search" type="search" placeholder="SEARCH TRACKS" autocomplete="off"></div>
+        </div>
+        <div class="wave-filters" id="wave-filters" aria-label="Filter remixes">
+          <button type="button" class="wave-filter active" data-filter="all" aria-pressed="true">ALL TRACKS</button>
+          <button type="button" class="wave-filter" data-filter="cinematic" aria-pressed="false">CINEMATIC</button>
+          <button type="button" class="wave-filter" data-filter="ambient" aria-pressed="false">AMBIENT</button>
+          <button type="button" class="wave-filter" data-filter="electronic" aria-pressed="false">ELECTRONIC</button>
+        </div>
+        <div class="wave-list-head" aria-hidden="true"><span>TRACK</span><span>VISUAL FREQUENCY</span><span>LENGTH</span></div>
+        <div id="wave-track-list" class="wave-track-list" aria-label="Remix track listing"></div>
+        <p id="wave-empty-state" class="wave-empty-state" hidden>No remixes match your search.</p>
+        <div class="wave-library-footer"><span>LIGHT SPEED STUDIOS / WAVE</span><span>REINTERPRETED IN SOUND</span></div>
+      </section>
+    </div>
+    <div class="footer-logo-block speed-trap-footer">
+      <picture class="footer-picture">
+        <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob1.png">
+        <img src="https://light-speed-studios.b-cdn.net/landingnewfooter122.png" alt="Light Speed Studios">
+      </picture>
+    </div>
+  </main>
+  <script>
+    function toggleMobileMenu(button) {
+      const navLinks = document.querySelector('.lss-nav-links');
+      if (!navLinks) return;
+      const isOpen = navLinks.classList.toggle('active');
+      button.classList.toggle('active', isOpen);
+      button.setAttribute('aria-expanded', String(isOpen));
+      button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.hamburger');
+      const nav = document.querySelector('.lss-nav-links');
+      if (hamburger && nav) nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('active'); hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false'); hamburger.setAttribute('aria-label', 'Open navigation menu');
+      }));
+    });
+  </script>
+  <script src="js/main.js"></script>
+  <script type="module" src="js/wave.js"></script>
+</body>
+</html>
