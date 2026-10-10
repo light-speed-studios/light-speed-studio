@@ -1118,3 +1118,48 @@ document.addEventListener("DOMContentLoaded", () => {
     initProjectSearch();
   }
 })();
+/* =======================================================
+   LSS GLOBAL NAVIGATION | ADD WAVE
+======================================================= */
+
+(function () {
+  function addWaveNav() {
+    const nav = document.querySelector('.lss-nav-links');
+    if (!nav) return;
+
+    // Prevent duplicate WAVE links
+    if (nav.querySelector('a[href$="wave.html"]')) return;
+
+    const waveLink = document.createElement('a');
+    waveLink.className = 'lss-nav-item';
+    waveLink.textContent = 'Wave';
+
+    // Works from both root pages and vault subpages
+    const isVaultSubpage = window.location.pathname.includes('/vault/');
+    waveLink.href = isVaultSubpage ? '../wave.html' : 'wave.html';
+
+    // Highlight WAVE on its own page
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (currentPage === 'wave.html' || currentPage === 'waves.html') {
+      waveLink.classList.add('active');
+      waveLink.setAttribute('aria-current', 'page');
+    }
+
+    // Insert WAVE immediately after LAB
+    const labLink = Array.from(nav.querySelectorAll('a'))
+      .find(link => link.textContent.trim().toLowerCase() === 'lab');
+
+    if (labLink) {
+      labLink.after(waveLink);
+    } else {
+      nav.appendChild(waveLink);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addWaveNav);
+  } else {
+    addWaveNav();
+  }
+})();
