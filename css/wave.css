@@ -67,3 +67,36 @@
   .wave-station-artist { position: static; transform: none; order: 3; width: 100%; font-size: 10px; }
   .wave-feature-status { margin-left: auto; }
 }
+
+/* WAVE: featured player alignment and separation, Oct 10 */
+@media (min-width: 901px) {
+  /* Add exactly 10px to the existing space below the WAVE title frame. */
+  .wave-page .wave-page-hero { margin-bottom: 36px; }
+
+  /* Give the waveform more room and remove the unused center gap. */
+  .wave-page .wave-player-layout {
+    grid-template-columns: minmax(0, 31%) minmax(0, 69%);
+    gap: 0;
+    align-items: stretch;
+    margin-top: 25px;
+  }
+
+  /* Align the source, title and metadata with the audio panel. */
+  .wave-page .wave-feature-copy {
+    align-self: start;
+    margin-top: 26px;
+    padding: 8px 22px 9px 13px;
+  }
+
+  /* Visible divider between the track information and audio player. */
+  .wave-page .wave-player {
+    border-left: 1px solid rgba(0, 174, 222, .65);
+    padding-left: 38px;
+  }
+}
+
+@media (max-width: 900px) {
+  .wave-page .wave-page-hero { margin-bottom: 36px; }
+  .wave-page .wave-player-layout { grid-template-columns: 1fr; gap: 23px; }
+  .wave-page .wave-player { border-left: 0; padding-left: 0; }
+}
