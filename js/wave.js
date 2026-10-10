@@ -7,31 +7,31 @@
 import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js';
 
 const TRACKS = [
-  {"title": "Under the Sea", "source": "Kingdom of Atlantis / Aquaman OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Kingdom of Atlantis from the Aquaman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Atlantis.mp3"},
-  {"title": "NightFall", "source": "Fiction by The xx / Instrumental Remix", "category": "ambient", "type": "featured", "description": "A remix of Fiction by The xx.", "url": "https://light-speed-studios.b-cdn.net/Bring%20on%20the%20Night.mp3"},
-  {"title": "Catch You", "source": "Into the Dark by Ferry Corsten / Instrumental Remix", "category": "electronic", "type": "featured", "description": "A remix of Into the Dark by Ferry Corsten.", "url": "https://light-speed-studios.b-cdn.net/Catch%20You.mp3"},
-  {"title": "Into the Fight", "source": "No Man’s Land / Wonder Woman OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of No Man’s Land from the Wonder Woman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Charge.mp3"},
+  {"title": "Under the Sea", "source": "Kingdom of Atlantis / Aquaman OST", "category": "cinematic", "type": "featured", "description": "A remix of Kingdom of Atlantis from the Aquaman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Atlantis.mp3"},
+  {"title": "NightFall", "source": "Fiction by The xx", "category": "ambient", "type": "featured", "description": "A remix of Fiction by The xx.", "url": "https://light-speed-studios.b-cdn.net/Bring%20on%20the%20Night.mp3"},
+  {"title": "Catch You", "source": "Into the Dark by Ferry Corsten", "category": "electronic", "type": "featured", "description": "A remix of Into the Dark by Ferry Corsten.", "url": "https://light-speed-studios.b-cdn.net/Catch%20You.mp3"},
+  {"title": "Into the Fight", "source": "No Man’s Land / Wonder Woman OST", "category": "cinematic", "type": "featured", "description": "A remix of No Man’s Land from the Wonder Woman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Charge.mp3"},
   {"title": "Fearless", "source": "Lanterns OST / Extended Remix", "category": "cinematic", "type": "featured", "description": "An extended remix inspired by the Lanterns soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Fearless.mp3"},
   {"title": "Luna", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Luna.mp3"},
-  {"title": "Delimma", "source": "Sucre’s Dilemma / Maricruz / Prison Break OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix combining Sucre’s Dilemma and Maricruz from Prison Break.", "url": "https://light-speed-studios.b-cdn.net/Maricruz.mp3"},
-  {"title": "Waiting", "source": "Miracle by Beachwood / Instrumental Remix", "category": "ambient", "type": "featured", "description": "A remix of Miracle by Beachwood.", "url": "https://light-speed-studios.b-cdn.net/MIRACLE.mp3"},
+  {"title": "Delimma", "source": "Sucre’s Dilemma / Maricruz / Prison Break OST", "category": "cinematic", "type": "featured", "description": "A remix combining Sucre’s Dilemma and Maricruz from Prison Break.", "url": "https://light-speed-studios.b-cdn.net/Maricruz.mp3"},
+  {"title": "Waiting", "source": "Miracle by Beachwood", "category": "ambient", "type": "featured", "description": "A remix of Miracle by Beachwood.", "url": "https://light-speed-studios.b-cdn.net/MIRACLE.mp3"},
   {"title": "Outer Range", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Range.mp3"},
-  {"title": "Signal to the Stars", "source": "Deus Ex Machina by If These Trees Could Talk / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Deus Ex Machina by If These Trees Could Talk.", "url": "https://light-speed-studios.b-cdn.net/Signal%20to%20the%20Stars.mp3"},
-  {"title": "Sky Fall", "source": "Go Beyond by Matthew Hales & Benjamin Hales / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Go Beyond by Matthew Hales and Benjamin Hales.", "url": "https://light-speed-studios.b-cdn.net/Sky%20Fall.mp3"},
-  {"title": "SpeedForce", "source": "At the Speed of Force / Zack Snyder’s Justice League OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of At the Speed of Force from Zack Snyder’s Justice League.", "url": "https://light-speed-studios.b-cdn.net/speed.mp3"},
-  {"title": "Stay", "source": "Don’t Let Me Down (Intro) by The Chainsmokers / Instrumental Remix", "category": "electronic", "type": "featured", "description": "A remix of the intro to Don’t Let Me Down by The Chainsmokers.", "url": "https://light-speed-studios.b-cdn.net/Stay.mp3"},
+  {"title": "Signal to the Stars", "source": "Deus Ex Machina by If These Trees Could Talk", "category": "cinematic", "type": "featured", "description": "A remix of Deus Ex Machina by If These Trees Could Talk.", "url": "https://light-speed-studios.b-cdn.net/Signal%20to%20the%20Stars.mp3"},
+  {"title": "Sky Fall", "source": "Go Beyond by Matthew Hales & Benjamin Hales", "category": "cinematic", "type": "featured", "description": "A remix of Go Beyond by Matthew Hales and Benjamin Hales.", "url": "https://light-speed-studios.b-cdn.net/Sky%20Fall.mp3"},
+  {"title": "SpeedForce", "source": "At the Speed of Force / Zack Snyder’s Justice League OST", "category": "cinematic", "type": "featured", "description": "A remix of At the Speed of Force from Zack Snyder’s Justice League.", "url": "https://light-speed-studios.b-cdn.net/speed.mp3"},
+  {"title": "Stay", "source": "Don’t Let Me Down (Intro) by The Chainsmokers", "category": "electronic", "type": "featured", "description": "A remix of the intro to Don’t Let Me Down by The Chainsmokers.", "url": "https://light-speed-studios.b-cdn.net/Stay.mp3"},
   {"title": "Strike", "source": "Original Track", "category": "electronic", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/STRIKE.mp3"},
-  {"title": "The Brain in the Machine", "source": "Doom Patrol Intro / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of the Doom Patrol intro.", "url": "https://light-speed-studios.b-cdn.net/The%20Brain%20in%20the%20Machine.mp3"},
-  {"title": "The Edge", "source": "End of the World by Ivan Shpilevsky / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of End of the World by Ivan Shpilevsky.", "url": "https://light-speed-studios.b-cdn.net/The%20Edge.mp3"},
+  {"title": "The Brain in the Machine", "source": "Doom Patrol Intro", "category": "cinematic", "type": "featured", "description": "A remix of the Doom Patrol intro.", "url": "https://light-speed-studios.b-cdn.net/The%20Brain%20in%20the%20Machine.mp3"},
+  {"title": "The Edge", "source": "End of the World by Ivan Shpilevsky", "category": "cinematic", "type": "featured", "description": "A remix of End of the World by Ivan Shpilevsky.", "url": "https://light-speed-studios.b-cdn.net/The%20Edge.mp3"},
   {"title": "The Last Fall", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/The%20Last%20Fall.mp3"},
-  {"title": "Void", "source": "The Expanse Intro / Instrumental Remix", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/The%20Void.mp3"},
-  {"title": "Wide Awake", "source": "Wake Up / Slingshot OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Woke%20up.mp3"},
+  {"title": "Void", "source": "The Expanse Intro", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/The%20Void.mp3"},
+  {"title": "Wide Awake", "source": "Wake Up / Slingshot OST", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Woke%20up.mp3"},
 ];
 
 const $ = (selector) => document.querySelector(selector);
 const els = {
-  title: $('#player-heading'), source: $('#wave-source'), description: $('#wave-description'),
-  category: $('#wave-category'), type: $('#wave-type'), number: $('#wave-track-number'),
+  title: $('#player-heading'), source: $('#wave-source'),
+  type: $('#wave-type'), number: $('#wave-track-number'),
   current: $('#wave-current-time'), duration: $('#wave-duration'),
   play: $('#wave-play'), previous: $('#wave-previous'), next: $('#wave-next'),
   volume: $('#wave-volume'), mute: $('#wave-mute'), status: $('#wave-player-message'),
@@ -81,12 +81,10 @@ function updateTrackMetadata(index) {
   const track = TRACKS[index];
   els.title.textContent = track.title;
   els.source.textContent = track.source;
-  els.description.textContent = track.description || 'Instrumental remix';
-  els.category.textContent = track.category.toUpperCase();
   els.type.textContent = track.type === 'original' ? 'ORIGINAL TRACKS' : 'FEATURED REMIXES';
   els.number.textContent = `TRACK ${String(index + 1).padStart(2, '0')}`;
   els.current.textContent = '0:00';
-  els.duration.textContent = '0:00';
+  els.duration.textContent = track.duration ? timeString(track.duration) : '—:——';
   els.mode.textContent = track.url ? 'LOADING AUDIO' : 'PREVIEW';
   populatePlaceholder(index);
   els.placeholder.classList.remove('is-hidden');
@@ -94,7 +92,7 @@ function updateTrackMetadata(index) {
 }
 function renderLibrary() {
   const filtered = TRACKS.map((track, index) => ({ ...track, index })).filter(track => {
-    return activeFilter === 'all' || track.category === activeFilter || track.type === activeFilter;
+    return activeFilter === 'all' || track.type === activeFilter;
   });
   els.trackList.replaceChildren();
   filtered.forEach(track => {
@@ -108,11 +106,10 @@ function renderLibrary() {
     const details = document.createElement('span'); details.style.minWidth = '0';
     const title = document.createElement('span'); title.className = 'wave-track-name'; title.textContent = track.title;
     const sub = document.createElement('span'); sub.className = 'wave-track-sub'; sub.textContent = track.source;
-    const artist = document.createElement('span'); artist.className = 'wave-track-artist'; artist.textContent = 'DIGITAL SALVATION';
-    details.append(title, sub, artist); left.append(play, details);
+    details.append(title, sub); left.append(play, details);
     const mini = document.createElement('span'); mini.className = 'wave-mini'; mini.setAttribute('aria-hidden', 'true');
     waveformHeights(track.index + 1, 75).forEach(h => { const bar = document.createElement('i'); bar.style.height = `${h}%`; mini.append(bar); });
-    const length = document.createElement('span'); length.className = 'wave-track-length'; length.textContent = track.duration || '—';
+    const length = document.createElement('span'); length.className = 'wave-track-length'; length.textContent = track.duration ? timeString(track.duration) : '—';
     row.append(left, mini, length);
     row.addEventListener('click', () => {
       if (selectedIndex === track.index && track.url && surfer) { surfer.playPause(); return; }
@@ -147,6 +144,46 @@ function selectTrack(index, autoPlay = false) {
   });
 }
 
+
+// Discover actual durations from MP3 metadata. Only three requests run at once.
+// The player itself will also update the active track duration on load.
+function loadLibraryDurations() {
+  let cursor = 0;
+  const workers = Array.from({ length: 3 }, async () => {
+    while (cursor < TRACKS.length) {
+      const index = cursor++;
+      const track = TRACKS[index];
+      if (!track.url || track.duration) continue;
+      await new Promise(resolve => {
+        const media = new Audio();
+        let settled = false;
+        const timeout = setTimeout(() => finish(), 9000);
+        const finish = () => {
+          if (settled) return;
+          settled = true;
+          clearTimeout(timeout);
+          media.removeAttribute('src');
+          media.load();
+          resolve();
+        };
+        media.preload = 'metadata';
+        media.onloadedmetadata = () => {
+          if (Number.isFinite(media.duration) && media.duration > 0) {
+            track.duration = media.duration;
+            if (selectedIndex === index && !surfer?.getDuration()) els.duration.textContent = timeString(media.duration);
+            renderLibrary();
+          }
+          finish();
+        };
+        media.onerror = finish;
+        media.src = track.url;
+        media.load();
+      });
+    }
+  });
+  return Promise.all(workers);
+}
+
 try {
   surfer = WaveSurfer.create({
     container: '#waveform',
@@ -166,7 +203,9 @@ try {
     if (audioLoadFailed) return;
     els.placeholder.classList.add('is-hidden');
     els.mode.textContent = 'WAVEFORM';
-    els.duration.textContent = timeString(surfer.getDuration());
+    const duration = surfer.getDuration();
+    if (Number.isFinite(duration) && duration > 0) TRACKS[selectedIndex].duration = duration;
+    els.duration.textContent = timeString(duration);
     setMessage('Click the waveform to seek through the track.');
     if (pendingAutoplay) {
       pendingAutoplay = false;
@@ -207,15 +246,16 @@ try {
   els.filters.addEventListener('click', event => {
     const button = event.target.closest('[data-filter]');
     if (!button) return;
-    activeFilter = button.dataset.filter;
+    activeFilter = activeFilter === button.dataset.filter ? 'all' : button.dataset.filter;
     els.filters.querySelectorAll('[data-filter]').forEach(item => {
-      const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active));
+      const active = item.dataset.filter === activeFilter; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active));
     });
     renderLibrary();
   });
   // Show the collection immediately, even if loading the featured track fails.
   renderLibrary();
   selectTrack(selectedIndex);
+  loadLibraryDurations();
 } catch (error) {
   populatePlaceholder(0);
   els.trackList.textContent = 'Audio player failed to initialize. Verify the WaveSurfer.js CDN is accessible.';
