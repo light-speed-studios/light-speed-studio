@@ -7,32 +7,47 @@
 import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js';
 
 const TRACKS = [
-  { title: 'Into the Light', source: 'Sunshine / Instrumental Remix', category: 'cinematic', description: 'An atmospheric instrumental reimagining.', durationLabel: '3:42', url: '' },
-  { title: 'Event Horizon', source: 'Interstellar / Instrumental Remix', category: 'ambient', description: 'An expansive, ambient reinterpretation.', durationLabel: '4:18', url: '' },
-  { title: 'Quiet City', source: 'The Batman / Instrumental Remix', category: 'cinematic', description: 'A quieter journey through a familiar theme.', durationLabel: '3:27', url: '' },
-  { title: 'Mach Six', source: 'Speed Racer / Instrumental Remix', category: 'electronic', description: 'A driving electronic instrumental remix.', durationLabel: '3:51', url: '' },
+  {"title": "Under the Sea", "source": "Kingdom of Atlantis / Aquaman OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Kingdom of Atlantis from the Aquaman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Atlantis.mp3"},
+  {"title": "NightFall", "source": "Fiction by The xx / Instrumental Remix", "category": "ambient", "type": "featured", "description": "A remix of Fiction by The xx.", "url": "https://light-speed-studios.b-cdn.net/Bring%20on%20the%20Night.mp3"},
+  {"title": "Catch You", "source": "Into the Dark by Ferry Corsten / Instrumental Remix", "category": "electronic", "type": "featured", "description": "A remix of Into the Dark by Ferry Corsten.", "url": "https://light-speed-studios.b-cdn.net/Catch%20You.mp3"},
+  {"title": "Into the Fight", "source": "No Man’s Land / Wonder Woman OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of No Man’s Land from the Wonder Woman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Charge.mp3"},
+  {"title": "Fearless", "source": "Lanterns OST / Extended Remix", "category": "cinematic", "type": "featured", "description": "An extended remix inspired by the Lanterns soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Fearless.mp3"},
+  {"title": "Luna", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Luna.mp3"},
+  {"title": "Delimma", "source": "Sucre’s Dilemma / Maricruz / Prison Break OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix combining Sucre’s Dilemma and Maricruz from Prison Break.", "url": "https://light-speed-studios.b-cdn.net/Maricruz.mp3"},
+  {"title": "Waiting", "source": "Miracle by Beachwood / Instrumental Remix", "category": "ambient", "type": "featured", "description": "A remix of Miracle by Beachwood.", "url": "https://light-speed-studios.b-cdn.net/MIRACLE.mp3"},
+  {"title": "Outer Range", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Range.mp3"},
+  {"title": "Signal to the Stars", "source": "Deus Ex Machina by If These Trees Could Talk / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Deus Ex Machina by If These Trees Could Talk.", "url": "https://light-speed-studios.b-cdn.net/Signal%20to%20the%20Stars.mp3"},
+  {"title": "Sky Fall", "source": "Go Beyond by Matthew Hales & Benjamin Hales / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Go Beyond by Matthew Hales and Benjamin Hales.", "url": "https://light-speed-studios.b-cdn.net/Sky%20Fall.mp3"},
+  {"title": "SpeedForce", "source": "At the Speed of Force / Zack Snyder’s Justice League OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of At the Speed of Force from Zack Snyder’s Justice League.", "url": "https://light-speed-studios.b-cdn.net/speed.mp3"},
+  {"title": "Stay", "source": "Don’t Let Me Down (Intro) by The Chainsmokers / Instrumental Remix", "category": "electronic", "type": "featured", "description": "A remix of the intro to Don’t Let Me Down by The Chainsmokers.", "url": "https://light-speed-studios.b-cdn.net/Stay.mp3"},
+  {"title": "Strike", "source": "Original Track", "category": "electronic", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/STRIKE.mp3"},
+  {"title": "The Brain in the Machine", "source": "Doom Patrol Intro / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of the Doom Patrol intro.", "url": "https://light-speed-studios.b-cdn.net/The%20Brain%20in%20the%20Machine.mp3"},
+  {"title": "The Edge", "source": "End of the World by Ivan Shpilevsky / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of End of the World by Ivan Shpilevsky.", "url": "https://light-speed-studios.b-cdn.net/The%20Edge.mp3"},
+  {"title": "The Last Fall", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/The%20Last%20Fall.mp3"},
+  {"title": "Void", "source": "The Expanse Intro / Instrumental Remix", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/The%20Void.mp3"},
+  {"title": "Wide Awake", "source": "Wake Up / Slingshot OST / Instrumental Remix", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Woke%20up.mp3"},
 ];
-// The above sample names and durations are illustrative, not published audio.
-// Optional: durationLabel is used in the library until actual file metadata loads.
 
 const $ = (selector) => document.querySelector(selector);
 const els = {
   title: $('#player-heading'), source: $('#wave-source'), description: $('#wave-description'),
-  category: $('#wave-category'), number: $('#wave-track-number'),
+  category: $('#wave-category'), type: $('#wave-type'), number: $('#wave-track-number'),
   current: $('#wave-current-time'), duration: $('#wave-duration'),
   play: $('#wave-play'), previous: $('#wave-previous'), next: $('#wave-next'),
   volume: $('#wave-volume'), mute: $('#wave-mute'), status: $('#wave-player-message'),
   label: $('#wave-status-label'), mode: $('#wave-player-mode'),
   placeholder: $('#waveform-placeholder'), trackList: $('#wave-track-list'),
-  search: $('#wave-search'), filters: $('#wave-filters'), empty: $('#wave-empty-state'),
+  filters: $('#wave-filters'), empty: $('#wave-empty-state'),
   count: $('#wave-library-count'),
 };
 
-let selectedIndex = 0;
+let selectedIndex = TRACKS.findIndex(track => track.title === 'Wide Awake');
 let activeFilter = 'all';
 let loadToken = 0;
 let lastNonzeroVolume = 0.75;
 let surfer;
+let pendingAutoplay = false;
+let audioLoadFailed = false;
 
 function timeString(seconds) {
   if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
@@ -68,20 +83,18 @@ function updateTrackMetadata(index) {
   els.source.textContent = track.source;
   els.description.textContent = track.description || 'Instrumental remix';
   els.category.textContent = track.category.toUpperCase();
+  els.type.textContent = track.type === 'original' ? 'ORIGINAL TRACKS' : 'FEATURED REMIXES';
   els.number.textContent = `TRACK ${String(index + 1).padStart(2, '0')}`;
   els.current.textContent = '0:00';
-  els.duration.textContent = track.durationLabel || '0:00';
+  els.duration.textContent = '0:00';
   els.mode.textContent = track.url ? 'LOADING AUDIO' : 'PREVIEW';
   populatePlaceholder(index);
   els.placeholder.classList.remove('is-hidden');
   updatePlayIcon(false);
 }
 function renderLibrary() {
-  const query = els.search.value.trim().toLowerCase();
   const filtered = TRACKS.map((track, index) => ({ ...track, index })).filter(track => {
-    const matchCategory = activeFilter === 'all' || track.category === activeFilter;
-    const matchQuery = `${track.title} ${track.source} ${track.category}`.toLowerCase().includes(query);
-    return matchCategory && matchQuery;
+    return activeFilter === 'all' || track.category === activeFilter || track.type === activeFilter;
   });
   els.trackList.replaceChildren();
   filtered.forEach(track => {
@@ -95,10 +108,11 @@ function renderLibrary() {
     const details = document.createElement('span'); details.style.minWidth = '0';
     const title = document.createElement('span'); title.className = 'wave-track-name'; title.textContent = track.title;
     const sub = document.createElement('span'); sub.className = 'wave-track-sub'; sub.textContent = track.source;
-    details.append(title, sub); left.append(play, details);
+    const artist = document.createElement('span'); artist.className = 'wave-track-artist'; artist.textContent = 'DIGITAL SALVATION';
+    details.append(title, sub, artist); left.append(play, details);
     const mini = document.createElement('span'); mini.className = 'wave-mini'; mini.setAttribute('aria-hidden', 'true');
     waveformHeights(track.index + 1, 75).forEach(h => { const bar = document.createElement('i'); bar.style.height = `${h}%`; mini.append(bar); });
-    const length = document.createElement('span'); length.className = 'wave-track-length'; length.textContent = track.durationLabel || '—';
+    const length = document.createElement('span'); length.className = 'wave-track-length'; length.textContent = track.duration || '—';
     row.append(left, mini, length);
     row.addEventListener('click', () => {
       if (selectedIndex === track.index && track.url && surfer) { surfer.playPause(); return; }
@@ -111,35 +125,26 @@ function renderLibrary() {
 }
 function selectTrack(index, autoPlay = false) {
   selectedIndex = (index + TRACKS.length) % TRACKS.length;
-  const currentToken = ++loadToken;
   const track = TRACKS[selectedIndex];
-  surfer.pause();
-  // Clear the old waveform while a new URL loads.
-  surfer.empty();
+  ++loadToken;
+  pendingAutoplay = autoPlay;
+  audioLoadFailed = false;
+  if (surfer?.isPlaying()) surfer.pause();
+  // WaveSurfer.load() replaces the previous audio and waveform itself.
+  // Calling surfer.empty() here can leave its internal media unset.
   updateTrackMetadata(selectedIndex);
   renderLibrary();
   if (!track.url) {
-    setMessage('Preview only. Add this track’s BunnyCDN MP3 URL in js/wave.js to enable playback.');
+    setMessage('Audio URL has not been added for this track.');
     return;
   }
   setMessage('Loading audio…');
-  const onReady = () => {
-    if (currentToken !== loadToken) return;
-    els.placeholder.classList.add('is-hidden');
-    els.mode.textContent = 'WAVEFORM';
-    els.duration.textContent = timeString(surfer.getDuration());
-    setMessage('Click the waveform to seek through the track.');
-    if (autoPlay) surfer.play().catch(() => setMessage('Press Play to start audio.'));
-  };
-  const onError = error => {
-    if (currentToken !== loadToken) return;
+  surfer.load(track.url).catch(error => {
+    audioLoadFailed = true;
     els.placeholder.classList.remove('is-hidden');
     els.mode.textContent = 'UNAVAILABLE';
-    setMessage(`Audio unavailable. Check the MP3 URL, public access, and CDN CORS settings. ${error?.message || ''}`);
-  };
-  surfer.once('ready', onReady);
-  surfer.once('error', onError);
-  surfer.load(track.url).catch(onError);
+    setMessage(`Could not load this track. Check the audio link and BunnyCDN CORS settings. ${error?.message || ''}`);
+  });
 }
 
 try {
@@ -157,6 +162,24 @@ try {
     dragToSeek: true,
   });
   surfer.setVolume(0.75);
+  surfer.on('ready', () => {
+    if (audioLoadFailed) return;
+    els.placeholder.classList.add('is-hidden');
+    els.mode.textContent = 'WAVEFORM';
+    els.duration.textContent = timeString(surfer.getDuration());
+    setMessage('Click the waveform to seek through the track.');
+    if (pendingAutoplay) {
+      pendingAutoplay = false;
+      surfer.play().catch(() => setMessage('Press Play to start audio.'));
+    }
+    renderLibrary();
+  });
+  surfer.on('error', error => {
+    audioLoadFailed = true;
+    els.placeholder.classList.remove('is-hidden');
+    els.mode.textContent = 'UNAVAILABLE';
+    setMessage(`Audio unavailable. Check the MP3 URL and BunnyCDN CORS settings. ${error?.message || ''}`);
+  });
   surfer.on('timeupdate', seconds => { els.current.textContent = timeString(seconds); });
   surfer.on('play', () => { updatePlayIcon(true); renderLibrary(); });
   surfer.on('pause', () => { updatePlayIcon(false); renderLibrary(); });
@@ -181,7 +204,6 @@ try {
     surfer.setVolume(next); els.volume.value = String(Math.round(next * 100));
     els.mute.setAttribute('aria-label', next === 0 ? 'Unmute' : 'Mute');
   });
-  els.search.addEventListener('input', renderLibrary);
   els.filters.addEventListener('click', event => {
     const button = event.target.closest('[data-filter]');
     if (!button) return;
@@ -191,7 +213,9 @@ try {
     });
     renderLibrary();
   });
-  selectTrack(0);
+  // Show the collection immediately, even if loading the featured track fails.
+  renderLibrary();
+  selectTrack(selectedIndex);
 } catch (error) {
   populatePlaceholder(0);
   els.trackList.textContent = 'Audio player failed to initialize. Verify the WaveSurfer.js CDN is accessible.';
