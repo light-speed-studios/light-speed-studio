@@ -125,7 +125,7 @@
 <style id="lss-desktop-alt-poster">
 @media (min-width: 901px) {
   .ffs-poster-panel .ffs-poster-click { cursor: pointer; }
-  .ffs-poster-panel .ffs-poster-full { transition: opacity 180ms ease; }
+  .ffs-poster-panel .ffs-poster-full { transition: none; user-select: none; -webkit-user-drag: none; }
 }
 </style>
 </head>
@@ -2571,26 +2571,30 @@ document.addEventListener("click", function (event) {
   const poster = document.querySelector('.ffs-poster-panel .ffs-poster-full');
   const clickArea = document.querySelector('.ffs-poster-panel .ffs-poster-click');
   if (!poster || !clickArea) return;
-  let showingAlternate = false;
-  let switching = false;
-  clickArea.addEventListener('click', (event) => {
-    if (!window.matchMedia('(min-width: 901px)').matches) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const preload = new Image();
+  preload.src = alternate;
+  let pressed = false;
+  function showAlternate(event) {
+    if (!desktop() || (event.pointerType === 'mouse' && event.button !== 0)) return;
     event.preventDefault();
-    if (switching) return;
-    const next = showingAlternate ? original : alternate;
-    switching = true;
-    const preloaded = new Image();
-    preloaded.onload = () => {
-      poster.style.opacity = '0';
-      window.setTimeout(() => {
-        poster.src = next;
-        showingAlternate = !showingAlternate;
-        poster.style.opacity = '1';
-        switching = false;
-      }, 180);
-    };
-    preloaded.onerror = () => { switching = false; };
-    preloaded.src = next;
+    pressed = true;
+    poster.src = alternate;
+  }
+  function restorePoster() {
+    if (!pressed) return;
+    pressed = false;
+    poster.src = original;
+  }
+  clickArea.addEventListener('pointerdown', showAlternate);
+  window.addEventListener('pointerup', restorePoster);
+  window.addEventListener('pointercancel', restorePoster);
+  window.addEventListener('blur', restorePoster);
+  clickArea.addEventListener('click', (event) => {
+    if (desktop()) event.preventDefault();
+  });
+  clickArea.addEventListener('dragstart', (event) => {
+    if (desktop()) event.preventDefault();
   });
 })();
 </script>
