@@ -192,6 +192,27 @@
   .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
 }
 </style>
+
+<style id="flash-crossroads-desktop-alt-poster">
+@media (min-width: 901px) {
+  .ffs-poster-click { position: relative; cursor: pointer; user-select: none; }
+  .ffs-poster-click .ffs-poster-alternate {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: contain; object-position: center top;
+    opacity: 0; pointer-events: none;
+    transition: opacity 180ms ease;
+  }
+  .ffs-poster-click.ffs-alt-held .ffs-poster-alternate { opacity: 1; }
+  .ffs-alt-poster-hint {
+    margin: 4px 0 14px; font-family: Rajdhani, Arial, sans-serif;
+    font-size: 13px; letter-spacing: .04em;
+    color: rgba(186,199,213,.65);
+  }
+}
+@media (max-width: 900px) {
+  .ffs-poster-alternate, .ffs-alt-poster-hint { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Crossroads splash screen">
@@ -2071,6 +2092,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
       <label class="ffs-poster-click" for="ffsPosterToggle">
         <img alt="The Flash: Crossroads poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/theflashposterCross.png"/>
+        <img alt="The Flash: Crossroads alternate poster" class="ffs-poster ffs-poster-alternate" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/flashposteralt.png"/>
         <img alt="The Flash: Crossroads mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/flashpostermob1.png"/>
       </label>
       <label class="ffs-poster-expand" for="ffsPosterToggle">
@@ -2086,6 +2108,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <h1 class="ffs-title">The Flash: Crossroads</h1>
       </div>
       <p class="ffs-title-tagline">You Cant Outrun the Past</p>
+      <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
       <div class="ffs-meta-row ffs-desktop-meta">
   <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">117 min</span></div>
   <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 Sep 2023</span></div>
@@ -2808,5 +2831,26 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+
+<script id="flash-crossroads-alt-poster-script">
+(() => {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const release = () => poster.classList.remove('ffs-alt-held');
+  poster.addEventListener('pointerdown', (event) => {
+    if (!desktop() || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    event.preventDefault();
+    poster.classList.add('ffs-alt-held');
+    try { poster.setPointerCapture(event.pointerId); } catch (_) {}
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture', 'pointerleave'].forEach(type => {
+    poster.addEventListener(type, release);
+  });
+  poster.addEventListener('click', event => { if (desktop()) event.preventDefault(); });
+  window.addEventListener('blur', release);
+  window.addEventListener('resize', () => { if (!desktop()) release(); });
+})();
+</script>
 </body>
 </html>
