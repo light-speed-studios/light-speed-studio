@@ -158,6 +158,12 @@
 }
 </style>
 
+<style id="lss-desktop-alt-poster">
+@media (min-width: 901px) {
+  .ffs-poster-panel .ffs-poster-click { cursor: pointer; }
+  .ffs-poster-panel .ffs-poster-full { user-select: none; -webkit-user-drag: none; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Speed Racer: Mach 6 splash screen">
@@ -2561,5 +2567,36 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+<script id="lss-desktop-alt-poster-script">
+(() => {
+  const original = 'https://light-speed-studios.b-cdn.net/SPREEDRACERmain.png';
+  const alternate = 'https://light-speed-studios.b-cdn.net/SPREEDRACERalt.png';
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-full');
+  const clickArea = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster || !clickArea) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const preload = new Image();
+  preload.src = alternate;
+  let pressed = false;
+  function showAlternate(event) {
+    if (!desktop() || event.pointerType !== 'mouse' || event.button !== 0) return;
+    event.preventDefault();
+    pressed = true;
+    poster.src = alternate;
+  }
+  function restorePoster() {
+    if (!pressed) return;
+    pressed = false;
+    poster.src = original;
+  }
+  clickArea.addEventListener('pointerdown', showAlternate);
+  window.addEventListener('pointerup', restorePoster);
+  window.addEventListener('pointercancel', restorePoster);
+  window.addEventListener('blur', restorePoster);
+  window.addEventListener('resize', () => { if (!desktop()) restorePoster(); });
+  clickArea.addEventListener('click', event => { if (desktop()) event.preventDefault(); });
+  clickArea.addEventListener('dragstart', event => { if (desktop()) event.preventDefault(); });
+})();
+</script>
 </body>
 </html>
