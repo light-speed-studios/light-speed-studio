@@ -71,7 +71,7 @@
 /* WAVE: featured player alignment and separation, Oct 10 */
 @media (min-width: 901px) {
   /* Add exactly 10px to the existing space below the WAVE title frame. */
-  .wave-page .wave-page-hero { margin-bottom: 36px; }
+  .wave-page .wave-page-hero { margin-bottom: 46px; }
 
   /* Give the waveform more room and remove the unused center gap. */
   .wave-page .wave-player-layout {
