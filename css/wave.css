@@ -1009,3 +1009,47 @@
 .wave-player-caption {
     display: none !important;
 }
+/* WAVE: Scroll to playlist indicator */
+
+.wave-scroll-cue {
+    display: block;
+    width: fit-content;
+    margin: 12px auto 0;
+    color: #00AEDE;
+    font-family: 'Oxanium', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 0.25s ease;
+}
+
+.wave-scroll-cue:hover {
+    opacity: 0.65;
+}
+
+.wave-library {
+    margin-top: 20px;
+}
+
+#wave-library-title {
+    scroll-margin-top: 90px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 600px) {
+    .wave-scroll-cue {
+        font-size: 10px;
+        letter-spacing: 4px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
