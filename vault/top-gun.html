@@ -302,6 +302,25 @@
   .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
 }
 </style>
+<style id="topgun-desktop-hold-alt-poster">
+@media (min-width: 901px) {
+  .ffs-poster-click { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+  .ffs-poster-click .ffs-poster-alt {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top; display: block;
+    opacity: 0; pointer-events: none; transition: opacity .16s ease;
+  }
+  .ffs-poster-click.is-holding-alt .ffs-poster-alt { opacity: 1; }
+  .ffs-poster-hold-hint {
+    display: block; margin: 4px 0 0; font-family: Rajdhani, Arial, sans-serif;
+    font-size: 12px; line-height: 1.1; letter-spacing: .045em;
+    color: rgba(186,199,213,.64);
+  }
+}
+@media (max-width: 900px) {
+  .ffs-poster-alt, .ffs-poster-hold-hint { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Top Gun: Ascension splash screen">
@@ -2190,6 +2209,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
   <label class="ffs-poster-click" for="ffsPosterToggle">
     <img class="ffs-poster ffs-poster-full" src="https://light-speed-studios.b-cdn.net/TopGunPosterA.png" alt="Top Gun: Ascension poster" fetchpriority="high" decoding="async">
+    <img class="ffs-poster-alt" src="https://light-speed-studios.b-cdn.net/topgunpossteralt.png" alt="Top Gun: Ascension alternate poster" loading="lazy" decoding="async">
     <img class="ffs-poster ffs-poster-crop" src="https://light-speed-studios.b-cdn.net/topgunpossterMOB.png" alt="Top Gun: Ascension mobile poster" loading="lazy" decoding="async">
   </label>
 
@@ -2204,6 +2224,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
           <h1 class="ffs-title">Top Gun: Ascension</h1>
         </div>
 <p class="ffs-title-tagline">Trust Your Wing</p>
+<span class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</span>
 
 <div class="ffs-meta-row ffs-desktop-meta">
   <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
@@ -2756,5 +2777,24 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+<script id="topgun-desktop-hold-alt-poster-script">
+(() => {
+  const poster = document.querySelector('.ffs-poster-click');
+  if (!poster) return;
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const clear = () => poster.classList.remove('is-holding-alt');
+  poster.addEventListener('pointerdown', (event) => {
+    if (!desktop.matches || event.button !== 0) return;
+    event.preventDefault();
+    poster.classList.add('is-holding-alt');
+  });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(name => poster.addEventListener(name, clear));
+  window.addEventListener('pointerup', clear);
+  window.addEventListener('blur', clear);
+  desktop.addEventListener('change', clear);
+  poster.addEventListener('click', (event) => { if (desktop.matches) event.preventDefault(); });
+  poster.addEventListener('contextmenu', (event) => { if (desktop.matches) event.preventDefault(); });
+})();
+</script>
 </body>
 </html>
