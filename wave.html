@@ -129,6 +129,19 @@
       }));
     });
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const scrollCue = document.querySelector('.wave-scroll-cue');
+    if (!scrollCue) return;
+
+    function updateScrollCue() {
+      scrollCue.classList.toggle('is-hidden', window.scrollY > 120);
+    }
+
+    window.addEventListener('scroll', updateScrollCue, { passive: true });
+    updateScrollCue();
+  });
+</script>
   <script src="js/main.js"></script>
   <script type="module" src="js/wave.js"></script>
 </body>
