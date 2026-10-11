@@ -103,6 +103,44 @@
 }
 </style>
 
+<style id="crisis-desktop-alt-poster-hold">
+@media (min-width: 901px) {
+  .ffs-poster-panel .ffs-poster-click {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .ffs-poster-panel .ffs-poster-click .ffs-poster-alt {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .ffs-poster-panel .ffs-poster-click.is-pressing-alt .ffs-poster-alt {
+    opacity: 1;
+  }
+  .ffs-poster-panel .ffs-poster-click img {
+    -webkit-user-drag: none;
+  }
+  .ffs-title-panel .ffs-alt-poster-hint {
+    display: block;
+    margin: 6px 0 0;
+    font-family: Rajdhani, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: rgba(186, 199, 213, .6);
+  }
+}
+@media (max-width: 900px) {
+  .ffs-poster-alt, .ffs-alt-poster-hint { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Crisis: Red Skies splash screen">
@@ -1977,6 +2015,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <label class="ffs-poster-click" for="ffsPosterToggle">
         <img alt="Crisis Red Skies poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/crisipostermob.png"/>
         <img alt="Crisis Red Skies mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/crisiposter.png"/>
+        <img alt="Crisis: Red Skies alternate poster" class="ffs-poster ffs-poster-alt" draggable="false" decoding="async" loading="eager" src="https://light-speed-studios.b-cdn.net/crisisalt.png"/>
       </label>
       <label class="ffs-poster-expand" for="ffsPosterToggle">
         <span>Click to Enlarge</span>
@@ -1990,6 +2029,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <h1 class="ffs-title">Crisis: Red Skies</h1>
       </div>
       <p class="ffs-title-tagline">Two Worlds. One Stand.</p>
+      <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
  <div class="ffs-meta-row ffs-desktop-meta">
   <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">124 min</span></div>
   <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">11 Apr 2026</span></div>
@@ -2458,5 +2498,26 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+<script id="crisis-desktop-alt-poster-hold-script">
+(() => {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const reset = () => poster.classList.remove('is-pressing-alt');
+  poster.addEventListener('pointerdown', (event) => {
+    if (!desktop() || event.button !== 0) return;
+    event.preventDefault();
+    poster.classList.add('is-pressing-alt');
+  });
+  ['pointerup', 'pointercancel', 'pointerleave', 'lostpointercapture'].forEach(type => {
+    poster.addEventListener(type, reset);
+  });
+  poster.addEventListener('click', (event) => {
+    if (desktop()) event.preventDefault();
+  });
+  window.addEventListener('blur', reset);
+  window.addEventListener('resize', reset);
+})();
+</script>
 </body>
 </html>
