@@ -277,6 +277,22 @@
   .ffs-poster-panel .ffs-poster-hold-hint { display: none !important; }
 }
 </style>
+<style id="glass-rooms-standard-alt-poster-hint">
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-alt-poster-hint {
+    display: block;
+    margin: 6px 0 0;
+    font-family: Rajdhani, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: rgba(186,199,213,.6);
+  }
+}
+@media (max-width: 900px) {
+  .ffs-title-panel .ffs-alt-poster-hint { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Glass Rooms splash screen">
@@ -2185,7 +2201,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <img alt="Glass Rooms alternate poster" class="ffs-poster-alt" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Glassroomalt.png"/>
 <img alt="Glass Rooms mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/GlassroomsMOB.png"/>
 </label>
-<span class="ffs-poster-hold-hint">Press and hold to view alternate poster</span>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
 <span>Click to Enlarge</span>
 </label>
@@ -2197,6 +2212,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <h1 class="ffs-title">Glass Rooms</h1>
 </div>
 <p class="ffs-title-tagline">Observation is Absolute</p>
+<p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
 <div class="ffs-meta-row ffs-desktop-meta">
 <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
   <span class="ffs-meta-value">92 min</span></div>
