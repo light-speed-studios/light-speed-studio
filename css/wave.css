@@ -859,7 +859,7 @@
 @media (min-width: 901px) {
     /* Add exactly 10px to the existing space below the WAVE title frame. */
     .wave-page .wave-page-hero {
-        margin-bottom: 46px;
+        margin-bottom: 56px;
     }
     /* Give the waveform more room and remove the unused center gap. */
     .wave-page .wave-player-layout {
