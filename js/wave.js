@@ -12,18 +12,18 @@ const TRACKS = [
   {"title": "Catch You", "source": "Into the Dark by Ferry Corsten", "category": "electronic", "type": "featured", "description": "A remix of Into the Dark by Ferry Corsten.", "url": "https://light-speed-studios.b-cdn.net/Catch%20You.mp3"},
   {"title": "Into the Fight", "source": "No Man’s Land / Wonder Woman OST", "category": "cinematic", "type": "featured", "description": "A remix of No Man’s Land from the Wonder Woman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Charge.mp3"},
   {"title": "Fearless", "source": "Lanterns OST / Extended Remix", "category": "cinematic", "type": "featured", "description": "An extended remix inspired by the Lanterns soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Fearless.mp3"},
-  {"title": "Luna", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Luna.mp3"},
+  {"title": "Luna", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Luna.mp3"},
   {"title": "Delimma", "source": "Sucre’s Dilemma / Maricruz / Prison Break OST", "category": "cinematic", "type": "featured", "description": "A remix combining Sucre’s Dilemma and Maricruz from Prison Break.", "url": "https://light-speed-studios.b-cdn.net/Maricruz.mp3"},
   {"title": "Waiting", "source": "Miracle by Beachwood", "category": "ambient", "type": "featured", "description": "A remix of Miracle by Beachwood.", "url": "https://light-speed-studios.b-cdn.net/MIRACLE.mp3"},
-  {"title": "Outer Range", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Range.mp3"},
+  {"title": "Outer Range", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Range.mp3"},
   {"title": "Signal to the Stars", "source": "Deus Ex Machina by If These Trees Could Talk", "category": "cinematic", "type": "featured", "description": "A remix of Deus Ex Machina by If These Trees Could Talk.", "url": "https://light-speed-studios.b-cdn.net/Signal%20to%20the%20Stars.mp3"},
   {"title": "Sky Fall", "source": "Go Beyond by Matthew Hales & Benjamin Hales", "category": "cinematic", "type": "featured", "description": "A remix of Go Beyond by Matthew Hales and Benjamin Hales.", "url": "https://light-speed-studios.b-cdn.net/Sky%20Fall.mp3"},
   {"title": "SpeedForce", "source": "At the Speed of Force / Zack Snyder’s Justice League OST", "category": "cinematic", "type": "featured", "description": "A remix of At the Speed of Force from Zack Snyder’s Justice League.", "url": "https://light-speed-studios.b-cdn.net/speed.mp3"},
   {"title": "Stay", "source": "Don’t Let Me Down (Intro) by The Chainsmokers", "category": "electronic", "type": "featured", "description": "A remix of the intro to Don’t Let Me Down by The Chainsmokers.", "url": "https://light-speed-studios.b-cdn.net/Stay.mp3"},
-  {"title": "Strike", "source": "Original Track", "category": "electronic", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/STRIKE.mp3"},
+  {"title": "Strike", "source": "Original Track / Digital Salvation", "category": "electronic", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/STRIKE.mp3"},
   {"title": "The Brain in the Machine", "source": "Doom Patrol Intro", "category": "cinematic", "type": "featured", "description": "A remix of the Doom Patrol intro.", "url": "https://light-speed-studios.b-cdn.net/The%20Brain%20in%20the%20Machine.mp3"},
   {"title": "The Edge", "source": "End of the World by Ivan Shpilevsky", "category": "cinematic", "type": "featured", "description": "A remix of End of the World by Ivan Shpilevsky.", "url": "https://light-speed-studios.b-cdn.net/The%20Edge.mp3"},
-  {"title": "The Last Fall", "source": "Original Track", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/The%20Last%20Fall.mp3"},
+  {"title": "The Last Fall", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/The%20Last%20Fall.mp3"},
   {"title": "Void", "source": "The Expanse Intro", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/The%20Void.mp3"},
   {"title": "Wide Awake", "source": "Wake Up / Slingshot OST", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Woke%20up.mp3"},
 ];
@@ -105,12 +105,12 @@ function renderLibrary() {
     const play = document.createElement('span'); play.className = 'wave-list-play'; play.setAttribute('aria-hidden', 'true'); play.textContent = track.index === selectedIndex && surfer?.isPlaying() ? 'Ⅱ' : '▶';
     const details = document.createElement('span'); details.style.minWidth = '0';
     const title = document.createElement('span'); title.className = 'wave-track-name'; title.textContent = track.title;
-    const sub = document.createElement('span'); sub.className = 'wave-track-sub'; sub.textContent = track.source;
-    details.append(title, sub); left.append(play, details);
-    const mini = document.createElement('span'); mini.className = 'wave-mini'; mini.setAttribute('aria-hidden', 'true');
-    waveformHeights(track.index + 1, 75).forEach(h => { const bar = document.createElement('i'); bar.style.height = `${h}%`; mini.append(bar); });
+    details.append(title); left.append(play, details);
+    const credit = document.createElement('span');
+    credit.className = 'wave-track-credit';
+    credit.textContent = track.source;
     const length = document.createElement('span'); length.className = 'wave-track-length'; length.textContent = track.duration ? timeString(track.duration) : '—';
-    row.append(left, mini, length);
+    row.append(left, credit, length);
     row.addEventListener('click', () => {
       if (selectedIndex === track.index && track.url && surfer) { surfer.playPause(); return; }
       selectTrack(track.index, Boolean(track.url));
