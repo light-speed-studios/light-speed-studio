@@ -8,7 +8,7 @@ import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js
 
 const TRACKS = [
   {"title": "Under the Sea", "source": "Kingdom of Atlantis / Aquaman OST", "category": "cinematic", "type": "featured", "description": "A remix of Kingdom of Atlantis from the Aquaman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Atlantis.mp3"},
-  {"title": "NightFall", "source": "Fiction by The xx", "category": "ambient", "type": "featured", "description": "A remix of Fiction by The xx.", "url": "https://light-speed-studios.b-cdn.net/Bring%20on%20the%20Night.mp3"},
+  {"title": "NightFall", "source": "Fiction by The xx", "category": "ambient", "type": "featured", "description": "A remix of Fiction by The XX.", "url": "https://light-speed-studios.b-cdn.net/Bring%20on%20the%20Night.mp3"},
   {"title": "Catch You", "source": "Into the Dark by Ferry Corsten", "category": "electronic", "type": "featured", "description": "A remix of Into the Dark by Ferry Corsten.", "url": "https://light-speed-studios.b-cdn.net/Catch%20You.mp3"},
   {"title": "Into the Fight", "source": "No Man’s Land / Wonder Woman OST", "category": "cinematic", "type": "featured", "description": "A remix of No Man’s Land from the Wonder Woman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Charge.mp3"},
   {"title": "Fearless", "source": "Lanterns OST / Extended Remix", "category": "cinematic", "type": "featured", "description": "An extended remix inspired by the Lanterns soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Fearless.mp3"},
@@ -85,7 +85,7 @@ function updateTrackMetadata(index) {
   els.number.textContent = `TRACK ${String(index + 1).padStart(2, '0')}`;
   els.current.textContent = '0:00';
   els.duration.textContent = track.duration ? timeString(track.duration) : '—:——';
-  els.mode.textContent = track.url ? 'LOADING AUDIO' : 'PREVIEW';
+  els.mode.textContent = track.url ? 'LOADING TRACK' : 'PREVIEW';
   populatePlaceholder(index);
   els.placeholder.classList.remove('is-hidden');
   updatePlayIcon(false);
@@ -145,12 +145,12 @@ function selectTrack(index, autoPlay = false) {
     setMessage('Audio URL has not been added for this track.');
     return;
   }
-  setMessage('Loading audio…');
+  setMessage('Loading TRACK…');
   surfer.load(track.url).catch(error => {
     audioLoadFailed = true;
     els.placeholder.classList.remove('is-hidden');
     els.mode.textContent = 'UNAVAILABLE';
-    setMessage(`Could not load this track. Check the audio link and BunnyCDN CORS settings. ${error?.message || ''}`);
+    setMessage('Unable to play this track. Please Refresh Page.');
   });
 }
 
