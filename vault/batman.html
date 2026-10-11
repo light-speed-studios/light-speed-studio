@@ -122,6 +122,12 @@
   .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
 }
 </style>
+<style id="lss-desktop-alt-poster">
+@media (min-width: 901px) {
+  .ffs-poster-panel .ffs-poster-click { cursor: pointer; }
+  .ffs-poster-panel .ffs-poster-full { transition: opacity 180ms ease; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Batman: Gotham's Riddle splash screen">
@@ -2557,6 +2563,37 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+
+<script id="lss-desktop-alt-poster-script">
+(() => {
+  const original = 'https://light-speed-studios.b-cdn.net/batmanGRposter.png';
+  const alternate = 'https://light-speed-studios.b-cdn.net/batmanposter%20copy.jpg';
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-full');
+  const clickArea = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster || !clickArea) return;
+  let showingAlternate = false;
+  let switching = false;
+  clickArea.addEventListener('click', (event) => {
+    if (!window.matchMedia('(min-width: 901px)').matches) return;
+    event.preventDefault();
+    if (switching) return;
+    const next = showingAlternate ? original : alternate;
+    switching = true;
+    const preloaded = new Image();
+    preloaded.onload = () => {
+      poster.style.opacity = '0';
+      window.setTimeout(() => {
+        poster.src = next;
+        showingAlternate = !showingAlternate;
+        poster.style.opacity = '1';
+        switching = false;
+      }, 180);
+    };
+    preloaded.onerror = () => { switching = false; };
+    preloaded.src = next;
+  });
+})();
+</script>
 
 </body>
 </html>
