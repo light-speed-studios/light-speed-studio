@@ -210,6 +210,20 @@
 }
 </style>
 
+<style id="lss-rogue-desktop-alt-poster">
+@media (min-width: 901px) {
+  .ffs-poster-panel .ffs-poster-click { position: relative; cursor: pointer; }
+  .ffs-poster-panel .ffs-poster-full { user-select: none; -webkit-user-drag: none; }
+  .ffs-poster-panel .lss-poster-alt {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    opacity: 0; transition: opacity .24s ease;
+    pointer-events: none; user-select: none; -webkit-user-drag: none;
+  }
+  .ffs-poster-panel .ffs-poster-click.lss-alt-pressed .lss-poster-alt { opacity: 1; }
+}
+@media (max-width: 900px) { .ffs-poster-panel .lss-poster-alt { display: none !important; } }
+</style>
 </head>
 <body>
 <div aria-label="Rogue One: The Scarif Run splash screen" data-duration="3000" id="lss-page-splash">
@@ -2078,6 +2092,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
 <label class="ffs-poster-click" for="ffsPosterToggle">
 <img alt="Rogue One: The Scarif Run poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/rogueoneSRposter.png"/>
+<img alt="Rogue One: The Scarif Run alternate poster" class="ffs-poster lss-poster-alt" decoding="async" loading="eager" src="https://light-speed-studios.b-cdn.net/rogueoneSRposteralt.png"/>
 <img alt="Rogue One: The Scarif Run mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/rogueoneSRpostermob.png"/>
 </label>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
@@ -2657,5 +2672,25 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+<script id="lss-rogue-desktop-alt-poster-script">
+(() => {
+  const clickArea = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!clickArea) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  function press(event) {
+    if (!desktop() || event.pointerType !== 'mouse' || event.button !== 0) return;
+    event.preventDefault();
+    clickArea.classList.add('lss-alt-pressed');
+  }
+  function release() { clickArea.classList.remove('lss-alt-pressed'); }
+  clickArea.addEventListener('pointerdown', press);
+  window.addEventListener('pointerup', release);
+  window.addEventListener('pointercancel', release);
+  window.addEventListener('blur', release);
+  window.addEventListener('resize', () => { if (!desktop()) release(); });
+  clickArea.addEventListener('click', event => { if (desktop()) event.preventDefault(); });
+  clickArea.addEventListener('dragstart', event => { if (desktop()) event.preventDefault(); });
+})();
+</script>
 </body>
 </html>
