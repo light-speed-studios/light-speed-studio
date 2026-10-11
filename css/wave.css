@@ -1005,3 +1005,7 @@
 @keyframes wave-play-spin { to { transform: rotate(360deg); } }
 @media (max-width: 540px) { .wave-page .wave-list-play { width: 30px; height: 30px; } }
 @media (prefers-reduced-motion: reduce) { .wave-play-stroke-dotted { animation: none; } }
+
+.wave-player-caption {
+    display: none !important;
+}
