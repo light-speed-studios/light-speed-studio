@@ -158,6 +158,14 @@
 }
 </style>
 
+<style id="lss-desktop-hold-alt-poster">
+@media (min-width: 901px) {
+  .ffs-poster-panel .ffs-poster-click { cursor: pointer; user-select: none; -webkit-user-select: none; }
+  .ffs-poster-panel .ffs-poster-full { transition: opacity 150ms ease; -webkit-user-drag: none; }
+  .lss-poster-hold-hint { display: block; text-align: center; margin-top: 10px; font: 700 11px Oxanium, Rajdhani, sans-serif; letter-spacing: .13em; text-transform: uppercase; color: rgba(186,199,213,.72); }
+}
+@media (max-width: 900px) { .lss-poster-hold-hint { display: none !important; } }
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Real Steel: The Last Round splash screen">
@@ -1872,6 +1880,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <img alt="Real Steel: The Last Round poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/realsteelposter.png"/>
 <img alt="Real Steel: The Last Round mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/realsteelpostermob.png"/>
 </label>
+<span class="lss-poster-hold-hint">Press and hold poster to view alternate</span>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
 <span>Click to Enlarge</span>
 </label>
@@ -2350,5 +2359,37 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+<script id="lss-desktop-hold-alt-poster-script">
+(() => {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-full');
+  const area = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster || !area) return;
+  const original = poster.getAttribute('src');
+  const alternate = 'https://light-speed-studios.b-cdn.net/rsrposteralt.png';
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const preload = new Image();
+  preload.src = alternate;
+  let held = false;
+  let fadeTimer;
+  function show(src) {
+    clearTimeout(fadeTimer);
+    poster.style.opacity = '0';
+    fadeTimer = setTimeout(() => { poster.src = src; poster.style.opacity = '1'; }, 150);
+  }
+  area.addEventListener('pointerdown', e => {
+    if (!desktop.matches || e.button !== 0) return;
+    e.preventDefault();
+    held = true;
+    show(alternate);
+  });
+  function release() { if (!held) return; held = false; show(original); }
+  window.addEventListener('pointerup', release);
+  window.addEventListener('pointercancel', release);
+  window.addEventListener('blur', release);
+  area.addEventListener('contextmenu', e => { if (desktop.matches) e.preventDefault(); });
+  desktop.addEventListener('change', () => { held = false; clearTimeout(fadeTimer); poster.src = original; poster.style.opacity = '1'; });
+  area.addEventListener('dragstart', e => { if (desktop.matches) e.preventDefault(); });
+})();
+</script>
 </body>
 </html>
