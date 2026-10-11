@@ -129,10 +129,10 @@ function renderLibrary() {
 
   selectTrack(track.index, Boolean(track.url));
 
-  document.querySelector('.wave-feature')?.scrollIntoView({
-    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-    block: 'start'
-  });
+window.scrollTo({
+  top: 0,
+  behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+});
 });    els.trackList.append(row);
   });
   els.empty.hidden = filtered.length !== 0;
