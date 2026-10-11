@@ -233,6 +233,50 @@
   }
 }
 </style>
+<style id="glass-rooms-desktop-hold-alt-poster">
+@media (min-width: 901px) {
+  .ffs-poster-panel .ffs-poster-click {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .ffs-poster-panel .ffs-poster-alt {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center top;
+    opacity: 0;
+    transition: opacity .22s ease;
+    pointer-events: none;
+  }
+  .ffs-poster-panel .ffs-poster-click.is-holding-alt .ffs-poster-alt {
+    opacity: 1;
+  }
+  .ffs-poster-panel .ffs-poster-hold-hint {
+    display: block;
+    position: absolute;
+    bottom: 2px;
+    left: 18px;
+    right: 18px;
+    text-align: center;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(186,199,213,.68);
+    pointer-events: none;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-poster-panel .ffs-poster-alt,
+  .ffs-poster-panel .ffs-poster-hold-hint { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Glass Rooms splash screen">
@@ -2138,8 +2182,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
 <label class="ffs-poster-click" for="ffsPosterToggle">
 <img alt="Glass Rooms poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/GlassRoomsPoster.png"/>
+<img alt="Glass Rooms alternate poster" class="ffs-poster-alt" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Glassroomalt.png"/>
 <img alt="Glass Rooms mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/GlassroomsMOB.png"/>
 </label>
+<span class="ffs-poster-hold-hint">Press and hold to view alternate poster</span>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
 <span>Click to Enlarge</span>
 </label>
@@ -2630,5 +2676,30 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+<script id="glass-rooms-desktop-hold-alt-poster-script">
+(function () {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster) return;
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const stop = () => poster.classList.remove('is-holding-alt');
+  poster.addEventListener('pointerdown', function (event) {
+    if (!desktop.matches || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    event.preventDefault();
+    poster.classList.add('is-holding-alt');
+  });
+  poster.addEventListener('pointerup', stop);
+  poster.addEventListener('pointercancel', stop);
+  poster.addEventListener('pointerleave', stop);
+  window.addEventListener('pointerup', stop);
+  window.addEventListener('blur', stop);
+  desktop.addEventListener('change', stop);
+  poster.addEventListener('click', function (event) {
+    if (desktop.matches) event.preventDefault();
+  });
+  poster.addEventListener('contextmenu', function (event) {
+    if (desktop.matches) event.preventDefault();
+  });
+})();
+</script>
 </body>
 </html>
