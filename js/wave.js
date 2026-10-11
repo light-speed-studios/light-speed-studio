@@ -121,11 +121,19 @@ function renderLibrary() {
     credit.textContent = track.source;
     const length = document.createElement('span'); length.className = 'wave-track-length'; length.textContent = track.duration ? timeString(track.duration) : '—';
     row.append(left, credit, length);
-    row.addEventListener('click', () => {
-      if (selectedIndex === track.index && track.url && surfer) { surfer.playPause(); return; }
-      selectTrack(track.index, Boolean(track.url));
-    });
-    els.trackList.append(row);
+  row.addEventListener('click', () => {
+  if (selectedIndex === track.index && track.url && surfer) {
+    surfer.playPause();
+    return;
+  }
+
+  selectTrack(track.index, Boolean(track.url));
+
+  document.querySelector('.wave-feature')?.scrollIntoView({
+    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+    block: 'start'
+  });
+});    els.trackList.append(row);
   });
   els.empty.hidden = filtered.length !== 0;
   els.count.textContent = `/ ${String(filtered.length).padStart(2, '0')}`;
