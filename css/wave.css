@@ -403,7 +403,7 @@
     gap: 20px;
     padding: 10px 21px;
     color: #638495;
-    font-size: 10px;
+    font-size: 14px;
     letter-spacing: 1.8px;
     border-bottom: 1px solid rgba(80,120,139,.24);
 }
@@ -904,7 +904,7 @@
 .wave-track-credit {
     min-width: 0;
     color: #91aebb;
-    font: 500 12px 'Oxanium', sans-serif;
+    font: 500 16px 'Oxanium', sans-serif;
     letter-spacing: .3px;
     line-height: 1.55;
     overflow-wrap: anywhere;
