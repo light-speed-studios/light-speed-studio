@@ -192,6 +192,26 @@
 }
 </style>
 
+<style id="desktop-press-hold-alternate-poster">
+@media (min-width: 901px) {
+  .ffs-poster-panel .ffs-poster-click { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+  .ffs-poster-panel .ffs-poster-full { position: relative; z-index: 1; }
+  .ffs-poster-panel .ffs-poster-alt {
+    display: block; position: absolute; inset: 0; width: 100%; height: 100%;
+    z-index: 2; object-fit: contain; object-position: center top;
+    opacity: 0; pointer-events: none; transition: none;
+  }
+  .ffs-poster-panel .ffs-poster-click:active .ffs-poster-alt { opacity: 1; }
+  .ffs-poster-hold-hint {
+    margin: 5px 0 14px; font-family: Rajdhani, Arial, sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: .04em;
+    color: rgba(186, 199, 213, .65);
+  }
+}
+@media (max-width: 900px) {
+  .ffs-poster-alt, .ffs-poster-hold-hint { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Far From Sol splash screen">
@@ -2065,6 +2085,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
       <label class="ffs-poster-click" for="ffsPosterToggle">
         <img alt="Far From Sol poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/FFS1new.png"/>
+        <img alt="Alternate Far From Sol poster" class="ffs-poster ffs-poster-alt" decoding="async" loading="lazy" draggable="false" src="https://light-speed-studios.b-cdn.net/TAPPOSTERcopy.png"/>
         <img alt="Far From Sol mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FFSmob.png"/>
       </label>
       <label class="ffs-poster-expand" for="ffsPosterToggle">
@@ -2079,6 +2100,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <h1 class="ffs-title">Far From Sol</h1>
       </div>
       <p class="ffs-title-tagline">Into the Dying Light</p>
+      <p class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</p>
  <div class="ffs-meta-row ffs-desktop-meta">
   <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">130 min</span></div>
   <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">28 Jun 2026</span></div>
