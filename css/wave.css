@@ -100,3 +100,40 @@
   .wave-page .wave-player-layout { grid-template-columns: 1fr; gap: 23px; }
   .wave-page .wave-player { border-left: 0; padding-left: 0; }
 }
+
+/* WAVE collection: source credits replace decorative frequency bars */
+.wave-page .wave-list-head,
+.wave-page .wave-track {
+  grid-template-columns: minmax(200px, 1fr) minmax(260px, 1.25fr) 70px;
+  gap: 22px;
+}
+.wave-track-credit {
+  min-width: 0;
+  color: #91aebb;
+  font: 500 12px 'Oxanium', sans-serif;
+  letter-spacing: .3px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.wave-page .wave-track-name { margin: 0; }
+@media (max-width: 900px) {
+  .wave-page .wave-list-head,
+  .wave-page .wave-track {
+    grid-template-columns: minmax(125px, 1fr) minmax(150px, 1.15fr) 55px;
+    gap: 12px;
+  }
+  .wave-track-credit { font-size: 11px; }
+}
+@media (max-width: 540px) {
+  .wave-page .wave-list-head,
+  .wave-page .wave-track {
+    grid-template-columns: minmax(100px, .85fr) minmax(120px, 1.15fr) 42px;
+    gap: 8px;
+  }
+  .wave-page .wave-list-head span:nth-child(2) { display: block; }
+  .wave-track-credit { font-size: 10px; line-height: 1.4; }
+  .wave-page .wave-track { padding-left: 7px; padding-right: 7px; }
+  .wave-page .wave-track-left { gap: 7px; }
+  .wave-page .wave-track-name { font-size: 12px; }
+  .wave-page .wave-track-length { font-size: 10px; }
+}
