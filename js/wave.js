@@ -145,7 +145,7 @@ function selectTrack(index, autoPlay = false) {
     setMessage('Audio URL has not been added for this track.');
     return;
   }
-  setMessage('Loading TRACK…');
+  setMessage('LOADING TRACK…');
   surfer.load(track.url).catch(error => {
     audioLoadFailed = true;
     els.placeholder.classList.remove('is-hidden');
@@ -216,7 +216,7 @@ try {
     const duration = surfer.getDuration();
     if (Number.isFinite(duration) && duration > 0) TRACKS[selectedIndex].duration = duration;
     els.duration.textContent = timeString(duration);
-    setMessage('Click the waveform to seek through the track.');
+    setMessage('CLICK WAVEFORM TO SEEK');
     if (pendingAutoplay) {
       pendingAutoplay = false;
       surfer.play().catch(() => setMessage('Press Play to start audio.'));
