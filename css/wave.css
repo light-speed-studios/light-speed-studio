@@ -950,3 +950,58 @@
         font-size: 10px;
     }
 }
+
+/* WAVE collection circular play button, adapted from supplied SVG */
+.wave-page .wave-list-play {
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: #00AEDE;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+}
+.wave-list-play-svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.wave-play-stroke-solid, .wave-play-stroke-dotted {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 4;
+  transform-origin: 50% 50%;
+}
+.wave-play-stroke-solid {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.65s ease, opacity 0.5s ease;
+}
+.wave-play-stroke-dotted {
+  opacity: 0;
+  stroke-dasharray: 4 5;
+  stroke-width: 1;
+  animation: wave-play-spin 4s linear infinite;
+  transition: opacity 0.5s ease, stroke-width 0.5s ease;
+}
+.wave-play-triangle, .wave-play-pause {
+  fill: currentColor;
+  transform-origin: 50% 50%;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
+}
+.wave-play-pause { opacity: 0; }
+.wave-list-play.is-playing .wave-play-triangle { opacity: 0; }
+.wave-list-play.is-playing .wave-play-pause { opacity: 1; }
+.wave-track:hover .wave-play-stroke-dotted,
+.wave-track:focus-visible .wave-play-stroke-dotted,
+.wave-track.is-selected .wave-list-play.is-playing .wave-play-stroke-dotted {
+  opacity: 1;
+  stroke-width: 4;
+}
+.wave-track:hover .wave-play-stroke-solid,
+.wave-track:focus-visible .wave-play-stroke-solid,
+.wave-track.is-selected .wave-list-play.is-playing .wave-play-stroke-solid {
+  opacity: 0;
+  stroke-dashoffset: 300;
+}
+.wave-track:hover .wave-play-triangle { transform: scale(1.06); }
+@keyframes wave-play-spin { to { transform: rotate(360deg); } }
+@media (max-width: 540px) { .wave-page .wave-list-play { width: 30px; height: 30px; } }
+@media (prefers-reduced-motion: reduce) { .wave-play-stroke-dotted { animation: none; } }
