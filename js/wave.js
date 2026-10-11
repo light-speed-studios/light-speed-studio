@@ -150,7 +150,7 @@ function selectTrack(index, autoPlay = false) {
     audioLoadFailed = true;
     els.placeholder.classList.remove('is-hidden');
     els.mode.textContent = 'UNAVAILABLE';
-    setMessage('Unable to play this track. Please Refresh Page.');
+    setMessage('Unable to play this track. Please refresh the page.');
   });
 }
 
