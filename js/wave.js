@@ -5,6 +5,7 @@
  * IMPORTANT: Bunny CDN must permit cross-origin GET (CORS) for the audio assets.
  */
 import WaveSurfer from 'https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js';
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 const TRACKS = [
   {"title": "Under the Sea", "source": "Kingdom of Atlantis / Aquaman OST", "category": "cinematic", "type": "featured", "description": "A remix of Kingdom of Atlantis from the Aquaman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Atlantis.mp3"},
@@ -27,6 +28,89 @@ const TRACKS = [
   {"title": "Void", "source": "The Expanse Intro", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/Void.mp3"},
   {"title": "Wide Awake", "source": "Wake Up / Slingshot OST", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Wokeup.mp3"},
 ];
+
+// WAVE likes use only the public, browser-safe Supabase key.
+const supabase = createClient(
+  'https://yvzplqilaxuqwdrhsgrl.supabase.co',
+  'sb_publishable_d1LXYWzfZHwmWYb_hj5Ztw_GtpIRQ4h',
+  { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } }
+);
+
+// IDs remain stable even when MP3 filenames or track titles change.
+const TRACK_IDS = [
+  'under-the-sea', 'nightfall', 'catch-you', 'into-the-fight', 'fearless',
+  'luna', 'delimma', 'waiting', 'outer-range', 'signal-to-the-stars',
+  'sky-fall', 'speedforce', 'stay', 'strike', 'the-brain-in-the-machine',
+  'the-edge', 'the-last-fall', 'void', 'wide-awake'
+];
+const likeCounts = new Map();
+const likedTracks = new Set();
+const busyLikes = new Set();
+let likesAvailable = false;
+
+function setLikeNotice(message) {
+  const target = document.querySelector('#wave-like-notice');
+  if (target) target.textContent = message;
+}
+
+async function refreshLikes() {
+  const { data, error } = await supabase.rpc('wave_like_totals');
+  if (error) {
+    likesAvailable = false;
+    setLikeNotice('Likes are temporarily unavailable.');
+    renderLibrary();
+    return;
+  }
+  likesAvailable = true;
+  likeCounts.clear();
+  likedTracks.clear();
+  (data || []).forEach(item => {
+    likeCounts.set(item.track_id, Number(item.like_count) || 0);
+    if (item.viewer_liked) likedTracks.add(item.track_id);
+  });
+  setLikeNotice('');
+  renderLibrary();
+}
+
+async function toggleTrackLike(trackId) {
+  if (busyLikes.has(trackId)) return;
+  busyLikes.add(trackId);
+  setLikeNotice('');
+  renderLibrary();
+  try {
+    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError) throw sessionError;
+    let session = sessionData.session;
+    if (!session) {
+      const { data, error } = await supabase.auth.signInAnonymously();
+      if (error) throw error;
+      session = data.session;
+    }
+    const userId = session?.user?.id;
+    if (!userId) throw new Error('Unable to start anonymous sign-in.');
+
+    // Always refresh first so a returning visitor's own vote is recognized.
+    const { data: current, error: totalsError } = await supabase.rpc('wave_like_totals');
+    if (totalsError) throw totalsError;
+    const alreadyLiked = (current || []).some(item => item.track_id === trackId && item.viewer_liked);
+    let result;
+    if (alreadyLiked) {
+      result = await supabase.from('wave_likes')
+        .delete().eq('track_id', trackId).eq('user_id', userId);
+    } else {
+      result = await supabase.from('wave_likes')
+        .insert({ track_id: trackId, user_id: userId });
+    }
+    if (result.error) throw result.error;
+    await refreshLikes();
+  } catch (error) {
+    setLikeNotice('Could not update your like. Please try again.');
+    console.error('WAVE like request failed:', error);
+  } finally {
+    busyLikes.delete(trackId);
+    renderLibrary();
+  }
+}
 
 const $ = (selector) => document.querySelector(selector);
 const els = {
@@ -96,11 +180,15 @@ function renderLibrary() {
   });
   els.trackList.replaceChildren();
   filtered.forEach(track => {
-    const row = document.createElement('button');
-    row.type = 'button';
+    // Separate buttons prevent a heart click from selecting/playing the song.
+    const row = document.createElement('div');
     row.className = `wave-track${track.index === selectedIndex ? ' is-selected' : ''}`;
-    row.setAttribute('aria-label', `Select ${track.title}, ${track.source}`);
-    row.setAttribute('aria-pressed', String(track.index === selectedIndex));
+    const select = document.createElement('button');
+    select.type = 'button';
+    select.className = 'wave-track-select';
+    select.setAttribute('aria-label', `Select ${track.title}, ${track.source}`);
+    select.setAttribute('aria-pressed', String(track.index === selectedIndex));
+
     const left = document.createElement('span'); left.className = 'wave-track-left';
     const play = document.createElement('span');
     play.className = 'wave-list-play';
@@ -109,7 +197,7 @@ function renderLibrary() {
     play.classList.toggle('is-playing', playing);
     play.innerHTML = `<svg class="wave-list-play-svg" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
       <path class="wave-play-stroke-solid" d="M49.9 2.5C23.6 2.8 2.1 24.4 2.5 50.4 2.9 76.5 24.7 98 50.3 97.5 76.7 96.9 97.7 75.7 97.5 49.8 97.3 23.7 75.7 2.3 49.9 2.5"/>
-      <path class="wave-play-stroke-dotted" d="M49.9 2.5C23.6 2.8 2.1 24.4 2.5 50.4 2.9 76.5 24.7 98 50.3 97.5 76.7 96.9 97.7 75.7 97.5 49.8 97.3 23.7 75.7 2.3 49.9 2.5"/>
+      <path class="wave-play-stroke-dotted" d="M49.9 2.5C23.6 2.8 2.1 24.4 2.5 50.4 2.9 76.5 24.7 98 50.3 97.5 76.7 96.9 97.7 97.5 49.8 97.3 23.7 75.7 2.3 49.9 2.5"/>
       <path class="wave-play-triangle" d="M38 69c-1 .5-1.8 0-1.8-1.1V32.1c0-1.1.8-1.6 1.8-1.1l34 18c1 .5 1 1.4 0 1.9L38 69z"/>
       <path class="wave-play-pause" d="M36 31h10v38H36zM55 31h10v38H55z"/>
     </svg>`;
@@ -120,20 +208,36 @@ function renderLibrary() {
     credit.className = 'wave-track-credit';
     credit.textContent = track.source;
     const length = document.createElement('span'); length.className = 'wave-track-length'; length.textContent = track.duration ? timeString(track.duration) : '—';
-    row.append(left, credit, length);
-  row.addEventListener('click', () => {
-  if (selectedIndex === track.index && track.url && surfer) {
-    surfer.playPause();
-    return;
-  }
+    select.append(left, credit, length);
+    select.addEventListener('click', () => {
+      if (selectedIndex === track.index && track.url && surfer) {
+        surfer.playPause();
+        return;
+      }
+      selectTrack(track.index, Boolean(track.url));
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+      });
+    });
 
-  selectTrack(track.index, Boolean(track.url));
-
-window.scrollTo({
-  top: 0,
-  behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
-});
-});    els.trackList.append(row);
+    const id = TRACK_IDS[track.index];
+    const liked = likedTracks.has(id);
+    const heart = document.createElement('button');
+    heart.type = 'button';
+    heart.className = `wave-like-button${liked ? ' is-liked' : ''}`;
+    heart.setAttribute('aria-pressed', String(liked));
+    heart.setAttribute('aria-label', `${liked ? 'Unlike' : 'Like'} ${track.title}`);
+    heart.title = liked ? `Unlike ${track.title}` : `Like ${track.title}`;
+    heart.disabled = busyLikes.has(id);
+    heart.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>`;
+    const number = document.createElement('span');
+    number.className = 'wave-like-count';
+    number.textContent = likesAvailable ? String(likeCounts.get(id) || 0) : '…';
+    heart.append(number);
+    heart.addEventListener('click', () => toggleTrackLike(id));
+    row.append(select, heart);
+    els.trackList.append(row);
   });
   els.empty.hidden = filtered.length !== 0;
   els.count.textContent = `/ ${String(filtered.length).padStart(2, '0')}`;
@@ -274,6 +378,7 @@ try {
   renderLibrary();
   selectTrack(selectedIndex);
   loadLibraryDurations();
+  refreshLikes();
 } catch (error) {
   populatePlaceholder(0);
   els.trackList.textContent = 'Audio player failed to initialize. Verify the WaveSurfer.js CDN is accessible.';
