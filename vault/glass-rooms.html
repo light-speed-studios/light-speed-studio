@@ -379,6 +379,29 @@
 .ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
 @media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
 </style>
+<style id="glass-rooms-working-title-14px-final">
+/* Keep the working-title label and value consistent on all screen sizes. */
+.ffs-title-panel .ffs-working-title-inline,
+.ffs-info-panel .ffs-working-title-mobile {
+  font: 600 14px/1.25 Oxanium, sans-serif !important;
+  text-transform: uppercase;
+  color: #bac7d5;
+}
+.ffs-title-panel .ffs-working-title-inline span,
+.ffs-info-panel .ffs-working-title-mobile span {
+  font: 700 14px/1.25 Oxanium, sans-serif !important;
+  color: #00aede;
+}
+.ffs-info-panel .ffs-working-title-mobile { display: none; }
+@media (max-width: 900px) {
+  .ffs-info-panel .ffs-working-title-mobile {
+    display: block !important;
+    margin: 12px 0 0;
+    white-space: normal;
+    overflow: visible;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Glass Rooms splash screen">
@@ -2323,6 +2346,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     A cold procedural following the calibration of an artificial mind. No god complexes. No distractions. By delaying key realizations and stripping away early signals, Glass Rooms presents a world where sentience is no longer a human monopoly.
   </p>
 </div>
+<div class="ffs-working-title-inline ffs-working-title-mobile"><span>WORKING TITLE:</span> GLASS DOORS</div>
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="glass-rooms" aria-label="Audience rating for Glass Rooms">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
