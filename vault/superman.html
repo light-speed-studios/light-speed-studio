@@ -515,6 +515,21 @@
   .ffs-info-panel .ffs-working-version-row .ffs-rate-star svg { width:min(100%,18px) !important; }
 }
 </style>
+
+<style id="lss-sot-overtime-mobile-order">
+@media (max-width: 900px) {
+  .ffs-info-panel { display: flex !important; flex-direction: column !important; }
+  .ffs-info-panel > .ffs-working-version-row { display: contents !important; }
+  .ffs-info-panel > .ffs-working-version-row > .ffs-audience-rating { order: 1 !important; width: 100% !important; margin: 0 0 18px !important; }
+  .ffs-info-panel > .ffs-section-label { order: 2 !important; }
+  .ffs-info-panel > .ffs-synopsis { order: 3 !important; }
+  .ffs-info-panel > .ffs-working-title-mobile-order { order: 4 !important; margin: 0 0 10px !important; }
+  .ffs-info-panel > .ffs-working-version-row > .ffs-version-box-mobile { order: 5 !important; width: 100% !important; margin: 0 0 8px !important; }
+  .ffs-info-panel > .ffs-color-grade-modal-toggle { order: 6 !important; }
+  .ffs-info-panel > .ffs-working-title-mobile-order { display: block !important; }
+}
+@media (min-width: 901px) { .ffs-info-panel > .ffs-working-title-mobile-order { display: none !important; } }
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Superman splash screen">
@@ -2636,6 +2651,7 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
     A reimagining of the warmth, morality, and humanity behind the world’s greatest hero. No forced comedy, just heart. With a renewed emotional core, this edit reminds us that even the strongest longs to belong.
   </p>
 </div>
+<div class="ffs-working-title ffs-working-title-mobile-order"><span>WORKING TITLE</span><strong>Superman: Flyby</strong></div>
 <input class="ffs-color-grade-modal-toggle" type="checkbox" id="ffsColorGradeModal">
 <div class="ffs-working-version-row">
 <label class="ffs-working-title ffs-version-box ffs-version-box-mobile" for="ffsColorGradeModal">
