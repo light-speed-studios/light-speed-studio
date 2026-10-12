@@ -231,6 +231,34 @@
 .ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
 @media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
 </style>
+<style id="lss-overtime-reference-mobile-order">
+/* Mobile only: poster, existing full-width rating, synopsis, working title. */
+@media (max-width: 900px) {
+  .ffs-desktop-composition > .ffs-right-column > .ffs-info-panel {
+    display: contents !important;
+  }
+  .ffs-desktop-composition .ffs-poster-panel { order: 1; }
+  .ffs-desktop-composition .ffs-audience-rating { order: 2; }
+  .ffs-desktop-composition .ffs-info-panel > .ffs-section-label { order: 3; }
+  .ffs-desktop-composition .ffs-info-panel > .ffs-synopsis { order: 4; }
+  .ffs-desktop-composition .ffs-info-panel > .ffs-mobile-working-title { order: 5; }
+  .ffs-mobile-working-title {
+    display: block;
+    margin: 0 0 8px;
+    font: 600 14px/1.4 Oxanium, sans-serif;
+    text-transform: uppercase;
+    color: #bac7d5;
+  }
+  .ffs-mobile-working-title span {
+    color: #00aede;
+    font-weight: 700;
+    letter-spacing: .12em;
+  }
+}
+@media (min-width: 901px) {
+  .ffs-mobile-working-title { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Batman: Gotham's Riddle splash screen">
@@ -2157,6 +2185,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <span class="ffs-rating-feedback" id="ffs-rating-feedback" role="status" aria-live="polite">SELECT YOUR RATING</span>
   </div>
 </div>
+      <div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> Batman: The Long Halloween</div>
     </div>
 
   </div>
