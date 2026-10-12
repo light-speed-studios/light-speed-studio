@@ -2022,6 +2022,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     A story about redemption earned in the ring. Less bravado, more heart. With a restored emotional focus on Charlie and Max, The Last Round treats every event as a step towards earned reconciliation.
   </p>
 </div>
+<div class="ffs-working-title lss-mobile-working-title-only"><span>Working Title</span><strong>Real Steel: Redemption</strong></div>
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="real-steel-the-last-round" aria-label="Audience rating for Real Steel: The Last Round">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
@@ -2524,5 +2525,38 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 <script type="module" src="../js/movie-ratings.js"></script>
+<style id="lss-overtime-mobile-order-only">
+.lss-mobile-working-title-only { display: none; }
+@media (max-width: 900px) {
+  .ffs-info-panel .lss-mobile-working-title-only { display: flex; }
+  .ffs-desktop-composition > .ffs-audience-rating {
+    order: 2;
+    width: 100%;
+    margin: 0 0 16px;
+  }
+}
+</style>
+<script id="lss-overtime-mobile-rating-order-only">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const poster = document.querySelector('.ffs-desktop-composition .ffs-poster-panel');
+  if (!rating || !poster) return;
+  const originalParent = rating.parentNode;
+  const originalNext = rating.nextSibling;
+  const composition = document.querySelector('.ffs-desktop-composition');
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function syncOrder() {
+    if (mobile.matches) {
+      poster.after(rating);
+    } else if (originalNext && originalNext.parentNode === originalParent) {
+      originalParent.insertBefore(rating, originalNext);
+    } else {
+      originalParent.appendChild(rating);
+    }
+  }
+  syncOrder();
+  mobile.addEventListener('change', syncOrder);
+})();
+</script>
 </body>
 </html>
