@@ -270,7 +270,7 @@
 /* Shared audience-rating appearance, scoped to the movie page. */
 .ffs-working-title-inline {
   margin: 0;
-  font: 600 20px/1.25 Rajdhani, sans-serif;
+  font: 600 14px/1.25 Rajdhani, sans-serif;
   color: #bac7d5;
   white-space: nowrap;
   overflow: hidden;
@@ -3053,6 +3053,27 @@ document.addEventListener("click", function (event) {
 
   .ffs-info-panel .ffs-working-version-row > .ffs-working-title {
     padding: 10px 12px !important;
+  }
+}
+</style>
+<style id="sot-rating-75-version-25">
+/* Desktop only: give audience ratings 75% of the split row. */
+@media (min-width: 901px) {
+  .ffs-info-panel .ffs-working-version-row {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-version-box {
+    padding: 10px 8px !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-version-box span {
+    font-size: 10px;
+    letter-spacing: .08em;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-version-box strong {
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: normal;
+    overflow-wrap: normal;
   }
 }
 </style>
