@@ -34,7 +34,10 @@ if (root) {
     const summary = Array.isArray(data) ? data[0] : data;
     const n = Number(summary?.rating_count ?? 0);
     count.textContent = n === 0 ? 'NO RATINGS YET' : `${n} ${n === 1 ? 'RATING' : 'RATINGS'}`;
-    average.textContent = n ? Number(summary?.average_rating).toFixed(1) : '—';
+    average.textContent = n ? Number(summary?.average_rating).toFixed(1) : 'NOT YET RATED';
+    average.classList.toggle('is-unrated', n === 0);
+    const denominator = root.querySelector('#ffs-rating-denominator');
+    if (denominator) denominator.hidden = n === 0;
   }
   async function ensureVisitor() {
     const { data: { session }, error } = await db.auth.getSession();
