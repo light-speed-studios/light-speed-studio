@@ -48,6 +48,22 @@ const likedTracks = new Set();
 const busyLikes = new Set();
 let likesAvailable = false;
 
+// Keep the main-player heart in sync with the playlist and current track.
+function updateFeatureLike() {
+  const button = document.querySelector('#wave-feature-like');
+  const count = document.querySelector('#wave-feature-like-count');
+  if (!button || !count) return;
+  const id = TRACK_IDS[selectedIndex];
+  const track = TRACKS[selectedIndex];
+  const liked = likedTracks.has(id);
+  button.classList.toggle('is-liked', liked);
+  button.setAttribute('aria-pressed', String(liked));
+  button.setAttribute('aria-label', `${liked ? 'Unlike' : 'Like'} ${track.title}`);
+  button.title = `${liked ? 'Unlike' : 'Like'} ${track.title}`;
+  button.disabled = busyLikes.has(id);
+  count.textContent = likesAvailable ? String(likeCounts.get(id) || 0) : '…';
+}
+
 function setLikeNotice(message) {
   const target = document.querySelector('#wave-like-notice');
   if (target) target.textContent = message;
@@ -163,6 +179,7 @@ function updatePlayIcon(isPlaying) {
 }
 function updateTrackMetadata(index) {
   const track = TRACKS[index];
+  updateFeatureLike();
   els.title.textContent = track.title;
   els.source.textContent = track.source;
   els.type.textContent = track.type === 'original' ? 'ORIGINAL TRACKS' : 'FEATURED REMIXES';
@@ -175,6 +192,7 @@ function updateTrackMetadata(index) {
   updatePlayIcon(false);
 }
 function renderLibrary() {
+  updateFeatureLike();
   const filtered = TRACKS.map((track, index) => ({ ...track, index })).filter(track => {
     return activeFilter === 'all' || track.type === activeFilter;
   });
@@ -373,6 +391,10 @@ try {
       const active = item.dataset.filter === activeFilter; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active));
     });
     renderLibrary();
+  });
+  // Main-player heart uses exactly the same Supabase operation as playlist hearts.
+  document.querySelector('#wave-feature-like')?.addEventListener('click', () => {
+    toggleTrackLike(TRACK_IDS[selectedIndex]);
   });
   // Show the collection immediately, even if loading the featured track fails.
   renderLibrary();
