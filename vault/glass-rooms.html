@@ -2847,5 +2847,35 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 <script type="module" src="../js/movie-ratings.js"></script>
+<style id="lss-mobile-rating-order-only">
+@media (max-width: 900px) {
+  .ffs-desktop-composition > .ffs-audience-rating {
+    order: 2;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+}
+</style>
+<script id="lss-mobile-rating-order-only-script">
+(function () {
+  const composition = document.querySelector('.ffs-desktop-composition');
+  const rating = document.getElementById('ffs-audience-rating');
+  const info = document.querySelector('.ffs-info-panel');
+  if (!composition || !rating || !info) return;
+  const originalNext = rating.nextSibling;
+  const originalParent = rating.parentNode;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function positionRating() {
+    if (mobile.matches) {
+      composition.insertBefore(rating, composition.querySelector('.ffs-right-column'));
+    } else if (rating.parentNode !== originalParent) {
+      originalParent.insertBefore(rating, originalNext);
+    }
+  }
+  positionRating();
+  mobile.addEventListener('change', positionRating);
+})();
+</script>
 </body>
 </html>
