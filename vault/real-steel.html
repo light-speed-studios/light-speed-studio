@@ -250,6 +250,7 @@
 <style id="lss-rating-unrated-layout-fix">
 /* Keep the empty-rating message compact without changing numeric scores. */
 .ffs-audience-rating .ffs-rating-number { min-width: 0; }
+.ffs-rating-number #ffs-rating-denominator[hidden] { display: none !important; }
 .ffs-audience-rating .ffs-rating-number strong.is-unrated {
   font-size: 17px !important;
   line-height: 1.15 !important;
@@ -2024,7 +2025,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="real-steel-the-last-round" aria-label="Audience rating for Real Steel: The Last Round">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
-    <div class="ffs-rating-number"><strong id="ffs-rating-average">—</strong><span>/ 10</span></div>
+    <div class="ffs-rating-number"><strong id="ffs-rating-average">—</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
     <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
   </div>
   <div class="ffs-rating-divider" aria-hidden="true"></div>
@@ -2510,10 +2511,13 @@ document.addEventListener("click", function (event) {
 <script id="lss-rating-unrated-state-fix">
 (function () {
   const average = document.getElementById('ffs-rating-average');
+  const denominator = document.getElementById('ffs-rating-denominator');
   if (!average) return;
   const sync = () => {
     const value = (average.textContent || '').trim();
-    average.classList.toggle('is-unrated', !/^[0-9]+(?:\.[0-9]+)?$/.test(value) && value !== '—');
+    const rated = /^[0-9]+(?:\.[0-9]+)?$/.test(value);
+    average.classList.toggle('is-unrated', !rated && value !== '—');
+    if (denominator) denominator.hidden = !rated;
   };
   new MutationObserver(sync).observe(average, { childList: true, characterData: true, subtree: true });
   sync();
