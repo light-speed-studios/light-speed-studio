@@ -435,6 +435,53 @@
   .ffs-info-panel .ffs-working-version-row { display:flex !important;flex-direction:column !important; }
 }
 </style>
+
+<style id="sot-mobile-version-above-rating-stacked">
+.ffs-info-panel .ffs-version-box-mobile { display: none !important; }
+@media (max-width: 900px) {
+  .ffs-info-panel .ffs-working-version-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin: 12px 0 8px !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-version-box-mobile {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 65px !important;
+    padding: 12px 15px !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+  .ffs-info-panel .ffs-version-box-mobile span {
+    display: block !important;
+    font: 800 13px/1.2 Oxanium, sans-serif !important;
+    letter-spacing: .1em !important;
+    margin: 0 0 5px !important;
+    color: #00aede !important;
+  }
+  .ffs-info-panel .ffs-version-box-mobile strong {
+    display: block !important;
+    font: 700 17px/1.2 Rajdhani, sans-serif !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    color: #bac7d5 !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Superman splash screen">
@@ -2558,6 +2605,10 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 </div>
 <input class="ffs-color-grade-modal-toggle" type="checkbox" id="ffsColorGradeModal">
 <div class="ffs-working-version-row">
+<label class="ffs-working-title ffs-version-box ffs-version-box-mobile" for="ffsColorGradeModal">
+  <span>Version 2</span>
+  <strong>Updated Changes</strong>
+</label>
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="superman-son-of-tomorrow" aria-label="Audience rating for Superman: Son of Tomorrow">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
