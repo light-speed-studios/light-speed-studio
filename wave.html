@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,43 +73,32 @@
               <span>FREQUENCY / AUDIO VISUALIZATION</span>
               <span id="wave-player-mode"> </span>
             </div>
-
             <div class="waveform-wrap">
               <div id="waveform" aria-label="Interactive audio waveform"></div>
               <div id="waveform-placeholder" class="waveform-placeholder" aria-hidden="true"></div>
             </div>
-
             <div class="wave-time">
               <span id="wave-current-time">0:00</span>
               <span id="wave-duration">0:00</span>
             </div>
-
             <div class="wave-controls">
-
               <!-- LSS logo on the left -->
               <div class="wave-controls-logo">
-                <img
-                  src="https://light-speed-studios.b-cdn.net/lsslogo.png"
-                  alt="Light Speed Studios logo"
-                >
+                <img src="https://light-speed-studios.b-cdn.net/lsslogo.png" alt="Light Speed Studios logo">
               </div>
-
               <!-- Playback controls centered -->
               <div class="wave-transport">
                 <button class="wave-icon-button" id="wave-previous" type="button" aria-label="Previous track" title="Previous track">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14M19 5 8 12l11 7z"/></svg>
                 </button>
-
                 <button class="wave-play-button" id="wave-play" type="button" aria-label="Play track" title="Play track">
                   <svg class="wave-play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg>
                   <svg class="wave-pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
                 </button>
-
                 <button class="wave-icon-button" id="wave-next" type="button" aria-label="Next track" title="Next track">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14M5 5l11 7-11 7z"/></svg>
                 </button>
               </div>
-
               <!-- Volume controls on the right -->
               <div class="wave-volume">
                 <button id="wave-mute" class="wave-icon-button wave-volume-icon" type="button" aria-label="Mute" title="Mute">
@@ -118,17 +106,13 @@
                 </button>
                 <input id="wave-volume" aria-label="Volume" type="range" min="0" max="100" value="75">
               </div>
-
             </div>
-
             <p id="wave-player-message" class="wave-player-message" role="status" aria-live="polite">Select a track to listen.</p>
           </div>
         </div>
       </section>
 
-      <a class="wave-scroll-cue" href="#wave-library-title">
-        SCROLL FOR PLAYLIST
-      </a>
+      <a class="wave-scroll-cue" href="#wave-library-title">SCROLL FOR PLAYLIST</a>
 
       <section class="wave-library" aria-labelledby="wave-library-title">
         <div class="wave-library-header">
@@ -137,23 +121,18 @@
             <h2 id="wave-library-title">DIGITAL SALVATION PLAYLIST <span id="wave-library-count">/ 19</span></h2>
           </div>
         </div>
-
         <div class="wave-filters" id="wave-filters" aria-label="Filter remixes">
           <button type="button" class="wave-filter" data-filter="featured" aria-pressed="false">FEATURED REMIXES</button>
           <button type="button" class="wave-filter" data-filter="original" aria-pressed="false">ORIGINAL TRACKS</button>
         </div>
-
         <div class="wave-list-head" aria-hidden="true">
-          <span>TRACK</span>
-          <span>SOURCE / ARTIST</span>
-          <span>LENGTH</span>
+          <span>TRACK</span><span>SOURCE / ARTIST</span><span>LENGTH</span><span>LIKES</span>
         </div>
-
         <div id="wave-track-list" class="wave-track-list" aria-label="Remix track listing" tabindex="0"></div>
         <p id="wave-empty-state" class="wave-empty-state" hidden>No tracks in this collection.</p>
+        <p id="wave-like-notice" class="wave-like-notice" role="status" aria-live="polite"></p>
       </section>
     </div>
-
     <div class="footer-logo-block speed-trap-footer">
       <picture class="footer-picture">
         <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/landingnewfooter122mob1.png">
@@ -161,47 +140,35 @@
       </picture>
     </div>
   </main>
-
   <script>
     function toggleMobileMenu(button) {
       const navLinks = document.querySelector('.lss-nav-links');
       if (!navLinks) return;
-
       const isOpen = navLinks.classList.toggle('active');
       button.classList.toggle('active', isOpen);
       button.setAttribute('aria-expanded', String(isOpen));
       button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       const hamburger = document.querySelector('.hamburger');
       const nav = document.querySelector('.lss-nav-links');
-
-      if (hamburger && nav) {
-        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-          nav.classList.remove('active');
-          hamburger.classList.remove('active');
-          hamburger.setAttribute('aria-expanded', 'false');
-          hamburger.setAttribute('aria-label', 'Open navigation menu');
-        }));
-      }
+      if (hamburger && nav) nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        nav.classList.remove('active'); hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false'); hamburger.setAttribute('aria-label', 'Open navigation menu');
+      }));
     });
   </script>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const scrollCue = document.querySelector('.wave-scroll-cue');
       if (!scrollCue) return;
-
       function updateScrollCue() {
         scrollCue.classList.toggle('is-hidden', window.scrollY > 120);
       }
-
       window.addEventListener('scroll', updateScrollCue, { passive: true });
       updateScrollCue();
     });
   </script>
-
   <script src="js/main.js"></script>
   <script type="module" src="js/wave.js"></script>
 </body>
