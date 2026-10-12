@@ -1253,3 +1253,17 @@ html {
     .wave-page .wave-feature-like { font-size: 11px; padding-left: 10px; margin-left: 1px; }
     .wave-page .wave-feature-like svg { width: 16px; height: 16px; }
 }
+/* Mobile playlist column headings */
+@media (max-width: 900px) {
+  .wave-list-head {
+    font-size: 10px !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  .wave-list-head > span {
+    font-size: 10px !important;
+    letter-spacing: 0.06em !important;
+    white-space: nowrap !important;
+    min-width: 0;
+  }
+}
