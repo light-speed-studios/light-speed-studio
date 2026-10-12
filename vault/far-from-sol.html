@@ -333,6 +333,23 @@
   }
 }
 </style>
+<style id="lss-far-from-sol-mobile-content-order">
+/* Mobile sequence: poster, audience rating, synopsis, working title, editor's note. */
+@media (max-width: 900px) {
+  .ffs-info-panel {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .ffs-info-panel > .ffs-audience-rating {
+    order: 1;
+    margin-top: 0 !important;
+    margin-bottom: 22px;
+  }
+  .ffs-info-panel > .ffs-section-label { order: 2; }
+  .ffs-info-panel > .ffs-synopsis { order: 3; }
+  .ffs-info-panel > .ffs-working-title-mobile { order: 4; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Far From Sol splash screen">
