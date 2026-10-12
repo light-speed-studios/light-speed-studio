@@ -372,6 +372,69 @@
 }
 @media(min-width:901px){.ffs-poster-panel .ffs-poster-click .ffs-poster-alt {transition:none !important;} .ffs-poster-panel .ffs-poster-click.is-pressing-alt .ffs-poster-alt {transition:none !important;}}
 </style>
+
+<style id="sot-version-box-above-meta">
+/* Desktop: version panel aligns to the combined width of the final two metadata cards. */
+@media (min-width: 901px) {
+  .ffs-title-panel { position: relative !important; }
+  .ffs-title-panel > .ffs-version-box-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    position: absolute !important;
+    right: 23px !important;
+    bottom: 79px !important;
+    width: calc((100% - 46px - 32px) * 2 / 5 + 8px) !important;
+    height: 32px !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 5px 10px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    cursor: pointer;
+    z-index: 5 !important;
+  }
+  .ffs-title-panel > .ffs-version-box-header span {
+    display: inline !important;
+    flex: none !important;
+    margin: 0 !important;
+    font: 800 12px/1.1 Oxanium, sans-serif !important;
+    letter-spacing: .08em !important;
+    white-space: nowrap !important;
+  }
+  .ffs-title-panel > .ffs-version-box-header strong {
+    display: inline !important;
+    flex: none !important;
+    margin: 0 !important;
+    font: 700 16px/1.1 Rajdhani, sans-serif !important;
+    white-space: nowrap !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-version-box { display: none !important; }
+  .ffs-info-panel .ffs-working-version-row {
+    display: block !important;
+    margin: auto 0 0 !important;
+  }
+  .ffs-info-panel .ffs-working-version-row .ffs-audience-rating {
+    width: 100% !important;
+    grid-template-columns: minmax(0, 180px) 1px minmax(0, 1fr) !important;
+    gap: 18px !important;
+    padding: 14px 17px !important;
+    min-height: 102px !important;
+  }
+  .ffs-info-panel .ffs-working-version-row .ffs-rating-label {font-size:12px !important;letter-spacing:.13em !important;}
+  .ffs-info-panel .ffs-working-version-row .ffs-rating-number strong.is-unrated {font-size:15px !important;white-space:nowrap !important;}
+  .ffs-info-panel .ffs-working-version-row .ffs-rating-number strong:not(.is-unrated) {font-size:39px !important;}
+  .ffs-info-panel .ffs-working-version-row .ffs-rating-stars {gap:2px !important;}
+  .ffs-info-panel .ffs-working-version-row .ffs-rate-star svg {width:min(100%,27px) !important;}
+  .ffs-info-panel .ffs-working-version-row .ffs-rating-feedback {font-size:10px !important;}
+}
+@media (max-width: 900px) {
+  .ffs-title-panel > .ffs-version-box-header { display:none !important; }
+  .ffs-info-panel .ffs-working-version-row { display:flex !important;flex-direction:column !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Superman splash screen">
@@ -2464,6 +2527,10 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 </div>
 <p class="ffs-working-title-inline"><span>WORKING TITLE:</span> Superman: Flyby</p>
 <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
+<label class="ffs-working-title ffs-version-box ffs-version-box-header" for="ffsColorGradeModal">
+  <span>Version 2</span>
+  <strong>Updated Changes</strong>
+</label>
 <div class="ffs-meta-row ffs-desktop-meta">
 <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
   <span class="ffs-meta-value">110 min</span></div>
