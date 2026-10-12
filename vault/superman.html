@@ -482,6 +482,39 @@
   }
 }
 </style>
+
+<style id="sot-mobile-single-stack-correction">
+@media (max-width:900px) {
+  .ffs-info-panel .ffs-working-version-row {
+    display:flex !important; flex-direction:column !important;
+    align-items:stretch !important; gap:10px !important;
+    width:100% !important; grid-template-columns:none !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-version-box-mobile,
+  .ffs-info-panel .ffs-working-version-row > .ffs-audience-rating {
+    width:100% !important; max-width:none !important;
+    grid-column:auto !important; margin:0 !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-audience-rating {
+    display:grid !important;
+    grid-template-columns:minmax(0,140px) 1px minmax(0,1fr) !important;
+    gap:12px !important; padding:12px !important;
+  }
+  .ffs-info-panel .ffs-working-version-row .ffs-rating-stars {
+    display:flex !important; flex-wrap:nowrap !important; gap:2px !important;
+    justify-content:space-between !important;
+  }
+  .ffs-info-panel .ffs-working-version-row .ffs-rate-star { flex:0 1 24px !important; }
+  .ffs-info-panel .ffs-working-version-row .ffs-rate-star svg { width:min(100%,22px) !important; }
+  .ffs-info-panel .ffs-working-version-row .ffs-rating-feedback { white-space:normal !important; }
+}
+@media(max-width:420px) {
+  .ffs-info-panel .ffs-working-version-row > .ffs-audience-rating {
+    grid-template-columns:minmax(0,112px) 1px minmax(0,1fr) !important; gap:8px !important; padding:10px 8px !important;
+  }
+  .ffs-info-panel .ffs-working-version-row .ffs-rate-star svg { width:min(100%,18px) !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Superman splash screen">
@@ -2632,10 +2665,6 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
     <span class="ffs-rating-feedback" id="ffs-rating-feedback" role="status" aria-live="polite">SELECT YOUR RATING</span>
   </div>
     </div>
-  <label class="ffs-working-title ffs-version-box" for="ffsColorGradeModal">
-    <span>Version 2</span>
-    <strong>Updated Changes</strong>
-  </label>
 </div>
 </div>
 </div>
