@@ -3146,6 +3146,24 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
+<style id="sot-full-width-audience-rating-final">
+/* Version 2 now lives in the title panel; the rating owns the entire synopsis width. */
+@media (min-width: 901px) {
+  .ffs-info-panel .ffs-working-version-row {
+    display: block !important;
+    grid-template-columns: none !important;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  .ffs-info-panel .ffs-working-version-row > .ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
+  }
+}
+</style>
+
 <script id="sot-desktop-alt-poster-hold-script">
 (() => {
   const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
