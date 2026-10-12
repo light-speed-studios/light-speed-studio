@@ -303,6 +303,36 @@
 .ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
 @media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
 </style>
+<style id="lss-working-title-14px-consistent">
+.ffs-title-panel .ffs-working-title-inline,
+.ffs-title-panel .ffs-working-title-inline span,
+.ffs-info-panel .ffs-working-title-mobile,
+.ffs-info-panel .ffs-working-title-mobile span {
+  font-family: Oxanium, sans-serif !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+}
+.ffs-title-panel .ffs-working-title-inline,
+.ffs-info-panel .ffs-working-title-mobile {
+  font-weight: 600;
+  color: #bac7d5;
+}
+.ffs-title-panel .ffs-working-title-inline span,
+.ffs-info-panel .ffs-working-title-mobile span {
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: #00aede;
+}
+.ffs-working-title-mobile { display: none; }
+@media (max-width: 900px) {
+  .ffs-info-panel .ffs-working-title-mobile {
+    display: block !important;
+    margin: 0 0 10px;
+    line-height: 1.4;
+    white-space: normal;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Far From Sol splash screen">
@@ -2207,6 +2237,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <p>A story about finding home in the void. A linear reconstruction with a renewed backstory for Grace and a stronger emotional core. Far From Sol reimagines the ending into something more personal and character driven.</p>
       </div>
 
+      <div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> The Astrophage Paradox</div>
       <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="far-from-sol" aria-label="Audience rating for Far From Sol">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
