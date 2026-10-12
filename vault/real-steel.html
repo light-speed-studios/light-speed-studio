@@ -247,6 +247,23 @@
 }
 @media (prefers-reduced-motion:reduce) { .ffs-rate-star svg { transition: none; } }
 </style>
+<style id="lss-rating-unrated-layout-fix">
+/* Keep the empty-rating message compact without changing numeric scores. */
+.ffs-audience-rating .ffs-rating-number { min-width: 0; }
+.ffs-audience-rating .ffs-rating-number strong.is-unrated {
+  font-size: 17px !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  letter-spacing: 0 !important;
+}
+.ffs-audience-rating .ffs-rating-number:has(strong.is-unrated) { align-items: center; }
+@media (max-width: 900px) {
+  .ffs-audience-rating .ffs-rating-number strong.is-unrated { font-size: 12px !important; }
+}
+@media (max-width: 420px) {
+  .ffs-audience-rating .ffs-rating-number strong.is-unrated { font-size: 10px !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Real Steel: The Last Round splash screen">
@@ -2488,6 +2505,18 @@ document.addEventListener("click", function (event) {
   area.addEventListener('contextmenu', e => { if (desktop.matches) e.preventDefault(); });
   desktop.addEventListener('change', () => { held = false; poster.src = original; });
   area.addEventListener('dragstart', e => { if (desktop.matches) e.preventDefault(); });
+})();
+</script>
+<script id="lss-rating-unrated-state-fix">
+(function () {
+  const average = document.getElementById('ffs-rating-average');
+  if (!average) return;
+  const sync = () => {
+    const value = (average.textContent || '').trim();
+    average.classList.toggle('is-unrated', !/^[0-9]+(?:\.[0-9]+)?$/.test(value) && value !== '—');
+  };
+  new MutationObserver(sync).observe(average, { childList: true, characterData: true, subtree: true });
+  sync();
 })();
 </script>
 <script type="module" src="../js/movie-ratings.js"></script>
