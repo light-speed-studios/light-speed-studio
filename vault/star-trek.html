@@ -275,6 +275,25 @@
   text-transform: uppercase !important;
 }
 </style>
+<style id="lss-overtime-reference-mobile-order">
+/* Mobile-only visual ordering; desktop structure and rating functionality remain intact. */
+@media (max-width: 900px) {
+  .ffs-desktop-composition > .ffs-right-column > .ffs-info-panel {
+    display: contents !important;
+  }
+  .ffs-desktop-composition .ffs-poster-panel { order: 1 !important; }
+  .ffs-desktop-composition .ffs-audience-rating {
+    order: 2 !important;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  .ffs-desktop-composition .ffs-section-label { order: 3 !important; }
+  .ffs-desktop-composition .ffs-synopsis { order: 4 !important; }
+  .ffs-desktop-composition .ffs-mobile-working-title { order: 5 !important; }
+  .ffs-desktop-composition .ffs-mobile-meta { order: 6 !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Star Trek: Genesis splash screen">
