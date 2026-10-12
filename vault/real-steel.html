@@ -170,15 +170,15 @@
 <style id="lss-audience-rating-style">
 /* Movie ratings: scoped to Real Steel; retain locked panel dimensions. */
 .ffs-working-title-inline {
-  margin-top: 5px;
-  font: 600 12px/1.2 Rajdhani, sans-serif;
+  margin: 0;
+  font: 600 20px/1.25 Rajdhani, sans-serif;
   color: #bac7d5;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .ffs-working-title-inline span {
-  font: 700 10px Oxanium, sans-serif;
+  font: 700 14px Oxanium, sans-serif;
   letter-spacing: .12em;
   color: #00aede;
 }
@@ -224,7 +224,7 @@
 .ffs-rate-star:disabled { opacity: .55; cursor: wait; }
 .ffs-rating-feedback { color: #91aabb; font: 700 10px Oxanium,sans-serif; letter-spacing: .09em; }
 @media (min-width:901px) {
-  .ffs-title-panel .ffs-working-title-inline { font-size: 12px; }
+  .ffs-title-panel .ffs-working-title-inline { font-size: 20px; }
   .ffs-info-panel .ffs-audience-rating { flex: 0 0 auto; }
 }
 @media (max-width:900px) {
@@ -1970,7 +1970,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-title-row">
 <h1 class="ffs-title">Real Steel: The Last Round</h1>
 </div>
-<p class="ffs-title-tagline">Working Title: Real Steel: Redemption</p>
+<div class="ffs-working-title-inline"><span>WORKING TITLE:</span> Real Steel: Redemption</div>
 <span class="lss-poster-hold-hint">Press and hold the poster to view alternate artwork.</span>
 <div class="ffs-meta-row ffs-desktop-meta">
 <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
