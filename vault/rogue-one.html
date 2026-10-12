@@ -2820,5 +2820,35 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 <script type="module" src="../js/movie-ratings.js"></script>
+
+<!-- Mobile-only audience rating placement; desktop DOM position is restored unchanged. -->
+<style id="lss-overtime-mobile-rating-order">
+@media (max-width: 900px) {
+  .ffs-desktop-composition .ffs-poster-panel { order: 1 !important; }
+  .ffs-desktop-composition .ffs-audience-rating { order: 2 !important; width: 100% !important; margin: 0 0 16px !important; }
+  .ffs-desktop-composition .ffs-info-panel { order: 3 !important; }
+}
+</style>
+<script id="lss-overtime-mobile-rating-placement">
+(function () {
+  function init() {
+    const rating = document.querySelector('.ffs-info-panel > .ffs-audience-rating');
+    const info = document.querySelector('.ffs-info-panel');
+    const poster = document.querySelector('.ffs-poster-panel');
+    if (!rating || !info || !poster) return;
+    const placeholder = document.createComment('Original desktop audience rating position');
+    info.insertBefore(placeholder, rating);
+    const media = window.matchMedia('(max-width: 900px)');
+    function sync() {
+      if (media.matches) poster.insertAdjacentElement('afterend', rating);
+      else placeholder.parentNode.insertBefore(rating, placeholder.nextSibling);
+    }
+    sync();
+    media.addEventListener('change', sync);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
 </body>
 </html>
