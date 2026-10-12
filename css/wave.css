@@ -1128,3 +1128,86 @@ html {
         width: 55px;
     }
 }
+
+/* WAVE LIKES: fourth column, with a separate interactive heart button. */
+.wave-page .wave-list-head {
+    grid-template-columns: minmax(200px, 1fr) minmax(260px, 1.25fr) 70px 74px;
+    gap: 22px;
+}
+.wave-page .wave-track {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 74px;
+    gap: 22px;
+    padding: 0 21px;
+    cursor: default;
+}
+.wave-page .wave-track-select {
+    appearance: none;
+    display: grid;
+    width: 100%;
+    min-width: 0;
+    grid-template-columns: minmax(200px, 1fr) minmax(260px, 1.25fr) 70px;
+    gap: 22px;
+    align-items: center;
+    padding: 11px 0;
+    text-align: left;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+.wave-page .wave-track-select:focus-visible,
+.wave-page .wave-like-button:focus-visible {
+    outline: 2px solid #00AEDE;
+    outline-offset: 2px;
+}
+.wave-page .wave-like-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    padding: 10px 0;
+    border: 0;
+    background: transparent;
+    color: #7896a6;
+    font: 500 12px 'Oxanium', sans-serif;
+    cursor: pointer;
+    transition: color .2s ease;
+}
+.wave-page .wave-like-button:hover,
+.wave-page .wave-like-button.is-liked { color: #00AEDE; }
+.wave-page .wave-like-button:disabled { opacity: .55; cursor: wait; }
+.wave-page .wave-like-button svg {
+    width: 18px;
+    height: 18px;
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex: 0 0 auto;
+}
+.wave-page .wave-like-button.is-liked svg { fill: currentColor; }
+.wave-page .wave-like-count { min-width: 12px; text-align: right; }
+.wave-like-notice {
+    min-height: 1em;
+    margin: 8px 0 0;
+    font: 500 11px 'Oxanium', sans-serif;
+    color: #9eb3bd;
+}
+@media (max-width: 900px) {
+    .wave-page .wave-list-head { grid-template-columns: minmax(0,1fr) minmax(0,1.15fr) 55px 56px; gap: 12px; }
+    .wave-page .wave-track { grid-template-columns: minmax(0,1fr) 56px; gap: 12px; padding: 0 12px; }
+    .wave-page .wave-track-select { grid-template-columns: minmax(0,1fr) minmax(0,1.15fr) 55px; gap: 12px; padding: 15px 0; }
+}
+@media (max-width: 540px) {
+    .wave-page .wave-list-head { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr) 42px 46px; gap: 8px; }
+    .wave-page .wave-track { grid-template-columns: minmax(0,1fr) 46px; gap: 8px; padding: 0 7px; }
+    .wave-page .wave-track-select { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr) 42px; gap: 8px; padding: 11px 0; }
+    .wave-page .wave-like-button { flex-direction: column; justify-content: center; gap: 2px; font-size: 10px; }
+    .wave-page .wave-like-button svg { width: 17px; height: 17px; }
+    .wave-page .wave-list-head span:nth-child(2) { display: block; }
+}
