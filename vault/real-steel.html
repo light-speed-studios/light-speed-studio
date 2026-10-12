@@ -161,7 +161,7 @@
 <style id="lss-desktop-hold-alt-poster">
 @media (min-width: 901px) {
   .ffs-poster-panel .ffs-poster-click { cursor: pointer; user-select: none; -webkit-user-select: none; }
-  .ffs-poster-panel .ffs-poster-full { transition: opacity 150ms ease; -webkit-user-drag: none; }
+  .ffs-poster-panel .ffs-poster-full { transition: none !important; -webkit-user-drag: none; }
   .lss-poster-hold-hint { display: block; width: 100%; text-align: left; margin: 10px 0 0; font: 700 11px Oxanium, Rajdhani, sans-serif; letter-spacing: .13em; text-transform: uppercase; color: rgba(186,199,213,.72); }
 }
 @media (max-width: 900px) { .lss-poster-hold-hint { display: none !important; } }
@@ -2469,11 +2469,8 @@ document.addEventListener("click", function (event) {
   const preload = new Image();
   preload.src = alternate;
   let held = false;
-  let fadeTimer;
   function show(src) {
-    clearTimeout(fadeTimer);
-    poster.style.opacity = '0';
-    fadeTimer = setTimeout(() => { poster.src = src; poster.style.opacity = '1'; }, 150);
+    poster.src = src;
   }
   area.addEventListener('pointerdown', e => {
     if (!desktop.matches || e.button !== 0) return;
@@ -2486,7 +2483,7 @@ document.addEventListener("click", function (event) {
   window.addEventListener('pointercancel', release);
   window.addEventListener('blur', release);
   area.addEventListener('contextmenu', e => { if (desktop.matches) e.preventDefault(); });
-  desktop.addEventListener('change', () => { held = false; clearTimeout(fadeTimer); poster.src = original; poster.style.opacity = '1'; });
+  desktop.addEventListener('change', () => { held = false; poster.src = original; });
   area.addEventListener('dragstart', e => { if (desktop.matches) e.preventDefault(); });
 })();
 </script>
