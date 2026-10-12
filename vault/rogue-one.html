@@ -217,7 +217,7 @@
   .ffs-poster-panel .lss-poster-alt {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center top;
-    opacity: 0; transition: opacity .24s ease;
+    opacity: 0; transition: none;
     pointer-events: none; user-select: none; -webkit-user-drag: none;
   }
   .ffs-poster-panel .ffs-poster-click.lss-alt-pressed .lss-poster-alt { opacity: 1; }
@@ -240,6 +240,94 @@
 @media (max-width: 900px) {
   .ffs-poster-hold-hint { display: none !important; }
 }
+</style>
+<style id="lss-audience-rating-style">
+/* Shared audience-rating appearance, scoped to the movie page. */
+.ffs-working-title-inline {
+  margin: 0;
+  font: 600 20px/1.25 Rajdhani, sans-serif;
+  color: #bac7d5;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ffs-working-title-inline span {
+  font: 700 14px Oxanium, sans-serif;
+  letter-spacing: .12em;
+  color: #00aede;
+}
+.ffs-audience-rating {
+  display: grid;
+  grid-template-columns: minmax(0, 180px) 1px minmax(0, 1fr);
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 102px;
+  margin-top: auto;
+  padding: 14px 17px;
+  background: linear-gradient(90deg, rgba(0,174,222,.13), transparent), rgba(255,255,255,.035);
+  box-shadow: inset 0 0 0 1px rgba(0,174,222,.18);
+}
+.ffs-rating-summary, .ffs-rating-input { min-width: 0; }
+.ffs-rating-label {
+  display: block;
+  color: #00aede;
+  font: 800 12px Oxanium, sans-serif;
+  letter-spacing: .13em;
+  white-space: nowrap;
+}
+.ffs-rating-number { display: flex; align-items: baseline; gap: 7px; margin-top: 3px; }
+.ffs-rating-number strong { color: #e0f3f9; font: 800 39px/1 Oxanium,sans-serif; }
+.ffs-rating-number span { color: #91aabb; font: 600 19px Oxanium,sans-serif; }
+.ffs-rating-count { color: #91aabb; font: 700 11px Oxanium,sans-serif; letter-spacing: .07em; }
+.ffs-rating-divider { height: 69px; width: 1px; background: rgba(0,174,222,.6); }
+.ffs-rating-input { display: flex; flex-direction: column; align-items: flex-start; gap: 9px; }
+.ffs-rating-stars { display: flex; gap: 2px; width: 100%; justify-content: space-between; }
+.ffs-rate-star {
+  display: grid; place-items: center;
+  flex: 0 1 30px; min-width: 0;
+  padding: 2px 0; background: none; border: 0;
+  color: #557787; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.ffs-rate-star svg { width: min(100%,27px); height: auto; aspect-ratio: 1; fill: transparent; stroke: currentColor; stroke-width: 1.7; transition: color .17s,fill .17s,transform .17s; }
+.ffs-rate-star.is-active { color: #00aede; }
+.ffs-rate-star.is-active svg { fill: #00aede; }
+.ffs-rate-star:hover svg { transform: scale(1.1); }
+.ffs-rate-star:focus-visible { outline: 2px solid #00aede; outline-offset: 2px; }
+.ffs-rate-star:disabled { opacity: .55; cursor: wait; }
+.ffs-rating-feedback { color: #91aabb; font: 700 10px Oxanium,sans-serif; letter-spacing: .09em; }
+@media (min-width:901px) {
+  .ffs-title-panel .ffs-working-title-inline { font-size: 20px; }
+  .ffs-info-panel .ffs-audience-rating { flex: 0 0 auto; }
+}
+@media (max-width:900px) {
+  .ffs-audience-rating { grid-template-columns: minmax(0,130px) 1px minmax(0,1fr); gap: 11px; min-height: 90px; padding: 12px; margin-top: 18px; }
+  .ffs-rating-label { font-size: 10px; letter-spacing: .06em; }
+  .ffs-rating-number strong { font-size: 29px; }
+  .ffs-rating-number span { font-size: 14px; }
+  .ffs-rating-count, .ffs-rating-feedback { font-size: 9px; }
+  .ffs-rating-divider { height: 57px; }
+  .ffs-rate-star svg { width: min(100%,22px); }
+  .ffs-working-title-inline { display: none; }
+}
+@media (max-width:420px) {
+  .ffs-audience-rating { grid-template-columns: minmax(0, 103px) 1px minmax(0,1fr); gap: 8px; padding: 10px 8px; }
+  .ffs-rating-label { font-size: 9px; }
+  .ffs-rating-stars { gap: 0; }
+  .ffs-rating-number strong { font-size: 25px; }
+  .ffs-rating-number span { font-size: 12px; }
+}
+@media (prefers-reduced-motion:reduce) { .ffs-rate-star svg { transition: none; } }
+</style>
+<style id="lss-rating-empty-state-style">
+.ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
+@media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
+</style>
+<style id="rogue-rating-layout">
+@media(min-width:901px){.ffs-info-panel .ffs-synopsis{margin-bottom:14px}.ffs-info-panel .ffs-audience-rating{margin-top:auto}}
+@media(max-width:900px){.ffs-mobile-working-title{display:block;margin:0 0 12px;padding:10px 12px;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px rgba(0,174,222,.15);font:700 15px Rajdhani,sans-serif;color:#bac7d5}.ffs-mobile-working-title span{font:800 10px Oxanium,sans-serif;letter-spacing:.08em;color:#00aede}.ffs-audience-rating{margin-top:12px}}
+@media(min-width:901px){.ffs-mobile-working-title{display:none}}
 </style>
 </head>
 <body>
@@ -2122,7 +2210,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-title-row">
 <h1 class="ffs-title">Rogue One: The Scarif Run</h1>
 </div>
-<p class="ffs-title-tagline">Rebellions are Built on Sacrifice</p>
+<p class="ffs-working-title-inline"><span>WORKING TITLE:</span> Rogue One: Battle at Scarif</p>
 <p class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</p>
 <div class="ffs-meta-row ffs-desktop-meta">
   <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
@@ -2148,10 +2236,30 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     A story about the inevitability of sacrifice. Keeping focus on the heroes, this edit reveals itself through Jyn’s perspective. With refined legacy characters, The Scarif Run centers around the cost of war.
   </p>
 </div>
-<div class="ffs-working-title">
-<span>Working Title</span>
-<strong>Rogue One: Battle at Scarif</strong>
-</div>
+<div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> Rogue One: Battle at Scarif</div>
+<div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="rogue-one-scarif-run" aria-label="Audience rating for Rogue One: The Scarif Run">
+  <div class="ffs-rating-summary">
+    <span class="ffs-rating-label">AUDIENCE RATING</span>
+    <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
+    <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
+  </div>
+  <div class="ffs-rating-divider" aria-hidden="true"></div>
+  <div class="ffs-rating-input">
+    <div class="ffs-rating-stars" role="group" aria-label="Rate this edit from one to ten stars">
+<button type="button" class="ffs-rate-star" data-rating="1" aria-label="Rate 1 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="2" aria-label="Rate 2 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="3" aria-label="Rate 3 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="4" aria-label="Rate 4 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="5" aria-label="Rate 5 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="6" aria-label="Rate 6 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="7" aria-label="Rate 7 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="8" aria-label="Rate 8 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="9" aria-label="Rate 9 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="10" aria-label="Rate 10 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+    </div>
+    <span class="ffs-rating-feedback" id="ffs-rating-feedback" role="status" aria-live="polite">SELECT YOUR RATING</span>
+  </div>
+    </div>
 </div>
 </div>
 
@@ -2710,5 +2818,6 @@ document.addEventListener("click", function (event) {
   clickArea.addEventListener('dragstart', event => { if (desktop()) event.preventDefault(); });
 })();
 </script>
+<script type="module" src="../js/movie-ratings.js"></script>
 </body>
 </html>
