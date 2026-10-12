@@ -149,7 +149,8 @@
 /* Movie ratings: shared style, scoped to this page; retain locked panel dimensions. */
 .ffs-working-title-inline {
   margin: 0;
-  font: 600 20px/1.25 Rajdhani, sans-serif;
+  font: 600 14px/1.25 Oxanium, sans-serif;
+  text-transform: uppercase;
   color: #bac7d5;
   white-space: nowrap;
   overflow: hidden;
@@ -202,7 +203,7 @@
 .ffs-rate-star:disabled { opacity: .55; cursor: wait; }
 .ffs-rating-feedback { color: #91aabb; font: 700 10px Oxanium,sans-serif; letter-spacing: .09em; }
 @media (min-width:901px) {
-  .ffs-title-panel .ffs-working-title-inline { font-size: 20px; }
+  .ffs-title-panel .ffs-working-title-inline { font-size: 14px; }
   .ffs-info-panel .ffs-audience-rating { flex: 0 0 auto; }
 }
 @media (max-width:900px) {
@@ -228,6 +229,27 @@
 <style id="lss-rating-empty-state-style">
 .ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
 @media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
+</style>
+<style id="crisis-working-title-14-mobile">
+.ffs-working-title-mobile { display: none; }
+@media (max-width: 900px) {
+  .ffs-info-panel .ffs-working-title-mobile {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 12px 0 8px;
+    font: 600 14px/1.25 Oxanium, sans-serif;
+    text-transform: uppercase;
+    color: #bac7d5;
+  }
+  .ffs-working-title-mobile span {
+    color: #00aede;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+  .ffs-working-title-mobile strong { font: inherit; }
+}
 </style>
 </head>
 <body>
@@ -2133,6 +2155,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <p>A crossover restructured into a tight uninterrupted story. Less exposition. Less melodrama. The focus stays on the threat, letting the story play out without distracting subplots.</p>
       </div>
 
+      <div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> <strong>CRISIS ON TWO WORLDS</strong></div>
       <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="crisis-red-skies" aria-label="Audience rating for Crisis: Red Skies">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
