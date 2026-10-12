@@ -3243,6 +3243,33 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<style id="sot-mobile-vertical-stack-definitive">
+/* Override the later legacy two-column grid rule on mobile. */
+@media (max-width: 900px) {
+  .ffs-page .ffs-info-panel .ffs-working-version-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    grid-template-columns: none !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .ffs-page .ffs-info-panel .ffs-working-version-row > .ffs-version-box-mobile {
+    display: block !important;
+    order: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+  .ffs-page .ffs-info-panel .ffs-working-version-row > .ffs-audience-rating {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+</style>
+
 
 <script id="sot-desktop-alt-poster-hold-script">
 (() => {
