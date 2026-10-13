@@ -20,10 +20,6 @@
 
 <style id="batman-mobile-synopsis-gap-fix">
 @media (max-width: 900px) {
-  .ffs-poster-panel {
-    margin-bottom: 0 !important;
-  }
-
   .ffs-info-panel {
     margin-top: 0 !important;
   }
@@ -205,7 +201,12 @@
 <style id="overtime-rating-layout">
 .ffs-mobile-working-title{display:none}
 @media(min-width:901px){.ffs-info-panel .ffs-synopsis{margin-bottom:14px}.ffs-info-panel .ffs-audience-rating{margin-top:auto}}
-@media(max-width:900px){.ffs-mobile-working-title{display:block;margin:0 0 12px;padding:10px 12px;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px rgba(0,174,222,.15);font:700 15px Oxanium,sans-serif;color:#bac7d5}.ffs-mobile-working-title span{font:800 10px Oxanium,sans-serif;letter-spacing:.08em;color:#00aede}.ffs-audience-rating{margin-top:12px}}
+@media(max-width:900px){
+  .ffs-mobile-working-title{display:flex;align-items:center;gap:8px;margin:12px 0 8px;padding:10px 12px;min-width:0;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px rgba(0,174,222,.15);font-family:Oxanium,Rajdhani,Arial,sans-serif;text-transform:uppercase}
+  .ffs-mobile-working-title span{flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.1em;color:#00aede;white-space:nowrap}
+  .ffs-mobile-working-title strong{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#bac7d5;font-size:15px;font-weight:700}
+  .ffs-audience-rating{margin-top:12px}
+}
 </style>
 <style id="lss-mobile-poster-rating-order-reference">
 /* Mobile only: poster, audience rating, synopsis, working title, then editor's note.
@@ -220,7 +221,7 @@
     order: 2 !important;
     width: 100% !important;
     max-width: none !important;
-    margin: 0 0 18px !important;
+    margin: 0 0 22px !important;
     flex: none !important;
   }
   .ffs-main-grid .ffs-info-panel > .ffs-section-label { order: 3 !important; }
@@ -2203,7 +2204,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <p>A coming-of-age superhero story rebuilt around Barry’s first year as The Flash. Less romance. Fewer detours. As The Flash learns to balance his two lives, he’s ultimately forced to face the demon of his past.</p>
       </div>
 
-<div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> THE FLASH: SPEED TRAP</div>
+<div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> <strong>THE FLASH: SPEED TRAP</strong></div>
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="flash-overtime" aria-label="Audience rating for The Flash: Overtime">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
