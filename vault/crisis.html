@@ -230,44 +230,35 @@
 .ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
 @media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
 </style>
-<style id="crisis-working-title-14-mobile">
+<style id="crisis-topgun-reference-mobile-spacing">
+/* Match Top Gun: Ascension mobile rating, synopsis and boxed working title. */
 .ffs-working-title-mobile { display: none; }
 @media (max-width: 900px) {
-  .ffs-info-panel .ffs-working-title-mobile {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin: 12px 0 8px;
-    font: 600 14px/1.25 Oxanium, sans-serif;
+  .ffs-info-panel { display: flex !important; flex-direction: column !important; }
+  .ffs-info-panel > .ffs-audience-rating {
+    order: 1; margin-top: 0 !important; margin-bottom: 22px;
+    width: 100%; flex: 0 0 auto;
+  }
+  .ffs-info-panel > .ffs-section-label { order: 2; }
+  .ffs-info-panel > .ffs-synopsis { order: 3; }
+  .ffs-info-panel > .ffs-working-title-mobile {
+    order: 4; display: flex !important; align-items: center; gap: 8px;
+    margin: 12px 0 8px; padding: 10px 12px; min-width: 0;
+    background: rgba(255,255,255,.035);
+    box-shadow: inset 0 0 0 1px rgba(0,174,222,.15);
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
     text-transform: uppercase;
-    color: #bac7d5;
   }
   .ffs-working-title-mobile span {
-    color: #00aede;
-    font-weight: 700;
-    letter-spacing: .08em;
+    flex: 0 0 auto; color: #00aede; font-size: 10px;
+    font-weight: 800; letter-spacing: .1em; white-space: nowrap;
   }
-  .ffs-working-title-mobile strong { font: inherit; }
-}
-</style>
-<style id="crisis-overtime-mobile-content-order">
-/* Mobile only: poster, audience rating, synopsis, working title, then Editor's Note. */
-@media (max-width: 900px) {
-  .ffs-info-panel {
-    display: flex !important;
-    flex-direction: column !important;
+  .ffs-working-title-mobile strong {
+    flex: 1 1 auto; min-width: 0; overflow: hidden;
+    text-overflow: ellipsis; white-space: nowrap;
+    color: #bac7d5; font-size: 15px; font-weight: 700;
+    text-transform: uppercase;
   }
-  .ffs-info-panel > .ffs-audience-rating {
-    order: 0;
-    margin-top: 0 !important;
-    margin-bottom: 20px;
-    width: 100%;
-    flex: 0 0 auto;
-  }
-  .ffs-info-panel > .ffs-section-label { order: 1; }
-  .ffs-info-panel > .ffs-synopsis { order: 2; }
-  .ffs-info-panel > .ffs-working-title-mobile { order: 3; }
 }
 </style>
 </head>
