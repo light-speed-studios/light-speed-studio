@@ -2485,6 +2485,25 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 </style>
 
+<!-- Desktop only: inset palette in its own darker borderless box; preserve outer cyan brackets. -->
+<style id="lss-desktop-inset-palette-box">
+@media (min-width: 901px) {
+  .ffs-palette-module .ffs-palette-wrap {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin: 0;
+    background: #0E2835;
+    border: none;
+    box-shadow: none;
+    border-radius: 3px;
+  }
+  .ffs-palette-module .ffs-palette {
+    display: block;
+    width: 100%;
+  }
+}
+</style>
 <section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
   <div class="ffs-palette-wrap">
     <img alt="Glass Rooms color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/GDpallette.png"/>
