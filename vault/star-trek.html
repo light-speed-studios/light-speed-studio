@@ -2251,9 +2251,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     position: relative;
     margin-top: 21px;
     padding: 14px;
-    background:
-      linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
-      rgba(255, 255, 255, 0.035);
+    background: rgba(255, 255, 255, 0.035);
     box-shadow:
       0 0 30px rgba(0, 174, 222, 0.08),
       inset 0 0 0 1px rgba(0, 174, 222, 0.18);
@@ -2353,7 +2351,25 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     display: block;
   }
 }
-</style><section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
+</style><style id="lss-desktop-inset-palette-box">
+@media (min-width: 901px) {
+  .ffs-palette-module .ffs-palette-wrap {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    margin: 0;
+    background: #0E2835;
+    border: none;
+    box-shadow: none;
+    border-radius: 3px;
+  }
+  .ffs-palette-module .ffs-palette {
+    display: block;
+    width: 100%;
+  }
+}
+</style>
+<section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
 <div class="ffs-palette-wrap">
 <img alt="Star Trek: Genesis color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Rogue%20one%20Pallete.png"/>
 </div>
