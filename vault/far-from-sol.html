@@ -18,17 +18,7 @@
     }
   </style>
 
-<style id="far-from-sol-mobile-synopsis-gap-fix">
-@media (max-width: 900px) {
-  .ffs-poster-panel {
-    margin-bottom: 0 !important;
-  }
 
-  .ffs-info-panel {
-    margin-top: 0 !important;
-  }
-}
-</style>
 
 
 <style id="mobile-clean-full-poster-flow">
@@ -348,6 +338,41 @@
   .ffs-info-panel > .ffs-section-label { order: 2; }
   .ffs-info-panel > .ffs-synopsis { order: 3; }
   .ffs-info-panel > .ffs-working-title-mobile { order: 4; }
+}
+</style>
+<style id="far-from-sol-mobile-working-title-reference-match">
+@media (max-width: 900px) {
+  .ffs-info-panel > .ffs-working-title-mobile {
+    order: 4;
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 12px 0 8px !important;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.15);
+    overflow: hidden;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 14px !important;
+    font-weight: 600;
+    line-height: 1.15;
+    text-transform: uppercase !important;
+    color: #bac7d5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .ffs-info-panel > .ffs-working-title-mobile span {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    margin: 0;
+    font-size: 10px !important;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: .1em;
+    white-space: nowrap;
+  }
 }
 </style>
 </head>
