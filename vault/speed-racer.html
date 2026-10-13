@@ -268,6 +268,44 @@
   .ffs-desktop-composition .ffs-mobile-meta { order: 6; }
 }
 </style>
+<style id="lss-speed-mach6-topgun-mobile-standard">
+@media (max-width: 900px) {
+  /* Flatten only mobile layout wrappers so all elements can be ordered. */
+  .ffs-desktop-composition { display: flex !important; flex-direction: column !important; }
+  .ffs-desktop-composition > .ffs-left-column,
+  .ffs-desktop-composition > .ffs-right-column,
+  .ffs-desktop-composition > .ffs-right-column > .ffs-info-panel { display: contents !important; }
+  .ffs-desktop-composition .ffs-poster-panel { order: 1 !important; margin: 0 0 16px !important; }
+  .ffs-desktop-composition .ffs-audience-rating { order: 2 !important; margin: 0 0 22px !important; width: 100%; }
+  .ffs-desktop-composition .ffs-section-label { order: 3 !important; }
+  .ffs-desktop-composition .ffs-synopsis { order: 4 !important; margin-bottom: 22px !important; }
+  .ffs-desktop-composition .ffs-mobile-working-title {
+    order: 5 !important; display: flex !important; align-items: center;
+    gap: 8px; min-width: 0; margin: 12px 0 8px !important; padding: 10px 12px;
+    background: rgba(255,255,255,.035);
+    box-shadow: inset 0 0 0 1px rgba(0,174,222,.15);
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    text-transform: uppercase;
+  }
+  .ffs-desktop-composition .ffs-mobile-working-title span {
+    flex: 0 0 auto; font-size: 10px; font-weight: 800; line-height: 1;
+    letter-spacing: .1em; color: #00aede; white-space: nowrap;
+  }
+  .ffs-desktop-composition .ffs-mobile-working-title strong {
+    flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; color: #bac7d5; font-size: 15px; font-weight: 700;
+  }
+  .ffs-desktop-composition .ffs-mobile-meta { order: 6 !important; display: block !important; margin: 0 0 18px !important; }
+}
+</style>
+<style id="lss-mobile-hide-metadata-strip">
+@media (max-width: 900px) {
+  .ffs-mobile-meta,
+  .ffs-desktop-composition .ffs-mobile-meta {
+    display: none !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Speed Racer: Mach 6 splash screen">
@@ -2179,7 +2217,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </div>
 <div class="ffs-mobile-meta">
 <div class="ffs-meta-row">
-            
+  <div class="ffs-meta-card"><span class="ffs-meta-value">97 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-value">13 Dec 2025</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-value">Speed Racer 2008</span></div>
 </div>
 </div>
 <div class="ffs-info-panel">
@@ -2189,7 +2229,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     A story about legacy and the weight of a brother’s influence. With less of Spritle’s chaos and the world around Royalton tightened. Mach 6 sharpens the story of Speed without losing the soul that holds the Racer family together.
   </p>
 </div>
-<div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> Speed Racer: Full Throttle</div>
+<div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> <strong>Speed Racer: Full Throttle</strong></div>
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="speed-racer-mach-6" aria-label="Audience rating for Speed Racer: Mach 6">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
