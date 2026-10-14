@@ -332,6 +332,46 @@
   .ffs-info-panel > .ffs-working-title-mobile { order: 4; }
 }
 </style>
+<style id="crossroads-topgun-mobile-final-alignment">
+@media (max-width: 900px) {
+  /* Match Top Gun's compact working-title presentation. */
+  .ffs-info-panel > .ffs-working-title-mobile {
+    order: 4 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin: 12px 0 8px !important;
+    padding: 10px 12px !important;
+    min-width: 0 !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    background: rgba(255,255,255,.035) !important;
+    box-shadow: inset 0 0 0 1px rgba(0,174,222,.15) !important;
+  }
+  .ffs-info-panel > .ffs-working-title-mobile span {
+    flex: 0 0 auto !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 800 !important;
+    letter-spacing: .1em !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+  }
+  .ffs-info-panel > .ffs-working-title-mobile strong {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  /* Keep the three-column mobile metadata strip hidden. */
+  .ffs-mobile-meta { display: none !important; }
+  /* Match Top Gun's Editor's Note heading spacing. */
+  .ffs-palette-module .ffs-editors-note-title { margin: 14px 0 10px !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Crossroads splash screen">
