@@ -3312,5 +3312,35 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 <script type="module" src="../js/movie-ratings.js"></script>
+<style id="sot-topgun-mobile-spacing-final">
+@media (max-width: 900px) {
+  /* Match the Top Gun mobile flow; retain the page-specific Version 2 control. */
+  .ffs-main-grid.ffs-desktop-composition { display: flex !important; flex-direction: column !important; }
+  .ffs-main-grid .ffs-left-column,
+  .ffs-main-grid .ffs-right-column,
+  .ffs-main-grid .ffs-info-panel,
+  .ffs-info-panel > .ffs-working-version-row { display: contents !important; }
+  .ffs-main-grid .ffs-poster-panel { order: 1 !important; margin: 0 0 16px !important; }
+  .ffs-main-grid .ffs-mobile-meta { display: none !important; }
+  .ffs-info-panel > .ffs-working-version-row > .ffs-audience-rating {
+    order: 2 !important; width: 100% !important; max-width: none !important;
+    margin: 0 0 22px !important; flex: none !important;
+  }
+  .ffs-info-panel > .ffs-section-label { order: 3 !important; }
+  .ffs-info-panel > .ffs-synopsis { order: 4 !important; margin: 0 0 22px !important; }
+  .ffs-info-panel > .ffs-working-version-row > .ffs-version-box-mobile {
+    display: flex !important; order: 5 !important;
+    width: 100% !important; max-width: none !important;
+    margin: 0 0 10px !important;
+  }
+  .ffs-info-panel > .ffs-working-title-mobile-order {
+    display: block !important; order: 6 !important;
+    margin: 0 0 10px !important;
+    padding: 10px 12px !important;
+  }
+  .ffs-info-panel > .ffs-color-grade-modal-toggle { order: 7 !important; }
+  .ffs-main-grid .ffs-title-panel { display: none !important; }
+}
+</style>
 </body>
 </html>
