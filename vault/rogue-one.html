@@ -332,7 +332,7 @@
 <style id="lss-rogue-topgun-mobile-alignment">
 .ffs-mobile-meta { display: none !important; }
 @media (max-width: 900px) {
-  .ffs-mobile-meta { display: block !important; order: 2 !important; margin: 0 0 18px !important; }
+  .ffs-mobile-meta { display: none !important; order: 2 !important; margin: 0 0 18px !important; }
   .ffs-desktop-composition .ffs-poster-panel { margin: 0 0 16px !important; }
   .ffs-desktop-composition .ffs-info-panel {
     order: 3 !important;
@@ -1205,7 +1205,7 @@
 }
 
 .ffs-mobile-meta {
-  display: block !important;
+  display: none !important;
   margin: 0 0 18px;
   width: 100%;
 }
@@ -2888,6 +2888,15 @@ document.addEventListener("click", function (event) {
   .ffs-palette-module .ffs-palette {
     display: block;
     width: 100%;
+  }
+}
+</style>
+<style id="lss-mobile-metadata-permanent-hide">
+@media (max-width: 900px) {
+  html body .ffs-page .ffs-mobile-meta,
+  html body .ffs-project-block .ffs-mobile-meta {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 </style>
