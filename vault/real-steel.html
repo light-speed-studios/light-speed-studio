@@ -2607,5 +2607,33 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-mobile-meta { display: none !important; }
 }
 </style>
+<style id="real-steel-final-mobile-layout-correction">
+@media (max-width: 900px) {
+  html body .ffs-page .ffs-mobile-meta {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  .ffs-page .ffs-info-panel {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .ffs-page .ffs-info-panel > .ffs-audience-rating {
+    order: 1 !important;
+    width: 100%;
+    flex: 0 0 auto;
+    margin: 0 0 22px !important;
+  }
+  .ffs-page .ffs-info-panel > .ffs-section-label { order: 2 !important; }
+  .ffs-page .ffs-info-panel > .ffs-synopsis {
+    order: 3 !important;
+    margin: 0 0 22px !important;
+  }
+  .ffs-page .ffs-info-panel > .lss-mobile-working-title-only {
+    order: 4 !important;
+    display: flex !important;
+    margin: 12px 0 8px !important;
+  }
+}
+</style>
 </body>
 </html>
