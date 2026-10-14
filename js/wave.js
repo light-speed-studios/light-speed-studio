@@ -215,7 +215,7 @@ function renderLibrary() {
     play.classList.toggle('is-playing', playing);
     play.innerHTML = `<svg class="wave-list-play-svg" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
       <path class="wave-play-stroke-solid" d="M49.9 2.5C23.6 2.8 2.1 24.4 2.5 50.4 2.9 76.5 24.7 98 50.3 97.5 76.7 96.9 97.7 75.7 97.5 49.8 97.3 23.7 75.7 2.3 49.9 2.5"/>
-      <path class="wave-play-stroke-dotted" d="M49.9 2.5C23.6 2.8 2.1 24.4 2.5 50.4 2.9 76.5 24.7 98 50.3 97.5 76.7 96.9 97.7 97.5 49.8 97.3 23.7 75.7 2.3 49.9 2.5"/>
+      <path class="wave-play-stroke-dotted" d="M49.9 2.5C23.6 2.8 2.1 24.4 2.5 50.4 2.9 76.5 24.7 98 50.3 97.5 76.7 96.9 97.7 75.7 97.5 49.8 97.3 23.7 75.7 2.3 49.9 2.5"/>
       <path class="wave-play-triangle" d="M38 69c-1 .5-1.8 0-1.8-1.1V32.1c0-1.1.8-1.6 1.8-1.1l34 18c1 .5 1 1.4 0 1.9L38 69z"/>
       <path class="wave-play-pause" d="M36 31h10v38H36zM55 31h10v38H55z"/>
     </svg>`;
