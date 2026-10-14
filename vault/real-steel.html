@@ -1104,7 +1104,7 @@
 }
 
 .ffs-mobile-meta {
-  display: block !important;
+  display: none !important;
   margin: 0 0 18px;
   width: 100%;
 }
@@ -2602,5 +2602,10 @@ document.addEventListener("click", function (event) {
   mobile.addEventListener('change', syncOrder);
 })();
 </script>
+<style id="lss-final-mobile-meta-hidden">
+@media (max-width: 900px) {
+  .ffs-page .ffs-mobile-meta { display: none !important; }
+}
+</style>
 </body>
 </html>
