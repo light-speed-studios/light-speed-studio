@@ -208,27 +208,51 @@
   .ffs-audience-rating{margin-top:12px}
 }
 </style>
-<style id="lss-mobile-poster-rating-order-reference">
-/* Mobile only: poster, audience rating, synopsis, working title, then editor's note.
-   Keep the original rating element, width, and desktop DOM/layout intact. */
+
+<style id="overtime-topgun-mobile-spacing-final">
 @media (max-width: 900px) {
-  .ffs-main-grid.ffs-desktop-composition { display: flex !important; flex-direction: column !important; }
-  .ffs-main-grid .ffs-left-column,
-  .ffs-main-grid .ffs-right-column,
-  .ffs-main-grid .ffs-info-panel { display: contents !important; }
-  .ffs-main-grid .ffs-poster-panel { order: 1 !important; }
-  .ffs-main-grid .ffs-audience-rating {
-    order: 2 !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 0 22px !important;
-    flex: none !important;
+  /* Match Top Gun's nested mobile flow without flattening the information panel. */
+  .ffs-main-grid.ffs-desktop-composition { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+  .ffs-main-grid > .ffs-left-column,
+  .ffs-main-grid > .ffs-right-column { display: contents !important; }
+  .ffs-main-grid .ffs-poster-panel { order: 1 !important; margin: 0 0 16px !important; }
+  .ffs-main-grid .ffs-info-panel {
+    order: 2 !important; display: flex !important; flex-direction: column !important;
+    height: auto !important; min-height: 0 !important; padding: 0 !important;
+    margin: 0 !important; overflow: visible !important;
   }
-  .ffs-main-grid .ffs-info-panel > .ffs-section-label { order: 3 !important; }
-  .ffs-main-grid .ffs-info-panel > .ffs-synopsis { order: 4 !important; }
-  .ffs-main-grid .ffs-info-panel > .ffs-mobile-working-title { order: 5 !important; }
-  .ffs-main-grid .ffs-mobile-meta { order: 6 !important; }
   .ffs-main-grid .ffs-title-panel { display: none !important; }
+  .ffs-main-grid .ffs-info-panel > .ffs-audience-rating {
+    order: 1 !important; margin: 0 0 22px !important; width: 100% !important;
+  }
+  .ffs-main-grid .ffs-info-panel > .ffs-section-label { order: 2 !important; margin-top: 0 !important; }
+  .ffs-main-grid .ffs-info-panel > .ffs-synopsis { order: 3 !important; margin: 0 0 22px !important; }
+  .ffs-main-grid .ffs-info-panel > .ffs-mobile-working-title {
+    order: 4 !important; display: flex !important; align-items: center !important;
+    gap: 8px !important; margin: 12px 0 8px !important; padding: 10px 12px !important;
+  }
+  .ffs-mobile-meta { display: none !important; }
+  /* Editor's Note matches Top Gun's mobile card and standalone heading. */
+  .ffs-palette-module {
+    display: block !important; position: relative !important;
+    margin: 14px 14px 18px !important; padding: 16px !important;
+    overflow: hidden !important;
+  }
+  .ffs-palette-module .ffs-palette-wrap,
+  .ffs-palette-module .ffs-palette { display: none !important; }
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 14px 0 0 !important; font-size: 17px !important;
+    font-weight: 500 !important; line-height: 1.48 !important;
+    text-align: justify !important; text-justify: inter-word !important;
+  }
+  .ffs-palette-module .ffs-editors-note-text .ffs-editors-note-title {
+    display: block !important; margin: 14px 0 10px !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    font-size: 18px !important; font-weight: 800 !important;
+    letter-spacing: .16em !important; line-height: normal !important;
+    text-transform: uppercase !important; text-align: center !important;
+    white-space: normal !important;
+  }
 }
 </style>
 </head>
