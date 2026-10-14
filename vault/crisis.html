@@ -2690,5 +2690,24 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 <script type="module" src="../js/movie-ratings.js"></script>
+
+<style id="crisis-mobile-parent-gap-definitive-fix">
+@media (max-width: 900px) {
+  /* The inherited 34px desktop grid gap persisted when the grid became flex. */
+  .ffs-page .ffs-main-grid.ffs-desktop-composition {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    row-gap: 0 !important;
+    column-gap: 0 !important;
+  }
+  .ffs-page .ffs-left-column,
+  .ffs-page .ffs-right-column { display: contents !important; }
+  .ffs-page .ffs-poster-panel { margin: 0 0 16px !important; }
+  .ffs-page .ffs-mobile-meta { display: none !important; }
+  .ffs-page .ffs-info-panel { margin: 0 !important; padding: 0 !important; }
+  .ffs-page .ffs-info-panel > .ffs-audience-rating { margin: 0 0 22px !important; }
+}
+</style>
 </body>
 </html>
