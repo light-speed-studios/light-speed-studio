@@ -1543,3 +1543,30 @@ html {
 @media (max-width: 540px) {
   .wave-page .wave-inline-metadata { font-size: 13px; }
 }
+
+/* Oct 15: metadata typography. Preserve the existing cyan / white / slate flow. */
+.wave-page .wave-inline-source {
+  text-transform: none;
+  font-weight: 400;
+}
+.wave-page .wave-inline-metadata #player-heading {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.wave-page .wave-inline-meta,
+.wave-page .wave-inline-meta #wave-type,
+.wave-page .wave-inline-meta #wave-track-number {
+  font-weight: 400;
+  text-transform: none;
+}
+.wave-page .wave-inline-divider {
+  color: #5D8799;
+  font-weight: 400;
+  flex: 0 0 auto;
+}
+.wave-page .wave-inline-meta { gap: 3px; }
+
+/* Metadata slash between Featured Remixes and Track number */
+.wave-page .wave-inline-meta .wave-meta-separator {
+  color: #00AEDE;
+}
