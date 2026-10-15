@@ -510,7 +510,7 @@ surfer = WaveSurfer.create({
     const duration = surfer.getDuration();
     if (Number.isFinite(duration) && duration > 0) TRACKS[selectedIndex].duration = duration;
     els.duration.textContent = timeString(duration);
-    setMessage('CLICK WAVEFORM TO SEEK');
+    setMessage('');
     if (pendingAutoplay) {
       pendingAutoplay = false;
 
