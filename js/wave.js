@@ -329,42 +329,41 @@ function loadLibraryDurations() {
 }
 
 try {
-  // 1. Create a dummy canvas element to build the reflection gradient
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
+// 1. Create a dummy canvas element to build the reflection gradient
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
 
-  // 2. Define the vertical gradient for the unplayed bars (Teal)
-  const unplayedGradient = ctx.createLinearGradient(0, 0, 0, 94);
-  unplayedGradient.addColorStop(0, '#36586B');    // Solid top
-  unplayedGradient.addColorStop(0.50, '#36586B'); // Forces solid color exactly halfway down
-  unplayedGradient.addColorStop(0.51, 'transparent'); // Center gap line
-  unplayedGradient.addColorStop(0.52, 'rgba(54, 88, 107, 0.70)'); // Brighter bottom reflection
-  unplayedGradient.addColorStop(1, 'rgba(54, 88, 107, 0.25)');    // More visible bottom edge
+// 2. Define the vertical gradient for the unplayed bars (Teal)
+const unplayedGradient = ctx.createLinearGradient(0, 0, 0, 94);
+unplayedGradient.addColorStop(0, '#36586B');       // Solid top half
+unplayedGradient.addColorStop(0.49, '#36586B');    // Holds solid right up to the line
+unplayedGradient.addColorStop(0.50, 'transparent'); // The exact sharp center divider line
+unplayedGradient.addColorStop(0.51, 'rgba(54, 88, 107, 0.70)'); // Faded bottom reflection begins
+unplayedGradient.addColorStop(1, 'rgba(54, 88, 107, 0.25)');    // Muted bottom edge
 
-  // 3. Define the identical vertical gradient for the played bars (Cyan)
-  const playedGradient = ctx.createLinearGradient(0, 0, 0, 94);
-  playedGradient.addColorStop(0, '#00AEDE');    // Solid top
-  playedGradient.addColorStop(0.50, '#00AEDE'); // Forces solid color exactly halfway down
-  playedGradient.addColorStop(0.51, 'transparent'); // Center gap line
-  playedGradient.addColorStop(0.52, 'rgba(0, 174, 222, 0.70)');  // Brighter bottom reflection
-  playedGradient.addColorStop(1, 'rgba(0, 174, 222, 0.25)');     // More visible bottom edge
+// 3. Define the identical vertical gradient for the played bars (Cyan)
+const playedGradient = ctx.createLinearGradient(0, 0, 0, 94);
+playedGradient.addColorStop(0, '#00AEDE');       // Solid top half
+playedGradient.addColorStop(0.49, '#00AEDE');    // Holds solid right up to the line
+playedGradient.addColorStop(0.50, 'transparent'); // The exact sharp center divider line
+playedGradient.addColorStop(0.51, 'rgba(0, 174, 222, 0.70)');  // Faded bottom reflection begins
+playedGradient.addColorStop(1, 'rgba(0, 174, 222, 0.25)');     // Muted bottom edge
 
-  // 4. Initialize WaveSurfer with the updated gradient objects
-  surfer = WaveSurfer.create({
-    container: '#waveform',
-    waveColor: unplayedGradient,      
-    progressColor: playedGradient,  
-    cursorColor: '#00AEDE',
-    height: 94,
-    barWidth: 2,
-    barGap: 1,
-    barRadius: 0, 
-    normalize: true,
-    interact: true,
-    dragToSeek: true,
-    // ADD THIS LINE TO FORCE THE PERFECT 50/50 SPLIT:
-    splitChannels: true,
-  });
+// 4. Initialize WaveSurfer with the updated gradient objects (WITHOUT splitChannels)
+surfer = WaveSurfer.create({
+  container: '#waveform',
+  waveColor: unplayedGradient,      
+  progressColor: playedGradient,  
+  cursorColor: '#00AEDE',
+  height: 94,
+  barWidth: 2,
+  barGap: 1,
+  barRadius: 0, 
+  normalize: true,
+  interact: true,
+  dragToSeek: true,
+});
+
 
 
   surfer.setVolume(0.75);
