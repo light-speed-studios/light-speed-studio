@@ -1386,3 +1386,20 @@ html {
   .wave-page .wave-visualizer-frame { width: min(100%, 205px); }
   .wave-page .wave-visualizer-panel { padding-top: 16px; }
 }
+
+/* WAVE lounge-style radial equalizer: transparent and vertically centered. */
+.wave-page .wave-visualizer-panel {
+  justify-content: center;
+  align-items: center;
+}
+.wave-page .wave-visualizer-frame {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+  max-width: 260px;
+}
+.wave-page #wave-live-visualizer { background: transparent; }
+@media (max-width: 900px) {
+  .wave-page .wave-visualizer-panel { padding-top: 12px; }
+}
