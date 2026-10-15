@@ -27,6 +27,9 @@ const TRACKS = [
   {"title": "The Last Fall", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/The%20Last%20Fall.mp3"},
   {"title": "Void", "source": "The Expanse Intro", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/Void.mp3"},
   {"title": "Wide Awake", "source": "Wake Up / Slingshot OST", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Wokeup.mp3"},
+  {"title": "Call from the Deep", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Syrens%20Call.mp3"},
+  {"title": "Dust & Daylight", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Left%20In%20the%20Dust.mp3"},
+  {"title": "Caught in the Undertow", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Into%20the%20Ocean.mp3"},
 ];
 
 // WAVE likes use only the public, browser-safe Supabase key.
@@ -41,7 +44,8 @@ const TRACK_IDS = [
   'under-the-sea', 'nightfall', 'catch-you', 'into-the-fight', 'fearless',
   'luna', 'delimma', 'waiting', 'outer-range', 'signal-to-the-stars',
   'sky-fall', 'speedforce', 'stay', 'strike', 'the-brain-in-the-machine',
-  'the-edge', 'the-last-fall', 'void', 'wide-awake'
+  'the-edge', 'the-last-fall', 'void', 'wide-awake',
+  'call-from-the-deep', 'dust-and-daylight', 'caught-in-the-undertow'
 ];
 const likeCounts = new Map();
 const likedTracks = new Set();
