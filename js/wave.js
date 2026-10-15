@@ -333,20 +333,20 @@ try {
 const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
 
-// 2. Define the vertical gradient for the unplayed bars (Teal) - Corrected & Lowered
+// 2. Define the vertical gradient for the unplayed bars (Teal) - Set to 63%
 const unplayedGradient = ctx.createLinearGradient(0, 0, 0, 94);
 unplayedGradient.addColorStop(0, '#36586B');       
-unplayedGradient.addColorStop(0.59, '#36586B');    // Extended down to 59%
-unplayedGradient.addColorStop(0.60, 'transparent'); // Perfect center gap
-unplayedGradient.addColorStop(0.61, 'rgba(54, 88, 107, 0.70)'); 
+unplayedGradient.addColorStop(0.63, '#36586B');    // Perfect solid baseline
+unplayedGradient.addColorStop(0.64, 'transparent'); // Center gap line
+unplayedGradient.addColorStop(0.65, 'rgba(54, 88, 107, 0.70)'); 
 unplayedGradient.addColorStop(1, 'rgba(54, 88, 107, 0.25)');    
 
-// 3. Define the identical vertical gradient for the played bars (Cyan) - Typo Fixed & Lowered
+// 3. Define the identical vertical gradient for the played bars (Cyan) - Set to 63%
 const playedGradient = ctx.createLinearGradient(0, 0, 0, 94);
 playedGradient.addColorStop(0, '#00AEDE');       
-playedGradient.addColorStop(0.59, '#00AEDE');    // Extended down to 59%
-playedGradient.addColorStop(0.60, 'transparent'); // Perfect center gap
-playedGradient.addColorStop(0.61, 'rgba(0, 174, 222, 0.70)');  
+playedGradient.addColorStop(0.63, '#00AEDE');    // Perfect solid baseline
+playedGradient.addColorStop(0.64, 'transparent'); // Center gap line
+playedGradient.addColorStop(0.65, 'rgba(0, 174, 222, 0.70)');  
 playedGradient.addColorStop(1, 'rgba(0, 174, 222, 0.25)');     
 
 // 4. Initialize WaveSurfer with the updated gradient objects (WITHOUT splitChannels)
