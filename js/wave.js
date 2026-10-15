@@ -389,7 +389,7 @@ function installWaveVisualizer(player) {
     const size = Math.min(width, height);
     const cx = width / 2;
     const cy = height / 2;
-    const radius = size * 0.275;
+    const radius = size * 0.35; // Larger ring within the same fixed-size canvas
     const maxLength = size * 0.125;
     const active = player.isPlaying() && analyser && audioContext?.state === 'running';
     if (active) analyser.getByteFrequencyData(frequencyData);
