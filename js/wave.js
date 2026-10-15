@@ -362,7 +362,10 @@ try {
     normalize: true,
     interact: true,
     dragToSeek: true,
+    // ADD THIS LINE TO FORCE THE PERFECT 50/50 SPLIT:
+    splitChannels: true,
   });
+
 
   surfer.setVolume(0.75);
   surfer.on('ready', () => {
