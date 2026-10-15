@@ -329,19 +329,42 @@ function loadLibraryDurations() {
 }
 
 try {
-  surfer = WaveSurfer.create({
-    container: '#waveform',
-  waveColor: '#36586B',     
-  progressColor: '#00AEDE', 
-  cursorColor: '#00AEDE',  
-    height: 94,
-    barWidth: 2,
-    barGap: 1,
-    barRadius: 2,
-    normalize: true,
-    interact: true,
-    dragToSeek: true,
-  });
+// 1. Create a dummy canvas element to build the reflection gradient
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+
+// 2. Define a multi-stop vertical gradient for the unplayed bars
+// 0.0 to 0.5 is the solid top half. 0.5 to 1.0 is the mirrored, fading bottom reflection.
+const unplayedGradient = ctx.createLinearGradient(0, 0, 0, 94); // 94 matches height
+unplayedGradient.addColorStop(0, '#36586B');   // Top solid teal
+unplayedGradient.addColorStop(0.48, '#36586B');
+unplayedGradient.addColorStop(0.5, 'transparent'); // Crisp center divider line
+unplayedGradient.addColorStop(0.52, 'rgba(54, 88, 107, 0.5)'); // Bottom faded reflection
+unplayedGradient.addColorStop(1, 'rgba(54, 88, 107, 0.05)');
+
+// 3. Define the identical vertical gradient structure for the played bars
+const playedGradient = ctx.createLinearGradient(0, 0, 0, 94);
+playedGradient.addColorStop(0, '#00AEDE');   // Top solid cyan
+playedGradient.addColorStop(0.48, '#00AEDE');
+playedGradient.addColorStop(0.5, 'transparent'); // Crisp center divider line
+playedGradient.addColorStop(0.52, 'rgba(0, 174, 222, 0.5)'); // Bottom faded reflection
+playedGradient.addColorStop(1, 'rgba(0, 174, 222, 0.05)');
+
+// 4. Initialize WaveSurfer with the gradient objects
+surfer = WaveSurfer.create({
+  container: '#waveform',
+  waveColor: unplayedGradient,      // Applies the fading teal reflection
+  progressColor: playedGradient,  // Applies the fading cyan reflection
+  cursorColor: '#00AEDE',
+  height: 94,
+  barWidth: 2,
+  barGap: 1,
+  barRadius: 0, // Set to 0 for flat-ended crisp mirror cuts at the center line
+  normalize: true,
+  interact: true,
+  dragToSeek: true,
+});
+
   surfer.setVolume(0.75);
   surfer.on('ready', () => {
     if (audioLoadFailed) return;
