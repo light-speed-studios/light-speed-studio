@@ -198,7 +198,7 @@
     flex: 1 0 2px;
     max-width: 3px;
     border-radius: 2px;
-    background: #36586B;
+    background: #35596a;
     opacity: .8;
 }
 
@@ -506,7 +506,7 @@
 }
 
 .wave-track.is-selected .wave-mini i:nth-child(-n+21) {
-    background: #00AEDE;
+    background: #00aede;
 }
 
 .wave-track-length {
@@ -1282,4 +1282,107 @@ html {
     text-align: center;
     line-height: 1.2;
   }
+}
+
+
+/* WAVE | three-panel Now Playing: metadata / waveform / live circle */
+@media (min-width: 901px) {
+  .wave-page .wave-player-layout {
+    grid-template-columns: minmax(0, 30%) minmax(0, 47%) minmax(0, 23%);
+    gap: 0;
+    align-items: center;
+    margin-top: 25px;
+  }
+  .wave-page .wave-feature-copy {
+    padding-right: 17px;
+    min-width: 0;
+  }
+  .wave-page .wave-player {
+    border-left: 1px solid rgba(0,174,222,.45);
+    padding-left: 25px;
+    padding-right: 18px;
+    min-width: 0;
+  }
+  .wave-page .wave-feature-copy h2 {
+    overflow-wrap: anywhere;
+  }
+  .wave-page .wave-controls {
+    gap: 6px;
+  }
+  .wave-page .wave-transport {
+    gap: 7px;
+  }
+  .wave-page .wave-volume input {
+    width: clamp(50px, 6vw, 85px);
+  }
+  .wave-page .wave-controls-logo img {
+    width: 40px;
+    height: 40px;
+  }
+}
+.wave-page .wave-visualizer-panel {
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  padding-left: 18px;
+  border-left: 1px solid rgba(0,174,222,.3);
+}
+.wave-page .wave-visualizer-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: 500 10px 'Oxanium', sans-serif;
+  letter-spacing: 1.2px;
+  color: #8ca9b9;
+  white-space: nowrap;
+  margin-bottom: 10px;
+}
+.wave-page .wave-visualizer-caption .wave-live-dot {
+  width: 5px;
+  height: 5px;
+}
+.wave-page .wave-visualizer-frame {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(54,106,128,.22);
+  background: radial-gradient(circle at 50% 50%, #0c2837 0%, #071b29 55%, #040e15 100%);
+  box-shadow: inset 0 0 30px rgba(0,174,222,.04);
+}
+.wave-page #wave-live-visualizer {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 901px) and (max-width: 1100px) {
+  .wave-page .wave-player-layout {
+    grid-template-columns: minmax(0, 29%) minmax(0, 46%) minmax(0, 25%);
+  }
+  .wave-page .wave-player { padding-left: 17px; padding-right: 12px; }
+  .wave-page .wave-visualizer-panel { padding-left: 12px; }
+  .wave-page .wave-controls-logo img { width: 32px; height: 32px; }
+  .wave-page .wave-volume input { width: 50px; }
+}
+@media (max-width: 900px) {
+  .wave-page .wave-player-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .wave-page .wave-visualizer-panel {
+    border-left: 0;
+    border-top: 1px solid rgba(0,174,222,.24);
+    padding: 20px 0 0;
+  }
+  .wave-page .wave-visualizer-frame { width: min(100%, 245px); }
+}
+@media (max-width: 540px) {
+  .wave-page .wave-visualizer-frame { width: min(100%, 205px); }
+  .wave-page .wave-visualizer-panel { padding-top: 16px; }
 }
