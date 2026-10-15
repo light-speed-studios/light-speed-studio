@@ -1570,3 +1570,9 @@ html {
 .wave-page .wave-inline-meta .wave-meta-separator {
   color: #00AEDE;
 }
+
+/* Mobile and tablet: keep WaveSurfer and controls, remove circular visualizer. */
+@media (max-width: 900px) {
+  .wave-page .wave-visualizer-panel { display: none !important; }
+  .wave-page .wave-player-layout { grid-template-columns: minmax(0, 1fr); }
+}
