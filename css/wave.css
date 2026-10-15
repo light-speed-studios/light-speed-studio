@@ -1403,3 +1403,123 @@ html {
 @media (max-width: 900px) {
   .wave-page .wave-visualizer-panel { padding-top: 12px; }
 }
+
+
+/* WAVE | Compact Now Playing, original-height desktop layout (Oct 15) */
+/* Replaces the old left metadata column with a single inline metadata row. */
+.wave-page .wave-station-artist { display: none; }
+.wave-page .wave-inline-metadata {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: clamp(9px, 1.2vw, 19px);
+  min-width: 0;
+  width: 100%;
+  margin: 0 0 15px;
+  font-family: 'Oxanium', sans-serif;
+  font-size: clamp(10px, .85vw, 13px);
+  line-height: 1.4;
+  letter-spacing: .35px;
+}
+.wave-page .wave-inline-source {
+  color: #00AEDE;
+  font-weight: 600;
+  text-transform: uppercase;
+  min-width: 0;
+}
+.wave-page .wave-inline-metadata #player-heading {
+  font-weight: 700;
+  font-family: 'Oxanium', sans-serif;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: #E0F3F9;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+.wave-page .wave-inline-meta {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  color: #91AABB;
+  font-size: inherit;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.wave-page .wave-inline-metadata .wave-feature-like {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 1px 0 1px 11px;
+  gap: 5px;
+  font-size: inherit;
+}
+.wave-page .wave-inline-metadata .wave-feature-like svg { width: 17px; height: 17px; }
+.wave-page .wave-player-message {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+@media (min-width: 901px) {
+  /* Keep the feature at the compact height of the original two-column player. */
+  .wave-page .wave-feature { height: 315px; padding-top: 28px; padding-bottom: 25px; }
+  .wave-page .wave-player-layout {
+    grid-template-columns: minmax(0, 76%) minmax(0, 24%);
+    align-items: center;
+    gap: 0;
+    margin: 20px 0 0;
+    height: 222px;
+  }
+  .wave-page .wave-player {
+    border-left: 1px solid rgba(0,174,222,.65);
+    padding: 0 26px 0 22px;
+    min-width: 0;
+    height: 222px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .wave-page .wave-visualizer-panel {
+    border-left: 1px solid rgba(0,174,222,.65);
+    height: 222px;
+    padding: 0 0 0 14px;
+    justify-content: center;
+    align-items: center;
+  }
+  .wave-page .wave-visualizer-frame {
+    width: min(100%, 218px);
+    max-width: 218px;
+    aspect-ratio: 1;
+  }
+  .wave-page .wave-controls { margin-top: 9px; }
+  .wave-page .wave-inline-metadata { margin-bottom: 10px; }
+  .wave-page .wave-controls-logo img { width: 43px; height: 43px; }
+  .wave-page .wave-transport { gap: 14px; }
+  .wave-page .wave-volume input { width: clamp(60px, 7vw, 105px); }
+}
+@media (min-width: 901px) and (max-width: 1130px) {
+  .wave-page .wave-player-layout { grid-template-columns: minmax(0, 73%) minmax(0, 27%); }
+  .wave-page .wave-player { padding-left: 14px; padding-right: 14px; }
+  .wave-page .wave-inline-metadata { gap: 8px; font-size: 10px; }
+  .wave-page .wave-visualizer-panel { padding-left: 8px; }
+  .wave-page .wave-transport { gap: 7px; }
+}
+@media (max-width: 900px) {
+  .wave-page .wave-player-layout { grid-template-columns: 1fr; gap: 12px; margin-top: 19px; }
+  .wave-page .wave-player { border-left: 1px solid rgba(0,174,222,.65); padding: 0 0 0 13px; }
+  .wave-page .wave-inline-metadata { flex-wrap: wrap; gap: 6px 12px; margin-bottom: 12px; font-size: 11px; }
+  .wave-page .wave-visualizer-panel { border-left: 0; border-top: 0; padding: 0; height: 190px; }
+  .wave-page .wave-visualizer-frame { width: 190px; max-width: 190px; }
+}
+@media (max-width: 540px) {
+  .wave-page .wave-inline-metadata { font-size: 10px; gap: 6px 10px; }
+  .wave-page .wave-inline-metadata .wave-feature-like { padding-left: 8px; }
+  .wave-page .wave-visualizer-panel { height: 170px; }
+  .wave-page .wave-visualizer-frame { width: 170px; max-width: 170px; }
+}
