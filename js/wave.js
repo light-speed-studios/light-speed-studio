@@ -417,10 +417,10 @@ function installWaveVisualizer(player) {
       ctx.lineTo(cx + cos * outer, cy + sin * outer);
       ctx.lineWidth = Math.max(1.2, size * 0.008);
       ctx.lineCap = 'round';
-      if (level > 0.68) ctx.strokeStyle = '#8CEAFF';
-      else if (level > 0.40) ctx.strokeStyle = '#42D8FF';
-      else if (level > 0.18) ctx.strokeStyle = '#00AEDE';
-      else if (level > 0.055) ctx.strokeStyle = '#2689AB';
+      if (level > 0.68) ctx.strokeStyle = '#00AEDE';
+      else if (level > 0.40) ctx.strokeStyle = '#008FB9';
+      else if (level > 0.18) ctx.strokeStyle = '#00779B';
+      else if (level > 0.055) ctx.strokeStyle = '#286C86';
       else ctx.strokeStyle = '#376A80';
       ctx.shadowBlur = level > 0.35 ? 7 + level * 8 : 0;
       ctx.shadowColor = 'rgba(0,174,222,.55)';
