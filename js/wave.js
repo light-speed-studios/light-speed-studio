@@ -333,20 +333,20 @@ try {
 const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
 
-// 2. Define the vertical gradient for the unplayed bars (Teal) - Pushed Lower
+// 2. Define the vertical gradient for the unplayed bars (Teal) - Corrected & Lowered
 const unplayedGradient = ctx.createLinearGradient(0, 0, 0, 94);
-unplayedGradient.addColorStop(0, '#36586B');       // Solid top half
-unplayedGradient.addColorStop(0.55, '#36586B');    // Extends solid color further down
-unplayedGradient.addColorStop(0.56, 'transparent'); // Center gap line pushed down
-unplayedGradient.addColorStop(0.57, 'rgba(54, 88, 107, 0.70)'); // Reflection starts lower
+unplayedGradient.addColorStop(0, '#36586B');       
+unplayedGradient.addColorStop(0.59, '#36586B');    // Extended down to 59%
+unplayedGradient.addColorStop(0.60, 'transparent'); // Perfect center gap
+unplayedGradient.addColorStop(0.61, 'rgba(54, 88, 107, 0.70)'); 
 unplayedGradient.addColorStop(1, 'rgba(54, 88, 107, 0.25)');    
 
-// 3. Define the identical vertical gradient for the played bars (Cyan) - Pushed Lower
+// 3. Define the identical vertical gradient for the played bars (Cyan) - Typo Fixed & Lowered
 const playedGradient = ctx.createLinearGradient(0, 0, 0, 94);
-playedGradient.addColorStop(0, '#00AEDE');       // Solid top half
-playedGradient.addColorStop(0.55, '#00AEDE');    // Extends solid color further down
-unplayedGradient.addColorStop(0.56, 'transparent'); // Center gap line pushed down
-playedGradient.addColorStop(0.57, 'rgba(0, 174, 222, 0.70)');  // Reflection starts lower
+playedGradient.addColorStop(0, '#00AEDE');       
+playedGradient.addColorStop(0.59, '#00AEDE');    // Extended down to 59%
+playedGradient.addColorStop(0.60, 'transparent'); // Perfect center gap
+playedGradient.addColorStop(0.61, 'rgba(0, 174, 222, 0.70)');  
 playedGradient.addColorStop(1, 'rgba(0, 174, 222, 0.25)');     
 
 // 4. Initialize WaveSurfer with the updated gradient objects (WITHOUT splitChannels)
