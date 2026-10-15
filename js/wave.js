@@ -331,9 +331,9 @@ function loadLibraryDurations() {
 try {
   surfer = WaveSurfer.create({
     container: '#waveform',
-    waveColor: '#36586B',
-    progressColor: '#00AEDE',
-    cursorColor: '#00AEDE',
+  waveColor: '#36586B',     
+  progressColor: '#00AEDE', 
+  cursorColor: '#00AEDE',  
     height: 94,
     barWidth: 2,
     barGap: 1,
