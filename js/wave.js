@@ -329,40 +329,27 @@ function loadLibraryDurations() {
 }
 
 
-// Live cyan circular visualizer, adapted from Noel Delgado's audio-reactive
-// starfield / average-circle / radial waveform concept. Uses WAVE's own media;
-// no second player, separate audio download, or full-page canvas.
+// Radial bar visualizer adapted from David Lazic's "lounge" canvas concept.
+// Uses the same WaveSurfer media element and playback controls.
+// No separate player, background panel, or duplicate audio request.
 function installWaveVisualizer(player) {
   const canvas = document.querySelector('#wave-live-visualizer');
   if (!canvas) return;
-  const context = canvas.getContext('2d');
-  if (!context) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
 
-  const palette = {
-    background: '#040E15', muted: '#376A80', mid: '#2689AB',
-    cyan: '#00AEDE', bright: '#42D8FF', highlight: '#8CEAFF'
-  };
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;
   const media = player.getMediaElement();
-  // The media must be CORS-enabled before its first MP3 request to allow
-  // Web Audio analysis of CDN-hosted tracks.
+  // Must be set before WaveSurfer starts fetching CDN audio.
   media.crossOrigin = 'anonymous';
   let audioContext = null;
   let analyser = null;
-  let timeData = null;
   let frequencyData = null;
   let animationId = 0;
-  let rotation = 0;
-  let visualWidth = 240;
-  let visualHeight = 240;
-  let starSeed = 0;
+  let width = 240;
+  let height = 240;
+  let smoothed = new Float32Array(88);
   let failed = false;
-  const stars = Array.from({ length: 105 }, (_, index) => ({
-    angle: (index * 2.399963229728653) % (Math.PI * 2),
-    distance: 0.15 + ((index * 47) % 83) / 105,
-    size: 0.35 + ((index * 13) % 9) / 12,
-    speed: 0.15 + ((index * 17) % 10) / 15
-  }));
 
   function connectAudio() {
     if (failed || !AudioContextClass) return;
@@ -370,113 +357,76 @@ function installWaveVisualizer(player) {
       if (!audioContext) {
         audioContext = new AudioContextClass();
         analyser = audioContext.createAnalyser();
-        analyser.fftSize = 1024;
-        analyser.minDecibels = -100;
-        analyser.maxDecibels = -30;
-        analyser.smoothingTimeConstant = 0.8;
+        analyser.fftSize = 512;
+        analyser.smoothingTimeConstant = 0.72;
+        analyser.minDecibels = -95;
+        analyser.maxDecibels = -28;
         const source = audioContext.createMediaElementSource(media);
         source.connect(analyser);
         analyser.connect(audioContext.destination);
-        timeData = new Uint8Array(analyser.frequencyBinCount);
         frequencyData = new Uint8Array(analyser.frequencyBinCount);
       }
-      if (audioContext.state === 'suspended') {
-        audioContext.resume().catch(() => {});
-      }
+      if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
     } catch (error) {
       failed = true;
-      console.warn('WAVE live visualizer could not initialize:', error);
+      console.warn('WAVE radial visualizer could not initialize:', error);
     }
   }
 
   function resize() {
     const bounds = canvas.getBoundingClientRect();
-    const width = Math.max(1, bounds.width);
-    const height = Math.max(1, bounds.height);
+    width = Math.max(1, bounds.width);
+    height = Math.max(1, bounds.height);
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
-    context.setTransform(dpr, 0, 0, dpr, 0, 0);
-    visualWidth = width;
-    visualHeight = height;
-    draw();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (!animationId) draw();
   }
 
   function draw() {
-    const w = visualWidth;
-    const h = visualHeight;
-    const cx = w / 2;
-    const cy = h / 2;
-    const size = Math.min(w, h);
-    const playing = player.isPlaying() && analyser && audioContext?.state === 'running';
-    let intensity = 0;
-    if (playing) {
-      analyser.getByteTimeDomainData(timeData);
-      analyser.getByteFrequencyData(frequencyData);
-      let total = 0;
-      for (let i = 0; i < frequencyData.length; i += 2) total += frequencyData[i];
-      intensity = Math.min(1, total / (frequencyData.length / 2) / 160);
-      rotation += (intensity > 0.48 ? 0.004 : -0.0025);
-      starSeed += 0.4 + intensity * 1.3;
+    ctx.clearRect(0, 0, width, height);
+    const size = Math.min(width, height);
+    const cx = width / 2;
+    const cy = height / 2;
+    const radius = size * 0.275;
+    const maxLength = size * 0.125;
+    const active = player.isPlaying() && analyser && audioContext?.state === 'running';
+    if (active) analyser.getByteFrequencyData(frequencyData);
+
+    // A ring of independent frequency bars, not a continuous circular line.
+    // Quiet bars remain visible on #040E15; peaks move through brighter cyans.
+    const count = smoothed.length;
+    for (let i = 0; i < count; i++) {
+      // The lower/mid spectrum is most musical; map progressively upward.
+      const fraction = i / count;
+      const frequencyIndex = Math.min(255, Math.floor(2 + Math.pow(fraction, 1.65) * 205));
+      const amplitude = active ? frequencyData[frequencyIndex] / 255 : 0;
+      const target = Math.pow(amplitude, 1.15);
+      smoothed[i] += (target - smoothed[i]) * (target > smoothed[i] ? 0.35 : 0.14);
+      const level = smoothed[i];
+      const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
+      const barLength = size * 0.012 + level * maxLength;
+      const inner = radius - barLength * 0.20;
+      const outer = radius + barLength * 0.80;
+      const cos = Math.cos(angle);
+      const sin = Math.sin(angle);
+
+      ctx.beginPath();
+      ctx.moveTo(cx + cos * inner, cy + sin * inner);
+      ctx.lineTo(cx + cos * outer, cy + sin * outer);
+      ctx.lineWidth = Math.max(1.2, size * 0.008);
+      ctx.lineCap = 'round';
+      if (level > 0.68) ctx.strokeStyle = '#8CEAFF';
+      else if (level > 0.40) ctx.strokeStyle = '#42D8FF';
+      else if (level > 0.18) ctx.strokeStyle = '#00AEDE';
+      else if (level > 0.055) ctx.strokeStyle = '#2689AB';
+      else ctx.strokeStyle = '#376A80';
+      ctx.shadowBlur = level > 0.35 ? 7 + level * 8 : 0;
+      ctx.shadowColor = 'rgba(0,174,222,.55)';
+      ctx.stroke();
     }
-
-    const bg = context.createRadialGradient(cx, cy, size * .04, cx, cy, size * .73);
-    bg.addColorStop(0, '#0B2838');
-    bg.addColorStop(.55, '#071B29');
-    bg.addColorStop(1, palette.background);
-    context.fillStyle = bg;
-    context.fillRect(0, 0, w, h);
-
-    // Subtle drifting stars, all visible on the navy background.
-    for (const star of stars) {
-      const drift = playing ? starSeed * star.speed * .0006 : 0;
-      const r = size * (star.distance * .66 + drift % .07);
-      const x = cx + Math.cos(star.angle) * r;
-      const y = cy + Math.sin(star.angle) * r;
-      context.beginPath();
-      context.arc(x, y, star.size, 0, Math.PI * 2);
-      context.fillStyle = intensity > .58 && star.size > .75
-        ? 'rgba(140,234,255,.72)' : 'rgba(55,106,128,.62)';
-      context.fill();
-    }
-
-    const base = size * .275;
-    const pulse = intensity * size * .075;
-    context.beginPath();
-    context.arc(cx, cy, base + pulse, 0, Math.PI * 2);
-    context.fillStyle = 'rgba(38,137,171,.055)';
-    context.fill();
-    context.lineWidth = 1;
-    context.strokeStyle = intensity > .48 ? palette.highlight : palette.mid;
-    context.stroke();
-
-    // The original concept's rotating radial time-domain waveform.
-    context.save();
-    context.translate(cx, cy);
-    context.rotate(rotation);
-    context.beginPath();
-    const samples = 256;
-    for (let i = 0; i <= samples; i++) {
-      const index = i % samples;
-      const angle = (index / samples) * Math.PI * 2 - Math.PI / 2;
-      const sample = playing ? (timeData[Math.floor(index * timeData.length / samples)] - 128) / 128 : 0;
-      const ripple = playing ? sample * size * .24 : Math.sin(angle * 22) * size * .007;
-      const radius = Math.max(size * .13, base + ripple + pulse * .48);
-      const x = Math.cos(angle) * radius;
-      const y = Math.sin(angle) * radius;
-      if (i === 0) context.moveTo(x, y);
-      else context.lineTo(x, y);
-    }
-    context.closePath();
-    context.lineWidth = intensity > .5 ? 1.5 : 1.1;
-    context.strokeStyle = intensity > .62 ? palette.highlight
-      : intensity > .28 ? palette.bright : palette.cyan;
-    context.shadowBlur = intensity > .45 ? 9 : 4;
-    context.shadowColor = 'rgba(0,174,222,.55)';
-    context.stroke();
-    context.shadowBlur = 0;
-    context.restore();
-
+    ctx.shadowBlur = 0;
     if (player.isPlaying()) animationId = window.requestAnimationFrame(draw);
     else animationId = 0;
   }
@@ -491,7 +441,7 @@ function installWaveVisualizer(player) {
     draw();
   }
 
-  // Start the AudioContext from a user gesture when possible.
+  // Resume Web Audio from an actual user gesture, preserving existing controls.
   document.querySelector('#wave-play')?.addEventListener('pointerdown', connectAudio, { passive: true });
   document.querySelector('#wave-previous')?.addEventListener('pointerdown', connectAudio, { passive: true });
   document.querySelector('#wave-next')?.addEventListener('pointerdown', connectAudio, { passive: true });
