@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +13,13 @@
   <link rel="stylesheet" href="css/wave.css">
 </head>
 <body>
-  <!-- WAVE SPLASH: uses shared styles.css and js/main.js behavior -->
+  <!-- WAVE SPLASH: shared splash behavior -->
   <div id="lss-page-splash" data-duration="2500" aria-hidden="false" aria-label="Wave splash screen">
     <picture class="lss-page-splash-picture">
       <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/wavesplashmob.jpg">
-      <img class="lss-page-splash-image"
-           src="https://light-speed-studios.b-cdn.net/wavesplashdesktop.jpg"
-           alt="Light Speed Studios Wave"
-           decoding="sync" fetchpriority="high" loading="eager">
+      <img class="lss-page-splash-image" src="https://light-speed-studios.b-cdn.net/wavesplashdesktop.jpg" alt="Light Speed Studios Wave" decoding="sync" fetchpriority="high" loading="eager">
     </picture>
   </div>
-
   <!-- Shared site navigation -->
   <header class="lss-nav-bar">
     <a class="lss-nav-logo" href="index.html">
@@ -41,7 +38,6 @@
       <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
     </nav>
   </header>
-
   <main class="wave-page">
     <div class="wave-shell">
       <section class="vault-archive-hero wave-page-hero" aria-labelledby="wave-title">
@@ -49,13 +45,11 @@
         <h1 id="wave-title">Wave</h1>
         <p>Instrumental Remixes &amp; Originals</p>
       </section>
-
       <section class="wave-feature wave-corners" aria-labelledby="player-heading">
         <div class="wave-feature-top">
           <div class="wave-section-eyebrow"><span class="wave-live-dot"></span> DIGITAL SALVATION</div>
           <span class="wave-feature-status" id="wave-status-label">SELECTED TRACK</span>
         </div>
-
         <div class="wave-player-layout">
           <div class="wave-player">
             <div class="wave-inline-metadata" aria-label="Current track details">
@@ -64,12 +58,8 @@
               <span class="wave-inline-meta">
                 <span id="wave-type">FEATURED REMIXES</span>
                 <span class="wave-meta-separator">/</span>
-                <span id="wave-track-number">TRACK 19</span>
+                <span id="wave-track-number">TRACK 14</span>
               </span>
-              <button id="wave-feature-like" class="wave-feature-like" type="button" aria-pressed="false" aria-label="Like Wide Awake" title="Like Wide Awake">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
-                <span id="wave-feature-like-count">…</span>
-              </button>
             </div>
             <div class="wave-player-caption">
               <span>FREQUENCY / AUDIO VISUALIZATION</span>
@@ -84,11 +74,12 @@
               <span id="wave-duration">0:00</span>
             </div>
             <div class="wave-controls">
-              <!-- LSS logo on the left -->
-              <div class="wave-controls-logo">
-                <img src="https://light-speed-studios.b-cdn.net/lsslogo.png" alt="Light Speed Studios logo">
+              <div class="wave-controls-like">
+                <button id="wave-feature-like" class="wave-feature-like" type="button" aria-pressed="false" aria-label="Like Wide Awake" title="Like Wide Awake">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+                  <span id="wave-feature-like-count">…</span>
+                </button>
               </div>
-              <!-- Playback controls centered -->
               <div class="wave-transport">
                 <button class="wave-icon-button" id="wave-previous" type="button" aria-label="Previous track" title="Previous track">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5v14M19 5 8 12l11 7z"/></svg>
@@ -101,7 +92,6 @@
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5v14M5 5l11 7-11 7z"/></svg>
                 </button>
               </div>
-              <!-- Volume controls on the right -->
               <div class="wave-volume">
                 <button id="wave-mute" class="wave-icon-button wave-volume-icon" type="button" aria-label="Mute" title="Mute">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4ZM17 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>
@@ -111,31 +101,33 @@
             </div>
             <p id="wave-player-message" class="wave-player-message" role="status" aria-live="polite">Select a track to listen.</p>
           </div>
-          <aside class="wave-visualizer-panel" aria-label="Live audio-reactive circular visualizer">
+          <aside class="wave-visualizer-panel" aria-label="Choose HALO or ECHO audio visualizer">
+            <div class="wave-visualizer-modes" role="group" aria-label="Circular visualizer mode">
+              <button type="button" class="wave-visualizer-mode active" data-wave-visualizer-mode="halo" aria-pressed="true">HALO</button>
+              <button type="button" class="wave-visualizer-mode" data-wave-visualizer-mode="echo" aria-pressed="false">ECHO</button>
+            </div>
             <div class="wave-visualizer-frame">
-              <canvas id="wave-live-visualizer" aria-label="Audio-reactive cyan circular bar visualizer" role="img"></canvas>
+              <canvas id="wave-live-visualizer" aria-label="Circular audio-reactive visualizer" role="img"></canvas>
+              <img class="wave-visualizer-logo" src="https://light-speed-studios.b-cdn.net/lsslogo.png" alt="" aria-hidden="true">
             </div>
           </aside>
         </div>
       </section>
-
       <a class="wave-scroll-cue" href="#wave-library-title">SCROLL FOR PLAYLIST</a>
-
       <section class="wave-library" aria-labelledby="wave-library-title">
         <div class="wave-library-header">
           <div>
             <span class="wave-small-label">COLLECTION</span>
-<h2 id="wave-library-title">DIGITAL SALVATION PLAYLIST</h2>
+            <h2 id="wave-library-title">DIGITAL SALVATION PLAYLIST</h2>
           </div>
-
-<div class="wave-filters" id="wave-filters" aria-label="Filter remixes">
-  <button type="button" class="wave-filter active" data-filter="all" aria-pressed="true">ALL TRACKS | 22</button>
-  <button type="button" class="wave-filter" data-filter="featured" aria-pressed="false">FEATURED REMIXES | 16</button>
-  <button type="button" class="wave-filter" data-filter="original" aria-pressed="false">ORIGINAL TRACKS | 6</button>
-</div>
-
+        </div>
+        <div class="wave-filters" id="wave-filters" aria-label="Filter remixes">
+          <button type="button" class="wave-filter active" data-filter="all" aria-pressed="true">ALL TRACKS | 18</button>
+          <button type="button" class="wave-filter" data-filter="featured" aria-pressed="false">FEATURED REMIXES | 11</button>
+          <button type="button" class="wave-filter" data-filter="original" aria-pressed="false">ORIGINAL TRACKS | 7</button>
+        </div>
         <div class="wave-list-head" aria-hidden="true">
-           <span>TRACK</span><span>SOURCE</span><span>LENGTH</span><span>LIKES</span>
+          <span>TRACK</span><span>SOURCE</span><span>LENGTH</span><span>LIKES</span>
         </div>
         <div id="wave-track-list" class="wave-track-list" aria-label="Remix track listing" tabindex="0"></div>
         <p id="wave-empty-state" class="wave-empty-state" hidden>No tracks in this collection.</p>
@@ -171,9 +163,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       const scrollCue = document.querySelector('.wave-scroll-cue');
       if (!scrollCue) return;
-      function updateScrollCue() {
-        scrollCue.classList.toggle('is-hidden', window.scrollY > 120);
-      }
+      function updateScrollCue() { scrollCue.classList.toggle('is-hidden', window.scrollY > 120); }
       window.addEventListener('scroll', updateScrollCue, { passive: true });
       updateScrollCue();
     });
