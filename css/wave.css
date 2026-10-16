@@ -1,3 +1,4 @@
+
 /* WAVE | page-only styles. Load after css/styles.css. */
 .wave-page {
     background: #040e15;
@@ -1827,4 +1828,31 @@ html {
   .wave-page .wave-volume-bars i:nth-child(3) { height: 15px; }
   .wave-page .wave-volume-bars i:nth-child(4) { height: 20px; }
   .wave-page .wave-volume-bars i:nth-child(5) { height: 24px; }
+}
+
+
+/* WAVE fine-tuning: clean volume interaction and centered visualizer */
+.wave-page .wave-volume-meter:focus-within {
+  outline: none;
+}
+.wave-page .wave-volume-meter input#wave-volume:focus {
+  outline: none;
+}
+/* Keyboard navigation remains visible without a rectangular focus box. */
+.wave-page .wave-volume-meter:has(input#wave-volume:focus-visible) .wave-volume-bars {
+  filter: drop-shadow(0 0 3px rgba(0, 174, 222, .8));
+}
+
+@media (min-width: 901px) {
+  .wave-page .wave-visualizer-panel {
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+  }
+  .wave-page .wave-visualizer-modes,
+  .wave-page .wave-visualizer-frame {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
