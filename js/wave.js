@@ -156,21 +156,57 @@ function timeString(seconds) {
 }
 function setMessage(message) { els.status.textContent = message; }
 function waveformHeights(seed, size) {
-  // Decorative bars only. Actual file waveform is rendered by WaveSurfer in main player.
+  // Deterministic, full-song silhouette with distinct quiet and loud passages.
+  const sections = [0.48, 0.76, 0.87, 0.91, 0.84, 0.35, 0.57, 0.70, 0.83, 0.95, 0.72, 0.86, 0.18];
   return Array.from({ length: size }, (_, i) => {
-    const a = Math.abs(Math.sin((i + seed * 11) * 0.43) * Math.cos((i + seed * 7) * 0.17));
-    const b = Math.abs(Math.sin((i + seed) * 0.09));
-    return Math.round(9 + (a * 0.72 + b * 0.28) * 86);
+    const p = i / Math.max(1, size - 1) * (sections.length - 1);
+    const index = Math.floor(p);
+    const mix = p - index;
+    const envelope = sections[index] * (1 - mix) + sections[Math.min(index + 1, sections.length - 1)] * mix;
+    const transient = 0.66 + 0.22 * Math.abs(Math.sin((i + seed) * 1.47)) +
+      0.12 * Math.abs(Math.sin(i * 0.34 + seed * 0.11));
+    return Math.round(Math.max(5, Math.min(96, envelope * transient * 100)));
   });
 }
+let placeholderDecayFrame = 0;
+let placeholderDecayStarted = 0;
+function animatePlaceholderDecay() {
+  if (placeholderDecayFrame) cancelAnimationFrame(placeholderDecayFrame);
+  placeholderDecayStarted = performance.now();
+  const bars = [...els.placeholder.children];
+  const original = bars.map(bar => Number.parseFloat(bar.style.height) || 0);
+  const duration = 2500;
+  function step(now) {
+    const p = Math.min(1, (now - placeholderDecayStarted) / duration);
+    const remaining = Math.pow(1 - p, 2.1);
+    bars.forEach((bar, i) => {
+      const ripple = 1 + 0.06 * Math.sin(p * 15 + i * 0.13) * (1 - p);
+      bar.style.height = `${Math.max(0, original[i] * remaining * ripple)}%`;
+    });
+    if (p < 1 && !els.placeholder.classList.contains('is-hidden')) {
+      placeholderDecayFrame = requestAnimationFrame(step);
+    } else {
+      placeholderDecayFrame = 0;
+    }
+  }
+  placeholderDecayFrame = requestAnimationFrame(step);
+}
 function populatePlaceholder(index) {
+  if (placeholderDecayFrame) cancelAnimationFrame(placeholderDecayFrame);
+  placeholderDecayFrame = 0;
   els.placeholder.replaceChildren();
-  waveformHeights(index + 1, 130).forEach(height => {
+  waveformHeights(index + 1, 230).forEach(height => {
     const bar = document.createElement('span');
     bar.style.height = `${height}%`;
     els.placeholder.append(bar);
   });
+  // The opening fades once; subsequent track loads use the static silhouette.
+  if (!populatePlaceholder.hasAnimated) {
+    populatePlaceholder.hasAnimated = true;
+    animatePlaceholderDecay();
+  }
 }
+
 function updatePlayIcon(isPlaying) {
   els.play.classList.toggle('is-playing', isPlaying);
   els.play.setAttribute('aria-label', isPlaying ? 'Pause track' : 'Play track');
@@ -342,19 +378,24 @@ function installWaveVisualizer(player) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
-
+  const modeButtons = document.querySelectorAll('[data-wave-visualizer-mode]');
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;
   const media = player.getMediaElement();
   media.crossOrigin = 'anonymous';
   let audioContext = null;
   let analyser = null;
   let frequencyData = null;
-  let animationId = 0;
+  let frame = 0;
   let width = 240;
   let height = 240;
-  const levels = new Float32Array(112);
+  let mode = 'halo';
   let failed = false;
   let destroyed = false;
+  const haloLevels = new Float32Array(112);
+  const echoLevels = new Float32Array(88);
+  const openingDuration = 3000;
+  let openingStart = performance.now();
+  let openingEnabled = true;
 
   function connectAudio() {
     if (failed || destroyed || !AudioContextClass) return;
@@ -374,7 +415,7 @@ function installWaveVisualizer(player) {
       if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
     } catch (error) {
       failed = true;
-      console.warn('WAVE spectrum ring could not initialize:', error);
+      console.warn('WAVE visualizer could not initialize:', error);
     }
   }
 
@@ -387,55 +428,74 @@ function installWaveVisualizer(player) {
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    if (!animationId) draw();
+    if (!frame) draw();
   }
 
   function draw() {
     if (destroyed) return;
+    frame = 0;
     ctx.clearRect(0, 0, width, height);
     const size = Math.min(width, height);
     const cx = width / 2;
     const cy = height / 2;
-    // Leave room for peaks inside the existing 218px desktop visualizer frame.
     const radius = size * 0.285;
     const maxLength = size * 0.185;
     const playing = player.isPlaying() && analyser && audioContext?.state === 'running';
-    if (playing) analyser.getByteFrequencyData(frequencyData);
-
+    if (playing) {
+      openingEnabled = false;
+      analyser.getByteFrequencyData(frequencyData);
+    }
+    const openingProgress = Math.min(1, (performance.now() - openingStart) / openingDuration);
+    const opening = openingEnabled && openingProgress < 1 && !playing;
+    const openingStrength = opening ? Math.pow(1 - openingProgress, 1.7) : 0;
+    if (!opening && openingProgress >= 1) openingEnabled = false;
+    const levels = mode === 'halo' ? haloLevels : echoLevels;
     let stillMoving = false;
+
     for (let i = 0; i < levels.length; i++) {
-      // Musical low and middle frequencies with gradual sampling up the spectrum.
-      const position = i / levels.length;
-      const bin = Math.min(frequencyData ? frequencyData.length - 1 : 0,
-        Math.floor(3 + Math.pow(position, 1.7) * 260));
+      const angle = i * Math.PI * 2 / levels.length - Math.PI / 2;
+      const fraction = i / levels.length;
+      let bin;
+      if (mode === 'halo') {
+        // Mirror quadrants to keep HALO visually balanced in every direction.
+        const quadrant = levels.length / 4;
+        const position = i % (quadrant * 2);
+        const mirrored = Math.min(position, quadrant * 2 - position);
+        bin = Math.floor(3 + Math.pow(mirrored / quadrant, 1.4) * 195);
+      } else {
+        // ECHO follows the original independent frequency distribution.
+        bin = Math.floor(2 + Math.pow(fraction, 1.65) * 205);
+      }
+      bin = Math.min((frequencyData?.length || 512) - 1, bin);
       const amplitude = playing ? frequencyData[bin] / 255 : 0;
-      const target = Math.pow(amplitude, 1.28);
-      levels[i] += (target - levels[i]) * (target > levels[i] ? 0.35 : 0.15);
+      const liveTarget = Math.pow(amplitude, mode === 'halo' ? 1.28 : 1.15);
+      // Symmetric synthetic ending pattern, with subtle evolving micro-movement.
+      const quadrantPosition = i % (levels.length / 2);
+      const mirroredPosition = Math.min(quadrantPosition, levels.length / 2 - quadrantPosition);
+      const phase = mirroredPosition / (levels.length / 4);
+      const pattern = 0.31 + 0.51 * Math.abs(Math.sin(phase * 9.3 + 0.7) * Math.cos(phase * 4.1 + 0.2));
+      const synthetic = openingStrength * pattern * (0.96 + 0.04 * Math.sin(performance.now() / 145 + phase * 12));
+      const target = playing ? liveTarget : synthetic;
+      levels[i] += (target - levels[i]) * (target > levels[i] ? 0.35 : 0.18);
       if (levels[i] < 0.0015) levels[i] = 0;
       const level = levels[i];
       if (level > 0) stillMoving = true;
-      if (!level) continue; // Idle shows the circle only.
-
-      const angle = i * Math.PI * 2 / levels.length - Math.PI / 2;
-      const cos = Math.cos(angle);
-      const sin = Math.sin(angle);
-      const length = level * maxLength;
+      if (!level) continue;
       const start = radius + size * 0.013;
-      const end = start + length;
-      const hue = 194 + 17 * Math.sin(angle + 0.6); // Cyan, teal, adjacent blue.
-      const lightness = 48 + level * 15;
+      const barLength = (mode === 'halo' ? maxLength : size * 0.125) * level;
+      const hue = mode === 'halo' ? 194 + 17 * Math.sin(angle + 0.6) : 194;
+      const lightness = mode === 'halo' ? 48 + level * 15 : 34 + level * 22;
       ctx.beginPath();
-      ctx.moveTo(cx + cos * start, cy + sin * start);
-      ctx.lineTo(cx + cos * end, cy + sin * end);
+      ctx.moveTo(cx + Math.cos(angle) * start, cy + Math.sin(angle) * start);
+      ctx.lineTo(cx + Math.cos(angle) * (start + barLength), cy + Math.sin(angle) * (start + barLength));
       ctx.strokeStyle = `hsl(${hue} 100% ${lightness}%)`;
-      ctx.lineWidth = Math.max(1.5, size * 0.010);
-      ctx.lineCap = 'butt';
+      ctx.lineWidth = Math.max(1.4, size * (mode === 'halo' ? 0.010 : 0.008));
+      ctx.lineCap = mode === 'halo' ? 'butt' : 'round';
       ctx.shadowColor = 'rgba(0,174,222,0.36)';
       ctx.shadowBlur = level > 0.4 ? 4 : 0;
       ctx.stroke();
     }
-
-    // Always-visible fine ring; keep the entire interior clear and transparent.
+    // Both modes retain the clean center and static cyan boundary.
     ctx.shadowBlur = Math.max(2, size * 0.014);
     ctx.shadowColor = 'rgba(0,174,222,0.42)';
     ctx.strokeStyle = '#00AEDE';
@@ -444,22 +504,21 @@ function installWaveVisualizer(player) {
     ctx.arc(cx, cy, radius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.shadowBlur = 0;
-
-    // Continue during playback and long enough for the bars to retract on pause.
-    if (playing || stillMoving) animationId = requestAnimationFrame(draw);
-    else animationId = 0;
+    if (playing || opening || stillMoving) frame = requestAnimationFrame(draw);
   }
 
-  function start() {
-    connectAudio();
-    if (!animationId) animationId = requestAnimationFrame(draw);
+  function ensureFrame() { if (!frame) frame = requestAnimationFrame(draw); }
+  function changeMode(nextMode) {
+    if (nextMode !== 'halo' && nextMode !== 'echo') return;
+    mode = nextMode;
+    modeButtons.forEach(button => {
+      const active = button.dataset.waveVisualizerMode === mode;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    ensureFrame();
   }
-  function stop() {
-    // Run the easing frames until all bars have fully returned to the ring.
-    if (!animationId) animationId = requestAnimationFrame(draw);
-  }
-
-  // Preserve the existing user-gesture audio activation and WaveSurfer hooks.
+  modeButtons.forEach(button => button.addEventListener('click', () => changeMode(button.dataset.waveVisualizerMode)));
   document.querySelector('#wave-play')?.addEventListener('pointerdown', connectAudio, { passive: true });
   document.querySelector('#wave-previous')?.addEventListener('pointerdown', connectAudio, { passive: true });
   document.querySelector('#wave-next')?.addEventListener('pointerdown', connectAudio, { passive: true });
@@ -467,18 +526,19 @@ function installWaveVisualizer(player) {
     if (event.target.closest('.wave-track-select')) connectAudio();
   }, { passive: true });
   document.querySelector('#waveform')?.addEventListener('pointerdown', connectAudio, { passive: true });
-  player.on('play', start);
-  player.on('pause', stop);
-  player.on('finish', stop);
+  player.on('play', () => { openingEnabled = false; ensureFrame(); });
+  player.on('pause', ensureFrame);
+  player.on('finish', ensureFrame);
   player.on('destroy', () => {
     destroyed = true;
-    if (animationId) cancelAnimationFrame(animationId);
-    animationId = 0;
+    if (frame) cancelAnimationFrame(frame);
+    frame = 0;
     if (audioContext) audioContext.close().catch(() => {});
   });
   if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas.parentElement);
   else window.addEventListener('resize', resize, { passive: true });
   resize();
+  ensureFrame();
 }
 
 try {
@@ -539,7 +599,16 @@ window.addEventListener('resize', () => {
   surfer.setVolume(0.75);
   surfer.on('ready', () => {
     if (audioLoadFailed) return;
-    els.placeholder.classList.add('is-hidden');
+    // Keep the first placeholder visible until its opening decay reaches the line.
+    if (placeholderDecayFrame) {
+      const readyIndex = selectedIndex;
+      const remaining = Math.max(0, 2500 - (performance.now() - placeholderDecayStarted));
+      setTimeout(() => {
+        if (selectedIndex === readyIndex) els.placeholder.classList.add('is-hidden');
+      }, remaining);
+    } else {
+      els.placeholder.classList.add('is-hidden');
+    }
     els.mode.textContent = 'WAVEFORM';
     const duration = surfer.getDuration();
     if (Number.isFinite(duration) && duration > 0) TRACKS[selectedIndex].duration = duration;
