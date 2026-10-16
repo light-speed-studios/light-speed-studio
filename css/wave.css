@@ -1,3 +1,4 @@
+
 /* WAVE | page-only styles. Load after css/styles.css. */
 .wave-page {
     background: #040e15;
@@ -1590,4 +1591,88 @@ html {
   justify-content: flex-start;
   width: 100%;
   margin-left: 0;
+}
+
+/* WAVE approved Now Playing: heart in transport, HALO / ECHO and centered logo. */
+.wave-page .wave-controls-like {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+.wave-page .wave-controls-like .wave-feature-like {
+  margin: 0;
+  padding: 7px 4px;
+  border-left: 0;
+  gap: 8px;
+  color: #00AEDE;
+  font-size: 13px;
+}
+.wave-page .wave-controls-like .wave-feature-like svg {
+  width: 23px;
+  height: 23px;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+.wave-page .wave-visualizer-modes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0,174,222,.75);
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 0 auto 6px;
+  flex: none;
+}
+.wave-page .wave-visualizer-mode {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: #B6CDDA;
+  cursor: pointer;
+  padding: 6px 17px;
+  font: 600 10px 'Oxanium',sans-serif;
+  letter-spacing: 1.4px;
+}
+.wave-page .wave-visualizer-mode.active {
+  background: #00AEDE;
+  color: #04121A;
+}
+.wave-page .wave-visualizer-mode:focus-visible {
+  outline: 2px solid #E0F3F9;
+  outline-offset: -3px;
+}
+.wave-page .wave-visualizer-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26%;
+  height: 26%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 1;
+}
+.wave-page .wave-visualizer-panel { justify-content: center; }
+.wave-page .wave-visualizer-frame { flex: none; }
+.wave-page .waveform-placeholder span {
+  background: #36586B;
+  opacity: .9;
+  border-radius: 0;
+}
+@media (max-width: 540px) {
+  .wave-page .wave-controls-like .wave-feature-like svg { width: 22px; height: 22px; }
+  .wave-page .wave-controls-like .wave-feature-like { font-size: 11px; }
+}
+/* Keep the mode selector above the ring without increasing the compact panel height. */
+@media (min-width: 901px) {
+  .wave-page .wave-visualizer-panel { position: relative; }
+  .wave-page .wave-visualizer-modes {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    margin: 0;
+  }
 }
