@@ -1,3 +1,4 @@
+
 /* WAVE | page-only styles. Load after css/styles.css. */
 .wave-page {
     background: #040e15;
@@ -1710,4 +1711,65 @@ html {
   width: 100%;
   height: auto;
   aspect-ratio: 1 / 1;
+}
+
+/* WAVE: five-step rising-bar volume slider. Native range stays keyboard/touch accessible. */
+.wave-page .wave-volume-meter {
+  position: relative;
+  flex: 0 0 65px;
+  width: 65px;
+  height: 36px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.wave-page .wave-volume-bars {
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 32px;
+}
+.wave-page .wave-volume-bars i {
+  display: block;
+  width: 8px;
+  flex: 0 0 8px;
+  background: #637786;
+  border-radius: 1px 1px 0 0;
+  transition: background-color .14s ease;
+}
+.wave-page .wave-volume-bars i:nth-child(1) { height: 11px; }
+.wave-page .wave-volume-bars i:nth-child(2) { height: 16px; }
+.wave-page .wave-volume-bars i:nth-child(3) { height: 21px; }
+.wave-page .wave-volume-bars i:nth-child(4) { height: 26px; }
+.wave-page .wave-volume-bars i:nth-child(5) { height: 32px; }
+.wave-page .wave-volume-bars i.is-active { background: #00AEDE; }
+.wave-page .wave-volume-meter input#wave-volume {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+  touch-action: none;
+}
+.wave-page .wave-volume-meter:focus-within {
+  outline: 2px solid #00AEDE;
+  outline-offset: 3px;
+}
+/* Restore the existing speaker icon at all sizes, including mobile. */
+.wave-page .wave-volume-icon { display: inline-flex; }
+@media (max-width: 540px) {
+  .wave-page .wave-volume { gap: 2px; }
+  .wave-page .wave-volume-meter { flex-basis: 54px; width: 54px; height: 32px; }
+  .wave-page .wave-volume-bars { gap: 4px; height: 27px; }
+  .wave-page .wave-volume-bars i { width: 7px; flex-basis: 7px; }
+  .wave-page .wave-volume-bars i:nth-child(1) { height: 9px; }
+  .wave-page .wave-volume-bars i:nth-child(2) { height: 14px; }
+  .wave-page .wave-volume-bars i:nth-child(3) { height: 18px; }
+  .wave-page .wave-volume-bars i:nth-child(4) { height: 23px; }
+  .wave-page .wave-volume-bars i:nth-child(5) { height: 27px; }
+  .wave-page .wave-volume-icon { padding: 4px; }
 }
