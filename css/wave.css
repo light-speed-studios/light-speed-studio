@@ -1,4 +1,3 @@
-
 /* WAVE | page-only styles. Load after css/styles.css. */
 .wave-page {
     background: #040e15;
@@ -1698,4 +1697,17 @@ html {
     max-width: 180px;
     margin: 0 auto;
   }
+}
+
+/* HALO / ECHO: enforce a square drawing surface at every viewport size. */
+.wave-page .wave-visualizer-frame {
+  aspect-ratio: 1 / 1;
+  height: auto;
+  flex-shrink: 0;
+}
+.wave-page #wave-live-visualizer {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
