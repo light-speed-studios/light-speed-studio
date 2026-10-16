@@ -1,4 +1,3 @@
-
 /**
  * WAVE | Light Speed Studios
  * WaveSurfer.js v7, SoundCloud-style bars.
@@ -452,25 +451,60 @@ function installWaveVisualizer(player) {
     const levels = mode === 'halo' ? haloLevels : echoLevels;
     let stillMoving = false;
 
+    const averageBand = (from, to) => {
+      if (!playing || !frequencyData?.length) return 0;
+      const upper = frequencyData.length - 1;
+      const start = Math.max(0, Math.min(upper, from | 0));
+      const end = Math.max(start, Math.min(upper, to | 0));
+      let total = 0;
+      for (let idx = start; idx <= end; idx++) total += frequencyData[idx];
+      return total / ((end - start + 1) * 255);
+    };
+
+    const lowEnergy = averageBand(2, 22);
+    const midEnergy = averageBand(23, 90);
+    const highEnergy = averageBand(91, 210);
+    const playbackFloor = playing ? Math.min(0.24, 0.035 + lowEnergy * 0.16 + midEnergy * 0.08) : 0;
+
     for (let i = 0; i < levels.length; i++) {
       const angle = i * Math.PI * 2 / levels.length - Math.PI / 2;
       const fraction = i / levels.length;
-      let bin;
+      let liveTarget = 0;
       if (mode === 'halo') {
-        // Mirror quadrants to keep HALO visually balanced in every direction.
+        // Repeat the same low-to-mid spectrum profile in each quadrant so
+        // quiet passages still light the full circle, not only top/bottom.
         const quadrant = levels.length / 4;
-        const position = i % (quadrant * 2);
-        const mirrored = Math.min(position, quadrant * 2 - position);
-        bin = Math.floor(3 + Math.pow(mirrored / quadrant, 1.4) * 195);
+        const quarterPosition = (i % quadrant) / Math.max(1, quadrant - 1);
+        const primaryBin = Math.floor(8 + Math.pow(quarterPosition, 1.08) * 112);
+        const secondaryBin = Math.floor(24 + Math.pow(1 - quarterPosition, 1.18) * 84);
+        const tertiaryBin = Math.floor(52 + Math.pow(quarterPosition, 1.45) * 118);
+        const sample = (bin) => {
+          if (!playing || !frequencyData?.length) return 0;
+          const upper = frequencyData.length - 1;
+          const center = Math.max(0, Math.min(upper, bin));
+          let total = 0;
+          let count = 0;
+          for (let offset = -2; offset <= 2; offset++) {
+            const idx = center + offset;
+            if (idx >= 0 && idx <= upper) {
+              total += frequencyData[idx];
+              count++;
+            }
+          }
+          return count ? (total / count) / 255 : 0;
+        };
+        const primary = sample(primaryBin);
+        const secondary = sample(secondaryBin);
+        const tertiary = sample(tertiaryBin);
+        const blended = primary * 0.50 + secondary * 0.28 + tertiary * 0.10 + lowEnergy * 0.22 + midEnergy * 0.14 + highEnergy * 0.05;
+        liveTarget = Math.min(1, playbackFloor + Math.pow(blended, 0.76) * 1.08);
       } else {
         // ECHO follows the original independent frequency distribution.
-        bin = Math.floor(2 + Math.pow(fraction, 1.65) * 205);
+        let bin = Math.floor(2 + Math.pow(fraction, 1.65) * 205);
+        bin = Math.min((frequencyData?.length || 512) - 1, bin);
+        const amplitude = playing ? frequencyData[bin] / 255 : 0;
+        liveTarget = Math.pow(amplitude, 1.15);
       }
-      bin = Math.min((frequencyData?.length || 512) - 1, bin);
-      const amplitude = playing ? frequencyData[bin] / 255 : 0;
-      const liveTarget = mode === 'halo'
-        ? Math.min(1, Math.pow(amplitude, 0.78) * 1.40)
-        : Math.pow(amplitude, 1.15);
       // Symmetric synthetic ending pattern, with subtle evolving micro-movement.
       const quadrantPosition = i % (levels.length / 2);
       const mirroredPosition = Math.min(quadrantPosition, levels.length / 2 - quadrantPosition);
