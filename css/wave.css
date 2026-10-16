@@ -1914,6 +1914,6 @@ html {
 /* Desktop: shift ONLY the circular visualizer right beneath FLUX/ECHO. */
 @media (min-width: 901px) {
   .wave-page .wave-visualizer-frame {
-    transform: translateX(30px);
+    transform: translateX(13px);
   }
 }
