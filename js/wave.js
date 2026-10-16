@@ -535,6 +535,12 @@ function installWaveVisualizer(player) {
       ctx.shadowBlur = level > 0.4 ? 4 : 0;
       ctx.stroke();
     }
+    // Match the Play button's subtle cyan-tinted recessed fill in both modes.
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = 'rgba(0, 174, 222, 0.13)';
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.fill();
     // Both modes retain the clean center and static cyan boundary.
     ctx.shadowBlur = Math.max(2, size * 0.014);
     ctx.shadowColor = 'rgba(0,174,222,0.42)';
