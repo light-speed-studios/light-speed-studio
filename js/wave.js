@@ -464,23 +464,19 @@ function installWaveVisualizer(player) {
 try {
 // 1. Create a function to dynamically build gradients based on the container's true height
 const createResponsiveGradient = (color, opacityStart, opacityEnd) => {
-  const container = document.querySelector('#waveform');
-  // Fallback to 94 if container isn't rendered yet, otherwise grab active layout height
-  const currentHeight = container ? container.clientHeight : 94; 
-  
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  const gradient = ctx.createLinearGradient(0, 0, 0, currentHeight);
-  
-  gradient.addColorStop(0, color);       
-  gradient.addColorStop(0.62, color);    // Stays perfectly pinned to the 62% bar split
-  gradient.addColorStop(0.63, 'transparent'); 
-  gradient.addColorStop(0.64, opacityStart); 
+  const gradient = document.createElement('canvas')
+    .getContext('2d')
+    .createLinearGradient(0, 0, 0, 1);
+
+  gradient.addColorStop(0, color);
+  gradient.addColorStop(0.49, color);
+  gradient.addColorStop(0.50, 'transparent');
+  gradient.addColorStop(0.51, opacityStart);
   gradient.addColorStop(1, opacityEnd);
-  
+
   return gradient;
 };
-
+  
 // 2. Generate the responsive gradients on load
 const unplayedGradient = createResponsiveGradient('#36586B', 'rgba(54, 88, 107, 0.70)', 'rgba(54, 88, 107, 0.25)');
 const playedGradient = createResponsiveGradient('#00AEDE', 'rgba(0, 174, 222, 0.70)', 'rgba(0, 174, 222, 0.25)');
@@ -491,7 +487,7 @@ surfer = WaveSurfer.create({
   waveColor: unplayedGradient,      
   progressColor: playedGradient,  
   cursorColor: '#00AEDE',
-  height: 94, // Your CSS controls the responsive mobile shrinking
+  height: 'auto', // Your CSS controls the responsive mobile shrinking
   barWidth: 2,
   barGap: 1,
   barRadius: 0, 
