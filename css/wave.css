@@ -1894,6 +1894,18 @@ html {
   }
   /* Keep the switch centered relative to the circular canvas. */
   .wave-page .wave-visualizer-modes {
-    align-self: flex-end;\n    margin-right: 7px;
+    align-self: flex-end;
+    margin-right: 8px;
+  }
+}
+
+/* Center FLUX/ECHO and the circular visualizer on the same vertical axis. */
+@media (min-width: 901px) {
+  .wave-page .wave-visualizer-panel {
+    justify-content: center;
+    gap: 12px;
+  }
+  .wave-page .wave-visualizer-modes {
+    margin-right: 8px;
   }
 }
