@@ -1856,3 +1856,15 @@ html {
     margin-right: auto;
   }
 }
+
+/* Desktop: extend the waveform column and move the divider / visualizer right. */
+@media (min-width: 1131px) {
+  .wave-page .wave-player-layout {
+    grid-template-columns: minmax(0, 79%) minmax(0, 21%);
+  }
+}
+@media (min-width: 901px) and (max-width: 1130px) {
+  .wave-page .wave-player-layout {
+    grid-template-columns: minmax(0, 76%) minmax(0, 24%);
+  }
+}
