@@ -1868,3 +1868,32 @@ html {
     grid-template-columns: minmax(0, 76%) minmax(0, 24%);
   }
 }
+
+
+/* Desktop: balance visible left waveform and right visualizer margins.
+   Right-align the selector and canvas as a single centered stack within
+   the panel's right inset. Earlier grid-only changes left the visualizer
+   centered in a narrower column, so its right-side gap stayed too large. */
+@media (min-width: 901px) {
+  .wave-page .wave-visualizer-panel {
+    align-items: flex-end;
+    padding-left: 0;
+    padding-right: 22px;
+  }
+  .wave-page .wave-visualizer-modes,
+  .wave-page .wave-visualizer-frame {
+    align-self: flex-end;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .wave-page .wave-visualizer-modes {
+    position: relative;
+    right: 0;
+    left: auto;
+    transform: none;
+  }
+  /* Keep the switch centered relative to the circular canvas. */
+  .wave-page .wave-visualizer-modes {
+    align-self: flex-end;\n    margin-right: 7px;
+  }
+}
