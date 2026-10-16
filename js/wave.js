@@ -438,8 +438,8 @@ function installWaveVisualizer(player) {
     const size = Math.min(width, height);
     const cx = width / 2;
     const cy = height / 2;
-    const radius = size * 0.285;
-    const maxLength = size * 0.185;
+    const radius = size * (mode === 'halo' ? 0.245 : 0.285);
+    const maxLength = size * 0.238;
     const playing = player.isPlaying() && analyser && audioContext?.state === 'running';
     if (playing) {
       openingEnabled = false;
@@ -468,7 +468,9 @@ function installWaveVisualizer(player) {
       }
       bin = Math.min((frequencyData?.length || 512) - 1, bin);
       const amplitude = playing ? frequencyData[bin] / 255 : 0;
-      const liveTarget = Math.pow(amplitude, mode === 'halo' ? 1.28 : 1.15);
+      const liveTarget = mode === 'halo'
+        ? Math.min(1, Math.pow(amplitude, 0.78) * 1.40)
+        : Math.pow(amplitude, 1.15);
       // Symmetric synthetic ending pattern, with subtle evolving micro-movement.
       const quadrantPosition = i % (levels.length / 2);
       const mirroredPosition = Math.min(quadrantPosition, levels.length / 2 - quadrantPosition);
@@ -481,7 +483,7 @@ function installWaveVisualizer(player) {
       const level = levels[i];
       if (level > 0) stillMoving = true;
       if (!level) continue;
-      const start = radius + size * 0.013;
+      const start = radius + size * (mode === 'halo' ? 0.010 : 0.013);
       const barLength = (mode === 'halo' ? maxLength : size * 0.125) * level;
       const hue = mode === 'halo' ? 194 + 17 * Math.sin(angle + 0.6) : 194;
       const lightness = mode === 'halo' ? 48 + level * 15 : 34 + level * 22;
