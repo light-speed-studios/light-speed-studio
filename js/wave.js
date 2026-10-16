@@ -9,10 +9,7 @@ import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js
 
 const TRACKS = [
   {"title": "Under the Sea", "source": "Kingdom of Atlantis / Aquaman OST", "category": "cinematic", "type": "featured", "description": "A remix of Kingdom of Atlantis from the Aquaman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Atlantis.mp3"},
-  {"title": "NightFall", "source": "Fiction / The XX", "category": "ambient", "type": "featured", "description": "A remix of Fiction / The XX.", "url": "https://light-speed-studios.b-cdn.net/Bring%20on%20the%20Night.mp3"},
-  {"title": "Catch You", "source": "Into the Dark / Ferry Corsten", "category": "electronic", "type": "featured", "description": "A remix of Into the Dark / Ferry Corsten.", "url": "https://light-speed-studios.b-cdn.net/Catch%20You.mp3"},
   {"title": "Into the Fight", "source": "No Man’s Land / Wonder Woman OST", "category": "cinematic", "type": "featured", "description": "A remix of No Man’s Land from the Wonder Woman soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Charge.mp3"},
-  {"title": "Fearless", "source": "Lanterns OST / Extended Remix", "category": "cinematic", "type": "featured", "description": "An extended remix inspired / the Lanterns soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Fearlesss.mp3"},
   {"title": "Luna", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Luna.mp3"},
   {"title": "Delimma", "source": "Sucre’s Dilemma / Maricruz / Prison Break OST", "category": "cinematic", "type": "featured", "description": "A remix combining Sucre’s Dilemma and Maricruz from Prison Break.", "url": "https://light-speed-studios.b-cdn.net/Maricruz.mp3"},
   {"title": "Waiting", "source": "Miracle / Beachwood", "category": "ambient", "type": "featured", "description": "A remix of Miracle / Beachwood.", "url": "https://light-speed-studios.b-cdn.net/MIRACLE.mp3"},
@@ -22,14 +19,13 @@ const TRACKS = [
   {"title": "SpeedForce", "source": "At the Speed of Force / Zack Snyder’s Justice League OST", "category": "cinematic", "type": "featured", "description": "A remix of At the Speed of Force from Zack Snyder’s Justice League.", "url": "https://light-speed-studios.b-cdn.net/speed.mp3"},
   {"title": "Stay", "source": "Don’t Let Me Down (Intro) / The Chainsmokers", "category": "electronic", "type": "featured", "description": "A remix of the intro to Don’t Let Me Down / The Chainsmokers.", "url": "https://light-speed-studios.b-cdn.net/stayy.mp3"},
   {"title": "Strike", "source": "Original Track / Digital Salvation", "category": "electronic", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/STRIKE.mp3"},
-  {"title": "The Brain in the Machine", "source": "Doom Patrol Intro", "category": "cinematic", "type": "featured", "description": "A remix of the Doom Patrol intro.", "url": "https://light-speed-studios.b-cdn.net/The%20Brain%20in%20the%20Machine.mp3"},
   {"title": "The Edge", "source": "End of the World / Ivan Shpilevsky", "category": "cinematic", "type": "featured", "description": "A remix of End of the World / Ivan Shpilevsky.", "url": "https://light-speed-studios.b-cdn.net/The%20Edge.mp3"},
   {"title": "The Last Fall", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/The%20Last%20Fall.mp3"},
-  {"title": "Void", "source": "The Expanse Intro", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/Void.mp3"},
   {"title": "Wide Awake", "source": "Wake Up / Slingshot OST", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Wokeup.mp3"},
   {"title": "Call from the Deep", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Syrens%20Call.mp3"},
-  {"title": "Dust & Daylight", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Left%20In%20the%20Dust.mp3"},
-  {"title": "Caught in the Undertow", "source": "He's a Pirate (Remix) / DJ Tiesto", "category": "cinematic", "type": "featured", "description": "A remix of DJ Tiesto's remix of He's a Pirate from Pirates of the Caribbean.", "url": "https://light-speed-studios.b-cdn.net/Into%20the%20Ocean.mp3"},
+  {"title": "Dust & Daylight", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/LeftIntheDust.mp3"},
+  {"title": "Caught in the Undertow", "source": "He's a Pirate (Remix) / DJ Tiesto", "category": "cinematic", "type": "featured", "description": "A remix of DJ Tiesto's remix of He's a Pirate from Pirates of the Caribbean.", "url": "https://light-speed-studios.b-cdn.net/IntotheOcean.mp3"},
+  {"title": "Elsewhere", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Traveler1.mp3"},
 ];
 
 // WAVE likes use only the public, browser-safe Supabase key.
@@ -41,11 +37,10 @@ const supabase = createClient(
 
 // IDs remain stable even when MP3 filenames or track titles change.
 const TRACK_IDS = [
-  'under-the-sea', 'nightfall', 'catch-you', 'into-the-fight', 'fearless',
-  'luna', 'delimma', 'waiting', 'outer-range', 'signal-to-the-stars',
-  'sky-fall', 'speedforce', 'stay', 'strike', 'the-brain-in-the-machine',
-  'the-edge', 'the-last-fall', 'void', 'wide-awake',
-  'call-from-the-deep', 'dust-and-daylight', 'caught-in-the-undertow'
+  'under-the-sea', 'into-the-fight', 'luna', 'delimma', 'waiting',
+  'outer-range', 'signal-to-the-stars', 'sky-fall', 'speedforce', 'stay',
+  'strike', 'the-edge', 'the-last-fall', 'wide-awake', 'call-from-the-deep',
+  'dust-and-daylight', 'caught-in-the-undertow', 'elsewhere'
 ];
 const likeCounts = new Map();
 const likedTracks = new Set();
@@ -142,6 +137,7 @@ const els = {
   label: $('#wave-status-label'), mode: $('#wave-player-mode'),
   placeholder: $('#waveform-placeholder'), trackList: $('#wave-track-list'),
   filters: $('#wave-filters'), empty: $('#wave-empty-state'),
+  count: $('#wave-library-count'),
 };
 
 let selectedIndex = TRACKS.findIndex(track => track.title === 'Wide Awake');
@@ -196,25 +192,9 @@ function updateTrackMetadata(index) {
 }
 function renderLibrary() {
   updateFeatureLike();
-  const filterCounts = {
-    all: TRACKS.length,
-    featured: TRACKS.filter(track => track.type === 'featured').length,
-    original: TRACKS.filter(track => track.type === 'original').length
-  };
-  const filterLabels = {
-    all: 'ALL TRACKS',
-    featured: 'FEATURED REMIXES',
-    original: 'ORIGINAL TRACKS'
-  };
-  els.filters.querySelectorAll('[data-filter]').forEach(button => {
-    const filter = button.dataset.filter;
-    if (Object.hasOwn(filterCounts, filter)) {
-      button.textContent = `${filterLabels[filter]} | ${filterCounts[filter]}`;
-    }
-  });
   const filtered = TRACKS.map((track, index) => ({ ...track, index })).filter(track => {
     return activeFilter === 'all' || track.type === activeFilter;
-  }).sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
+  }).sort((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: 'base' }));
   els.trackList.replaceChildren();
   filtered.forEach(track => {
     // Separate buttons prevent a heart click from selecting/playing the song.
@@ -277,6 +257,17 @@ function renderLibrary() {
     els.trackList.append(row);
   });
   els.empty.hidden = filtered.length !== 0;
+  // Keep counts inside the existing filter buttons. The heading has no count.
+  const counts = {
+    all: TRACKS.length,
+    featured: TRACKS.filter(track => track.type === 'featured').length,
+    original: TRACKS.filter(track => track.type === 'original').length
+  };
+  const labels = { all: 'ALL TRACKS', featured: 'FEATURED REMIXES', original: 'ORIGINAL TRACKS' };
+  els.filters.querySelectorAll('[data-filter]').forEach(button => {
+    const filter = button.dataset.filter;
+    if (Object.hasOwn(counts, filter)) button.textContent = `${labels[filter]} | ${counts[filter]}`;
+  });
 }
 function selectTrack(index, autoPlay = false) {
   selectedIndex = (index + TRACKS.length) % TRACKS.length;
@@ -579,7 +570,7 @@ window.addEventListener('resize', () => {
   els.filters.addEventListener('click', event => {
     const button = event.target.closest('[data-filter]');
     if (!button) return;
-    activeFilter = button.dataset.filter;
+    activeFilter = activeFilter === button.dataset.filter ? 'all' : button.dataset.filter;
     els.filters.querySelectorAll('[data-filter]').forEach(item => {
       const active = item.dataset.filter === activeFilter; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active));
     });
