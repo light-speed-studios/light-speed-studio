@@ -1,3 +1,4 @@
+
 /**
  * WAVE | Light Speed Studios
  * WaveSurfer.js v7, SoundCloud-style bars.
@@ -334,9 +335,8 @@ function loadLibraryDurations() {
 }
 
 
-// Radial bar visualizer adapted from David Lazic's "lounge" canvas concept.
-// Uses the same WaveSurfer media element and playback controls.
-// No separate player, background panel, or duplicate audio request.
+// WAVE custom cyan spectrum ring. Reuses the existing WaveSurfer audio element.
+// Idle: a thin cyan circle. Playing: independent radial bars emerging outward.
 function installWaveVisualizer(player) {
   const canvas = document.querySelector('#wave-live-visualizer');
   if (!canvas) return;
@@ -345,7 +345,6 @@ function installWaveVisualizer(player) {
 
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;
   const media = player.getMediaElement();
-  // Must be set before WaveSurfer starts fetching CDN audio.
   media.crossOrigin = 'anonymous';
   let audioContext = null;
   let analyser = null;
@@ -353,18 +352,19 @@ function installWaveVisualizer(player) {
   let animationId = 0;
   let width = 240;
   let height = 240;
-  let smoothed = new Float32Array(88);
+  const levels = new Float32Array(112);
   let failed = false;
+  let destroyed = false;
 
   function connectAudio() {
-    if (failed || !AudioContextClass) return;
+    if (failed || destroyed || !AudioContextClass) return;
     try {
       if (!audioContext) {
         audioContext = new AudioContextClass();
         analyser = audioContext.createAnalyser();
-        analyser.fftSize = 512;
-        analyser.smoothingTimeConstant = 0.72;
-        analyser.minDecibels = -95;
+        analyser.fftSize = 1024;
+        analyser.smoothingTimeConstant = 0.76;
+        analyser.minDecibels = -92;
         analyser.maxDecibels = -28;
         const source = audioContext.createMediaElementSource(media);
         source.connect(analyser);
@@ -374,11 +374,12 @@ function installWaveVisualizer(player) {
       if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
     } catch (error) {
       failed = true;
-      console.warn('WAVE radial visualizer could not initialize:', error);
+      console.warn('WAVE spectrum ring could not initialize:', error);
     }
   }
 
   function resize() {
+    if (destroyed) return;
     const bounds = canvas.getBoundingClientRect();
     width = Math.max(1, bounds.width);
     height = Math.max(1, bounds.height);
@@ -390,63 +391,75 @@ function installWaveVisualizer(player) {
   }
 
   function draw() {
+    if (destroyed) return;
     ctx.clearRect(0, 0, width, height);
     const size = Math.min(width, height);
     const cx = width / 2;
     const cy = height / 2;
-    const radius = size * 0.35; // Larger ring within the same fixed-size canvas
-    const maxLength = size * 0.125;
-    const active = player.isPlaying() && analyser && audioContext?.state === 'running';
-    if (active) analyser.getByteFrequencyData(frequencyData);
+    // Leave room for peaks inside the existing 218px desktop visualizer frame.
+    const radius = size * 0.285;
+    const maxLength = size * 0.185;
+    const playing = player.isPlaying() && analyser && audioContext?.state === 'running';
+    if (playing) analyser.getByteFrequencyData(frequencyData);
 
-    // A ring of independent frequency bars, not a continuous circular line.
-    // Quiet bars remain visible on #040E15; peaks move through brighter cyans.
-    const count = smoothed.length;
-    for (let i = 0; i < count; i++) {
-      // The lower/mid spectrum is most musical; map progressively upward.
-      const fraction = i / count;
-      const frequencyIndex = Math.min(255, Math.floor(2 + Math.pow(fraction, 1.65) * 205));
-      const amplitude = active ? frequencyData[frequencyIndex] / 255 : 0;
-      const target = Math.pow(amplitude, 1.15);
-      smoothed[i] += (target - smoothed[i]) * (target > smoothed[i] ? 0.35 : 0.14);
-      const level = smoothed[i];
-      const angle = (i / count) * Math.PI * 2 - Math.PI / 2;
-      const barLength = size * 0.012 + level * maxLength;
-      const inner = radius - barLength * 0.20;
-      const outer = radius + barLength * 0.80;
+    let stillMoving = false;
+    for (let i = 0; i < levels.length; i++) {
+      // Musical low and middle frequencies with gradual sampling up the spectrum.
+      const position = i / levels.length;
+      const bin = Math.min(frequencyData ? frequencyData.length - 1 : 0,
+        Math.floor(3 + Math.pow(position, 1.7) * 260));
+      const amplitude = playing ? frequencyData[bin] / 255 : 0;
+      const target = Math.pow(amplitude, 1.28);
+      levels[i] += (target - levels[i]) * (target > levels[i] ? 0.35 : 0.15);
+      if (levels[i] < 0.0015) levels[i] = 0;
+      const level = levels[i];
+      if (level > 0) stillMoving = true;
+      if (!level) continue; // Idle shows the circle only.
+
+      const angle = i * Math.PI * 2 / levels.length - Math.PI / 2;
       const cos = Math.cos(angle);
       const sin = Math.sin(angle);
-
+      const length = level * maxLength;
+      const start = radius + size * 0.013;
+      const end = start + length;
+      const hue = 194 + 17 * Math.sin(angle + 0.6); // Cyan, teal, adjacent blue.
+      const lightness = 48 + level * 15;
       ctx.beginPath();
-      ctx.moveTo(cx + cos * inner, cy + sin * inner);
-      ctx.lineTo(cx + cos * outer, cy + sin * outer);
-      ctx.lineWidth = Math.max(1.2, size * 0.008);
-      ctx.lineCap = 'round';
-      if (level > 0.68) ctx.strokeStyle = '#00AEDE';
-      else if (level > 0.40) ctx.strokeStyle = '#008FB9';
-      else if (level > 0.18) ctx.strokeStyle = '#00779B';
-      else if (level > 0.055) ctx.strokeStyle = '#286C86';
-      else ctx.strokeStyle = '#376A80';
-      ctx.shadowBlur = level > 0.35 ? 7 + level * 8 : 0;
-      ctx.shadowColor = 'rgba(0,174,222,.55)';
+      ctx.moveTo(cx + cos * start, cy + sin * start);
+      ctx.lineTo(cx + cos * end, cy + sin * end);
+      ctx.strokeStyle = `hsl(${hue} 100% ${lightness}%)`;
+      ctx.lineWidth = Math.max(1.5, size * 0.010);
+      ctx.lineCap = 'butt';
+      ctx.shadowColor = 'rgba(0,174,222,0.36)';
+      ctx.shadowBlur = level > 0.4 ? 4 : 0;
       ctx.stroke();
     }
+
+    // Always-visible fine ring; keep the entire interior clear and transparent.
+    ctx.shadowBlur = Math.max(2, size * 0.014);
+    ctx.shadowColor = 'rgba(0,174,222,0.42)';
+    ctx.strokeStyle = '#00AEDE';
+    ctx.lineWidth = Math.max(1, size * 0.008);
+    ctx.beginPath();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.stroke();
     ctx.shadowBlur = 0;
-    if (player.isPlaying()) animationId = window.requestAnimationFrame(draw);
+
+    // Continue during playback and long enough for the bars to retract on pause.
+    if (playing || stillMoving) animationId = requestAnimationFrame(draw);
     else animationId = 0;
   }
 
   function start() {
     connectAudio();
-    if (!animationId) animationId = window.requestAnimationFrame(draw);
+    if (!animationId) animationId = requestAnimationFrame(draw);
   }
   function stop() {
-    if (animationId) window.cancelAnimationFrame(animationId);
-    animationId = 0;
-    draw();
+    // Run the easing frames until all bars have fully returned to the ring.
+    if (!animationId) animationId = requestAnimationFrame(draw);
   }
 
-  // Resume Web Audio from an actual user gesture, preserving existing controls.
+  // Preserve the existing user-gesture audio activation and WaveSurfer hooks.
   document.querySelector('#wave-play')?.addEventListener('pointerdown', connectAudio, { passive: true });
   document.querySelector('#wave-previous')?.addEventListener('pointerdown', connectAudio, { passive: true });
   document.querySelector('#wave-next')?.addEventListener('pointerdown', connectAudio, { passive: true });
@@ -458,7 +471,9 @@ function installWaveVisualizer(player) {
   player.on('pause', stop);
   player.on('finish', stop);
   player.on('destroy', () => {
-    stop();
+    destroyed = true;
+    if (animationId) cancelAnimationFrame(animationId);
+    animationId = 0;
     if (audioContext) audioContext.close().catch(() => {});
   });
   if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas.parentElement);
