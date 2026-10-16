@@ -438,7 +438,7 @@ function installWaveVisualizer(player) {
     const size = Math.min(width, height);
     const cx = width / 2;
     const cy = height / 2;
-    const radius = size * (mode === 'halo' ? 0.245 : 0.285);
+    const radius = size * 0.285;
     const maxLength = size * 0.238;
     const playing = player.isPlaying() && analyser && audioContext?.state === 'running';
     if (playing) {
