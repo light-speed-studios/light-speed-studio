@@ -1676,3 +1676,26 @@ html {
     margin: 0;
   }
 }
+
+/* HALO / ECHO: centered selector and ring with clear separation. */
+@media (min-width: 901px) {
+  .wave-page .wave-visualizer-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  .wave-page .wave-visualizer-modes {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 0;
+  }
+  .wave-page .wave-visualizer-frame {
+    width: min(100%, 180px);
+    max-width: 180px;
+    margin: 0 auto;
+  }
+}
