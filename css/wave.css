@@ -1581,3 +1581,13 @@ html {
     display: none;
   }
 }
+/* Keep playlist filters underneath the heading */
+.wave-page .wave-library-header {
+  display: block;
+}
+
+.wave-page .wave-filters {
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: 0;
+}
