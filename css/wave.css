@@ -1742,7 +1742,7 @@ html {
 .wave-page .wave-volume-bars i:nth-child(3) { height: 21px; }
 .wave-page .wave-volume-bars i:nth-child(4) { height: 26px; }
 .wave-page .wave-volume-bars i:nth-child(5) { height: 32px; }
-.wave-page .wave-volume-bars i.is-active { background: #00AEDE; }
+.wave-page .wave-volume-bars i.is-active { background: #0088AF; }
 .wave-page .wave-volume-meter input#wave-volume {
   position: absolute;
   inset: 0;
