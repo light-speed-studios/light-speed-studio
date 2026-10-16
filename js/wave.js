@@ -28,7 +28,7 @@ const TRACKS = [
   {"title": "Void", "source": "The Expanse Intro", "category": "ambient", "type": "featured", "description": "A remix of the intro to The Expanse.", "url": "https://light-speed-studios.b-cdn.net/Void.mp3"},
   {"title": "Wide Awake", "source": "Wake Up / Slingshot OST", "category": "cinematic", "type": "featured", "description": "A remix of Wake Up from the Slingshot soundtrack.", "url": "https://light-speed-studios.b-cdn.net/Wokeup.mp3"},
   {"title": "Call from the Deep", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Syrens%20Call.mp3"},
-  {"title": "Dust & Daylight", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/Left%20In%20the%20Dust.mp3"},
+  {"title": "Dust & Daylight", "source": "Original Track / Digital Salvation", "category": "ambient", "type": "original", "description": "An original instrumental composition.", "url": "https://light-speed-studios.b-cdn.net/LeftIntheDust.mp3"},
   {"title": "Caught in the Undertow", "source": "He's a Pirate (Remix) / DJ Tiesto", "category": "cinematic", "type": "featured", "description": "A remix of DJ Tiesto's remix of He's a Pirate from Pirates of the Caribbean.", "url": "https://light-speed-studios.b-cdn.net/Into%20the%20Ocean.mp3"},
 ];
 
