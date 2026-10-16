@@ -462,34 +462,36 @@ function installWaveVisualizer(player) {
 }
 
 try {
-// 1. Create a dummy canvas element to build the reflection gradient
-const canvas = document.createElement('canvas');
-const ctx = canvas.getContext('2d');
+// 1. Create a function to dynamically build gradients based on the container's true height
+const createResponsiveGradient = (color, opacityStart, opacityEnd) => {
+  const container = document.querySelector('#waveform');
+  // Fallback to 94 if container isn't rendered yet, otherwise grab active layout height
+  const currentHeight = container ? container.clientHeight : 94; 
+  
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  const gradient = ctx.createLinearGradient(0, 0, 0, currentHeight);
+  
+  gradient.addColorStop(0, color);       
+  gradient.addColorStop(0.62, color);    // Stays perfectly pinned to the 62% bar split
+  gradient.addColorStop(0.63, 'transparent'); 
+  gradient.addColorStop(0.64, opacityStart); 
+  gradient.addColorStop(1, opacityEnd);
+  
+  return gradient;
+};
 
-// 2. Define the vertical gradient for the unplayed bars (Teal) - Calibrated to 62%
-const unplayedGradient = ctx.createLinearGradient(0, 0, 0, 94);
-unplayedGradient.addColorStop(0, '#36586B');       
-unplayedGradient.addColorStop(0.62, '#36586B');    // The perfect solid baseline
-unplayedGradient.addColorStop(0.63, 'transparent'); // Center gap line
-unplayedGradient.addColorStop(0.64, 'rgba(54, 88, 107, 0.70)'); 
-unplayedGradient.addColorStop(1, 'rgba(54, 88, 107, 0.25)');    
+// 2. Generate the responsive gradients on load
+const unplayedGradient = createResponsiveGradient('#36586B', 'rgba(54, 88, 107, 0.70)', 'rgba(54, 88, 107, 0.25)');
+const playedGradient = createResponsiveGradient('#00AEDE', 'rgba(0, 174, 222, 0.70)', 'rgba(0, 174, 222, 0.25)');
 
-// 3. Define the identical vertical gradient for the played bars (Cyan) - Calibrated to 62%
-const playedGradient = ctx.createLinearGradient(0, 0, 0, 94);
-playedGradient.addColorStop(0, '#00AEDE');       
-playedGradient.addColorStop(0.62, '#00AEDE');    // The perfect solid baseline
-playedGradient.addColorStop(0.63, 'transparent'); // Center gap line
-playedGradient.addColorStop(0.64, 'rgba(0, 174, 222, 0.70)');  
-playedGradient.addColorStop(1, 'rgba(0, 174, 222, 0.25)');     
-   
-
-// 4. Initialize WaveSurfer with the updated gradient objects (WITHOUT splitChannels)
+// 3. Initialize WaveSurfer exactly like before
 surfer = WaveSurfer.create({
   container: '#waveform',
   waveColor: unplayedGradient,      
   progressColor: playedGradient,  
   cursorColor: '#00AEDE',
-  height: 94,
+  height: 94, // Your CSS controls the responsive mobile shrinking
   barWidth: 2,
   barGap: 1,
   barRadius: 0, 
@@ -498,7 +500,17 @@ surfer = WaveSurfer.create({
   dragToSeek: true,
 });
 
-
+// 4. Recalculate gradients automatically if the user flips their phone orientation
+window.addEventListener('resize', () => {
+  if (surfer) {
+    const nextUnplayed = createResponsiveGradient('#36586B', 'rgba(54, 88, 107, 0.70)', 'rgba(54, 88, 107, 0.25)');
+    const nextPlayed = createResponsiveGradient('#00AEDE', 'rgba(0, 174, 222, 0.70)', 'rgba(0, 174, 222, 0.25)');
+    surfer.setOptions({
+      waveColor: nextUnplayed,
+      progressColor: nextPlayed
+    });
+  }
+});
 
   // The visualizer shares this WaveSurfer media element and never loads its own MP3.
   installWaveVisualizer(surfer);
