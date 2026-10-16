@@ -1,3 +1,4 @@
+
 /**
  * WAVE | Light Speed Studios
  * WaveSurfer.js v7, SoundCloud-style bars.
@@ -464,7 +465,7 @@ function installWaveVisualizer(player) {
     const lowEnergy = averageBand(2, 22);
     const midEnergy = averageBand(23, 90);
     const highEnergy = averageBand(91, 210);
-    const playbackFloor = playing ? Math.min(0.24, 0.035 + lowEnergy * 0.16 + midEnergy * 0.08) : 0;
+    const playbackFloor = playing ? Math.min(0.095, 0.025 + lowEnergy * 0.055 + midEnergy * 0.025) : 0;
 
     for (let i = 0; i < levels.length; i++) {
       const angle = i * Math.PI * 2 / levels.length - Math.PI / 2;
@@ -496,8 +497,11 @@ function installWaveVisualizer(player) {
         const primary = sample(primaryBin);
         const secondary = sample(secondaryBin);
         const tertiary = sample(tertiaryBin);
-        const blended = primary * 0.50 + secondary * 0.28 + tertiary * 0.10 + lowEnergy * 0.22 + midEnergy * 0.14 + highEnergy * 0.05;
-        liveTarget = Math.min(1, playbackFloor + Math.pow(blended, 0.76) * 1.08);
+        // Let individual frequency peaks determine bar heights. A small shared
+        // floor keeps all sides visible without washing out stronger passages.
+        const localEnergy = primary * 0.78 + secondary * 0.16 + tertiary * 0.06;
+        const contrast = Math.max(0, localEnergy - (lowEnergy * 0.17 + midEnergy * 0.09));
+        liveTarget = Math.min(0.92, playbackFloor + Math.pow(contrast, 1.25) * 0.86);
       } else {
         // ECHO follows the original independent frequency distribution.
         let bin = Math.floor(2 + Math.pow(fraction, 1.65) * 205);
@@ -676,15 +680,24 @@ window.addEventListener('resize', () => {
   });
   els.previous.addEventListener('click', () => selectTrack(selectedIndex - 1, Boolean(TRACKS[(selectedIndex - 1 + TRACKS.length) % TRACKS.length].url)));
   els.next.addEventListener('click', () => selectTrack(selectedIndex + 1, Boolean(TRACKS[(selectedIndex + 1) % TRACKS.length].url)));
+  // Keep the five visible volume bars synced with the native 0-100 slider.
+  const volumeBars = [...document.querySelectorAll('.wave-volume-bars i')];
+  function updateVolumeBars(value) {
+    const activeCount = Math.ceil(Math.max(0, Math.min(100, value)) / 20);
+    volumeBars.forEach((bar, index) => bar.classList.toggle('is-active', index < activeCount));
+  }
+  updateVolumeBars(Number(els.volume.value));
   els.volume.addEventListener('input', () => {
     const value = Number(els.volume.value) / 100;
     surfer.setVolume(value);
+    updateVolumeBars(Number(els.volume.value));
     if (value > 0) lastNonzeroVolume = value;
     els.mute.setAttribute('aria-label', value === 0 ? 'Unmute' : 'Mute');
   });
   els.mute.addEventListener('click', () => {
     const next = surfer.getVolume() > 0 ? 0 : lastNonzeroVolume;
     surfer.setVolume(next); els.volume.value = String(Math.round(next * 100));
+    updateVolumeBars(Number(els.volume.value));
     els.mute.setAttribute('aria-label', next === 0 ? 'Unmute' : 'Mute');
   });
   els.filters.addEventListener('click', event => {
