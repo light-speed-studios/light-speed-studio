@@ -96,7 +96,10 @@
                 <button id="wave-mute" class="wave-icon-button wave-volume-icon" type="button" aria-label="Mute" title="Mute">
                   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4ZM17 9a4 4 0 0 1 0 6M19 6a8 8 0 0 1 0 12"/></svg>
                 </button>
-                <input id="wave-volume" aria-label="Volume" type="range" min="0" max="100" value="75">
+                <div class="wave-volume-meter" aria-hidden="false">
+                  <span class="wave-volume-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                  <input id="wave-volume" aria-label="Volume" type="range" min="0" max="100" value="75">
+                </div>
               </div>
             </div>
             <p id="wave-player-message" class="wave-player-message" role="status" aria-live="polite">Select a track to listen.</p>
