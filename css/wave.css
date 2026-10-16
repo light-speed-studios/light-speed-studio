@@ -1576,3 +1576,8 @@ html {
   .wave-page .wave-visualizer-panel { display: none !important; }
   .wave-page .wave-player-layout { grid-template-columns: minmax(0, 1fr); }
 }
+@media (max-width: 900px) {
+  .wave-volume-icon {
+    display: none;
+  }
+}
