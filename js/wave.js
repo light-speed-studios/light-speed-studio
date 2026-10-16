@@ -214,7 +214,7 @@ function renderLibrary() {
   });
   const filtered = TRACKS.map((track, index) => ({ ...track, index })).filter(track => {
     return activeFilter === 'all' || track.type === activeFilter;
-  });
+  }).sort((a, b) => a.title.localeCompare(b.title, 'en', { sensitivity: 'base' }));
   els.trackList.replaceChildren();
   filtered.forEach(track => {
     // Separate buttons prevent a heart click from selecting/playing the song.
