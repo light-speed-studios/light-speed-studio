@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <title>Pulse | LSS</title>
+</head>
+
+<body>
+
+<header class="lss-nav-bar">
+  <a class="lss-nav-logo" href="index.html">
+    <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+    <span class="lss-brand-text">No Spectacle Without Soul</span>
+  </a>
+
+  <button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="lss-nav-links">
+    <a class="lss-nav-item" href="index.html">Bridge</a>
+    <a class="lss-nav-item" href="vault.html">Vault</a>
+    <a class="lss-nav-item" href="lab.html">Lab</a>
+    <a class="lss-nav-item active" href="pulse.html">Pulse</a>
+    <a class="lss-nav-item" href="telemetry.html">Telemetry</a>
+  </nav>
+</header>
+
+<main class="page-content">
+
+  <style>
+    .pulse-shell {
+      --cyan: #00AEDE;
+      --text-main: #BAC7D5;
+
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      padding: 34px 20px 60px;
+      font-family: Rajdhani, Arial, sans-serif;
+    }
+
+    .pulse-shell .vault-archive-hero {
+      margin-bottom: 24px;
+    }
+
+    .pulse-box {
+      position: relative;
+      margin: 0 0 22px;
+
+      background:
+        linear-gradient(45deg, rgba(0, 174, 222, 0.08), transparent 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
+        rgba(4, 14, 21, 0.86);
+
+      box-shadow:
+        0 0 34px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(186, 199, 213, 0.09);
+
+      overflow: hidden;
+    }
+
+    .pulse-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+
+      background:
+        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
+        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
+
+      opacity: 0.72;
+    }
+
+    .pulse-box > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .pulse-text-bar {
+      padding: 38px 48px 48px;
+    }
+
+    .pulse-text-wall p {
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.6;
+      color: rgba(186, 199, 213, 0.9);
+      margin: 0 0 22px;
+      text-align: justify;
+    }
+
+    .pulse-text-wall p:last-child {
+      margin-bottom: 0;
+    }
+
+    .pulse-text-wall em {
+      color: var(--text-main);
+      font-style: italic;
+    }
+
+
+    /* =======================================================
+       PULSE NEWSLETTER
+    ======================================================= */
+
+    .pulse-newsletter {
+      width: 100%;
+      margin: 30px auto 0;
+      text-align: center;
+    }
+
+    .pulse-newsletter .lss-embed {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pulse-newsletter .lss-form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pulse-newsletter .lss-label {
+      margin: 0;
+      padding: 0;
+      color: #00AEDE;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .pulse-newsletter .lss-form-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pulse-newsletter .lss-input {
+      width: 215px;
+      height: 30px;
+      padding: 4px 12px;
+      box-sizing: border-box;
+
+      background: transparent;
+      border: 2px solid #d9d9d9;
+      border-radius: 8px;
+
+      color: #d9d9d9;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 0.8em;
+      font-weight: 300;
+      text-align: center;
+    }
+
+    .pulse-newsletter .lss-input::placeholder {
+      color: #9aa1b3;
+    }
+
+    .pulse-newsletter .lss-button {
+      width: auto;
+      height: 30px;
+      padding: 4px 10px;
+
+      background: #00AEDE;
+      border: none;
+      border-radius: 8px;
+
+      color: #020015;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 0.9em;
+      font-weight: 400;
+
+      cursor: pointer;
+      transition: background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .pulse-newsletter .lss-button:hover {
+      background: #0095c2;
+    }
+
+    .pulse-newsletter .lss-turnstile-row {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 14px;
+    }
+
+    .pulse-newsletter .lss-turnstile-row .cf-turnstile {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .pulse-newsletter .lss-disclaimer {
+      margin: 14px 0 0;
+      color: #bdbdbd;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+
+    /* =======================================================
+       MOBILE
+    ======================================================= */
+
+    @media (max-width: 900px) {
+      .pulse-text-bar {
+        padding: 24px 20px;
+      }
+
+      .pulse-text-wall p {
+        font-size: 18px;
+      }
+
+      .pulse-newsletter {
+        margin-top: 26px;
+      }
+
+      .pulse-newsletter .lss-form {
+        width: 100%;
+      }
+
+      .pulse-newsletter .lss-turnstile-row {
+        width: 100%;
+        margin-top: 12px;
+      }
+
+      .pulse-newsletter .cf-turnstile {
+        width: min(300px, 100%);
+        max-width: 100%;
+      }
+    }
+  </style>
+
+
+  <div class="pulse-shell">
+
+    <section class="vault-archive-hero">
+      <div class="vault-archive-frame"></div>
+
+      <h1>Pulse</h1>
+
+      <p>About the Editor</p>
+    </section>
+
+
+    <div class="pulse-box pulse-text-bar">
+
+      <div class="pulse-text-wall">
+
+        <p>
+          My path into fan editing began with <em>Justice League</em>. Seeing fans rework the film revealed how much meaning could be reshaped through restructuring tone and intent. My first project was ambitious and imperfect, but it proved something essential: the work mattered to me enough to pursue seriously.
+        </p>
+
+        <p>
+          A turning point came from studying detailed fan edit changelogs, particularly within the <em>Star Trek</em> community. The precision and intentionality behind those edits demonstrated how deeply a film could be refined while still feeling native to its source. That standard became the benchmark I aim for in my own work.
+        </p>
+
+        <p>
+          My process is driven by emotional connection to the material. I choose projects I care about and shape them into versions I want to return to. The challenge is creating something that feels renewed while remaining faithful to the original film.
+        </p>
+
+        <p>
+          Editing functions as both therapy and discipline. Every project teaches me something new, whether it's a technical skill or a better understanding of story. The goal will always be to uncover the strongest version already waiting inside the original film.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NEWSLETTER SIGNUP
+    ====================================================== -->
+
+    <section class="pulse-newsletter">
+
+      <div class="lss-embed">
+
+        <form
+          action="https://submit-form.com/Es2Ypoxuk"
+          class="lss-form"
+          method="POST"
+        >
+
+          <input
+            name="_redirect"
+            type="hidden"
+            value="https://light-speed.studio/email-landing-page.html"
+          />
+
+          <label
+            class="lss-label"
+            for="pulse-email"
+          >
+            ALERTS
+          </label>
+
+          <div class="lss-form-row">
+
+            <input
+              class="lss-input"
+              id="pulse-email"
+              name="email"
+              placeholder="ENTER EMAIL"
+              required
+              type="email"
+            />
+
+            <button
+              class="lss-button"
+              type="submit"
+            >
+              JOIN
+            </button>
+
+          </div>
+
+          <div class="lss-turnstile-row">
+
+            <div
+              class="cf-turnstile"
+              data-sitekey="0x4AAAAAAE1MyN5U_qewG4Qt"
+              data-theme="dark"
+              data-size="flexible">
+            </div>
+
+          </div>
+
+        </form>
+
+        <p class="lss-disclaimer">
+          Twice-monthly newsletter on edits. No SPAM!
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<script>
+function toggleMobileMenu(button) {
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!navLinks) return;
+
+  const isOpen = navLinks.classList.toggle('active');
+  button.classList.toggle('active', isOpen);
+  button.setAttribute('aria-expanded', String(isOpen));
+  button.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.lss-nav-links');
+  if (!hamburger || !navLinks) return;
+
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.classList.remove('active');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open navigation menu');
+    });
+  });
+});
+</script>
+
+
+<!-- CLOUDFLARE TURNSTILE -->
+<script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+  async
+  defer>
+</script>
+
+
+<!-- KEEP GLOBAL SITE JS:
+     handles existing navigation / progress / scroll behavior -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
