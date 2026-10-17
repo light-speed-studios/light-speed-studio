@@ -389,6 +389,10 @@ function installWaveVisualizer(player) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
+  const mobileFlux = document.querySelector('#wave-mobile-flux');
+  const mobileEcho = document.querySelector('#wave-mobile-echo');
+  const mobileFluxCtx = mobileFlux?.getContext('2d');
+  const mobileEchoCtx = mobileEcho?.getContext('2d');
   const modeButtons = document.querySelectorAll('[data-wave-visualizer-mode]');
   const AudioContextClass = window.AudioContext || window.webkitAudioContext;
   const media = player.getMediaElement();
@@ -430,37 +434,38 @@ function installWaveVisualizer(player) {
     }
   }
 
-  function resize() {
-    if (destroyed) return;
-    const bounds = canvas.getBoundingClientRect();
-    width = Math.max(1, bounds.width);
-    height = Math.max(1, bounds.height);
+  function resizeCanvas(target, context) {
+    if (!target || !context) return { width: 0, height: 0 };
+    const bounds = target.getBoundingClientRect();
+    const w = Math.max(1, bounds.width);
+    const h = Math.max(1, bounds.height);
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    if (!frame) draw();
+    target.width = Math.round(w * dpr);
+    target.height = Math.round(h * dpr);
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { width: w, height: h };
   }
 
-  function draw() {
+  function resize() {
     if (destroyed) return;
-    frame = 0;
+    ({ width, height } = resizeCanvas(canvas, ctx));
+    resizeCanvas(mobileFlux, mobileFluxCtx);
+    resizeCanvas(mobileEcho, mobileEchoCtx);
+    ensureFrame();
+  }
+
+  function drawOne(target, context, drawMode, w, h, playing, opening, openingStrength) {
+    if (!target || !context || !w || !h) return false;
+    const ctx = context;
+    const width = w;
+    const height = h;
     ctx.clearRect(0, 0, width, height);
     const size = Math.min(width, height);
     const cx = width / 2;
     const cy = height / 2;
     const radius = size * 0.285;
     const maxLength = size * 0.238;
-    const playing = player.isPlaying() && analyser && audioContext?.state === 'running';
-    if (playing) {
-      openingEnabled = false;
-      analyser.getByteFrequencyData(frequencyData);
-    }
-    const openingProgress = Math.min(1, (performance.now() - openingStart) / openingDuration);
-    const opening = openingEnabled && openingProgress < 1 && !playing;
-    const openingStrength = opening ? Math.pow(1 - openingProgress, 1.7) : 0;
-    if (!opening && openingProgress >= 1) openingEnabled = false;
-    const levels = mode === 'halo' ? haloLevels : echoLevels;
+    const levels = drawMode === 'halo' ? haloLevels : echoLevels;
     let stillMoving = false;
 
     const averageBand = (from, to) => {
@@ -482,7 +487,7 @@ function installWaveVisualizer(player) {
       const angle = i * Math.PI * 2 / levels.length - Math.PI / 2;
       const fraction = i / levels.length;
       let liveTarget = 0;
-      if (mode === 'halo') {
+      if (drawMode === 'halo') {
         // Repeat the same low-to-mid spectrum profile in each quadrant so
         // quiet passages still light the full circle, not only top/bottom.
         const quadrant = levels.length / 4;
@@ -532,16 +537,16 @@ function installWaveVisualizer(player) {
       const level = levels[i];
       if (level > 0) stillMoving = true;
       if (!level) continue;
-      const start = radius + size * (mode === 'halo' ? 0.010 : 0.013);
-      const barLength = (mode === 'halo' ? maxLength : size * 0.125) * level;
-      const hue = mode === 'halo' ? 194 + 17 * Math.sin(angle + 0.6) : 194;
-      const lightness = mode === 'halo' ? 48 + level * 15 : 34 + level * 22;
+      const start = radius + size * (drawMode === 'halo' ? 0.010 : 0.013);
+      const barLength = (drawMode === 'halo' ? maxLength : size * 0.125) * level;
+      const hue = drawMode === 'halo' ? 194 + 17 * Math.sin(angle + 0.6) : 194;
+      const lightness = drawMode === 'halo' ? 48 + level * 15 : 34 + level * 22;
       ctx.beginPath();
       ctx.moveTo(cx + Math.cos(angle) * start, cy + Math.sin(angle) * start);
       ctx.lineTo(cx + Math.cos(angle) * (start + barLength), cy + Math.sin(angle) * (start + barLength));
       ctx.strokeStyle = `hsl(${hue} 100% ${lightness}%)`;
-      ctx.lineWidth = Math.max(1.4, size * (mode === 'halo' ? 0.010 : 0.008));
-      ctx.lineCap = mode === 'halo' ? 'butt' : 'round';
+      ctx.lineWidth = Math.max(1.4, size * (drawMode === 'halo' ? 0.010 : 0.008));
+      ctx.lineCap = drawMode === 'halo' ? 'butt' : 'round';
       ctx.shadowColor = 'rgba(0,174,222,0.36)';
       ctx.shadowBlur = level > 0.4 ? 4 : 0;
       ctx.stroke();
@@ -561,7 +566,27 @@ function installWaveVisualizer(player) {
     ctx.arc(cx, cy, radius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.shadowBlur = 0;
-    if (playing || opening || stillMoving) frame = requestAnimationFrame(draw);
+    return stillMoving;
+  }
+
+  function draw() {
+    if (destroyed) return;
+    frame = 0;
+    const playing = player.isPlaying() && analyser && audioContext?.state === 'running';
+    if (playing) {
+      openingEnabled = false;
+      analyser.getByteFrequencyData(frequencyData);
+    }
+    const openingProgress = Math.min(1, (performance.now() - openingStart) / openingDuration);
+    const opening = openingEnabled && openingProgress < 1 && !playing;
+    const openingStrength = opening ? Math.pow(1 - openingProgress, 1.7) : 0;
+    if (!opening && openingProgress >= 1) openingEnabled = false;
+    const desktopMoving = drawOne(canvas, ctx, mode, width, height, playing, opening, openingStrength);
+    const fluxBounds = mobileFlux?.getBoundingClientRect();
+    const echoBounds = mobileEcho?.getBoundingClientRect();
+    const fluxMoving = drawOne(mobileFlux, mobileFluxCtx, 'halo', fluxBounds?.width, fluxBounds?.height, playing, opening, openingStrength);
+    const echoMoving = drawOne(mobileEcho, mobileEchoCtx, 'echo', echoBounds?.width, echoBounds?.height, playing, opening, openingStrength);
+    if (playing || opening || desktopMoving || fluxMoving || echoMoving) frame = requestAnimationFrame(draw);
   }
 
   function ensureFrame() { if (!frame) frame = requestAnimationFrame(draw); }
@@ -592,8 +617,13 @@ function installWaveVisualizer(player) {
     frame = 0;
     if (audioContext) audioContext.close().catch(() => {});
   });
-  if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas.parentElement);
-  else window.addEventListener('resize', resize, { passive: true });
+  if (window.ResizeObserver) {
+    const observer = new ResizeObserver(resize);
+    observer.observe(canvas.parentElement);
+    if (mobileFlux) observer.observe(mobileFlux.parentElement);
+    if (mobileEcho) observer.observe(mobileEcho.parentElement);
+    player.on('destroy', () => observer.disconnect());
+  } else window.addEventListener('resize', resize, { passive: true });
   resize();
   ensureFrame();
 }
