@@ -1972,3 +1972,10 @@ html {
 @media (max-width: 900px) {
   .wave-page #wave-mobile-flux { transform: scaleX(-1); }
 }
+
+/* Mobile refinement: remove visualizer names and enlarge each mirrored ECHO by 5px. */
+@media (max-width: 900px) {
+  .wave-page .wave-mobile-visualizer-label { display: none; }
+  .wave-page .wave-mobile-visualizer-frame { width: min(100%, 175px); }
+  .wave-page .wave-mobile-visualizer-item { gap: 0; }
+}
