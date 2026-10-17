@@ -1870,54 +1870,37 @@ html {
 }
 
 
-/* Desktop: balance visible left waveform and right visualizer margins.
-   Right-align the selector and canvas as a single centered stack within
-   the panel's right inset. Earlier grid-only changes left the visualizer
-   centered in a narrower column, so its right-side gap stayed too large. */
+/* Desktop: shared horizontal centerline for selector and circular visualizer. */
 @media (min-width: 901px) {
   .wave-page .wave-visualizer-panel {
-    align-items: flex-end;
+    align-items: center;
     padding-left: 0;
-    padding-right: 22px;
+    padding-right: 0;
   }
-  .wave-page .wave-visualizer-modes,
-  .wave-page .wave-visualizer-frame {
-    align-self: flex-end;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .wave-page .wave-visualizer-modes {
-    position: relative;
-    right: 0;
-    left: auto;
-    transform: none;
-  }
-  /* Keep the switch centered relative to the circular canvas. */
-  .wave-page .wave-visualizer-modes {
-    align-self: flex-end;
-    margin-right: 8px;
-  }
-}
-
-/* Center FLUX/ECHO and the circular visualizer on the same vertical axis. */
-@media (min-width: 901px) {
-  .wave-page .wave-visualizer-panel {
+  .wave-page .wave-visualizer-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 12px;
+    width: min(100%, 218px);
+    margin-inline: auto;
   }
-  .wave-page .wave-visualizer-modes {
-    margin-right: 8px;
+  .wave-page .wave-visualizer-stack .wave-visualizer-modes {
+    position: static;
+    inset: auto;
+    transform: none;
+    align-self: center;
+    margin: 0;
+  }
+  .wave-page .wave-visualizer-stack .wave-visualizer-frame {
+    width: 100%;
+    max-width: 218px;
+    align-self: center;
+    margin: 0;
+    transform: none;
   }
 }
-
-
-/* Desktop: shift ONLY the circular visualizer right beneath FLUX/ECHO. */
-@media (min-width: 901px) {
-  .wave-page .wave-visualizer-frame {
-    transform: translateX(13px);
-  }
-}
-
 /* Mobile only: FLUX and ECHO run together below the waveform. */
 .wave-page .wave-mobile-visualizers { display: none; }
 @media (max-width: 900px) {
