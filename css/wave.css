@@ -1967,3 +1967,8 @@ html {
     grid-template-columns: minmax(0, calc((100% - 58px) * .425 + 5px)) minmax(0, 1fr) 42px;
   }
 }
+
+/* Mobile only: mirror the left ECHO canvas; right ECHO remains original. */
+@media (max-width: 900px) {
+  .wave-page #wave-mobile-flux { transform: scaleX(-1); }
+}
