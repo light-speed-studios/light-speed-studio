@@ -1870,7 +1870,7 @@ html {
 }
 
 
-/* Desktop: shared horizontal centerline for selector and circular visualizer. */
+/* Desktop: shared horizontal centerline, original vertical spacing and ring size. */
 @media (min-width: 901px) {
   .wave-page .wave-visualizer-panel {
     align-items: center;
@@ -1883,20 +1883,19 @@ html {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    width: min(100%, 218px);
-    margin-inline: auto;
+    width: 100%;
+    height: 100%;
+    margin: 0;
   }
   .wave-page .wave-visualizer-stack .wave-visualizer-modes {
     position: static;
     inset: auto;
     transform: none;
-    align-self: center;
     margin: 0;
   }
   .wave-page .wave-visualizer-stack .wave-visualizer-frame {
-    width: 100%;
-    max-width: 218px;
-    align-self: center;
+    width: min(100%, 180px);
+    max-width: 180px;
     margin: 0;
     transform: none;
   }
