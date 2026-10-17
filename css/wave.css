@@ -1,3 +1,4 @@
+
 /* WAVE | page-only styles. Load after css/styles.css. */
 .wave-page {
     background: #040e15;
@@ -1924,7 +1925,7 @@ html {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
     align-items: center;
-    gap: clamp(12px, 4vw, 26px);
+    gap: clamp(7px, calc(4vw - 5px), 21px);
     width: 100%;
     padding: 18px 4px 4px;
   }
