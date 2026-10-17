@@ -584,9 +584,14 @@ function installWaveVisualizer(player) {
     const desktopMoving = drawOne(canvas, ctx, mode, width, height, playing, opening, openingStrength);
     const fluxBounds = mobileFlux?.getBoundingClientRect();
     const echoBounds = mobileEcho?.getBoundingClientRect();
-    const fluxMoving = drawOne(mobileFlux, mobileFluxCtx, 'halo', fluxBounds?.width, fluxBounds?.height, playing, opening, openingStrength);
+    // Render ECHO once on the right. Copy its exact pixels to the left;
+    // the left canvas is flipped horizontally in mobile CSS for a true mirror.
     const echoMoving = drawOne(mobileEcho, mobileEchoCtx, 'echo', echoBounds?.width, echoBounds?.height, playing, opening, openingStrength);
-    if (playing || opening || desktopMoving || fluxMoving || echoMoving) frame = requestAnimationFrame(draw);
+    if (mobileFlux && mobileFluxCtx && mobileEcho && fluxBounds?.width && fluxBounds?.height) {
+      mobileFluxCtx.clearRect(0, 0, fluxBounds.width, fluxBounds.height);
+      mobileFluxCtx.drawImage(mobileEcho, 0, 0, fluxBounds.width, fluxBounds.height);
+    }
+    if (playing || opening || desktopMoving || echoMoving) frame = requestAnimationFrame(draw);
   }
 
   function ensureFrame() { if (!frame) frame = requestAnimationFrame(draw); }
