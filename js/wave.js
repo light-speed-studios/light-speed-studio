@@ -141,6 +141,17 @@ const els = {
   count: $('#wave-library-count'),
 };
 
+// Playback order: featured opening track, then all remaining titles A–Z.
+// Keep TRACKS and TRACK_IDS in their original positions so likes remain mapped correctly.
+const playbackOrder = TRACKS.map((track, index) => index).sort((a, b) => {
+  if (TRACKS[a].title === 'Wide Awake') return -1;
+  if (TRACKS[b].title === 'Wide Awake') return 1;
+  return TRACKS[a].title.localeCompare(TRACKS[b].title, undefined, { sensitivity: 'base' });
+});
+function adjacentTrackIndex(direction) {
+  const position = playbackOrder.indexOf(selectedIndex);
+  return playbackOrder[(position + direction + playbackOrder.length) % playbackOrder.length];
+}
 let selectedIndex = TRACKS.findIndex(track => track.title === 'Wide Awake');
 let activeFilter = 'all';
 let loadToken = 0;
@@ -676,7 +687,7 @@ window.addEventListener('resize', () => {
   surfer.on('timeupdate', seconds => { els.current.textContent = timeString(seconds); });
   surfer.on('play', () => { updatePlayIcon(true); renderLibrary(); });
   surfer.on('pause', () => { updatePlayIcon(false); renderLibrary(); });
-  surfer.on('finish', () => { selectTrack(selectedIndex + 1, Boolean(TRACKS[(selectedIndex + 1) % TRACKS.length].url)); });
+  surfer.on('finish', () => { const next = adjacentTrackIndex(1); selectTrack(next, Boolean(TRACKS[next].url)); });
   // A user click on the waveform seeks. If paused, it can begin playback, matching the chosen example.
   surfer.on('interaction', () => { if (TRACKS[selectedIndex].url && !surfer.isPlaying()) surfer.play().catch(() => {}); });
   els.play.addEventListener('click', () => {
@@ -684,8 +695,8 @@ window.addEventListener('resize', () => {
     if (surfer.getDuration() > 0) surfer.playPause();
     else selectTrack(selectedIndex, true);
   });
-  els.previous.addEventListener('click', () => selectTrack(selectedIndex - 1, Boolean(TRACKS[(selectedIndex - 1 + TRACKS.length) % TRACKS.length].url)));
-  els.next.addEventListener('click', () => selectTrack(selectedIndex + 1, Boolean(TRACKS[(selectedIndex + 1) % TRACKS.length].url)));
+  els.previous.addEventListener('click', () => { const previous = adjacentTrackIndex(-1); selectTrack(previous, Boolean(TRACKS[previous].url)); });
+  els.next.addEventListener('click', () => { const next = adjacentTrackIndex(1); selectTrack(next, Boolean(TRACKS[next].url)); });
   // Keep the five visible volume bars synced with the native 0-100 slider.
   const volumeBars = [...document.querySelectorAll('.wave-volume-bars i')];
   function updateVolumeBars(value) {
