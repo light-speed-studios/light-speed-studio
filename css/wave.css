@@ -1971,6 +1971,6 @@ html {
   .wave-page .wave-controls-like { justify-content: center; }
   .wave-page .wave-transport { justify-content: center; }
   .wave-page .wave-volume { justify-self: stretch; justify-content: center; }
-  .wave-page .wave-play-button { width: 60px; height: 40px; flex: 0 0 40px; padding: 0; }
+  .wave-page .wave-play-button { width: 70px; height: 40px; flex: 0 0 40px; padding: 0; }
   .wave-page .wave-play-button svg { width: 20px; height: 20px; }
 }
