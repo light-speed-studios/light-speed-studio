@@ -3251,6 +3251,22 @@ document.addEventListener("click", function (event) {
   .ffs-info-panel .ffs-section-label { margin-top:16px !important; }
 }
 </style>
+<style id="crossroads-working-title-clipping-fix">
+@media (min-width: 901px) {
+  .ffs-info-panel .ffs-working-title-inline {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 20px !important;
+    line-height: 20px !important;
+    overflow: visible !important;
+    white-space: nowrap;
+    margin: 0 0 6px !important;
+  }
+  .ffs-info-panel .ffs-alt-poster-hint {
+    flex: 0 0 auto !important;
+  }
+}
+</style>
 <script id="crossroads-crisis-master-desktop-placement">
 /* Move the existing nodes rather than cloning them: the rating widget keeps its ID and listeners.
    Mobile restores the exact original node positions. */
