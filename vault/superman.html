@@ -530,34 +530,6 @@
 }
 @media (min-width: 901px) { .ffs-info-panel > .ffs-working-title-mobile-order { display: none !important; } }
 </style>
-<style id="sot-approved-rating-and-version-desktop">
-@media (min-width:901px) {
- .ffs-title-panel {height:190px!important;min-height:190px!important;max-height:190px!important;padding:16px 23px 15px!important;display:flex!important;flex-direction:column!important;}
- .ffs-title-panel .ffs-title-row {margin-bottom:8px!important;}
- .ffs-title-panel > .ffs-audience-rating {margin-top:auto!important;min-height:102px!important;height:102px!important;grid-template-columns:minmax(0,180px) 1px minmax(0,1fr)!important;gap:18px!important;padding:14px 17px!important;}
- .ffs-title-panel > .ffs-audience-rating .ffs-rating-number strong.is-unrated {font-size:34px!important;line-height:1!important;}
- .ffs-title-panel > .ffs-audience-rating .ffs-rating-number strong:not(.is-unrated) {font-size:39px!important;}
- .ffs-title-panel > .ffs-audience-rating .ffs-rating-number span {font-size:25px!important;font-weight:700!important;}
- .ffs-title-panel > .ffs-audience-rating .ffs-rating-summary {transform:translateY(8px);}
- .ffs-title-panel > .ffs-audience-rating .ffs-rating-divider {height:69px!important;}
- .ffs-title-panel > .ffs-audience-rating .ffs-rate-star svg {width:min(100%,27px)!important;}
- .ffs-info-panel {height:390px!important;min-height:390px!important;max-height:390px!important;padding:29px 32px!important;display:flex!important;flex-direction:column!important;gap:0!important;}
- .ffs-info-panel > .ffs-meta-row {display:grid!important;grid-template-columns:.9fr .92fr 1.35fr 1fr .9fr!important;gap:8px!important;margin:0 0 9px!important;transform:none!important;flex:0 0 auto!important;}
- .ffs-info-panel > .ffs-meta-row .ffs-meta-card {min-height:46px!important;padding:6px 8px!important;}
- .ffs-info-panel > .ffs-meta-row .ffs-meta-label {font-size:10px!important;letter-spacing:.08em!important;}
- .ffs-info-panel > .ffs-meta-row .ffs-meta-value {font-size:clamp(11px,1vw,14px)!important;}
- .ffs-info-panel > .ffs-version-box-header {display:flex!important;position:static!important;align-items:center!important;justify-content:center!important;flex-direction:row!important;gap:12px!important;width:100%!important;height:32px!important;min-height:32px!important;margin:0 0 10px!important;padding:5px 10px!important;cursor:pointer;flex:0 0 auto!important;}
- .ffs-info-panel > .ffs-version-box-header span {display:inline!important;margin:0!important;font:800 12px/1.1 Oxanium,sans-serif!important;letter-spacing:.08em!important;}
- .ffs-info-panel > .ffs-version-box-header strong {display:inline!important;font:700 16px/1.1 Rajdhani,sans-serif!important;}
- .ffs-info-panel > .ffs-working-title-inline {display:block!important;margin:0 0 3px!important;font:600 14px/1.25 Oxanium,sans-serif!important;}
- .ffs-info-panel > .ffs-working-title-inline span {font:700 14px Oxanium,sans-serif!important;}
- .ffs-info-panel > .ffs-alt-poster-hint {display:block!important;width:100%!important;text-align:left!important;margin:0 0 15px!important;font:700 11px Oxanium,Rajdhani,sans-serif!important;letter-spacing:.13em!important;text-transform:uppercase!important;color:rgba(186,199,213,.72)!important;}
- .ffs-info-panel > .ffs-section-label {margin:0 0 7px!important;}
- .ffs-info-panel > .ffs-synopsis {margin:0!important;}
- .ffs-info-panel > .ffs-synopsis p {font-size:21px!important;line-height:1.4!important;}
- .ffs-info-panel > .ffs-working-version-row {display:none!important;}
-}
-</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Superman splash screen">
@@ -3426,44 +3398,94 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-info-panel > .ffs-color-grade-modal-toggle { order: 7 !important; }
 }
 </style>
-<script id="sot-approved-desktop-layout-mover">
-(function(){
- const title=document.querySelector('.ffs-right-column > .ffs-title-panel');
- const info=document.querySelector('.ffs-right-column > .ffs-info-panel');
- if(!title||!info)return;
- const meta=title.querySelector('.ffs-desktop-meta');
- const version=title.querySelector('.ffs-version-box-header');
- const working=title.querySelector('.ffs-working-title-inline');
- const hint=title.querySelector('.ffs-alt-poster-hint');
- const rating=info.querySelector('#ffs-audience-rating');
- const synopsisLabel=info.querySelector('.ffs-section-label');
- const row=info.querySelector('.ffs-working-version-row');
- if(!meta||!version||!working||!hint||!rating||!synopsisLabel||!row)return;
- const original=[
-  [meta,meta.parentNode,meta.nextSibling],
-  [version,version.parentNode,version.nextSibling],
-  [working,working.parentNode,working.nextSibling],
-  [hint,hint.parentNode,hint.nextSibling],
-  [rating,rating.parentNode,rating.nextSibling]
- ];
- let desktop=false;
- function arrange(){
-  const wide=window.matchMedia('(min-width:901px)').matches;
-  if(wide===desktop)return;
-  if(wide){
-   info.insertBefore(meta,synopsisLabel);
-   info.insertBefore(version,synopsisLabel);
-   info.insertBefore(working,synopsisLabel);
-   info.insertBefore(hint,synopsisLabel);
-   title.appendChild(rating);
-  }else{
-   // Restore the original structure so all existing mobile CSS and order remain intact.
-   for(const [node,parent,next] of original.slice().reverse())parent.insertBefore(node,next&&next.parentNode===parent?next:null);
+
+<style id="sot-desktop-working-version-alignment-correction">
+@media (min-width: 901px) {
+  /* Desktop labels live in the info panel below the metadata row. */
+  .ffs-title-panel > .ffs-working-title-inline,
+  .ffs-title-panel > .ffs-alt-poster-hint,
+  .ffs-title-panel > .ffs-version-box-header { display: none !important; }
+  .ffs-info-panel { position: relative !important; }
+  .ffs-info-panel > .sot-desktop-working-version-line {
+    position: absolute !important;
+    left: 32px !important;
+    right: 32px !important;
+    top: 149px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    z-index: 6 !important;
   }
-  desktop=wide;
- }
- arrange();window.addEventListener('resize',arrange);
-})();
+  .sot-desktop-working-version-line .ffs-working-title-inline {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+  }
+  .sot-desktop-working-version-line .ffs-version-box-header {
+    position: static !important;
+    display: flex !important;
+    flex: 0 0 calc((100% - 32px) * 1.9 / 5.07 + 8px) !important;
+    width: auto !important;
+    height: 40px !important;
+    min-height: 0 !important;
+    padding: 6px 10px !important;
+    margin: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+    gap: 12px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    cursor: pointer;
+  }
+  .sot-desktop-working-version-line .ffs-version-box-header span {
+    display: inline !important; margin: 0 !important;
+    font: 800 12px/1.1 Oxanium, sans-serif !important;
+    letter-spacing: .08em !important;
+  }
+  .sot-desktop-working-version-line .ffs-version-box-header strong {
+    display: inline !important; margin: 0 !important;
+    font: 700 16px/1.1 Rajdhani, sans-serif !important;
+  }
+  .ffs-info-panel > .sot-desktop-poster-hint {
+    position: absolute !important;
+    top: 197px !important;
+    left: 32px !important;
+    margin: 0 !important;
+    width: calc(100% - 64px) !important;
+    z-index: 6 !important;
+    font: 700 11px/1.3 Oxanium, sans-serif !important;
+    letter-spacing: .13em !important;
+    color: rgba(186,199,213,.72) !important;
+    text-transform: uppercase !important;
+  }
+  .ffs-info-panel > .ffs-section-label { margin-top: 222px !important; }
+}
+@media (max-width: 900px) {
+  .sot-desktop-working-version-line, .sot-desktop-poster-hint { display: none !important; }
+}
+</style>
+<script id="sot-desktop-working-version-alignment-script">
+document.addEventListener('DOMContentLoaded', function () {
+  const title = document.querySelector('.ffs-right-column .ffs-title-panel');
+  const info = document.querySelector('.ffs-right-column .ffs-info-panel');
+  if (!title || !info) return;
+  const working = title.querySelector('.ffs-working-title-inline');
+  const version = title.querySelector('.ffs-version-box-header');
+  const hint = title.querySelector('.ffs-alt-poster-hint');
+  if (!working || !version) return;
+  const line = document.createElement('div');
+  line.className = 'sot-desktop-working-version-line';
+  line.append(working.cloneNode(true), version.cloneNode(true));
+  info.appendChild(line);
+  if (hint) {
+    const copy = hint.cloneNode(true);
+    copy.classList.add('sot-desktop-poster-hint');
+    info.appendChild(copy);
+  }
+});
 </script>
 </body>
 </html>
