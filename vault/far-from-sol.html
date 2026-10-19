@@ -438,6 +438,44 @@ document.addEventListener('DOMContentLoaded', function () {
  if(mobile.addEventListener)mobile.addEventListener('change',position);else mobile.addListener(position);
 });
 </script>
+<style id="far-from-sol-final-batman-rating-desktop">
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-audience-rating {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    flex: 0 0 auto !important;
+    width: 150px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    padding: 2px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
+    position: static !important;
+    display: block;
+    width: 150px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap;
+  }
+  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count {
+    display: none !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Far From Sol splash screen">
