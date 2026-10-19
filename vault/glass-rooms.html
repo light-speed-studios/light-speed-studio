@@ -2942,6 +2942,7 @@ document.addEventListener("click", function (event) {
     box-shadow: none !important;
   }
   .ffs-title-panel .ffs-rating-summary {
+    transform: translateY(0) !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
@@ -2977,9 +2978,9 @@ document.addEventListener("click", function (event) {
   .ffs-title-panel { height:190px!important;min-height:190px!important;max-height:190px!important;display:flex!important;flex-direction:column!important;padding:16px 23px 15px!important; }
   .ffs-title-panel .ffs-title-row { margin-bottom:4px!important; }
   .ffs-info-panel {height:390px!important;min-height:390px!important;max-height:390px!important;padding:29px 32px!important;display:flex!important;flex-direction:column!important;}
-  .ffs-info-panel .ffs-meta-row {grid-template-columns:repeat(5,minmax(0,1fr))!important;}
-  .ffs-info-panel .ffs-alt-poster-hint {display:block!important;margin:0 0 14px!important;font:700 11px Oxanium,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(186,199,213,.72);}
-  .ffs-title-panel .ffs-audience-rating {margin-top:auto!important;}
+  .ffs-info-panel .ffs-meta-row {grid-template-columns:.9fr .92fr 1.35fr 1fr .9fr!important;}
+  .ffs-info-panel .ffs-alt-poster-hint {display:block!important;margin:0 0 22px!important;font:700 11px Oxanium,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:rgba(186,199,213,.72);}
+  .ffs-title-panel .ffs-audience-rating {margin:3px 0 0!important;}
 }
 </style>
 <script id="glass-rooms-desktop-rating-placement">
