@@ -428,6 +428,23 @@
   .ffs-working-title-mobile strong { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #bac7d5; font-size: 15px; }
 }
 </style>
+<style id="topgun-mobile-floating-rating-above-poster">
+@media (max-width: 900px) {
+  .ffs-mobile-project-header { display: none !important; }
+  .ffs-project-block > .ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    min-height: 90px;
+    margin: 0 0 14px !important;
+    padding: 10px 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  .ffs-project-block > .ffs-audience-rating::before,
+  .ffs-project-block > .ffs-audience-rating::after { content: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Top Gun: Ascension splash screen">
@@ -3124,8 +3141,9 @@ document.addEventListener('DOMContentLoaded', function () {
       else if (hint) title.appendChild(hint);
       if (meta && originalTitleNext && originalTitleNext.parentNode === title) title.insertBefore(meta, originalTitleNext);
       else if (meta) title.appendChild(meta);
-      if (rating && originalInfoNext && originalInfoNext.parentNode === info) info.insertBefore(rating, originalInfoNext);
-      else if (rating) info.appendChild(rating);
+      // Mobile: move the one interactive rating widget above the poster.
+      const composition = document.querySelector('.ffs-project-block > .ffs-desktop-composition');
+      if (rating && composition) composition.before(rating);
     }
   }
   place();
