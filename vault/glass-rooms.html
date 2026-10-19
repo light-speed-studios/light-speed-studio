@@ -3074,5 +3074,20 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<script id="glass-rooms-mobile-rating-above-poster-fix">
+(() => {
+  const mobile = window.matchMedia('(max-width: 900px)');
+  const rating = document.getElementById('ffs-audience-rating');
+  const composition = document.querySelector('.ffs-desktop-composition');
+  if (!rating || !composition || !composition.parentElement) return;
+  function placeOnMobile() {
+    if (mobile.matches && rating.nextElementSibling !== composition) {
+      composition.parentElement.insertBefore(rating, composition);
+    }
+  }
+  placeOnMobile();
+  mobile.addEventListener('change', placeOnMobile);
+})();
+</script>
 </body>
 </html>
