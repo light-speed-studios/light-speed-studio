@@ -2937,6 +2937,33 @@ document.addEventListener("click", function (event) {
 .ffs-info-panel .ffs-synopsis{margin-bottom:0!important;}
 }
 </style>
+<style id="trek-desktop-meta-rating-spacing-correction">
+@media (min-width:901px) {
+  /* Use the same five-column proportions as the approved Crisis page. */
+  .ffs-info-panel > .ffs-meta-row {
+    grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr !important;
+  }
+  /* Match the master 150 x 60 score frame and 13px corner strokes. */
+  .ffs-title-panel .ffs-rating-number {
+    width: 150px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    background:
+      linear-gradient(#00aede,#00aede) left top / 13px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) left top / 2px 13px no-repeat,
+      linear-gradient(#00aede,#00aede) right top / 13px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) right top / 2px 13px no-repeat,
+      linear-gradient(#00aede,#00aede) left bottom / 13px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) left bottom / 2px 13px no-repeat,
+      linear-gradient(#00aede,#00aede) right bottom / 13px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) right bottom / 2px 13px no-repeat !important;
+  }
+  /* One line of breathing room before the synopsis heading. */
+  .ffs-info-panel > .ffs-working-title-inline {
+    margin-bottom: 22px !important;
+  }
+}
+</style>
 <script id="trek-approved-desktop-placement">
 (()=>{
 const title=document.querySelector('.ffs-title-panel'),info=document.querySelector('.ffs-info-panel');
