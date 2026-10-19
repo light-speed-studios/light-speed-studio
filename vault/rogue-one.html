@@ -378,6 +378,32 @@
   .ffs-mobile-meta { display: none !important; }
 }
 </style>
+<style id="rogue-batman-mobile-floating-rating-only">
+@media (max-width: 900px) {
+  .ffs-page .ffs-mobile-project-header { display: none !important; }
+  .ffs-page .ffs-project-block > .ffs-audience-rating {
+    order: 1 !important;
+    display: grid !important;
+    width: 100% !important;
+    margin: 0 0 20px !important;
+    padding: 10px 8px !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    border-radius: 0 !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-audience-rating::before,
+  .ffs-page .ffs-project-block > .ffs-audience-rating::after { content: none !important; display: none !important; }
+  .ffs-page .ffs-project-block > .ffs-desktop-composition { order: 2 !important; }
+  .ffs-page .ffs-project-block > .ffs-audience-rating .ffs-rating-number {
+    background: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+}
+</style>
 </head>
 <body>
 <div aria-label="Rogue One: The Scarif Run splash screen" data-duration="3000" id="lss-page-splash">
@@ -3084,6 +3110,22 @@ document.addEventListener('DOMContentLoaded', () => {
   new MutationObserver(update).observe(count, {childList: true, characterData: true, subtree: true});
   update();
 })();
+</script>
+<script id="rogue-batman-mobile-rating-placement-only">
+document.addEventListener('DOMContentLoaded', () => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const composition = document.querySelector('.ffs-project-block > .ffs-desktop-composition');
+  if (!rating || !composition) return;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function positionRating() {
+    if (mobile.matches && rating.nextElementSibling !== composition) {
+      composition.parentElement.insertBefore(rating, composition);
+    }
+  }
+  positionRating();
+  if (mobile.addEventListener) mobile.addEventListener('change', positionRating);
+  else mobile.addListener(positionRating);
+});
 </script>
 </body>
 </html>
