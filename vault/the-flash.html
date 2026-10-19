@@ -385,6 +385,19 @@
   }
 }
 </style>
+<style id="crossroads-batman-mobile-floating-rating-only">
+@media (max-width: 900px) {
+  .ffs-page .ffs-mobile-project-header { display: none !important; }
+  .ffs-page .ffs-project-block > .ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    margin: 0 0 16px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Crossroads splash screen">
@@ -3273,6 +3286,7 @@ document.addEventListener("click", function (event) {
 document.addEventListener('DOMContentLoaded', function () {
   const title = document.querySelector('.ffs-title-panel');
   const info = document.querySelector('.ffs-info-panel');
+  const grid = document.querySelector('.ffs-project-block > .ffs-desktop-composition');
   if (!title || !info) return;
   const rating = info.querySelector('.ffs-audience-rating');
   const meta = title.querySelector('.ffs-desktop-meta');
@@ -3297,8 +3311,7 @@ document.addEventListener('DOMContentLoaded', function () {
       else if (hint) title.appendChild(hint);
       if (meta && originalTitleNext && originalTitleNext.parentNode === title) title.insertBefore(meta, originalTitleNext);
       else if (meta) title.appendChild(meta);
-      if (rating && originalInfoNext && originalInfoNext.parentNode === info) info.insertBefore(rating, originalInfoNext);
-      else if (rating) info.appendChild(rating);
+      if (rating && grid) grid.before(rating);
     }
   }
   place();
