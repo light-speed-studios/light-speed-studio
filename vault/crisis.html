@@ -2924,7 +2924,8 @@ document.addEventListener("click", function (event) {
     align-items: center !important;
     justify-content: center !important;
     gap: 4px !important;
-    transform: translateY(8px) !important;
+    /* Crisis has its own inherited score positioning; remove the extra 8px drop. */
+    transform: translateY(0px) !important;
   }
   .ffs-title-panel .ffs-rating-number {
     position: relative;
@@ -2962,6 +2963,28 @@ document.addEventListener("click", function (event) {
     font-size: 12px;
     letter-spacing: .13em;
     pointer-events: none;
+  }
+}
+  
+</style>
+<style id="crisis-desktop-poster-hint-restored">
+@media (min-width: 901px) {
+  .ffs-info-panel > .ffs-alt-poster-hint {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex: 0 0 auto !important;
+    width: 100%;
+    margin: 0 0 22px !important;
+    padding: 0 !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    text-align: left;
+    color: rgba(186, 199, 213, .72);
   }
 }
 </style>
