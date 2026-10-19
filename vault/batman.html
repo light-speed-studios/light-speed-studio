@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -2912,6 +2913,21 @@ document.addEventListener("click", function (event) {
   .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
     font-size: 25px;
   }
+}
+  
+</style>
+<style id="lss-rating-denominator-size-only">
+/* Increase /10 legibility on desktop and mobile; preserve all other styling. */
+.ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+}
+@media (max-width: 900px) {
+  .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 21px; }
+}
+@media (max-width: 420px) {
+  .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 19px; }
 }
 </style>
 <script id="batman-mobile-rating-position-only">
