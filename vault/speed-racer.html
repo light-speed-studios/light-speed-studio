@@ -3015,7 +3015,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function placeMobileRating() {
     if (!mobile.matches) return;
     const rating = document.getElementById('ffs-audience-rating');
-    const grid = document.querySelector('.ffs-project-block > .ffs-main-grid');
+    const grid = document.querySelector('.ffs-project-block > .ffs-desktop-composition');
     if (rating && grid) grid.before(rating);
   }
   document.addEventListener('DOMContentLoaded', placeMobileRating);
