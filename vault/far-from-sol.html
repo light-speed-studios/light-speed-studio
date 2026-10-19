@@ -449,6 +449,7 @@ document.addEventListener('DOMContentLoaded', function () {
     align-items: center !important;
     justify-content: center !important;
     gap: 4px !important;
+    transform: translateY(8px) !important;
   }
   .ffs-title-panel .ffs-rating-number {
     flex: 0 0 auto !important;
@@ -472,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
     white-space: nowrap;
   }
   .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count {
-    display: none !important;
+    display: block !important;
   }
 }
 </style>
@@ -2385,7 +2386,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
-    <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
+    <span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
   </div>
   <div class="ffs-rating-divider" aria-hidden="true"></div>
   <div class="ffs-rating-input">
@@ -2935,5 +2936,22 @@ document.addEventListener("click", function (event) {
   html body .ffs-page .ffs-info-panel > .ffs-working-title-mobile { order: 4 !important; }
 }
 </style>
+
+<script id="far-from-sol-rating-count-wording-only">
+(() => {
+  const count = document.getElementById('ffs-rating-count');
+  if (!count) return;
+  const update = () => {
+    const raw = count.textContent.trim();
+    const match = raw.match(/\b(\d+)\b/);
+    const value = match ? Number(match[1]) : (/no ratings|not yet rated/i.test(raw) ? 0 : null);
+    if (value === null) return;
+    const label = `${value} ${value === 1 ? 'RATING' : 'RATINGS'}`;
+    if (raw !== label) count.textContent = label;
+  };
+  new MutationObserver(update).observe(count, {childList: true, characterData: true, subtree: true});
+  update();
+})();
+</script>
 </body>
 </html>
