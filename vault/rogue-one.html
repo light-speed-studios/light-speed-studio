@@ -2297,7 +2297,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
-    <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
+    <span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
   </div>
   <div class="ffs-rating-divider" aria-hidden="true"></div>
   <div class="ffs-rating-input">
@@ -2922,5 +2922,168 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-mobile-meta { display: none !important; }
 }
 </style>
+<style id="rogue-approved-crisis-rating-desktop">
+/* Match the finalized Batman master rating layout on desktop only. */
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-audience-rating {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    height: 102px !important;
+    min-height: 102px !important;
+    flex: 0 0 102px !important;
+    padding: 8px 17px !important;
+    margin: 3px 0 0 !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    width: 180px !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    /* Match the finalized Batman score column vertical alignment. */
+    transform: translateY(8px) !important;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    position: relative;
+    flex: 0 0 auto !important;
+    width: 150px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    margin: 0 !important;
+    padding: 2px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+    gap: 6px;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
+    position: static !important;
+    display: block;
+    flex: 0 0 auto;
+    width: 150px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 10px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  .ffs-title-panel .ffs-rating-divider { height: 66px !important; }
+  .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 0 !important; }
+  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {
+    position: static !important;
+    display: block;
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 12px;
+    letter-spacing: .13em;
+    pointer-events: none;
+  }
+}
+  
+</style>
+<style id="rogue-approved-crisis-score-corners-desktop">
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-title-row { margin-bottom: 4px !important; }
+  .ffs-title-panel .ffs-rating-number {
+    background:
+      linear-gradient(#00aede,#00aede) left top / 16px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) left top / 2px 16px no-repeat,
+      linear-gradient(#00aede,#00aede) right top / 16px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) right top / 2px 16px no-repeat,
+      linear-gradient(#00aede,#00aede) left bottom / 16px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) left bottom / 2px 16px no-repeat,
+      linear-gradient(#00aede,#00aede) right bottom / 16px 2px no-repeat,
+      linear-gradient(#00aede,#00aede) right bottom / 2px 16px no-repeat;
+  }
+  .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong { font-size: 0 !important; line-height: 1 !important; }
+  .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong::before { content: "—"; font: 800 34px/1 Oxanium,sans-serif; }
+  .ffs-title-panel .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator { display: inline !important; visibility: visible !important; }
+  .ffs-title-panel .ffs-rating-number #ffs-rating-denominator { font-size: 25px !important; font-weight: 700 !important; line-height: 1 !important; }
+  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count { display: block !important; }
+  .ffs-title-panel .ffs-rating-input > .ffs-rating-label { font-size: 12px !important; }
+  .ffs-info-panel .ffs-meta-row { display: grid; grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr; gap: 8px; margin: 0 0 15px !important; transform: none !important; flex: 0 0 auto; }
+  .ffs-info-panel .ffs-meta-card { min-height: 46px; padding: 6px 8px; }
+  .ffs-info-panel .ffs-working-title-inline { display: block; margin: 0 0 6px !important; }
+  .ffs-info-panel .ffs-poster-hold-hint { display: block; margin: 0 0 22px !important; }
+  .ffs-info-panel .ffs-section-label { margin: 0 0 9px !important; }
+  .ffs-info-panel .ffs-synopsis { margin: 0 !important; }
+}
+</style>
+
+<script id="rogue-approved-crisis-desktop-node-placement">
+document.addEventListener('DOMContentLoaded', () => {
+  const title = document.querySelector('.ffs-title-panel');
+  const info = document.querySelector('.ffs-info-panel');
+  const rating = document.getElementById('ffs-audience-rating');
+  if (!title || !info || !rating) return;
+  const meta = title.querySelector('.ffs-desktop-meta');
+  const working = title.querySelector('.ffs-working-title-inline');
+  const hint = title.querySelector('.ffs-poster-hold-hint');
+  const nodes = [rating, meta, working, hint].filter(Boolean);
+  const originals = nodes.map(node => ({node, parent: node.parentNode, next: node.nextSibling}));
+  const breakpoint = window.matchMedia('(min-width: 901px)');
+  function place() {
+    if (breakpoint.matches) {
+      title.appendChild(rating);
+      const heading = info.querySelector('.ffs-section-label');
+      for (const node of [meta, working, hint]) if (node && heading) info.insertBefore(node, heading);
+    } else {
+      for (const {node, parent, next} of originals.slice().reverse()) {
+        if (next && next.parentNode === parent) parent.insertBefore(node, next);
+        else parent.appendChild(node);
+      }
+    }
+  }
+  place();
+  if (breakpoint.addEventListener) breakpoint.addEventListener('change', place);
+  else breakpoint.addListener(place);
+});
+</script>
+
+<script id="rogue-approved-crisis-responsive-nodes">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const summary = rating?.querySelector('.ffs-rating-summary');
+  const number = rating?.querySelector('.ffs-rating-number');
+  const count = rating?.querySelector('.ffs-rating-count');
+  const label = rating?.querySelector('.ffs-rating-label');
+  const input = rating?.querySelector('.ffs-rating-input');
+  const stars = input?.querySelector('.ffs-rating-stars');
+  if (!rating || !summary || !number || !count || !label || !input || !stars) return;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function arrange() {
+    if (mobile.matches) {
+      summary.insertBefore(label, number);
+      number.after(count);
+    } else {
+      number.after(count);
+      input.insertBefore(label, stars);
+    }
+  }
+  arrange();
+  if (mobile.addEventListener) mobile.addEventListener('change', arrange);
+  else mobile.addListener(arrange);
+})();
+</script>
+<script id="rogue-rating-count-wording-only">
+(() => {
+  const count = document.getElementById('ffs-rating-count');
+  if (!count) return;
+  const update = () => {
+    const raw = count.textContent.trim();
+    const match = raw.match(/\b(\d+)\b/);
+    const value = match ? Number(match[1]) : (/no ratings|not yet rated/i.test(raw) ? 0 : null);
+    if (value === null) return;
+    const label = `${value} ${value === 1 ? 'RATING' : 'RATINGS'}`;
+    if (raw !== label) count.textContent = label;
+  };
+  new MutationObserver(update).observe(count, {childList: true, characterData: true, subtree: true});
+  update();
+})();
+</script>
 </body>
 </html>
