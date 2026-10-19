@@ -2968,6 +2968,31 @@ document.addEventListener("click", function (event) {
   .ffs-info-panel .ffs-synopsis { margin: 0; }
 }
 </style>
+<style id="batman-desktop-rating-count-and-details-order">
+@media (min-width: 901px) {
+  /* Tighten score corners and reserve a centered line for the vote count. */
+  .ffs-title-panel .ffs-rating-summary { position: relative; }
+  .ffs-title-panel .ffs-rating-number {
+    width: 150px;
+    min-height: 76px;
+    padding: 6px 8px 22px;
+    margin-top: 5px;
+  }
+  .ffs-title-panel .ffs-rating-count {
+    position: absolute;
+    bottom: 7px;
+    left: 0;
+    width: 150px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 11px;
+  }
+  /* Metadata comes first, followed by the working title and poster hint. */
+  .ffs-info-panel .ffs-meta-row { margin-bottom: 20px; }
+  .ffs-info-panel .ffs-working-title-inline { margin-bottom: 7px; }
+  .ffs-info-panel .ffs-poster-hold-hint { margin-bottom: 23px; }
+}
+</style>
 <script id="batman-responsive-panel-placement-only">
 (() => {
   const rating = document.getElementById('ffs-audience-rating');
@@ -2990,7 +3015,7 @@ document.addEventListener("click", function (event) {
       // Desktop: title and rating in top panel; details and synopsis in bottom panel.
       titleRow.after(rating);
       infoPanel.insertBefore(workingTitle, synopsisLabel);
-      workingTitle.after(posterHint, metadata);
+      metadata.after(workingTitle, posterHint);
     }
   };
   positionElements();
