@@ -300,7 +300,6 @@
     position: absolute; bottom: 13px; left: 15px; width: 150px;
     text-align: center; font-size: 10px; white-space: nowrap; line-height: 1;
   }
-  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) .ffs-rating-count { display: none; }
   .ffs-title-panel .ffs-rating-divider { height: 66px; }
   .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 13px; }
   .ffs-info-panel .ffs-meta-row {
@@ -2263,7 +2262,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
-    <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
+    <span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
   </div>
   <div class="ffs-rating-divider" aria-hidden="true"></div>
   <div class="ffs-rating-input">
@@ -2843,9 +2842,6 @@ document.addEventListener("click", function (event) {
   display: inline !important;
   visibility: visible !important;
 }
-.ffs-audience-rating .ffs-rating-summary:has(.is-unrated) .ffs-rating-count {
-  display: none;
-}
 @media (max-width: 900px) {
   .ffs-audience-rating .ffs-rating-number {
     width: 100%;
@@ -2952,7 +2948,6 @@ document.addEventListener("click", function (event) {
     line-height: 1.1;
     white-space: nowrap;
   }
-  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count { display: none !important; }
   .ffs-title-panel .ffs-rating-divider { height: 66px !important; }
   .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 0 !important; }
   .ffs-title-panel .ffs-rating-input > .ffs-rating-label {
@@ -3011,6 +3006,22 @@ document.addEventListener("click", function (event) {
   arrange();
   if (mobile.addEventListener) mobile.addEventListener('change', arrange);
   else mobile.addListener(arrange);
+})();
+</script>
+<script id="crisis-rating-count-wording-only">
+(() => {
+  const count = document.getElementById('ffs-rating-count');
+  if (!count) return;
+  const update = () => {
+    const raw = count.textContent.trim();
+    const match = raw.match(/\b(\d+)\b/);
+    const value = match ? Number(match[1]) : (/no ratings|not yet rated/i.test(raw) ? 0 : null);
+    if (value === null) return;
+    const label = `${value} ${value === 1 ? 'RATING' : 'RATINGS'}`;
+    if (raw !== label) count.textContent = label;
+  };
+  new MutationObserver(update).observe(count, {childList: true, characterData: true, subtree: true});
+  update();
 })();
 </script>
 </body>
