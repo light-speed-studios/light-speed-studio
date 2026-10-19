@@ -2234,7 +2234,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
-    <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
+    <span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
   </div>
   <div class="ffs-rating-divider" aria-hidden="true"></div>
   <div class="ffs-rating-input">
@@ -2764,5 +2764,238 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 <script type="module" src="../js/movie-ratings.js"></script>
+<style id="speed-crisis-desktop-score-hud">
+@media (min-width: 901px) {
+
+/* Score HUD only. Desktop panel and mobile floating layout are unchanged. */
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number {
+  position: relative;
+  width: 168px;
+  max-width: 100%;
+  min-height: 48px;
+  margin-top: 7px;
+  padding: 7px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background:
+    linear-gradient(#00aede,#00aede) left top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 2px 13px no-repeat;
+}
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong {
+  font-size: 0 !important;
+  line-height: 1 !important;
+}
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+  content: "—";
+  font: 800 34px/1 Oxanium, sans-serif;
+}
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {
+  display: inline !important;
+  visibility: visible !important;
+}
+
+}
+</style>
+<style id="speed-crisis-desktop-denominator">
+@media (min-width: 901px) {
+
+/* Increase /10 legibility on desktop and mobile; preserve all other styling. */
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+}
+</style>
+<style id="speed-crisis-master-desktop-layout">
+@media (min-width: 901px) {
+  /* The existing desktop panel geometry is preserved. */
+  .ffs-title-panel .ffs-audience-rating {
+    height: 102px !important; min-height: 102px !important;
+    margin: 3px 0 0 !important; padding: 8px 17px !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    position: relative; width: 180px; height: 75px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-label {
+    position: absolute; left: calc(180px + 1px + 18px); top: -2px;
+    width: 420px; z-index: 2; pointer-events: none;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    width: 150px !important; height: 60px !important; min-height: 60px !important;
+    margin: 0 !important; padding: 2px 8px 17px !important;
+    flex: 0 0 150px; align-items: center;
+  }
+  .ffs-title-panel .ffs-rating-count {
+    position: absolute; bottom: 13px; left: 15px; width: 150px;
+    text-align: center; font-size: 10px; white-space: nowrap; line-height: 1;
+  }
+  .ffs-title-panel .ffs-rating-divider { height: 66px; }
+  .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 13px; }
+  .ffs-info-panel .ffs-meta-row {
+    display: grid; grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
+    gap: 8px; margin: 0 0 15px !important; transform: none !important;
+    flex: 0 0 auto;
+  }
+  .ffs-info-panel .ffs-meta-card { min-height: 46px; padding: 6px 8px; }
+  .ffs-info-panel .ffs-working-title-inline { display: block; margin: 0 0 6px !important; }
+  .ffs-info-panel .ffs-poster-hold-hint { display: block; margin: 0 0 22px !important; }
+  .ffs-info-panel .ffs-section-label { margin: 0 0 9px !important; }
+  .ffs-info-panel .ffs-synopsis { margin: 0 !important; }
+}
+</style>
+<style id="speed-crisis-final-rating-desktop-only">
+/* Match the finalized Batman master rating layout on desktop only. */
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-audience-rating {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    height: 102px !important;
+    min-height: 102px !important;
+    flex: 0 0 102px !important;
+    padding: 8px 17px !important;
+    margin: 3px 0 0 !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    width: 180px !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    /* Match the finalized Batman score column vertical alignment. */
+    transform: translateY(8px) !important;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    position: relative;
+    flex: 0 0 auto !important;
+    width: 150px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    margin: 0 !important;
+    padding: 2px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+    gap: 6px;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
+    position: static !important;
+    display: block;
+    flex: 0 0 auto;
+    width: 150px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 10px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  .ffs-title-panel .ffs-rating-divider { height: 66px !important; }
+  .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 0 !important; }
+  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {
+    position: static !important;
+    display: block;
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 12px;
+    letter-spacing: .13em;
+    pointer-events: none;
+  }
+}
+  
+</style>
+<script id="speed-crisis-master-desktop-placement">
+/* Move the existing nodes rather than cloning them: the rating widget keeps its ID and listeners.
+   Mobile restores the exact original node positions. */
+document.addEventListener('DOMContentLoaded', function () {
+  const title = document.querySelector('.ffs-title-panel');
+  const info = document.querySelector('.ffs-info-panel');
+  if (!title || !info) return;
+  const rating = info.querySelector('.ffs-audience-rating');
+  const meta = title.querySelector('.ffs-desktop-meta');
+  const working = title.querySelector('.ffs-working-title-inline');
+  const hint = title.querySelector('.ffs-poster-hold-hint');
+  const synopsisHeading = info.querySelector('.ffs-section-label');
+  const originalInfoNext = rating && rating.nextSibling;
+  const originalTitleNext = meta && meta.nextSibling;
+  const originalWorkingNext = working && working.nextSibling;
+  const originalHintNext = hint && hint.nextSibling;
+  const query = window.matchMedia('(min-width: 901px)');
+  function place() {
+    if (query.matches) {
+      if (rating) title.appendChild(rating);
+      if (meta && synopsisHeading) info.insertBefore(meta, synopsisHeading);
+      if (working && synopsisHeading) info.insertBefore(working, synopsisHeading);
+      if (hint && synopsisHeading) info.insertBefore(hint, synopsisHeading);
+    } else {
+      if (working && originalWorkingNext && originalWorkingNext.parentNode === title) title.insertBefore(working, originalWorkingNext);
+      else if (working) title.appendChild(working);
+      if (hint && originalHintNext && originalHintNext.parentNode === title) title.insertBefore(hint, originalHintNext);
+      else if (hint) title.appendChild(hint);
+      if (meta && originalTitleNext && originalTitleNext.parentNode === title) title.insertBefore(meta, originalTitleNext);
+      else if (meta) title.appendChild(meta);
+      if (rating && originalInfoNext && originalInfoNext.parentNode === info) info.insertBefore(rating, originalInfoNext);
+      else if (rating) info.appendChild(rating);
+    }
+  }
+  place();
+  if (query.addEventListener) query.addEventListener('change', place);
+  else query.addListener(place);
+});
+</script>
+<script id="speed-crisis-rating-responsive-nodes">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const summary = rating?.querySelector('.ffs-rating-summary');
+  const number = rating?.querySelector('.ffs-rating-number');
+  const count = rating?.querySelector('.ffs-rating-count');
+  const label = rating?.querySelector('.ffs-rating-label');
+  const input = rating?.querySelector('.ffs-rating-input');
+  const stars = input?.querySelector('.ffs-rating-stars');
+  if (!rating || !summary || !number || !count || !label || !input || !stars) return;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function arrange() {
+    if (mobile.matches) {
+      summary.insertBefore(label, number);
+      number.after(count);
+    } else {
+      number.after(count);
+      input.insertBefore(label, stars);
+    }
+  }
+  arrange();
+  if (mobile.addEventListener) mobile.addEventListener('change', arrange);
+  else mobile.addListener(arrange);
+})();
+</script>
+<script id="speed-rating-count-wording-only">
+(() => {
+  const count = document.getElementById('ffs-rating-count');
+  if (!count) return;
+  const update = () => {
+    const raw = count.textContent.trim();
+    const match = raw.match(/\b(\d+)\b/);
+    const value = match ? Number(match[1]) : (/no ratings|not yet rated/i.test(raw) ? 0 : null);
+    if (value === null) return;
+    const label = `${value} ${value === 1 ? 'RATING' : 'RATINGS'}`;
+    if (raw !== label) count.textContent = label;
+  };
+  new MutationObserver(update).observe(count, {childList: true, characterData: true, subtree: true});
+  update();
+})();
+</script>
 </body>
 </html>
