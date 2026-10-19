@@ -3442,13 +3442,13 @@ document.addEventListener("click", function (event) {
  .ffs-right-column .ffs-title-panel > .ffs-audience-rating{display:grid!important;grid-template-columns:minmax(0,180px) 1px minmax(0,1fr)!important;align-items:center!important;width:100%!important;min-height:102px!important;height:102px!important;flex:0 0 102px!important;margin:3px 0 0!important;padding:8px 17px!important;gap:18px!important;background:transparent!important;box-shadow:none!important}
  .ffs-title-panel .ffs-rating-summary{width:180px!important;min-width:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;transform:translateY(8px)!important}
  .ffs-title-panel .ffs-rating-summary > .ffs-rating-label{display:none!important}
- .ffs-title-panel .ffs-rating-number{position:relative!important;top:-5px!important;width:150px!important;max-width:150px!important;height:60px!important;min-height:60px!important;margin:0!important;padding:2px 8px!important;display:flex!important;justify-content:center!important;align-items:center!important;text-align:center!important;gap:6px!important;box-sizing:border-box!important;background:linear-gradient(#00aede,#00aede) left top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) left bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left bottom/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right bottom/2px 13px no-repeat!important}
+ .ffs-title-panel .ffs-rating-number{position:relative!important;top:-11px!important;width:150px!important;max-width:150px!important;height:60px!important;min-height:60px!important;margin:0!important;padding:2px 8px!important;display:flex!important;justify-content:center!important;align-items:center!important;text-align:center!important;gap:6px!important;box-sizing:border-box!important;background:linear-gradient(#00aede,#00aede) left top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) left bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left bottom/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right bottom/2px 13px no-repeat!important}
  .ffs-title-panel .ffs-rating-number::before{content:none!important}
  .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong{font-size:0!important;line-height:1!important}
- .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong::before{content:'—';font:800 34px/1 Oxanium,sans-serif!important}
+ .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong::before{content:'—';font:800 39px/1 Oxanium,sans-serif!important}
  .ffs-title-panel .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator{display:inline!important;visibility:visible!important}
  .ffs-title-panel .ffs-rating-number strong:not(.is-unrated){font-size:39px!important}
- .ffs-title-panel .ffs-rating-number #ffs-rating-denominator{font-size:19px!important}
+ .ffs-title-panel .ffs-rating-number #ffs-rating-denominator{font-size:21px!important}
  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count{position:static!important;display:block!important;width:150px!important;margin:0!important;text-align:center!important;font-size:10px!important;line-height:1.1!important;white-space:nowrap!important}
  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count{display:block!important}
  .ffs-title-panel .ffs-rating-divider{height:66px!important}
@@ -3536,6 +3536,18 @@ document.addEventListener("click", function (event) {
   placeMobile();
   if (mq.addEventListener) mq.addEventListener('change', placeMobile);
   else mq.addListener(placeMobile);
+})();
+</script>
+
+<script id="sot-desktop-rating-count-text-fix">
+(() => {
+  const count = document.getElementById('ffs-rating-count');
+  if (!count) return;
+  const normalize = () => {
+    if (/^no ratings yet$/i.test(count.textContent.trim())) count.textContent = '0 RATINGS';
+  };
+  normalize();
+  new MutationObserver(normalize).observe(count, {childList:true,characterData:true,subtree:true});
 })();
 </script>
 </body>
