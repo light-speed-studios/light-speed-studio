@@ -275,6 +275,85 @@
   .ffs-page .ffs-poster-panel { margin-bottom: 16px !important; }
 }
 </style>
+
+<style id="crisis-batman-master-desktop-layout">
+@media (min-width: 901px) {
+  /* The existing desktop panel geometry is preserved. */
+  .ffs-title-panel .ffs-audience-rating {
+    height: 102px !important; min-height: 102px !important;
+    margin: 3px 0 0 !important; padding: 8px 17px !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    position: relative; width: 180px; height: 75px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-label {
+    position: absolute; left: calc(180px + 1px + 18px); top: -2px;
+    width: 420px; z-index: 2; pointer-events: none;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    width: 150px !important; height: 60px !important; min-height: 60px !important;
+    margin: 0 !important; padding: 2px 8px 17px !important;
+    flex: 0 0 150px; align-items: center;
+  }
+  .ffs-title-panel .ffs-rating-count {
+    position: absolute; bottom: 13px; left: 15px; width: 150px;
+    text-align: center; font-size: 10px; white-space: nowrap; line-height: 1;
+  }
+  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) .ffs-rating-count { display: none; }
+  .ffs-title-panel .ffs-rating-divider { height: 66px; }
+  .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 13px; }
+  .ffs-info-panel .ffs-meta-row {
+    display: grid; grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
+    gap: 8px; margin: 0 0 15px !important; transform: none !important;
+    flex: 0 0 auto;
+  }
+  .ffs-info-panel .ffs-meta-card { min-height: 46px; padding: 6px 8px; }
+  .ffs-info-panel .ffs-working-title-inline { display: block; margin: 0 0 6px !important; }
+  .ffs-info-panel .ffs-alt-poster-hint { display: block; margin: 0 0 22px !important; }
+  .ffs-info-panel .ffs-section-label { margin: 0 0 9px !important; }
+  .ffs-info-panel .ffs-synopsis { margin: 0 !important; }
+}
+</style>
+<script id="crisis-batman-master-desktop-placement">
+/* Move the existing nodes rather than cloning them: the rating widget keeps its ID and listeners.
+   Mobile restores the exact original node positions. */
+document.addEventListener('DOMContentLoaded', function () {
+  const title = document.querySelector('.ffs-title-panel');
+  const info = document.querySelector('.ffs-info-panel');
+  if (!title || !info) return;
+  const rating = info.querySelector('.ffs-audience-rating');
+  const meta = title.querySelector('.ffs-desktop-meta');
+  const working = title.querySelector('.ffs-working-title-inline');
+  const hint = title.querySelector('.ffs-alt-poster-hint');
+  const synopsisHeading = info.querySelector('.ffs-section-label');
+  const originalInfoNext = rating && rating.nextSibling;
+  const originalTitleNext = meta && meta.nextSibling;
+  const originalWorkingNext = working && working.nextSibling;
+  const originalHintNext = hint && hint.nextSibling;
+  const query = window.matchMedia('(min-width: 901px)');
+  function place() {
+    if (query.matches) {
+      if (rating) title.appendChild(rating);
+      if (meta && synopsisHeading) info.insertBefore(meta, synopsisHeading);
+      if (working && synopsisHeading) info.insertBefore(working, synopsisHeading);
+      if (hint && synopsisHeading) info.insertBefore(hint, synopsisHeading);
+    } else {
+      if (working && originalWorkingNext && originalWorkingNext.parentNode === title) title.insertBefore(working, originalWorkingNext);
+      else if (working) title.appendChild(working);
+      if (hint && originalHintNext && originalHintNext.parentNode === title) title.insertBefore(hint, originalHintNext);
+      else if (hint) title.appendChild(hint);
+      if (meta && originalTitleNext && originalTitleNext.parentNode === title) title.insertBefore(meta, originalTitleNext);
+      else if (meta) title.appendChild(meta);
+      if (rating && originalInfoNext && originalInfoNext.parentNode === info) info.insertBefore(rating, originalInfoNext);
+      else if (rating) info.appendChild(rating);
+    }
+  }
+  place();
+  if (query.addEventListener) query.addEventListener('change', place);
+  else query.addListener(place);
+});
+</script>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Crisis: Red Skies splash screen">
