@@ -3474,6 +3474,7 @@ document.addEventListener("click", function (event) {
 
 <!-- Mobile-only Batman-style floating audience rating. Desktop layout is preserved. -->
 <style id="sot-mobile-floating-rating-final">
+/* Match Batman's mobile rating typography, column widths and 16px poster gap. */
 @media (max-width: 900px) {
   .ffs-project-block > .ffs-mobile-movie-header { display: none !important; }
   .ffs-project-block > #ffs-audience-rating {
@@ -3481,31 +3482,45 @@ document.addEventListener("click", function (event) {
     width: 100% !important;
     max-width: none !important;
     min-height: 90px !important;
-    margin: 0 0 14px !important;
-    padding: 10px 8px !important;
+    margin: 0 0 16px !important;
+    padding: 12px !important;
     background: transparent !important;
     background-image: none !important;
     border: 0 !important;
     box-shadow: none !important;
     outline: 0 !important;
-    grid-template-columns: minmax(0, 103px) 1px minmax(0, 1fr) !important;
-    gap: 8px !important;
+    grid-template-columns: minmax(0, 130px) 1px minmax(0, 1fr) !important;
+    gap: 11px !important;
   }
   .ffs-project-block > #ffs-audience-rating::before,
   .ffs-project-block > #ffs-audience-rating::after { content: none !important; display: none !important; }
-  /* Keep the unrated message inside the summary column on narrow screens. */
-  .ffs-project-block > #ffs-audience-rating .ffs-rating-summary { min-width: 0 !important; }
-  .ffs-project-block > #ffs-audience-rating .ffs-rating-number strong.is-unrated {
-    display: block !important;
-    max-width: 100% !important;
-    white-space: normal !important;
-    overflow-wrap: normal !important;
-    font-size: 11px !important;
-    line-height: 1.2 !important;
-  }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-summary,
   .ffs-project-block > #ffs-audience-rating .ffs-rating-number { min-width: 0 !important; }
-  .ffs-project-block > #ffs-audience-rating .ffs-rating-stars { gap: 0 !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-label { font-size: 10px !important; letter-spacing: .06em !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number strong.is-unrated {
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+  }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number strong:not(.is-unrated) { font-size: 29px !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number span { font-size: 14px !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-count,
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-feedback { font-size: 9px !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-divider { height: 57px !important; }
   .ffs-project-block > #ffs-audience-rating .ffs-rate-star svg { width: min(100%, 22px) !important; }
+}
+@media (max-width: 420px) {
+  .ffs-project-block > #ffs-audience-rating {
+    grid-template-columns: minmax(0, 103px) 1px minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 10px 8px !important;
+  }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-label { font-size: 9px !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number strong.is-unrated { font-size: 11px !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number strong:not(.is-unrated) { font-size: 25px !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number span { font-size: 12px !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-stars { gap: 0 !important; }
 }
 </style>
 <script id="sot-mobile-floating-rating-placement">
