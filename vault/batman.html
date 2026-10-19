@@ -2930,23 +2930,71 @@ document.addEventListener("click", function (event) {
   .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 19px; }
 }
 </style>
-<script id="batman-mobile-rating-position-only">
+<style id="batman-desktop-panel-reorganization-only">
+@media (min-width: 901px) {
+  /* Keep both existing panel heights and widths locked. */
+  .ffs-title-panel .ffs-audience-rating {
+    margin: 4px 0 0 !important;
+    min-height: 102px;
+    flex: 0 0 102px;
+  }
+  .ffs-info-panel .ffs-working-title-inline {
+    display: block;
+    margin: 0 0 10px;
+  }
+  .ffs-info-panel .ffs-poster-hold-hint {
+    display: block;
+    margin: 0 0 18px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    text-align: left;
+    color: rgba(186,199,213,.72);
+  }
+  .ffs-info-panel .ffs-meta-row {
+    display: grid;
+    grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
+    gap: 8px;
+    margin: 0 0 23px;
+    transform: none;
+  }
+  .ffs-info-panel .ffs-meta-card {
+    min-height: 46px;
+    padding: 6px 8px;
+  }
+  .ffs-info-panel .ffs-section-label { margin: 0 0 9px; }
+  .ffs-info-panel .ffs-synopsis { margin: 0; }
+}
+</style>
+<script id="batman-responsive-panel-placement-only">
 (() => {
   const rating = document.getElementById('ffs-audience-rating');
   const grid = document.querySelector('.ffs-desktop-composition');
-  const originalParent = rating?.parentElement;
-  const originalNext = rating?.nextElementSibling;
-  if (!rating || !grid || !originalParent) return;
+  const titlePanel = document.querySelector('.ffs-title-panel');
+  const infoPanel = document.querySelector('.ffs-info-panel');
+  const titleRow = titlePanel?.querySelector('.ffs-title-row');
+  const workingTitle = titlePanel?.querySelector('.ffs-working-title-inline');
+  const posterHint = titlePanel?.querySelector('.ffs-poster-hold-hint');
+  const metadata = titlePanel?.querySelector('.ffs-desktop-meta');
+  const synopsisLabel = infoPanel?.querySelector('.ffs-section-label');
+  if (!rating || !grid || !titlePanel || !infoPanel || !titleRow || !workingTitle || !posterHint || !metadata || !synopsisLabel) return;
   const mobile = window.matchMedia('(max-width: 900px)');
-  const positionRating = () => {
+  const positionElements = () => {
     if (mobile.matches) {
+      // Preserve the established floating rating above the poster on mobile.
       grid.parentElement.insertBefore(rating, grid);
-    } else if (rating.parentElement !== originalParent) {
-      originalParent.insertBefore(rating, originalNext);
+      titleRow.after(workingTitle, posterHint, metadata);
+    } else {
+      // Desktop: title and rating in top panel; details and synopsis in bottom panel.
+      titleRow.after(rating);
+      infoPanel.insertBefore(workingTitle, synopsisLabel);
+      workingTitle.after(posterHint, metadata);
     }
   };
-  positionRating();
-  mobile.addEventListener('change', positionRating);
+  positionElements();
+  mobile.addEventListener('change', positionElements);
 })();
 </script>
 </body>
