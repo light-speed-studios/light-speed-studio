@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -2852,6 +2851,66 @@ document.addEventListener("click", function (event) {
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
+  }
+}
+</style>
+<style id="lss-rating-corner-score-both-layouts">
+/* Score HUD only. Desktop panel and mobile floating layout are unchanged. */
+.ffs-audience-rating .ffs-rating-number {
+  position: relative;
+  width: 168px;
+  max-width: 100%;
+  min-height: 48px;
+  margin-top: 7px;
+  padding: 7px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background:
+    linear-gradient(#00aede,#00aede) left top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 2px 13px no-repeat;
+}
+.ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong {
+  font-size: 0 !important;
+  line-height: 1 !important;
+}
+.ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+  content: "—";
+  font: 800 34px/1 Oxanium, sans-serif;
+}
+.ffs-audience-rating .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {
+  display: inline !important;
+  visibility: visible !important;
+}
+.ffs-audience-rating .ffs-rating-summary:has(.is-unrated) .ffs-rating-count {
+  display: none;
+}
+@media (max-width: 900px) {
+  .ffs-audience-rating .ffs-rating-number {
+    width: 100%;
+    min-height: 43px;
+    margin-top: 8px;
+    padding: 6px 4px;
+    gap: 3px;
+  }
+  .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+    font-size: 28px;
+  }
+}
+@media (max-width: 420px) {
+  .ffs-audience-rating .ffs-rating-number {
+    min-height: 39px;
+    padding: 5px 3px;
+  }
+  .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+    font-size: 25px;
   }
 }
 </style>
