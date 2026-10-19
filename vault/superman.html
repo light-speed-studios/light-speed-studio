@@ -3493,6 +3493,17 @@ document.addEventListener("click", function (event) {
   }
   .ffs-project-block > #ffs-audience-rating::before,
   .ffs-project-block > #ffs-audience-rating::after { content: none !important; display: none !important; }
+  /* Keep the unrated message inside the summary column on narrow screens. */
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-summary { min-width: 0 !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number strong.is-unrated {
+    display: block !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: normal !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-number { min-width: 0 !important; }
   .ffs-project-block > #ffs-audience-rating .ffs-rating-stars { gap: 0 !important; }
   .ffs-project-block > #ffs-audience-rating .ffs-rate-star svg { width: min(100%, 22px) !important; }
 }
