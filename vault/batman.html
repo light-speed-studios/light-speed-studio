@@ -3017,6 +3017,31 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<style id="batman-desktop-rating-heading-and-score-alignment">
+@media (min-width: 901px) {
+  /* Align the score brackets centrally in the left rating column. */
+  .ffs-title-panel .ffs-rating-summary {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    margin: 0 !important;
+    flex: 0 0 150px;
+  }
+  /* Heading sits above the stars, with the feedback below them. */
+  .ffs-title-panel .ffs-rating-input {
+    gap: 5px;
+  }
+  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: .13em;
+  }
+}
+</style>
 <script id="batman-responsive-panel-placement-only">
 (() => {
   const rating = document.getElementById('ffs-audience-rating');
@@ -3031,7 +3056,10 @@ document.addEventListener("click", function (event) {
   const count = rating?.querySelector('.ffs-rating-count');
   const number = rating?.querySelector('.ffs-rating-number');
   const summary = rating?.querySelector('.ffs-rating-summary');
-  if (!rating || !grid || !titlePanel || !infoPanel || !titleRow || !workingTitle || !posterHint || !metadata || !synopsisLabel || !count || !number || !summary) return;
+  const label = rating?.querySelector('.ffs-rating-label');
+  const input = rating?.querySelector('.ffs-rating-input');
+  const stars = input?.querySelector('.ffs-rating-stars');
+  if (!rating || !grid || !titlePanel || !infoPanel || !titleRow || !workingTitle || !posterHint || !metadata || !synopsisLabel || !count || !number || !summary || !label || !input || !stars) return;
   const mobile = window.matchMedia('(max-width: 900px)');
   const positionElements = () => {
     if (mobile.matches) {
@@ -3039,12 +3067,14 @@ document.addEventListener("click", function (event) {
       grid.parentElement.insertBefore(rating, grid);
       titleRow.after(workingTitle, posterHint, metadata);
       number.after(count);
+      summary.insertBefore(label, number);
     } else {
       // Desktop: title and rating in first panel; metadata and text in second.
       titleRow.after(rating);
       infoPanel.insertBefore(metadata, synopsisLabel);
       metadata.after(workingTitle, posterHint);
       number.appendChild(count);
+      input.insertBefore(label, stars);
     }
   };
   positionElements();
