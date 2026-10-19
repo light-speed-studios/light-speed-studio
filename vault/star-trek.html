@@ -294,6 +294,22 @@
   .ffs-desktop-composition .ffs-mobile-meta { order: 6 !important; }
 }
 </style>
+<style id="trek-mobile-batman-floating-rating">
+@media (max-width: 900px) {
+  .ffs-mobile-project-header { display: none !important; }
+  .ffs-project-block > .ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  .ffs-project-block > .ffs-audience-rating::before,
+  .ffs-project-block > .ffs-audience-rating::after { content: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Star Trek: Genesis splash screen">
@@ -2982,5 +2998,21 @@ apply();mq.addEventListener?.('change',apply);
   .ffs-info-panel > .ffs-section-label { margin-top: 16px !important; }
 }
 </style>
+<script id="trek-mobile-rating-before-poster">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const composition = document.querySelector('.ffs-project-block > .ffs-desktop-composition');
+  if (!rating || !composition) return;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function place() {
+    if (mobile.matches && rating.nextElementSibling !== composition) {
+      composition.before(rating);
+    }
+  }
+  place();
+  if (mobile.addEventListener) mobile.addEventListener('change', place);
+  else mobile.addListener(place);
+})();
+</script>
 </body>
 </html>
