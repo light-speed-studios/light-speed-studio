@@ -3050,6 +3050,33 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<style id="batman-desktop-score-count-below-brackets">
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-rating-summary {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    box-sizing: border-box;
+    padding: 2px 8px !important;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
+    position: static;
+    display: block;
+    width: 150px;
+    margin: 0;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+}
+</style>
 <script id="batman-responsive-panel-placement-only">
 (() => {
   const rating = document.getElementById('ffs-audience-rating');
@@ -3081,7 +3108,7 @@ document.addEventListener("click", function (event) {
       titleRow.after(rating);
       infoPanel.insertBefore(metadata, synopsisLabel);
       metadata.after(workingTitle, posterHint);
-      number.appendChild(count);
+      number.after(count);
       input.insertBefore(label, stars);
     }
   };
