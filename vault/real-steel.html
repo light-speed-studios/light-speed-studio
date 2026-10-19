@@ -2635,5 +2635,69 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<style id="real-steel-approved-crisis-desktop-rating">
+@media (min-width: 901px) {
+ .ffs-title-panel {height:190px!important;min-height:190px!important;max-height:190px!important;padding:20px 34px 12px!important;display:flex!important;flex-direction:column!important;}
+ .ffs-title-panel .ffs-title-row {margin:0!important;}
+ .ffs-title-panel .ffs-audience-rating {background:transparent!important;box-shadow:none!important;border:0!important;height:102px!important;min-height:102px!important;flex:0 0 102px!important;padding:8px 17px!important;margin:3px 0 0!important;}
+ .ffs-title-panel .ffs-rating-summary {width:180px!important;height:auto!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:4px!important;transform:translateY(8px)!important;}
+ .ffs-title-panel .ffs-rating-number {position:relative;flex:0 0 auto!important;width:150px!important;height:60px!important;min-height:60px!important;margin:0!important;padding:2px 8px!important;display:flex!important;align-items:center!important;justify-content:center!important;text-align:center;gap:6px;}
+ .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {position:static!important;display:block;flex:0 0 auto;width:150px!important;margin:0!important;text-align:center!important;font-size:10px;line-height:1.1;white-space:nowrap;}
+ .ffs-title-panel .ffs-rating-divider {height:66px!important;}
+ .ffs-title-panel .ffs-rating-input {gap:5px;padding-top:0!important;}
+ .ffs-title-panel .ffs-rating-input > .ffs-rating-label {position:static!important;display:block;width:100%!important;text-align:left!important;font-size:12px;letter-spacing:.13em;pointer-events:none;}
+ .ffs-info-panel {height:390px!important;min-height:390px!important;max-height:390px!important;padding:29px 32px!important;display:flex!important;flex-direction:column!important;}
+ .ffs-info-panel .ffs-meta-row {display:grid;grid-template-columns:.9fr .92fr 1.35fr 1fr .9fr!important;gap:8px;margin:0 0 15px!important;transform:none!important;flex:0 0 auto;}
+ .ffs-info-panel .ffs-meta-card {min-height:46px!important;padding:6px 8px!important;}
+ .ffs-info-panel .ffs-working-title-inline {display:block;margin:0 0 6px!important;}
+ .ffs-info-panel .lss-poster-hold-hint {margin:0 0 22px!important;}
+ .ffs-info-panel .ffs-section-label {margin:0 0 9px!important;}
+ .ffs-info-panel .ffs-synopsis {margin:0!important;}
+ .ffs-info-panel .lss-mobile-working-title-only {display:none!important;}
+}
+</style>
+<script id="real-steel-approved-crisis-desktop-placement">
+(() => {
+ const rating=document.getElementById('ffs-audience-rating');
+ const title=document.querySelector('.ffs-title-panel');
+ const info=document.querySelector('.ffs-info-panel');
+ const titleRow=title?.querySelector('.ffs-title-row');
+ const metadata=title?.querySelector('.ffs-desktop-meta');
+ const working=title?.querySelector('.ffs-working-title-inline');
+ const hint=title?.querySelector('.lss-poster-hold-hint');
+ const label=rating?.querySelector('.ffs-rating-label');
+ const summary=rating?.querySelector('.ffs-rating-summary');
+ const input=rating?.querySelector('.ffs-rating-input');
+ const stars=rating?.querySelector('.ffs-rating-stars');
+ const number=rating?.querySelector('.ffs-rating-number');
+ const count=rating?.querySelector('.ffs-rating-count');
+ const synopsis=info?.querySelector('.ffs-section-label');
+ if(!rating||!title||!info||!titleRow||!metadata||!working||!hint||!label||!summary||!input||!stars||!number||!count||!synopsis)return;
+ const mobile=window.matchMedia('(max-width:900px)');
+ const mobileWorking=info.querySelector('.lss-mobile-working-title-only');
+ function arrange(){
+  if(mobile.matches){
+   titleRow.after(working,hint,metadata);
+   if(mobileWorking)mobileWorking.after(rating);
+   summary.insertBefore(label,number);
+   number.after(count);
+  }else{
+   titleRow.after(rating);
+   info.insertBefore(metadata,synopsis);
+   metadata.after(working,hint);
+   input.insertBefore(label,stars);
+   number.after(count);
+  }
+ }
+ arrange();if(mobile.addEventListener)mobile.addEventListener('change',arrange);else mobile.addListener(arrange);
+})();
+</script>
+<script id="real-steel-rating-count-wording-only">
+(() => {
+ const count=document.getElementById('ffs-rating-count');if(!count)return;
+ const update=()=>{const raw=count.textContent.trim();const match=raw.match(/\b(\d+)\b/);const n=match?Number(match[1]):(/no ratings|not yet rated/i.test(raw)?0:null);if(n===null)return;const label=`${n} ${n===1?'RATING':'RATINGS'}`;if(raw!==label)count.textContent=label;};
+ new MutationObserver(update).observe(count,{childList:true,characterData:true,subtree:true});update();
+})();
+</script>
 </body>
 </html>
