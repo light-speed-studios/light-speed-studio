@@ -2902,5 +2902,85 @@ document.addEventListener("click", function (event) {
   mobile.addEventListener('change', positionRating);
 })();
 </script>
+
+<style id="crisis-batman-final-rating-desktop-only">
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-audience-rating {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    width: 180px !important;
+    height: 82px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    position: relative;
+    flex: 0 0 auto !important;
+    width: 150px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    margin: 0 !important;
+    padding: 2px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+    gap: 6px;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
+    position: static !important;
+    display: block;
+    flex: 0 0 auto;
+    width: 150px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 10px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count { display: none !important; }
+  .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 0 !important; }
+  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {
+    position: static !important;
+    display: block;
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 12px;
+    letter-spacing: .13em;
+    pointer-events: none;
+  }
+}
+</style>
+<script id="crisis-batman-final-rating-responsive-nodes">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const summary = rating?.querySelector('.ffs-rating-summary');
+  const number = rating?.querySelector('.ffs-rating-number');
+  const count = rating?.querySelector('.ffs-rating-count');
+  const label = rating?.querySelector('.ffs-rating-label');
+  const input = rating?.querySelector('.ffs-rating-input');
+  const stars = input?.querySelector('.ffs-rating-stars');
+  if (!rating || !summary || !number || !count || !label || !input || !stars) return;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function arrange() {
+    if (mobile.matches) {
+      summary.insertBefore(label, number);
+      number.after(count);
+    } else {
+      number.after(count);
+      input.insertBefore(label, stars);
+    }
+  }
+  arrange();
+  if (mobile.addEventListener) mobile.addEventListener('change', arrange);
+  else mobile.addListener(arrange);
+})();
+</script>
 </body>
 </html>
