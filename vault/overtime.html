@@ -255,6 +255,18 @@
   }
 }
 </style>
+<style id="overtime-mobile-header-rating-only">
+@media (max-width: 900px) {
+  .ffs-mobile-project-header { display: none !important; }
+  .ffs-project-block > .ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    margin: 0 0 14px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Overtime splash screen">
@@ -2842,6 +2854,20 @@ document.addEventListener("click", function (event) {
   }
  }
  arrange();if(mobile.addEventListener)mobile.addEventListener('change',arrange);else mobile.addListener(arrange);
+})();
+</script>
+<script id="overtime-mobile-rating-above-poster-only">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const grid = document.querySelector('.ffs-project-block > .ffs-main-grid');
+  const mobile = window.matchMedia('(max-width: 900px)');
+  if (!rating || !grid) return;
+  function placeMobileRating() {
+    if (mobile.matches) grid.before(rating);
+  }
+  placeMobileRating();
+  if (mobile.addEventListener) mobile.addEventListener('change', placeMobileRating);
+  else mobile.addListener(placeMobileRating);
 })();
 </script>
 <script id="overtime-rating-count-wording-only">
