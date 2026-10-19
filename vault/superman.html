@@ -3471,5 +3471,46 @@ document.addEventListener("click", function (event) {
  .ffs-right-column .ffs-info-panel > .ffs-working-version-row{display:none!important}
 }
 </style>
+
+<!-- Mobile-only Batman-style floating audience rating. Desktop layout is preserved. -->
+<style id="sot-mobile-floating-rating-final">
+@media (max-width: 900px) {
+  .ffs-project-block > .ffs-mobile-movie-header { display: none !important; }
+  .ffs-project-block > #ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 90px !important;
+    margin: 0 0 14px !important;
+    padding: 10px 8px !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    grid-template-columns: minmax(0, 103px) 1px minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+  .ffs-project-block > #ffs-audience-rating::before,
+  .ffs-project-block > #ffs-audience-rating::after { content: none !important; display: none !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rating-stars { gap: 0 !important; }
+  .ffs-project-block > #ffs-audience-rating .ffs-rate-star svg { width: min(100%, 22px) !important; }
+}
+</style>
+<script id="sot-mobile-floating-rating-placement">
+(() => {
+  const mq = window.matchMedia('(max-width: 900px)');
+  const rating = document.getElementById('ffs-audience-rating');
+  const project = document.querySelector('.ffs-project-block');
+  const composition = project?.querySelector(':scope > .ffs-desktop-composition');
+  if (!rating || !project || !composition) return;
+  function placeMobile() {
+    if (mq.matches) composition.before(rating);
+  }
+  placeMobile();
+  if (mq.addEventListener) mq.addEventListener('change', placeMobile);
+  else mq.addListener(placeMobile);
+})();
+</script>
 </body>
 </html>
