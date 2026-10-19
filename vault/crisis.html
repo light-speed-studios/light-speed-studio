@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -2709,5 +2710,118 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-info-panel > .ffs-audience-rating { margin: 0 0 22px !important; }
 }
 </style>
+
+<style id="crisis-mobile-rating-above-poster-only">
+@media (max-width: 900px) {
+  .ffs-mobile-project-header { display: none !important; }
+  .ffs-project-block > .ffs-audience-rating {
+    margin: 0 0 16px !important;
+  }
+}
+  
+</style>
+<style id="crisis-mobile-floating-rating-only">
+@media (max-width: 900px) {
+  .ffs-project-block > .ffs-audience-rating {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+</style>
+<style id="lss-rating-corner-score-both-layouts">
+/* Score HUD only. Desktop panel and mobile floating layout are unchanged. */
+.ffs-audience-rating .ffs-rating-number {
+  position: relative;
+  width: 168px;
+  max-width: 100%;
+  min-height: 48px;
+  margin-top: 7px;
+  padding: 7px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background:
+    linear-gradient(#00aede,#00aede) left top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 2px 13px no-repeat;
+}
+.ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong {
+  font-size: 0 !important;
+  line-height: 1 !important;
+}
+.ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+  content: "—";
+  font: 800 34px/1 Oxanium, sans-serif;
+}
+.ffs-audience-rating .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {
+  display: inline !important;
+  visibility: visible !important;
+}
+.ffs-audience-rating .ffs-rating-summary:has(.is-unrated) .ffs-rating-count {
+  display: none;
+}
+@media (max-width: 900px) {
+  .ffs-audience-rating .ffs-rating-number {
+    width: 100%;
+    min-height: 43px;
+    margin-top: 8px;
+    padding: 6px 4px;
+    gap: 3px;
+  }
+  .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+    font-size: 28px;
+  }
+}
+@media (max-width: 420px) {
+  .ffs-audience-rating .ffs-rating-number {
+    min-height: 39px;
+    padding: 5px 3px;
+  }
+  .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+    font-size: 25px;
+  }
+}
+  
+</style>
+<style id="lss-rating-denominator-size-only">
+/* Increase /10 legibility on desktop and mobile; preserve all other styling. */
+.ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+}
+@media (max-width: 900px) {
+  .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 21px; }
+}
+@media (max-width: 420px) {
+  .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 19px; }
+}
+</style>
+<script id="crisis-mobile-rating-position-only">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const grid = document.querySelector('.ffs-desktop-composition');
+  const originalParent = rating?.parentElement;
+  const originalNext = rating?.nextElementSibling;
+  if (!rating || !grid || !originalParent) return;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  const positionRating = () => {
+    if (mobile.matches) {
+      grid.parentElement.insertBefore(rating, grid);
+    } else if (rating.parentElement !== originalParent) {
+      originalParent.insertBefore(rating, originalNext);
+    }
+  };
+  positionRating();
+  mobile.addEventListener('change', positionRating);
+})();
+</script>
 </body>
 </html>
