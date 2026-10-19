@@ -2367,7 +2367,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
-    <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
+    <span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
   </div>
   <div class="ffs-rating-divider" aria-hidden="true"></div>
   <div class="ffs-rating-input">
@@ -2923,7 +2923,7 @@ document.addEventListener("click", function (event) {
   .ffs-title-panel .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator { display:inline!important;visibility:visible!important; }
   .ffs-title-panel .ffs-rating-number #ffs-rating-denominator { font-size:25px;font-weight:700;line-height:1; }
   .ffs-title-panel .ffs-rating-number > .ffs-rating-count { position:absolute;bottom:5px;left:0;width:100%;text-align:center;font-size:10px;white-space:nowrap;line-height:1; }
-  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) .ffs-rating-count { display:none; }
+  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) .ffs-rating-count { display:block; }
   .ffs-title-panel .ffs-rating-divider {height:66px;}
   .ffs-title-panel .ffs-rating-input {gap:5px;}
   .ffs-title-panel .ffs-rating-input > .ffs-rating-label {display:block;width:100%;text-align:left;font-size:12px;letter-spacing:.13em;}
@@ -2942,7 +2942,7 @@ document.addEventListener("click", function (event) {
     box-shadow: none !important;
   }
   .ffs-title-panel .ffs-rating-summary {
-    transform: translateY(0) !important;
+    transform: translateY(8px) !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
@@ -2970,7 +2970,7 @@ document.addEventListener("click", function (event) {
     white-space: nowrap;
   }
   .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count {
-    display: none !important;
+    display: block !important;
   }
 }
 
@@ -3016,6 +3016,22 @@ document.addEventListener("click", function (event) {
   }
  };
  move();mobile.addEventListener('change',move);
+})();
+</script>
+<script id="glass-rooms-rating-count-wording-only">
+(() => {
+  const count = document.getElementById('ffs-rating-count');
+  if (!count) return;
+  const update = () => {
+    const raw = count.textContent.trim();
+    const match = raw.match(/\b(\d+)\b/);
+    const value = match ? Number(match[1]) : (/no ratings|not yet rated/i.test(raw) ? 0 : null);
+    if (value === null) return;
+    const label = `${value} ${value === 1 ? 'RATING' : 'RATINGS'}`;
+    if (raw !== label) count.textContent = label;
+  };
+  new MutationObserver(update).observe(count, {childList: true, characterData: true, subtree: true});
+  update();
 })();
 </script>
 </body>
