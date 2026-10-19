@@ -2970,27 +2970,43 @@ document.addEventListener("click", function (event) {
 </style>
 <style id="batman-desktop-rating-count-and-details-order">
 @media (min-width: 901px) {
-  /* Tighten score corners and reserve a centered line for the vote count. */
-  .ffs-title-panel .ffs-rating-summary { position: relative; }
+  /* Existing panel dimensions stay locked; all desktop content fits inside. */
+  .ffs-title-panel .ffs-audience-rating {
+    min-height: 102px !important;
+    height: 102px !important;
+    flex: 0 0 102px !important;
+    padding: 8px 17px !important;
+    margin: 3px 0 0 !important;
+  }
   .ffs-title-panel .ffs-rating-number {
+    position: relative;
     width: 150px;
-    min-height: 76px;
-    padding: 6px 8px 22px;
-    margin-top: 5px;
+    height: 60px;
+    min-height: 60px;
+    margin-top: 3px;
+    padding: 2px 8px 17px;
+    align-items: center;
   }
-  .ffs-title-panel .ffs-rating-count {
+  .ffs-title-panel .ffs-rating-number > .ffs-rating-count {
     position: absolute;
-    bottom: 7px;
+    bottom: 5px;
     left: 0;
-    width: 150px;
+    width: 100%;
     text-align: center;
+    font-size: 10px;
     white-space: nowrap;
-    font-size: 11px;
+    line-height: 1;
   }
-  /* Metadata comes first, followed by the working title and poster hint. */
-  .ffs-info-panel .ffs-meta-row { margin-bottom: 20px; }
-  .ffs-info-panel .ffs-working-title-inline { margin-bottom: 7px; }
-  .ffs-info-panel .ffs-poster-hold-hint { margin-bottom: 23px; }
+  .ffs-title-panel .ffs-rating-divider { height: 66px; }
+  .ffs-info-panel .ffs-meta-row {
+    margin: 0 0 15px !important;
+    transform: none !important;
+    flex: 0 0 auto;
+  }
+  .ffs-info-panel .ffs-working-title-inline { margin: 0 0 6px !important; }
+  .ffs-info-panel .ffs-poster-hold-hint { margin: 0 0 22px !important; }
+  .ffs-info-panel .ffs-section-label { margin: 0 0 9px !important; }
+  .ffs-info-panel .ffs-synopsis { margin: 0 !important; }
 }
 </style>
 <script id="batman-responsive-panel-placement-only">
@@ -3004,18 +3020,23 @@ document.addEventListener("click", function (event) {
   const posterHint = titlePanel?.querySelector('.ffs-poster-hold-hint');
   const metadata = titlePanel?.querySelector('.ffs-desktop-meta');
   const synopsisLabel = infoPanel?.querySelector('.ffs-section-label');
-  if (!rating || !grid || !titlePanel || !infoPanel || !titleRow || !workingTitle || !posterHint || !metadata || !synopsisLabel) return;
+  const count = rating?.querySelector('.ffs-rating-count');
+  const number = rating?.querySelector('.ffs-rating-number');
+  const summary = rating?.querySelector('.ffs-rating-summary');
+  if (!rating || !grid || !titlePanel || !infoPanel || !titleRow || !workingTitle || !posterHint || !metadata || !synopsisLabel || !count || !number || !summary) return;
   const mobile = window.matchMedia('(max-width: 900px)');
   const positionElements = () => {
     if (mobile.matches) {
-      // Preserve the established floating rating above the poster on mobile.
+      // Restore original mobile DOM structure and floating rating above poster.
       grid.parentElement.insertBefore(rating, grid);
       titleRow.after(workingTitle, posterHint, metadata);
+      number.after(count);
     } else {
-      // Desktop: title and rating in top panel; details and synopsis in bottom panel.
+      // Desktop: title and rating in first panel; metadata and text in second.
       titleRow.after(rating);
-      infoPanel.insertBefore(workingTitle, synopsisLabel);
+      infoPanel.insertBefore(metadata, synopsisLabel);
       metadata.after(workingTitle, posterHint);
+      number.appendChild(count);
     }
   };
   positionElements();
