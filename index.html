@@ -3156,7 +3156,7 @@
   .home-hero-section {
     width: 100% !important;
     max-width: none !important;
-    margin-top: 0 !important;
+    margin-top: -12px !important;
     transform: none !important;
     background: #040e15 !important;
   }
@@ -3180,8 +3180,8 @@
   }
   .home-hero-section > .lss-hero-landscape-panel > .hero-carousel {
     width: 100% !important;
-    height: max(760px, calc(100svh - 12px)) !important;
-    min-height: 760px !important;
+    height: clamp(610px, calc(100svh - 110px), 700px) !important;
+    min-height: 610px !important;
     max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -3217,10 +3217,10 @@
     z-index: 4 !important;
     pointer-events: none !important;
     background: linear-gradient(to bottom,
-      rgba(4,14,21,0) 44%,
-      rgba(4,14,21,.10) 57%,
-      rgba(4,14,21,.42) 73%,
-      rgba(4,14,21,.82) 88%,
+      rgba(4,14,21,0) 76%,
+      rgba(4,14,21,.10) 81%,
+      rgba(4,14,21,.42) 88%,
+      rgba(4,14,21,.82) 95%,
       #040e15 100%) !important;
   }
   .home-hero-section .slide > .hero-content,
@@ -3231,6 +3231,18 @@
   .home-hero-section .indicators,
   .home-hero-section .hero-vault-button {
     z-index: 30 !important;
+  }
+  /* Lift the title and metadata back into the visible part of the hero. */
+  .home-hero-section .slide > .hero-content {
+    bottom: 151px !important;
+  }
+  .home-hero-section .slide > .hero-meta {
+    bottom: 91px !important;
+  }
+  /* Keep the navigation shadow visibly layered over the artwork. */
+  .lss-nav-bar {
+    z-index: 1000 !important;
+    box-shadow: 0 9px 22px rgba(0,0,0,.58) !important;
   }
 }
 </style>
