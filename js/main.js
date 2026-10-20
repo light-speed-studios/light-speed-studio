@@ -55,7 +55,7 @@
         splash.dataset.splashReady = "true";
         document.documentElement.classList.add("lss-splash-active");
 
-        const splashDuration = Number(splash.dataset.duration) || 2100;
+        const splashDuration = Number(splash.dataset.duration) || 3300;
         let exitTimer = null;
         let hasClosed = false;
 
@@ -112,7 +112,7 @@
   let welcomeActive = Boolean(welcomeSlide);
 
   const autoDelay = 6000;
-  const welcomeDuration = 2000;
+  const welcomeDuration = 1300;
   const welcomeFadeTime = 950;
 
   function showSlide(index) {
