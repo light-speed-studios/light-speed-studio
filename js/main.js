@@ -112,7 +112,7 @@
   let welcomeActive = Boolean(welcomeSlide);
 
   const autoDelay = 6000;
-  const welcomeDuration = 3200;
+  const welcomeDuration = 2000;
   const welcomeFadeTime = 950;
 
   function showSlide(index) {
