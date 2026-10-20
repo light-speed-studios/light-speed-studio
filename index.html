@@ -3150,6 +3150,75 @@
 
 }
 </style>
+<style id="bridge-desktop-full-bleed-cinematic-hero">
+/* Desktop Bridge only: full-viewport artwork with a seamless bottom fade. */
+@media (min-width: 901px) {
+  .home-hero-section {
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 0 !important;
+    transform: none !important;
+    background: #040e15 !important;
+  }
+  .home-hero-section > .lss-hero-landscape-panel {
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100vw !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    overflow: hidden !important;
+  }
+  .home-hero-section > .lss-hero-landscape-panel::before {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+  }
+  .home-hero-section > .lss-hero-landscape-panel > .hero-carousel {
+    width: 100% !important;
+    height: clamp(540px, 72vh, 820px) !important;
+    min-height: 540px !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+    position: relative !important;
+    isolation: isolate !important;
+  }
+  /* This overlay blends the artwork into the exact page background.
+     Controls and captions stay above it; wallpaper links remain clickable. */
+  .home-hero-section > .lss-hero-landscape-panel > .hero-carousel::after {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 4 !important;
+    pointer-events: none !important;
+    background: linear-gradient(to bottom,
+      rgba(4,14,21,0) 44%,
+      rgba(4,14,21,.10) 57%,
+      rgba(4,14,21,.42) 73%,
+      rgba(4,14,21,.82) 88%,
+      #040e15 100%) !important;
+  }
+  .home-hero-section .slide > .hero-content,
+  .home-hero-section .slide > .hero-meta {
+    z-index: 21 !important;
+  }
+  .home-hero-section .nav-arrow,
+  .home-hero-section .indicators,
+  .home-hero-section .hero-vault-button {
+    z-index: 30 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="lss-nav-bar">
