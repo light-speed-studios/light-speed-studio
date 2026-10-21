@@ -6386,3 +6386,17 @@ body .lss-image-block.orbit-image-frame::before {
     padding-bottom: clamp(105px, 15vh, 160px) !important;
   }
 }
+/* VAULT PAGE: MATCH NAVIGATION DASH SIZES */
+@media (min-width: 901px) {
+  .vault-page:not(.lab-page) .vault-rail-dash {
+    width: 32px !important;
+    min-width: 32px !important;
+    max-width: 32px !important;
+    height: 3px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    flex: 0 0 32px !important;
+    transform: none !important;
+  }
+}
