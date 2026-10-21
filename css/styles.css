@@ -3030,7 +3030,7 @@ html::-webkit-scrollbar-corner {
 .vault-page {
   width: min(1440px, 100%);
   margin: 0 auto;
-  padding: 34px 5vw 70px;
+   padding-top: 24px;
    background: var(--site-bg);
   color: #BAC7D5;
   font-family: 'Rajdhani', sans-serif;
