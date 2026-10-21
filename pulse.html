@@ -257,6 +257,101 @@
   </style>
 
 
+
+  <style id="pulse-flat-side-accent-heading">
+    /* Desktop PULSE heading: flatter version of concept 5.
+       Scoped to Pulse so other pages and mobile remain unchanged. */
+    @media (min-width: 901px) {
+      .pulse-shell > .vault-archive-hero {
+        position: relative !important;
+        box-sizing: border-box !important;
+        width: min(920px, 100%) !important;
+        max-width: 920px !important;
+        min-height: 116px !important;
+        height: 116px !important;
+        margin: 0 auto 30px !important;
+        padding: 15px 42px 13px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        overflow: hidden !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: linear-gradient(90deg,
+          rgba(0,174,222,.035),
+          rgba(0,174,222,.065) 50%,
+          rgba(0,174,222,.035)) !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+      .pulse-shell > .vault-archive-hero::before,
+      .pulse-shell > .vault-archive-hero::after {
+        content: "" !important;
+        display: block !important;
+        position: absolute !important;
+        top: 14px !important;
+        bottom: 14px !important;
+        width: 3px !important;
+        height: auto !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: linear-gradient(180deg,
+          rgba(0,174,222,.25), #00aede 50%, rgba(0,174,222,.25)) !important;
+        box-shadow: 0 0 9px rgba(0,174,222,.18) !important;
+        opacity: 1 !important;
+        pointer-events: none !important;
+      }
+      .pulse-shell > .vault-archive-hero::before {
+        left: 0 !important;
+        right: auto !important;
+      }
+      .pulse-shell > .vault-archive-hero::after {
+        right: 0 !important;
+        left: auto !important;
+      }
+      .pulse-shell > .vault-archive-hero .vault-archive-frame {
+        display: none !important;
+      }
+      .pulse-shell > .vault-archive-hero h1 {
+        position: static !important;
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: Oxanium, Rajdhani, sans-serif !important;
+        font-size: 49px !important;
+        font-weight: 500 !important;
+        line-height: 1.04 !important;
+        letter-spacing: .23em !important;
+        text-indent: .23em !important;
+        color: #d1f4ff !important;
+        text-align: center !important;
+        text-shadow: 0 0 15px rgba(0,174,222,.12) !important;
+        transform: none !important;
+      }
+      .pulse-shell > .vault-archive-hero p {
+        position: static !important;
+        display: block !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-family: Oxanium, Rajdhani, sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        line-height: 1.4 !important;
+        letter-spacing: .31em !important;
+        text-indent: .31em !important;
+        color: #9dbdcc !important;
+        text-align: center !important;
+        transform: none !important;
+      }
+    }
+  </style>
+
   <div class="pulse-shell">
 
     <section class="vault-archive-hero">
