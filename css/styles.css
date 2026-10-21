@@ -3031,7 +3031,7 @@ html::-webkit-scrollbar-corner {
   width: min(1440px, 100%);
   margin: 0 auto;
    padding-top: 0 !important;
-    transform: translateY(-8px);
+    transform: translateY(-1px);
    background: var(--site-bg);
   color: #BAC7D5;
   font-family: 'Rajdhani', sans-serif;
