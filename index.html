@@ -3260,6 +3260,24 @@
 }
 </style>
 
+<style id="bridge-scroll-reveal">
+/* BRIDGE only: progressive, once-per-visit scroll reveals on desktop. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .bridge-reveal-ready .bridge-reveal:not(.bridge-reveal-visible) {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+  .bridge-reveal-ready .bridge-reveal {
+    transition: opacity 720ms cubic-bezier(.2,.7,.2,1),
+                transform 720ms cubic-bezier(.2,.7,.2,1);
+    transition-delay: var(--bridge-reveal-delay, 0ms);
+  }
+  .bridge-reveal-ready .bridge-reveal.bridge-reveal-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+</style>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -4015,5 +4033,55 @@
 </script>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script id="bridge-scroll-reveal-init">
+(function () {
+  'use strict';
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function init() {
+    if (!desktop.matches || reducedMotion.matches || !('IntersectionObserver' in window)) return;
+    // Keep the splash, hero, fixed navigation and carousel slides untouched.
+    const selectors = [
+      '.home-hero-section + .section-heading',
+      '.vault-intro-section .vault-intro-eyebrow',
+      '.vault-intro-section .vault-intro-lead',
+      '.vault-intro-section .vault-intro-body',
+      '.vault-intro-section .vault-intro-cta',
+      '.lab-mobile-section-heading',
+      '.lab-hero-section .lss-lab-landscape-panel',
+      '.orbit-heading-row > .section-heading',
+      '#orbitYearSwitcher',
+      '.bridge-studio-log .bridge-studio-meta-row',
+      '.disclaimer-body'
+    ];
+    const nodes = [...new Set(selectors.flatMap(sel => Array.from(document.querySelectorAll(sel))))];
+    if (!nodes.length) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('bridge-reveal-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -45px 0px', threshold: 0.08 });
+    nodes.forEach((node) => {
+      node.classList.add('bridge-reveal');
+      if (node.matches('.bridge-studio-meta-row')) {
+        const index = Array.from(node.parentElement.children).indexOf(node);
+        node.style.setProperty('--bridge-reveal-delay', `${Math.min(index, 4) * 90}ms`);
+      }
+      // Elements already on screen remain immediately visible.
+      const rect = node.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 45 && rect.bottom > 0) {
+        node.classList.add('bridge-reveal-visible');
+      } else {
+        observer.observe(node);
+      }
+    });
+    document.documentElement.classList.add('bridge-reveal-ready');
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
+})();
+</script>
 </body>
 </html>
