@@ -421,26 +421,50 @@
 }
 
 
-  /* Three-column desktop layout: poster, overview and teaser in one row. */
+  /* Desktop concept 3: overview | centered poster | teaser. */
   @media (min-width: 901px) {
     .ffs-landing-panel { width: min(1500px, 100%); }
-    .ffs-main-row { align-items: stretch; gap: 18px; }
-    .ffs-main-row > .ffs-poster-panel { flex: 0 0 250px; max-width: 250px; }
-    .ffs-main-row > .ffs-changes-panel { flex: 1 1 0; min-width: 0; padding: 20px; }
-    .ffs-main-row .ffs-changes-text { font-size: 25px; line-height: 1.42; }
-    .ffs-main-row .ffs-changes-text h3 { margin-bottom: 16px; }
-    .ffs-main-row > .ffs-changes-panel { align-items: center; }
-    .ffs-main-row > .ffs-teaser-panel { display: flex; flex-direction: column; justify-content: center; }
-    .ffs-main-row .ffs-teaser-video { width: 100%; }
-    .ffs-main-row .ffs-teaser-title { margin-bottom: 16px; }
+    .ffs-main-row { display: flex; align-items: stretch; gap: 18px; }
+
+    /* Identical outer-panel dimensions; the poster remains the focal point. */
+    .ffs-main-row > .ffs-changes-panel,
     .ffs-main-row > .ffs-teaser-panel {
-      flex: 0 0 350px;
-      width: 350px;
+      flex: 1 1 0;
+      width: 0;
       min-width: 0;
+      height: 390px;
+      min-height: 0;
       margin: 0;
-      padding: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
       align-self: stretch;
     }
+    .ffs-main-row > .ffs-changes-panel { order: 1; }
+    .ffs-main-row > .ffs-poster-panel {
+      order: 2;
+      flex: 0 0 275px;
+      width: 275px;
+      max-width: 275px;
+      height: 390px;
+      padding: 11px;
+      overflow: hidden;
+    }
+    .ffs-main-row > .ffs-teaser-panel { order: 3; }
+    .ffs-main-row .ffs-changes-text { font-size: 23px; line-height: 1.36; }
+    .ffs-main-row .ffs-changes-text h3 { margin-bottom: 12px; }
+    .ffs-main-row .ffs-changes-text p { margin: 0 0 12px; }
+    .ffs-main-row .ffs-changes-text p:last-child { margin-bottom: 0; }
+    .ffs-main-row .ffs-poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .ffs-main-row .ffs-teaser-title { margin-bottom: 14px; }
+    .ffs-main-row .ffs-teaser-video { width: 100%; }
   }
   </style>
 </head>
