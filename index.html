@@ -4052,9 +4052,11 @@
       '.orbit-heading-row > .section-heading',
       '#orbitYearSwitcher',
       '.bridge-studio-log .bridge-studio-meta-row',
-      '.disclaimer-body'
+      '.disclaimer-body > p'
     ];
-    const nodes = [...new Set(selectors.flatMap(sel => Array.from(document.querySelectorAll(sel))))];
+    // Never transform an ancestor of the fixed page-jump arrows.
+    const nodes = [...new Set(selectors.flatMap(sel => Array.from(document.querySelectorAll(sel))))]
+      .filter(node => !node.contains(document.getElementById('lssPageJump')));
     if (!nodes.length) return;
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
