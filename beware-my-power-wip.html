@@ -420,6 +420,24 @@
     }
 }
 
+
+  /* Three-column desktop layout: poster, overview and teaser in one row. */
+  @media (min-width: 901px) {
+    .ffs-landing-panel { width: min(1120px, 100%); }
+    .ffs-main-row { align-items: stretch; gap: 18px; }
+    .ffs-main-row > .ffs-poster-panel { flex: 0 0 250px; max-width: 250px; }
+    .ffs-main-row > .ffs-changes-panel { flex: 1 1 0; min-width: 0; padding: 20px; }
+    .ffs-main-row .ffs-changes-text { font-size: 23px; line-height: 1.38; }
+    .ffs-main-row .ffs-changes-text h3 { margin-bottom: 12px; }
+    .ffs-main-row > .ffs-teaser-panel {
+      flex: 0 0 350px;
+      width: 350px;
+      min-width: 0;
+      margin: 0;
+      padding: 16px;
+      align-self: stretch;
+    }
+  }
   </style>
 </head>
 
@@ -470,7 +488,6 @@
 </div>
 
           </div>
-        </div>
 
         <section class="ffs-teaser-panel" aria-labelledby="ffsTeaserIntroTitle">
           <h2 class="ffs-teaser-title" id="ffsTeaserIntroTitle">Teaser Intro</h2>
@@ -484,6 +501,7 @@
             </iframe>
           </div>
         </section>
+        </div>
       </section>
     </div>
   </div>
