@@ -3278,6 +3278,27 @@
   }
 }
 </style>
+<style id="lss-hero-live-ratings-style">
+/* Option 1: compact top-left badge, clear of the existing desktop VAULT button. */
+.home-hero-section .slide .lss-hero-rating,
+.home-hero-section .mobile-slide .lss-hero-rating {
+  position:absolute; z-index:18; display:inline-flex; align-items:center; gap:8px;
+  width:max-content; max-width:calc(100% - 110px); min-height:39px;
+  padding:7px 12px; border-radius:11px;
+  color:#e0f3f9; font:700 15px/1.1 Oxanium,Arial,sans-serif;
+  background:rgba(4,14,21,.78); border:1px solid rgba(0,174,222,.55);
+  box-shadow:0 7px 20px rgba(0,0,0,.32); backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px); pointer-events:none;
+}
+.home-hero-section .slide .lss-hero-rating {top:109px;left:30px;}
+.home-hero-section .lss-hero-rating-star {font-size:21px;line-height:1;color:#00aede;}
+.home-hero-section .lss-hero-rating-average {font-weight:800;color:#e0f3f9;}
+.home-hero-section .lss-hero-rating-count {font:600 11px Oxanium,Arial,sans-serif;color:#91aabb;white-space:nowrap;}
+.home-hero-section .mobile-slide {position:relative;}
+.home-hero-section .mobile-slide .lss-hero-rating {left:12px;top:12px;min-height:32px;padding:5px 9px;gap:5px;font-size:13px;max-width:calc(100% - 24px);}
+.home-hero-section .mobile-slide .lss-hero-rating-star {font-size:17px;}
+.home-hero-section .mobile-slide .lss-hero-rating-count {font-size:9px;}
+</style>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -3379,6 +3400,7 @@
 <a class="hero-image-link" href="vault/overtime.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/THEFLASHTCVSHOWPROD.webp');"></div>
 </a>
+<div class="lss-hero-rating" data-movie-id="flash-overtime" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/overtime.html">
@@ -3398,6 +3420,7 @@
 <a class="hero-image-link" href="vault/superman.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/SOTnewhero.webp');"></div>
 </a>
+<div class="lss-hero-rating" data-movie-id="superman-son-of-tomorrow" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/superman.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">SUPERMAN: SON OF TOMORROW</h1></a>
 </div></div>
@@ -3408,6 +3431,7 @@
 <a class="hero-image-link" href="vault/batman.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/batmanhero.webp');"></div>
 </a>
+<div class="lss-hero-rating" data-movie-id="batman-gothams-riddle" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/batman.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">BATMAN: GOTHAM'S RIDDLE</h1></a>
 </div></div>
@@ -3418,6 +3442,7 @@
 <a class="hero-image-link" href="vault/rogue-one.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/rogueonehero1.webp');"></div>
 </a>
+<div class="lss-hero-rating" data-movie-id="rogue-one-scarif-run" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/rogue-one.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">ROGUE ONE: THE SCARIF RUN</h1></a>
 </div></div>
@@ -3428,6 +3453,7 @@
 <a class="hero-image-link" href="vault/the-flash.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/flashhero.webp');"></div>
 </a>
+<div class="lss-hero-rating" data-movie-id="flash-crossroads" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/the-flash.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">THE FLASH: CROSSROADS</h1></a>
 </div></div>
@@ -3438,6 +3464,7 @@
 <a class="hero-image-link" href="vault/glass-rooms.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/glassheroes1NEW.webp');"></div>
 </a>
+<div class="lss-hero-rating" data-movie-id="glass-rooms" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/glass-rooms.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">GLASS ROOMS</h1></a>
 </div></div>
@@ -3448,6 +3475,7 @@
 <a class="hero-image-link" href="vault/far-from-sol.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/ffshero.webp');"></div>
 </a>
+<div class="lss-hero-rating" data-movie-id="far-from-sol" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/far-from-sol.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">FAR FROM SOL</h1></a>
 </div></div>
@@ -3482,24 +3510,31 @@
 <a href="vault/overtime.html">
 <img alt="Mobile The Flash: Overtime" src="https://light-speed-studios.b-cdn.net/OVERTIMEMOBHERO.webp"/>
 </a>
+<div class="lss-hero-rating" data-movie-id="flash-overtime" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 </article>
 <article class="mobile-slide">
 <a href="vault/superman.html"><img alt="Mobile Superman" src="https://light-speed-studios.b-cdn.net/supesheromob1.webp"/></a>
+<div class="lss-hero-rating" data-movie-id="superman-son-of-tomorrow" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 </article>
 <article class="mobile-slide">
 <a href="vault/batman.html"><img alt="Mobile Batman" src="https://light-speed-studios.b-cdn.net/grNEWMOB1.webp"/></a>
+<div class="lss-hero-rating" data-movie-id="batman-gothams-riddle" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 </article>
 <article class="mobile-slide">
 <a href="vault/rogue-one.html"><img alt="Mobile Rogue One" src="https://light-speed-studios.b-cdn.net/SCATRIFMOBNEW1.webp"/></a>
+<div class="lss-hero-rating" data-movie-id="rogue-one-scarif-run" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 </article>
 <article class="mobile-slide">
 <a href="vault/the-flash.html"><img alt="Mobile The Flash: Crossroads" src="https://light-speed-studios.b-cdn.net/FLASHMOB111.webp"/></a>
+<div class="lss-hero-rating" data-movie-id="flash-crossroads" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 </article>
 <article class="mobile-slide">
 <a href="vault/glass-rooms.html"><img alt="Mobile Glass Rooms" src="https://light-speed-studios.b-cdn.net/grMOBNEW1.webp"/></a>
+<div class="lss-hero-rating" data-movie-id="glass-rooms" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 </article>
 <article class="mobile-slide">
 <a href="vault/far-from-sol.html"><img alt="Mobile Far From Sol" src="https://light-speed-studios.b-cdn.net/SOLMOBNEWPROD1.webp"/></a>
+<div class="lss-hero-rating" data-movie-id="far-from-sol" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
 </article>
 <button aria-label="Previous mobile slide" class="mobile-nav-arrow left">
 <svg height="28" viewbox="0 0 24 24" width="28">
@@ -3905,6 +3940,7 @@
   </script>
 
   <script src="js/main.js?v=8"></script>
+  <script type="module" src="js/hero-ratings.js"></script>
 <script>
 (function(){
   function initOrbitYearSwitcher(){
