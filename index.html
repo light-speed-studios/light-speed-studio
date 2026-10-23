@@ -3279,25 +3279,75 @@
 }
 </style>
 <style id="lss-hero-live-ratings-style">
-/* Option 1: compact top-left badge, clear of the existing desktop VAULT button. */
 .home-hero-section .slide .lss-hero-rating,
 .home-hero-section .mobile-slide .lss-hero-rating {
-  position:absolute; z-index:18; display:inline-flex; align-items:center; gap:8px;
-  width:max-content; max-width:calc(100% - 110px); min-height:39px;
-  padding:7px 12px; border-radius:11px;
-  color:#e0f3f9; font:700 15px/1.1 Oxanium,Arial,sans-serif;
-  background:rgba(4,14,21,.78); border:1px solid rgba(0,174,222,.55);
-  box-shadow:0 7px 20px rgba(0,0,0,.32); backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px); pointer-events:none;
+  position: absolute;
+  z-index: 18;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: max-content;
+  max-width: calc(100% - 110px);
+  min-height: 46px;
+  padding: 9px 14px;
+  border-radius: 12px;
+  color: #f2fbff;
+  font: 700 18px/1.1 Oxanium, Arial, sans-serif;
+  background: rgba(4, 14, 21, 0.92);
+  border: 1px solid rgba(0, 174, 222, 0.9);
+  box-shadow:
+    0 0 0 1px rgba(0, 174, 222, 0.15),
+    0 0 18px rgba(0, 174, 222, 0.22),
+    0 8px 24px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  pointer-events: none;
 }
-.home-hero-section .slide .lss-hero-rating {top:109px;left:30px;}
-.home-hero-section .lss-hero-rating-star {font-size:21px;line-height:1;color:#00aede;}
-.home-hero-section .lss-hero-rating-average {font-weight:800;color:#e0f3f9;}
-.home-hero-section .lss-hero-rating-count {font:600 11px Oxanium,Arial,sans-serif;color:#91aabb;white-space:nowrap;}
-.home-hero-section .mobile-slide {position:relative;}
-.home-hero-section .mobile-slide .lss-hero-rating {left:12px;top:12px;min-height:32px;padding:5px 9px;gap:5px;font-size:13px;max-width:calc(100% - 24px);}
-.home-hero-section .mobile-slide .lss-hero-rating-star {font-size:17px;}
-.home-hero-section .mobile-slide .lss-hero-rating-count {font-size:9px;}
+
+.home-hero-section .slide .lss-hero-rating {
+  top: 78px;
+  left: 30px;
+}
+
+.home-hero-section .lss-hero-rating-star {
+  font-size: 24px;
+  line-height: 1;
+  color: #00d2ff;
+  text-shadow: 0 0 10px rgba(0, 174, 222, 0.45);
+}
+
+.home-hero-section .lss-hero-rating-average {
+  font-weight: 800;
+  color: #f2fbff;
+}
+
+.home-hero-section .lss-hero-rating-count {
+  font: 600 13px Oxanium, Arial, sans-serif;
+  color: #b8dff0;
+  white-space: nowrap;
+}
+
+.home-hero-section .mobile-slide {
+  position: relative;
+}
+
+.home-hero-section .mobile-slide .lss-hero-rating {
+  left: 12px;
+  top: 12px;
+  min-height: 34px;
+  padding: 6px 10px;
+  gap: 6px;
+  font-size: 14px;
+  max-width: calc(100% - 24px);
+}
+
+.home-hero-section .mobile-slide .lss-hero-rating-star {
+  font-size: 18px;
+}
+
+.home-hero-section .mobile-slide .lss-hero-rating-count {
+  font-size: 10px;
+}
 </style>
 </head>
 <body>
