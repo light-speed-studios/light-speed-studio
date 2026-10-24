@@ -3378,13 +3378,44 @@
     box-sizing: border-box !important;
     background: linear-gradient(105deg, rgba(0,174,222,.09), transparent 70%), rgba(4,14,21,.91) !important;
     border: 1px solid rgba(0,174,222,.72) !important;
-    border-radius: 13px !important;
+    border-radius: 0 !important;
     box-shadow: 0 8px 25px rgba(0,0,0,.55), inset 0 0 0 1px rgba(0,174,222,.10), 0 0 15px rgba(0,174,222,.10) !important;
     backdrop-filter: blur(9px) !important;
     -webkit-backdrop-filter: blur(9px) !important;
     overflow: visible !important;
     pointer-events: none !important;
   }
+
+  /* Match the cyan corner brackets on the BRIDGE panel. */
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: -1px !important;
+    display: block !important;
+    z-index: 2 !important;
+    opacity: .92 !important;
+    pointer-events: none !important;
+    background:
+      linear-gradient(#00AEDE,#00AEDE) left top / 34px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left top / 2px 34px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 34px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right top / 2px 34px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 34px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 34px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 34px 2px no-repeat,
+      linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 34px no-repeat !important;
+  }
+  /* Navigation stays outside the pill and centered directly below it. */
+  .home-hero-section .indicators {
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 91px !important;
+    transform: translateX(-50%) !important;
+    justify-content: center !important;
+    z-index: 30 !important;
+  }
+
   /* Avoid the old "three metadata spans" column and separator rules leaking into the badge. */
   .home-hero-section .slide > .hero-meta.lss-combined-hero-meta span {
     display: inline !important;
@@ -3460,15 +3491,16 @@
     color: #B8DFF0 !important;
   }
   .home-hero-section .slide .lss-combined-hero-meta > .lss-hero-bar-title {
-    font: 800 clamp(19px, calc(1.8vw + 2px), 29px)/1.13 Oxanium,Arial,sans-serif !important;
+    font: 800 clamp(21px, calc(1.8vw + 4px), 31px)/1.13 Oxanium,Arial,sans-serif !important;
     letter-spacing: .025em;
-    text-align: center;
+    text-align: left;
+    justify-content: flex-start !important;
     color: #CDD6E0 !important;
     text-shadow: 0 2px 5px rgba(0,0,0,.85);
     overflow-wrap: break-word;
   }
   .home-hero-section .slide .lss-combined-hero-meta > .lss-hero-bar-detail {
-    font: 600 clamp(15px,calc(1.35vw + 2px),21px)/1.15 Rajdhani,Arial,sans-serif !important;
+    font: 600 clamp(17px,calc(1.35vw + 4px),23px)/1.15 Rajdhani,Arial,sans-serif !important;
     color: #bac7d5 !important;
     white-space: nowrap;
     text-align: center;
