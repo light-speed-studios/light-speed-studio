@@ -3345,6 +3345,122 @@
   font-size: 10px;
 }
 </style>
+
+<style id="lss-hero-combined-desktop-bar">
+/* Desktop only. Mobile hero, dots, arrows and shared rating JS are unchanged. */
+@media (min-width: 901px) {
+  /* Titles now live inside the existing bottom bar; hide the old FEATURED EDIT/title cluster. */
+  .home-hero-section .slide:not(.hero-welcome-slide) > .hero-content {
+    display: none !important;
+  }
+
+  /* Keep the original metadata bar bottom edge exactly where it was: 131px. */
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta {
+    position: absolute !important;
+    left: 50% !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: 131px !important;
+    transform: translateX(-50%) !important;
+    z-index: 21 !important;
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 2.1fr) minmax(60px,.5fr) minmax(88px,.65fr) minmax(125px,1fr) !important;
+    align-items: center !important;
+    justify-content: stretch !important;
+    justify-items: stretch !important;
+    gap: 0 !important;
+    width: calc(100% - 100px) !important;
+    min-width: 0 !important;
+    max-width: 1320px !important;
+    min-height: 90px !important;
+    margin: 0 !important;
+    padding: 12px 16px !important;
+    box-sizing: border-box !important;
+    background: linear-gradient(105deg, rgba(0,174,222,.09), transparent 70%), rgba(4,14,21,.91) !important;
+    border: 1px solid rgba(0,174,222,.72) !important;
+    border-radius: 13px !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,.55), inset 0 0 0 1px rgba(0,174,222,.10), 0 0 15px rgba(0,174,222,.10) !important;
+    backdrop-filter: blur(9px) !important;
+    -webkit-backdrop-filter: blur(9px) !important;
+    overflow: visible !important;
+    pointer-events: none !important;
+  }
+  /* Avoid the old "three metadata spans" column and separator rules leaking into the badge. */
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta span {
+    display: inline !important;
+    position: static !important;
+    width: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    white-space: nowrap !important;
+  }
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta span::before,
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta span::after {
+    content: none !important;
+    display: none !important;
+  }
+  .home-hero-section .slide .lss-combined-hero-meta > div {
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12px;
+    height: 100%;
+  }
+  .home-hero-section .slide .lss-combined-hero-meta > div + div {
+    border-left: 1px solid rgba(186,199,213,.36);
+  }
+  .home-hero-section .slide .lss-combined-hero-meta > .lss-hero-bar-rating {
+    padding-left: 0;
+    padding-right: 15px;
+  }
+  .home-hero-section .slide .lss-combined-hero-meta .lss-hero-rating {
+    position: static !important;
+    inset: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 7px !important;
+    min-height: 45px !important;
+    padding: 8px 10px !important;
+    max-width: none !important;
+    white-space: nowrap;
+    border-radius: 9px !important;
+    border-color: rgba(0,174,222,.75) !important;
+    color: #E0F3F9 !important;
+    box-shadow: 0 0 12px rgba(0,174,222,.16) !important;
+  }
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta .lss-hero-rating .lss-hero-rating-star {
+    font-size: 24px !important;
+    color: #00D2FF !important;
+  }
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta .lss-hero-rating .lss-hero-rating-average {
+    font: 800 22px/1 Oxanium,Arial,sans-serif !important;
+    color: #E0F3F9 !important;
+  }
+  .home-hero-section .slide > .hero-meta.lss-combined-hero-meta .lss-hero-rating .lss-hero-rating-count {
+    font: 600 12px/1 Oxanium,Arial,sans-serif !important;
+    color: #B8DFF0 !important;
+  }
+  .home-hero-section .slide .lss-combined-hero-meta > .lss-hero-bar-title {
+    font: 800 clamp(17px, 1.8vw, 27px)/1.13 Oxanium,Arial,sans-serif !important;
+    letter-spacing: .025em;
+    text-align: center;
+    color: #CDD6E0 !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,.85);
+    overflow-wrap: break-word;
+  }
+  .home-hero-section .slide .lss-combined-hero-meta > .lss-hero-bar-detail {
+    font: 600 clamp(13px,1.35vw,19px)/1.15 Rajdhani,Arial,sans-serif !important;
+    color: #bac7d5 !important;
+    white-space: nowrap;
+    text-align: center;
+    letter-spacing: .015em;
+  }
+}
+</style>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -3446,7 +3562,7 @@
 <a class="hero-image-link" href="vault/overtime.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/THEFLASHTCVSHOWPROD.webp');"></div>
 </a>
-<div class="lss-hero-rating" data-movie-id="flash-overtime" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
+
 <div class="hero-content">
 <div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/overtime.html">
@@ -3455,10 +3571,12 @@
 </a>
 </div>
 </div>
-<div class="hero-meta">
-<span>2026</span>
-<span>2h 40m</span>
-<span>AGE OF HEROES</span>
+<div class="hero-meta lss-combined-hero-meta">
+  <div class="lss-hero-bar-rating"><div class="lss-hero-rating" data-movie-id="flash-overtime" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div></div>
+  <div class="lss-hero-bar-title">THE FLASH: OVERTIME</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-year">2026</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-runtime">2h 40m</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-genre">AGE OF HEROES</div>
 </div>
 </article>
 
@@ -3466,66 +3584,102 @@
 <a class="hero-image-link" href="vault/superman.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/SOTnewhero.webp');"></div>
 </a>
-<div class="lss-hero-rating" data-movie-id="superman-son-of-tomorrow" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
+
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/superman.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">SUPERMAN: SON OF TOMORROW</h1></a>
 </div></div>
-<div class="hero-meta"><span>2025</span><span>1h 50m</span><span>AGE OF HEROES</span></div>
+<div class="hero-meta lss-combined-hero-meta">
+  <div class="lss-hero-bar-rating"><div class="lss-hero-rating" data-movie-id="superman-son-of-tomorrow" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div></div>
+  <div class="lss-hero-bar-title">SUPERMAN: SON OF TOMORROW</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-year">2025</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-runtime">1h 50m</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-genre">AGE OF HEROES</div>
+</div>
 </article>
 
 <article class="slide">
 <a class="hero-image-link" href="vault/batman.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/batmanhero.webp');"></div>
 </a>
-<div class="lss-hero-rating" data-movie-id="batman-gothams-riddle" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
+
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/batman.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">BATMAN: GOTHAM'S RIDDLE</h1></a>
 </div></div>
-<div class="hero-meta"><span>2024</span><span>1h 59m</span><span>AGE OF HEROES</span></div>
+<div class="hero-meta lss-combined-hero-meta">
+  <div class="lss-hero-bar-rating"><div class="lss-hero-rating" data-movie-id="batman-gothams-riddle" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div></div>
+  <div class="lss-hero-bar-title">BATMAN: GOTHAM'S RIDDLE</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-year">2024</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-runtime">1h 59m</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-genre">AGE OF HEROES</div>
+</div>
 </article>
 
 <article class="slide">
 <a class="hero-image-link" href="vault/rogue-one.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/rogueonehero1.webp');"></div>
 </a>
-<div class="lss-hero-rating" data-movie-id="rogue-one-scarif-run" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
+
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/rogue-one.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">ROGUE ONE: THE SCARIF RUN</h1></a>
 </div></div>
-<div class="hero-meta"><span>2026</span><span>1h 47m</span><span>FUTURE WORLDS</span></div>
+<div class="hero-meta lss-combined-hero-meta">
+  <div class="lss-hero-bar-rating"><div class="lss-hero-rating" data-movie-id="rogue-one-scarif-run" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div></div>
+  <div class="lss-hero-bar-title">ROGUE ONE: THE SCARIF RUN</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-year">2026</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-runtime">1h 47m</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-genre">FUTURE WORLDS</div>
+</div>
 </article>
 
 <article class="slide">
 <a class="hero-image-link" href="vault/the-flash.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/flashhero.webp');"></div>
 </a>
-<div class="lss-hero-rating" data-movie-id="flash-crossroads" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
+
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/the-flash.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">THE FLASH: CROSSROADS</h1></a>
 </div></div>
-<div class="hero-meta"><span>2023</span><span>1h 57m</span><span>AGE OF HEROES</span></div>
+<div class="hero-meta lss-combined-hero-meta">
+  <div class="lss-hero-bar-rating"><div class="lss-hero-rating" data-movie-id="flash-crossroads" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div></div>
+  <div class="lss-hero-bar-title">THE FLASH: CROSSROADS</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-year">2023</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-runtime">1h 57m</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-genre">AGE OF HEROES</div>
+</div>
 </article>
 
 <article class="slide">
 <a class="hero-image-link" href="vault/glass-rooms.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/glassheroes1NEW.webp');"></div>
 </a>
-<div class="lss-hero-rating" data-movie-id="glass-rooms" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
+
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/glass-rooms.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">GLASS ROOMS</h1></a>
 </div></div>
-<div class="hero-meta"><span>2026</span><span>1h 32m</span><span>FUTURE WORLDS</span></div>
+<div class="hero-meta lss-combined-hero-meta">
+  <div class="lss-hero-bar-rating"><div class="lss-hero-rating" data-movie-id="glass-rooms" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div></div>
+  <div class="lss-hero-bar-title">GLASS ROOMS</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-year">2026</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-runtime">1h 32m</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-genre">FUTURE WORLDS</div>
+</div>
 </article>
 
 <article class="slide">
 <a class="hero-image-link" href="vault/far-from-sol.html" aria-label="Open project landing page">
 <div class="slide-bg" style="background-image:url('https://light-speed-studios.b-cdn.net/ffshero.webp');"></div>
 </a>
-<div class="lss-hero-rating" data-movie-id="far-from-sol" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div>
+
 <div class="hero-content"><div class="content-inner hero-content-wrapper">
 <a class="hero-title-link" href="vault/far-from-sol.html"><span class="hero-kicker">FEATURED EDIT</span><h1 class="hero-title">FAR FROM SOL</h1></a>
 </div></div>
-<div class="hero-meta"><span>2026</span><span>2h 10m</span><span>FUTURE WORLDS</span></div>
+<div class="hero-meta lss-combined-hero-meta">
+  <div class="lss-hero-bar-rating"><div class="lss-hero-rating" data-movie-id="far-from-sol" aria-label="Audience rating" aria-live="off"><span class="lss-hero-rating-star" aria-hidden="true">★</span><strong class="lss-hero-rating-average">—</strong><span class="lss-hero-rating-count">LOADING</span></div></div>
+  <div class="lss-hero-bar-title">FAR FROM SOL</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-year">2026</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-runtime">2h 10m</div>
+  <div class="lss-hero-bar-detail lss-hero-bar-genre">FUTURE WORLDS</div>
+</div>
 </article>
 <button aria-label="Previous slide" class="nav-arrow left">
 <svg height="36" viewbox="0 0 24 24" width="36">
