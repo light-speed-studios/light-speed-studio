@@ -121,8 +121,8 @@
   }
 
   const autoDelay = 6000;
-  const welcomeDuration = 1300;
-  const welcomeFadeTime = 650;
+  const welcomeDuration = 900;
+  const welcomeFadeTime = 600;
 
   function showSlide(index) {
     if (!slides.length) return;
