@@ -444,6 +444,57 @@
   .telemetry-shell .ffs-file-action {font-size:11px; padding:0;}
 }
 </style>
+
+<style id="lss-telemetry-two-column-review-layout">
+/* Two independent review dossiers per desktop row; popups retain their checkbox siblings. */
+@media (min-width: 901px) {
+  .telemetry-shell .lss-telemetry-review-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 16px;
+    align-items: stretch;
+  }
+  .telemetry-shell .lss-telemetry-review-item { min-width: 0; }
+  .telemetry-shell .lss-telemetry-review-item .ffs-file-card {
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .telemetry-shell .lss-telemetry-review-item .ffs-file-summary {
+    height: 100%;
+    min-height: 110px;
+    box-sizing: border-box;
+    padding: 14px 19px;
+    grid-template-columns: minmax(0,1fr) auto;
+    grid-template-rows: auto 1fr;
+    gap: 7px 12px;
+    align-content: center;
+  }
+  .telemetry-shell .lss-telemetry-review-item .ffs-file-left {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .telemetry-shell .lss-telemetry-review-item .ffs-review-excerpt {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0 0 0 12px;
+    font-size: 16px;
+    border-left: 1px solid rgba(0,174,222,.42);
+  }
+  .telemetry-shell .lss-telemetry-review-item .ffs-file-action {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    align-self: center;
+    padding-left: 0;
+    font-size: 11px;
+  }
+}
+@media (max-width: 900px) {
+  .telemetry-shell .lss-telemetry-review-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 11px; }
+  .telemetry-shell .lss-telemetry-review-item {min-width:0;}
+  .telemetry-shell .lss-telemetry-review-item .ffs-file-card {margin:0;}
+}
+</style>
 <div class="telemetry-shell">
     <!-- Using the same card class that frames your movie titles -->
 <section class="vault-archive-hero">
@@ -456,7 +507,9 @@
         <span class="spoiler-warning">Spoilers Ahead!</span>
     </p>
 </section>
-   <!-- 1. SUPERMAN -->
+       <div class="lss-telemetry-review-grid">
+      <div class="lss-telemetry-review-item">
+<!-- 1. SUPERMAN -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalSuperman">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalSuperman">
@@ -492,8 +545,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 2. THE BATMAN -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 2. THE BATMAN -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalTheBatman">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalTheBatman">
@@ -529,8 +583,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 3. PROJECT HAIL MARY -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 3. PROJECT HAIL MARY -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalHailMary">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalHailMary">
@@ -564,8 +619,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 4. F1: THE MOVIE -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 4. F1: THE MOVIE -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalF1Movie">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalF1Movie">
@@ -601,8 +657,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 5. TOP GUN: MAVERICK -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 5. TOP GUN: MAVERICK -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalTopGun">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalTopGun">
@@ -637,8 +694,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 6. STAR TREK -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 6. STAR TREK -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalStarTrek">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalStarTrek">
@@ -674,8 +732,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 7. EX MACHINA -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 7. EX MACHINA -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalExMachina">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalExMachina">
@@ -711,8 +770,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 8. REAL STEEL -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 8. REAL STEEL -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalRealSteel">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalRealSteel">
@@ -748,8 +808,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 9. THE FLASH -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 9. THE FLASH -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalTheFlash">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalTheFlash">
@@ -785,8 +846,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 10. ROGUE ONE -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 10. ROGUE ONE -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalRogueOne">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalRogueOne">
@@ -822,8 +884,9 @@
 </p></p></div></div>
       </div>
     </div>
-
-    <!-- 11. SPEED RACER -->
+      </div>
+      <div class="lss-telemetry-review-item">
+<!-- 11. SPEED RACER -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalSpeedRacer">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalSpeedRacer">
@@ -859,9 +922,8 @@
 </p></p></div></div>
       </div>
     </div>
-
- 
-</main>
+      </div>
+    </div></main>
 <script>
   // Script to allow clicking the dark mask layer to close the active review popup
   document.querySelectorAll(".ffs-file-modal").forEach(modal => {
