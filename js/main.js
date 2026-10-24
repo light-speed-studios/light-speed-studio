@@ -111,7 +111,7 @@
   let welcomeTimerStarted = false;
   let welcomeActive = Boolean(welcomeSlide);
 
-  const autoDelay = 6000;
+  const autoDelay = 5000;
   const welcomeDuration = 1700;
   const welcomeFadeTime = 950;
 
