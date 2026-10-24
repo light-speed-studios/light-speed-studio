@@ -76,7 +76,7 @@
 
                 /* The hero welcome timer begins only after the splash is fully gone. */
                 announceSplashFinished();
-            }, 2000);
+            }, 1000);
         }
 
         document.addEventListener("pointerdown", closeSplash, { once: true });
