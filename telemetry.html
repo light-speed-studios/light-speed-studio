@@ -383,6 +383,67 @@
       }
     }
   </style>
+
+<style id="lss-telemetry-enhanced-dossiers">
+/* Image-free review dossiers; desktop layout and mobile-friendly stacking. */
+.telemetry-shell .ffs-file-card {
+  position: relative;
+  margin-bottom: 11px;
+  background: linear-gradient(90deg, rgba(0,174,222,.085), rgba(4,14,21,.66) 65%), rgba(255,255,255,.022);
+  box-shadow: inset 0 0 0 1px rgba(0,174,222,.24);
+  overflow: visible;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.telemetry-shell .ffs-file-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(#00AEDE,#00AEDE) left top / 16px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left top / 2px 16px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 16px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 2px 16px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 16px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 16px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 16px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 16px no-repeat;
+  opacity: .72;
+}
+.telemetry-shell .ffs-file-card:hover,
+.telemetry-shell .ffs-file-card:focus-within {
+  background: linear-gradient(90deg, rgba(0,174,222,.145), rgba(4,14,21,.76) 65%);
+  box-shadow: inset 0 0 0 1px rgba(0,174,222,.46), 0 0 16px rgba(0,174,222,.09);
+}
+.telemetry-shell .ffs-file-summary {
+  min-height: 76px;
+  padding: 12px 22px;
+  display: grid;
+  grid-template-columns: minmax(190px, 30%) minmax(0,1fr) auto;
+  gap: 22px;
+  align-items: center;
+}
+.telemetry-shell .ffs-file-left { min-width:0; }
+.telemetry-shell .ffs-file-copy strong { font-size: 20px; margin-bottom: 4px; letter-spacing:.07em; }
+.telemetry-shell .ffs-file-copy span {font-size: 18px; opacity:.95;}
+.telemetry-shell .ffs-review-excerpt {
+  padding: 0 20px;
+  border-left: 1px solid rgba(0,174,222,.42);
+  color: rgba(186,199,213,.86);
+  font-family: Rajdhani,Arial,sans-serif;
+  font-size: 17px;
+  line-height: 1.3;
+  min-width:0;
+}
+.telemetry-shell .ffs-file-action {font-size:13px; letter-spacing:.12em; padding-left:10px;}
+.telemetry-shell .ffs-file-arrow {font-size:20px; line-height:1;}
+@media (max-width: 900px) {
+  .telemetry-shell .ffs-file-summary { grid-template-columns: minmax(0,1fr) auto; gap: 9px 12px; padding: 14px 16px; }
+  .telemetry-shell .ffs-file-copy strong {font-size:18px;}
+  .telemetry-shell .ffs-review-excerpt {grid-column:1/-1; grid-row:2; padding: 2px 0 0 12px; border-left:2px solid rgba(0,174,222,.32); font-size:15px;}
+  .telemetry-shell .ffs-file-action {font-size:11px; padding:0;}
+}
+</style>
 <div class="telemetry-shell">
     <!-- Using the same card class that frames your movie titles -->
 <section class="vault-archive-hero">
@@ -402,6 +463,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>SUPERMAN</strong><span>8 🌕</span></div>
         </div>
+        <div class="ffs-review-excerpt">“I’ve saw this movie four times when it first came out.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -438,6 +500,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>THE BATMAN</strong><span>7 🌓</span></div>
         </div>
+        <div class="ffs-review-excerpt">“The Batman stands as one of the most atmospheric interpretations of Gotham ever put on screen.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -474,6 +537,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>PROJECT HAIL MARY</strong><span>6 🌒</span></div>
         </div>
+        <div class="ffs-review-excerpt">“Project Hail Mary is a frustrating disappointment because its premise holds genuine promise.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -508,6 +572,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>F1: THE MOVIE</strong><span>5 🌒</span></div>
         </div>
+        <div class="ffs-review-excerpt">“F1: The Movie is an impeccably shot film anchored by Brad Pitt’s charisma and Joseph Kosinski’s technical confidence.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -544,6 +609,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>TOP GUN: MAVERICK</strong><span>9 🌕</span></div>
         </div>
+        <div class="ffs-review-excerpt">“Top Gun Maverick is the kind of sequel that reminds you why blockbusters exist.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -579,6 +645,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>STAR TREK</strong><span>7.5 🌓</span></div>
         </div>
+        <div class="ffs-review-excerpt">“I never considered myself a Star Trek fan, so I went into this one expecting to be lost.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -615,6 +682,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>EX MACHINA</strong><span>7 🌓</span></div>
         </div>
+        <div class="ffs-review-excerpt">“Ex Machina is a smart, contained sci-fi that leans into ideas instead of spectacle.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -651,6 +719,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>REAL STEEL</strong><span>8.5 🌕</span></div>
         </div>
+        <div class="ffs-review-excerpt">“I missed Real Steel when it first released and wish I had seen it earlier.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -687,6 +756,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>THE FLASH</strong><span>7.5 🌓</span></div>
         </div>
+        <div class="ffs-review-excerpt">“I went into The Flash expecting another chaotic superhero crossover and ended up genuinely surprised by how much heart it carried.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -723,6 +793,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>ROGUE ONE</strong><span>9 🌕</span></div>
         </div>
+        <div class="ffs-review-excerpt">“Rogue One is the rare Star Wars film that focuses on sacrifice with full conviction.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
@@ -759,6 +830,7 @@
         <div class="ffs-file-left">
           <div class="ffs-file-copy"><strong>SPEED RACER</strong><span>8 🌕</span></div>
         </div>
+        <div class="ffs-review-excerpt">“When I first saw Speed Racer as a kid, I loved the colors and the chaos.”</div>
         <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
       </label>
     </div>
