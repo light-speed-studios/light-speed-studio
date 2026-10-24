@@ -109,10 +109,19 @@
   let autoPlay = null;
   let welcomeTimer = null;
   let welcomeTimerStarted = false;
-  let welcomeActive = Boolean(welcomeSlide);
 
-  const autoDelay = 5000;
-  const welcomeDuration = 1700;
+  // Show the Bridge welcome only once per browser-tab session.
+  const welcomeSessionKey = "lssHeroWelcomeSeen:/";
+  const welcomeAlreadySeen = sessionStorage.getItem(welcomeSessionKey) === "true";
+  let welcomeActive = Boolean(welcomeSlide) && !welcomeAlreadySeen;
+
+  if (welcomeSlide && welcomeAlreadySeen) {
+    welcomeSlide.remove();
+    carousel.classList.remove('welcome-active');
+  }
+
+  const autoDelay = 6000;
+  const welcomeDuration = 2200;
   const welcomeFadeTime = 950;
 
   function showSlide(index) {
@@ -192,6 +201,7 @@
     if (!welcomeSlide || !welcomeActive || welcomeTimerStarted) return;
 
     welcomeTimerStarted = true;
+    sessionStorage.setItem(welcomeSessionKey, "true");
     welcomeTimer = window.setTimeout(finishWelcome, welcomeDuration);
   }
 
@@ -235,7 +245,7 @@
     wrapper.addEventListener('mouseleave', startAutoPlay);
   });
 
-  if (welcomeSlide) {
+  if (welcomeActive) {
     slides.forEach(slide => slide.classList.remove('active'));
     indicators.forEach(dot => dot.classList.remove('active'));
 
@@ -256,12 +266,16 @@
   } else {
     showSlide(0);
 
+    // Returning to Bridge skips the welcome and starts the normal 6s rotation.
+    const beginRegularSlides = () => {
+      if (welcomeAlreadySeen) startAutoPlay();
+      else window.setTimeout(startAutoPlay, 2400);
+    };
+
     if (window.lssSplashFinished) {
-      window.setTimeout(startAutoPlay, 2400);
+      beginRegularSlides();
     } else {
-      window.addEventListener("lssSplashFinished", function () {
-        window.setTimeout(startAutoPlay, 2400);
-      }, { once: true });
+      window.addEventListener("lssSplashFinished", beginRegularSlides, { once: true });
     }
   }
 })();
