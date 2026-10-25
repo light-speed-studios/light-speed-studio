@@ -353,6 +353,45 @@ document.addEventListener('DOMContentLoaded', function () {
   else query.addListener(place);
 });
 </script>
+<style id="crisis-fullbleed-banner-layout">
+/* Banner is a sibling of the constrained page-content container. */
+.crisis-wide-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #040E15;
+}
+.crisis-wide-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.crisis-wide-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 62%, rgba(4,14,21,.28) 77%, #040E15 100%);
+}
+/* Keep the existing movie modules inside their original width constraint. */
+@media (min-width: 901px) {
+  #lss-page-splash { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+  .ffs-page { padding-top: 12px !important; }
+  /* Return content to its original vertical position while retaining the transparent backing. */
+  main.page-content { position: relative; z-index: 2; background: transparent !important; }
+  /* Remove the solid rectangular backing behind the overlapping content boxes. */
+  main.page-content > .ffs-page { background: transparent !important; }
+}
+@media (max-width: 900px) {
+  .crisis-wide-banner { display: none !important; }
+  .crisis-wide-banner::after {
+    background: linear-gradient(to bottom, transparent 58%, rgba(4,14,21,.35) 78%, #040E15 100%);
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Crisis: Red Skies splash screen">
@@ -385,6 +424,9 @@ document.addEventListener('DOMContentLoaded', function () {
 <a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
 </nav>
 </header>
+<section class="crisis-wide-banner" aria-label="Crisis: Red Skies banner">
+  <img src="https://light-speed-studios.b-cdn.net/CRISISBANNER.webp" alt="Crisis: Red Skies cinematic banner" decoding="async" fetchpriority="high" />
+</section>
 <main class="page-content">
 <div class="ffs-page">
 <style>
