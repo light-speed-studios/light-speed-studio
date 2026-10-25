@@ -404,6 +404,45 @@
   }
 }
 </style>
+<style id="rogue-fullbleed-banner-layout">
+/* Banner is a sibling of the constrained page-content container. */
+.rogue-wide-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #040E15;
+}
+.rogue-wide-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.rogue-wide-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 62%, rgba(4,14,21,.28) 77%, #040E15 100%);
+}
+/* Keep the existing movie modules inside their original width constraint. */
+@media (min-width: 901px) {
+  #lss-page-splash { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+  .ffs-page { padding-top: 12px !important; }
+  /* Return content to its original vertical position while retaining the transparent backing. */
+  main.page-content { position: relative; z-index: 2; background: transparent !important; }
+  /* Remove the solid rectangular backing behind the overlapping content boxes. */
+  main.page-content > .ffs-page { background: transparent !important; }
+}
+@media (max-width: 900px) {
+  .rogue-wide-banner { display: none !important; }
+  .rogue-wide-banner::after {
+    background: linear-gradient(to bottom, transparent 58%, rgba(4,14,21,.35) 78%, #040E15 100%);
+  }
+}
+</style>
 </head>
 <body>
 <div aria-label="Rogue One: The Scarif Run splash screen" data-duration="3000" id="lss-page-splash">
@@ -430,6 +469,9 @@
 <a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
 </nav>
 </header>
+<section class="rogue-wide-banner" aria-label="Rogue One: The Scarif Run banner">
+  <img src="https://light-speed-studios.b-cdn.net/ROGUEBANNER.webp" alt="Rogue One: The Scarif Run cinematic banner" decoding="async" fetchpriority="high" />
+</section>
 <main class="page-content">
 <div class="ffs-page">
 <style>
