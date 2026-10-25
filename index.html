@@ -3346,6 +3346,69 @@
 }
 </style>
 
+<style id="lss-bridge-latest-review-notice">
+.lss-bridge-review-notice {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+  width: min(1220px, calc(100% - 40px));
+  min-height: 60px;
+  margin: 16px auto 28px;
+  padding: 12px 24px;
+  background: linear-gradient(100deg, rgba(0,174,222,.085), rgba(4,14,21,.9) 70%), #040E15;
+  box-shadow: 0 0 16px rgba(0,174,222,.07), inset 0 0 0 1px rgba(0,174,222,.28);
+  color: #BAC7D5;
+  text-decoration: none;
+  font-family: Oxanium, Rajdhani, Arial, sans-serif;
+  transition: background .2s ease, box-shadow .2s ease;
+}
+.lss-bridge-review-notice::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .86;
+  background:
+    linear-gradient(#00AEDE,#00AEDE) left top / 24px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left top / 2px 24px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 24px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 2px 24px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 24px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 24px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 24px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 24px no-repeat;
+}
+.lss-bridge-review-notice:hover,
+.lss-bridge-review-notice:focus-visible {
+  background: linear-gradient(100deg, rgba(0,174,222,.15), rgba(4,14,21,.94) 70%), #040E15;
+  box-shadow: 0 0 19px rgba(0,174,222,.14), inset 0 0 0 1px rgba(0,174,222,.42);
+}
+.lss-review-notice-label {
+  border: 1px solid rgba(0,174,222,.55);
+  padding: 7px 10px;
+  font-size: 12px;
+  letter-spacing: .12em;
+  white-space: nowrap;
+  color: #00AEDE;
+  font-weight: 700;
+}
+.lss-review-notice-title { font-weight: 700; font-size: 17px; letter-spacing: .065em; white-space: nowrap; }
+.lss-review-notice-year { font-weight: 500; }
+.lss-review-notice-score { font-size: 16px; white-space: nowrap; }
+.lss-review-notice-quote { color: rgba(186,199,213,.78); font: italic 18px/1.2 Rajdhani,Arial,sans-serif; }
+.lss-review-notice-action { margin-left: auto; color: #00AEDE; font-size: 12px; font-weight: 700; letter-spacing: .08em; white-space: nowrap; }
+@media (max-width:900px) {
+  .lss-bridge-review-notice { width: calc(100% - 28px); flex-wrap: wrap; gap: 9px 12px; min-height: 0; margin: 14px auto 20px; padding: 13px 15px; }
+  .lss-review-notice-label { font-size: 10px; padding: 5px 7px; }
+  .lss-review-notice-title { font-size: 14px; }
+  .lss-review-notice-score { font-size: 14px; }
+  .lss-review-notice-quote { display: none; }
+  .lss-review-notice-action { width: 100%; margin-left: 0; font-size: 11px; }
+}
+</style>
+
 <style id="lss-hero-combined-desktop-bar">
 /* Desktop only. Mobile hero, dots, arrows and shared rating JS are unchanged. */
 @media (min-width: 901px) {
@@ -3360,7 +3423,7 @@
     left: 50% !important;
     right: auto !important;
     top: auto !important;
-    bottom: 131px !important;
+    bottom: 141px !important;
     transform: translateX(-50%) !important;
     z-index: 21 !important;
     display: grid !important;
@@ -3412,7 +3475,7 @@
     left: 50% !important;
     right: auto !important;
     top: auto !important;
-    bottom: 91px !important;
+    bottom: 101px !important;
     transform: translateX(-50%) !important;
     justify-content: center !important;
     z-index: 30 !important;
@@ -3834,6 +3897,16 @@
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
 </section>
+
+<!-- Latest Telemetry review: early-session discovery, outside the carousel. -->
+<a class="lss-bridge-review-notice" href="telemetry.html?review=clayface" aria-label="Read new Clayface 2026 review rated 8 out of 10 on Telemetry">
+  <span class="lss-review-notice-label">NEW REVIEW</span>
+  <span class="lss-review-notice-title">CLAYFACE <span class="lss-review-notice-year">(2026)</span></span>
+  <span class="lss-review-notice-score">8/10 <span aria-hidden="true">🌕</span></span>
+  <span class="lss-review-notice-quote">“I want my life back.”</span>
+  <span class="lss-review-notice-action">READ ON TELEMETRY <span aria-hidden="true">↗</span></span>
+</a>
+
 <!-- =======================================================
        SECTION 2: VAULT
   ======================================================= -->
