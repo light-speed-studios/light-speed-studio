@@ -530,6 +530,27 @@
 }
 @media (min-width: 901px) { .ffs-info-panel > .ffs-working-title-mobile-order { display: none !important; } }
 </style>
+<style id="sot-desktop-fullwidth-banner">
+/* Full-bleed desktop banner while the existing movie modules keep their margins. */
+@media (min-width: 901px) {
+  body > main.page-content { width: 100%; max-width: none !important; margin-left: 0; margin-right: 0; }
+  main.page-content > .sot-cinematic-banner {
+    display: block; position: relative; width: 100%; height: auto;
+    aspect-ratio: 2.73 / 1;
+    background: #040e15 url("https://light-speed-studios.b-cdn.net/SOTBANNER.webp") center center / cover no-repeat;
+    overflow: hidden;
+  }
+  main.page-content > .sot-cinematic-banner::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to bottom, transparent 77%, rgba(4,14,21,.25) 87%, #040e15 100%);
+  }
+  main.page-content > .ffs-page { padding-top: 0; }
+  #lss-page-splash { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+}
+@media (max-width: 900px) {
+  main.page-content > .sot-cinematic-banner { display: none !important; }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Superman splash screen">
@@ -564,6 +585,7 @@
 </header>
 
 <main class="page-content">
+<div class="sot-cinematic-banner" role="img" aria-label="Superman: Son of Tomorrow cinematic banner"></div>
 <div class="ffs-page">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
