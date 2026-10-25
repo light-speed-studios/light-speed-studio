@@ -3357,7 +3357,7 @@
   min-height: 60px;
   margin: 16px auto 28px;
   padding: 12px 24px;
-  background: linear-gradient(100deg, rgba(0,174,222,.085), rgba(4,14,21,.9) 70%), #040E15;
+  background: rgba(4,14,21,.50);
   box-shadow: 0 0 16px rgba(0,174,222,.07), inset 0 0 0 1px rgba(0,174,222,.28);
   color: #BAC7D5;
   text-decoration: none;
@@ -3382,7 +3382,7 @@
 }
 .lss-bridge-review-notice:hover,
 .lss-bridge-review-notice:focus-visible {
-  background: linear-gradient(100deg, rgba(0,174,222,.15), rgba(4,14,21,.94) 70%), #040E15;
+  background: rgba(4,14,21,.50);
   box-shadow: 0 0 19px rgba(0,174,222,.14), inset 0 0 0 1px rgba(0,174,222,.42);
 }
 .lss-review-notice-label {
@@ -3399,6 +3399,28 @@
 .lss-review-notice-score { font-size: 16px; white-space: nowrap; }
 .lss-review-notice-quote { color: rgba(186,199,213,.78); font: italic 18px/1.2 Rajdhani,Arial,sans-serif; }
 .lss-review-notice-action { margin-left: auto; color: #00AEDE; font-size: 12px; font-weight: 700; letter-spacing: .08em; white-space: nowrap; }
+/* Position the notice inside the hero image on desktop only. */
+@media (min-width:901px) {
+  .home-hero-section { position: relative !important; }
+  .home-hero-section > .lss-bridge-review-notice {
+    position: absolute !important;
+    z-index: 125 !important;
+    top: 490px !important; /* 18px frame + 536px hero, with notice 12px above its bottom */
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: min(1000px, calc(100% - 180px)) !important;
+    min-height: 52px !important;
+    margin: 0 !important;
+    padding: 10px 18px !important;
+    gap: 16px !important;
+  }
+  .home-hero-section > .lss-bridge-review-notice .lss-review-notice-quote {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
 @media (max-width:900px) {
   .lss-bridge-review-notice { width: calc(100% - 28px); flex-wrap: wrap; gap: 9px 12px; min-height: 0; margin: 14px auto 20px; padding: 13px 15px; }
   .lss-review-notice-label { font-size: 10px; padding: 5px 7px; }
@@ -3896,9 +3918,7 @@
 <div class="section-heading orbit-desktop-only">
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
-</section>
-
-<!-- Latest Telemetry review: early-session discovery, outside the carousel. -->
+<!-- New review notice overlays the bottom of the desktop hero. -->
 <a class="lss-bridge-review-notice" href="telemetry.html?review=clayface" aria-label="Read new Clayface 2026 review rated 8 out of 10 on Telemetry">
   <span class="lss-review-notice-label">NEW REVIEW</span>
   <span class="lss-review-notice-title">CLAYFACE <span class="lss-review-notice-year">(2026)</span></span>
@@ -3906,6 +3926,9 @@
   <span class="lss-review-notice-quote">“I want my life back.”</span>
   <span class="lss-review-notice-action">READ ON TELEMETRY <span aria-hidden="true">↗</span></span>
 </a>
+</section>
+
+
 
 <!-- =======================================================
        SECTION 2: VAULT
