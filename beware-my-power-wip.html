@@ -467,6 +467,20 @@
     .ffs-main-row .ffs-teaser-video { width: 100%; }
   }
 
+    /* Override the shared stylesheet's 1300px .page-content cap on this page only. */
+    body > .page-content {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+    }
+    /* Full viewport banner even if a parent layout is constrained. */
+    .bmp-banner {
+      width: 100vw;
+      max-width: none;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
     /* Beware My Power: full-bleed hero and compact two-panel layout */
     .ffs-page { padding: 0 0 42px; overflow-x: visible; }
     .ffs-shell { padding: 0 20px; }
@@ -474,7 +488,7 @@
     .bmp-banner {
       position: relative;
       display: block;
-      width: 100%;
+      width: 100vw;
       aspect-ratio: 2.73 / 1;
       background-image: url("https://light-speed-studios.b-cdn.net/BMPbanner.webp");
       background-position: center;
