@@ -267,6 +267,40 @@
   }
 }
 </style>
+<style id="overtime-fullbleed-banner-layout">
+/* Banner is a sibling of the constrained page-content container. */
+.overtime-wide-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #040E15;
+}
+.overtime-wide-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.overtime-wide-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 62%, rgba(4,14,21,.28) 77%, #040E15 100%);
+}
+/* Keep the existing movie modules inside their original width constraint. */
+@media (min-width: 901px) {
+  #lss-page-splash { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+  .ffs-page { padding-top: 12px !important; }
+}
+@media (max-width: 900px) {
+  .overtime-wide-banner::after {
+    background: linear-gradient(to bottom, transparent 58%, rgba(4,14,21,.35) 78%, #040E15 100%);
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Overtime splash screen">
@@ -299,6 +333,9 @@
 <a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
 </nav>
 </header>
+<section class="overtime-wide-banner" aria-label="The Flash: Overtime banner">
+  <img src="https://light-speed-studios.b-cdn.net/OVERTIMEBANNER.webp" alt="The Flash: Overtime cinematic banner" decoding="async" fetchpriority="high" />
+</section>
 <main class="page-content">
 <div class="ffs-page">
 <style>
