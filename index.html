@@ -3431,6 +3431,55 @@
 }
 </style>
 
+<style id="lss-mobile-review-notice-inline">
+/* Mobile notice is a single line immediately above the BRIDGE heading. */
+.lss-review-action-short { display: none; }
+@media (max-width: 900px) {
+  .home-hero-section > .lss-bridge-review-notice {
+    position: relative !important;
+    inset: auto !important;
+    transform: none !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: calc(100% - 28px) !important;
+    max-width: none !important;
+    min-height: 39px !important;
+    margin: 12px auto 12px !important;
+    padding: 7px 9px !important;
+    gap: 5px !important;
+  }
+  .home-hero-section .lss-bridge-review-notice .lss-review-notice-label {
+    flex: 0 0 auto;
+    padding: 5px 6px;
+    font-size: 9px;
+    letter-spacing: .02em;
+  }
+  .home-hero-section .lss-bridge-review-notice .lss-review-notice-title {
+    flex: 0 1 auto;
+    min-width: 0;
+    font-size: clamp(10px, 2.8vw, 13px);
+    letter-spacing: 0;
+  }
+  .home-hero-section .lss-bridge-review-notice .lss-review-notice-score {
+    flex: 0 0 auto;
+    font-size: 11px;
+  }
+  .home-hero-section .lss-bridge-review-notice .lss-review-notice-quote { display: none !important; }
+  .home-hero-section .lss-bridge-review-notice .lss-review-notice-action {
+    flex: 0 0 auto;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0;
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+  .lss-review-action-full { display: none; }
+  .lss-review-action-short { display: inline; }
+}
+</style>
+
 <style id="lss-hero-combined-desktop-bar">
 /* Desktop only. Mobile hero, dots, arrows and shared rating JS are unchanged. */
 @media (min-width: 901px) {
@@ -3915,17 +3964,18 @@
 </div>
 </section>
 </div>
-<div class="section-heading orbit-desktop-only">
-<span class="lead">B</span><span class="rest">RIDGE</span>
-</div>
-<!-- New review notice overlays the bottom of the desktop hero. -->
+<!-- New review notice: desktop overlay, mobile directly above BRIDGE heading. -->
 <a class="lss-bridge-review-notice" href="telemetry.html?review=clayface" aria-label="Read new Clayface 2026 review rated 8 out of 10 on Telemetry">
   <span class="lss-review-notice-label">NEW REVIEW</span>
   <span class="lss-review-notice-title">CLAYFACE <span class="lss-review-notice-year">(2026)</span></span>
   <span class="lss-review-notice-score">8/10 <span aria-hidden="true">🌕</span></span>
   <span class="lss-review-notice-quote">“I want my life back.”</span>
-  <span class="lss-review-notice-action">READ ON TELEMETRY <span aria-hidden="true">↗</span></span>
+  <span class="lss-review-notice-action"><span class="lss-review-action-full">READ ON TELEMETRY</span><span class="lss-review-action-short">READ</span> <span aria-hidden="true">↗</span></span>
 </a>
+<div class="section-heading orbit-desktop-only">
+<span class="lead">B</span><span class="rest">RIDGE</span>
+</div>
+
 </section>
 
 
