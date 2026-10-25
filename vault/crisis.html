@@ -392,6 +392,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 }
 </style>
+<style id="crisis-mobile-ffs-rating-spacing-match">
+/* Match Far From Sol's compact mobile rating spacing. */
+@media (max-width: 900px) {
+  .ffs-project-block > .ffs-audience-rating {
+    margin: 0 0 16px !important;
+  }
+  .ffs-audience-rating .ffs-rating-number {
+    width: auto !important;
+    min-height: 0 !important;
+    margin-top: 3px !important;
+    padding: 0 !important;
+    gap: 7px !important;
+    align-items: baseline !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    background: none !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Crisis: Red Skies splash screen">
