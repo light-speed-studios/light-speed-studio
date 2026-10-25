@@ -466,6 +466,42 @@
     .ffs-main-row .ffs-teaser-title { margin-bottom: 14px; }
     .ffs-main-row .ffs-teaser-video { width: 100%; }
   }
+
+    /* Beware My Power widescreen banner and two-module layout */
+    .ffs-page { padding-top: 0; }
+    .ffs-shell, .ffs-landing-panel { width: 100%; max-width: 1500px; }
+    .bmp-banner {
+      width: 100%; aspect-ratio: 2.73 / 1;
+      background: url("https://light-speed-studios.b-cdn.net/BMPbanner.webp") center / contain no-repeat;
+      position: relative;
+      margin: 0 auto -12px;
+    }
+    .bmp-banner::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to bottom, transparent 68%, rgba(4,14,21,.4) 81%, #040e15 100%);
+    }
+    .ffs-main-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; position: relative; z-index: 2; }
+    .ffs-main-row > .ffs-changes-panel, .ffs-main-row > .ffs-teaser-panel {
+      width: auto; min-width: 0; max-width: none; height: auto; min-height: 340px;
+      margin: 0; padding: 28px; flex: none; display: flex; flex-direction: column; justify-content: center;
+    }
+    .ffs-main-row .ffs-changes-text { font-size: 23px; line-height: 1.3; }
+    .ffs-main-row .ffs-changes-text h3 { margin-bottom: 12px; }
+    .ffs-main-row .ffs-changes-text p { margin: 0 0 12px; }
+    .ffs-main-row .ffs-changes-text p:last-child { margin-bottom: 0; }
+    @media (max-width: 900px) {
+      .ffs-page { padding: 0 14px 42px; }
+      .bmp-banner { width: calc(100% + 28px); margin-left: -14px; margin-bottom: 12px; aspect-ratio: 2.73 / 1; }
+      .ffs-main-row { grid-template-columns: 1fr; gap: 14px; }
+      .ffs-main-row > .ffs-changes-panel, .ffs-main-row > .ffs-teaser-panel { min-height: 0; padding: 18px; }
+      .ffs-main-row .ffs-changes-text { font-size: 18px; }
+    }
+
+    @media (min-width: 901px) {
+      .ffs-landing-panel .ffs-main-row > .ffs-changes-panel,
+      .ffs-landing-panel .ffs-main-row > .ffs-teaser-panel { width: auto; height: auto; min-height: 340px; padding: 28px; }
+      .ffs-landing-panel .ffs-main-row .ffs-changes-text { font-size: 23px; line-height: 1.3; }
+    }
   </style>
 </head>
 
@@ -493,42 +529,22 @@
   <div class="ffs-page">
     <div class="ffs-shell">
       <section class="ffs-landing-panel">
-        <div class="ffs-info-panel">
-          <p class="ffs-status">Pre-Production</p>
-          <h1 class="ffs-title">Beware My Power</h1>
-        </div>
+        <div class="bmp-banner" role="img" aria-label="Beware My Power cinematic banner"></div>
 
         <div class="ffs-main-row">
-          <div class="ffs-poster-panel">
-              <img class="ffs-poster ffs-poster-full" src="https://light-speed-studios.b-cdn.net/bmp1.jpg" alt="The Flash: Speed Trap poster">
-          </div>
-
           <div class="ffs-changes-panel">
-          <div class="ffs-changes-text">
- <h3> <em>Edit Overview</em></h3>
-
-  <p>
-  A single-feature adaptation of the entire Lanterns saga, combining both timelines into one complete mystery and a generational handoff.
-  </p>
-
-  <p>
-    Just a small taste of the intro featuring 'Dust Bowl III' by Other Lives, inspired by True Detectives, the rest of the score will also draw from the atmosphere of True Detective. Work in progress, aiming for a Thanksgiving release. </p>
-</div>
-
+            <div class="ffs-changes-text">
+              <h3><em>Edit Overview</em></h3>
+              <p>A single-feature adaptation of the entire Lanterns saga, combining both timelines into one complete mystery and a generational handoff.</p>
+              <p>Just a small taste of the intro featuring 'Dust Bowl III' by Other Lives, inspired by True Detectives, the rest of the score will also draw from the atmosphere of True Detective. Work in progress, aiming for a Thanksgiving release.</p>
+            </div>
           </div>
-
-        <section class="ffs-teaser-panel" aria-labelledby="ffsTeaserIntroTitle">
-          <h2 class="ffs-teaser-title" id="ffsTeaserIntroTitle">Teaser Intro</h2>
-          <div class="ffs-teaser-video">
-            <iframe
-              src="https://www.youtube.com/embed/RKUtRJkfpBA"
-              title="Beware My Power Teaser Intro"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </section>
+          <section class="ffs-teaser-panel" aria-labelledby="ffsTeaserIntroTitle">
+            <h2 class="ffs-teaser-title" id="ffsTeaserIntroTitle">Teaser Intro</h2>
+            <div class="ffs-teaser-video">
+              <iframe src="https://www.youtube.com/embed/RKUtRJkfpBA" title="Beware My Power Teaser Intro" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </section>
         </div>
       </section>
     </div>
