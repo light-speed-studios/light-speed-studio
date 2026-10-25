@@ -495,6 +495,28 @@
   .telemetry-shell .lss-telemetry-review-item .ffs-file-card {margin:0;}
 }
 </style>
+<style id="lss-telemetry-new-review-tag">
+/* Subtle first-card badge, without changing existing card dimensions. */
+.telemetry-shell .lss-new-review-tag {
+  display: inline-block !important;
+  vertical-align: middle;
+  margin: -2px 0 0 9px !important;
+  padding: 3px 6px !important;
+  border: 1px solid rgba(0,174,222,.48);
+  background: rgba(0,174,222,.12);
+  color: #00AEDE !important;
+  font-family: Oxanium,Arial,sans-serif;
+  font-size: 9px !important;
+  font-weight: 800;
+  line-height: 1.15 !important;
+  letter-spacing: .1em;
+  opacity: 1 !important;
+  white-space: nowrap;
+}
+.telemetry-shell .lss-telemetry-new-review .ffs-file-card {
+  box-shadow: inset 0 0 0 1px rgba(0,174,222,.38), 0 0 14px rgba(0,174,222,.045);
+}
+</style>
 <div class="telemetry-shell">
     <!-- Using the same card class that frames your movie titles -->
 <section class="vault-archive-hero">
@@ -508,8 +530,34 @@
     </p>
 </section>
        <div class="lss-telemetry-review-grid">
+      <div class="lss-telemetry-review-item lss-telemetry-new-review">
+<!-- 1. CLAYFACE (2026) -->
+    <input class="ffs-file-modal-toggle" type="checkbox" id="modalClayface">
+    <div class="ffs-file-card">
+      <label class="ffs-file-summary" for="modalClayface">
+        <div class="ffs-file-left">
+          <div class="ffs-file-copy"><strong>CLAYFACE <span class="lss-new-review-tag">NEW REVIEW</span></strong><span>8 🌕</span></div>
+        </div>
+        <div class="ffs-review-excerpt">“A surprisingly good villain origin story.”</div>
+        <div class="ffs-file-action">Read Review<span class="ffs-file-arrow">⧉</span></div>
+      </label>
+    </div>
+    <div class="ffs-file-modal">
+      <div class="ffs-file-modal-box">
+        <div class="ffs-file-modal-head">
+          <div class="ffs-file-modal-title"><strong>CLAYFACE (2026)</strong><span><h3>I want my life back.</h3></span></div>
+          <label class="ffs-file-modal-close" for="modalClayface">×</label>
+        </div>
+        <div class="ffs-file-content"><div class="ffs-file-content-inner">
+          <p><em>Clayface</em> was genuinely one of the most refreshing comic book movies I've seen in a while. It's a surprisingly good villain origin story with a lot more heart than I expected. It's a bit of a slow burn at first, but I thought the pacing was handled really well, especially as things picked up toward the end. Tom Rhys Harries was great as Matt Hagen, making you genuinely feel for the guy even as things started going downhill.</p>
+          <p>One thing I really liked was how Gotham actually felt like Gotham. The rundown streets, dirty environments, and overall atmosphere gave the city that gritty feeling it should have. The practical effects and CGI were also really impressive, especially some of the more disturbing body horror scenes. I also loved how cleverly they used Clayface's powers during the final act.</p>
+          <p>Overall, I thought this was a really solid and refreshing DC movie. The acting was great across the board, the story stayed focused, and there wasn't much that felt wasted. For a standalone movie about a villain, it managed to be surprisingly emotional while still delivering some great horror and a satisfying ending. <strong>I'd highly recommend it, even to people who aren't particularly into comic book movies. It's easily one of the more memorable entries in the genre in recent years and absolutely worth watching.</strong></p>
+        </div></div>
+      </div>
+    </div>
+      </div>
       <div class="lss-telemetry-review-item">
-<!-- 1. SUPERMAN -->
+<!-- 2. SUPERMAN -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalSuperman">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalSuperman">
@@ -547,7 +595,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 2. THE BATMAN -->
+<!-- 3. THE BATMAN -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalTheBatman">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalTheBatman">
@@ -585,7 +633,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 3. PROJECT HAIL MARY -->
+<!-- 4. PROJECT HAIL MARY -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalHailMary">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalHailMary">
@@ -621,7 +669,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 4. F1: THE MOVIE -->
+<!-- 5. F1: THE MOVIE -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalF1Movie">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalF1Movie">
@@ -659,7 +707,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 5. TOP GUN: MAVERICK -->
+<!-- 6. TOP GUN: MAVERICK -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalTopGun">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalTopGun">
@@ -696,7 +744,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 6. STAR TREK -->
+<!-- 7. STAR TREK -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalStarTrek">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalStarTrek">
@@ -734,7 +782,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 7. EX MACHINA -->
+<!-- 8. EX MACHINA -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalExMachina">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalExMachina">
@@ -772,7 +820,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 8. REAL STEEL -->
+<!-- 9. REAL STEEL -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalRealSteel">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalRealSteel">
@@ -810,7 +858,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 9. THE FLASH -->
+<!-- 10. THE FLASH -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalTheFlash">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalTheFlash">
@@ -848,7 +896,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 10. ROGUE ONE -->
+<!-- 11. ROGUE ONE -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalRogueOne">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalRogueOne">
@@ -886,7 +934,7 @@
     </div>
       </div>
       <div class="lss-telemetry-review-item">
-<!-- 11. SPEED RACER -->
+<!-- 12. SPEED RACER -->
     <input class="ffs-file-modal-toggle" type="checkbox" id="modalSpeedRacer">
     <div class="ffs-file-card">
       <label class="ffs-file-summary" for="modalSpeedRacer">
