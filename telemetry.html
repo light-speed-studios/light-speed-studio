@@ -1012,5 +1012,23 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script src="js/main.js"></script>
+<script id="lss-telemetry-deep-link">
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  if ((params.get('review') || '').toLowerCase() !== 'clayface') return;
+  function openClayfaceReview() {
+    const toggle = document.getElementById('modalClayface');
+    if (!toggle) return;
+    toggle.checked = true;
+    // Keep the review list behind the dialog instead of jumping to another item.
+    window.scrollTo(0, 0);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', openClayfaceReview, { once: true });
+  } else {
+    openClayfaceReview();
+  }
+})();
+</script>
 </body>
 </html>
