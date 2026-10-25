@@ -558,7 +558,9 @@
   #lss-page-splash { display: none !important; visibility: hidden !important; pointer-events: none !important; }
   .ffs-page { padding-top: 12px !important; }
   /* Bring the movie content 15px into the banner fade on desktop. */
-  main.page-content { position: relative; z-index: 2; margin-top: -15px !important; }
+  main.page-content { position: relative; z-index: 2; margin-top: -15px !important; background: transparent !important; }
+  /* Remove the solid rectangular backing behind the overlapping content boxes. */
+  main.page-content > .ffs-page { background: transparent !important; }
 }
 @media (max-width: 900px) {
   .sot-wide-banner { display: none !important; }
