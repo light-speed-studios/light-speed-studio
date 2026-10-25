@@ -3405,7 +3405,7 @@
   .home-hero-section > .lss-bridge-review-notice {
     position: absolute !important;
     z-index: 125 !important;
-    top: 490px !important; /* 18px frame + 536px hero, with notice 12px above its bottom */
+    top: 575px !important; /* Review notice sits below the raised metadata bar and dots. */
     bottom: auto !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
@@ -3439,13 +3439,13 @@
     display: none !important;
   }
 
-  /* Keep the original metadata bar bottom edge exactly where it was: 131px. */
+  /* Raise the combined desktop metadata bar 10px for clearer spacing. */
   .home-hero-section .slide > .hero-meta.lss-combined-hero-meta {
     position: absolute !important;
     left: 50% !important;
     right: auto !important;
     top: auto !important;
-    bottom: 141px !important;
+    bottom: 151px !important;
     transform: translateX(-50%) !important;
     z-index: 21 !important;
     display: grid !important;
@@ -3497,7 +3497,7 @@
     left: 50% !important;
     right: auto !important;
     top: auto !important;
-    bottom: 101px !important;
+    bottom: 111px !important;
     transform: translateX(-50%) !important;
     justify-content: center !important;
     z-index: 30 !important;
