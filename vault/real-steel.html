@@ -271,6 +271,45 @@
   .ffs-mobile-meta { display: none !important; }
 }
 </style>
+<style id="steel-fullbleed-banner-layout">
+/* Banner is a sibling of the constrained page-content container. */
+.steel-wide-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #040E15;
+}
+.steel-wide-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.steel-wide-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent 62%, rgba(4,14,21,.28) 77%, #040E15 100%);
+}
+/* Keep the existing movie modules inside their original width constraint. */
+@media (min-width: 901px) {
+  #lss-page-splash { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+  .ffs-page { padding-top: 12px !important; }
+  /* Return content to its original vertical position while retaining the transparent backing. */
+  main.page-content { position: relative; z-index: 2; background: transparent !important; }
+  /* Remove the solid rectangular backing behind the overlapping content boxes. */
+  main.page-content > .ffs-page { background: transparent !important; }
+}
+@media (max-width: 900px) {
+  .steel-wide-banner { display: none !important; }
+  .steel-wide-banner::after {
+    background: linear-gradient(to bottom, transparent 58%, rgba(4,14,21,.35) 78%, #040E15 100%);
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Real Steel: The Last Round splash screen">
@@ -303,6 +342,9 @@
 <a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
 </nav>
 </header>
+<section class="steel-wide-banner" aria-label="Real Steel: The Last Round banner">
+  <img src="https://light-speed-studios.b-cdn.net/STEELBANNER.webp" alt="Real Steel: The Last Round cinematic banner" decoding="async" fetchpriority="high" />
+</section>
 <main class="page-content">
 <div class="ffs-page">
 <style>
