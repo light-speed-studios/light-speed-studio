@@ -6400,3 +6400,6 @@ body .lss-image-block.orbit-image-frame::before {
     transform: none !important;
   }
 }
+@media (display-mode: standalone) and (min-width: 901px) {
+  /* PWA-only positioning adjustments */
+}
