@@ -3431,6 +3431,19 @@
 }
 </style>
 
+
+<style id="lss-welcome-over-review-notice">
+/* Desktop: the one-time welcome slide takes visual priority over the
+   separate Clayface announcement. Reveal it when the welcome finishes. */
+@media (min-width: 901px) {
+  .home-hero-section:has(#heroCarousel.welcome-active) > .lss-bridge-review-notice {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+</style>
+
 <style id="lss-mobile-review-notice-inline">
 /* Mobile notice is a single line immediately above the BRIDGE heading. */
 .lss-review-action-short { display: none; }
