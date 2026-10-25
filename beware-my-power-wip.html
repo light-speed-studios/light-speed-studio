@@ -468,21 +468,19 @@
   }
 
     /* Beware My Power: full-bleed hero and compact two-panel layout */
-    .ffs-page { padding: 0 20px 42px; overflow-x: clip; }
+    .ffs-page { padding: 0 0 42px; overflow-x: visible; }
+    .ffs-shell { padding: 0 20px; }
     .ffs-shell, .ffs-landing-panel { width: 100%; max-width: 1500px; }
     .bmp-banner {
       position: relative;
-      width: 100vw;
-      width: 100dvw;
-      left: 50%;
-      margin-left: -50vw;
-      margin-left: -50dvw;
+      display: block;
+      width: 100%;
       aspect-ratio: 2.73 / 1;
       background-image: url("https://light-speed-studios.b-cdn.net/BMPbanner.webp");
-      background-position: center center;
+      background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
-      margin-bottom: 0;
+      margin: 0;
     }
     .bmp-banner::after {
       content: "";
@@ -531,7 +529,8 @@
       opacity: .9;
     }
     @media (max-width: 900px) {
-      .ffs-page { padding: 0 14px 42px; }
+      .ffs-page { padding: 0 0 42px; }
+      .ffs-shell { padding: 0 14px; }
       .bmp-banner { aspect-ratio: 2.73 / 1; }
       .ffs-landing-panel .ffs-main-row { grid-template-columns: 1fr; gap: 14px; }
       .ffs-landing-panel .ffs-main-row > .ffs-changes-panel,
@@ -563,9 +562,9 @@
 
 <main class="page-content">
   <div class="ffs-page">
+    <div class="bmp-banner" role="img" aria-label="Beware My Power cinematic banner"></div>
     <div class="ffs-shell">
       <section class="ffs-landing-panel">
-        <div class="bmp-banner" role="img" aria-label="Beware My Power cinematic banner"></div>
 
         <div class="ffs-main-row">
           <div class="ffs-changes-panel">
