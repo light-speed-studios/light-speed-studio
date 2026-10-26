@@ -6403,3 +6403,9 @@ body .lss-image-block.orbit-image-frame::before {
 @media (display-mode: standalone) and (min-width: 901px) {
   /* PWA-only positioning adjustments */
 }
+@media (min-width: 901px) {
+  #lss-page-splash {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
