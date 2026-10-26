@@ -6409,3 +6409,9 @@ body .lss-image-block.orbit-image-frame::before {
     visibility: hidden !important;
   }
 }
+@media (min-width: 901px) {
+  body:has(#lss-page-splash) .ffs-main-grid,
+  body:has(#lss-page-splash) .ffs-title-panel {
+    visibility: hidden;
+  }
+}
