@@ -1185,3 +1185,12 @@ document.addEventListener("DOMContentLoaded", () => {
     addWaveNav();
   }
 })();
+// Reveal desktop movie layout after page-specific scripts have run.
+document.addEventListener("DOMContentLoaded", function () {
+  if (!window.matchMedia("(min-width: 901px)").matches) return;
+  if (!document.querySelector(".ffs-page")) return;
+
+  requestAnimationFrame(() => {
+    document.body.classList.add("lss-layout-ready");
+  });
+});
