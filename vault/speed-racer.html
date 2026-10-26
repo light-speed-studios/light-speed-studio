@@ -334,6 +334,18 @@
   width: 100%;
   height: auto;
 }
+/* Reserve the full banner space on the FIRST paint, before image download. */
+@media (min-width: 901px) {
+  .speed-wide-banner {
+    height: 37.5vw;
+    aspect-ratio: 8 / 3;
+  }
+  .speed-wide-banner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .speed-wide-banner::after {
   content: "";
   position: absolute;
