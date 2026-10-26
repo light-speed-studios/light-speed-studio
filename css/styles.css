@@ -6421,7 +6421,7 @@ body .lss-image-block.orbit-image-frame::before {
   }
 }
 @media (min-width: 901px) {
-  .batman-wide-banner {
+  [class*="wide-banner"] {
     display: none !important;
   }
 }
