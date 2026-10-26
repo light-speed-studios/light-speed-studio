@@ -27,6 +27,14 @@
         const splash =
             document.getElementById("lss-page-splash") ||
             document.getElementById("lss-splash");
+       // Skip page splash entirely on desktop.
+if (window.matchMedia("(min-width: 901px)").matches &&
+    splash?.id === "lss-page-splash") {
+    splash.remove();
+    document.documentElement.classList.remove("lss-splash-active");
+    announceSplashFinished();
+    return;
+}
 
         /* Pages without a splash can begin their content immediately. */
         if (!splash) {
