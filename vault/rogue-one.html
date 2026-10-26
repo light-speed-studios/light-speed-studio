@@ -420,6 +420,18 @@
   width: 100%;
   height: auto;
 }
+/* Reserve the full banner space on the FIRST paint, before image download. */
+@media (min-width: 901px) {
+  .rogue-wide-banner {
+    height: 37.5vw;
+    aspect-ratio: 8 / 3;
+  }
+  .rogue-wide-banner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .rogue-wide-banner::after {
   content: "";
   position: absolute;
