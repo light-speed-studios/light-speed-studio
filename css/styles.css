@@ -6415,3 +6415,9 @@ body .lss-image-block.orbit-image-frame::before {
     visibility: hidden;
   }
 }
+  @media (min-width: 901px) {
+  body:has(.ffs-page):not(.lss-layout-ready) .ffs-title-panel,
+  body:has(.ffs-page):not(.lss-layout-ready) .ffs-main-grid {
+    visibility: hidden;
+  }
+}
