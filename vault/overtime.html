@@ -283,6 +283,18 @@
   width: 100%;
   height: auto;
 }
+/* Reserve the full banner space on the FIRST paint, before image download. */
+@media (min-width: 901px) {
+  .overtime-wide-banner {
+    height: 37.5vw;
+    aspect-ratio: 8 / 3;
+  }
+  .overtime-wide-banner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .overtime-wide-banner::after {
   content: "";
   position: absolute;
@@ -335,7 +347,7 @@
 </nav>
 </header>
 <section class="overtime-wide-banner" aria-label="The Flash: Overtime banner">
-  <img src="https://light-speed-studios.b-cdn.net/OVERTIMEBANNER.webp" alt="The Flash: Overtime cinematic banner" decoding="async" fetchpriority="high" />
+  <img src="https://light-speed-studios.b-cdn.net/OVERTIMEBANNER.webp" alt="The Flash: Overtime cinematic banner" width="2048" height="768" decoding="async" fetchpriority="high" />
 </section>
 <main class="page-content">
 <div class="ffs-page">
