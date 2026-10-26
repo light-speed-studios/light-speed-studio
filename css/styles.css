@@ -6403,25 +6403,17 @@ body .lss-image-block.orbit-image-frame::before {
 @media (display-mode: standalone) and (min-width: 901px) {
   /* PWA-only positioning adjustments */
 }
+
+/* DESKTOP MOVIE PAGES: prevent first-frame layout flash.
+   The shared script reveals the page after its inline placement scripts run. */
 @media (min-width: 901px) {
   #lss-page-splash {
     display: none !important;
     visibility: hidden !important;
+    pointer-events: none !important;
   }
-}
-@media (min-width: 901px) {
-  body:has(#lss-page-splash) .ffs-main-grid,
-  body:has(#lss-page-splash) .ffs-title-panel {
-    visibility: hidden;
-  }
-}
- @media (min-width: 901px) {
-  body:has(.ffs-page):not(.lss-layout-ready) .ffs-page {
+
+  html:not(.lss-movie-layout-ready) .ffs-page {
     visibility: hidden !important;
-  }
-}
-@media (min-width: 901px) {
-  [class*="wide-banner"] {
-    display: none !important;
   }
 }
