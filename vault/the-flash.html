@@ -414,6 +414,18 @@
   width: 100%;
   height: auto;
 }
+/* Reserve the full banner space on the FIRST paint, before image download. */
+@media (min-width: 901px) {
+  .crossroads-wide-banner {
+    height: 37.5vw;
+    aspect-ratio: 8 / 3;
+  }
+  .crossroads-wide-banner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .crossroads-wide-banner::after {
   content: "";
   position: absolute;
