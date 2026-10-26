@@ -287,6 +287,18 @@
   width: 100%;
   height: auto;
 }
+/* Reserve the full banner space on the FIRST paint, before image download. */
+@media (min-width: 901px) {
+  .steel-wide-banner {
+    height: 37.5vw;
+    aspect-ratio: 8 / 3;
+  }
+  .steel-wide-banner > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 .steel-wide-banner::after {
   content: "";
   position: absolute;
@@ -343,7 +355,7 @@
 </nav>
 </header>
 <section class="steel-wide-banner" aria-label="Real Steel: The Last Round banner">
-  <img src="https://light-speed-studios.b-cdn.net/STEELBANNER.webp" alt="Real Steel: The Last Round cinematic banner" decoding="async" fetchpriority="high" />
+  <img src="https://light-speed-studios.b-cdn.net/STEELBANNER.webp" alt="Real Steel: The Last Round cinematic banner" width="2048" height="768" decoding="async" fetchpriority="high" />
 </section>
 <main class="page-content">
 <div class="ffs-page">
