@@ -1185,12 +1185,23 @@ document.addEventListener("DOMContentLoaded", () => {
     addWaveNav();
   }
 })();
-// Reveal desktop movie layout after page-specific scripts have run.
-document.addEventListener("DOMContentLoaded", function () {
+// Reveal desktop movie pages after loading is complete.
+(function () {
   if (!window.matchMedia("(min-width: 901px)").matches) return;
-  if (!document.querySelector(".ffs-page")) return;
 
-  requestAnimationFrame(() => {
-    document.body.classList.add("lss-layout-ready");
-  });
-});
+  function revealMoviePage() {
+    if (!document.querySelector(".ffs-page")) return;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.body.classList.add("lss-layout-ready");
+      });
+    });
+  }
+
+  if (document.readyState === "complete") {
+    revealMoviePage();
+  } else {
+    window.addEventListener("load", revealMoviePage, { once: true });
+  }
+})();
