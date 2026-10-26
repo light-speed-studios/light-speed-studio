@@ -27,14 +27,6 @@
         const splash =
             document.getElementById("lss-page-splash") ||
             document.getElementById("lss-splash");
-       // Skip page splash entirely on desktop.
-if (window.matchMedia("(min-width: 901px)").matches &&
-    splash?.id === "lss-page-splash") {
-    splash.remove();
-    document.documentElement.classList.remove("lss-splash-active");
-    announceSplashFinished();
-    return;
-}
 
         /* Pages without a splash can begin their content immediately. */
         if (!splash) {
@@ -1185,23 +1177,21 @@ document.addEventListener("DOMContentLoaded", () => {
     addWaveNav();
   }
 })();
-// Reveal desktop movie pages after loading is complete.
+
+/* DESKTOP MOVIE LAYOUT REVEAL
+   Run after the document is parsed, so bottom-of-page movie scripts can
+   relocate panels before the page becomes visible. No artificial timer. */
 (function () {
-  if (!window.matchMedia("(min-width: 901px)").matches) return;
-
-  function revealMoviePage() {
-    if (!document.querySelector(".ffs-page")) return;
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        document.body.classList.add("lss-layout-ready");
-      });
+  function revealMovieLayout() {
+    if (!document.querySelector('.ffs-page')) return;
+    requestAnimationFrame(function () {
+      document.documentElement.classList.add('lss-movie-layout-ready');
     });
   }
 
-  if (document.readyState === "complete") {
-    revealMoviePage();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', revealMovieLayout, { once: true });
   } else {
-    window.addEventListener("load", revealMoviePage, { once: true });
+    revealMovieLayout();
   }
 })();
