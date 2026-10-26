@@ -2238,31 +2238,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <div class="ffs-title-row">
         <h1 class="ffs-title">Batman: Gotham's Riddle</h1>
       </div>
-      <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> Batman: The Long Halloween</div>
-      <span class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</span>
- <div class="ffs-meta-row ffs-desktop-meta">
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">117 min</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 May 2024</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">The Batman 2022</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">175 min</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">2.39:1</span></div>
-</div>
-    </div>
-
-    <div class="ffs-info-panel">
-      <p class="ffs-section-label">Synopsis</p>
-      <div class="ffs-synopsis">
-        <p>A leaner cut of Gotham’s darkest times. A detective unraveling. Each act turns with a riddle. No vengeance. No floods. The final act tightens into something quieter, letting silence settle where chaos lived.</p>
-      </div>
-
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="batman-gothams-riddle" aria-label="Audience rating for Batman: Gotham's Riddle">
   <div class="ffs-rating-summary">
-    <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
     <span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
   </div>
   <div class="ffs-rating-divider" aria-hidden="true"></div>
   <div class="ffs-rating-input">
+    <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-stars" role="group" aria-label="Rate this edit from one to ten stars">
 <button type="button" class="ffs-rate-star" data-rating="1" aria-label="Rate 1 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
 <button type="button" class="ffs-rate-star" data-rating="2" aria-label="Rate 2 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
@@ -2278,6 +2261,24 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <span class="ffs-rating-feedback" id="ffs-rating-feedback" role="status" aria-live="polite">SELECT YOUR RATING</span>
   </div>
 </div>
+      
+    </div>
+
+    <div class="ffs-info-panel">
+<div class="ffs-meta-row ffs-desktop-meta">
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">117 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 May 2024</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">The Batman 2022</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">175 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">2.39:1</span></div>
+</div>
+      <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> Batman: The Long Halloween</div>
+      <span class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</span>
+      <p class="ffs-section-label">Synopsis</p>
+      <div class="ffs-synopsis">
+        <p>A leaner cut of Gotham’s darkest times. A detective unraveling. Each act turns with a riddle. No vengeance. No floods. The final act tightens into something quieter, letting silence settle where chaos lived.</p>
+      </div>
+
       <div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> <strong>Batman: The Long Halloween</strong></div>
     </div>
 
@@ -3148,15 +3149,17 @@ document.addEventListener("click", function (event) {
 }
 </style>
 <script id="batman-responsive-panel-placement-only">
+/* Desktop elements live in their final HTML positions, before first paint.
+   Only rearrange the mobile presentation or restore desktop after resizing. */
 (() => {
   const rating = document.getElementById('ffs-audience-rating');
   const grid = document.querySelector('.ffs-desktop-composition');
   const titlePanel = document.querySelector('.ffs-title-panel');
   const infoPanel = document.querySelector('.ffs-info-panel');
   const titleRow = titlePanel?.querySelector('.ffs-title-row');
-  const workingTitle = titlePanel?.querySelector('.ffs-working-title-inline');
-  const posterHint = titlePanel?.querySelector('.ffs-poster-hold-hint');
-  const metadata = titlePanel?.querySelector('.ffs-desktop-meta');
+  const workingTitle = infoPanel?.querySelector('.ffs-working-title-inline');
+  const posterHint = infoPanel?.querySelector('.ffs-poster-hold-hint');
+  const metadata = infoPanel?.querySelector('.ffs-desktop-meta');
   const synopsisLabel = infoPanel?.querySelector('.ffs-section-label');
   const count = rating?.querySelector('.ffs-rating-count');
   const number = rating?.querySelector('.ffs-rating-number');
@@ -3166,23 +3169,22 @@ document.addEventListener("click", function (event) {
   const stars = input?.querySelector('.ffs-rating-stars');
   if (!rating || !grid || !titlePanel || !infoPanel || !titleRow || !workingTitle || !posterHint || !metadata || !synopsisLabel || !count || !number || !summary || !label || !input || !stars) return;
   const mobile = window.matchMedia('(max-width: 900px)');
-  const positionElements = () => {
+  function positionElements(event) {
     if (mobile.matches) {
-      // Restore original mobile DOM structure and floating rating above poster.
       grid.parentElement.insertBefore(rating, grid);
       titleRow.after(workingTitle, posterHint, metadata);
       number.after(count);
       summary.insertBefore(label, number);
-    } else {
-      // Desktop: title and rating in first panel; metadata and text in second.
+    } else if (event) {
+      // Restore final desktop HTML structure only after a live resize.
       titleRow.after(rating);
       infoPanel.insertBefore(metadata, synopsisLabel);
       metadata.after(workingTitle, posterHint);
       number.after(count);
       input.insertBefore(label, stars);
     }
-  };
-  positionElements();
+  }
+  if (mobile.matches) positionElements();
   mobile.addEventListener('change', positionElements);
 })();
 </script>
