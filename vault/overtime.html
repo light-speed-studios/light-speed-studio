@@ -6110,8 +6110,8 @@ document.addEventListener("click", function (event) {
   .ffs-right-column > .lss-unified-details {
     display: flex !important; flex-direction: column !important; width: 100% !important;
     min-width: 0 !important; padding: 18px 22px 24px !important;
-    background: rgba(4,14,21,.10) !important;
-    box-shadow: none !important; border: 0 !important;
+    background: rgba(4,14,21,.20) !important;
+    box-shadow: 0 16px 45px rgba(0,0,0,.24) !important; border: 0 !important;
   }
   .lss-unified-details > .ffs-audience-rating {
     order: 1 !important; display: grid !important; width: 100% !important;
@@ -6120,6 +6120,16 @@ document.addEventListener("click", function (event) {
     background: transparent !important; box-shadow: none !important; border: 0 !important;
     grid-template-columns: minmax(0,170px) 1px minmax(0,1fr) !important;
   }
+  /* Restore the compact original star cluster; do not distribute stars across the panel. */
+  .lss-unified-details .ffs-rating-stars {
+    display: flex !important; justify-content: flex-start !important;
+    width: max-content !important; max-width: 100% !important;
+    gap: 5px !important;
+  }
+  .lss-unified-details .ffs-rate-star {
+    flex: 0 0 32px !important; width: 32px !important;
+  }
+  .lss-unified-details .ffs-rate-star svg { width: 28px !important; }
   .lss-unified-details > .ffs-meta-row {
     order: 2 !important; width: 100% !important; min-width: 0 !important;
     margin: 0 0 14px !important; padding: 13px 0 !important;
@@ -6143,7 +6153,7 @@ document.addEventListener("click", function (event) {
   }
   .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
     display: block !important; width: 100% !important; max-width: none !important;
-    margin: 28px 0 26px !important; padding: 0 !important;
+    margin: 18px 0 26px !important; padding: 0 !important;
     background: transparent !important; border: 0 !important;
     box-shadow: 0 35px 95px 18px rgba(0,0,0,.85) !important;
   }
@@ -6157,6 +6167,9 @@ document.addEventListener("click", function (event) {
   .lss-unified-details > .ffs-audience-rating {
     grid-template-columns: minmax(0,145px) 1px minmax(0,1fr) !important;
   }
+  .lss-unified-details .ffs-rating-stars { gap: 3px !important; }
+  .lss-unified-details .ffs-rate-star { flex-basis: 26px !important; width: 26px !important; }
+  .lss-unified-details .ffs-rate-star svg { width: 24px !important; }
   .ffs-right-column > .lss-unified-details { padding: 14px 16px 20px !important; }
 }
 @media (max-width: 900px) {
