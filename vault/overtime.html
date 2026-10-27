@@ -2526,6 +2526,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </div>
 </div>
 
+<nav class="ffs-desktop-cinematic-nav" aria-label="Project navigation">
+<a href="../vault.html" data-project-nav-key="vault-desktop">Vault</a>
+<a href="top-gun.html" data-project-nav-key="prev-desktop">Prev</a>
+<a href="superman.html" data-project-nav-key="next-desktop">Next</a>
+</nav>
 <nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
     <a href="../vault.html" data-project-nav-key="vault-mobile">Vault</a>
     <a href="top-gun.html" data-project-nav-key="prev-mobile">Prev</a>
@@ -2928,5 +2933,115 @@ document.addEventListener("click", function (event) {
  new MutationObserver(update).observe(count,{childList:true,characterData:true,subtree:true});update();
 })();
 </script>
+<style id="lss-overtime-cinematic-redesign-v1">
+/* Desktop cinematic film detail: the original mobile experience is preserved. */
+@media (min-width: 901px) {
+  body { background: #040E15 !important; }
+  .overtime-wide-banner { display: none !important; }
+  main.page-content {
+    width: 100% !important; max-width: none !important;
+    background: transparent !important; overflow: visible !important;
+    position: relative; padding-top: 0 !important;
+  }
+  .ffs-page {
+    position: relative !important; isolation: isolate;
+    width: 100% !important; max-width: none !important;
+    padding: 34px 24px 62px !important; background: transparent !important;
+    overflow: visible !important;
+  }
+  .ffs-page::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    top: 0; left: 0; right: 0; height: 790px;
+    background-image:
+      linear-gradient(to bottom, rgba(4,14,21,.25) 0%, rgba(4,14,21,.28) 30%, rgba(4,14,21,.45) 57%, rgba(4,14,21,.82) 81%, #040E15 100%),
+      linear-gradient(to right, rgba(4,14,21,.88) 0%, rgba(4,14,21,.75) 32%, rgba(4,14,21,.30) 65%, rgba(4,14,21,.06) 100%),
+      url("https://light-speed-studios.b-cdn.net/OVERTIMEBANNER.webp");
+    background-size: cover, cover, cover;
+    background-position: center, center, center 45%;
+    background-repeat: no-repeat;
+  }
+  .ffs-shell { width: min(1400px, 100%) !important; max-width: 1400px !important; position: relative; z-index: 1; }
+  .ffs-project-block { background: transparent !important; box-shadow: none !important; border: 0 !important; }
+  .ffs-project-block::before, .ffs-project-block::after { content: none !important; }
+  .ffs-main-grid.ffs-desktop-composition {
+    display: grid !important; grid-template-columns: minmax(265px, 315px) minmax(0,1fr) !important;
+    grid-template-rows: auto !important; column-gap: 42px !important; row-gap: 0 !important;
+    align-items: start !important; min-height: 565px !important;
+  }
+  .ffs-left-column { display: block !important; grid-column: 1; grid-row: 1; }
+  .ffs-right-column { display: flex !important; flex-direction: column !important; grid-column: 2; grid-row: 1; min-width: 0; padding-top: 11px; }
+  .ffs-poster-panel {
+    display: flex !important; position: relative !important;
+    width: 100% !important; height: auto !important; min-height: 0 !important; max-height: none !important;
+    margin: 0 !important; padding: 0 !important;
+    background: rgba(4,14,21,.18) !important;
+    box-shadow: 0 20px 48px rgba(0,0,0,.38), inset 0 0 0 1px rgba(0,174,222,.72) !important;
+  }
+  .ffs-poster-panel::before { opacity: .85; }
+  .ffs-poster-click { display: block !important; width: 100% !important; flex: none !important; }
+  .ffs-poster-full { display: block !important; width: 100% !important; height: auto !important; max-height: none !important; object-fit: contain !important; }
+  .ffs-title-panel, .ffs-info-panel { display: contents !important; }
+  .ffs-title-panel::before, .ffs-title-panel::after, .ffs-info-panel::before, .ffs-info-panel::after { content: none !important; }
+  .ffs-right-column .ffs-title-row { order: 1; margin: 0 0 16px !important; }
+  .ffs-right-column .ffs-title { font: 800 clamp(30px,3.3vw,53px)/1.1 Oxanium,Rajdhani,sans-serif !important; color: #d4e6f1 !important; white-space: normal !important; text-shadow: 0 2px 22px rgba(0,0,0,.45); }
+  .ffs-title-panel .ffs-audience-rating {
+    order: 2; display: grid !important; width: min(750px,100%) !important;
+    grid-template-columns: minmax(0,160px) 1px minmax(0,1fr) !important;
+    height: auto !important; min-height: 108px !important; max-height: none !important;
+    flex: none !important; margin: 0 0 15px !important; padding: 8px 0 !important;
+    background: rgba(4,14,21,.28) !important; box-shadow: none !important; border: 0 !important;
+  }
+  .ffs-title-panel .ffs-rating-summary { width: 155px !important; transform: none !important; gap: 3px !important; }
+  .ffs-title-panel .ffs-rating-number { width: 145px !important; }
+  .ffs-title-panel .ffs-rating-input { min-width: 0; }
+  .ffs-title-panel .ffs-rating-stars { justify-content: flex-start !important; gap: clamp(2px,.5vw,8px) !important; }
+  .ffs-title-panel .ffs-rate-star { flex: 0 1 32px !important; }
+  .ffs-title-panel .ffs-rate-star svg { width: min(100%,28px) !important; }
+  .ffs-info-panel .ffs-meta-row {
+    order: 3; display: flex !important; flex-wrap: wrap !important; align-items: center;
+    gap: 0 !important; margin: 0 0 14px !important; transform: none !important;
+    padding: 10px 0 !important; border-top: 1px solid rgba(0,174,222,.28); border-bottom: 1px solid rgba(0,174,222,.28);
+  }
+  .ffs-info-panel .ffs-meta-card {
+    flex: 0 1 auto; min-height: 0 !important; padding: 2px 15px 2px 0 !important; margin: 0 15px 0 0 !important;
+    background: transparent !important; box-shadow: none !important; border-right: 1px solid rgba(0,174,222,.45);
+  }
+  .ffs-info-panel .ffs-meta-card:last-child { border-right: 0; margin-right: 0 !important; }
+  .ffs-info-panel .ffs-meta-label { font-size: 9px !important; margin-bottom: 5px !important; color: #05b9e5 !important; }
+  .ffs-info-panel .ffs-meta-value { font-size: 13px !important; color: #d1dce5 !important; }
+  .ffs-info-panel .ffs-working-title-inline { order: 4; margin: 0 0 7px !important; font-size: 13px !important; letter-spacing: .13em; color: #dee9f0; }
+  .ffs-info-panel .ffs-part-label { order: 5; margin: 0 0 20px !important; font: 700 italic 15px Rajdhani,sans-serif; color: #b6c4ce; }
+  .ffs-info-panel .ffs-section-label { order: 6; margin: 0 0 8px !important; font: 800 17px Oxanium,sans-serif !important; letter-spacing: .14em !important; }
+  .ffs-info-panel .ffs-synopsis { order: 7; margin: 0 !important; max-width: 790px; }
+  .ffs-info-panel .ffs-synopsis p { font: 500 clamp(17px,1.4vw,21px)/1.7 Rajdhani,Arial,sans-serif !important; text-align: left !important; color: #c0d0dc !important; text-shadow: 0 2px 8px rgba(0,0,0,.4); }
+  .ffs-palette-module {
+    margin: 25px 0 22px !important; padding: 22px 28px !important;
+    background: rgba(6,22,30,.66) !important;
+    box-shadow: inset 0 0 0 1px rgba(0,174,222,.25) !important;
+  }
+  .ffs-palette-module .ffs-palette-wrap { float: right; width: 75% !important; padding: 0 !important; background: transparent !important; }
+  .ffs-palette-module .ffs-palette { height: 34px !important; object-fit: cover; }
+  .ffs-palette-module .ffs-editors-note-text { clear: both; padding-top: 13px; margin: 0 !important; font-size: 17px !important; line-height: 1.55 !important; text-align: left !important; }
+  .ffs-palette-module .ffs-editors-note-title { font-size: 19px !important; }
+  .ffs-cta-trailer-row { grid-template-columns: minmax(0, 1fr) minmax(260px,390px) !important; gap: 22px !important; margin-top: 0 !important; }
+  .ffs-cta-trailer-row .ffs-trailer-section { padding: 0 !important; background: #06151d !important; }
+  .ffs-cta-trailer-row .ffs-links-panel { padding: 0 !important; background: transparent !important; box-shadow: none !important; contain: none !important; }
+  .ffs-cta-trailer-row .ffs-cta-grid { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; grid-template-rows: repeat(2,minmax(0,1fr)); grid-auto-rows: auto !important; gap: 14px !important; height: 100%; }
+  .ffs-cta-trailer-row .ffs-cta-tile { min-height: 100px !important; height: 100% !important; }
+  .ffs-video { height: 100% !important; min-height: 240px; aspect-ratio: 16/9 !important; box-shadow: none !important; }
+  .ffs-desktop-cinematic-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+  .ffs-desktop-cinematic-nav a { text-align: center; padding: 13px 15px; background: rgba(0,174,222,.045); border: 1px solid rgba(0,174,222,.34); color: #b6c7d3; text-transform: uppercase; letter-spacing: .13em; font: 700 12px Oxanium,sans-serif; text-decoration: none; }
+  .ffs-desktop-cinematic-nav a:hover { background: rgba(0,174,222,.14); color: #fff; }
+  .ffs-project-side-nav { display: none !important; }
+  .ffs-footer-logo-block { display: none !important; }
+}
+@media (min-width: 901px) and (max-width: 1130px) {
+  .ffs-main-grid.ffs-desktop-composition { grid-template-columns: 260px minmax(0,1fr) !important; gap: 26px !important; }
+  .ffs-info-panel .ffs-meta-card { margin-right: 8px !important; padding-right: 9px !important; }
+  .ffs-title-panel .ffs-audience-rating { grid-template-columns: 145px 1px minmax(0,1fr) !important; }
+  .ffs-cta-trailer-row { grid-template-columns: minmax(0,1fr) 300px !important; }
+}
+@media (max-width: 900px) { .ffs-desktop-cinematic-nav { display: none !important; } }
+</style>
 </body>
 </html>
