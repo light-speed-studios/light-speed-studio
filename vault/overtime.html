@@ -5921,11 +5921,11 @@ document.addEventListener("click", function (event) {
   .ffs-right-column .ffs-title-row { order: 1; margin: 0 0 18px !important; }
   .ffs-right-column .ffs-title { font: 800 clamp(30px,3.3vw,53px)/1.1 Oxanium,Rajdhani,sans-serif !important; color: #d4e6f1 !important; white-space: normal !important; text-shadow: 0 2px 22px rgba(0,0,0,.45) !important; }
   .ffs-title-panel .ffs-audience-rating {
-    order: 2; display: grid !important; width: 100% !important;
+    order: 2; display: grid !important; width: min(760px,100%) !important;
     grid-template-columns: minmax(0,170px) 1px minmax(0,1fr) !important;
     height: auto !important; min-height: 108px !important; max-height: none !important;
     flex: none !important; margin: 0 0 0 !important; padding: 8px 0 !important;
-    background: rgba(4,14,21,.10) !important; box-shadow: none !important; border: 0 !important;
+    background: rgba(4,14,21,.28) !important; box-shadow: none !important; border: 0 !important;
   }
   .ffs-title-panel .ffs-rating-summary { width: 160px !important; transform: none !important; gap: 3px !important; }
   .ffs-title-panel .ffs-rating-number { width: 152px !important; }
@@ -6029,7 +6029,7 @@ document.addEventListener("click", function (event) {
   .ffs-hero-palette {
     width: 100% !important;
     padding: 10px 14px 5px !important;
-    background: rgba(4,14,21,.10) !important;
+    background: rgba(4,14,21,.38) !important;
     border: 0 !important;
     box-shadow: none !important;
   }
@@ -6040,7 +6040,7 @@ document.addEventListener("click", function (event) {
     width: 100% !important;
     padding: 11px 14px 13px !important;
     margin: 0 0 16px !important;
-    background: rgba(4,14,21,.10) !important;
+    background: rgba(4,14,21,.38) !important;
     border: 0 !important;
     box-shadow: none !important;
     gap: 0 !important;
@@ -6061,7 +6061,7 @@ document.addEventListener("click", function (event) {
     font-size: 15px !important;
   }
   .ffs-info-panel .ffs-synopsis {
-    background: rgba(4,14,21,.10) !important;
+    background: rgba(4,14,21,.34) !important;
     box-shadow: none !important;
     border: 0 !important;
     padding: 14px 18px !important;
@@ -6101,25 +6101,119 @@ document.addEventListener("click", function (event) {
   else breakpoint.addListener(placeTitle);
 })();
 </script>
-<style id="lss-overtime-top-10pct-rating-alignment">
+
+<style id="lss-overtime-unified-details-palette-shuffle">
+/* Desktop-only redesign: single details glass panel, independent floating palette. */
 @media (min-width: 901px) {
-  .ffs-page .ffs-right-column > .ffs-audience-rating,
-  .ffs-page .ffs-title-panel .ffs-audience-rating {
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+  .ffs-main-grid.ffs-desktop-composition { align-items: start !important; }
+  .ffs-right-column { min-width: 0 !important; }
+  .ffs-right-column > .lss-unified-details {
+    display: flex !important; flex-direction: column !important; width: 100% !important;
+    min-width: 0 !important; padding: 18px 22px 24px !important;
     background: rgba(4,14,21,.10) !important;
+    box-shadow: none !important; border: 0 !important;
   }
-  .ffs-page .ffs-hero-palette,
-  .ffs-page .ffs-info-panel .ffs-meta-row,
-  .ffs-page .ffs-info-panel .ffs-synopsis {
-    background: rgba(4,14,21,.10) !important;
+  .lss-unified-details > .ffs-audience-rating {
+    order: 1 !important; display: grid !important; width: 100% !important;
+    min-width: 0 !important; max-width: none !important;
+    margin: 0 0 12px !important; padding: 6px 0 14px !important;
+    background: transparent !important; box-shadow: none !important; border: 0 !important;
+    grid-template-columns: minmax(0,170px) 1px minmax(0,1fr) !important;
   }
+  .lss-unified-details > .ffs-meta-row {
+    order: 2 !important; width: 100% !important; min-width: 0 !important;
+    margin: 0 0 14px !important; padding: 13px 0 !important;
+    background: transparent !important; box-shadow: none !important; border: 0 !important;
+    border-top: 1px solid rgba(186,199,213,.14) !important;
+    border-bottom: 1px solid rgba(186,199,213,.14) !important;
+  }
+  .lss-unified-details > .ffs-working-title-inline { order: 3 !important; margin: 0 0 7px !important; }
+  .lss-unified-details > .ffs-part-label { order: 4 !important; margin: 0 0 20px !important; }
+  .lss-unified-details > .ffs-section-label { order: 5 !important; margin: 0 0 9px !important; }
+  .lss-unified-details > .ffs-synopsis {
+    order: 6 !important; width: 100% !important; max-width: none !important;
+    margin: 0 !important; padding: 0 !important;
+    background: transparent !important; box-shadow: none !important; border: 0 !important;
+  }
+  .ffs-left-column > .lss-poster-disclaimer {
+    display: block !important; margin: 13px 0 0 !important;
+    font: 700 12px/1.5 Oxanium,Rajdhani,sans-serif !important;
+    letter-spacing: .09em; text-transform: uppercase; color: #b7c8d4;
+    text-align: center; text-shadow: 0 2px 8px rgba(0,0,0,.65);
+  }
+  .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
+    display: block !important; width: 100% !important; max-width: none !important;
+    margin: 28px 0 26px !important; padding: 0 !important;
+    background: transparent !important; border: 0 !important;
+    box-shadow: 0 35px 95px 18px rgba(0,0,0,.85) !important;
+  }
+  .ffs-project-block > .ffs-hero-palette.lss-floating-palette .ffs-hero-palette-image {
+    display: block !important; width: 100% !important; height: 46px !important;
+    object-fit: cover !important; border: 0 !important; box-shadow: none !important;
+  }
+  .ffs-palette-module { margin-top: 0 !important; }
+}
+@media (min-width: 901px) and (max-width: 1130px) {
+  .lss-unified-details > .ffs-audience-rating {
+    grid-template-columns: minmax(0,145px) 1px minmax(0,1fr) !important;
+  }
+  .ffs-right-column > .lss-unified-details { padding: 14px 16px 20px !important; }
+}
+@media (max-width: 900px) {
+  .lss-poster-disclaimer { display: none !important; }
+  .lss-unified-details { display: contents !important; }
+  .ffs-hero-palette { display: none !important; }
 }
 </style>
+<script id="lss-overtime-unified-details-palette-shuffle-script">
+(() => {
+  const block = document.querySelector('.ffs-project-block');
+  const grid = block?.querySelector('.ffs-main-grid.ffs-desktop-composition');
+  const left = grid?.querySelector('.ffs-left-column');
+  const right = grid?.querySelector('.ffs-right-column');
+  const titlePanel = right?.querySelector('.ffs-title-panel');
+  const infoPanel = right?.querySelector('.ffs-info-panel');
+  const poster = left?.querySelector('.ffs-poster-panel');
+  const rating = document.getElementById('ffs-audience-rating');
+  const palette = document.querySelector('.ffs-hero-palette');
+  const metadata = right?.querySelector('.ffs-meta-row.ffs-desktop-meta');
+  const working = right?.querySelector('.ffs-working-title-inline');
+  const part = right?.querySelector('.ffs-part-label');
+  const label = infoPanel?.querySelector('.ffs-section-label');
+  const synopsis = infoPanel?.querySelector('.ffs-synopsis');
+  if (!block || !grid || !left || !right || !titlePanel || !infoPanel || !poster || !rating || !palette || !metadata || !working || !part || !label || !synopsis) return;
+  const unified = document.createElement('div');
+  unified.className = 'lss-unified-details';
+  const disclaimer = document.createElement('p');
+  disclaimer.className = 'lss-poster-disclaimer';
+  disclaimer.textContent = 'Press and hold the poster to view alternate artwork.';
+  const desktop = window.matchMedia('(min-width: 901px)');
+  function arrange() {
+    if (desktop.matches) {
+      right.append(unified);
+      unified.append(rating, metadata, working, part, label, synopsis);
+      poster.after(disclaimer);
+      grid.after(palette);
+      palette.classList.add('lss-floating-palette');
+    } else {
+      // Restore the source structure so the original mobile-specific layout and rating scripts remain operative.
+      unified.remove();
+      disclaimer.remove();
+      palette.classList.remove('lss-floating-palette');
+      titlePanel.append(working, part, metadata);
+      infoPanel.prepend(label, synopsis);
+      infoPanel.append(rating);
+      const editorModule = block.querySelector('.ffs-palette-module');
+      if (editorModule) editorModule.prepend(palette);
+      // Original mobile arrangement places the rating above the poster.
+      grid.before(rating);
+    }
+  }
+  arrange();
+  if (desktop.addEventListener) desktop.addEventListener('change', arrange);
+  else desktop.addListener(arrange);
+})();
+</script>
 </body>
 
 </html>
