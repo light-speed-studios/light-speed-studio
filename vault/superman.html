@@ -666,7 +666,38 @@
 @media (max-width:900px) {
  .lss-poster-disclaimer {display:none !important;}
  .lss-unified-details {display:contents !important;}
-}</style></head>
+}</style>
+<style id="lss-sot-v6-rating-label-and-disclaimer-fix">
+/* Desktop: align rating heading above stars, exactly as in Overtime. */
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details .ffs-rating-summary > .ffs-rating-label {
+    display:none !important;
+  }
+  .ffs-page .lss-unified-details .ffs-rating-input {
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    justify-content:center !important;
+    gap:8px !important;
+  }
+  .ffs-page .lss-unified-details .ffs-rating-input::before {
+    content:"AUDIENCE RATING" !important;
+    display:block !important;
+    width:max-content !important;
+    color:#00AEDE !important;
+    font:800 12px/1.25 Oxanium,sans-serif !important;
+    letter-spacing:.13em !important;
+    white-space:nowrap !important;
+  }
+  /* The original hint is moved by legacy scripts; only the under-poster copy should show. */
+  .ffs-page .ffs-alt-poster-hint,
+  .ffs-page .ffs-right-column > .ffs-alt-poster-hint,
+  .ffs-page .ffs-right-column .ffs-info-panel > .ffs-alt-poster-hint {
+    display:none !important;
+  }
+}
+</style>
+</head>
 <body>
 <div aria-label="Superman splash screen" data-duration="3000" id="lss-page-splash">
 <picture class="lss-page-splash-picture">
