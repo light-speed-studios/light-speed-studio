@@ -5999,6 +5999,108 @@ document.addEventListener("click", function (event) {
 }
 @media (max-width: 900px) { .ffs-desktop-cinematic-nav, .ffs-hero-palette { display: none !important; } }
 </style>
+
+<style id="lss-overtime-cinematic-v4-corrections">
+@media (min-width: 901px) {
+  /* Film title owns a separate full-width row above the poster and information. */
+  .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
+    display: block !important;
+    width: 100%;
+    margin: 0 0 22px !important;
+  }
+  .ffs-project-block > .ffs-title-row.ffs-hero-title-row .ffs-title {
+    margin: 0 !important;
+    font: 800 clamp(30px,3.3vw,53px)/1.1 Oxanium,Rajdhani,sans-serif !important;
+    color: #d4e6f1 !important;
+    text-shadow: 0 2px 22px rgba(0,0,0,.45) !important;
+  }
+  .ffs-right-column { padding-top: 0 !important; }
+
+  /* The generic .ffs-poster rule was accidentally re-displaying the mobile crop. */
+  .ffs-poster-panel .ffs-poster-click > img.ffs-poster-crop {
+    display: none !important;
+  }
+  .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full {
+    display: block !important;
+    box-shadow: 0 35px 95px 18px rgba(0,0,0,.85) !important;
+  }
+
+  /* One uninterrupted metadata row, with soft translucent backing rather than a card. */
+  .ffs-hero-palette {
+    width: 100% !important;
+    padding: 10px 14px 5px !important;
+    background: rgba(4,14,21,.38) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  .ffs-info-panel .ffs-meta-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1.1fr 1.8fr 1fr .83fr !important;
+    align-items: start !important;
+    width: 100% !important;
+    padding: 11px 14px 13px !important;
+    margin: 0 0 16px !important;
+    background: rgba(4,14,21,.38) !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    gap: 0 !important;
+  }
+  .ffs-info-panel .ffs-meta-card {
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 1px 9px !important;
+  }
+  .ffs-info-panel .ffs-meta-card:first-child { padding-left: 0 !important; }
+  .ffs-info-panel .ffs-meta-label {
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    letter-spacing: .08em !important;
+  }
+  .ffs-info-panel .ffs-meta-value {
+    white-space: nowrap !important;
+    font-size: 15px !important;
+  }
+  .ffs-info-panel .ffs-synopsis {
+    background: rgba(4,14,21,.34) !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 14px 18px !important;
+    max-width: none !important;
+  }
+  /* Reduce section text by 1px from the previous version. */
+  .ffs-info-panel .ffs-synopsis p {
+    font-size: clamp(19px,1.52vw,23px) !important;
+  }
+  .ffs-palette-module .ffs-editors-note-text { font-size: 21px !important; }
+}
+@media (min-width:901px) and (max-width:1150px) {
+  .ffs-info-panel .ffs-meta-label { font-size: 10px !important; letter-spacing: .02em !important; }
+  .ffs-info-panel .ffs-meta-value { font-size: 13px !important; }
+  .ffs-info-panel .ffs-meta-card { padding: 1px 6px !important; }
+}
+</style>
+<script id="lss-overtime-title-above-poster">
+(() => {
+  const block = document.querySelector('.ffs-project-block');
+  const grid = block?.querySelector('.ffs-main-grid.ffs-desktop-composition');
+  const panel = grid?.querySelector('.ffs-title-panel');
+  const title = panel?.querySelector('.ffs-title-row');
+  if (!block || !grid || !panel || !title) return;
+  const breakpoint = window.matchMedia('(min-width: 901px)');
+  function placeTitle() {
+    if (breakpoint.matches) {
+      title.classList.add('ffs-hero-title-row');
+      grid.before(title);
+    } else {
+      title.classList.remove('ffs-hero-title-row');
+      panel.prepend(title);
+    }
+  }
+  placeTitle();
+  if (breakpoint.addEventListener) breakpoint.addEventListener('change', placeTitle);
+  else breakpoint.addListener(placeTitle);
+})();
+</script>
 </body>
 
 </html>
