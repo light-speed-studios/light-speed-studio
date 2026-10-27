@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Superman: Son of Tomorrow | LSS</title>
-
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SOTBANNER.webp" fetchpriority="high"/>
-  <link href="../css/styles.css?v=6" rel="stylesheet"/>
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Superman: Son of Tomorrow | LSS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link as="image" fetchpriority="high" href="https://light-speed-studios.b-cdn.net/SOTBANNER.webp" rel="preload"/>
+<link href="../css/styles.css?v=6" rel="stylesheet"/>
+<style>
     #lss-splash {
       display: none !important;
       visibility: hidden !important;
@@ -19,7 +18,6 @@
       pointer-events: none !important;
     }
   </style>
-
 <style id="mobile-poster-lightbox-isolation-fix">
 @media (max-width: 900px) {
 
@@ -83,10 +81,6 @@
   }
 }
 </style>
-
-
-
-
 <style id="mobile-clean-full-poster-flow">
 @media (max-width: 900px) {
 
@@ -168,8 +162,6 @@
   }
 }
 </style>
-
-
 <style id="batman-mobile-editors-note-reference">
 @media (max-width: 900px) {
   .ffs-palette-module {
@@ -237,7 +229,6 @@
   }
 }
 </style>
-
 <style id="lss-desktop-inline-editors-note">
 @media (min-width: 901px) {
   .ffs-palette-module > .ffs-editors-note-title { display: none; }
@@ -373,7 +364,6 @@
 }
 @media(min-width:901px){.ffs-poster-panel .ffs-poster-click .ffs-poster-alt {transition:none !important;} .ffs-poster-panel .ffs-poster-click.is-pressing-alt .ffs-poster-alt {transition:none !important;}}
 </style>
-
 <style id="sot-version-box-above-meta">
 /* Desktop: version panel aligns to the combined width of the final two metadata cards. */
 @media (min-width: 901px) {
@@ -436,7 +426,6 @@
   .ffs-info-panel .ffs-working-version-row { display:flex !important;flex-direction:column !important; }
 }
 </style>
-
 <style id="sot-mobile-version-above-rating-stacked">
 .ffs-info-panel .ffs-version-box-mobile { display: none !important; }
 @media (max-width: 900px) {
@@ -483,7 +472,6 @@
   }
 }
 </style>
-
 <style id="sot-mobile-single-stack-correction">
 @media (max-width:900px) {
   .ffs-info-panel .ffs-working-version-row {
@@ -516,7 +504,6 @@
   .ffs-info-panel .ffs-working-version-row .ffs-rate-star svg { width:min(100%,18px) !important; }
 }
 </style>
-
 <style id="lss-sot-overtime-mobile-order">
 @media (max-width: 900px) {
   .ffs-info-panel { display: flex !important; flex-direction: column !important; }
@@ -582,29 +569,120 @@
   }
 }
 </style>
-</head>
+<style id="lss-sot-overtime-v9-unified-parity">/* SOT — desktop parity with the approved Flash Overtime V9 layout. */
+@media (min-width:901px) {
+ .ffs-page .ffs-project-block > .ffs-hero-title-row .ffs-title { color:#F4F8F9 !important; }
+ .ffs-page .ffs-desktop-composition { align-items:start !important; }
+ .ffs-page .ffs-desktop-composition > .ffs-right-column { min-width:0 !important; }
+ .ffs-page .ffs-right-column > .lss-unified-details {
+   display:flex !important; flex-direction:column !important; width:100% !important;
+   min-width:0 !important; padding:18px 22px 24px !important;
+   background:rgba(4,14,21,.20) !important; border:0 !important;
+   box-shadow:0 16px 45px rgba(0,0,0,.24) !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-audience-rating {
+   order:1 !important; display:grid !important; width:100% !important; min-width:0 !important;
+   max-width:none !important; min-height:108px !important; margin:0 0 12px !important;
+   padding:6px 0 14px !important; background:transparent !important;
+   box-shadow:none !important; border:0 !important;
+   grid-template-columns:minmax(0,170px) 1px minmax(0,1fr) !important;
+ }
+ .ffs-page .lss-unified-details .ffs-rating-stars {
+   display:flex !important; justify-content:flex-start !important;
+   width:max-content !important; max-width:100% !important; gap:5px !important;
+ }
+ .ffs-page .lss-unified-details .ffs-rate-star { flex:0 0 32px !important; width:32px !important; }
+ .ffs-page .lss-unified-details .ffs-rate-star svg { width:28px !important; }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+   order:2 !important; display:grid !important; width:100% !important; min-width:0 !important;
+   grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1.65fr) minmax(0,1fr) minmax(0,1fr) !important;
+   gap:0 !important; align-items:stretch !important;
+   margin:0 0 14px !important; padding:13px 0 !important;
+   background:transparent !important; box-shadow:none !important; border:0 !important;
+   border-top:1px solid rgba(186,199,213,.14) !important;
+   border-bottom:1px solid rgba(186,199,213,.14) !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
+   display:flex !important; flex-direction:column !important; justify-content:center !important;
+   min-width:0 !important; min-height:54px !important; margin:0 !important;
+   padding:4px 10px !important; background:transparent !important;
+   box-shadow:none !important; border:0 !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card:first-child {padding-left:0 !important;}
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card:not(:last-child) {border-right:1px solid rgba(0,174,222,.35) !important;}
+ .ffs-page .lss-unified-details .ffs-meta-label {
+   display:block !important; white-space:nowrap !important; overflow:visible !important;
+   font-size:clamp(9px,.73vw,11px) !important; letter-spacing:.035em !important;
+   line-height:1.25 !important; margin-bottom:7px !important;
+ }
+ .ffs-page .lss-unified-details .ffs-meta-value {
+   display:block !important; white-space:nowrap !important; color:#F9F9F9 !important;
+   font-size:clamp(12px,.96vw,16px) !important; line-height:1.25 !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-working-title-inline {order:3 !important; margin:0 0 7px !important; color:#F4F8F9 !important;}
+ .ffs-page .lss-unified-details > .sot-desktop-working-version-line {
+   order:4 !important; display:flex !important; justify-content:flex-start !important;
+   align-items:center !important; margin:0 0 18px !important; padding:0 !important;
+   width:auto !important; min-height:0 !important; background:transparent !important;
+ }
+ .ffs-page .lss-unified-details .ffs-version-box-header {
+   position:static !important; display:flex !important; width:auto !important;
+   height:auto !important; min-height:34px !important; margin:0 !important;
+   padding:6px 12px !important; overflow:visible !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-section-label {order:5 !important; margin:0 0 9px !important;}
+ .ffs-page .lss-unified-details > .ffs-synopsis {
+   order:6 !important; width:100% !important; max-width:none !important;
+   margin:0 !important; padding:0 !important;
+   background:transparent !important; box-shadow:none !important; border:0 !important;
+ }
+ .ffs-page .lss-unified-details .ffs-synopsis p {color:#F4F8F9 !important;}
+ .ffs-page .lss-unified-details .ffs-rating-number strong {color:#F4F8F9 !important;}
+ .ffs-page .lss-unified-details .ffs-rating-feedback {color:#F4F8F9 !important;}
+ .ffs-page .ffs-left-column > .lss-poster-disclaimer {
+   display:block !important; margin:13px 0 0 !important;
+   font:700 12px/1.5 Oxanium,Rajdhani,sans-serif !important;
+   letter-spacing:.09em; text-transform:uppercase; color:#b7c8d4;
+   text-align:center; text-shadow:0 2px 8px rgba(0,0,0,.65);
+ }
+ .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
+   display:block !important; width:100% !important; max-width:none !important;
+   margin:18px 0 26px !important; padding:0 !important; background:transparent !important;
+   border:0 !important; box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important;
+ }
+ .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {
+   display:block !important; width:100% !important; height:46px !important;
+   object-fit:cover !important; border:0 !important; box-shadow:none !important;
+ }
+ .ffs-page .ffs-palette-module {margin-top:0 !important;}
+}
+@media (min-width:901px) and (max-width:1130px) {
+ .ffs-page .lss-unified-details > .ffs-audience-rating {grid-template-columns:minmax(0,145px) 1px minmax(0,1fr) !important;}
+ .ffs-page .lss-unified-details .ffs-rating-stars {gap:3px !important;}
+ .ffs-page .lss-unified-details .ffs-rate-star {flex-basis:26px !important; width:26px !important;}
+ .ffs-page .lss-unified-details .ffs-rate-star svg {width:24px !important;}
+ .ffs-page .ffs-right-column > .lss-unified-details {padding:14px 16px 20px !important;}
+}
+@media (max-width:900px) {
+ .lss-poster-disclaimer {display:none !important;}
+ .lss-unified-details {display:contents !important;}
+}</style></head>
 <body>
-<div id="lss-page-splash" data-duration="3000" aria-label="Superman splash screen">
-  <picture class="lss-page-splash-picture">
-    <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/supermansplashmob.webp">
-    <img
-      class="lss-page-splash-image"
-      src="https://light-speed-studios.b-cdn.net/supermansplashdesk.webp"
-      alt="Superman: Son of Tomorrow"
-      decoding="sync"
-      fetchpriority="high"
-      loading="eager">
-  </picture>
+<div aria-label="Superman splash screen" data-duration="3000" id="lss-page-splash">
+<picture class="lss-page-splash-picture">
+<source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/supermansplashmob.webp"/>
+<img alt="Superman: Son of Tomorrow" class="lss-page-splash-image" decoding="sync" fetchpriority="high" loading="eager" src="https://light-speed-studios.b-cdn.net/supermansplashdesk.webp"/>
+</picture>
 </div>
 <header class="lss-nav-bar">
 <a class="lss-nav-logo" href="../index.html">
-<img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
+<img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png">
 <span class="lss-brand-text">No Spectacle Without Soul</span>
-</a>
-<button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
-  <span></span>
-  <span></span>
-  <span></span>
+</img></a>
+<button aria-expanded="false" aria-label="Open navigation menu" class="hamburger" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);" type="button">
+<span></span>
+<span></span>
+<span></span>
 </button>
 <nav class="lss-nav-links">
 <a class="lss-nav-item" href="../index.html">Bridge</a>
@@ -615,9 +693,6 @@
 </nav>
 </header>
 
-<section class="sot-wide-banner" aria-label="Superman: Son of Tomorrow banner">
-  <img src="https://light-speed-studios.b-cdn.net/SOTBANNER.webp" alt="Superman: Son of Tomorrow cinematic banner" decoding="sync" loading="eager" fetchpriority="high" width="2048" height="768" />
-</section>
 <main class="page-content">
 <div class="ffs-page">
 <style>
@@ -2636,37 +2711,32 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 }
 
 </style>
-  <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
-    <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
-      <span class="ffs-side-nav-line">Back to</span>
-      <span class="ffs-side-nav-line">Vault</span>
-    </a>
-  </nav>
-
-  <nav class="ffs-project-side-nav ffs-project-side-nav-right" aria-label="Project sequence navigation">
-    <a class="ffs-side-nav-link ffs-side-prev" href="overtime.html" data-project-nav-key="prev">Prev</a>
-    <a class="ffs-side-nav-link ffs-side-next" href="batman.html" data-project-nav-key="next">Next</a>
-  </nav>
+<nav aria-label="Project back navigation" class="ffs-project-side-nav ffs-project-side-nav-left">
+<a class="ffs-side-nav-link ffs-side-back" data-project-nav-key="vault" href="../vault.html">
+<span class="ffs-side-nav-line">Back to</span>
+<span class="ffs-side-nav-line">Vault</span>
+</a>
+</nav>
+<nav aria-label="Project sequence navigation" class="ffs-project-side-nav ffs-project-side-nav-right">
+<a class="ffs-side-nav-link ffs-side-prev" data-project-nav-key="prev" href="overtime.html">Prev</a>
+<a class="ffs-side-nav-link ffs-side-next" data-project-nav-key="next" href="batman.html">Next</a>
+</nav>
 <div class="ffs-shell">
-    <div class="ffs-project-block">
-
-      <div class="ffs-mobile-movie-header">
-        <img src="https://light-speed-studios.b-cdn.net/SOTheader31.png" alt="Superman: Son of Tomorrow">
-      </div>
-
-      <div class="ffs-desktop-composition">
+<div class="ffs-project-block">
+<div class="ffs-mobile-movie-header">
+<img alt="Superman: Son of Tomorrow" src="https://light-speed-studios.b-cdn.net/SOTheader31.png"/>
+</div>
+<div class="ffs-desktop-composition">
 <div class="ffs-left-column">
 <div class="ffs-poster-panel">
-  <input class="ffs-poster-toggle" type="checkbox" id="ffsPosterToggle">
-
-  <label class="ffs-poster-click" for="ffsPosterToggle">
-    <img class="ffs-poster ffs-poster-full" src="https://light-speed-studios.b-cdn.net/SOTPOSTER.png" alt="Superman: Son of Tomorrow poster" fetchpriority="high" decoding="async">
-    <img class="ffs-poster ffs-poster-crop" src="https://light-speed-studios.b-cdn.net/suoermanposter1mob.png" alt="Superman: Son of Tomorrow mobile poster" loading="lazy" decoding="async">
-    <img class="ffs-poster ffs-poster-alt" src="https://light-speed-studios.b-cdn.net/sotalt.png" alt="Superman: Son of Tomorrow alternate poster" draggable="false" loading="eager" decoding="async">
-  </label>
-
+<input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
+<label class="ffs-poster-click" for="ffsPosterToggle">
+<img alt="Superman: Son of Tomorrow poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/SOTPOSTER.png"/>
+<img alt="Superman: Son of Tomorrow mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/suoermanposter1mob.png"/>
+<img alt="Superman: Son of Tomorrow alternate poster" class="ffs-poster ffs-poster-alt" decoding="async" draggable="false" loading="eager" src="https://light-speed-studios.b-cdn.net/sotalt.png"/>
+</label>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
-  <span>Click to Enlarge</span>
+<span>Click to Enlarge</span>
 </label>
 </div>
 </div>
@@ -2678,25 +2748,24 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
 <p class="ffs-working-title-inline"><span>WORKING TITLE:</span> SUPERMAN: FLYBY</p>
 <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
 <label class="ffs-working-title ffs-version-box ffs-version-box-header" for="ffsColorGradeModal">
-  <span>Version 2</span>
-  <strong>Updated Changes</strong>
+<span>Version 2</span>
+<strong>Updated Changes</strong>
 </label>
 <div class="ffs-meta-row ffs-desktop-meta">
 <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
-  <span class="ffs-meta-value">110 min</span></div>
+<span class="ffs-meta-value">110 min</span></div>
 <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-  <span class="ffs-meta-value">30 Oct 2025</span></div>
+<span class="ffs-meta-value">30 Oct 2025</span></div>
 <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span>
-  <span class="ffs-meta-value">Superman 2025</span></div>
+<span class="ffs-meta-value">Superman 2025</span></div>
 <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span>
-  <span class="ffs-meta-value">129 min</span></div>
+<span class="ffs-meta-value">129 min</span></div>
 <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
-  <span class="ffs-meta-value">1.90:1 IMAX</span></div>
+<span class="ffs-meta-value">1.90:1 IMAX</span></div>
 </div>
 </div>
 <div class="ffs-mobile-meta">
 <div class="ffs-meta-row">
-    
 </div>
 </div>
 <div class="ffs-info-panel">
@@ -2707,40 +2776,39 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   </p>
 </div>
 <div class="ffs-working-title ffs-working-title-mobile-order"><span>WORKING TITLE</span><strong>SUPERMAN: FLYBY</strong></div>
-<input class="ffs-color-grade-modal-toggle" type="checkbox" id="ffsColorGradeModal">
+<input class="ffs-color-grade-modal-toggle" id="ffsColorGradeModal" type="checkbox"/>
 <div class="ffs-working-version-row">
 <label class="ffs-working-title ffs-version-box ffs-version-box-mobile" for="ffsColorGradeModal">
-  <span>Version 2</span>
-  <strong>Updated Changes</strong>
+<span>Version 2</span>
+<strong>Updated Changes</strong>
 </label>
-<div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="superman-son-of-tomorrow" aria-label="Audience rating for Superman: Son of Tomorrow">
-  <div class="ffs-rating-summary">
-    <span class="ffs-rating-label">AUDIENCE RATING</span>
-    <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
-    <span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
-  </div>
-  <div class="ffs-rating-divider" aria-hidden="true"></div>
-  <div class="ffs-rating-input">
-    <div class="ffs-rating-stars" role="group" aria-label="Rate this edit from one to ten stars">
-<button type="button" class="ffs-rate-star" data-rating="1" aria-label="Rate 1 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="2" aria-label="Rate 2 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="3" aria-label="Rate 3 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="4" aria-label="Rate 4 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="5" aria-label="Rate 5 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="6" aria-label="Rate 6 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="7" aria-label="Rate 7 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="8" aria-label="Rate 8 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="9" aria-label="Rate 9 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-<button type="button" class="ffs-rate-star" data-rating="10" aria-label="Rate 10 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
-    </div>
-    <span class="ffs-rating-feedback" id="ffs-rating-feedback" role="status" aria-live="polite">SELECT YOUR RATING</span>
-  </div>
-    </div>
+<div aria-label="Audience rating for Superman: Son of Tomorrow" class="ffs-audience-rating" data-movie-id="superman-son-of-tomorrow" id="ffs-audience-rating">
+<div class="ffs-rating-summary">
+<span class="ffs-rating-label">AUDIENCE RATING</span>
+<div class="ffs-rating-number"><strong class="is-unrated" id="ffs-rating-average">NOT YET RATED</strong><span hidden="" id="ffs-rating-denominator">/ 10</span></div>
+<span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
+</div>
+<div aria-hidden="true" class="ffs-rating-divider"></div>
+<div class="ffs-rating-input">
+<div aria-label="Rate this edit from one to ten stars" class="ffs-rating-stars" role="group">
+<button aria-label="Rate 1 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="1" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 2 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="2" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 3 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="3" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 4 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="4" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 5 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="5" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 6 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="6" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 7 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="7" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 8 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="8" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 9 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="9" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+<button aria-label="Rate 10 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="10" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
+</div>
+<span aria-live="polite" class="ffs-rating-feedback" id="ffs-rating-feedback" role="status">SELECT YOUR RATING</span>
 </div>
 </div>
 </div>
 </div>
-
+</div>
+</div>
 <style>
 /* SEPARATE PALETTE + VERTICAL CTA / TRAILER ROW */
 @media (min-width: 901px) {
@@ -2939,109 +3007,84 @@ body:has(#ffsColorGradeModal:checked) .ffs-color-grade-modal { display:flex!impo
   }
 }
 </style>
-
-<section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
-  <div class="ffs-palette-wrap">
-    <img alt="Superman: Son of Tomorrow color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/SUPERMANMOVIEPALLETE.png"/>
-  </div>
-  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Superman</em> immediately connected with me because of how sincerely it embraced the character. Beneath the comic book scale was a story about Clark choosing what kind of Superman he wanted to be. With <em>Son of Tomorrow</em>, I wanted to bring that idea closer to the surface, pulling back some of the humor and tonal noise. More than anything, I wanted the film to reflect what Superman means to me: compassion, restraint, and the choice to keep believing the good in everyone.</p>
+<section aria-labelledby="ffsEditorsNoteTitle" class="ffs-palette-module">
+<div class="ffs-palette-wrap">
+<img alt="Superman: Son of Tomorrow color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/SUPERMANMOVIEPALLETE.png">
+</img></div>
+<h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
+<p class="ffs-editors-note-text"><span aria-hidden="true" class="ffs-editors-note-inline-title">Editor's Note</span> <em>Superman</em> immediately connected with me because of how sincerely it embraced the character. Beneath the comic book scale was a story about Clark choosing what kind of Superman he wanted to be. With <em>Son of Tomorrow</em>, I wanted to bring that idea closer to the surface, pulling back some of the humor and tonal noise. More than anything, I wanted the film to reflect what Superman means to me: compassion, restraint, and the choice to keep believing the good in everyone.</p>
 </section>
-
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
-<input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack"/>
-
+<input class="ffs-soundtrack-modal-toggle" id="ffsLandingSoundtrack" type="checkbox">
 <div class="ffs-cta-grid">
-  <a class="ffs-cta-tile" href="../superman-son-of-tomorrow-changelog.html">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <rect x="15" y="12" width="34" height="40" rx="2"></rect>
-        <path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
-      </svg>
-    </span>
-    <strong>Changelog</strong>
-  </a>
-
-  <label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
-      </svg>
-    </span>
-    <strong>Soundtrack</strong>
-  </label>
-
-  <a class="ffs-cta-tile" href="../superman-movie.html">
-    <span class="ffs-cta-icon" aria-hidden="true">
-      <svg viewBox="0 0 64 64">
-        <rect x="16" y="24" width="30" height="22" rx="3"></rect>
-        <circle cx="25" cy="35" r="5"></circle>
-        <circle cx="38" cy="35" r="5"></circle>
-        <path d="M46 30l10-6v22l-10-6z"></path>
-        <path d="M22 46l-4 8M40 46l4 8"></path>
-      </svg>
-    </span>
-    <strong>Watch Movie</strong>
-  </a>
-
-  <a
-    class="ffs-cta-tile ffs-reddit-review"
-    href="https://www.reddit.com/r/fanedits/comments/1ok6nq8/superman_son_of_tomorrow_fan_edit/"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Leave a review on Reddit"
-  >
-    <span class="ffs-cta-icon" aria-hidden="true">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
+<a class="ffs-cta-tile" href="../superman-son-of-tomorrow-changelog.html">
+<span aria-hidden="true" class="ffs-cta-icon">
+<svg viewbox="0 0 64 64">
+<rect height="40" rx="2" width="34" x="15" y="12"></rect>
+<path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
+</svg>
+</span>
+<strong>Changelog</strong>
+</a>
+<label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
+<span aria-hidden="true" class="ffs-cta-icon">
+<svg viewbox="0 0 64 64">
+<path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
+</svg>
+</span>
+<strong>Soundtrack</strong>
+</label>
+<a class="ffs-cta-tile" href="../superman-movie.html">
+<span aria-hidden="true" class="ffs-cta-icon">
+<svg viewbox="0 0 64 64">
+<rect height="22" rx="3" width="30" x="16" y="24"></rect>
+<circle cx="25" cy="35" r="5"></circle>
+<circle cx="38" cy="35" r="5"></circle>
+<path d="M46 30l10-6v22l-10-6z"></path>
+<path d="M22 46l-4 8M40 46l4 8"></path>
+</svg>
+</span>
+<strong>Watch Movie</strong>
+</a>
+<a aria-label="Leave a review on Reddit" class="ffs-cta-tile ffs-reddit-review" href="https://www.reddit.com/r/fanedits/comments/1ok6nq8/superman_son_of_tomorrow_fan_edit/" rel="noopener noreferrer" target="_blank">
+<span aria-hidden="true" class="ffs-cta-icon">
+<svg height="256" version="1.1" viewbox="0 0 256 256" width="256" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
-<path d="M 61.951 64.101 c -1.017 -0.509 -2.234 -0.397 -3.143 0.286 c -3.925 2.951 -8.777 4.46 -13.655 4.261 c -0.083 -0.004 -0.167 -0.005 -0.25 0 c -4.878 0.191 -9.726 -1.309 -13.655 -4.262 c -1.324 -0.996 -3.204 -0.729 -4.201 0.596 c -0.995 1.325 -0.729 3.206 0.596 4.201 c 4.732 3.557 10.512 5.482 16.387 5.482 c 0.333 0 0.666 -0.006 0.999 -0.019 c 5.791 0.22 11.526 -1.447 16.32 -4.702 c 1.3 -0.329 2.263 -1.507 2.263 -2.909 v -0.251 C 63.612 65.648 62.969 64.609 61.951 64.101 z" style="fill: currentColor;"/>
-<path d="M 77.391 33.213 c -2.177 0.076 -4.28 0.737 -6.107 1.899 c -6.924 -4.041 -16.675 -6.539 -24.476 -7.268 l 3.719 -17.482 l 13.879 2.774 c 0.793 3.758 4.127 6.58 8.121 6.58 c 4.585 0 8.302 -3.717 8.302 -8.302 c 0 -4.585 -3.717 -8.302 -8.302 -8.302 c -3.05 0 -5.708 1.649 -7.152 4.1 L 50.797 4.298 c -1.297 -0.291 -2.623 -0.058 -3.742 0.654 c -1.12 0.712 -1.894 1.819 -2.181 3.117 C 44.86 8.133 44.848 8.2 44.838 8.268 l -4.14 19.461 c -7.805 0.513 -15.33 2.907 -22.003 7.001 c -2.029 -1.269 -4.386 -1.918 -6.834 -1.832 c -3.259 0.103 -6.281 1.47 -8.506 3.845 c -2.236 2.378 -3.41 5.484 -3.307 8.747 c 0.103 3.259 1.47 6.281 3.853 8.513 c 0.472 0.441 0.966 0.838 1.479 1.189 c 0.005 0.387 0.02 0.772 0.045 1.157 c 0.078 15.731 17.885 28.512 39.76 28.512 c 21.878 0 39.685 -12.78 39.761 -28.513 c 0.025 -0.408 0.041 -0.818 0.045 -1.229 c 3.187 -2.318 5.12 -6.102 5.049 -10.147 C 89.792 38.261 84.111 32.963 77.391 33.213 z M 80.605 50.788 c -1.082 0.541 -1.733 1.679 -1.651 2.886 c 0.053 0.786 0.053 1.584 0 2.37 c -0.005 0.067 -0.007 0.135 -0.007 0.202 c 0 12.47 -15.145 22.615 -33.761 22.615 c -18.615 0 -33.761 -10.145 -33.761 -22.615 c 0 -0.068 -0.002 -0.136 -0.007 -0.204 c -0.054 -0.785 -0.054 -1.581 0 -2.366 c 0.086 -1.26 -0.626 -2.439 -1.782 -2.948 C 9.069 50.477 8.518 50.104 8 49.62 c -1.208 -1.132 -1.902 -2.666 -1.954 -4.321 c -0.053 -1.659 0.544 -3.238 1.685 -4.451 c 1.131 -1.208 2.666 -1.901 4.321 -1.954 c 0.067 -0.002 0.134 -0.003 0.201 -0.003 c 1.585 0 3.085 0.594 4.245 1.684 c 1.021 0.959 2.573 1.085 3.736 0.299 c 6.793 -4.596 14.712 -7.101 22.906 -7.244 c 7.767 0.181 19.718 2.905 26.632 7.614 c 1.169 0.796 2.734 0.667 3.757 -0.307 c 1.116 -1.063 2.563 -1.677 4.068 -1.729 c 3.401 -0.101 6.32 2.569 6.445 5.927 C 84.084 47.505 82.735 49.723 80.605 50.788 z" style="fill: currentColor;"/>
-<path d="M 36.416 51.59 c 0 -3.561 -2.904 -6.465 -6.465 -6.465 s -6.465 2.904 -6.465 6.465 s 2.888 6.432 6.465 6.465 C 33.512 58.055 36.416 55.151 36.416 51.59 z" style="fill: currentColor;"/>
-<path d="M 59.82 45.349 c -3.561 0 -6.465 2.904 -6.465 6.465 c 0 3.561 2.904 6.465 6.465 6.465 l -0.049 0.241 c 0.113 0 0.209 0 0.321 0 c 3.561 -0.145 6.336 -3.143 6.192 -6.706 C 66.284 48.253 63.38 45.349 59.82 45.349 z" style="fill: currentColor;"/>
+<path d="M 61.951 64.101 c -1.017 -0.509 -2.234 -0.397 -3.143 0.286 c -3.925 2.951 -8.777 4.46 -13.655 4.261 c -0.083 -0.004 -0.167 -0.005 -0.25 0 c -4.878 0.191 -9.726 -1.309 -13.655 -4.262 c -1.324 -0.996 -3.204 -0.729 -4.201 0.596 c -0.995 1.325 -0.729 3.206 0.596 4.201 c 4.732 3.557 10.512 5.482 16.387 5.482 c 0.333 0 0.666 -0.006 0.999 -0.019 c 5.791 0.22 11.526 -1.447 16.32 -4.702 c 1.3 -0.329 2.263 -1.507 2.263 -2.909 v -0.251 C 63.612 65.648 62.969 64.609 61.951 64.101 z" style="fill: currentColor;"></path>
+<path d="M 77.391 33.213 c -2.177 0.076 -4.28 0.737 -6.107 1.899 c -6.924 -4.041 -16.675 -6.539 -24.476 -7.268 l 3.719 -17.482 l 13.879 2.774 c 0.793 3.758 4.127 6.58 8.121 6.58 c 4.585 0 8.302 -3.717 8.302 -8.302 c 0 -4.585 -3.717 -8.302 -8.302 -8.302 c -3.05 0 -5.708 1.649 -7.152 4.1 L 50.797 4.298 c -1.297 -0.291 -2.623 -0.058 -3.742 0.654 c -1.12 0.712 -1.894 1.819 -2.181 3.117 C 44.86 8.133 44.848 8.2 44.838 8.268 l -4.14 19.461 c -7.805 0.513 -15.33 2.907 -22.003 7.001 c -2.029 -1.269 -4.386 -1.918 -6.834 -1.832 c -3.259 0.103 -6.281 1.47 -8.506 3.845 c -2.236 2.378 -3.41 5.484 -3.307 8.747 c 0.103 3.259 1.47 6.281 3.853 8.513 c 0.472 0.441 0.966 0.838 1.479 1.189 c 0.005 0.387 0.02 0.772 0.045 1.157 c 0.078 15.731 17.885 28.512 39.76 28.512 c 21.878 0 39.685 -12.78 39.761 -28.513 c 0.025 -0.408 0.041 -0.818 0.045 -1.229 c 3.187 -2.318 5.12 -6.102 5.049 -10.147 C 89.792 38.261 84.111 32.963 77.391 33.213 z M 80.605 50.788 c -1.082 0.541 -1.733 1.679 -1.651 2.886 c 0.053 0.786 0.053 1.584 0 2.37 c -0.005 0.067 -0.007 0.135 -0.007 0.202 c 0 12.47 -15.145 22.615 -33.761 22.615 c -18.615 0 -33.761 -10.145 -33.761 -22.615 c 0 -0.068 -0.002 -0.136 -0.007 -0.204 c -0.054 -0.785 -0.054 -1.581 0 -2.366 c 0.086 -1.26 -0.626 -2.439 -1.782 -2.948 C 9.069 50.477 8.518 50.104 8 49.62 c -1.208 -1.132 -1.902 -2.666 -1.954 -4.321 c -0.053 -1.659 0.544 -3.238 1.685 -4.451 c 1.131 -1.208 2.666 -1.901 4.321 -1.954 c 0.067 -0.002 0.134 -0.003 0.201 -0.003 c 1.585 0 3.085 0.594 4.245 1.684 c 1.021 0.959 2.573 1.085 3.736 0.299 c 6.793 -4.596 14.712 -7.101 22.906 -7.244 c 7.767 0.181 19.718 2.905 26.632 7.614 c 1.169 0.796 2.734 0.667 3.757 -0.307 c 1.116 -1.063 2.563 -1.677 4.068 -1.729 c 3.401 -0.101 6.32 2.569 6.445 5.927 C 84.084 47.505 82.735 49.723 80.605 50.788 z" style="fill: currentColor;"></path>
+<path d="M 36.416 51.59 c 0 -3.561 -2.904 -6.465 -6.465 -6.465 s -6.465 2.904 -6.465 6.465 s 2.888 6.432 6.465 6.465 C 33.512 58.055 36.416 55.151 36.416 51.59 z" style="fill: currentColor;"></path>
+<path d="M 59.82 45.349 c -3.561 0 -6.465 2.904 -6.465 6.465 c 0 3.561 2.904 6.465 6.465 6.465 l -0.049 0.241 c 0.113 0 0.209 0 0.321 0 c 3.561 -0.145 6.336 -3.143 6.192 -6.706 C 66.284 48.253 63.38 45.349 59.82 45.349 z" style="fill: currentColor;"></path>
 </g></svg>
-    </span>
-    <strong>Leave Review</strong>
-   
-  </a>
+</span>
+<strong>Leave Review</strong>
+</a>
 </div>
-</div>
-
+</input></div>
 <div class="ffs-trailer-section">
-        
-        <div class="ffs-video">
-          <iframe
-            loading="lazy"
-            src="https://www.youtube.com/embed/on-A5FJEJDc"
-            title="Superman: Son of Tomorrow Trailer"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
+<div class="ffs-video">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/on-A5FJEJDc" title="Superman: Son of Tomorrow Trailer">
+</iframe>
 </div>
-
-<nav class="ffs-desktop-cinematic-nav" aria-label="Project navigation">
-  <a href="../vault.html" data-project-nav-key="vault-desktop">Vault</a>
-  <a href="overtime.html" data-project-nav-key="prev-desktop">Prev</a>
-  <a href="batman.html" data-project-nav-key="next-desktop">Next</a>
+</div>
+</div>
+<nav aria-label="Project navigation" class="ffs-desktop-cinematic-nav">
+<a data-project-nav-key="vault-desktop" href="../vault.html">Vault</a>
+<a data-project-nav-key="prev-desktop" href="overtime.html">Prev</a>
+<a data-project-nav-key="next-desktop" href="batman.html">Next</a>
 </nav>
-<nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
-    <a href="../vault.html" data-project-nav-key="vault-mobile">Vault</a>
-    <a href="overtime.html" data-project-nav-key="prev-mobile">Prev</a>
-    <a href="batman.html" data-project-nav-key="next-mobile">Next</a>
-  </nav>
-
-
+<nav aria-label="Project mobile navigation" class="ffs-mobile-project-nav">
+<a data-project-nav-key="vault-mobile" href="../vault.html">Vault</a>
+<a data-project-nav-key="prev-mobile" href="overtime.html">Prev</a>
+<a data-project-nav-key="next-mobile" href="batman.html">Next</a>
+</nav>
 <div class="ffs-footer-logo-block">
-  <img src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png" alt="Light Speed Studios logo" loading="lazy" decoding="async">
+<img alt="Light Speed Studios logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png"/>
 </div>
 </div>
-  </div>
 </div>
-
+</div>
 </main>
-
 <script>
 function toggleMobileMenu(button) {
   const navLinks = document.querySelector('.lss-nav-links');
@@ -3068,68 +3111,63 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
-
 <script src="../js/main.js?v=5"></script>
-
 <div class="ffs-soundtrack-modal">
-      <div class="ffs-soundtrack-modal-box">
-        <div class="ffs-soundtrack-modal-head">
-          <div class="ffs-soundtrack-modal-header">
-            <div class="ffs-soundtrack-modal-icon">
-              <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
-            </div>
-            <div class="ffs-soundtrack-modal-title">
-              <strong>Soundtrack</strong>
-              <span>The Sound of Hope</span>
-            </div>
-          </div>
-          <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
-        </div>
-
-        <div class="ffs-soundtrack-modal-content">
-          <div class="ffs-soundtrack-modal-content-inner">
+<div class="ffs-soundtrack-modal-box">
+<div class="ffs-soundtrack-modal-head">
+<div class="ffs-soundtrack-modal-header">
+<div class="ffs-soundtrack-modal-icon">
+<img alt="Soundtrack icon" src="https://light-speed-studios.b-cdn.net/wave1.png"/>
+</div>
+<div class="ffs-soundtrack-modal-title">
+<strong>Soundtrack</strong>
+<span>The Sound of Hope</span>
+</div>
+</div>
+<label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
+</div>
+<div class="ffs-soundtrack-modal-content">
+<div class="ffs-soundtrack-modal-content-inner">
 <ul>
 <li><strong>When the Lights Come On | Idles</strong><p>The Hammer’s return to Lex Luthor, intercut with scenes of LuthorCorp Tower.</p></li>
 <li><strong>Inch of Dust (Instrumental) | Future Islands</strong><p>The opening moments of Lois and Clark’s apartment kitchen scene.</p></li>
 <li><strong>The Game Has Changed | Daft Punk (Tron: Legacy OST)</strong><p>Night to day time-lapse as the Kaiju emerges across the city.</p></li>
-<li><strong>Superman & Lois Title Card Song | Blake Neely (Superman & Lois OST)</strong><p>Superman’s flight to the Fortress following the message reveal.</p></li>
+<li><strong>Superman &amp; Lois Title Card Song | Blake Neely (Superman &amp; Lois OST)</strong><p>Superman’s flight to the Fortress following the message reveal.</p></li>
 <li><strong>Pump It | The Black Eyed Peas</strong><p>The fight between Mr. Terrific and the Lex Raptors.</p></li>
 <li><strong>Three Hops from Anyone | Craig Armstrong (Snowden OST)</strong><p>The reworked Pa Kent speech.</p></li>
 <li><strong>Enter Sandman | Metallica</strong><p>The Justice Gang clash with the Boravian army.</p></li>
 <li><strong>Superman 2 Theme | Ken Thorn</strong><p>A cover variation scoring the bridge rescue and Superman’s speech to Lex.</p></li>
-<li><strong>Look Up (Slowed & Reverb) | Superman 2025</strong><p>The final faceoff between Superman and Lex.</p></li>
+<li><strong>Look Up (Slowed &amp; Reverb) | Superman 2025</strong><p>The final faceoff between Superman and Lex.</p></li>
 <li><strong>Inch of Dust (Chorus) | Future Islands</strong><p>The final scene between Lois and Clark.</p></li>
 <li><strong>Reunion (Mylo Mix) | M83</strong><p>The closing Superman scenes and end credits.</p></li>
 </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<div class="ffs-color-grade-modal">
-  <div class="ffs-color-grade-modal-box">
-    <div class="ffs-color-grade-modal-head">
-      <div class="ffs-color-grade-modal-title">
-        <strong>Updated Changes</strong>
-        <span>Version 2 | SEPTEMBER '26</span>
-      </div>
-      <label class="ffs-color-grade-modal-close" for="ffsColorGradeModal">×</label>
-    </div>
-    <div class="ffs-color-grade-modal-content">
-      <ul class="ffs-color-grade-list">
-        <li><strong>Color Grading:</strong> Regraded with deeper blacks, richer contrast and a more vibrant palette.</li>
-        <li><strong>Fortress Attack:</strong> Removed Engineer’s line about giving up her humanity to defeat Superman.</li>
-        <li><strong>Kaiju Fight Edit:</strong> Removed Superman "Be Careful" as Hawkgirl strikes at Kaiju's eye</li>
-        <li><strong>Mr. Terrific ADR Fix:</strong> Fixed Mr Terrific line about the El's message by add corrent lip syncing.</li>
-        <li><strong>Added Flight VFX:</strong> Reowrked Superman's flight back to the Fortress post Lex message, added VFX.</li>
-        <li><strong>Superman Interrogation Scene:</strong> Reworked the scene by digitally removing Vasil Ghurkos, the Boravian leader.</li>
-        <li><strong>Mr. Terrific vs. Raptors:</strong> Replaced “Keepin’ Da Faith” with “Pump It” by The Black Eyed Peas.</li>
-        <li><strong>Lois Lane's Final ADR:</strong> Redone entire ADR for better flow</li>
-      </ul>
-    </div>
-  </div>
 </div>
-
+</div>
+</div>
+</div>
+<div class="ffs-color-grade-modal">
+<div class="ffs-color-grade-modal-box">
+<div class="ffs-color-grade-modal-head">
+<div class="ffs-color-grade-modal-title">
+<strong>Updated Changes</strong>
+<span>Version 2 | SEPTEMBER '26</span>
+</div>
+<label class="ffs-color-grade-modal-close" for="ffsColorGradeModal">×</label>
+</div>
+<div class="ffs-color-grade-modal-content">
+<ul class="ffs-color-grade-list">
+<li><strong>Color Grading:</strong> Regraded with deeper blacks, richer contrast and a more vibrant palette.</li>
+<li><strong>Fortress Attack:</strong> Removed Engineer’s line about giving up her humanity to defeat Superman.</li>
+<li><strong>Kaiju Fight Edit:</strong> Removed Superman "Be Careful" as Hawkgirl strikes at Kaiju's eye</li>
+<li><strong>Mr. Terrific ADR Fix:</strong> Fixed Mr Terrific line about the El's message by add corrent lip syncing.</li>
+<li><strong>Added Flight VFX:</strong> Reowrked Superman's flight back to the Fortress post Lex message, added VFX.</li>
+<li><strong>Superman Interrogation Scene:</strong> Reworked the scene by digitally removing Vasil Ghurkos, the Boravian leader.</li>
+<li><strong>Mr. Terrific vs. Raptors:</strong> Replaced “Keepin’ Da Faith” with “Pump It” by The Black Eyed Peas.</li>
+<li><strong>Lois Lane's Final ADR:</strong> Redone entire ADR for better flow</li>
+</ul>
+</div>
+</div>
+</div>
 <script>
 document.addEventListener("click", function (event) {
   const modal = event.target.closest(".ffs-soundtrack-modal");
@@ -3152,9 +3190,6 @@ document.addEventListener("click", function (event) {
   }
 });
 </script>
-
-
-
 <style id="mobile-bottom-gap-border-fix">
 @media (max-width: 900px) {
   html,
@@ -3210,8 +3245,6 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-
-
 <style id="far-from-sol-desktop-geometry-lock">
 @media (min-width: 901px) {
   .ffs-title-panel {
@@ -3254,8 +3287,6 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-
-
 <style id="working-version-row-final-fix">
 /* FINAL FIX: keep Working Title and Version 2 side by side.
    Earlier desktop composition rules force every .ffs-working-title into grid cell 1/3.
@@ -3311,7 +3342,6 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-
 <style id="sot-full-width-audience-rating-final">
 /* Version 2 now lives in the title panel; the rating owns the entire synopsis width. */
 @media (min-width: 901px) {
@@ -3355,8 +3385,6 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-
-
 <script id="sot-desktop-alt-poster-hold-script">
 (() => {
   const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
@@ -3375,7 +3403,7 @@ document.addEventListener("click", function (event) {
   window.addEventListener('resize', reset);
 })();
 </script>
-<script type="module" src="../js/movie-ratings.js"></script>
+<script src="../js/movie-ratings.js" type="module"></script>
 <style id="sot-topgun-mobile-spacing-final">
 @media (max-width: 900px) {
   /* Match the Top Gun mobile flow; retain the page-specific Version 2 control. */
@@ -3406,7 +3434,6 @@ document.addEventListener("click", function (event) {
   .ffs-main-grid .ffs-title-panel { display: none !important; }
 }
 </style>
-
 <style id="sot-topgun-mobile-order-spacing-corrected">
 @media (max-width: 900px) {
   /* Flatten the nested desktop composition so mobile order is deterministic. */
@@ -3494,7 +3521,6 @@ document.addEventListener("click", function (event) {
   mq.addEventListener('change',place);
 })();
 </script>
-
 <style id="sot-batman-desktop-verified-layout">
 @media(min-width:901px){
  .ffs-right-column .ffs-title-panel{height:190px!important;min-height:190px!important;max-height:190px!important;padding:16px 23px 15px!important;display:flex!important;flex-direction:column!important;margin-bottom:0!important}
@@ -3531,7 +3557,6 @@ document.addEventListener("click", function (event) {
  .ffs-right-column .ffs-info-panel > .ffs-working-version-row{display:none!important}
 }
 </style>
-
 <!-- Mobile-only Batman-style floating audience rating. Desktop layout is preserved. -->
 <style id="sot-mobile-floating-rating-final">
 /* Match Batman's mobile rating typography, column widths and 16px poster gap. */
@@ -3598,7 +3623,6 @@ document.addEventListener("click", function (event) {
   else mq.addListener(placeMobile);
 })();
 </script>
-
 <script id="sot-desktop-rating-count-text-fix">
 (() => {
   const count = document.getElementById('ffs-rating-count');
@@ -3753,7 +3777,6 @@ document.addEventListener("click", function (event) {
   else mq.addListener(arrange);
 })();
 </script>
-
 <style id="sot-cinematic-v3-structural-overrides">
 @media (min-width:901px) {
   .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
@@ -3804,5 +3827,88 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-palette-module { margin-top:28px !important; }
 }
 </style>
-</body>
+<style id="sot-cinematic-v4-opacity-rating-alignment">
+/* Desktop cinematic modules: consistent 10% navy backing and full-width rating. */
+@media (min-width:901px) {
+  .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-audience-rating {
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    background:rgba(4,14,21,.10) !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-hero-palette,
+  .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-meta-row,
+  .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-synopsis {
+    width:100% !important;
+    max-width:none !important;
+    box-sizing:border-box !important;
+    background:rgba(4,14,21,.10) !important;
+  }
+}
+</style>
+<script id="lss-sot-overtime-v9-unified-parity-script">(() => {
+  // Runs after the existing SOT desktop placement handler; reuse the same nodes.
+  const project = document.querySelector('.ffs-project-block');
+  const grid = project?.querySelector('.ffs-desktop-composition');
+  const left = grid?.querySelector('.ffs-left-column');
+  const right = grid?.querySelector('.ffs-right-column');
+  const titlePanel = grid?.querySelector('.ffs-title-panel');
+  const info = grid?.querySelector('.ffs-info-panel');
+  const poster = left?.querySelector('.ffs-poster-panel');
+  const rating = document.getElementById('ffs-audience-rating');
+  const meta = grid?.querySelector('.ffs-meta-row.ffs-desktop-meta');
+  const working = grid?.querySelector('.ffs-working-title-inline');
+  const version = grid?.querySelector('.ffs-version-box-header');
+  const hint = grid?.querySelector('.ffs-alt-poster-hint');
+  const heading = grid?.querySelector('.ffs-section-label');
+  const synopsis = grid?.querySelector('.ffs-synopsis');
+  const versionRow = info?.querySelector('.ffs-working-version-row');
+  if (![project,grid,left,right,titlePanel,info,poster,rating,meta,working,version,hint,heading,synopsis].every(Boolean)) return;
+  const mq = window.matchMedia('(min-width:901px)');
+  const unified = document.createElement('div');
+  unified.className = 'lss-unified-details';
+  const disclaimer = document.createElement('p');
+  disclaimer.className = 'lss-poster-disclaimer';
+  disclaimer.textContent = hint.textContent.trim();
+  function arrange() {
+    if (mq.matches) {
+      let palette = right.querySelector('.ffs-hero-palette') || project.querySelector('.ffs-hero-palette');
+      if (!palette) {
+        palette = document.createElement('div');
+        palette.className = 'ffs-hero-palette';
+        palette.innerHTML = '<img src="https://light-speed-studios.b-cdn.net/SUPERMANMOVIEPALLETE.png" alt="Superman: Son of Tomorrow color palette" loading="lazy">';
+      }
+      right.append(unified);
+      unified.append(rating,meta,working);
+      // Keep the functional Version 2 modal trigger, in its own row.
+      let versionLine = right.querySelector('.sot-desktop-working-version-line');
+      if (!versionLine) {
+        versionLine = document.createElement('div');
+        versionLine.className = 'sot-desktop-working-version-line';
+      }
+      versionLine.append(version);
+      unified.append(versionLine,heading,synopsis);
+      poster.after(disclaimer);
+      grid.after(palette);
+      palette.classList.add('lss-floating-palette');
+      hint.style.display = 'none';
+    } else {
+      // Restore native SOT mobile DOM and leave all existing mobile-specific CSS/JS intact.
+      unified.remove();
+      disclaimer.remove();
+      hint.style.display = '';
+      titlePanel.append(working,hint,version,meta);
+      info.prepend(heading,synopsis);
+      const mobileVersion = versionRow?.querySelector('.ffs-version-box-mobile');
+      if (mobileVersion) mobileVersion.after(rating);
+      else versionRow?.append(rating);
+      const palette = project.querySelector('.ffs-hero-palette');
+      if (palette) palette.remove();
+    }
+  }
+  arrange();
+  if (mq.addEventListener) mq.addEventListener('change',arrange);
+  else mq.addListener(arrange);
+})();</script></body>
 </html>
