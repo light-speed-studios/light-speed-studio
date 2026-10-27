@@ -3694,50 +3694,115 @@ document.addEventListener("click", function (event) {
 }
 @media (max-width:900px) { .ffs-desktop-cinematic-nav,.ffs-hero-palette { display:none !important; } }
 </style>
-<script id="lss-superman-cinematic-desktop-placement">
+<script id="lss-superman-cinematic-desktop-placement-v3">
 (() => {
   const project = document.querySelector('.ffs-project-block');
   const comp = project?.querySelector('.ffs-desktop-composition');
-  const titlePanel = comp?.querySelector('.ffs-title-panel');
-  const infoPanel = comp?.querySelector('.ffs-info-panel');
   const right = comp?.querySelector('.ffs-right-column');
-  const titleRow = titlePanel?.querySelector('.ffs-title-row');
+  const titlePanel = comp?.querySelector('.ffs-title-panel');
+  const info = comp?.querySelector('.ffs-info-panel');
+  if (!project || !comp || !right || !titlePanel || !info) return;
+  const title = comp.querySelector('.ffs-title-row');
   const rating = document.getElementById('ffs-audience-rating');
-  const meta = titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta') || project?.querySelector('.ffs-meta-row.ffs-desktop-meta');
-  const workLine = document.querySelector('.sot-desktop-working-version-line') || Object.assign(document.createElement('div'), {className:'sot-desktop-working-version-line'});
-  const working = titlePanel?.querySelector('.ffs-working-title-inline') || document.querySelector('.ffs-working-title-inline');
-  const version = titlePanel?.querySelector('.ffs-version-box-header') || document.querySelector('.ffs-version-box-header');
-  const hint = titlePanel?.querySelector('.ffs-alt-poster-hint');
-  const synopsisTitle = infoPanel?.querySelector('.ffs-section-label');
-  const synopsis = infoPanel?.querySelector('.ffs-synopsis');
-  if (!project || !comp || !right || !titlePanel || !infoPanel || !titleRow || !rating || !meta || !workLine || !working || !version || !hint || !synopsisTitle || !synopsis) return;
+  const meta = comp.querySelector('.ffs-meta-row.ffs-desktop-meta');
+  const working = comp.querySelector('.ffs-working-title-inline');
+  const version = comp.querySelector('.ffs-version-box-header');
+  const hint = comp.querySelector('.ffs-alt-poster-hint');
+  const heading = info.querySelector('.ffs-section-label');
+  const synopsis = info.querySelector('.ffs-synopsis');
+  const versionRow = info.querySelector('.ffs-working-version-row');
+  if (![title,rating,meta,working,version,hint,heading,synopsis].every(Boolean)) return;
   const mq = window.matchMedia('(min-width:901px)');
-  const palette = document.createElement('div');
-  palette.className='ffs-hero-palette';
-  palette.innerHTML='<img src="https://light-speed-studios.b-cdn.net/SUPERMANMOVIEPALLETE.png" alt="Superman: Son of Tomorrow color palette" loading="lazy" decoding="async">';
-  function place() {
+  let palette = right.querySelector('.ffs-hero-palette');
+  if (!palette) {
+    palette = document.createElement('div');
+    palette.className = 'ffs-hero-palette';
+    const img = document.createElement('img');
+    img.src = 'https://light-speed-studios.b-cdn.net/SUPERMANMOVIEPALLETE.png';
+    img.alt = 'Superman: Son of Tomorrow color palette';
+    img.loading = 'lazy';
+    palette.append(img);
+  }
+  let workLine = right.querySelector('.sot-desktop-working-version-line');
+  if (!workLine) {
+    workLine = document.createElement('div');
+    workLine.className = 'sot-desktop-working-version-line';
+  }
+  const arrange = () => {
     if (mq.matches) {
-      titleRow.classList.add('ffs-hero-title-row');
-      comp.before(titleRow);
+      title.classList.add('ffs-hero-title-row');
+      comp.before(title);
       workLine.append(working, version);
-      right.append(rating, palette, meta, workLine, hint, synopsisTitle, synopsis);
+      right.append(rating, palette, meta, workLine, hint, heading, synopsis);
+      project.classList.add('sot-cinematic-ready');
     } else {
-      titleRow.classList.remove('ffs-hero-title-row');
-      titlePanel.prepend(titleRow);
+      project.classList.remove('sot-cinematic-ready');
+      title.classList.remove('ffs-hero-title-row');
+      titlePanel.prepend(title);
+      title.after(working, hint, version, meta);
       palette.remove();
-      // Restore original mobile flow; existing mobile layout scripts maintain the rating position.
-      titleRow.after(working, hint, version, meta);
       workLine.remove();
-      infoPanel.prepend(synopsisTitle, synopsis);
-      const mobileVersion = infoPanel.querySelector('.ffs-version-box-mobile');
-      const versionRow = infoPanel.querySelector('.ffs-working-version-row');
+      info.prepend(heading, synopsis);
+      const mobileVersion = versionRow?.querySelector('.ffs-version-box-mobile');
       if (mobileVersion) mobileVersion.after(rating);
       else versionRow?.append(rating);
     }
-  }
-  place();
-  mq.addEventListener?.('change', () => requestAnimationFrame(place));
+  };
+  arrange();
+  if (mq.addEventListener) mq.addEventListener('change', arrange);
+  else mq.addListener(arrange);
 })();
 </script>
+
+<style id="sot-cinematic-v3-structural-overrides">
+@media (min-width:901px) {
+  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
+    display:block !important; position:relative !important; width:100% !important;
+    margin:0 0 22px !important; padding:0 !important;
+    background:transparent !important; box-shadow:none !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row .ffs-title {
+    margin:0 !important; font:800 clamp(30px,3.3vw,53px)/1.1 Oxanium,Rajdhani,sans-serif !important;
+    color:#d4e6f1 !important; text-shadow:0 2px 22px rgba(0,0,0,.45) !important;
+  }
+  .ffs-page .ffs-desktop-composition {
+    display:grid !important; grid-template-columns:minmax(265px,315px) minmax(0,1fr) !important;
+    gap:42px !important; min-height:565px !important; align-items:start !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-left-column { grid-column:1 !important; grid-row:1 !important; }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column { grid-column:2 !important; grid-row:1 !important; display:flex !important; flex-direction:column !important; padding:0 !important; min-width:0 !important; }
+  .ffs-page .ffs-right-column > .ffs-title-panel,
+  .ffs-page .ffs-right-column > .ffs-info-panel {
+    display:contents !important; height:auto !important; min-height:0 !important;
+    max-height:none !important; padding:0 !important; margin:0 !important;
+    background:transparent !important; box-shadow:none !important;
+  }
+  .ffs-page .ffs-right-column > .ffs-title-panel::before,
+  .ffs-page .ffs-right-column > .ffs-title-panel::after,
+  .ffs-page .ffs-right-column > .ffs-info-panel::before,
+  .ffs-page .ffs-right-column > .ffs-info-panel::after { content:none !important; display:none !important; }
+  .ffs-page .ffs-poster-panel { padding:0 !important; height:auto !important; background:transparent !important; box-shadow:none !important; }
+  .ffs-page .ffs-poster-panel::before { content:none !important; display:none !important; }
+  .ffs-page .ffs-poster-panel .ffs-poster-click > .ffs-poster-crop { display:none !important; }
+  .ffs-page .ffs-poster-panel .ffs-poster-click > .ffs-poster-full { display:block !important; }
+  .ffs-page .ffs-right-column > .ffs-audience-rating {
+    display:grid !important; order:1 !important; width:min(760px,100%) !important;
+    height:auto !important; min-height:108px !important; margin:0 !important;
+    padding:8px 0 !important; background:rgba(4,14,21,.28) !important;
+    box-shadow:none !important; border:0 !important;
+  }
+  .ffs-page .ffs-right-column > .ffs-hero-palette { order:2 !important; }
+  .ffs-page .ffs-right-column > .ffs-meta-row { order:3 !important; }
+  .ffs-page .ffs-right-column > .sot-desktop-working-version-line { order:4 !important; }
+  .ffs-page .ffs-right-column > .ffs-alt-poster-hint { order:5 !important; }
+  .ffs-page .ffs-right-column > .ffs-section-label { order:6 !important; }
+  .ffs-page .ffs-right-column > .ffs-synopsis { order:7 !important; }
+  .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-number { background:none !important; width:auto !important; height:auto !important; min-height:0 !important; }
+  .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-number strong { font-size:42px !important; }
+  .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-input::before { content:none !important; }
+  .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-summary > .ffs-rating-label { display:block !important; }
+  .ffs-page .ffs-palette-module { margin-top:28px !important; }
+}
+</style>
 </body>
 </html>
