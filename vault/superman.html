@@ -3703,7 +3703,7 @@ document.addEventListener("click", function (event) {
   const right = comp?.querySelector('.ffs-right-column');
   const titleRow = titlePanel?.querySelector('.ffs-title-row');
   const rating = document.getElementById('ffs-audience-rating');
-  const meta = titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
+  const meta = titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta') || project?.querySelector('.ffs-meta-row.ffs-desktop-meta');
   const workLine = document.querySelector('.sot-desktop-working-version-line') || Object.assign(document.createElement('div'), {className:'sot-desktop-working-version-line'});
   const working = titlePanel?.querySelector('.ffs-working-title-inline') || document.querySelector('.ffs-working-title-inline');
   const version = titlePanel?.querySelector('.ffs-version-box-header') || document.querySelector('.ffs-version-box-header');
