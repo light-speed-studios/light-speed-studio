@@ -5921,11 +5921,11 @@ document.addEventListener("click", function (event) {
   .ffs-right-column .ffs-title-row { order: 1; margin: 0 0 18px !important; }
   .ffs-right-column .ffs-title { font: 800 clamp(30px,3.3vw,53px)/1.1 Oxanium,Rajdhani,sans-serif !important; color: #d4e6f1 !important; white-space: normal !important; text-shadow: 0 2px 22px rgba(0,0,0,.45) !important; }
   .ffs-title-panel .ffs-audience-rating {
-    order: 2; display: grid !important; width: min(760px,100%) !important;
+    order: 2; display: grid !important; width: 100% !important;
     grid-template-columns: minmax(0,170px) 1px minmax(0,1fr) !important;
     height: auto !important; min-height: 108px !important; max-height: none !important;
     flex: none !important; margin: 0 0 0 !important; padding: 8px 0 !important;
-    background: rgba(4,14,21,.28) !important; box-shadow: none !important; border: 0 !important;
+    background: rgba(4,14,21,.10) !important; box-shadow: none !important; border: 0 !important;
   }
   .ffs-title-panel .ffs-rating-summary { width: 160px !important; transform: none !important; gap: 3px !important; }
   .ffs-title-panel .ffs-rating-number { width: 152px !important; }
@@ -6029,7 +6029,7 @@ document.addEventListener("click", function (event) {
   .ffs-hero-palette {
     width: 100% !important;
     padding: 10px 14px 5px !important;
-    background: rgba(4,14,21,.38) !important;
+    background: rgba(4,14,21,.10) !important;
     border: 0 !important;
     box-shadow: none !important;
   }
@@ -6040,7 +6040,7 @@ document.addEventListener("click", function (event) {
     width: 100% !important;
     padding: 11px 14px 13px !important;
     margin: 0 0 16px !important;
-    background: rgba(4,14,21,.38) !important;
+    background: rgba(4,14,21,.10) !important;
     border: 0 !important;
     box-shadow: none !important;
     gap: 0 !important;
@@ -6061,7 +6061,7 @@ document.addEventListener("click", function (event) {
     font-size: 15px !important;
   }
   .ffs-info-panel .ffs-synopsis {
-    background: rgba(4,14,21,.34) !important;
+    background: rgba(4,14,21,.10) !important;
     box-shadow: none !important;
     border: 0 !important;
     padding: 14px 18px !important;
@@ -6101,6 +6101,25 @@ document.addEventListener("click", function (event) {
   else breakpoint.addListener(placeTitle);
 })();
 </script>
+<style id="lss-overtime-top-10pct-rating-alignment">
+@media (min-width: 901px) {
+  .ffs-page .ffs-right-column > .ffs-audience-rating,
+  .ffs-page .ffs-title-panel .ffs-audience-rating {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background: rgba(4,14,21,.10) !important;
+  }
+  .ffs-page .ffs-hero-palette,
+  .ffs-page .ffs-info-panel .ffs-meta-row,
+  .ffs-page .ffs-info-panel .ffs-synopsis {
+    background: rgba(4,14,21,.10) !important;
+  }
+}
+</style>
 </body>
 
 </html>
