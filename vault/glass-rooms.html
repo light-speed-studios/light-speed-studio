@@ -2417,7 +2417,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     A cold procedural following the calibration of an artificial mind. No god complexes. No distractions. By delaying key realizations and stripping away early signals, Glass Rooms presents a world where sentience is no longer a human monopoly.
   </p>
 </div>
-<div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> <strong>GLASS DOORS</strong></div>
+
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="glass-rooms" aria-label="Audience rating for Glass Rooms">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
@@ -3579,10 +3579,11 @@ document.addEventListener("click", function (event) {
  const mq=window.matchMedia('(min-width:901px)');
  function arrange(){
   if(mq.matches){
-   title.classList.add('ffs-hero-title-row');
-   grid.before(title);
+   // Do not reinsert the obsolete title banner above the movie layout.
+   title.remove();
    right.append(unified);
-   unified.append(rating,metadata,working,heading,synopsis,footer);
+   working.remove();
+   unified.append(rating,metadata,heading,synopsis,footer);
    if(hint)poster.after(hint);
    grid.after(palette);
    block.classList.add('glass-cinematic-ready');
@@ -3608,5 +3609,68 @@ document.addEventListener("click", function (event) {
  else mq.addListener(arrange);
 })();
 </script>
+
+<style id="glass-rooms-v3-no-top-header-matched-poster-height">
+/* Desktop V3: remove the standalone movie title and align the text card with the poster. */
+@media (min-width:901px) {
+ .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row,
+ .ffs-page .ffs-right-column .ffs-title-panel .ffs-title-row {
+   display:none !important;height:0 !important;min-height:0 !important;
+   margin:0 !important;padding:0 !important;
+ }
+ .ffs-page .ffs-desktop-composition {
+   grid-template-columns:315px minmax(0,1fr) !important;
+   gap:42px !important;min-height:0 !important;align-items:stretch !important;
+ }
+ .ffs-page .ffs-desktop-composition .ffs-left-column {position:relative !important;}
+ .ffs-page .ffs-desktop-composition .ffs-left-column > .ffs-alt-poster-hint {
+   position:absolute !important;top:calc(100% + 13px) !important;
+   left:0 !important;right:0 !important;margin:0 !important;
+ }
+ .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {margin-top:42px !important;}
+ .ffs-page .ffs-desktop-composition .ffs-right-column {height:100% !important;}
+ .ffs-page .ffs-desktop-composition .ffs-right-column > .lss-unified-details {height:100% !important;}
+ .ffs-page .ffs-right-column > .lss-unified-details {
+   min-height:0 !important;overflow:visible !important;
+   padding:14px 22px 18px !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-audience-rating {
+   min-height:91px !important;height:91px !important;
+   margin-bottom:8px !important;padding:4px 0 8px !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+   margin-bottom:10px !important;padding:9px 0 !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {min-height:48px !important;}
+ .ffs-page .lss-unified-details > .ffs-working-title-inline {margin-bottom:9px !important;}
+ .ffs-page .lss-unified-details > .ffs-section-label {margin-bottom:6px !important;}
+ .ffs-page .lss-unified-details > .glass-details-footer {
+   margin-top:auto !important;padding-top:10px !important;min-height:52px !important;
+ }
+}
+@media (min-width:901px) and (max-width:1130px) {
+ .ffs-page .ffs-desktop-composition {gap:28px !important;}
+ .ffs-page .ffs-right-column > .lss-unified-details {padding:12px 16px 16px !important;}
+ .ffs-page .lss-unified-details .ffs-meta-label {font-size:10px !important;}
+ .ffs-page .lss-unified-details .ffs-meta-value {font-size:12px !important;}
+}
+@media (min-width:901px) and (max-width:1000px) {
+ .ffs-page .ffs-right-column > .lss-unified-details {padding:8px 16px 12px !important;}
+ .ffs-page .lss-unified-details > .glass-details-footer {padding-top:8px !important;}
+}
+</style>
+
+<style id="lss-v4-remove-film-header-and-working-title">
+/* V4: deliberately remove the standalone film name and working-title rows, not the site's navigation bar. */
+.ffs-page .ffs-title-row.ffs-hero-title-row,
+.ffs-page .ffs-title-panel .ffs-title-row,
+.ffs-page .ffs-working-title-inline,
+.ffs-page .ffs-working-title-mobile,
+.ffs-page .lss-unified-details > .ffs-working-title-inline {
+  display:none !important; visibility:hidden !important;
+  margin:0 !important; padding:0 !important; height:0 !important;
+  min-height:0 !important; max-height:0 !important;
+}
+</style>
 </body>
 </html>
