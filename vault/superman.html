@@ -3902,7 +3902,14 @@ document.addEventListener("click", function (event) {
         versionLine.className = 'sot-desktop-working-version-line';
       }
       versionLine.append(version);
-      unified.append(versionLine,heading,synopsis);
+      // Keep Version 2 below the synopsis, sharing the existing bottom row with navigation.
+      let detailsFooter = unified.querySelector('.sot-details-footer');
+      if (!detailsFooter) {
+        detailsFooter = document.createElement('div');
+        detailsFooter.className = 'sot-details-footer';
+      }
+      detailsFooter.append(versionLine);
+      unified.append(heading,synopsis,detailsFooter);
       poster.after(disclaimer);
       grid.after(palette);
       palette.classList.add('lss-floating-palette');
@@ -4046,12 +4053,53 @@ document.addEventListener("click", function (event) {
       <a href="overtime.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
       <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
       <a href="batman.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
-    unified.append(nav);
+    (unified.querySelector('.sot-details-footer') || unified).append(nav);
   }
   mountNavigation();
   if (mq.addEventListener) mq.addEventListener('change', mountNavigation);
   else mq.addListener(mountNavigation);
 })();
 </script>
+
+<!-- Superman V14: Version 2 below synopsis, alongside the existing navigation. -->
+<style id="sot-v14-version-pill-under-synopsis">
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details > .sot-details-footer {
+    order:7 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:12px !important;
+    width:100% !important;
+    min-height:52px !important;
+    margin:18px 0 0 !important;
+    padding:0 !important;
+  }
+  .ffs-page .lss-unified-details > .sot-details-footer > .sot-desktop-working-version-line {
+    display:flex !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex:0 1 auto !important;
+    width:auto !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+  }
+  .ffs-page .lss-unified-details > .sot-details-footer > .lss-vertical-project-nav {
+    position:static !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    flex:0 0 auto !important;
+    gap:20px !important;
+    width:auto !important;
+    margin:0 !important;
+    padding:0 !important;
+    z-index:12;
+  }
+}
+</style>
 </body>
 </html>
