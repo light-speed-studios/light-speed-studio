@@ -6067,7 +6067,7 @@ document.addEventListener("click", function (event) {
     display: flex !important; flex-direction: column !important; width: 100% !important;
     min-width: 0 !important; padding: 18px 22px 24px !important;
     background: rgba(4,14,21,.20) !important;
-    box-shadow: 0 16px 45px rgba(0,0,0,.54) !important; border: 0 !important;
+    box-shadow: 0 16px 45px rgba(0,0,0,.24) !important; border: 0 !important;
   }
   .lss-unified-details > .ffs-audience-rating {
     order: 1 !important; display: grid !important; width: 100% !important;
@@ -6161,6 +6161,8 @@ document.addEventListener("click", function (event) {
     if (desktop.matches) {
       right.append(unified);
       unified.append(rating, metadata, working, part, label, synopsis);
+      const insideNav=unified.querySelector('.lss-vertical-project-nav');
+      if (insideNav) unified.append(insideNav);
       poster.after(disclaimer);
       grid.after(palette);
       palette.classList.add('lss-floating-palette');
@@ -6307,8 +6309,8 @@ document.addEventListener("click", function (event) {
  .ffs-page .ffs-right-column > .lss-unified-details {
    display:flex !important; flex-direction:column !important; width:100% !important;
    min-width:0 !important; padding:18px 22px 24px !important;
-   background:rgba(4,14,21,.25) !important; border:0 !important;
-   box-shadow:0 16px 45px rgba(0,0,0,.24) !important;
+   background:rgba(4,14,21,.50) !important; border:0 !important;
+   box-shadow:0 16px 45px rgba(0,0,0,.75) !important;
  }
  .ffs-page .lss-unified-details > .ffs-audience-rating {
    order:1 !important; display:grid !important; width:100% !important; min-width:0 !important;
@@ -6397,17 +6399,25 @@ document.addEventListener("click", function (event) {
  .lss-poster-disclaimer {display:none !important;}
  .lss-unified-details {display:contents !important;}
 }</style>
-<style id="flash-v11-vertical-project-navigation">
+<style id="flash-v21-horizontal-project-navigation">
+/* Three original circular icons now sit inside the lower-right of the details panel. */
 @media (min-width:901px) {
-  .ffs-page .ffs-desktop-composition { position:relative !important; }
-  .ffs-page .ffs-desktop-composition .lss-vertical-project-nav {
-    position:absolute; right:-60px; bottom:65px; z-index:12;
-    display:flex; flex-direction:column; gap:20px; align-items:flex-start;
+  .ffs-page .lss-unified-details > .lss-vertical-project-nav {
+    order:6 !important;
+    position:static !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:20px !important;
+    width:100% !important;
+    margin:18px 0 0 !important;
+    z-index:12;
   }
   .ffs-page .lss-vertical-project-nav a {
-    display:flex; align-items:center; gap:0; width:52px;
-    color:#F4F8F9; text-decoration:none; font:800 12px/1 Oxanium,Rajdhani,sans-serif;
-    letter-spacing:.09em; transition:color .2s ease;
+    display:flex; align-items:center; justify-content:center; width:52px;
+    color:#F4F8F9; text-decoration:none;
+    transition:color .2s ease;
   }
   .ffs-page .lss-vertical-project-nav .lss-nav-circle {
     display:grid; place-items:center; flex:0 0 52px; width:52px; height:52px;
@@ -6415,32 +6425,42 @@ document.addEventListener("click", function (event) {
     box-shadow:0 0 16px rgba(0,174,222,.10),inset 0 0 12px rgba(0,174,222,.07);
     color:#00AEDE; transition:background .2s ease,box-shadow .2s ease,transform .2s ease;
   }
-  .ffs-page .lss-vertical-project-nav svg {width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+  .ffs-page .lss-vertical-project-nav svg {
+    width:23px; height:23px; fill:none; stroke:currentColor;
+    stroke-width:3; stroke-linecap:round; stroke-linejoin:round;
+  }
   .ffs-page .lss-vertical-project-nav .lss-vault-icon {stroke-width:1.7;fill:currentColor;}
-  .ffs-page .lss-vertical-project-nav a:hover,.ffs-page .lss-vertical-project-nav a:focus-visible {color:#00AEDE;}
-  .ffs-page .lss-vertical-project-nav a:hover .lss-nav-circle,.ffs-page .lss-vertical-project-nav a:focus-visible .lss-nav-circle {background:rgba(0,174,222,.16);box-shadow:0 0 20px rgba(0,174,222,.25);transform:translateX(-3px);}
-  /* Leave the navigation lane clear without altering the metadata or rating rows. */
-  .ffs-page .lss-unified-details > .ffs-synopsis {padding-right:150px !important;}
+  .ffs-page .lss-vertical-project-nav a:hover,
+  .ffs-page .lss-vertical-project-nav a:focus-visible {color:#00AEDE;}
+  .ffs-page .lss-vertical-project-nav a:hover .lss-nav-circle,
+  .ffs-page .lss-vertical-project-nav a:focus-visible .lss-nav-circle {
+    background:rgba(0,174,222,.16);
+    box-shadow:0 0 20px rgba(0,174,222,.25);
+    transform:translateY(-3px);
+  }
+  /* No longer reserve an empty vertical lane for navigation beside the synopsis. */
+  .ffs-page .lss-unified-details > .ffs-synopsis {padding-right:0 !important;}
 }
 @media (max-width:900px) { .lss-vertical-project-nav {display:none !important;} }
 </style>
 <script id="flash-v11-vertical-project-navigation-script">
 (() => {
   const grid=document.querySelector('.ffs-page .ffs-desktop-composition');
-  if(!grid || grid.querySelector('.lss-vertical-project-nav')) return;
+  const unified=grid?.querySelector('.lss-unified-details');
+  if(!grid || !unified || unified.querySelector('.lss-vertical-project-nav')) return;
   const nav=document.createElement('nav');
   nav.className='lss-vertical-project-nav';
   nav.setAttribute('aria-label','Movie navigation');
   nav.innerHTML=`
-    <a href="superman.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>
+    <a href="top-gun.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
     <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
-    <a href="top-gun.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>`;
-  grid.append(nav);
+    <a href="superman.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
+  unified.append(nav);
 })();
 </script>
 <style id="flash-v11-final-parity">
 @media (min-width:901px) {
-  .ffs-page .ffs-right-column > .lss-unified-details { background:rgba(4,14,21,.25) !important; }
+  .ffs-page .ffs-right-column > .lss-unified-details { background:rgba(4,14,21,.50) !important; }
   .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette .ffs-hero-palette-image,
   .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {
     height:121px !important; width:100% !important; object-fit:fill !important;
@@ -6452,7 +6472,7 @@ document.addEventListener("click", function (event) {
     color:#F4F8F9 !important; font-size:19px !important; font-weight:700 !important;
   }
   .ffs-page .lss-unified-details > .ffs-section-label {order:4 !important;}
-  .ffs-page .lss-unified-details > .ffs-synopsis {order:5 !important; padding-right:150px !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis {order:5 !important; padding-right:0 !important;}
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
     font-size:clamp(12px,calc(.73vw + 3px),14px) !important;
   }
