@@ -6480,6 +6480,13 @@ document.addEventListener("click", function (event) {
 }
 /* CTA cards retain their shared upward hover movement, without accent lines. */
 </style>
+<style id="flash-v18-remove-cta-brackets">
+/* Remove the decorative cyan corner brackets from the CTA group only. */
+.ffs-page .ffs-cta-trailer-row > .ffs-links-panel::before {
+  content: none !important;
+  display: none !important;
+}
+</style>
 </body>
 
 </html>
