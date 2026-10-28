@@ -3978,5 +3978,36 @@ document.addEventListener("click", function (event) {
   grid.append(nav);
 })();
 </script>
+<style id="lss-sot-v10-meta-version-working-title">
+/* Remove the nonessential working title without removing the node used by the layout scripts. */
+.ffs-page .ffs-working-title-inline,
+.ffs-page .ffs-working-title-mobile-order { display:none !important; }
+@media (min-width:901px) {
+  /* Three-point increase to both metadata headings and values. */
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
+    font-size:clamp(12px, calc(.73vw + 3px), 14px) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
+    font-size:clamp(15px, calc(.96vw + 3px), 19px) !important;
+  }
+  /* Version 2 + Updated Changes: +3px, with a pill that grows to fit. */
+  .ffs-page .lss-unified-details .sot-desktop-working-version-line > .ffs-version-box-header {
+    flex:0 0 auto !important;
+    width:max-content !important;
+    max-width:100% !important;
+    height:auto !important;
+    min-height:43px !important;
+    padding:9px 18px !important;
+    gap:10px !important;
+    overflow:visible !important;
+  }
+  .ffs-page .lss-unified-details .sot-desktop-working-version-line > .ffs-version-box-header span {
+    font-size:15px !important;
+  }
+  .ffs-page .lss-unified-details .sot-desktop-working-version-line > .ffs-version-box-header strong {
+    font-size:19px !important;
+  }
+}
+</style>
 </body>
 </html>
