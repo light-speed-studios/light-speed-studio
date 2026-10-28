@@ -6517,11 +6517,27 @@ document.addEventListener("click", function (event) {
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
     font-size:clamp(15px,calc(.96vw + 3px),19px) !important;
   }
-  .ffs-page .ffs-cta-trailer-row .ffs-reddit-review::after {bottom:-2px !important;}
   .ffs-page .ffs-project-side-nav,
   .ffs-page .ffs-desktop-project-nav,
   .ffs-page .ffs-desktop-cinematic-nav {display:none !important;}
 }
+</style>
+<style id="flash-v13-compact-rating-spacing">
+/* Desktop only: bring the rating divider and stars closer to the score. */
+@media (min-width: 1131px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    grid-template-columns: minmax(0,130px) 1px minmax(0,1fr) !important;
+    column-gap: 14px !important;
+  }
+}
+@media (min-width:901px) and (max-width:1130px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    grid-template-columns: minmax(0,120px) 1px minmax(0,1fr) !important;
+    column-gap: 12px !important;
+  }
+}
+/* Leave Review uses the same original .ffs-cta-tile hover effect as Watch Movie.
+   No button-specific hover-line override is applied. */
 </style>
 </body>
 
