@@ -3718,7 +3718,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 
 
-
+/* REDDIT ICON OPTICAL SIZE MATCH — same structure as Top Gun */
+.ffs-reddit-review .ffs-cta-icon {
+  width: 44px;
+  height: 44px;
+}
 
 
 
@@ -3856,6 +3860,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
     height: 34px;
 
+  }
+
+
+
+  .ffs-reddit-review .ffs-cta-icon {
+    width: 28px;
+    height: 28px;
   }
 
 
@@ -6501,6 +6512,31 @@ document.addEventListener("click", function (event) {
 }
 /* Leave Review uses the same original .ffs-cta-tile hover effect as Watch Movie.
    No button-specific hover-line override is applied. */
+/* V16: Force one identical underline anchor/animation on every CTA.
+   This selector also defeats more-specific Review rules from the shared stylesheet. */
+@media (min-width: 901px) {
+  .ffs-page .ffs-cta-trailer-row .ffs-cta-grid > .ffs-cta-tile::after {
+    content: "" !important;
+    position: absolute !important;
+    left: 10% !important;
+    right: 10% !important;
+    top: auto !important;
+    bottom: 0 !important;
+    width: auto !important;
+    height: 2px !important;
+    display: block !important;
+    background: var(--cyan) !important;
+    opacity: .65 !important;
+    box-shadow: 0 0 12px rgba(0,174,222,.6) !important;
+    transform: scaleX(.72) !important;
+    transition: transform .22s ease, opacity .22s ease !important;
+    pointer-events: none !important;
+  }
+  .ffs-page .ffs-cta-trailer-row .ffs-cta-grid > .ffs-cta-tile:hover::after {
+    opacity: 1 !important;
+    transform: scaleX(1) !important;
+  }
+}
 </style>
 </body>
 
