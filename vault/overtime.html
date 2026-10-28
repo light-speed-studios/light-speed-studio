@@ -6405,7 +6405,7 @@ document.addEventListener("click", function (event) {
     display:flex; flex-direction:column; gap:20px; align-items:flex-start;
   }
   .ffs-page .lss-vertical-project-nav a {
-    display:flex; align-items:center; gap:13px; width:145px;
+    display:flex; align-items:center; gap:0; width:52px;
     color:#F4F8F9; text-decoration:none; font:800 12px/1 Oxanium,Rajdhani,sans-serif;
     letter-spacing:.09em; transition:color .2s ease;
   }
@@ -6432,9 +6432,9 @@ document.addEventListener("click", function (event) {
   nav.className='lss-vertical-project-nav';
   nav.setAttribute('aria-label','Movie navigation');
   nav.innerHTML=`
-    <a href="superman.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span><span>NEXT</span></a>
-    <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><span>VAULT</span></a>
-    <a href="top-gun.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span><span>PREV</span></a>`;
+    <a href="superman.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>
+    <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
+    <a href="top-gun.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>`;
   grid.append(nav);
 })();
 </script>
