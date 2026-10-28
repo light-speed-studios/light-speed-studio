@@ -3658,5 +3658,55 @@ document.addEventListener("click", function (event) {
  else mq.addListener(arrange);
 })();
 </script>
+
+<style id="rogue-one-v3-no-top-header-poster-height">
+/* Desktop parity with Far From Sol V3; preserve the site navigation and mobile flow. */
+@media (min-width:901px) {
+ .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row,
+ .ffs-page .ffs-right-column .ffs-title-panel .ffs-title-row {
+   display:none !important;height:0 !important;min-height:0 !important;
+   margin:0 !important;padding:0 !important;
+ }
+ .ffs-page .ffs-desktop-composition {
+   grid-template-columns:315px minmax(0,1fr) !important;
+   gap:42px !important;min-height:0 !important;align-items:stretch !important;
+ }
+ .ffs-page .ffs-desktop-composition .ffs-left-column {position:relative !important;}
+ .ffs-page .ffs-desktop-composition .ffs-left-column > .ffs-poster-hold-hint {
+   position:absolute !important;top:calc(100% + 13px) !important;
+   left:0 !important;right:0 !important;margin:0 !important;
+ }
+ .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {margin-top:42px !important;}
+ .ffs-page .ffs-desktop-composition .ffs-right-column {height:100% !important;}
+ .ffs-page .ffs-desktop-composition .ffs-right-column > .lss-unified-details {
+   height:100% !important;
+ }
+ .ffs-page .ffs-right-column > .lss-unified-details {
+   min-height:0 !important;overflow:visible !important;
+   padding:14px 22px 18px !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-audience-rating {
+   min-height:91px !important;height:91px !important;
+   margin-bottom:8px !important;padding:4px 0 8px !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+   margin-bottom:10px !important;padding:9px 0 !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
+   min-height:48px !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-working-title-inline {margin-bottom:9px !important;}
+ .ffs-page .lss-unified-details > .ffs-section-label {margin-bottom:6px !important;}
+ .ffs-page .lss-unified-details > .rogue-details-footer {
+   margin-top:auto !important;padding-top:10px !important;min-height:52px !important;
+ }
+}
+@media (min-width:901px) and (max-width:1130px) {
+ .ffs-page .ffs-desktop-composition {gap:28px !important;}
+ .ffs-page .ffs-right-column > .lss-unified-details {padding:12px 16px 16px !important;}
+ .ffs-page .lss-unified-details .ffs-meta-label {font-size:10px !important;}
+ .ffs-page .lss-unified-details .ffs-meta-value {font-size:12px !important;}
+}
+</style>
 </body>
 </html>
