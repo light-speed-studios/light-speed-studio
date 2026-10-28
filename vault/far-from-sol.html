@@ -3467,6 +3467,56 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-desktop-cinematic-nav {display:none !important;}
 }
 
+
+/* V3: no standalone film-title band above the poster/details composition. */
+@media (min-width:901px) {
+  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row,
+  .ffs-page .ffs-right-column .ffs-title-panel .ffs-title-row {
+    display:none !important; height:0 !important; min-height:0 !important;
+    margin:0 !important; padding:0 !important;
+  }
+  /* The original 260px breakpoint caused a 390px-tall poster and an oversized details box. */
+  .ffs-page .ffs-desktop-composition {
+    grid-template-columns:315px minmax(0,1fr) !important;
+    gap:42px !important;
+    min-height:0 !important;
+  }
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    min-height:0 !important;
+    overflow:visible !important;
+    padding:14px 22px 18px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    min-height:91px !important;
+    height:91px !important;
+    margin-bottom:8px !important;
+    padding:4px 0 8px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+    margin-bottom:10px !important;
+    padding:9px 0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
+    min-height:48px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-working-title-inline {
+    margin-bottom:9px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-section-label {
+    margin-bottom:6px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-details-footer {
+    margin-top:auto !important; padding-top:10px !important;
+    min-height:52px !important;
+  }
+}
+@media (min-width:901px) and (max-width:1130px) {
+  .ffs-page .ffs-desktop-composition {gap:28px !important;}
+  .ffs-page .ffs-right-column > .lss-unified-details {padding:12px 16px 16px !important;}
+  .ffs-page .lss-unified-details .ffs-meta-label {font-size:10px !important;}
+  .ffs-page .lss-unified-details .ffs-meta-value {font-size:12px !important;}
+}
+
 </style>
 <script id="ffs-far-from-sol-v22-responsive-layout">
 (() => {
@@ -3505,16 +3555,29 @@ document.addEventListener("click", function (event) {
  <a href="glass-rooms.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
  footer.append(nav);
  const mq=window.matchMedia('(min-width:901px)');
+ function syncPanelHeight(){
+   if(!mq.matches)return;
+   const rect=poster.querySelector('.ffs-poster-full')?.getBoundingClientRect();
+   if(rect && rect.height > 0)unified.style.height=`${rect.height}px`;
+ }
+ const posterImage=poster.querySelector('.ffs-poster-full');
+ if(posterImage){
+   posterImage.addEventListener('load',syncPanelHeight);
+   if(typeof ResizeObserver !== 'undefined')new ResizeObserver(syncPanelHeight).observe(posterImage);
+ }
+ window.addEventListener('resize',syncPanelHeight,{passive:true});
  function arrange(){
    if(mq.matches){
-     title.classList.add('ffs-hero-title-row');
-     grid.before(title);
+     title.classList.remove('ffs-hero-title-row');
+     titlePanel.prepend(title);
      right.append(unified);
      unified.append(rating,metadata,working,heading,synopsis,footer);
      if(hint)poster.after(hint);
      grid.after(palette);
      block.classList.add('ffs-cinematic-ready');
+     syncPanelHeight();
    } else {
+     unified.style.height='';
      block.classList.remove('ffs-cinematic-ready');
      title.classList.remove('ffs-hero-title-row');
      titlePanel.prepend(title);
