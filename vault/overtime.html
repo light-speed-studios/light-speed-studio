@@ -6153,6 +6153,9 @@ document.addEventListener("click", function (event) {
   if (!block || !grid || !left || !right || !titlePanel || !infoPanel || !poster || !rating || !palette || !metadata || !working || !part || !label || !synopsis) return;
   const unified = document.createElement('div');
   unified.className = 'lss-unified-details';
+  // Same lower-left / lower-right footer arrangement as Superman V14.
+  const footer = document.createElement('div');
+  footer.className = 'flash-details-footer';
   const disclaimer = document.createElement('p');
   disclaimer.className = 'lss-poster-disclaimer';
   disclaimer.textContent = 'Press and hold the poster to view alternate artwork.';
@@ -6160,9 +6163,12 @@ document.addEventListener("click", function (event) {
   function arrange() {
     if (desktop.matches) {
       right.append(unified);
-      unified.append(rating, metadata, working, part, label, synopsis);
+      // Part 1 of 2 shares the navigation's bottom row instead of expanding
+      // the area above Synopsis. Preserve the exact text and existing nodes.
+      footer.append(part);
+      unified.append(rating, metadata, working, label, synopsis, footer);
       const insideNav=unified.querySelector('.lss-vertical-project-nav');
-      if (insideNav) unified.append(insideNav);
+      if (insideNav) footer.append(insideNav);
       poster.after(disclaimer);
       grid.after(palette);
       palette.classList.add('lss-floating-palette');
@@ -6446,16 +6452,24 @@ document.addEventListener("click", function (event) {
 <script id="flash-v11-vertical-project-navigation-script">
 (() => {
   const grid=document.querySelector('.ffs-page .ffs-desktop-composition');
-  const unified=grid?.querySelector('.lss-unified-details');
-  if(!grid || !unified || unified.querySelector('.lss-vertical-project-nav')) return;
-  const nav=document.createElement('nav');
-  nav.className='lss-vertical-project-nav';
-  nav.setAttribute('aria-label','Movie navigation');
-  nav.innerHTML=`
+  const mq=window.matchMedia('(min-width: 901px)');
+  if(!grid) return;
+  function mountNavigation(){
+    if(!mq.matches) return;
+    const footer=grid.querySelector('.lss-unified-details > .flash-details-footer');
+    if(!footer || footer.querySelector('.lss-vertical-project-nav')) return;
+    const nav=document.createElement('nav');
+    nav.className='lss-vertical-project-nav';
+    nav.setAttribute('aria-label','Movie navigation');
+    nav.innerHTML=`
     <a href="top-gun.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
     <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
-    <a href="superman.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
-  unified.append(nav);
+      <a href="superman.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
+    footer.append(nav);
+  }
+  mountNavigation();
+  if(mq.addEventListener) mq.addEventListener('change',mountNavigation);
+  else mq.addListener(mountNavigation);
 })();
 </script>
 <style id="flash-v11-final-parity">
@@ -6512,6 +6526,48 @@ document.addEventListener("click", function (event) {
 .ffs-page .ffs-palette-module::before {
   content: none !important;
   display: none !important;
+}
+</style>
+
+<!-- Flash V22: Match the compact Superman V14 details height by using its bottom-row layout. -->
+<style id="flash-v22-poster-matched-details-height">
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details > .flash-details-footer {
+    order:6 !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    gap:12px !important;
+    width:100% !important;
+    min-height:52px !important;
+    margin:18px 0 0 !important;
+    padding:0 !important;
+  }
+  .ffs-page .lss-unified-details > .flash-details-footer > .ffs-part-label {
+    display:block !important;
+    flex:0 1 auto !important;
+    margin:0 !important;
+    padding:0 !important;
+    font-style:normal !important;
+    text-transform:uppercase !important;
+    color:#F4F8F9 !important;
+    font-size:19px !important;
+    font-weight:700 !important;
+  }
+  .ffs-page .lss-unified-details > .flash-details-footer > .lss-vertical-project-nav {
+    position:static !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    flex:0 0 auto !important;
+    gap:20px !important;
+    width:auto !important;
+    margin:0 !important;
+    padding:0 !important;
+    z-index:12;
+  }
 }
 </style>
 </body>
