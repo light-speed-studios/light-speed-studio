@@ -450,6 +450,17 @@
   }
 }
 </style>
+
+<style id="crossroads-desktop-only-remove-working-title">
+@media (min-width: 901px) {
+  html body .ffs-page .ffs-working-title-inline,
+  html body .ffs-page .lss-unified-details > .ffs-working-title-inline {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Crossroads splash screen">
@@ -3891,19 +3902,5 @@ document.addEventListener("click", function (event) {
   else mq.addListener(arrange);
 })();
 </script>
-
-<style id="crossroads-remove-working-title-only">
-/* Keep the DOM hooks required by the existing layout scripts, but remove
-   both desktop and mobile working-title labels from the page. */
-.ffs-page .ffs-working-title-inline,
-.ffs-page .ffs-working-title-mobile,
-.ffs-page .ffs-working-title:not(.ffs-working-title-inline) {
-  display: none !important;
-  height: 0 !important;
-  min-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-</style>
 </body>
 </html>
