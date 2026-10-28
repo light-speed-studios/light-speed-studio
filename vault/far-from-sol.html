@@ -2392,7 +2392,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <div class="ffs-title-row">
         <h1 class="ffs-title">Far From Sol</h1>
       </div>
-      <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADON</div>
+
       <p class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</p>
  <div class="ffs-meta-row ffs-desktop-meta">
   <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">130 min</span></div>
@@ -2409,7 +2409,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
         <p>A story about finding home in the void. A linear reconstruction with a renewed backstory for Grace and a stronger emotional core. Far From Sol reimagines the ending into something more personal and character driven.</p>
       </div>
 
-      <div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADOX</div>
+      
       <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="far-from-sol" aria-label="Audience rating for Far From Sol">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
@@ -3568,10 +3568,11 @@ document.addEventListener("click", function (event) {
  window.addEventListener('resize',syncPanelHeight,{passive:true});
  function arrange(){
    if(mq.matches){
-     title.classList.remove('ffs-hero-title-row');
-     titlePanel.prepend(title);
+     // Keep the standalone movie title out of the desktop composition.
+     title.remove();
      right.append(unified);
-     unified.append(rating,metadata,working,heading,synopsis,footer);
+     working.remove();
+     unified.append(rating,metadata,heading,synopsis,footer);
      if(hint)poster.after(hint);
      grid.after(palette);
      block.classList.add('ffs-cinematic-ready');
@@ -3595,5 +3596,18 @@ document.addEventListener("click", function (event) {
  else mq.addListener(arrange);
 })();
 </script>
+
+<style id="lss-v4-remove-film-header-and-working-title">
+/* V4: deliberately remove the standalone film name and working-title rows, not the site's navigation bar. */
+.ffs-page .ffs-title-row.ffs-hero-title-row,
+.ffs-page .ffs-title-panel .ffs-title-row,
+.ffs-page .ffs-working-title-inline,
+.ffs-page .ffs-working-title-mobile,
+.ffs-page .lss-unified-details > .ffs-working-title-inline {
+  display:none !important; visibility:hidden !important;
+  margin:0 !important; padding:0 !important; height:0 !important;
+  min-height:0 !important; max-height:0 !important;
+}
+</style>
 </body>
 </html>
