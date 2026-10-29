@@ -502,6 +502,23 @@
   }
 }
 </style>
+<style id="far-from-sol-v5-single-desktop-title">
+@media (min-width:901px) {
+  html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
+    display:block !important; visibility:visible !important;
+    margin:0 0 22px !important; padding:0 !important;
+    width:100% !important; height:auto !important; min-height:0 !important;
+  }
+  html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row .ffs-title {
+    display:block !important; visibility:visible !important;
+    margin:0 !important;
+  }
+  html body .ffs-page .ffs-desktop-composition .ffs-right-column > .ffs-title-panel {
+    display:none !important; margin:0 !important; padding:0 !important;
+    height:0 !important; min-height:0 !important; max-height:0 !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Far From Sol splash screen">
@@ -3580,8 +3597,9 @@ document.addEventListener("click", function (event) {
  window.addEventListener('resize',syncPanelHeight,{passive:true});
  function arrange(){
    if(mq.matches){
-     title.classList.remove('ffs-hero-title-row');
-     titlePanel.prepend(title);
+     // Keep one movie title above the poster/details row, not in the hidden legacy header.
+     title.classList.add('ffs-hero-title-row');
+     block.insertBefore(title,grid);
      right.append(unified);
      unified.append(rating,metadata,working,heading,synopsis,footer);
      if(hint)poster.after(hint);
