@@ -3554,7 +3554,8 @@ document.addEventListener("click", function (event) {
  .ffs-page .ffs-desktop-composition { min-height:565px !important; }
  .ffs-page .ffs-desktop-composition > .ffs-right-column { min-height:0 !important; }
  .ffs-page .ffs-right-column > .lss-unified-details { min-height:492px !important; height:auto !important; }
- .ffs-page .ffs-working-title-inline { display:none !important; margin:0 !important; padding:0 !important; }
+ /* Keep the Working Title slot at its original height so Synopsis does not move. */
+ .ffs-page .lss-unified-details > .ffs-working-title-inline { display:block !important; visibility:hidden !important; margin:0 0 16px !important; padding:0 !important; }
  .ffs-page .lss-unified-details > .ffs-alt-poster-hint {display:none !important;}
  .ffs-page .lss-unified-details > .crisis-details-footer {margin-top:auto !important;padding-top:18px !important;}
  .ffs-page .lss-unified-details > .crisis-details-footer > .lss-vertical-project-nav {display:flex !important;}
