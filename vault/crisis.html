@@ -386,43 +386,6 @@
 }
 </style>
 
-<style id="crisis-match-far-from-sol-synopsis-position">
-/* Desktop: use Far From Sol's exact preceding-section spacing and reserved title slot. */
-@media (min-width:901px) {
-  .ffs-page .ffs-right-column > .lss-unified-details {
-    padding:18px 22px 24px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-audience-rating {
-    min-height:108px !important; height:auto !important;
-    margin:0 0 12px !important; padding:6px 0 14px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
-    margin-bottom:14px !important; padding:9px 0 !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
-    min-height:48px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-working-title-inline {
-    display:block !important; visibility:hidden !important;
-    margin:0 0 16px !important; padding:0 !important;
-    font:600 14px/1.3 Oxanium,Rajdhani,sans-serif !important;
-    white-space:normal !important; overflow:visible !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-section-label {margin-bottom:9px !important;}
-}
-@media (min-width:901px) and (max-width:1130px) {
-  .ffs-page .ffs-right-column > .lss-unified-details {padding:12px 16px 16px !important;}
-}
-</style>
-<style id="crisis-synopsis-up-54px-desktop">
-@media (min-width: 901px) {
-  /* Shift only the synopsis heading and paragraph, not the details box or footer. */
-  .ffs-page .lss-unified-details > .ffs-section-label,
-  .ffs-page .lss-unified-details > .ffs-synopsis {
-    transform: translateY(-34px) !important;
-  }
-}
-</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Crisis: Red Skies splash screen">
@@ -3587,16 +3550,109 @@ document.addEventListener("click", function (event) {
 }
 .ffs-page .ffs-rating-number > [hidden] {display:none !important;}
 
-/* Crisis: override the legacy 565px layout minimum; size to the poster/content. */
+/* Final desktop parity: the actual Batman geometry and typography.
+   No hidden title row, synopsis translation, or forced panel height. */
 @media (min-width:901px) {
- .ffs-page .ffs-desktop-composition { min-height:565px !important; }
- .ffs-page .ffs-desktop-composition > .ffs-right-column { min-height:0 !important; }
- .ffs-page .ffs-right-column > .lss-unified-details { min-height:492px !important; height:auto !important; }
- /* Keep the Working Title slot at its original height so Synopsis does not move. */
- .ffs-page .lss-unified-details > .ffs-working-title-inline { display:block !important; visibility:hidden !important; margin:0 0 16px !important; padding:0 !important; }
- .ffs-page .lss-unified-details > .ffs-alt-poster-hint {display:none !important;}
- .ffs-page .lss-unified-details > .crisis-details-footer {margin-top:auto !important;padding-top:18px !important;}
- .ffs-page .lss-unified-details > .crisis-details-footer > .lss-vertical-project-nav {display:flex !important;}
+  /* Batman's shared poster and information-panel grid dimensions. */
+  .ffs-page .ffs-desktop-composition {
+    grid-template-columns:minmax(265px,315px) minmax(0,1fr) !important;
+    column-gap:42px !important;
+    min-height:565px !important;
+    align-items:start !important;
+  }
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    min-height:0 !important;
+    height:auto !important;
+  }
+
+  /* Batman's rating summary baseline and unrated text dimensions. */
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-summary {
+    width:auto !important;
+    display:block !important;
+    align-self:center !important;
+    transform:none !important;
+    text-align:left !important;
+    gap:0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number {
+    display:flex !important;
+    align-items:baseline !important;
+    justify-content:flex-start !important;
+    width:auto !important;
+    height:auto !important;
+    min-height:0 !important;
+    margin:3px 0 0 !important;
+    padding:0 !important;
+    gap:7px !important;
+    background:none !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong.is-unrated {
+    font-size:15px !important;
+    line-height:1.35 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
+    font-size:19px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-count {
+    display:block !important;
+    width:auto !important;
+    font-size:11px !important;
+    text-align:left !important;
+  }
+
+  /* Batman's 82px metadata strip: 54px cards plus 13px padding on each side. */
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+    margin:0 0 14px !important;
+    padding:13px 0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
+    min-height:54px !important;
+    padding:4px 10px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
+    font-size:clamp(12px,calc(.73vw + 3px),14px) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
+    font-size:clamp(15px,calc(.96vw + 3px),19px) !important;
+  }
+
+  /* The synopsis now follows the metadata directly, exactly as in Batman. */
+  .ffs-page .lss-unified-details > .ffs-working-title-inline {display:none !important;}
+  .ffs-page .lss-unified-details > .ffs-section-label {
+    order:3 !important;
+    margin:0 0 9px !important;
+    transform:none !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    order:4 !important;
+    margin:0 !important;
+    padding:0 !important;
+    transform:none !important;
+  }
+  /* Batman's rendered synopsis style after the desktop reparenting script. */
+  .ffs-page .lss-unified-details > .ffs-synopsis p {
+    font:500 26px/1.65 Rajdhani,Arial,sans-serif !important;
+    text-align:justify !important;
+  }
+
+  /* Same 18px navigation gap and 52px circular buttons as Batman. */
+  .ffs-page .lss-unified-details > .crisis-details-footer {
+    order:5 !important;
+    margin:18px 0 0 !important;
+    padding:0 !important;
+    min-height:52px !important;
+  }
+  .ffs-page .lss-unified-details > .crisis-details-footer > .lss-vertical-project-nav {
+    display:flex !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-alt-poster-hint {display:none !important;}
+}
+@media (min-width:901px) and (max-width:1150px) {
+  /* Batman's compact two-column geometry at narrower desktop sizes. */
+  .ffs-page .ffs-desktop-composition {
+    grid-template-columns:260px minmax(0,1fr) !important;
+    column-gap:26px !important;
+  }
 }
 </style>
 <script id="crisis-overtime-v22-unified-layout">
