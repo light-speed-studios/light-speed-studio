@@ -461,6 +461,8 @@
   }
 }
 </style>
+
+
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Crossroads splash screen">
@@ -3902,5 +3904,21 @@ document.addEventListener("click", function (event) {
   else mq.addListener(arrange);
 })();
 </script>
+<style id="crossroads-overtime-panel-height-alignment">
+/* Desktop only: match Overtime's 565px details-row baseline.
+   The palette remains after the row, and rises no higher than on Overtime. */
+@media (min-width:901px) {
+  .ffs-page .ffs-desktop-composition { min-height:565px !important; }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column { min-height:565px !important; }
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    min-height:565px !important;
+    height:auto !important;
+  }
+  .ffs-page .lss-unified-details > .crossroads-details-footer {
+    margin-top:auto !important;
+    padding-top:18px !important;
+  }
+}
+</style>
 </body>
 </html>
