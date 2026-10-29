@@ -19,51 +19,6 @@
     }
   </style>
 
-<style>
-/* LOCKED DESKTOP GEOMETRY */
-@media (min-width: 901px) {
-  .ffs-title-panel {
-    height: 190px;
-    min-height: 190px;
-    max-height: 190px;
-    padding: 16px 23px 15px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ffs-title-panel .ffs-title-row {
-    margin-bottom: 4px;
-  }
-
-  .ffs-title-panel .ffs-meta-row {
-    margin-top: auto;
-    margin-bottom: 0;
-    transform: translateY(-6px);
-  }
-
-  .ffs-title-panel .ffs-meta-card {
-    min-height: 46px;
-    padding: 6px 8px;
-  }
-
-  .ffs-info-panel {
-    height: 390px;
-    min-height: 390px;
-    max-height: 390px;
-    padding: 29px 32px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .ffs-info-panel .ffs-working-title {
-    margin: auto 0 0;
-    padding: 15px 17px;
-    flex: 0 0 auto;
-  }
-}
-</style>
-
-
 <style id="mobile-poster-lightbox-isolation-fix">
 @media (max-width: 900px) {
 
@@ -3584,6 +3539,7 @@ document.addEventListener("click", function (event) {
    // One visible film title, outside and above the poster/details grid.
    title.classList.add('ffs-hero-title-row');
    block.insertBefore(title,grid);
+   titlePanel.hidden=true;
    right.append(unified);
    working.remove();
    unified.append(rating,metadata,heading,synopsis,footer);
@@ -3595,6 +3551,7 @@ document.addEventListener("click", function (event) {
   } else {
    block.classList.remove('glass-cinematic-ready');
    title.classList.remove('ffs-hero-title-row');
+   titlePanel.hidden=false;
    titlePanel.prepend(title);
    title.after(working);
    if(hint)working.after(hint);
@@ -3612,56 +3569,6 @@ document.addEventListener("click", function (event) {
  else mq.addListener(arrange);
 })();
 </script>
-
-<style id="glass-rooms-v3-no-top-header-matched-poster-height">
-/* Desktop V3: remove the standalone movie title and align the text card with the poster. */
-@media (min-width:901px) {
- .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row,
- .ffs-page .ffs-right-column .ffs-title-panel .ffs-title-row {
-   display:none !important;height:0 !important;min-height:0 !important;
-   margin:0 !important;padding:0 !important;
- }
- .ffs-page .ffs-desktop-composition {
-   grid-template-columns:315px minmax(0,1fr) !important;
-   gap:42px !important;min-height:0 !important;align-items:stretch !important;
- }
- .ffs-page .ffs-desktop-composition .ffs-left-column {position:relative !important;}
- .ffs-page .ffs-desktop-composition .ffs-left-column > .ffs-alt-poster-hint {
-   position:absolute !important;top:calc(100% + 13px) !important;
-   left:0 !important;right:0 !important;margin:0 !important;
- }
- .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {margin-top:42px !important;}
- .ffs-page .ffs-desktop-composition .ffs-right-column {height:100% !important;}
- .ffs-page .ffs-desktop-composition .ffs-right-column > .lss-unified-details {height:100% !important;}
- .ffs-page .ffs-right-column > .lss-unified-details {
-   min-height:0 !important;overflow:visible !important;
-   padding:14px 22px 18px !important;
- }
- .ffs-page .lss-unified-details > .ffs-audience-rating {
-   min-height:91px !important;height:91px !important;
-   margin-bottom:8px !important;padding:4px 0 8px !important;
- }
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
-   margin-bottom:10px !important;padding:9px 0 !important;
- }
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {min-height:48px !important;}
- .ffs-page .lss-unified-details > .ffs-working-title-inline {margin-bottom:9px !important;}
- .ffs-page .lss-unified-details > .ffs-section-label {margin-bottom:6px !important;}
- .ffs-page .lss-unified-details > .glass-details-footer {
-   margin-top:auto !important;padding-top:10px !important;min-height:52px !important;
- }
-}
-@media (min-width:901px) and (max-width:1130px) {
- .ffs-page .ffs-desktop-composition {gap:28px !important;}
- .ffs-page .ffs-right-column > .lss-unified-details {padding:12px 16px 16px !important;}
- .ffs-page .lss-unified-details .ffs-meta-label {font-size:10px !important;}
- .ffs-page .lss-unified-details .ffs-meta-value {font-size:12px !important;}
-}
-@media (min-width:901px) and (max-width:1000px) {
- .ffs-page .ffs-right-column > .lss-unified-details {padding:8px 16px 12px !important;}
- .ffs-page .lss-unified-details > .glass-details-footer {padding-top:8px !important;}
-}
-</style>
 
 <style id="glass-rooms-final-single-desktop-title">
 /* One film title above the grid. No empty legacy heading strip. */
@@ -3760,70 +3667,67 @@ document.addEventListener("click", function (event) {
 
 </style>
 
-<style id="glass-rooms-batman-master-repair">
-/* Final Glass Rooms desktop layout. The legacy title and fixed-height rules above are superseded. */
+
+<style id="glass-final-batman-desktop-unified">
 @media (min-width:901px) {
- html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
-  display:block !important; visibility:visible !important; height:auto !important;
-  min-height:0 !important; max-height:none !important; width:100% !important;
-  margin:0 0 22px !important; padding:0 !important;
- }
- html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row .ffs-title {
-  display:block !important; visibility:visible !important; height:auto !important;
-  margin:0 !important;
- }
- .ffs-page .ffs-desktop-composition {
-  display:grid !important; grid-template-columns:315px minmax(0,1fr) !important;
-  gap:42px !important; align-items:start !important; min-height:0 !important;
- }
- .ffs-page .ffs-desktop-composition > .ffs-right-column {
-  height:auto !important; min-width:0 !important; padding:0 !important;
- }
- .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-title-panel {
-  display:none !important; height:0 !important; min-height:0 !important;
-  max-height:0 !important; margin:0 !important; padding:0 !important;
- }
- .ffs-page .ffs-right-column > .lss-unified-details {
-  display:flex !important; flex-direction:column !important;
-  min-height:492px !important; height:auto !important; max-height:none !important;
-  padding:18px 22px 24px !important; box-sizing:border-box !important;
-  background:rgba(4,14,21,.50) !important;
-  box-shadow:0 16px 45px rgba(0,0,0,.75) !important;
- }
- .ffs-page .lss-unified-details > .ffs-audience-rating {
-  min-height:108px !important; height:auto !important;
-  margin:0 0 12px !important; padding:6px 0 14px !important;
-  gap:18px !important; grid-template-columns:minmax(0,170px) 1px minmax(0,1fr) !important;
- }
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
-  padding:13px 0 !important; margin:0 0 14px !important;
- }
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
-  min-height:54px !important;
- }
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
-  font-size:clamp(12px,calc(.73vw + 3px),14px) !important;
- }
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
-  font-size:clamp(15px,calc(.96vw + 3px),19px) !important;
- }
- .ffs-page .lss-unified-details > .ffs-working-title-inline {
-  display:none !important; margin:0 !important; padding:0 !important;
- }
- .ffs-page .lss-unified-details > .ffs-section-label {margin:0 0 9px !important;}
- .ffs-page .lss-unified-details > .ffs-synopsis {margin:0 !important; padding:0 !important; transform:none !important;}
- .ffs-page .lss-unified-details > .ffs-synopsis p {
-  font:500 clamp(19px,1.52vw,23px)/1.65 Rajdhani,Arial,sans-serif !important;
- }
- .ffs-page .lss-unified-details > .glass-details-footer {
-  margin-top:auto !important; padding-top:18px !important;
- }
- .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
-  margin:18px 0 26px !important;
- }
- .ffs-page .ffs-poster-panel .ffs-poster-click.is-holding-alt > img.ffs-poster-alt {
-  opacity:1 !important;
- }
+  html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
+    display:block !important; visibility:visible !important; height:auto !important;
+    min-height:0 !important; max-height:none !important; margin:0 0 22px !important;
+    padding:0 !important; width:100% !important;
+  }
+  html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row .ffs-title {
+    display:block !important; visibility:visible !important; margin:0 !important;
+    font:800 clamp(30px,3.3vw,53px)/1.1 Oxanium,Rajdhani,sans-serif !important;
+    color:#F4F8F9 !important;
+  }
+  html body .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-title-panel,
+  html body .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-title-panel[hidden] {
+    display:none !important; visibility:hidden !important; height:0 !important;
+    min-height:0 !important; max-height:0 !important;
+    margin:0 !important; padding:0 !important;
+  }
+  .ffs-page .ffs-desktop-composition {
+    display:grid !important; grid-template-columns:315px minmax(0,1fr) !important;
+    column-gap:42px !important; row-gap:0 !important;
+    align-items:start !important; min-height:0 !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column {
+    display:flex !important; flex-direction:column !important;
+    min-width:0 !important; height:auto !important; padding:0 !important;
+  }
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    display:flex !important; flex-direction:column !important; box-sizing:border-box !important;
+    min-height:492px !important; height:auto !important; max-height:none !important;
+    padding:18px 22px 24px !important; background:rgba(4,14,21,.50) !important;
+    box-shadow:0 16px 45px rgba(0,0,0,.75) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    height:auto !important; min-height:108px !important; margin:0 0 12px !important;
+    padding:6px 0 14px !important;
+    gap:18px !important; grid-template-columns:minmax(0,170px) 1px minmax(0,1fr) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+    margin:0 0 14px !important; padding:13px 0 !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1.65fr) minmax(0,1fr) minmax(0,1fr) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
+    min-height:54px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
+    font-size:clamp(12px,calc(.73vw + 3px),14px) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
+    font-size:clamp(15px,calc(.96vw + 3px),19px) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-working-title-inline {display:none !important;margin:0 !important;padding:0 !important;}
+  .ffs-page .lss-unified-details > .ffs-section-label {margin:0 0 9px !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis {margin:0 !important;padding:0 !important;transform:none !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis p {
+    font:500 clamp(19px,1.52vw,23px)/1.65 Rajdhani,Arial,sans-serif !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer {margin-top:auto !important;padding-top:18px !important;}
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {margin:18px 0 26px !important;}
+  .ffs-page .ffs-poster-panel .ffs-poster-click.is-holding-alt > img.ffs-poster-alt {opacity:1 !important;}
 }
 </style>
 </body>
