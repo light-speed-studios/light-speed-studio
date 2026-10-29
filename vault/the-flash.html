@@ -3920,5 +3920,20 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<style id="crossroads-batman-desktop-font-parity">
+/* Match Batman: Gotham's Riddle typography. Preserve Crossroads panel geometry,
+   positioning, rating layout, navigation and mobile presentation. */
+@media (min-width: 901px) {
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
+    font-size: clamp(12px, calc(.73vw + 3px), 14px) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
+    font-size: clamp(15px, calc(.96vw + 3px), 19px) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-synopsis p {
+    line-height: 1.7 !important;
+  }
+}
+</style>
 </body>
 </html>
