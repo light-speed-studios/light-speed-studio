@@ -4,11 +4,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Far From Sol | LSS</title>
+<title>The Flash: Crossroads | LSS</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" fetchpriority="high"/>
+<link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/CROSSROADSBANNER.webp" fetchpriority="high"/>
 <link href="../css/styles.css?v=6" rel="stylesheet"/>
 <style>
     #lss-splash {
@@ -19,7 +19,17 @@
     }
   </style>
 
+<style id="flash-mobile-synopsis-gap-fix">
+@media (max-width: 900px) {
+  .ffs-poster-panel {
+    margin-bottom: 0 !important;
+  }
 
+  .ffs-info-panel {
+    margin-top: 0 !important;
+  }
+}
+</style>
 
 
 <style id="mobile-clean-full-poster-flow">
@@ -103,7 +113,7 @@
     margin: 14px 14px 18px !important;
     padding: 16px !important;
     background:
-      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
       rgba(255, 255, 255, 0.035) !important;
     box-shadow:
       0 0 30px rgba(0, 174, 222, 0.08),
@@ -140,7 +150,7 @@
   }
 
   .ffs-palette-module .ffs-editors-note-title {
-    margin: 14px 0 10px !important;
+    margin: 18px 0 18px !important;
     font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
     font-size: 18px !important;
     font-weight: 800 !important;
@@ -151,7 +161,7 @@
   }
 
   .ffs-palette-module .ffs-editors-note-text {
-    margin: 14px 0 0 !important;
+    margin: 0 !important;
     font-family: Rajdhani, Arial, sans-serif !important;
     font-size: 17px !important;
     font-weight: 500 !important;
@@ -163,51 +173,50 @@
 }
 </style>
 
-<style id="desktop-inline-editors-note-only">
+<style id="editors-note-desktop-inline-only">
 @media (min-width: 901px) {
   .ffs-palette-module > .ffs-editors-note-title { display: none; }
   .ffs-palette-module .ffs-editors-note-inline-title {
     display: inline;
+    margin: 0 0.5em 0 0;
+    padding: 0;
     font-family: Oxanium, Rajdhani, Arial, sans-serif;
     font-size: 21px;
     font-weight: 800;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--cyan);
-    margin-right: 0.5em;
     white-space: nowrap;
   }
 }
 @media (max-width: 900px) {
-  .ffs-palette-module .ffs-editors-note-inline-title { display: none !important; }
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
 }
 </style>
 
-<style id="desktop-press-hold-alternate-poster">
+<style id="flash-crossroads-desktop-alt-poster">
 @media (min-width: 901px) {
-  .ffs-poster-panel .ffs-poster-click { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
-  .ffs-poster-panel .ffs-poster-full { position: relative; z-index: 1; }
-  .ffs-poster-panel .ffs-poster-alt {
-    display: block; position: absolute; inset: 0; width: 100%; height: 100%;
-    z-index: 2; object-fit: contain; object-position: center top;
-    opacity: 0; pointer-events: none; transition: none;
+  .ffs-poster-click { position: relative; cursor: pointer; user-select: none; }
+  .ffs-poster-click .ffs-poster-alternate {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: contain; object-position: center top;
+    opacity: 0; pointer-events: none;
+    transition: none;
   }
-  .ffs-poster-panel .ffs-poster-click:active .ffs-poster-alt { opacity: 1; }
-  .ffs-poster-hold-hint {
+  .ffs-poster-click.ffs-alt-held .ffs-poster-alternate { opacity: 1; }
+  .ffs-alt-poster-hint {
     display: block;
     width: 100%;
     margin: 10px 0 0;
-    text-align: left;
-    font-family: Oxanium, Rajdhani, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
+    font: 700 11px Oxanium, Rajdhani, sans-serif;
     letter-spacing: .13em;
     text-transform: uppercase;
-    color: rgba(186, 199, 213, .72);
+    text-align: left;
+    color: rgba(186,199,213,.72);
   }
 }
 @media (max-width: 900px) {
-  .ffs-poster-alt, .ffs-poster-hold-hint { display: none !important; }
+  .ffs-poster-alternate, .ffs-alt-poster-hint { display: none !important; }
 }
 </style>
 <style id="lss-audience-rating-style">
@@ -294,90 +303,79 @@
 .ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
 @media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
 </style>
-<style id="lss-working-title-14px-consistent">
-.ffs-title-panel .ffs-working-title-inline,
-.ffs-title-panel .ffs-working-title-inline span,
-.ffs-info-panel .ffs-working-title-mobile,
-.ffs-info-panel .ffs-working-title-mobile span {
-  font-family: Oxanium, sans-serif !important;
+<style id="flash-crossroads-working-title-oxanium-fix">
+.ffs-working-title-inline,
+.ffs-working-title-inline span,
+.ffs-working-title-inline strong,
+.ffs-working-title-mobile span,
+.ffs-working-title-mobile strong {
+  font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
   font-size: 14px !important;
   text-transform: uppercase !important;
 }
-.ffs-title-panel .ffs-working-title-inline,
-.ffs-info-panel .ffs-working-title-mobile {
-  font-weight: 600;
-  color: #bac7d5;
-}
-.ffs-title-panel .ffs-working-title-inline span,
-.ffs-info-panel .ffs-working-title-mobile span {
-  font-weight: 700;
-  letter-spacing: .12em;
-  color: #00aede;
-}
-.ffs-working-title-mobile { display: none; }
+.ffs-working-title-inline strong,
+.ffs-working-title-mobile strong { color: #bac7d5 !important; font-weight: 700 !important; }
+.ffs-working-title-inline span,
+.ffs-working-title-mobile span { color: #00aede !important; font-weight: 800 !important; }
+.ffs-working-title-mobile { display: none !important; }
 @media (max-width: 900px) {
-  .ffs-info-panel .ffs-working-title-mobile {
-    display: block !important;
-    margin: 0 0 10px;
-    line-height: 1.4;
-    white-space: normal;
-  }
+  .ffs-working-title-mobile { display: flex !important; }
+  .ffs-working-title-mobile strong { white-space: normal !important; overflow: visible !important; text-overflow: clip !important; }
 }
 </style>
-<style id="lss-far-from-sol-mobile-content-order">
-/* Mobile sequence: poster, audience rating, synopsis, working title, editor's note. */
+<style id="lss-crossroads-mobile-content-order">
+/* Mobile only: poster, audience rating, synopsis, working title, editor's note. */
 @media (max-width: 900px) {
-  .ffs-info-panel {
-    display: flex !important;
-    flex-direction: column !important;
-  }
-  .ffs-info-panel > .ffs-audience-rating {
-    order: 1;
-    margin-top: 0 !important;
-    margin-bottom: 22px;
-  }
+  .ffs-info-panel { display: flex !important; flex-direction: column !important; }
+  .ffs-info-panel > .ffs-audience-rating { order: 1; margin-top: 0 !important; margin-bottom: 22px; }
   .ffs-info-panel > .ffs-section-label { order: 2; }
   .ffs-info-panel > .ffs-synopsis { order: 3; }
   .ffs-info-panel > .ffs-working-title-mobile { order: 4; }
 }
 </style>
-<style id="far-from-sol-mobile-working-title-reference-match">
+<style id="crossroads-topgun-mobile-final-alignment">
 @media (max-width: 900px) {
+  /* Match Top Gun's compact working-title presentation. */
   .ffs-info-panel > .ffs-working-title-mobile {
-    order: 4;
+    order: 4 !important;
     display: flex !important;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
+    align-items: center !important;
+    gap: 8px !important;
     margin: 12px 0 8px !important;
-    padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.035);
-    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.15);
-    overflow: hidden;
-    font-family: Oxanium, Rajdhani, Arial, sans-serif;
-    font-size: 14px !important;
-    font-weight: 600;
-    line-height: 1.15;
-    text-transform: uppercase !important;
-    color: #bac7d5;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    padding: 10px 12px !important;
+    min-width: 0 !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    background: rgba(255,255,255,.035) !important;
+    box-shadow: inset 0 0 0 1px rgba(0,174,222,.15) !important;
   }
   .ffs-info-panel > .ffs-working-title-mobile span {
-    display: inline-flex;
-    align-items: center;
-    flex: 0 0 auto;
-    margin: 0;
+    flex: 0 0 auto !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
     font-size: 10px !important;
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: .1em;
-    white-space: nowrap;
+    font-weight: 800 !important;
+    letter-spacing: .1em !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
   }
+  .ffs-info-panel > .ffs-working-title-mobile strong {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  /* Keep the three-column mobile metadata strip hidden. */
+  .ffs-mobile-meta { display: none !important; }
+  /* Match Top Gun's Editor's Note heading spacing. */
+  .ffs-palette-module .ffs-editors-note-title { margin: 14px 0 10px !important; }
 }
 </style>
-<style id="far-from-sol-topgun-mobile-rating-position-fix">
+<style id="crossroads-topgun-mobile-rating-position-fix">
 @media (max-width: 900px) {
+  /* Match Top Gun's poster-to-rating and rating-to-synopsis spacing. */
   .ffs-poster-panel { margin-bottom: 16px !important; }
   .ffs-mobile-meta { display: none !important; }
   .ffs-info-panel { margin-top: 0 !important; padding-top: 0 !important; }
@@ -388,72 +386,22 @@
   }
 }
 </style>
-<style id="ffs-batman-master-desktop-only">
-@media (min-width: 901px) {
-  .ffs-title-panel .ffs-audience-rating { height:102px!important; min-height:102px!important; flex:0 0 102px!important; margin:3px 0 0!important; padding:8px 17px!important; }
-  .ffs-title-panel .ffs-rating-summary { width:180px; height:auto; display:flex; align-items:center; justify-content:center; position:relative; }
-  .ffs-title-panel .ffs-rating-number { position:relative; width:150px!important; height:60px!important; min-height:60px!important; margin:0!important; padding:2px 8px 17px!important; flex:0 0 150px; display:flex; align-items:center; justify-content:center; gap:6px;
-    background:linear-gradient(#00aede,#00aede) left top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) left bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left bottom/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right bottom/2px 13px no-repeat; }
-  .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong { font-size:0!important;line-height:1!important; }
-  .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong::before { content:'—';font:800 34px/1 Oxanium,sans-serif; }
-  .ffs-title-panel .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator { display:inline!important;visibility:visible!important; }
-  .ffs-title-panel .ffs-rating-number #ffs-rating-denominator { font-size:25px;font-weight:700;line-height:1; }
-  .ffs-title-panel .ffs-rating-number > .ffs-rating-count { position:absolute;bottom:5px;left:0;width:100%;text-align:center;font-size:10px;white-space:nowrap;line-height:1; }
-  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) .ffs-rating-count { display:none; }
-  .ffs-title-panel .ffs-rating-divider {height:66px;}
-  .ffs-title-panel .ffs-rating-input {gap:5px;}
-  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {display:block;width:100%;text-align:left;font-size:12px;letter-spacing:.13em;}
-  .ffs-info-panel .ffs-meta-row {display:grid;grid-template-columns:.9fr .92fr 1.35fr 1fr .9fr;gap:8px;margin:0 0 15px!important;transform:none!important;flex:0 0 auto;}
-  .ffs-info-panel .ffs-meta-card {min-height:46px;padding:6px 8px;}
-  .ffs-info-panel .ffs-working-title-inline {display:block;margin:0 0 6px!important;}
-  .ffs-info-panel .ffs-poster-hold-hint {display:block;margin:0 0 22px!important;text-align:left;}
-  .ffs-info-panel .ffs-section-label {margin:0 0 9px!important;}
-  .ffs-info-panel .ffs-synopsis {margin:0!important;}
-}
-</style>
-
-<style id="far-from-sol-final-batman-rating-desktop">
-@media (min-width: 901px) {
-  .ffs-title-panel .ffs-audience-rating {
+<style id="crossroads-batman-mobile-floating-rating-only">
+@media (max-width: 900px) {
+  .ffs-page .ffs-mobile-project-header { display: none !important; }
+  .ffs-page .ffs-project-block > .ffs-audience-rating {
+    display: grid !important;
+    width: 100% !important;
+    margin: 0 0 16px !important;
     background: transparent !important;
     box-shadow: none !important;
-  }
-  .ffs-title-panel .ffs-rating-summary {
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 4px !important;
-    transform: translateY(8px) !important;
-  }
-  .ffs-title-panel .ffs-rating-number {
-    flex: 0 0 auto !important;
-    width: 150px !important;
-    height: 60px !important;
-    min-height: 60px !important;
-    padding: 2px 8px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-  }
-  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
-    position: static !important;
-    display: block;
-    width: 150px !important;
-    margin: 0 !important;
-    text-align: center !important;
-    font-size: 10px !important;
-    line-height: 1.1 !important;
-    white-space: nowrap;
-  }
-  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count {
-    display: block !important;
+    border: none !important;
   }
 }
 </style>
-<style id="ffs-fullbleed-banner-layout">
+<style id="crossroads-fullbleed-banner-layout">
 /* Banner is a sibling of the constrained page-content container. */
-.ffs-wide-banner {
+.crossroads-wide-banner {
   position: relative;
   display: block;
   width: 100%;
@@ -462,24 +410,24 @@
   overflow: hidden;
   background: #040E15;
 }
-.ffs-wide-banner img {
+.crossroads-wide-banner img {
   display: block;
   width: 100%;
   height: auto;
 }
 /* Reserve the full banner space on the FIRST paint, before image download. */
 @media (min-width: 901px) {
-  .ffs-wide-banner {
+  .crossroads-wide-banner {
     height: 37.5vw;
     aspect-ratio: 8 / 3;
   }
-  .ffs-wide-banner > img {
+  .crossroads-wide-banner > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 }
-.ffs-wide-banner::after {
+.crossroads-wide-banner::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -496,21 +444,34 @@
   main.page-content > .ffs-page { background: transparent !important; }
 }
 @media (max-width: 900px) {
-  .ffs-wide-banner { display: none !important; }
-  .ffs-wide-banner::after {
+  .crossroads-wide-banner { display: none !important; }
+  .crossroads-wide-banner::after {
     background: linear-gradient(to bottom, transparent 58%, rgba(4,14,21,.35) 78%, #040E15 100%);
   }
 }
 </style>
+
+<style id="crossroads-desktop-only-remove-working-title">
+@media (min-width: 901px) {
+  html body .ffs-page .ffs-working-title-inline,
+  html body .ffs-page .lss-unified-details > .ffs-working-title-inline {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+</style>
+
+
 </head>
 <body>
-<div id="lss-page-splash" data-duration="3000" aria-label="Far From Sol splash screen">
+<div id="lss-page-splash" data-duration="3000" aria-label="The Flash: Crossroads splash screen">
   <picture class="lss-page-splash-picture">
-    <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ffssplashmob.webp">
+    <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/flashdplashmob.webp">
     <img
       class="lss-page-splash-image"
-      src="https://light-speed-studios.b-cdn.net/ffssplashdesk.webp"
-      alt="Far From Sol"
+      src="https://light-speed-studios.b-cdn.net/flashdplashdesk.webp"
+      alt="The Flash: Crossroads"
       decoding="sync"
       fetchpriority="high"
       loading="eager">
@@ -534,9 +495,6 @@
 <a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
 </nav>
 </header>
-<section class="ffs-wide-banner" aria-label="Far From Sol banner">
-  <img src="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" alt="Far From Sol cinematic banner" width="2048" height="768" decoding="sync" loading="eager" fetchpriority="high" />
-</section>
 <main class="page-content">
 <div class="ffs-page">
 <style>
@@ -836,7 +794,7 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-      margin-top: 14px;
+      margin-top: 15px;
     }
 
     .ffs-poster-button {
@@ -1184,7 +1142,6 @@
   content-visibility:auto;
   contain-intrinsic-size:400px;
 }
-
 .ffs-trailer-section {
   content-visibility: visible;
   contain-intrinsic-size: auto;
@@ -1567,7 +1524,7 @@
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr auto;
-  min-height: 44px;
+  min-height: 46px;
   padding: 0 12px;
 }
 
@@ -2113,9 +2070,16 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 .ffs-palette-cta-group .ffs-palette-wrap {
   margin: 0 0 14px;
-  padding: 10px;
+  padding: 0;
   background: transparent;
   box-shadow: none;
+  border: 0;
+}
+
+.ffs-palette-cta-group .ffs-palette-wrap::before,
+.ffs-palette-cta-group .ffs-palette-wrap::after {
+  content: none !important;
+  display: none !important;
 }
 
 .ffs-palette-cta-group .ffs-links-panel {
@@ -2366,51 +2330,53 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </nav>
 
   <nav class="ffs-project-side-nav ffs-project-side-nav-right" aria-label="Project sequence navigation">
-    <a class="ffs-side-nav-link ffs-side-prev" href="crisis.html" data-project-nav-key="prev">Prev</a>
-    <a class="ffs-side-nav-link ffs-side-next" href="glass-rooms.html" data-project-nav-key="next">Next</a>
+    <a class="ffs-side-nav-link ffs-side-prev" href="batman.html" data-project-nav-key="prev">Prev</a>
+    <a class="ffs-side-nav-link ffs-side-next" href="crisis.html" data-project-nav-key="next">Next</a>
   </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
-<img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/ffsheader11.png" alt="Far From Sol" decoding="async" fetchpriority="high"/>
+<img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/theflashheader1.png" alt="The Flash: Crossroads">
 <div class="ffs-main-grid ffs-desktop-composition">
   <div class="ffs-left-column">
     <div class="ffs-poster-panel">
       <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
       <label class="ffs-poster-click" for="ffsPosterToggle">
-        <img alt="Far From Sol poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/FFS1new.png"/>
-        <img alt="Alternate Far From Sol poster" class="ffs-poster ffs-poster-alt" decoding="async" loading="eager" draggable="false" src="https://light-speed-studios.b-cdn.net/TAPPOSTERcopy.png"/>
-        <img alt="Far From Sol mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FFSmob.png"/>
+        <img alt="The Flash: Crossroads poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/theflashposterCross.png"/>
+        <img alt="The Flash: Crossroads alternate poster" class="ffs-poster ffs-poster-alternate" decoding="async" loading="eager" src="https://light-speed-studios.b-cdn.net/flashposteralt.png"/>
+        <img alt="The Flash: Crossroads mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/flashpostermob1.png"/>
       </label>
       <label class="ffs-poster-expand" for="ffsPosterToggle">
         <span>Click to Enlarge</span>
       </label>
     </div>
+
   </div>
 
   <div class="ffs-right-column">
     <div class="ffs-title-panel">
       <div class="ffs-title-row">
-        <h1 class="ffs-title">Far From Sol</h1>
+        <h1 class="ffs-title">The Flash: Crossroads</h1>
       </div>
-      <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADON</div>
-      <p class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</p>
- <div class="ffs-meta-row ffs-desktop-meta">
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">130 min</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">28 Jun 2026</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">Project Hail Mary 2026</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">156 min</span></div>
-  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.43:1 IMAX</span></div>
+      <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> <strong>THE FLASH: OUT OF TIME</strong></div>
+      <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
+      <div class="ffs-meta-row ffs-desktop-meta">
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">117 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 Sep 2023</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">The Flash 2023</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Org. Runtime</span><span class="ffs-meta-value">144 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.85:1</span></div>
 </div>
     </div>
 
     <div class="ffs-info-panel">
       <p class="ffs-section-label">Synopsis</p>
       <div class="ffs-synopsis">
-        <p>A story about finding home in the void. A linear reconstruction with a renewed backstory for Grace and a stronger emotional core. Far From Sol reimagines the ending into something more personal and character driven.</p>
+        <p>A story about grief and learning to let go. Barry’s journey is refocused around the cost of holding on. No roommates. No cameos. Dark Flash’s role is reworked to bring Barry’s journey back full circle.</p>
       </div>
 
-      <div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADOX</div>
-      <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="far-from-sol" aria-label="Audience rating for Far From Sol">
+      <div class="ffs-working-title ffs-working-title-mobile"><span>WORKING TITLE</span><strong>THE FLASH: OUT OF TIME</strong></div>
+
+      <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="flash-crossroads" aria-label="Audience rating for The Flash: Crossroads">
   <div class="ffs-rating-summary">
     <span class="ffs-rating-label">AUDIENCE RATING</span>
     <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
@@ -2434,7 +2400,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </div>
 </div>
     </div>
-
   </div>
 </div>
 
@@ -2489,6 +2454,28 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     display: none !important;
   }
 
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 14px 14px;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    text-align: center;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 18px 14px 6px;
+    font-family: Rajdhani, Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--text-soft);
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
   .ffs-cta-trailer-row {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 270px;
@@ -2537,42 +2524,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 @media (max-width: 900px) {
-  .ffs-cta-trailer-row {
-    display: block;
-  }
-}
-
-/* EDITOR'S NOTE INSIDE PALETTE MODULE */
-.ffs-palette-module .ffs-editors-note-title {
-  margin: 14px 14px 14px;
-  font-family: Oxanium, Rajdhani, Arial, sans-serif;
-  font-size:  21px;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cyan);
-    text-align: center;
-}
-
-.ffs-palette-module .ffs-editors-note-text {
-  margin: 18px 14px 6px;
-  font-family: Rajdhani, Arial, sans-serif;
-  font-size: 26px;
-  font-weight: 500;
-  line-height: 1.55;
-  color: var(--text-soft);
-  text-align: justify;
-  text-justify: inter-word;
-}
-
-@media (max-width: 900px) {
   .ffs-palette-module {
     display: block;
     position: relative;
     margin: 14px 14px 18px;
     padding: 16px;
     background:
-      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
       rgba(255, 255, 255, 0.035);
     box-shadow:
       0 0 30px rgba(0, 174, 222, 0.08),
@@ -2603,14 +2561,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     z-index: 4;
   }
 
-  .ffs-palette-module .ffs-editors-note-title {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-
   .ffs-palette-module .ffs-palette-wrap {
-    display: block !important;
-    width: 100%;
+    display: block;
     margin: 0;
     padding: 0;
     background: transparent;
@@ -2618,10 +2570,16 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 
   .ffs-palette-module .ffs-palette {
+    display: block;
     width: 100%;
     height: auto;
     min-height: 72px;
-    object-fit: fill;
+  }
+
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 0 10px;
+    font-size: 18px;
+    text-align: center;
   }
 
   .ffs-palette-module .ffs-editors-note-text {
@@ -2629,10 +2587,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     font-size: 17px;
     line-height: 1.48;
   }
+
+  .ffs-cta-trailer-row {
+    display: block;
+  }
 }
 </style>
 
-<!-- Desktop only: inset palette in its own darker borderless box; preserve outer cyan brackets. -->
+<!-- Desktop palette inset -->
 <style id="lss-desktop-inset-palette-box">
 @media (min-width: 901px) {
   .ffs-palette-module .ffs-palette-wrap {
@@ -2651,12 +2613,13 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   }
 }
 </style>
+
 <section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
   <div class="ffs-palette-wrap">
-    <img alt="Far From Sol color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/movie%20pallete.png"/>
+    <img alt="The Flash: Crossroads color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Flash%20Pallete.png"/>
   </div>
   <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Project Hail Mary</em> was a frustrating watch. I loved the premise but felt the film never reached its potential. The ideas were compelling, but I struggled to connect with Grace or believe the emotional weight of his journey. <em>Far From Sol</em> became my attempt to change that by giving Grace a family throughline and a more personal reason for the choices he ultimately makes. I also wanted to pull back the humor, treat Rocky as a genuine intellectual counterpart, and give the story the more grounded emotional weight I felt its premise deserved.</p>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>The Flash</em> is my favorite superhero, so there was something frustrating about seeing a story with so much emotional potential buried beneath tonal whiplash and comedy. At its core, I saw a story about grief, regret, and the temptation to rewrite the moments that hurt us most. With <em>Crossroads</em>, I wanted to bring that story forward, centering Barry’s journey around accepting loss and learning when to let go.</p>
 </section>
 
 <div class="ffs-cta-trailer-row">
@@ -2664,7 +2627,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack"/>
 
 <div class="ffs-cta-grid">
-  <a class="ffs-cta-tile" href="../far-from-sol-changelog-redesign.html">
+  <a class="ffs-cta-tile" href="../the-flash-crossroads-changelog.html">
     <span class="ffs-cta-icon" aria-hidden="true">
       <svg viewBox="0 0 64 64">
         <rect x="15" y="12" width="34" height="40" rx="2"></rect>
@@ -2683,7 +2646,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     <strong>Soundtrack</strong>
   </label>
 
-  <a class="ffs-cta-tile" href="../far-from-sol-movie.html">
+  <a class="ffs-cta-tile" href="../the-flash-crossroads-movie.html">
     <span class="ffs-cta-icon" aria-hidden="true">
       <svg viewBox="0 0 64 64">
         <rect x="16" y="24" width="30" height="22" rx="3"></rect>
@@ -2698,7 +2661,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
       <a
         class="ffs-cta-tile ffs-reddit-review"
-        href="https://www.reddit.com/r/fanedits/comments/1ui3p5s/far_from_sol_project_hail_mary_fanedit_light/"
+        href="https://www.reddit.com/r/fanedits/comments/1j7gl72/the_flash_crossroads/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Leave a review on Reddit"
@@ -2721,30 +2684,25 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-trailer-section">
 
 <div class="ffs-video">
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/dH_NOgLVlHo" title="Far From Sol Trailer">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/xeDaIKuGoI8" title="The Flash: Crossroads Trailer">
 </iframe>
 </div>
 </div>
-
 </div>
 
 <nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
     <a href="../vault.html" data-project-nav-key="vault-mobile">Vault</a>
-    <a href="crisis.html" data-project-nav-key="prev-mobile">Prev</a>
-    <a href="glass-rooms.html" data-project-nav-key="next-mobile">Next</a>
+    <a href="batman.html" data-project-nav-key="prev-mobile">Prev</a>
+    <a href="crisis.html" data-project-nav-key="next-mobile">Next</a>
   </nav>
 
 
 <div class="ffs-footer-logo-block">
   <img src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png" alt="Light Speed Studios logo" loading="lazy" decoding="async">
+</div></div>
 </div>
-
 </div>
-  </div>
-</div>
-
 </main>
-
 <script>
 function toggleMobileMenu(button) {
   const navLinks = document.querySelector('.lss-nav-links');
@@ -2784,7 +2742,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
         <div class="ffs-soundtrack-modal-title">
           <strong>Soundtrack</strong>
-          <span>Signals and Soundwaves</span>
+          <span>Vibrations across the timeline</span>
         </div>
       </div>
       <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
@@ -2793,26 +2751,127 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="ffs-soundtrack-modal-content">
       <div class="ffs-soundtrack-modal-content-inner">
 <ul>
+
   <li>
-    <strong>From Gold | Novo Amor</strong>
-    <p>Grace's ship exploring and crew reflection</p>
+    <strong>Wake Up | Slingshot OST</strong>
+    <p>The opening monologue and the court scene epilogue.</p>
   </li>
+
   <li>
-    <strong>Docking at Lovell City | Clinton Shorter (<em>The Expanse</em>)</strong>
-    <p>Adapted into a recurring emotional leitmotif associated with Grace's family memories.</p>
+    <strong>Midnight City | M83</strong>
+    <p>The opening Flash run into Gotham City.</p>
   </li>
+
   <li>
-    <strong>Someday | Sugar Ray</strong>
-    <p>The Journey to Tau Ceti E montage.</p>
+    <strong>Don't Fear the Reaper (Extended Mix) | Blue Oyster Cult</strong>
+    <p>The baby rescue sequence.</p>
   </li>
+
   <li>
-    <strong>Interstellar Countdown | Bill Irwin / <em>Interstellar</em></strong>
-    <p>Grace's mission acceptance montage and decision to join Project Hail Mary.</p>
+    <strong>Songs to the Siren (Piano Cover) | Various Artists</strong>
+    <p>Barry and Iris’s first meeting outside of work.</p>
   </li>
+
   <li>
-    <strong>This Too Shall Pass | OK Go</strong>
-    <p>Final scenes and end credits.</p>
+    <strong>Here in Spirit | Jim James</strong>
+    <p>Barry walking away from Iris after their conversation.</p>
   </li>
+
+  <li>
+    <strong>Arrival | Tron: Legacy OST</strong>
+    <p>Bruce and Barry’s conversation about time travel.</p>
+  </li>
+
+  <li>
+    <strong>Electric Love (Instrumental) | BØRNS</strong>
+    <p>Barry and Iris’s apartment scene.</p>
+  </li>
+
+  <li>
+    <strong>Roosevelt Station (alt ver. 1 and 2) | The Amazing Spider-Man OST</strong>
+    <p>Barry explaining his dilemma to Iris, blending both versions.</p>
+  </li>
+
+  <li>
+    <strong>Ceilings of Majesty | Avalon Zero</strong>
+    <p>Barry’s run into the Speed Force.</p>
+  </li>
+
+  <li>
+    <strong>Day Zero | Avalon Zero</strong>
+    <p>The “don’t forget the tomatoes” and “please work” sequences.</p>
+  </li>
+
+  <li>
+    <strong>Time to Pretend | MGMT</strong>
+    <p>B2 gaining his powers.</p>
+  </li>
+
+  <li>
+    <strong>The Call | Everest OST</strong>
+    <p>Zod’s arrival and the Metropolis attack flashback.</p>
+  </li>
+
+  <li>
+    <strong>Sabotage | Beastie Boys</strong>
+    <p>The Wayne Manor kitchen fight scene.</p>
+  </li>
+
+  <li>
+    <strong>Ocean | The Expanse OST</strong>
+    <p>Bruce and Barry’s moment in the cave.</p>
+  </li>
+
+  <li>
+    <strong>Faster Than Bullets | Flashpoint Paradox OST</strong>
+    <p>The restored deleted bullet sequence.</p>
+  </li>
+
+  <li>
+    <strong>Paranoid | Black Sabbath</strong>
+    <p>Batman versus the Russians.</p>
+  </li>
+
+  <li>
+    <strong>Flight | Man of Steel OST</strong>
+    <p>Supergirl versus the Russians.</p>
+  </li>
+
+  <li>
+    <strong>End of the World | Ivan Shpilevsky</strong>
+    <p>Supergirl helping B1 regain his powers.</p>
+  </li>
+
+  <li>
+    <strong>JL Animated Theme | DC Animated Universe</strong>
+    <p>B2 suiting up alongside Supergirl, B1, and Batman.</p>
+  </li>
+
+  <li>
+    <strong>Run Boy Run | Woodkid</strong>
+    <p>The Flash, Supergirl, and Batman versus the Kryptonians final battle.</p>
+  </li>
+
+  <li>
+    <strong>At the Speed of Force | Zack Snyder’s Justice League OST</strong>
+    <p>The B1, Dark Flash, and B2 confrontation.</p>
+  </li>
+
+  <li>
+    <strong>I'm Leaving | Slingshot OST</strong>
+    <p>Barry and Nora’s goodbye scene.</p>
+  </li>
+
+  <li>
+    <strong>Wake Up | Slingshot OST</strong>
+    <p>The second movement of the track, linking the court scene to the opening.</p>
+  </li>
+
+  <li>
+    <strong>Time (Epic Remix) | Pink Floyd</strong>
+    <p>The reworked end credits with a remix of a classic.</p>
+  </li>
+
 </ul>
       </div>
     </div>
@@ -2831,6 +2890,134 @@ document.addEventListener("click", function (event) {
   }
 });
 </script>
+
+
+<style>
+/* FINAL ROGUE ONE LOCKED DESKTOP GEOMETRY */
+@media (min-width: 901px) {
+  .ffs-page { padding-top: 25px; }
+
+  .ffs-desktop-composition {
+    display: grid;
+    grid-template-columns: 410px minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    column-gap: 32px;
+    row-gap: 21px;
+    align-items: stretch;
+  }
+
+  .ffs-left-column,
+  .ffs-right-column { display: contents; }
+
+  .ffs-poster-panel {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ffs-poster-click {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  .ffs-poster {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    object-fit: contain;
+    object-position: center top;
+  }
+
+  .ffs-title-panel {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    padding: 16px 23px 15px;
+    height: 190px;
+    min-height: 190px;
+    max-height: 190px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ffs-title-panel .ffs-title-row { margin-bottom: 4px; }
+
+  .ffs-title-tagline {
+    margin: 0;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text-soft);
+  }
+
+  .ffs-title-panel .ffs-meta-row {
+    margin-top: auto;
+    margin-bottom: 0;
+    transform: translateY(-6px);
+  }
+
+  .ffs-title-panel .ffs-meta-card {
+    min-height: 46px;
+    padding: 6px 8px;
+  }
+
+  .ffs-info-panel {
+    grid-column: 2;
+    grid-row: 2;
+    height: 390px;
+    min-height: 390px;
+    max-height: 390px;
+    margin: 0;
+    padding: 29px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ffs-palette-wrap {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    position: relative;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .ffs-palette {
+    position: relative;
+    z-index: 1;
+    height: 97px;
+  }
+
+  .ffs-right-column .ffs-title {
+    font-size: clamp(32px, 3.05vw, 44px);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .ffs-right-column .ffs-title-panel .ffs-meta-row {
+    grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
+  }
+
+  .ffs-info-panel .ffs-synopsis p { font-size: 26px; }
+  .ffs-synopsis { margin: 0; }
+
+  .ffs-info-panel .ffs-working-title {
+    margin: auto 0 0;
+    padding: 15px 17px;
+    flex: 0 0 auto;
+  }
+
+  .ffs-info-panel .ffs-working-title strong { font-size: 22px; }
+}
+</style>
+
 
 
 <style id="mobile-bottom-gap-border-fix">
@@ -2933,39 +3120,258 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
-<script type="module" src="../js/movie-ratings.js"></script>
 
-<style id="far-from-sol-final-mobile-parent-gap-fix">
+<script id="flash-crossroads-alt-poster-script">
+(() => {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const release = () => poster.classList.remove('ffs-alt-held');
+  poster.addEventListener('pointerdown', (event) => {
+    if (!desktop() || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    event.preventDefault();
+    poster.classList.add('ffs-alt-held');
+    try { poster.setPointerCapture(event.pointerId); } catch (_) {}
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture', 'pointerleave'].forEach(type => {
+    poster.addEventListener(type, release);
+  });
+  poster.addEventListener('click', event => { if (desktop()) event.preventDefault(); });
+  window.addEventListener('blur', release);
+  window.addEventListener('resize', () => { if (!desktop()) release(); });
+})();
+</script>
+<script type="module" src="../js/movie-ratings.js"></script>
+<style id="crossroads-final-mobile-parent-gap-fix">
 @media (max-width: 900px) {
-  html body .ffs-page .ffs-main-grid {
-    display: block !important;
-    gap: 0 !important;
-    row-gap: 0 !important;
-  }
-  html body .ffs-page .ffs-poster-panel {
-    margin: 0 0 16px !important;
-  }
-  html body .ffs-page .ffs-mobile-meta {
-    display: none !important;
-    visibility: hidden !important;
-  }
+  html body .ffs-page .ffs-mobile-meta { display: none !important; visibility: hidden !important; }
+  html body .ffs-page .ffs-main-grid { display: block !important; row-gap: 0 !important; gap: 0 !important; }
+  html body .ffs-page .ffs-poster-panel { margin: 0 0 16px !important; }
   html body .ffs-page .ffs-info-panel {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
     display: flex !important;
     flex-direction: column !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
   }
   html body .ffs-page .ffs-info-panel > .ffs-audience-rating {
     order: 1 !important;
     margin: 0 0 22px !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
   }
-  html body .ffs-page .ffs-info-panel > .ffs-section-label { order: 2 !important; }
+  html body .ffs-page .ffs-info-panel > .ffs-section-label { order: 2 !important; margin-top: 0 !important; }
   html body .ffs-page .ffs-info-panel > .ffs-synopsis { order: 3 !important; margin-bottom: 22px !important; }
-  html body .ffs-page .ffs-info-panel > .ffs-working-title-mobile { order: 4 !important; }
+  html body .ffs-page .ffs-info-panel > .ffs-working-title-mobile { order: 4 !important; display: flex !important; margin: 12px 0 8px !important; }
 }
 </style>
+<style id="crossroads-crisis-desktop-score-hud">
+@media (min-width: 901px) {
 
-<script id="far-from-sol-rating-count-wording-only">
+/* Score HUD only. Desktop panel and mobile floating layout are unchanged. */
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number {
+  position: relative;
+  width: 168px;
+  max-width: 100%;
+  min-height: 48px;
+  margin-top: 7px;
+  padding: 7px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background:
+    linear-gradient(#00aede,#00aede) left top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right top / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) left bottom / 2px 13px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 13px 2px no-repeat,
+    linear-gradient(#00aede,#00aede) right bottom / 2px 13px no-repeat;
+}
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong {
+  font-size: 0 !important;
+  line-height: 1 !important;
+}
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+  content: "—";
+  font: 800 34px/1 Oxanium, sans-serif;
+}
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {
+  display: inline !important;
+  visibility: visible !important;
+}
+
+}
+</style>
+<style id="crossroads-crisis-desktop-denominator">
+@media (min-width: 901px) {
+
+/* Increase /10 legibility on desktop and mobile; preserve all other styling. */
+.ffs-title-panel .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+}
+</style>
+<style id="crossroads-crisis-master-desktop-layout">
+@media (min-width: 901px) {
+  /* The existing desktop panel geometry is preserved. */
+  .ffs-title-panel .ffs-audience-rating {
+    height: 102px !important; min-height: 102px !important;
+    margin: 3px 0 0 !important; padding: 8px 17px !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    position: relative; width: 180px; height: 75px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-label {
+    position: absolute; left: calc(180px + 1px + 18px); top: -2px;
+    width: 420px; z-index: 2; pointer-events: none;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    width: 150px !important; height: 60px !important; min-height: 60px !important;
+    margin: 0 !important; padding: 2px 8px 17px !important;
+    flex: 0 0 150px; align-items: center;
+  }
+  .ffs-title-panel .ffs-rating-count {
+    position: absolute; bottom: 13px; left: 15px; width: 150px;
+    text-align: center; font-size: 10px; white-space: nowrap; line-height: 1;
+  }
+  .ffs-title-panel .ffs-rating-divider { height: 66px; }
+  .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 13px; }
+  .ffs-info-panel .ffs-meta-row {
+    display: grid; grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
+    gap: 8px; margin: 0 0 15px !important; transform: none !important;
+    flex: 0 0 auto;
+  }
+  .ffs-info-panel .ffs-meta-card { min-height: 46px; padding: 6px 8px; }
+  .ffs-info-panel .ffs-working-title-inline { display: block; margin: 0 0 6px !important; }
+  .ffs-info-panel .ffs-alt-poster-hint { display: block; margin: 0 0 22px !important; }
+  .ffs-info-panel .ffs-section-label { margin: 0 0 9px !important; }
+  .ffs-info-panel .ffs-synopsis { margin: 0 !important; }
+}
+</style>
+<style id="crossroads-crisis-final-rating-desktop-only">
+/* Match the finalized Batman master rating layout on desktop only. */
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-audience-rating {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    height: 102px !important;
+    min-height: 102px !important;
+    flex: 0 0 102px !important;
+    padding: 8px 17px !important;
+    margin: 3px 0 0 !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    width: 180px !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    /* Match the finalized Batman score column vertical alignment. */
+    transform: translateY(8px) !important;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    position: relative;
+    flex: 0 0 auto !important;
+    width: 150px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    margin: 0 !important;
+    padding: 2px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center;
+    gap: 6px;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
+    position: static !important;
+    display: block;
+    flex: 0 0 auto;
+    width: 150px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 10px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+  .ffs-title-panel .ffs-rating-divider { height: 66px !important; }
+  .ffs-title-panel .ffs-rating-input { gap: 5px; padding-top: 0 !important; }
+  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {
+    position: static !important;
+    display: block;
+    width: 100% !important;
+    text-align: left !important;
+    font-size: 12px;
+    letter-spacing: .13em;
+    pointer-events: none;
+  }
+}
+  
+</style>
+<style id="crossroads-approved-desktop-geometry">
+@media (min-width: 901px) {
+  .ffs-title-panel { height:190px !important; min-height:190px !important; max-height:190px !important; padding:16px 23px 15px !important; display:flex !important; flex-direction:column !important; }
+  .ffs-title-panel .ffs-title-row { margin-bottom:4px !important; }
+  .ffs-info-panel { height:390px !important; min-height:390px !important; max-height:390px !important; padding:29px 32px !important; display:flex !important; flex-direction:column !important; }
+  .ffs-info-panel .ffs-meta-row { grid-template-columns:.9fr .92fr 1.35fr 1fr .9fr !important; }
+  .ffs-info-panel .ffs-meta-card { min-height:46px !important; padding:6px 8px !important; }
+  .ffs-info-panel .ffs-alt-poster-hint { display:block !important; width:100%; text-align:left; margin:0 0 22px !important; font:700 11px Oxanium,Rajdhani,sans-serif; letter-spacing:.13em; text-transform:uppercase; color:rgba(186,199,213,.72); }
+  .ffs-info-panel .ffs-section-label { margin-top:0 !important; }
+}
+</style>
+<style id="crossroads-working-title-clipping-fix">
+@media (min-width: 901px) {
+  .ffs-info-panel .ffs-working-title-inline {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 20px !important;
+    line-height: 20px !important;
+    overflow: visible !important;
+    white-space: nowrap;
+    margin: 0 0 6px !important;
+  }
+  .ffs-info-panel .ffs-alt-poster-hint {
+    flex: 0 0 auto !important;
+  }
+}
+</style>
+<!-- Replaced by the Crossroads cinematic structural placement below -->
+<script id="crossroads-crisis-rating-responsive-nodes">
+(() => {
+  const rating = document.getElementById('ffs-audience-rating');
+  const summary = rating?.querySelector('.ffs-rating-summary');
+  const number = rating?.querySelector('.ffs-rating-number');
+  const count = rating?.querySelector('.ffs-rating-count');
+  const label = rating?.querySelector('.ffs-rating-label');
+  const input = rating?.querySelector('.ffs-rating-input');
+  const stars = input?.querySelector('.ffs-rating-stars');
+  if (!rating || !summary || !number || !count || !label || !input || !stars) return;
+  const mobile = window.matchMedia('(max-width: 900px)');
+  function arrange() {
+    if (mobile.matches) {
+      summary.insertBefore(label, number);
+      number.after(count);
+    } else {
+      number.after(count);
+      input.insertBefore(label, stars);
+    }
+  }
+  arrange();
+  if (mobile.addEventListener) mobile.addEventListener('change', arrange);
+  else mobile.addListener(arrange);
+})();
+</script>
+<script id="crossroads-rating-count-wording-only">
 (() => {
   const count = document.getElementById('ffs-rating-count');
   if (!count) return;
@@ -2982,46 +3388,15 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 
-<style id="far-from-sol-mobile-header-rating-only">
-@media (max-width: 900px) {
-  .ffs-mobile-project-header { display: none !important; }
-  .ffs-project-block > .ffs-audience-rating {
-    display: grid !important;
-    margin: 0 0 16px !important;
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-  }
-}
-</style>
-<script id="far-from-sol-mobile-rating-above-poster-only">
-(() => {
-  const mobile = window.matchMedia('(max-width: 900px)');
-  const moveOnMobile = () => {
-    if (!mobile.matches) return;
-    const rating = document.getElementById('ffs-audience-rating');
-    const grid = document.querySelector('.ffs-project-block > .ffs-main-grid');
-    if (rating && grid && grid.parentNode) grid.parentNode.insertBefore(rating, grid);
-  };
-  // Existing responsive script retains sole control of desktop placement.
-  document.addEventListener('DOMContentLoaded', () => {
-    moveOnMobile();
-    if (mobile.addEventListener) mobile.addEventListener('change', moveOnMobile);
-    else mobile.addListener(moveOnMobile);
-  });
-})();
-</script>
-
-<style id="ffs-far-from-sol-overtime-v22-parity">
-/* Reference: lss-crisis-cinematic-v1 */
-
+<!-- LSS Crossroads adaptation of the approved Flash V4 cinematic layout -->
+<style id="lss-crossroads-cinematic-v1">
 @media (min-width:901px) {
   body { background:#040E15 !important; }
-  
+  .crossroads-wide-banner { display:none !important; }
   main.page-content { position:relative !important; width:100% !important; max-width:none !important; background:transparent !important; padding-top:0 !important; overflow:visible !important; }
   .ffs-page { position:relative !important; isolation:isolate; width:100% !important; max-width:none !important; padding:34px 24px 62px !important; background:transparent !important; overflow:visible !important; }
   .ffs-page::before { content:""; position:absolute; z-index:-1; pointer-events:none; top:0; left:0; right:0; height:900px;
-    background-image:linear-gradient(to bottom,rgba(4,14,21,.24) 0%,rgba(4,14,21,.32) 30%,rgba(4,14,21,.54) 56%,rgba(4,14,21,.86) 79%,#040E15 100%),linear-gradient(to right,rgba(4,14,21,.9) 0%,rgba(4,14,21,.79) 32%,rgba(4,14,21,.36) 65%,rgba(4,14,21,.1) 100%),url("https://light-speed-studios.b-cdn.net/FFSBANNER.webp");
+    background-image:linear-gradient(to bottom,rgba(4,14,21,.24) 0%,rgba(4,14,21,.32) 30%,rgba(4,14,21,.54) 56%,rgba(4,14,21,.86) 79%,#040E15 100%),linear-gradient(to right,rgba(4,14,21,.9) 0%,rgba(4,14,21,.79) 32%,rgba(4,14,21,.36) 65%,rgba(4,14,21,.1) 100%),url("https://light-speed-studios.b-cdn.net/CROSSROADSBANNER.webp");
     background-size:cover,cover,cover; background-position:center,center,center 45%; background-repeat:no-repeat; }
   .ffs-shell { width:min(1400px,100%) !important; max-width:1400px !important; position:relative; z-index:1; }
   .ffs-project-block { background:transparent !important; box-shadow:none !important; border:0 !important; }
@@ -3037,14 +3412,14 @@ document.addEventListener("click", function (event) {
   .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full { display:block !important; width:100% !important; height:auto !important; max-height:none !important; object-fit:contain !important; box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important; }
   .ffs-poster-panel .ffs-poster-click > img.ffs-poster-crop { display:none !important; }
   /* Preserve the original transparent alternate overlay during press and hold. */
-  .ffs-poster-panel .ffs-poster-click > img.ffs-poster-alt {
+  .ffs-poster-panel .ffs-poster-click > img.ffs-poster-alternate {
     display:block !important; position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; object-fit:contain !important; object-position:center top !important; opacity:0 !important; pointer-events:none !important; box-shadow:none !important;
   }
-  .ffs-poster-panel .ffs-poster-click.is-pressing-alt > img.ffs-poster-alt { opacity:1 !important; }
+  .ffs-poster-panel .ffs-poster-click.ffs-alt-held > img.ffs-poster-alternate { opacity:1 !important; }
   .ffs-poster-expand { display:none !important; }
   .ffs-desktop-composition .ffs-title-panel,.ffs-desktop-composition .ffs-info-panel { display:contents !important; }
   .ffs-title-panel::before,.ffs-title-panel::after,.ffs-info-panel::before,.ffs-info-panel::after { content:none !important; }
-  .ffs-right-column > .ffs-audience-rating { order:1 !important; display:grid !important; width:min(760px,100%) !important; grid-template-columns:minmax(0,170px) 1px minmax(0,1fr) !important; min-height:108px !important; height:auto !important; flex:none !important; gap:18px !important; padding:8px 0 !important; margin:0 !important; background:rgba(4,14,21,.10) !important; box-shadow:none !important; border:0 !important; }
+  .ffs-right-column > .ffs-audience-rating { order:1 !important; display:grid !important;  width: 100% !important; grid-template-columns:minmax(0,170px) 1px minmax(0,1fr) !important; min-height:108px !important; height:auto !important; flex:none !important; gap:18px !important; padding:8px 0 !important; margin:0 !important; background:rgba(4,14,21,.10) !important; box-shadow:none !important; border:0 !important; }
   .ffs-right-column > .ffs-audience-rating .ffs-rating-summary { width:160px !important; display:flex !important; align-items:center !important; flex-direction:column !important; justify-content:center !important; gap:3px !important; transform:none !important; }
   .ffs-right-column > .ffs-audience-rating .ffs-rating-label { display:block !important; font-size:15px !important; letter-spacing:.10em !important; }
   .ffs-right-column > .ffs-audience-rating .ffs-rating-number { width:auto !important; }
@@ -3070,7 +3445,7 @@ document.addEventListener("click", function (event) {
 
   .ffs-right-column > .ffs-working-title-inline { order:4; display:block !important; margin:0 0 7px !important; font-size:16px !important; letter-spacing:.10em !important; white-space:normal !important; }
   .ffs-right-column > .ffs-working-title-inline span { font-size:16px !important; }
-  .ffs-right-column > .ffs-poster-hold-hint { order:5; display:block !important; margin:0 0 15px !important; font:700 14px Oxanium,Rajdhani,sans-serif !important; letter-spacing:.10em; text-transform:uppercase; color:#b6c4ce; }
+  .ffs-right-column > .ffs-alt-poster-hint { order:5; display:block !important; margin:0 0 15px !important; font:700 14px Oxanium,Rajdhani,sans-serif !important; letter-spacing:.10em; text-transform:uppercase; color:#b6c4ce; }
   .ffs-right-column > .ffs-section-label { order:6 !important; }
   .ffs-right-column > .ffs-synopsis { order:7 !important; }
   .ffs-right-column > .ffs-audience-rating .ffs-rating-input > .ffs-rating-label { display:block !important; }
@@ -3101,7 +3476,6 @@ document.addEventListener("click", function (event) {
 }
 @media (max-width:900px) { .ffs-desktop-cinematic-nav,.ffs-hero-palette { display:none !important; } }
 
-/* Reference: crisis-cinematic-structural-correction */
 
 @media (min-width:901px) {
   .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
@@ -3134,7 +3508,7 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-poster-panel .ffs-poster-click > .ffs-poster-crop { display:none !important; }
   .ffs-page .ffs-poster-panel .ffs-poster-click > .ffs-poster-full { display:block !important; width:100% !important; height:auto !important; object-fit:contain !important; box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important; }
   .ffs-page .ffs-right-column > .ffs-audience-rating {
-    display:grid !important; order:1 !important; width:min(760px,100%) !important;
+    display:grid !important; order:1 !important; width:100% !important;
     height:auto !important; min-height:108px !important; margin:0 !important;
     padding:8px 0 !important; background:rgba(4,14,21,.10) !important;
     box-shadow:none !important; border:0 !important;
@@ -3142,7 +3516,7 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-right-column > .ffs-hero-palette { order:2 !important; }
   .ffs-page .ffs-right-column > .ffs-meta-row { order:3 !important; }
   .ffs-page .ffs-right-column > .ffs-working-title-inline { order:4 !important; }
-  .ffs-page .ffs-right-column > .ffs-poster-hold-hint { order:5 !important; }
+  .ffs-page .ffs-right-column > .ffs-alt-poster-hint { order:5 !important; }
   .ffs-page .ffs-right-column > .ffs-section-label { order:6 !important; }
   .ffs-page .ffs-right-column > .ffs-synopsis { order:7 !important; }
   .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-number { background:none !important; width:auto !important; height:auto !important; min-height:0 !important; }
@@ -3156,9 +3530,71 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-desktop-composition { grid-template-columns:260px minmax(0,1fr) !important; column-gap:26px !important; }
 }
 
-/* Reference: crisis-overtime-v22-final-parity */
 
-/* Styling source: flash-master-sot-overtime-v9-unified-parity */
+@media (min-width:901px) {
+ .ffs-page .ffs-poster-panel .ffs-poster-click { position:relative !important; display:block !important; cursor:pointer !important; }
+ .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-alternate {
+   position:absolute !important; inset:0 !important; width:100% !important; height:100% !important;
+   object-fit:contain !important; opacity:0 !important; pointer-events:none !important; display:block !important;
+ }
+ .ffs-page .ffs-poster-panel .ffs-poster-click.ffs-alt-held > img.ffs-poster-alternate {opacity:1 !important;}
+ .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-crop {display:none !important;}
+ .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full {display:block !important;}
+ .ffs-page .ffs-right-column > .ffs-working-title-inline {text-overflow:clip !important; overflow:visible !important;}
+ .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {margin-bottom:22px !important;}
+}
+</style>
+<script id="lss-crossroads-cinematic-desktop-placement">
+(() => {
+  const project = document.querySelector('.ffs-project-block');
+  const grid = project?.querySelector('.ffs-desktop-composition');
+  const right = grid?.querySelector('.ffs-right-column');
+  const titlePanel = grid?.querySelector('.ffs-title-panel');
+  const info = grid?.querySelector('.ffs-info-panel');
+  if (!project || !grid || !right || !titlePanel || !info) return;
+  const title = grid.querySelector('.ffs-title-row');
+  const rating = document.getElementById('ffs-audience-rating');
+  const meta = grid.querySelector('.ffs-meta-row.ffs-desktop-meta');
+  const working = grid.querySelector('.ffs-working-title-inline');
+  const hint = grid.querySelector('.ffs-alt-poster-hint');
+  const heading = info.querySelector('.ffs-section-label');
+  const synopsis = info.querySelector('.ffs-synopsis');
+  if (![title,rating,meta,working,heading,synopsis].every(Boolean)) return;
+  const mq = window.matchMedia('(min-width:901px)');
+  const palette = document.createElement('div');
+  palette.className = 'ffs-hero-palette';
+  const img = document.createElement('img');
+  img.src = 'https://light-speed-studios.b-cdn.net/Flash%20Pallete.png';
+  img.alt = "The Flash: Crossroads color palette";
+  img.loading = 'lazy';
+  palette.append(img);
+  function arrange() {
+    if (mq.matches) {
+      title.classList.add('ffs-hero-title-row');
+      grid.before(title);
+      right.append(rating,palette,meta,working);
+      if (hint) right.append(hint);
+      right.append(heading,synopsis);
+      project.classList.add('crossroads-cinematic-ready');
+    } else {
+      project.classList.remove('crossroads-cinematic-ready');
+      title.classList.remove('ffs-hero-title-row');
+      titlePanel.prepend(title);
+      palette.remove();
+      title.after(working);
+      if (hint) working.after(hint);
+      (hint || working).after(meta);
+      info.prepend(heading,synopsis);
+      grid.before(rating);
+    }
+  }
+  arrange();
+  if (mq.addEventListener) mq.addEventListener('change',arrange);
+  else mq.addListener(arrange);
+})();
+</script>
+<style id="crossroads-overtime-v22-final-parity">
+/* Master: flash-master-sot-overtime-v9-unified-parity */
 /* SOT — desktop parity with the approved Flash Overtime V9 layout. */
 @media (min-width:901px) {
  .ffs-page .ffs-project-block > .ffs-hero-title-row .ffs-title { color:#F4F8F9 !important; }
@@ -3257,7 +3693,7 @@ document.addEventListener("click", function (event) {
  .lss-poster-disclaimer {display:none !important;}
  .lss-unified-details {display:contents !important;}
 }
-/* Styling source: flash-v13-compact-rating-spacing */
+/* Master: flash-v13-compact-rating-spacing */
 
 /* Desktop only: bring the rating divider and stars closer to the score. */
 @media (min-width: 1131px) {
@@ -3274,7 +3710,7 @@ document.addEventListener("click", function (event) {
 }
 /* CTA cards retain their shared upward hover movement, without accent lines. */
 
-/* Styling source: flash-v21-horizontal-project-navigation */
+/* Master: flash-v21-horizontal-project-navigation */
 
 /* Three original circular icons now sit inside the lower-right of the details panel. */
 @media (min-width:901px) {
@@ -3319,7 +3755,7 @@ document.addEventListener("click", function (event) {
 }
 @media (max-width:900px) { .lss-vertical-project-nav {display:none !important;} }
 
-/* Styling source: flash-v18-remove-cta-brackets */
+/* Master: flash-v18-remove-cta-brackets */
 
 /* Remove the decorative cyan corner brackets from the CTA group only. */
 .ffs-page .ffs-cta-trailer-row > .ffs-links-panel::before {
@@ -3327,7 +3763,7 @@ document.addEventListener("click", function (event) {
   display: none !important;
 }
 
-/* Styling source: flash-v19-remove-editors-note-brackets */
+/* Master: flash-v19-remove-editors-note-brackets */
 
 /* Remove only the decorative cyan corner brackets around Editor's Note. */
 .ffs-page .ffs-palette-module::before {
@@ -3335,7 +3771,7 @@ document.addEventListener("click", function (event) {
   display: none !important;
 }
 
-/* Far From Sol: preserve film-specific elements while adopting Overtime V22 geometry. */
+/* Crossroads: preserve film-specific elements while adopting Overtime V22 geometry. */
 @media (min-width:901px) {
   .ffs-page .ffs-desktop-composition {min-height:0 !important; align-items:start !important;}
   .ffs-page .ffs-desktop-composition > .ffs-right-column {height:auto !important;padding:0 !important;min-width:0 !important;}
@@ -3380,17 +3816,17 @@ document.addEventListener("click", function (event) {
   .ffs-page .lss-unified-details > .ffs-section-label {order:4 !important; margin:0 0 9px !important;}
   .ffs-page .lss-unified-details > .ffs-synopsis {order:5 !important;padding:0 !important;margin:0 !important;background:transparent !important;box-shadow:none !important;border:0 !important;}
   .ffs-page .lss-unified-details > .ffs-synopsis p {font:500 clamp(19px,1.52vw,23px)/1.65 Rajdhani,Arial,sans-serif !important;color:#F4F8F9 !important;text-align:justify !important;}
-  .ffs-page .lss-unified-details > .ffs-details-footer {
+  .ffs-page .lss-unified-details > .crossroads-details-footer {
     order:6 !important;display:flex !important;flex-direction:row !important;align-items:center !important;
     justify-content:flex-end !important;gap:12px !important;width:100% !important;
     min-height:52px !important;margin:18px 0 0 !important;padding:0 !important;
   }
-  .ffs-page .lss-unified-details > .ffs-details-footer > .lss-vertical-project-nav {
+  .ffs-page .lss-unified-details > .crossroads-details-footer > .lss-vertical-project-nav {
     position:static !important; display:flex !important;flex-direction:row !important;
     align-items:center !important;justify-content:flex-end !important;
     gap:20px !important; width:auto !important;margin:0 !important;padding:0 !important;z-index:12;
   }
-  .ffs-page .ffs-left-column > .ffs-poster-hold-hint {
+  .ffs-page .ffs-left-column > .ffs-alt-poster-hint {
     display:block !important; margin:13px 0 0 !important;
     font:700 12px/1.5 Oxanium,Rajdhani,sans-serif !important; letter-spacing:.09em !important;
     text-transform:uppercase !important; color:#b7c8d4 !important;text-align:center !important;
@@ -3413,187 +3849,76 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-right-column > .lss-unified-details {padding:14px 16px 20px !important;}
 }
 @media (max-width:900px) {
-  .lss-unified-details,.ffs-details-footer {display:contents !important;}
+  .lss-unified-details,.crossroads-details-footer {display:contents !important;}
   .lss-vertical-project-nav {display:none !important;}
 }
 /* Remove CTA bottom line while preserving background/glow and -3px hover lift. */
 .ffs-page .ffs-cta-trailer-row .ffs-cta-tile::after {content:none !important;display:none !important;}
 
-
-/* Far From Sol-specific legacy rating frame: remove its cyan corner highlights so it
-   matches the unframed score in Overtime V22 and Crossroads V2. */
-@media (min-width:901px) {
- .ffs-page .lss-unified-details .ffs-rating-number {
-   width:auto !important; height:auto !important; min-height:0 !important;
-   margin:3px 0 0 !important; padding:0 !important;
-   background:none !important; justify-content:flex-start !important;
-   align-items:baseline !important; text-align:left !important;
- }
- .ffs-page .lss-unified-details .ffs-rating-summary {height:auto !important;}
- .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) strong::before {content:none !important;display:none !important;}
- .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {display:none !important;}
- .ffs-page .lss-unified-details .ffs-rating-number #ffs-rating-denominator[hidden] {display:none !important;}
-}
-.ffs-page .ffs-rating-number > [hidden] {display:none !important;}
-
-/* Far From Sol: override the legacy 565px layout minimum; size to the poster/content. */
-@media (min-width:901px) {
- .ffs-page .ffs-desktop-composition { min-height:0 !important; }
- .ffs-page .lss-unified-details > .ffs-poster-hold-hint {display:none !important;}
- .ffs-page .lss-unified-details > .ffs-details-footer {margin-top:auto !important;padding-top:18px !important;}
- .ffs-page .lss-unified-details > .ffs-details-footer > .lss-vertical-project-nav {display:flex !important;}
-}
-
-
-/* Far From Sol page-specific parity and safeguards. */
-@media (min-width:901px) {
-  .ffs-page .ffs-desktop-composition {min-height:0 !important;align-items:start !important;}
-  .ffs-page .lss-unified-details > .ffs-poster-hold-hint {display:none !important;}
-  .ffs-page .lss-unified-details > .ffs-details-footer { margin-top:auto !important;padding-top:18px !important; }
-  .ffs-page .lss-unified-details > .ffs-details-footer .lss-vertical-project-nav {display:flex !important;}
-  .ffs-page .lss-unified-details .ffs-rating-number {
-    width:auto !important;height:auto !important;min-height:0 !important;
-    margin:3px 0 0 !important;padding:0 !important;background:none !important;
-    justify-content:flex-start !important;align-items:baseline !important;text-align:left !important;
-  }
-  .ffs-page .lss-unified-details .ffs-rating-summary {height:auto !important;transform:none !important;}
-  .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) strong::before {content:none !important;display:none !important;}
-  .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {display:none !important;}
-  .ffs-page .lss-unified-details .ffs-rating-number #ffs-rating-denominator[hidden] {display:none !important;}
-  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {object-fit:fill !important;}
-}
-.ffs-page .ffs-rating-number > [hidden] {display:none !important;}
-@media (max-width:900px) {
-  .ffs-page .ffs-desktop-cinematic-nav {display:none !important;}
-}
-
-
-/* V3: no standalone film-title band above the poster/details composition. */
-@media (min-width:901px) {
-  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row,
-  .ffs-page .ffs-right-column .ffs-title-panel .ffs-title-row {
-    display:none !important; height:0 !important; min-height:0 !important;
-    margin:0 !important; padding:0 !important;
-  }
-  /* The original 260px breakpoint caused a 390px-tall poster and an oversized details box. */
-  .ffs-page .ffs-desktop-composition {
-    grid-template-columns:315px minmax(0,1fr) !important;
-    gap:42px !important;
-    min-height:0 !important;
-  }
-  .ffs-page .ffs-right-column > .lss-unified-details {
-    min-height:0 !important;
-    overflow:visible !important;
-    padding:14px 22px 18px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-audience-rating {
-    min-height:91px !important;
-    height:91px !important;
-    margin-bottom:8px !important;
-    padding:4px 0 8px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
-    margin-bottom:10px !important;
-    padding:9px 0 !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
-    min-height:48px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-working-title-inline {
-    margin-bottom:9px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-section-label {
-    margin-bottom:6px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-details-footer {
-    margin-top:auto !important; padding-top:10px !important;
-    min-height:52px !important;
-  }
-}
-@media (min-width:901px) and (max-width:1130px) {
-  .ffs-page .ffs-desktop-composition {gap:28px !important;}
-  .ffs-page .ffs-right-column > .lss-unified-details {padding:12px 16px 16px !important;}
-  .ffs-page .lss-unified-details .ffs-meta-label {font-size:10px !important;}
-  .ffs-page .lss-unified-details .ffs-meta-value {font-size:12px !important;}
-}
-
 </style>
-<script id="ffs-far-from-sol-v22-responsive-layout">
+<script id="crossroads-overtime-v22-unified-layout">
 (() => {
- const block=document.querySelector('.ffs-project-block');
- const grid=block?.querySelector('.ffs-desktop-composition');
- const left=grid?.querySelector('.ffs-left-column');
- const right=grid?.querySelector('.ffs-right-column');
- const titlePanel=right?.querySelector('.ffs-title-panel');
- const infoPanel=right?.querySelector('.ffs-info-panel');
- const poster=left?.querySelector('.ffs-poster-panel');
- const title=titlePanel?.querySelector('.ffs-title-row');
- const rating=document.getElementById('ffs-audience-rating');
- const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
- const working=titlePanel?.querySelector('.ffs-working-title-inline');
- const hint=titlePanel?.querySelector('.ffs-poster-hold-hint');
- const heading=infoPanel?.querySelector('.ffs-section-label');
- const synopsis=infoPanel?.querySelector('.ffs-synopsis');
- if (![block,grid,left,right,titlePanel,infoPanel,poster,title,rating,metadata,working,heading,synopsis].every(Boolean))return;
- const palette=document.createElement('div');
- palette.className='ffs-hero-palette lss-floating-palette';
- const paletteImg=document.createElement('img');
- paletteImg.src='https://light-speed-studios.b-cdn.net/movie%20pallete.png';
- paletteImg.alt='Far From Sol color palette';
- paletteImg.loading='lazy';
- palette.append(paletteImg);
- const unified=document.createElement('div');
- unified.className='lss-unified-details';
- const footer=document.createElement('div');
- footer.className='ffs-details-footer';
- const nav=document.createElement('nav');
- nav.className='lss-vertical-project-nav';
- nav.setAttribute('aria-label','Movie navigation');
- nav.innerHTML=`
- <a href="crisis.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
- <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
- <a href="glass-rooms.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
- footer.append(nav);
- const mq=window.matchMedia('(min-width:901px)');
- function syncPanelHeight(){
-   if(!mq.matches)return;
-   const rect=poster.querySelector('.ffs-poster-full')?.getBoundingClientRect();
-   if(rect && rect.height > 0)unified.style.height=`${rect.height}px`;
- }
- const posterImage=poster.querySelector('.ffs-poster-full');
- if(posterImage){
-   posterImage.addEventListener('load',syncPanelHeight);
-   if(typeof ResizeObserver !== 'undefined')new ResizeObserver(syncPanelHeight).observe(posterImage);
- }
- window.addEventListener('resize',syncPanelHeight,{passive:true});
- function arrange(){
-   if(mq.matches){
-     title.classList.remove('ffs-hero-title-row');
-     titlePanel.prepend(title);
-     right.append(unified);
-     unified.append(rating,metadata,working,heading,synopsis,footer);
-     if(hint)poster.after(hint);
-     grid.after(palette);
-     block.classList.add('ffs-cinematic-ready');
-     syncPanelHeight();
-   } else {
-     unified.style.height='';
-     block.classList.remove('ffs-cinematic-ready');
-     title.classList.remove('ffs-hero-title-row');
-     titlePanel.prepend(title);
-     title.after(working);
-     if(hint) working.after(hint);
-     (hint||working).after(metadata);
-     infoPanel.prepend(heading,synopsis);
-     grid.before(rating);
-     unified.remove();
-     palette.remove();
-   }
- }
- arrange();
- if(mq.addEventListener) mq.addEventListener('change',arrange);
- else mq.addListener(arrange);
+  const block=document.querySelector('.ffs-project-block');
+  const grid=block?.querySelector('.ffs-desktop-composition');
+  const left=grid?.querySelector('.ffs-left-column');
+  const right=grid?.querySelector('.ffs-right-column');
+  const titlePanel=right?.querySelector('.ffs-title-panel');
+  const infoPanel=right?.querySelector('.ffs-info-panel');
+  const poster=left?.querySelector('.ffs-poster-panel');
+  const rating=document.getElementById('ffs-audience-rating');
+  const metadata=grid?.querySelector('.ffs-meta-row.ffs-desktop-meta');
+  const working=grid?.querySelector('.ffs-working-title-inline');
+  const hint=grid?.querySelector('.ffs-alt-poster-hint');
+  const heading=grid?.querySelector('.ffs-section-label');
+  const synopsis=grid?.querySelector('.ffs-synopsis');
+  const palette=block?.querySelector('.ffs-hero-palette');
+  if (![block,grid,left,right,titlePanel,infoPanel,poster,rating,metadata,working,heading,synopsis,palette].every(Boolean)) return;
+  const unified=document.createElement('div');
+  unified.className='lss-unified-details';
+  const footer=document.createElement('div');
+  footer.className='crossroads-details-footer';
+  const nav=document.createElement('nav');
+  nav.className='lss-vertical-project-nav';
+  nav.setAttribute('aria-label','Movie navigation');
+  nav.innerHTML=`
+    <a href="batman.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
+    <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
+    <a href="crisis.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
+  footer.append(nav);
+  const mq=window.matchMedia('(min-width:901px)');
+  function arrange(){
+    if(mq.matches){
+      right.append(unified);
+      unified.append(rating,metadata,working,heading,synopsis,footer);
+      if(hint) poster.after(hint);
+      grid.after(palette);
+      palette.classList.add('lss-floating-palette');
+    }else{
+      // The Crossroads placement script runs before this one and restores the original mobile order.
+      unified.remove();
+      palette.classList.remove('lss-floating-palette');
+    }
+  }
+  arrange();
+  if(mq.addEventListener) mq.addEventListener('change',arrange);
+  else mq.addListener(arrange);
 })();
 </script>
+<style id="crossroads-overtime-panel-height-alignment">
+/* Desktop: match the actual Overtime details box (492px at 1536px viewport),
+   while the separate composition baseline keeps the palette aligned. */
+@media (min-width:901px) {
+  .ffs-page .ffs-desktop-composition { min-height:565px !important; }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column { min-height:0 !important; }
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    min-height:492px !important;
+    height:auto !important;
+  }
+  .ffs-page .lss-unified-details > .crossroads-details-footer {
+    margin-top:auto !important;
+    padding-top:18px !important;
+  }
+}
+</style>
 </body>
 </html>
