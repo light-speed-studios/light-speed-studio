@@ -6417,8 +6417,3 @@ body .lss-image-block.orbit-image-frame::before {
     visibility: hidden !important;
   }
 }
-@media (min-width: 901px) {
-  #lss-page-splash {
-    display: none !important;
-  }
-}
