@@ -3081,6 +3081,8 @@ document.addEventListener("click", function (event) {
     display:block !important; position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; object-fit:contain !important; object-position:center top !important; opacity:0 !important; pointer-events:none !important; box-shadow:none !important;
   }
   .ffs-poster-panel .ffs-poster-click.is-pressing-alt > img.ffs-poster-alt { opacity:1 !important; }
+  /* The original press-and-hold uses :active; override the opacity:0!important above. */
+  .ffs-poster-panel .ffs-poster-click:active > img.ffs-poster-alt { opacity:1 !important; }
   .ffs-poster-expand { display:none !important; }
   .ffs-desktop-composition .ffs-title-panel,.ffs-desktop-composition .ffs-info-panel { display:contents !important; }
   .ffs-title-panel::before,.ffs-title-panel::after,.ffs-info-panel::before,.ffs-info-panel::after { content:none !important; }
