@@ -386,6 +386,32 @@
 }
 </style>
 
+
+<style id="crisis-keep-batman-uniform-info-box-height">
+/* Keep both movie detail boxes the same size even if their synopses wrap
+   onto different numbers of lines. The hidden Batman reference uses the
+   exact same paragraph CSS and available width as the visible synopsis.
+   It contributes only the necessary height. */
+.ffs-page .ffs-synopsis > .lss-batman-synopsis-size-reference {
+  display:none !important;
+}
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-synopsis > p {
+    grid-area:1 / 1 !important;
+    align-self:start !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-synopsis > .lss-batman-synopsis-size-reference {
+    display:block !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    user-select:none !important;
+  }
+}
+</style>
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Crisis: Red Skies splash screen">
@@ -2288,6 +2314,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
       <p class="ffs-section-label">Synopsis</p>
       <div class="ffs-synopsis">
         <p>A crossover restructured into a tight uninterrupted story. Less exposition. Less melodrama. The focus stays on the threat, letting the story play out without distracting subplots.</p>
+        <!-- Invisible on desktop: this keeps the synopsis region as tall as Batman's
+             master panel, regardless of differences in paragraph length or wrapping. -->
+        <p class="lss-batman-synopsis-size-reference" aria-hidden="true">A leaner cut of Gotham’s darkest times. A detective unraveling. Each act turns with a riddle. No vengeance. No floods. The final act tightens into something quieter, letting silence settle where chaos lived.</p>
       </div>
 
       <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="crisis-red-skies" aria-label="Audience rating for Crisis: Red Skies">
