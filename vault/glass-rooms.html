@@ -3579,8 +3579,9 @@ document.addEventListener("click", function (event) {
  const mq=window.matchMedia('(min-width:901px)');
  function arrange(){
   if(mq.matches){
-   // Do not reinsert the obsolete title banner above the movie layout.
-   title.remove();
+   // One visible film title, outside and above the poster/details grid.
+   title.classList.add('ffs-hero-title-row');
+   block.insertBefore(title,grid);
    right.append(unified);
    working.remove();
    unified.append(rating,metadata,heading,synopsis,footer);
@@ -3660,16 +3661,19 @@ document.addEventListener("click", function (event) {
 }
 </style>
 
-<style id="lss-v4-remove-film-header-and-working-title">
-/* V4: deliberately remove the standalone film name and working-title rows, not the site's navigation bar. */
-.ffs-page .ffs-title-row.ffs-hero-title-row,
-.ffs-page .ffs-title-panel .ffs-title-row,
-.ffs-page .ffs-working-title-inline,
-.ffs-page .ffs-working-title-mobile,
-.ffs-page .lss-unified-details > .ffs-working-title-inline {
-  display:none !important; visibility:hidden !important;
-  margin:0 !important; padding:0 !important; height:0 !important;
-  min-height:0 !important; max-height:0 !important;
+<style id="glass-rooms-final-single-desktop-title">
+/* One film title above the grid. No empty legacy heading strip. */
+@media (min-width:901px) {
+  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
+    display:block !important; visibility:visible !important;
+    height:auto !important; min-height:0 !important; max-height:none !important;
+    margin:0 0 22px !important; padding:0 !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row .ffs-title {
+    display:block !important; visibility:visible !important;
+  }
+  .ffs-page .ffs-working-title-inline {display:none !important;}
+  .ffs-page .ffs-right-column > .ffs-title-panel {height:0 !important; min-height:0 !important; margin:0 !important; padding:0 !important;}
 }
 </style>
 </body>
