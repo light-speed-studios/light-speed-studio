@@ -472,6 +472,8 @@
   }
 }
 </style>
+
+
 </head>
 <body>
 <div id="lss-page-splash" data-duration="3000" aria-label="Glass Rooms splash screen">
@@ -3675,6 +3677,87 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-working-title-inline {display:none !important;}
   .ffs-page .ffs-right-column > .ffs-title-panel {height:0 !important; min-height:0 !important; margin:0 !important; padding:0 !important;}
 }
+</style>
+<style id="glass-rooms-flash-crossroads-desktop-match">
+/* Glass Rooms: match the Flash Crossroads desktop layout. */
+@media (min-width:901px) {
+  .ffs-page .ffs-desktop-composition {min-height:0 !important; align-items:start !important;}
+  .ffs-page .ffs-desktop-composition > .ffs-right-column {height:auto !important;padding:0 !important;min-width:0 !important;}
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    box-sizing:border-box !important;
+    display:flex !important;
+    flex-direction:column !important;
+    width:100% !important;
+    min-height:0 !important;
+    padding:18px 22px 24px !important;
+    background:rgba(4,14,21,.50) !important;
+    box-shadow:0 16px 45px rgba(0,0,0,.75) !important;
+    border:0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    height:auto !important;
+    grid-template-columns:minmax(0,130px) 1px minmax(0,1fr) !important;
+    column-gap:14px !important;
+    min-height:108px !important;
+    margin:0 0 12px !important;
+    padding:6px 0 14px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-summary {
+    width:auto !important; max-width:100% !important; align-items:flex-start !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-label {font-size:12px !important;letter-spacing:.13em !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong:not(.is-unrated) {font-size:39px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong.is-unrated {font-size:15px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-count {font-size:11px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input {justify-content:center !important;gap:8px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input::before {content:"AUDIENCE RATING" !important;display:block !important;color:#00AEDE !important;font:800 12px/1.25 Oxanium,sans-serif !important;letter-spacing:.13em !important;white-space:nowrap;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-summary > .ffs-rating-label {display:none !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input > .ffs-rating-label {display:none !important;}
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {margin-bottom:14px !important;}
+
+  .ffs-page .lss-unified-details > .ffs-section-label {order:4 !important; margin:0 0 9px !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis {order:5 !important;padding:0 !important;margin:0 !important;background:transparent !important;box-shadow:none !important;border:0 !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis p {font:500 clamp(19px,1.52vw,23px)/1.65 Rajdhani,Arial,sans-serif !important;color:#F4F8F9 !important;text-align:justify !important;}
+  .ffs-page .lss-unified-details > .glass-details-footer {
+    order:6 !important;display:flex !important;flex-direction:row !important;align-items:center !important;
+    justify-content:flex-end !important;gap:12px !important;width:100% !important;
+    min-height:52px !important;margin:18px 0 0 !important;padding:0 !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer > .lss-vertical-project-nav {
+    position:static !important; display:flex !important;flex-direction:row !important;
+    align-items:center !important;justify-content:flex-end !important;
+    gap:20px !important; width:auto !important;margin:0 !important;padding:0 !important;z-index:12;
+  }
+  .ffs-page .ffs-left-column > .ffs-alt-poster-hint {
+    display:block !important; margin:13px 0 0 !important;
+    font:700 12px/1.5 Oxanium,Rajdhani,sans-serif !important; letter-spacing:.09em !important;
+    text-transform:uppercase !important; color:#b7c8d4 !important;text-align:center !important;
+    text-shadow:0 2px 8px rgba(0,0,0,.65) !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
+    display:block !important;width:100% !important;max-width:none !important;
+    margin:18px 0 26px !important;padding:0 !important;background:transparent !important;
+    box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {
+    display:block !important;width:100% !important;height:121px !important;object-fit:fill !important;
+    border:0 !important;box-shadow:none !important;
+  }
+  .ffs-page .ffs-palette-module {margin-top:0 !important;}
+  .ffs-page .ffs-desktop-cinematic-nav,.ffs-page .ffs-project-side-nav {display:none !important;}
+}
+@media (min-width:901px) and (max-width:1130px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {grid-template-columns:minmax(0,120px) 1px minmax(0,1fr) !important;column-gap:12px !important;}
+  .ffs-page .ffs-right-column > .lss-unified-details {padding:14px 16px 20px !important;}
+}
+
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details > .ffs-working-title-inline {display:none !important;}
+  .ffs-page .ffs-right-column > .lss-unified-details {min-height:492px !important;height:auto !important;}
+  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {margin-bottom:22px !important;}
+  .ffs-page .ffs-desktop-composition > .ffs-right-column > .ffs-title-panel {display:none !important;height:0 !important;margin:0 !important;padding:0 !important;}
+}
+
 </style>
 </body>
 </html>
