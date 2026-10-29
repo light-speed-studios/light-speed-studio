@@ -3518,6 +3518,18 @@ document.addEventListener("click", function (event) {
 }
 
 </style>
+
+<style id="far-from-sol-remove-legacy-desktop-header">
+/* The legacy title panel is retained as a JS staging area but must not
+   render or occupy vertical space above the desktop poster/details row. */
+@media (min-width: 901px) {
+  html body .ffs-page .ffs-desktop-composition .ffs-right-column > .ffs-title-panel {
+    display: none !important;
+    height: 0 !important; min-height: 0 !important; max-height: 0 !important;
+    margin: 0 !important; padding: 0 !important; border: 0 !important;
+  }
+}
+</style>
 <script id="ffs-far-from-sol-v22-responsive-layout">
 (() => {
  const block=document.querySelector('.ffs-project-block');
