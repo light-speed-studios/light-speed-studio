@@ -1921,21 +1921,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 .ffs-cta-tile:hover {
-  transform: translateY(-3px);
-  background:
-    linear-gradient(180deg, rgba(0, 174, 222, .14), rgba(255, 255, 255, .028)),
-    rgba(4, 14, 21, .82);
-  box-shadow:
-    inset 0 0 0 1px rgba(0, 174, 222, 0.28),
-    0 0 26px rgba(0, 174, 222, .15),
-    0 12px 30px rgba(0, 0, 0, .24);
+  transform: scale(1.05);
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
-
-.ffs-cta-tile:hover::after {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
 @media (max-width: 900px) {
   .ffs-cta-panel {
     margin-top: 0;
