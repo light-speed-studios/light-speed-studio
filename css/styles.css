@@ -6417,3 +6417,8 @@ body .lss-image-block.orbit-image-frame::before {
     visibility: hidden !important;
   }
 }
+@media (max-width: 900px) {
+    body {
+        padding-top: 0 !important;
+    }
+}
