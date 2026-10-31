@@ -23,30 +23,31 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 7px;
+    gap: 9px;
     flex: 0 0 auto;
+    margin-right: 50px;
   }
 
   .vault-age-dash {
-    width: 35px;
+    width: 40px;
     height: 4px;
     padding: 0;
     border: 0;
     border-radius: 999px;
     background: rgba(186, 199, 213, 0.28);
     cursor: pointer;
-    transition: width .22s ease, background .22s ease;
+    transition: background .22s ease;
   }
 
   .vault-age-dash.active {
-    width: 35px;
+    width: 40px;
     background: #00AEDE;
   }
 
   @media (max-width: 900px) {
-    .vault-age-dashes { gap: 6px; }
-    .vault-age-dash { width: 18px; height: 4px; }
-    .vault-age-dash.active { width: 30px; }
+    .vault-age-dashes { gap: 9px; margin-right: 28px; }
+    .vault-age-dash { width: 40px; height: 4px; }
+    .vault-age-dash.active { width: 40px; }
   }
 </style>
 
