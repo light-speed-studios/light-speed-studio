@@ -5775,14 +5775,15 @@ document.addEventListener("click", function (event) {
   const rating = document.getElementById('ffs-audience-rating');
 
   const grid = document.querySelector('.ffs-project-block > .ffs-main-grid');
+  const left = grid?.querySelector('.ffs-left-column');
 
   const mobile = window.matchMedia('(max-width: 900px)');
 
-  if (!rating || !grid) return;
+  if (!rating || !grid || !left) return;
 
   function placeMobileRating() {
 
-    if (mobile.matches) grid.before(rating);
+    if (mobile.matches) left.after(rating);
 
   }
 
@@ -6168,8 +6169,8 @@ document.addEventListener("click", function (event) {
       infoPanel.append(rating);
       const editorModule = block.querySelector('.ffs-palette-module');
       if (editorModule) editorModule.prepend(palette);
-      // Original mobile arrangement places the rating above the poster.
-      grid.before(rating);
+      // Mobile: place the rating immediately after the poster column.
+      left.after(rating);
     }
   }
   arrange();
@@ -6558,6 +6559,51 @@ document.addEventListener("click", function (event) {
     margin:0 !important;
     padding:0 !important;
     z-index:12;
+  }
+}
+</style>
+
+<style id="overtime-mobile-batman-master-layout">
+/* Film-specific implementation of the approved Batman mobile composition. */
+@media (max-width: 900px) {
+  .ffs-page .ffs-project-block {
+    /* 14px original padding plus 100px space to showcase the wallpaper. */
+    padding-top: 114px !important;
+    background-color: #040E15 !important;
+    background-image:
+      linear-gradient(to bottom,
+        rgba(4,14,21,.04) 0%,
+        rgba(4,14,21,.12) 23%,
+        rgba(4,14,21,.53) 62%,
+        #040E15 100%),
+      linear-gradient(to right,
+        rgba(4,14,21,.24) 0%,
+        rgba(4,14,21,.07) 55%,
+        rgba(4,14,21,0) 100%),
+      url("https://light-speed-studios.b-cdn.net/OVERTIMEBANNER.webp") !important;
+    background-size: 100% 42vw, 100% 42vw, 110% auto !important;
+    background-position: right top, right top, right top !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .ffs-page .ffs-main-grid.ffs-desktop-composition {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  .ffs-page .ffs-main-grid.ffs-desktop-composition .ffs-poster-panel {
+    order: 1 !important;
+  }
+  .ffs-page .ffs-main-grid.ffs-desktop-composition > #ffs-audience-rating {
+    order: 2 !important;
+    width: 100% !important;
+    margin: 0 0 16px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  .ffs-page .ffs-main-grid.ffs-desktop-composition .ffs-info-panel {
+    order: 3 !important;
   }
 }
 </style>
