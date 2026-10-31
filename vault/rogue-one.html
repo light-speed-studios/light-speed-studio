@@ -3638,7 +3638,7 @@ document.addEventListener("click", function (event) {
    if(hint){hint.classList.remove('lss-poster-disclaimer');working.after(hint);}
    (hint||working).after(metadata);
    infoPanel.prepend(heading,synopsis);
-   block.insertBefore(rating,grid); /* Preserve the existing floating mobile rating above the poster. */
+   infoPanel.prepend(rating); /* Mobile: audience rating follows the poster, directly before the synopsis. */
    if(summary && label && number)summary.insertBefore(label,number);
    if(number && count)number.after(count);
    unified.remove();
