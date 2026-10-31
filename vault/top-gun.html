@@ -2366,6 +2366,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </nav>
 <div class="ffs-shell">
     <div class="ffs-project-block">
+<div class="lss-mobile-cinematic-wallpaper" aria-hidden="true"><img src="https://light-speed-studios.b-cdn.net/TGABANNERR.webp" alt="" decoding="async" /></div>
       <div class="ffs-mobile-project-header">
         <img src="https://light-speed-studios.b-cdn.net/Topgunheader11.png" alt="Top Gun: Ascension">
       </div>
@@ -4091,7 +4092,7 @@ grid-template-columns:
    (hint||working).after(metadata);
    infoPanel.prepend(heading,synopsis);
    if(mobileWorking)synopsis.after(mobileWorking);
-   block.insertBefore(rating,grid);
+   left.after(rating); // Mobile: display audience rating immediately after the full poster.
    if(summary && label && number)summary.insertBefore(label,number);
    if(number && count)number.after(count);
    unified.remove();palette.remove();nav.remove();
@@ -4101,5 +4102,80 @@ grid-template-columns:
  if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
 })();
 </script>
+
+<!-- Standard LSS cinematic mobile wallpaper, image-anchored fade and poster shadow. -->
+<style id="topgun-batman-mobile-image-fade-and-shadow">
+.lss-mobile-cinematic-wallpaper { display:none; }
+@media (max-width:900px) {
+  .ffs-page .ffs-project-block {
+    padding:114px 14px 14px !important;
+    position:relative !important;
+    background:#040E15 !important;
+  }
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper {
+    display:block !important;
+    position:absolute !important;
+    top:0 !important;
+    right:0 !important;
+    left:auto !important;
+    width:110% !important;
+    height:auto !important;
+    z-index:0 !important;
+    pointer-events:none !important;
+    -webkit-mask-image:linear-gradient(to bottom,
+      #000 0%,rgba(0,0,0,.96) 23%,rgba(0,0,0,.47) 62%,transparent 100%);
+    mask-image:linear-gradient(to bottom,
+      #000 0%,rgba(0,0,0,.96) 23%,rgba(0,0,0,.47) 62%,transparent 100%);
+  }
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper > img {
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:none !important;
+  }
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper::after {
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(to right,
+      rgba(4,14,21,.24) 0%,rgba(4,14,21,.07) 55%,transparent 100%);
+  }
+  .ffs-page .ffs-mobile-project-header,
+  .ffs-page .ffs-mobile-meta { display:none !important; }
+  .ffs-page .ffs-desktop-composition > #ffs-audience-rating {
+    display:grid !important;
+    order:2 !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    min-height:90px !important;
+    margin:0 0 16px !important;
+    padding:12px !important;
+    grid-template-columns:minmax(0,130px) 1px minmax(0,1fr) !important;
+    gap:11px !important;
+    background:transparent !important;
+    background-image:none !important;
+    box-shadow:none !important;
+    border:0 !important;
+    border-radius:0 !important;
+  }
+  .ffs-page .ffs-desktop-composition > #ffs-audience-rating::before,
+  .ffs-page .ffs-desktop-composition > #ffs-audience-rating::after {
+    content:none !important;
+    display:none !important;
+  }
+  .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full {
+    box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important;
+  }
+}
+@media (max-width:420px) {
+  .ffs-page .ffs-desktop-composition > #ffs-audience-rating {
+    grid-template-columns:minmax(0,103px) 1px minmax(0,1fr) !important;
+    gap:8px !important;
+    padding:10px 8px !important;
+  }
+}
+</style>
 </body>
 </html>
