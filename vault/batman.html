@@ -3622,10 +3622,10 @@ document.addEventListener("click", function (event) {
    if(palette){grid.after(palette);palette.classList.add('lss-floating-palette');}
   }else{
    unified.remove();disclaimer.remove();
-   // Restore original Batman mobile elements and rating above poster.
+   // Mobile: rating follows the poster inside the movie composition.
    titlePanel.append(working,hint,meta);
    infoPanel.prepend(heading,synopsis);
-   grid.before(rating);
+   left.after(rating);
    nav.remove();
   }
  }
@@ -3635,26 +3635,38 @@ document.addEventListener("click", function (event) {
 </script>
 
 <style id="batman-mobile-cinematic-background-only">
-/* Mobile only: reuse the existing desktop backdrop artwork and bottom fade. */
+/* Mobile only: show almost the entire banner, with its right edge anchored.
+   The art maintains its original proportions and fades into the site color. */
 @media (max-width: 900px) {
   .ffs-page .ffs-project-block {
+    padding-top: 44px !important; /* Original 14px plus 30px breathing room */
     background-color: #040E15 !important;
     background-image:
       linear-gradient(to bottom,
-        rgba(4,14,21,.24) 0%,
-        rgba(4,14,21,.32) 30%,
-        rgba(4,14,21,.54) 56%,
-        rgba(4,14,21,.86) 79%,
+        rgba(4,14,21,.04) 0%,
+        rgba(4,14,21,.12) 23%,
+        rgba(4,14,21,.53) 62%,
         #040E15 100%),
       linear-gradient(to right,
-        rgba(4,14,21,.9) 0%,
-        rgba(4,14,21,.79) 32%,
-        rgba(4,14,21,.36) 65%,
-        rgba(4,14,21,.1) 100%),
+        rgba(4,14,21,.24) 0%,
+        rgba(4,14,21,.07) 55%,
+        rgba(4,14,21,0) 100%),
       url("https://light-speed-studios.b-cdn.net/BATMANBANNER.webp") !important;
-    background-size: 100% 820px, 100% 820px, auto 820px !important;
-    background-position: center top, center top, center top !important;
+    background-size: 100% 42vw, 100% 42vw, 110% auto !important;
+    background-position: right top, right top, right top !important;
     background-repeat: no-repeat !important;
+  }
+
+  /* One uninterrupted order: hanging poster, rating, synopsis and links. */
+  .ffs-page .ffs-desktop-composition > .ffs-audience-rating {
+    order: 2 !important;
+    margin: 0 0 16px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+  .ffs-page .ffs-desktop-composition .ffs-info-panel {
+    order: 3 !important;
   }
 }
 </style>
