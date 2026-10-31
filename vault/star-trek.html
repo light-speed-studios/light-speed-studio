@@ -3921,13 +3921,14 @@ document.addEventListener("click", function (event) {
    working.after(metadata);
    infoPanel.prepend(heading,synopsis);
    if(mobileWorking) synopsis.after(mobileWorking);
-   left.after(rating); /* Mobile: audience rating immediately below the full poster. */
+   poster.after(rating); /* Mobile: rating sits directly after the poster in DOM order. */
    if(summary && label && number)summary.insertBefore(label,number);
    if(number && count)number.after(count);
    unified.remove();palette.remove();nav.remove();
   }
  }
  arrange();
+ window.addEventListener('load', arrange, { once: true });
  if(mq.addEventListener)mq.addEventListener('change',arrange);
  else mq.addListener(arrange);
 })();
@@ -3993,7 +3994,7 @@ document.addEventListener("click", function (event) {
     order:1 !important;
     margin:0 0 16px !important;
   }
-  .ffs-page .ffs-desktop-composition > #ffs-audience-rating {
+  .ffs-page .ffs-desktop-composition #ffs-audience-rating {
     order:2 !important;
     display:grid !important;
     position:relative !important;
@@ -4013,8 +4014,8 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-desktop-composition .ffs-section-label {order:3 !important;}
   .ffs-page .ffs-desktop-composition .ffs-synopsis {order:4 !important;}
   .ffs-page .ffs-desktop-composition .ffs-mobile-working-title {order:5 !important;}
-  .ffs-page .ffs-desktop-composition > #ffs-audience-rating::before,
-  .ffs-page .ffs-desktop-composition > #ffs-audience-rating::after {
+  .ffs-page .ffs-desktop-composition #ffs-audience-rating::before,
+  .ffs-page .ffs-desktop-composition #ffs-audience-rating::after {
     content:none !important;
     display:none !important;
   }
@@ -4023,7 +4024,7 @@ document.addEventListener("click", function (event) {
   }
 }
 @media (max-width:420px) {
-  .ffs-page .ffs-desktop-composition > #ffs-audience-rating {
+  .ffs-page .ffs-desktop-composition #ffs-audience-rating {
     grid-template-columns:minmax(0,103px) 1px minmax(0,1fr) !important;
     gap:8px !important;
     padding:10px 8px !important;
