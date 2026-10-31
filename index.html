@@ -4561,5 +4561,129 @@
   else init();
 })();
 </script>
+  <!-- BRIDGE: keep the Clayface review banner directly beneath the carousel dots at any desktop zoom. -->
+<style id="lss-bridge-clayface-review-zoom-fix">
+@media (min-width: 901px) {
+  .home-hero-section .lss-review-dots-stack {
+    position: absolute !important;
+    top: 32px !important;
+    right: 28px !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 40 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 16px !important;
+    width: max-content;
+    max-width: calc(100% - 56px);
+    box-sizing: border-box;
+  }
+  .home-hero-section .lss-review-dots-stack > .indicators {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    flex: 0 0 auto;
+    align-self: flex-end;
+  }
+  .home-hero-section .lss-review-dots-stack > .lss-clayface-review-in-stack {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    flex: 0 1 auto;
+  }
+}
+</style>
+<script id="lss-bridge-clayface-review-zoom-script">
+(() => {
+  const desktop = window.matchMedia('(min-width: 901px)');
+  let dots, bar, stack, dotsAnchor, barAnchor;
+
+  function findClayfaceBar() {
+    const explicit = [
+      '[class*="clayface-review" i]', '[id*="clayface-review" i]',
+      '[class*="latest-review" i]', '[id*="latest-review" i]',
+      '[class*="review-banner" i]', '[class*="review-bar" i]',
+      '[class*="review-callout" i]'
+    ];
+    for (const selector of explicit) {
+      const match = [...document.querySelectorAll(selector)].find(el =>
+        !el.matches('style, script, link, meta, head') &&
+        !el.closest('head, .telemetry-shell') &&
+        /clayface/i.test(el.textContent || ''));
+      if (match) return match;
+    }
+
+    // Fallback for an unnamed banner. Excludes large page wrappers and review modals.
+    const matches = [...document.querySelectorAll('a, aside, article, div, section')]
+      .filter(el => {
+        const t = (el.textContent || '').trim();
+        return t.length >= 10 && t.length <= 260 &&
+          /clayface/i.test(t) && /review/i.test(t) &&
+          !el.matches('.home-hero-section, .hero-carousel') &&
+          !el.closest('.telemetry-shell, .ffs-file-modal');
+      });
+    if (!matches.length) return null;
+    let el = matches[matches.length - 1];
+    while (el.parentElement &&
+           !el.parentElement.matches('body, main, .home-hero-section, .hero-carousel') &&
+           (el.parentElement.textContent || '').trim().length <= 260 &&
+           el.parentElement.matches('a, aside, article, div, section')) {
+      el = el.parentElement;
+    }
+    return el;
+  }
+
+  function restore() {
+    if (bar && barAnchor?.parentNode && barAnchor.nextSibling !== bar) barAnchor.after(bar);
+    if (dots && dotsAnchor?.parentNode && dotsAnchor.nextSibling !== dots) dotsAnchor.after(dots);
+    stack?.remove();
+    bar?.classList.remove('lss-clayface-review-in-stack');
+    stack = null;
+  }
+
+  function sync() {
+    if (!desktop.matches) { restore(); return; }
+    const hero = document.querySelector('.home-hero-section');
+    if (!hero) return;
+    dots ||= hero.querySelector('.indicators');
+    bar ||= findClayfaceBar();
+    if (!dots || !bar || dots.contains(bar) || bar.contains(dots)) return;
+    if (stack?.isConnected) return;
+
+    // Preserve both nodes and their listeners. Their original locations are
+    // restored automatically when browser zoom triggers the mobile breakpoint.
+    dotsAnchor ||= document.createComment('Original Bridge hero dots position');
+    barAnchor ||= document.createComment('Original Clayface review bar position');
+    dots.before(dotsAnchor);
+    bar.before(barAnchor);
+
+    stack = document.createElement('div');
+    stack.className = 'lss-review-dots-stack';
+    dotsAnchor.after(stack);
+    stack.append(dots, bar);
+    bar.classList.add('lss-clayface-review-in-stack');
+  }
+
+  document.addEventListener('DOMContentLoaded', sync, { once: true });
+  window.addEventListener('load', sync, { once: true });
+  desktop.addEventListener('change', sync);
+  if (document.readyState !== 'loading') sync();
+  // Handle banners added by other page scripts after the initial DOM load.
+  const observer = new MutationObserver(() => {
+    if (!stack?.isConnected || !bar) sync();
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+
 </body>
 </html>
