@@ -6441,3 +6441,34 @@ body .lss-image-block.orbit-image-frame::before {
     max-width: 100% !important;
   }
 }
+
+
+/* LAB MOBILE RAIL FIX: native, responsive swipe with one-card snapping.
+   The track is the scrolling element used by shared main.js arrows. */
+@media (max-width: 900px) {
+  .lab-page .vault-rail-window {
+    overflow: hidden !important;
+    touch-action: auto !important;
+  }
+  .lab-page .vault-rail-track {
+    display: flex !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y !important;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    gap: 0 !important;
+  }
+  .lab-page .vault-rail-track::-webkit-scrollbar { display: none; }
+  .lab-page .vault-rail-track > .vault-archive-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    scroll-snap-align: start !important;
+    scroll-snap-stop: always !important;
+  }
+}
