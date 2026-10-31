@@ -2401,6 +2401,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
+<div class="lss-mobile-cinematic-wallpaper" aria-hidden="true"><img src="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" alt="" decoding="async" /></div>
 <img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/ffsheader11.png" alt="Far From Sol" decoding="async" fetchpriority="high"/>
 <div class="ffs-main-grid ffs-desktop-composition">
   <div class="ffs-left-column">
@@ -3031,7 +3032,10 @@ document.addEventListener("click", function (event) {
     if (!mobile.matches) return;
     const rating = document.getElementById('ffs-audience-rating');
     const grid = document.querySelector('.ffs-project-block > .ffs-main-grid');
-    if (rating && grid && grid.parentNode) grid.parentNode.insertBefore(rating, grid);
+    if (rating && grid) {
+      const info = grid.querySelector('.ffs-info-panel');
+      if (info) info.prepend(rating);
+    }
   };
   // Existing responsive script retains sole control of desktop placement.
   document.addEventListener('DOMContentLoaded', () => {
@@ -3638,8 +3642,7 @@ grid-template-columns:
      title.after(working);
      if(hint) working.after(hint);
      (hint||working).after(metadata);
-     infoPanel.prepend(heading,synopsis);
-     grid.before(rating);
+     infoPanel.prepend(rating,heading,synopsis);
      unified.remove();
      palette.remove();
    }
@@ -3681,6 +3684,61 @@ grid-template-columns:
  }
  .ffs-page .lss-unified-details > .ffs-details-footer {padding-top:18px !important;}
  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {margin:68px 0 26px !important;}
+}
+</style>
+
+<style id="far-from-sol-mobile-cinematic-background-only">
+/* Match Batman mobile master: the image mask follows its real rendered height. */
+.lss-mobile-cinematic-wallpaper { display: none; }
+@media (max-width: 900px) {
+  .ffs-page .ffs-project-block {
+    padding-top: 114px !important;
+    position: relative !important;
+    isolation: isolate;
+    background: #040E15 !important;
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 110% !important;
+    height: auto !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    -webkit-mask-image: linear-gradient(to bottom,
+      #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+    mask-image: linear-gradient(to bottom,
+      #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper > img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to right,
+      rgba(4,14,21,.24) 0%, rgba(4,14,21,.07) 55%, transparent 100%);
+  }
+
+  /* Poster first, audience rating directly beneath, then synopsis. */
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > .ffs-audience-rating {
+    order: 1 !important;
+    display: grid !important;
+    margin: 0 0 22px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
 }
 </style>
 </body>
