@@ -4568,7 +4568,7 @@ body > .bridge-body.disclaimer-body strong {
   margin-top: -44px !important;
 }
 /* =======================================================
-   LAB PAGE: PORTRAIT POSTER RAILS
+   LAB PAGE: LANDSCAPE 11:6 POSTER RAILS
 ======================================================= */
 
 .lab-page .vault-rail-track {
@@ -4577,9 +4577,10 @@ body > .bridge-body.disclaimer-body strong {
 
 .lab-page .vault-archive-card {
   flex: 0 0 calc((100% - 54px) / 4) !important;
-  aspect-ratio: 1 / 1.52 !important;
+  aspect-ratio: 11 / 6 !important;
   height: auto !important;
   min-height: 0 !important;
+  min-width: 0 !important; /* Allow all four landscape cards to fit desktop widths */
   position: relative !important;
   overflow: hidden !important;
 }
@@ -4587,9 +4588,10 @@ body > .bridge-body.disclaimer-body strong {
 .lab-page .vault-card-art {
   width: 100% !important;
   height: 100% !important;
-  aspect-ratio: 1 / 1.52 !important;
-  background-size: cover !important;
+  aspect-ratio: 11 / 6 !important;
+  background-size: contain !important;
   background-position: center !important;
+  background-repeat: no-repeat !important;
 }
 
 .lab-page .vault-card-copy {
@@ -4660,7 +4662,7 @@ body > .bridge-body.disclaimer-body strong {
     flex: 0 0 78% !important;
     min-width: 78% !important;
     max-width: 78% !important;
-    aspect-ratio: 1 / 1.52 !important;
+    aspect-ratio: 11 / 6 !important;
     scroll-snap-align: center !important;
   }
 
@@ -4674,7 +4676,7 @@ body > .bridge-body.disclaimer-body strong {
 
   .lab-page .vault-card-art {
     height: auto !important;
-    aspect-ratio: 1 / 1.52 !important;
+    aspect-ratio: 11 / 6 !important;
   }
 
   .lab-page .vault-archive-card:hover .vault-card-art {
@@ -4847,13 +4849,13 @@ body > .bridge-body.disclaimer-body strong {
   }
 
   .lab-page .vault-archive-card{
-    aspect-ratio:1 / 1.52 !important;
+    aspect-ratio:11 / 6 !important;
     height:auto !important;
   }
 
   .lab-page .vault-card-art{
     height:100% !important;
-    aspect-ratio:1 / 1.52 !important;
+    aspect-ratio:11 / 6 !important;
   }
 
 }
