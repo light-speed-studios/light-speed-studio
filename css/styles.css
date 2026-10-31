@@ -6419,3 +6419,25 @@ body .lss-image-block.orbit-image-frame::before {
     visibility: hidden !important;
   }
 }
+/* LAB MOBILE: one full-width landscape poster per swipe */
+@media (max-width: 900px) {
+  .lab-page .vault-rail-window {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    touch-action: pan-y !important;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .lab-page .vault-rail-window::-webkit-scrollbar { display: none; }
+  .lab-page .vault-rail-track {
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    gap: 0 !important;
+  }
+  .lab-page .vault-rail-track .vault-archive-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
