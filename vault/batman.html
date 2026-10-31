@@ -3634,5 +3634,29 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 
+<style id="batman-mobile-cinematic-background-only">
+/* Mobile only: reuse the existing desktop backdrop artwork and bottom fade. */
+@media (max-width: 900px) {
+  .ffs-page .ffs-project-block {
+    background-color: #040E15 !important;
+    background-image:
+      linear-gradient(to bottom,
+        rgba(4,14,21,.24) 0%,
+        rgba(4,14,21,.32) 30%,
+        rgba(4,14,21,.54) 56%,
+        rgba(4,14,21,.86) 79%,
+        #040E15 100%),
+      linear-gradient(to right,
+        rgba(4,14,21,.9) 0%,
+        rgba(4,14,21,.79) 32%,
+        rgba(4,14,21,.36) 65%,
+        rgba(4,14,21,.1) 100%),
+      url("https://light-speed-studios.b-cdn.net/BATMANBANNER.webp") !important;
+    background-size: 100% 820px, 100% 820px, auto 820px !important;
+    background-position: center top, center top, center top !important;
+    background-repeat: no-repeat !important;
+  }
+}
+</style>
 </body>
 </html>
