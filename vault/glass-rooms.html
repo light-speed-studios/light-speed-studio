@@ -2316,6 +2316,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
+<div class="lss-mobile-cinematic-wallpaper" aria-hidden="true"><img src="https://light-speed-studios.b-cdn.net/GLASSBANNER.webp" alt="" decoding="async" /></div>
 <img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/glassrooms-header32.png" alt="Glass Rooms" decoding="async" fetchpriority="high"/>
 <div class="ffs-desktop-composition">
 <div class="ffs-left-column">
@@ -3545,7 +3546,7 @@ document.addEventListener("click", function (event) {
    if(hint)working.after(hint);
    (hint||working).after(metadata);
    infoPanel.prepend(heading,synopsis);
-   block.insertBefore(rating,grid); /* Glass Rooms' existing mobile rating-above-poster layout. */
+   grid.insertBefore(rating,right); /* Mobile: rating follows the full poster and precedes the synopsis. */
    if(summary && label && number) summary.insertBefore(label,number);
    if(number && count)number.after(count);
    unified.remove();
@@ -3721,6 +3722,67 @@ grid-template-columns:
   .ffs-page .lss-unified-details > .glass-details-footer {margin-top:auto !important;padding-top:18px !important;}
   .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {margin:50px 0 26px !important;}
   .ffs-page .ffs-poster-panel .ffs-poster-click.is-holding-alt > img.ffs-poster-alt {opacity:1 !important;}
+}
+</style>
+
+<style id="glass-rooms-batman-mobile-cinematic-image-fade">
+/* Mobile only: the wallpaper fade tracks the banner image's actual height. */
+.lss-mobile-cinematic-wallpaper { display: none; }
+@media (max-width: 900px) {
+  .ffs-page .ffs-project-block {
+    padding-top: 114px !important;
+    position: relative !important;
+    isolation: isolate;
+    background: #040E15 !important;
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 110% !important;
+    height: auto !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    -webkit-mask-image: linear-gradient(to bottom,
+      #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+    mask-image: linear-gradient(to bottom,
+      #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper > img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to right,
+      rgba(4,14,21,.24) 0%, rgba(4,14,21,.07) 55%, transparent 100%);
+  }
+
+  /* Match the desktop poster's soft drop shadow on mobile. */
+  .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full {
+    box-shadow: 0 35px 95px 18px rgba(0,0,0,.85) !important;
+  }
+
+  /* The restored mobile sequence is: poster, rating, synopsis. */
+  .ffs-page .ffs-desktop-composition > .ffs-audience-rating {
+    display: grid !important;
+    order: 2 !important;
+    width: 100% !important;
+    margin: 0 0 16px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
 }
 </style>
 </body>
