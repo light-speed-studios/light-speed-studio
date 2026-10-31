@@ -2311,6 +2311,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
+<div class="lss-mobile-cinematic-wallpaper" aria-hidden="true"><img src="https://light-speed-studios.b-cdn.net/ROGUEBANNER.webp" alt="" decoding="async" /></div>
 <img alt="Rogue One: The Scarif Run" class="ffs-mobile-project-header" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/rogueone-header11.png"/>
 <div class="ffs-main-grid ffs-desktop-composition">
 <div class="ffs-left-column">
@@ -4043,6 +4044,52 @@ document.addEventListener("click", function (event) {
 }
 @media (min-width:901px) and (max-width:1150px) {
   .ffs-page .ffs-desktop-composition {grid-template-columns:260px minmax(0,1fr) !important; gap:26px !important;}
+}
+</style>
+
+<style id="rogue-mobile-cinematic-background-only">
+/* The mobile wallpaper fades over its own natural image height.
+   This keeps the blend seamless even when the browser is zoomed. */
+.lss-mobile-cinematic-wallpaper { display: none; }
+@media (max-width: 900px) {
+  .ffs-page .ffs-project-block {
+    padding-top: 114px !important;
+    position: relative !important;
+    isolation: isolate;
+    background: #040E15 !important;
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper {
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: 110% !important;
+    height: auto !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+    -webkit-mask-image: linear-gradient(to bottom,
+      #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+    mask-image: linear-gradient(to bottom,
+      #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper > img {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  .ffs-page .ffs-project-block > .lss-mobile-cinematic-wallpaper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to right,
+      rgba(4,14,21,.24) 0%, rgba(4,14,21,.07) 55%, transparent 100%);
+  }
 }
 </style>
 </body>
