@@ -423,5 +423,67 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+<style id="vault-mobile-single-card-swipe">
+@media (max-width: 900px) {
+  .vault-page .vault-rail-track.lss-vault-rail {
+    touch-action: pan-y !important;
+    scroll-snap-type: none !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: auto;
+  }
+}
+</style>
+<script id="vault-mobile-single-card-swipe-js">
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.vault-page .vault-rail-track.lss-vault-rail').forEach(track => {
+    let startX = 0, startY = 0, startIndex = 0, horizontal = false, moved = false;
+    const cards = () => Array.from(track.querySelectorAll('.vault-archive-card'));
+    const mobile = () => window.matchMedia('(max-width: 900px)').matches;
+    const positions = () => cards().map(card => card.offsetLeft - cards()[0].offsetLeft);
+    const nearest = () => {
+      const pts = positions();
+      return pts.reduce((best, x, i) =>
+        Math.abs(x - track.scrollLeft) < Math.abs(pts[best] - track.scrollLeft) ? i : best, 0);
+    };
+    track.addEventListener('touchstart', e => {
+      if (!mobile() || e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startIndex = nearest();
+      horizontal = false;
+      moved = false;
+    }, {passive:true});
+    track.addEventListener('touchmove', e => {
+      if (!mobile() || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+      if (!horizontal && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) horizontal = true;
+      if (horizontal) {
+        moved = true;
+        e.preventDefault();
+      }
+    }, {passive:false});
+    track.addEventListener('touchend', e => {
+      if (!mobile() || !e.changedTouches.length) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      if (horizontal && Math.abs(dx) > 22 && Math.abs(dx) > Math.abs(dy)) {
+        const pts = positions();
+        const next = Math.max(0, Math.min(pts.length - 1, startIndex + (dx < 0 ? 1 : -1)));
+        track.scrollTo({left:pts[next], behavior:'smooth'});
+      }
+      horizontal = false;
+    }, {passive:true});
+    track.addEventListener('click', e => {
+      if (moved) {
+        e.preventDefault();
+        moved = false;
+      }
+    }, true);
+    track.addEventListener('touchcancel', () => { horizontal = false; moved = false; }, {passive:true});
+  });
+});
+</script>
 </body>
 </html>
