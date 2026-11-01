@@ -1,3 +1,111 @@
+
+
+/* =======================================================
+   BRIDGE HERO: CENTER-LOCKED SLIDING PAGINATION
+   Seven visible positions. The center dash stays still while the
+   dots travel horizontally. Desktop only; mobile remains as before.
+   ======================================================= */
+@media (min-width: 901px) {
+  .home-hero-section #heroCarousel .indicators.lss-center-indicators {
+    /* Keep the centered position already defined beneath the title bar. */
+    width: 178px !important;
+    min-width: 178px !important;
+    height: 30px !important;
+    min-height: 30px !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    align-items: initial !important;
+    justify-content: initial !important;
+    /* left, bottom and transform stay controlled by existing hero CSS. */
+  }
+
+  .home-hero-section .lss-center-indicators .lss-pagination-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .home-hero-section .lss-center-indicators .lss-pagination-track {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: max-content;
+    height: 12px;
+    gap: 18px;
+    /* JS aligns the center of the current dot with the fixed dash. */
+    transition: transform .42s cubic-bezier(.22, .75, .22, 1) !important;
+    will-change: transform;
+  }
+
+  /* Dot widths never grow; the highlighted dash is its own fixed overlay. */
+  .home-hero-section .lss-center-indicators .lss-pagination-track > .indicator,
+  .home-hero-section .lss-center-indicators .lss-pagination-track > .indicator.active {
+    display: block !important;
+    flex: 0 0 10px !important;
+    box-sizing: border-box !important;
+    width: 10px !important;
+    min-width: 10px !important;
+    max-width: 10px !important;
+    height: 10px !important;
+    min-height: 10px !important;
+    max-height: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    border: 0 !important;
+    background: rgba(186, 199, 213, .62) !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,.72), 0 0 7px rgba(0,0,0,.42) !important;
+    z-index: auto !important;
+    transition: opacity .24s ease, background-color .24s ease !important;
+  }
+
+  .home-hero-section .lss-center-indicators .lss-pagination-track > .indicator:hover {
+    background: rgba(224, 243, 249, .93) !important;
+    transform: none !important;
+  }
+
+  .home-hero-section .lss-center-indicators .lss-pagination-track > .indicator.lss-center-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .home-hero-section .lss-center-indicators .lss-pagination-active-dash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 38px;
+    height: 6px;
+    display: block;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to right, #0096c2, #7beaff, #0096c2);
+    box-shadow: 0 0 8px rgba(0,174,222,.25), 0 0 16px rgba(0,174,222,.15);
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .home-hero-section .lss-center-indicators:focus-visible {
+    outline: 1px solid rgba(123,234,255,.75);
+    outline-offset: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-section .lss-center-indicators .lss-pagination-track,
+  .home-hero-section .lss-center-indicators .lss-pagination-track > .indicator {
+    transition: none !important;
+  }
+}
+
+
 .hero-content-wrapper {
   display: flex !important;
   flex-direction: column !important;
