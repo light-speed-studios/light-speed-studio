@@ -130,7 +130,7 @@
   // Only the highlighted dash is fixed. Each slide still has a clickable dot.
   const paginationCount = indicators.length;
   const paginationReady = Boolean(paginationTrack && paginationCount === slides.length);
-  const paginationStep = 28; // 10px dot + 18px gap, matching the CSS.
+  const paginationStep = 36; // 10px dot + 26px gap, matching the CSS.
   const paginationMiddleCycle = paginationCount * 2; // five copies, original is in the middle.
   let paginationPosition = paginationMiddleCycle;
 
