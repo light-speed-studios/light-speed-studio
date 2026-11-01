@@ -4561,78 +4561,72 @@
   else init();
 })();
 </script>
-  <!-- BRIDGE: keep the Clayface review banner directly beneath the carousel dots at any desktop zoom. -->
-<style id="lss-bridge-clayface-review-zoom-fix">
+  <!-- REPLACEMENT for the previous lss-bridge-clayface-review-zoom-fix STYLE + SCRIPT.
+     Remove both older blocks before installing this one. -->
+<style id="lss-bridge-clayface-centered-zoom-fix">
 @media (min-width: 901px) {
-  .home-hero-section .lss-review-dots-stack {
-    position: absolute !important;
-    top: 32px !important;
-    right: 28px !important;
-    left: auto !important;
-    bottom: auto !important;
-    z-index: 40 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end !important;
-    gap: 16px !important;
-    width: max-content;
-    max-width: calc(100% - 56px);
-    box-sizing: border-box;
-  }
-  .home-hero-section .lss-review-dots-stack > .indicators {
-    position: static !important;
-    inset: auto !important;
-    transform: none !important;
-    margin: 0 !important;
-    flex: 0 0 auto;
-    align-self: flex-end;
-  }
-  .home-hero-section .lss-review-dots-stack > .lss-clayface-review-in-stack {
+  /* A shared coordinate space. The dots retain every existing layout rule. */
+  .home-hero-section {
     position: relative !important;
-    inset: auto !important;
-    top: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Only the review banner is positioned; the dots do not move. */
+  .home-hero-section > .lss-clayface-follows-dots {
+    position: absolute !important;
+    top: var(--lss-clayface-top, 0px) !important;
+    left: var(--lss-clayface-left, 50%) !important;
     right: auto !important;
     bottom: auto !important;
-    left: auto !important;
-    transform: none !important;
+    transform: translateX(-50%) !important;
     margin: 0 !important;
-    max-width: 100% !important;
+    z-index: 40 !important;
+    width: max-content;
+    max-width: calc(100% - 32px) !important;
     box-sizing: border-box;
-    flex: 0 1 auto;
   }
 }
 </style>
-<script id="lss-bridge-clayface-review-zoom-script">
+<script id="lss-bridge-clayface-centered-zoom-script">
 (() => {
   const desktop = window.matchMedia('(min-width: 901px)');
-  let dots, bar, stack, dotsAnchor, barAnchor;
+  let bar, originalMarker, watchingDots;
+  let frameRequested = false;
 
-  function findClayfaceBar() {
-    const explicit = [
+  function getHero() {
+    return document.querySelector('.home-hero-section');
+  }
+
+  function getDots() {
+    return getHero()?.querySelector('.indicators');
+  }
+
+  function findReviewBar() {
+    const selectors = [
       '[class*="clayface-review" i]', '[id*="clayface-review" i]',
       '[class*="latest-review" i]', '[id*="latest-review" i]',
       '[class*="review-banner" i]', '[class*="review-bar" i]',
       '[class*="review-callout" i]'
     ];
-    for (const selector of explicit) {
-      const match = [...document.querySelectorAll(selector)].find(el =>
-        !el.matches('style, script, link, meta, head') &&
-        !el.closest('head, .telemetry-shell') &&
-        /clayface/i.test(el.textContent || ''));
-      if (match) return match;
+    for (const selector of selectors) {
+      const el = [...document.querySelectorAll(selector)].find(el =>
+        !el.closest('head, .telemetry-shell, .ffs-file-modal') &&
+        /clayface/i.test(el.textContent || '') &&
+        !(el.matches('.lss-review-dots-stack'))
+      );
+      if (el) return el;
     }
 
-    // Fallback for an unnamed banner. Excludes large page wrappers and review modals.
-    const matches = [...document.querySelectorAll('a, aside, article, div, section')]
+    const leaves = [...document.querySelectorAll('a, aside, article, div, section')]
       .filter(el => {
         const t = (el.textContent || '').trim();
-        return t.length >= 10 && t.length <= 260 &&
-          /clayface/i.test(t) && /review/i.test(t) &&
+        return /clayface/i.test(t) && /review/i.test(t) &&
+          t.length >= 10 && t.length <= 260 &&
           !el.matches('.home-hero-section, .hero-carousel') &&
           !el.closest('.telemetry-shell, .ffs-file-modal');
       });
-    if (!matches.length) return null;
-    let el = matches[matches.length - 1];
+    if (!leaves.length) return null;
+    let el = leaves[leaves.length - 1];
     while (el.parentElement &&
            !el.parentElement.matches('body, main, .home-hero-section, .hero-carousel') &&
            (el.parentElement.textContent || '').trim().length <= 260 &&
@@ -4643,45 +4637,68 @@
   }
 
   function restore() {
-    if (bar && barAnchor?.parentNode && barAnchor.nextSibling !== bar) barAnchor.after(bar);
-    if (dots && dotsAnchor?.parentNode && dotsAnchor.nextSibling !== dots) dotsAnchor.after(dots);
-    stack?.remove();
-    bar?.classList.remove('lss-clayface-review-in-stack');
-    stack = null;
+    if (!bar) return;
+    if (originalMarker?.parentNode && originalMarker.nextSibling !== bar) {
+      originalMarker.after(bar);
+    }
+    bar.classList.remove('lss-clayface-follows-dots');
+    bar.style.removeProperty('--lss-clayface-left');
+    bar.style.removeProperty('--lss-clayface-top');
   }
 
-  function sync() {
+  function align() {
+    frameRequested = false;
     if (!desktop.matches) { restore(); return; }
-    const hero = document.querySelector('.home-hero-section');
-    if (!hero) return;
-    dots ||= hero.querySelector('.indicators');
-    bar ||= findClayfaceBar();
-    if (!dots || !bar || dots.contains(bar) || bar.contains(dots)) return;
-    if (stack?.isConnected) return;
 
-    // Preserve both nodes and their listeners. Their original locations are
-    // restored automatically when browser zoom triggers the mobile breakpoint.
-    dotsAnchor ||= document.createComment('Original Bridge hero dots position');
-    barAnchor ||= document.createComment('Original Clayface review bar position');
-    dots.before(dotsAnchor);
-    bar.before(barAnchor);
+    const hero = getHero();
+    const dots = getDots();
+    if (!hero || !dots) return;
+    if (!bar || !bar.isConnected) bar = findReviewBar();
+    if (!bar || bar === dots || bar.contains(dots)) return;
 
-    stack = document.createElement('div');
-    stack.className = 'lss-review-dots-stack';
-    dotsAnchor.after(stack);
-    stack.append(dots, bar);
-    bar.classList.add('lss-clayface-review-in-stack');
+    if (!originalMarker) {
+      originalMarker = document.createComment('Original Clayface review banner position');
+      bar.before(originalMarker);
+    }
+    if (bar.parentElement !== hero) hero.append(bar);
+    bar.classList.add('lss-clayface-follows-dots');
+
+    /* Follow the dots' ACTUAL rendered center and bottom at this zoom level. */
+    const dotBox = dots.getBoundingClientRect();
+    const heroBox = hero.getBoundingClientRect();
+    const left = dotBox.left + dotBox.width / 2 - heroBox.left;
+    const top = dotBox.bottom - heroBox.top + 16;  // always 16px below the dots
+    bar.style.setProperty('--lss-clayface-left', `${left}px`);
+    bar.style.setProperty('--lss-clayface-top', `${top}px`);
+
+    if (watchingDots !== dots && 'ResizeObserver' in window) {
+      watchingDots = dots;
+      new ResizeObserver(requestAlign).observe(dots);
+    }
   }
 
-  document.addEventListener('DOMContentLoaded', sync, { once: true });
-  window.addEventListener('load', sync, { once: true });
-  desktop.addEventListener('change', sync);
-  if (document.readyState !== 'loading') sync();
-  // Handle banners added by other page scripts after the initial DOM load.
-  const observer = new MutationObserver(() => {
-    if (!stack?.isConnected || !bar) sync();
+  function requestAlign() {
+    if (frameRequested) return;
+    frameRequested = true;
+    requestAnimationFrame(align);
+  }
+
+  desktop.addEventListener('change', requestAlign);
+  window.addEventListener('resize', requestAlign); // responds to 110%, 125% zoom etc.
+  document.addEventListener('DOMContentLoaded', requestAlign, { once: true });
+  window.addEventListener('load', requestAlign, { once: true });
+  // Recalculate after the active navigation dash changes width.
+  document.addEventListener('transitionend', e => {
+    if (e.target.closest?.('.home-hero-section .indicators')) requestAlign();
   });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+  document.addEventListener('click', e => {
+    if (e.target.closest?.('.home-hero-section .indicator')) requestAlign();
+  });
+  // If another script adds the Clayface banner after load, pick it up once.
+  if (!document.readyState || document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', requestAlign, { once: true });
+  }
+  if (document.readyState !== 'loading') requestAlign();
 })();
 </script>
 
