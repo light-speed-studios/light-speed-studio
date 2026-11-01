@@ -39,8 +39,8 @@
     align-items: center;
     width: max-content;
     height: 12px;
-    gap: 18px;
-    /* JS aligns the center of the current dot with the fixed dash. */
+    gap: 26px;
+    /* 8px more space between neighboring dots; JS step stays in sync. */
     transition: transform .42s cubic-bezier(.22, .75, .22, 1) !important;
     will-change: transform;
   }
