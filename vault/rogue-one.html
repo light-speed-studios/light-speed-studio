@@ -4092,5 +4092,98 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+
+<!-- Rogue One: match the finalized Crisis: Red Skies mobile audience rating. -->
+<style id="rogue-crisis-matched-mobile-rating">
+@media (max-width: 900px) {
+  /* Crisis uses an unboxed, full-width rating directly beneath the poster. */
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > #ffs-audience-rating {
+    position: relative !important;
+    z-index: 1 !important;
+    isolation: isolate;
+    display: grid !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    min-height: 90px !important;
+    margin: 0 0 16px !important;
+    padding: 12px !important;
+    grid-template-columns: minmax(0, 130px) 1px minmax(0, 1fr) !important;
+    gap: 11px !important;
+    background: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    outline: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Allow the poster shadow to disappear into #040E15 behind the rating. */
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > #ffs-audience-rating::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -14px;
+    bottom: -36px;
+    left: -14px;
+    pointer-events: none;
+    background: linear-gradient(to bottom,
+      rgba(4, 14, 21, 0) 0%,
+      #040E15 40%,
+      #040E15 100%);
+  }
+
+  /* Match Crisis's compact mobile score line and unrated placeholder. */
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > #ffs-audience-rating .ffs-rating-number {
+    position: relative;
+    width: auto !important;
+    max-width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 3px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: flex-start !important;
+    gap: 7px !important;
+    text-align: left !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+  .ffs-page #ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong {
+    font-size: 0 !important;
+    line-height: 1 !important;
+  }
+  .ffs-page #ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+    content: "—" !important;
+    display: inline !important;
+    font: 800 28px/1 Oxanium, sans-serif !important;
+  }
+  .ffs-page #ffs-audience-rating .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {
+    display: inline !important;
+    visibility: visible !important;
+  }
+  .ffs-page #ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
+    font-size: 21px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+  }
+}
+@media (max-width: 420px) {
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > #ffs-audience-rating {
+    grid-template-columns: minmax(0, 103px) 1px minmax(0, 1fr) !important;
+    gap: 8px !important;
+    padding: 10px 8px !important;
+  }
+  .ffs-page #ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
+    font-size: 25px !important;
+  }
+  .ffs-page #ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
+    font-size: 19px !important;
+  }
+}
+</style>
 </body>
 </html>
