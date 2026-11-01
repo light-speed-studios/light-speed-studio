@@ -22,7 +22,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=7" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=8" rel="stylesheet"/>
 
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.webp" media="(min-width: 901px)" fetchpriority="high"/>
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.webp" media="(max-width: 900px)" fetchpriority="high"/>
@@ -3919,14 +3919,19 @@
 <path d="M9 6L15 12L9 18" fill="none" stroke="#00AEDE" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
 </svg>
 </button>
-<div aria-label="Slide indicators" class="indicators">
-<button class="indicator active"></button>
-<button class="indicator"></button>
-<button class="indicator"></button>
-<button class="indicator"></button>
-<button class="indicator"></button>
-<button class="indicator"></button>
-<button class="indicator"></button>
+<div aria-label="Featured slide pagination, use left or right arrow keys" class="indicators lss-center-indicators" tabindex="0">
+  <div class="lss-pagination-viewport">
+    <div class="lss-pagination-track">
+      <button class="indicator active" type="button" aria-label="Show featured slide 1"></button>
+      <button class="indicator" type="button" aria-label="Show featured slide 2"></button>
+      <button class="indicator" type="button" aria-label="Show featured slide 3"></button>
+      <button class="indicator" type="button" aria-label="Show featured slide 4"></button>
+      <button class="indicator" type="button" aria-label="Show featured slide 5"></button>
+      <button class="indicator" type="button" aria-label="Show featured slide 6"></button>
+      <button class="indicator" type="button" aria-label="Show featured slide 7"></button>
+    </div>
+    <span class="lss-pagination-active-dash" aria-hidden="true"></span>
+  </div>
 </div>
 </section>
 </div>
@@ -4379,7 +4384,7 @@
   });
   </script>
 
-  <script src="js/main.js?v=8"></script>
+  <script src="js/main.js?v=9"></script>
   <script type="module" src="js/hero-ratings.js"></script>
 <script>
 (function(){
@@ -4666,8 +4671,12 @@
     /* Follow the dots' ACTUAL rendered center and bottom at this zoom level. */
     const dotBox = dots.getBoundingClientRect();
     const heroBox = hero.getBoundingClientRect();
-    const left = dotBox.left + dotBox.width / 2 - heroBox.left;
-    const top = dotBox.bottom - heroBox.top + 16;  // always 16px below the dots
+    // Convert viewport coordinates to this hero element's CSS pixel coordinates.
+    // This avoids drifting at 110%, 125% and other browser zoom settings.
+    const scaleX = hero.offsetWidth ? heroBox.width / hero.offsetWidth : 1;
+    const scaleY = hero.offsetHeight ? heroBox.height / hero.offsetHeight : 1;
+    const left = (dotBox.left + dotBox.width / 2 - heroBox.left) / scaleX;
+    const top = (dotBox.bottom - heroBox.top) / scaleY + 16;
     bar.style.setProperty('--lss-clayface-left', `${left}px`);
     bar.style.setProperty('--lss-clayface-top', `${top}px`);
 
