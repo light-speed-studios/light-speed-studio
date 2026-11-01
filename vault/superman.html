@@ -4220,5 +4220,33 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<!-- Superman: Son of Tomorrow mobile: keep the audience rating clear of the poster shadow. -->
+<style id="sot-mobile-rating-shadow-isolation-fix">
+@media (max-width: 900px) {
+  /* Position the existing audience rating above the poster's long shadow. */
+  .ffs-page .ffs-desktop-composition > #ffs-audience-rating {
+    position: relative !important;
+    z-index: 1 !important;
+    isolation: isolate;
+  }
+
+  /* Fade the lower poster shadow into the page background above the rating. */
+  .ffs-page .ffs-desktop-composition > #ffs-audience-rating::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    z-index: -1;
+    top: -16px;
+    right: -14px;
+    bottom: -36px;
+    left: -14px;
+    pointer-events: none;
+    background: linear-gradient(to bottom,
+      rgba(4, 14, 21, 0) 0%,
+      #040E15 40%,
+      #040E15 100%);
+  }
+}
+</style>
 </body>
 </html>
