@@ -101,7 +101,9 @@
 
   const welcomeSlide = carousel.querySelector('.hero-welcome-slide');
   const slides = Array.from(carousel.querySelectorAll('.slide:not(.hero-welcome-slide)'));
-  const indicators = Array.from(carousel.querySelectorAll('.indicator'));
+  const indicatorGroup = carousel.querySelector('.indicators');
+  const paginationTrack = indicatorGroup?.querySelector('.lss-pagination-track');
+  const indicators = Array.from(paginationTrack?.querySelectorAll(':scope > .indicator') || carousel.querySelectorAll('.indicator'));
   const prevBtn = carousel.querySelector('.nav-arrow.left');
   const nextBtn = carousel.querySelector('.nav-arrow.right');
 
@@ -124,18 +126,106 @@
   const welcomeDuration = 900;
   const welcomeFadeTime = 600;
 
+  // The seven moving dots use a repeated track for seamless wraparound.
+  // Only the highlighted dash is fixed. Each slide still has a clickable dot.
+  const paginationCount = indicators.length;
+  const paginationReady = Boolean(paginationTrack && paginationCount === slides.length);
+  const paginationStep = 28; // 10px dot + 18px gap, matching the CSS.
+  const paginationMiddleCycle = paginationCount * 2; // five copies, original is in the middle.
+  let paginationPosition = paginationMiddleCycle;
+
+  function setPaginationPosition(animate) {
+    if (!paginationReady) return;
+    if (!animate) paginationTrack.style.transition = 'none';
+    paginationTrack.style.transform = `translate3d(${-paginationPosition * paginationStep - 5}px, -50%, 0)`;
+    if (!animate) {
+      // Apply the instant wrap correction before restoring the normal transition.
+      void paginationTrack.offsetWidth;
+      paginationTrack.style.removeProperty('transition');
+    }
+  }
+
+  if (paginationReady) {
+    const preceding = document.createDocumentFragment();
+    const following = document.createDocumentFragment();
+
+    // Two copies on each side permit natural forward/backward movement.
+    for (let cycle = 0; cycle < 2; cycle++) {
+      indicators.forEach((dot, index) => {
+        dot.dataset.slideIndex = String(index);
+        dot.tabIndex = -1; // The group itself is the single keyboard tab stop.
+        const before = dot.cloneNode(true);
+        const after = dot.cloneNode(true);
+        before.tabIndex = -1;
+        after.tabIndex = -1;
+        preceding.appendChild(before);
+        following.appendChild(after);
+      });
+    }
+    paginationTrack.prepend(preceding);
+    paginationTrack.append(following);
+
+    // Dots remain clickable. The entire group can also be used via arrow keys.
+    indicatorGroup.addEventListener('click', event => {
+      const dot = event.target.closest('.indicator');
+      if (!dot || welcomeActive) return;
+      const index = Number(dot.dataset.slideIndex);
+      if (!Number.isInteger(index) || index < 0 || index >= slides.length) return;
+      showSlide(index);
+      startAutoPlay();
+    });
+    indicatorGroup.addEventListener('keydown', event => {
+      if (welcomeActive) return;
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      showSlide(current + (event.key === 'ArrowRight' ? 1 : -1));
+      startAutoPlay();
+    });
+    paginationTrack.addEventListener('transitionend', event => {
+      if (event.target !== paginationTrack || event.propertyName !== 'transform') return;
+      const middlePosition = paginationMiddleCycle + current;
+      if (paginationPosition !== middlePosition) {
+        // Identical repeated buttons make this correction invisible.
+        paginationPosition = middlePosition;
+        setPaginationPosition(false);
+      }
+    });
+    indicatorGroup.classList.add('lss-center-pagination-ready');
+    setPaginationPosition(false);
+  }
+
   function showSlide(index) {
     if (!slides.length) return;
 
-    current = (index + slides.length) % slides.length;
+    const next = ((index % slides.length) + slides.length) % slides.length;
+    const previous = current;
+    current = next;
 
     slides.forEach((slide, i) => {
       slide.classList.toggle('active', i === current);
     });
 
-    indicators.forEach((dot, i) => {
-      dot.classList.toggle('active', i === current);
-    });
+    if (paginationReady) {
+      paginationTrack.querySelectorAll('.indicator').forEach(dot => {
+        const active = Number(dot.dataset.slideIndex) === current;
+        dot.classList.toggle('active', active);
+        dot.classList.toggle('lss-center-hidden', active);
+        dot.setAttribute('aria-pressed', String(active));
+      });
+
+      // The shortest direction also handles the final-to-first wrap smoothly.
+      let delta = current - previous;
+      if (delta > paginationCount / 2) delta -= paginationCount;
+      if (delta < -paginationCount / 2) delta += paginationCount;
+      if (delta) {
+        paginationPosition += delta;
+        setPaginationPosition(true);
+      }
+    } else {
+      indicators.forEach((dot, i) => {
+        dot.classList.toggle('active', i === current);
+      });
+    }
   }
 
   function nextSlide() {
@@ -231,14 +321,17 @@
     });
   }
 
-  indicators.forEach((dot, index) => {
-    dot.addEventListener('click', function () {
-      if (welcomeActive) return;
-
-      showSlide(index);
-      startAutoPlay();
+  // Centered pagination clicks are handled by indicatorGroup above.
+  // Keep direct handlers for older pages without the sliding track.
+  if (!paginationReady) {
+    indicators.forEach((dot, index) => {
+      dot.addEventListener('click', function () {
+        if (welcomeActive) return;
+        showSlide(index);
+        startAutoPlay();
+      });
     });
-  });
+  }
 
   document.querySelectorAll('.home-hero-section .hero-content-wrapper').forEach(wrapper => {
     wrapper.addEventListener('mouseenter', stopAutoPlay);
@@ -247,7 +340,10 @@
 
   if (welcomeActive) {
     slides.forEach(slide => slide.classList.remove('active'));
-    indicators.forEach(dot => dot.classList.remove('active'));
+    (paginationReady ? paginationTrack.querySelectorAll('.indicator') : indicators).forEach(dot => {
+      dot.classList.remove('active', 'lss-center-hidden');
+      dot.setAttribute('aria-pressed', 'false');
+    });
 
     welcomeSlide.classList.add('active');
     carousel.classList.add('welcome-active');
