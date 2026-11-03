@@ -118,6 +118,13 @@
       white-space: nowrap;
     }
 
+    @media (min-width: 701px) {
+      .watch-header .watch-runtime { display: none; }
+    }
+    @media (max-width: 700px) {
+      .watch-header .desktop-header-download { display: none; }
+    }
+
     .movie-video-wrap {
       position: relative;
       padding: 14px;
@@ -357,6 +364,7 @@
         </div>
 
         <span class="watch-runtime">160 min</span>
+        <a class="watch-button desktop-header-download" href="https://drive.usercontent.google.com/download?id=1YBqR09NxeU61paY_b2bOIxYDCFLvPPnO&export=download&authuser=0" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="mobile-desktop-viewing-note">
@@ -375,16 +383,6 @@
             </iframe>
           </div>
         </div>
-      </div>
-
-      <div class="watch-actions">
-        <a
-          class="watch-button"
-          href="https://drive.usercontent.google.com/download?id=1YBqR09NxeU61paY_b2bOIxYDCFLvPPnO&export=download&authuser=0"
-          target="_blank"
-          rel="noopener">
-          Download
-        </a>
       </div>
 
       <div class="mobile-actions">
