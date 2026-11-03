@@ -324,6 +324,16 @@
       }
     }
 
+
+    /* Desktop header download; mobile layout remains unchanged. */
+    @media (min-width: 701px) {
+      .watch-header .watch-runtime { display: none; }
+      .watch-actions { display: none; }
+    }
+    @media (max-width: 700px) {
+      .watch-header .desktop-header-download { display: none; }
+    }
+
 </style>
 </head>
 
@@ -357,6 +367,7 @@
         </div>
 
         <span class="watch-runtime">107 min</span>
+        <a class="watch-button desktop-header-download" href="https://drive.usercontent.google.com/download?id=1EBKIvaR9gRDl5AJ_cLsSQV7vFSnPu05U&export=download&authuser=0" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="mobile-desktop-viewing-note">
