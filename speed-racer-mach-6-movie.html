@@ -231,6 +231,14 @@
       box-shadow: inset 0 0 0 1px rgba(186, 199, 213, 0.06);
     }
 
+    @media (min-width: 701px) {
+      .watch-header .watch-runtime { display: none; }
+      .watch-actions { display: none; }
+    }
+    @media (max-width: 700px) {
+      .desktop-header-download { display: none; }
+    }
+
     @media (max-width: 700px) {
       .lss-watch-page {
         padding: 16px 12px 44px;
@@ -357,6 +365,7 @@
         </div>
 
         <span class="watch-runtime">97 min</span>
+        <a class="watch-button desktop-header-download" href="https://drive.usercontent.google.com/download?id=1lLaFia_iU1PpMEwmi0XPJoYIotRuZ393&export=download&authuser=0" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="mobile-desktop-viewing-note">
