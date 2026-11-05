@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <!DOCTYPE html>
 
@@ -20,7 +19,7 @@
       pointer-events: none !important;
     }
   </style>
-<style id="batman-mobile-synopsis-gap-fix">
+<style id="sol-mobile-synopsis-gap-fix">
 @media (max-width: 900px) {
   .ffs-poster-panel {
     margin-bottom: 0 !important;
@@ -275,7 +274,7 @@
   }
 }
 </style>
-<style id="batman-topgun-mobile-rating-position-fix">
+<style id="sol-topgun-mobile-rating-position-fix">
 @media (max-width: 900px) {
   /* Top Gun: 16px between poster and rating, 22px below rating. */
   .ffs-poster-panel { margin-bottom: 16px !important; }
@@ -288,9 +287,9 @@
   }
 }
 </style>
-<style id="batman-fullbleed-banner-layout">
+<style id="sol-fullbleed-banner-layout">
 /* Banner is a sibling of the constrained page-content container. */
-.batman-wide-banner {
+.sol-wide-banner {
   position: relative;
   display: block;
   width: 100%;
@@ -299,24 +298,24 @@
   overflow: hidden;
   background: #040E15;
 }
-.batman-wide-banner img {
+.sol-wide-banner img {
   display: block;
   width: 100%;
   height: auto;
 }
 /* Reserve the full banner space on the FIRST paint, before image download. */
 @media (min-width: 901px) {
-  .batman-wide-banner {
+  .sol-wide-banner {
     height: 37.5vw;
     aspect-ratio: 8 / 3;
   }
-  .batman-wide-banner > img {
+  .sol-wide-banner > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 }
-.batman-wide-banner::after {
+.sol-wide-banner::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -333,13 +332,13 @@
   main.page-content > .ffs-page { background: transparent !important; }
 }
 @media (max-width: 900px) {
-  .batman-wide-banner { display: none !important; }
-  .batman-wide-banner::after {
+  .sol-wide-banner { display: none !important; }
+  .sol-wide-banner::after {
     background: linear-gradient(to bottom, transparent 58%, rgba(4,14,21,.35) 78%, #040E15 100%);
   }
 }
 </style>
-<style id="batman-mobile-ffs-rating-spacing-match">
+<style id="sol-mobile-ffs-rating-spacing-match">
 /* Match Far From Sol's compact rating numerals on mobile. */
 @media (max-width: 900px) {
   .ffs-project-block > .ffs-audience-rating {
@@ -378,7 +377,7 @@
 <a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
 </nav>
 </header>
-<section aria-label="Far From Sol banner" class="batman-wide-banner">
+<section aria-label="Far From Sol banner" class="sol-wide-banner">
 <img alt="Far From Sol cinematic banner" decoding="sync" fetchpriority="high" height="768" loading="eager" src="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" width="2048"/>
 </section>
 <main class="page-content">
@@ -2213,7 +2212,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
 <label class="ffs-poster-click" for="ffsPosterToggle">
 <img alt="Far From Sol poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/FFS1new.png"/>
-<img alt="Far From Sol mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FFSmob.png"/>
+<img alt="Far From Sol mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FFS1new.png"/>
 </label>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
 <span>Click to Enlarge</span>
@@ -2228,7 +2227,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div aria-label="Audience rating for Far From Sol" class="ffs-audience-rating" data-movie-id="far-from-sol" id="ffs-audience-rating">
 <div class="ffs-rating-summary">
 <div class="ffs-rating-number"><strong class="is-unrated" id="ffs-rating-average">NOT YET RATED</strong><span hidden="" id="ffs-rating-denominator">/ 10</span></div>
-<span class="ffs-rating-count" id="ffs-rating-count">NO RATINGS YET</span>
+<span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
 </div>
 <div aria-hidden="true" class="ffs-rating-divider"></div>
 <div class="ffs-rating-input">
@@ -2257,7 +2256,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span><span class="ffs-meta-value">156 min</span></div>
 <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.43:1 IMAX</span></div>
 </div>
-<div class="ffs-working-title-inline"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADOX</div>
+<div class="ffs-working-title-inline"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADON</div>
 <span class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</span>
 <p class="ffs-section-label">Synopsis</p>
 <div class="ffs-synopsis">
@@ -2490,13 +2489,13 @@ text-align: center;
 <img alt="Far From Sol color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/movie%20pallete.png"/>
 </div>
 <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-<p class="ffs-editors-note-text"><span aria-hidden="true" class="ffs-editors-note-inline-title">Editor's Note</span> <em>Project Hail Mary</em> was a frustrating watch. I loved the premise but felt the film never reached its potential. The ideas were compelling, but I struggled to connect with Grace or believe the emotional weight of his journey. <em>Far From Sol</em> became my attempt to change that by giving Grace a family throughline and a more personal reason for the choices he ultimately makes. I also wanted to pull back the humor, treat Rocky as a genuine intellectual counterpart, and give the story the more grounded emotional weight I felt its premise deserved.</p>
+<p class="ffs-editors-note-text"><span aria-hidden="true" class="ffs-editors-note-inline-title">Editor's Note</span> Project Hail Mary was a frustrating watch. I loved the premise but felt the film never reached its potential. The ideas were compelling, but I struggled to connect with Grace or believe the emotional weight of his journey. Far From Sol became my attempt to change that by giving Grace a family throughline and a more personal reason for the choices he ultimately makes. I also wanted to pull back the humor, treat Rocky as a genuine intellectual counterpart, and give the story the more grounded emotional weight I felt its premise deserved.</p>
 </section>
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" id="ffsLandingSoundtrack" type="checkbox"/>
 <div class="ffs-cta-grid">
-<a class="ffs-cta-tile" href="../far-from-sol-changelog-redesign.html">
+<a class="ffs-cta-tile" href="../far-from-sol-changelog.html">
 <span aria-hidden="true" class="ffs-cta-icon">
 <svg viewbox="0 0 64 64">
 <rect height="40" rx="2" width="34" x="15" y="12"></rect>
@@ -2513,7 +2512,7 @@ text-align: center;
 </span>
 <strong>Soundtrack</strong>
 </label>
-<a class="ffs-cta-tile" href="../far-from-sol-movie.html">
+<a class="ffs-cta-tile" href="../sol-movie.html">
 <span aria-hidden="true" class="ffs-cta-icon">
 <svg viewbox="0 0 64 64">
 <rect height="22" rx="3" width="30" x="16" y="24"></rect>
@@ -2607,28 +2606,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <div class="ffs-soundtrack-modal-content">
 <div class="ffs-soundtrack-modal-content-inner">
-<ul>
-<li>
-<strong>From Gold | Novo Amor</strong>
-<p>Grace's ship exploring and crew reflection</p>
-</li>
-<li>
-<strong>Docking at Lovell City | Clinton Shorter (<em>The Expanse</em>)</strong>
-<p>Adapted into a recurring emotional leitmotif associated with Grace's family memories.</p>
-</li>
-<li>
-<strong>Someday | Sugar Ray</strong>
-<p>The Journey to Tau Ceti E montage.</p>
-</li>
-<li>
-<strong>Interstellar Countdown | Bill Irwin / <em>Interstellar</em></strong>
-<p>Grace's mission acceptance montage and decision to join Project Hail Mary.</p>
-</li>
-<li>
-<strong>This Too Shall Pass | OK Go</strong>
-<p>Final scenes and end credits.</p>
-</li>
-</ul>
+<ul><li><strong>From Gold | Novo Amor</strong><p>Grace's ship exploring and crew reflection.</p></li><li><strong>Docking at Lovell City | Clinton Shorter (The Expanse)</strong><p>Adapted into a recurring emotional leitmotif associated with Grace's family memories.</p></li><li><strong>Someday | Sugar Ray</strong><p>The Journey to Tau Ceti E montage.</p></li><li><strong>Interstellar Countdown | Bill Irwin / Interstellar</strong><p>Grace's mission acceptance montage and decision to join Project Hail Mary.</p></li><li><strong>This Too Shall Pass | OK Go</strong><p>Final scenes and end credits.</p></li></ul>
 </div>
 </div>
 </div>
@@ -2780,7 +2758,7 @@ document.addEventListener("click", function (event) {
 })();
 </script>
 <script src="../js/movie-ratings.js" type="module"></script>
-<style id="batman-mobile-parent-gap-final-fix">
+<style id="sol-mobile-parent-gap-final-fix">
 @media (max-width: 900px) {
   .ffs-page .ffs-desktop-composition {
     display: flex !important;
@@ -2813,7 +2791,7 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-info-panel > .ffs-mobile-working-title { order: 4 !important; display: flex !important; margin: 12px 0 8px !important; }
 }
 </style>
-<style id="batman-mobile-rating-above-poster-only">
+<style id="sol-mobile-rating-above-poster-only">
 @media (max-width: 900px) {
   .ffs-mobile-project-header { display: none !important; }
   .ffs-project-block > .ffs-audience-rating {
@@ -2822,7 +2800,7 @@ document.addEventListener("click", function (event) {
 }
   
 </style>
-<style id="batman-mobile-floating-rating-only">
+<style id="sol-mobile-floating-rating-only">
 @media (max-width: 900px) {
   .ffs-project-block > .ffs-audience-rating {
     background: transparent !important;
@@ -2909,7 +2887,7 @@ document.addEventListener("click", function (event) {
   .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 19px; }
 }
 </style>
-<style id="batman-desktop-panel-reorganization-only">
+<style id="sol-desktop-panel-reorganization-only">
 @media (min-width: 901px) {
   /* Keep both existing panel heights and widths locked. */
   .ffs-title-panel .ffs-audience-rating {
@@ -2947,7 +2925,7 @@ document.addEventListener("click", function (event) {
   .ffs-info-panel .ffs-synopsis { margin: 0; }
 }
 </style>
-<style id="batman-desktop-rating-count-and-details-order">
+<style id="sol-desktop-rating-count-and-details-order">
 @media (min-width: 901px) {
   /* Existing panel dimensions stay locked; all desktop content fits inside. */
   .ffs-title-panel .ffs-audience-rating {
@@ -2988,7 +2966,7 @@ document.addEventListener("click", function (event) {
   .ffs-info-panel .ffs-synopsis { margin: 0 !important; }
 }
 </style>
-<style id="batman-desktop-center-audience-label-only">
+<style id="sol-desktop-center-audience-label-only">
 @media (min-width: 901px) {
   .ffs-title-panel .ffs-rating-summary > .ffs-rating-label {
     width: 150px;
@@ -2996,7 +2974,7 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-<style id="batman-desktop-rating-heading-and-score-alignment">
+<style id="sol-desktop-rating-heading-and-score-alignment">
 @media (min-width: 901px) {
   /* Align the score brackets centrally in the left rating column. */
   .ffs-title-panel .ffs-rating-summary {
@@ -3021,7 +2999,7 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-<style id="batman-desktop-rating-transparent-background-only">
+<style id="sol-desktop-rating-transparent-background-only">
 @media (min-width: 901px) {
   .ffs-title-panel .ffs-audience-rating {
     background: transparent !important;
@@ -3029,7 +3007,7 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-<style id="batman-desktop-score-count-below-brackets">
+<style id="sol-desktop-score-count-below-brackets">
 @media (min-width: 901px) {
   .ffs-title-panel .ffs-rating-summary {
     flex-direction: column;
@@ -3062,7 +3040,7 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-<script id="batman-responsive-panel-placement-only">
+<script id="sol-responsive-panel-placement-only">
 /* Desktop elements live in their final HTML positions, before first paint.
    Only rearrange the mobile presentation or restore desktop after resizing. */
 (() => {
@@ -3102,10 +3080,10 @@ document.addEventListener("click", function (event) {
   mobile.addEventListener('change', positionElements);
 })();
 </script>
-<style id="lss-batman-cinematic-v1">
+<style id="lss-sol-cinematic-v1">
 @media (min-width:901px) {
   body { background:#040E15 !important; }
-  .batman-wide-banner { display:none !important; }
+  .sol-wide-banner { display:none !important; }
   main.page-content { position:relative !important; width:100% !important; max-width:none !important; background:transparent !important; padding-top:0 !important; overflow:visible !important; }
   .ffs-page { position:relative !important; isolation:isolate; width:100% !important; max-width:none !important; padding:34px 24px 62px !important; background:transparent !important; overflow:visible !important; }
   .ffs-page::before { content:""; position:absolute; z-index:-1; pointer-events:none; top:0; left:0; right:0; height:900px;
@@ -3185,7 +3163,7 @@ document.addEventListener("click", function (event) {
 }
 @media (max-width:900px) { .ffs-desktop-cinematic-nav,.ffs-hero-palette { display:none !important; } }
 </style>
-<script id="lss-batman-cinematic-desktop-placement-v2">
+<script id="lss-sol-cinematic-desktop-placement-v2">
 (() => {
   const project = document.querySelector('.ffs-project-block');
   const grid = project?.querySelector('.ffs-desktop-composition');
@@ -3214,9 +3192,9 @@ document.addEventListener("click", function (event) {
       title.classList.add('ffs-hero-title-row');
       grid.before(title);
       right.append(rating,palette,meta,working,hint,heading,synopsis);
-      project.classList.add('batman-cinematic-ready');
+      project.classList.add('sol-cinematic-ready');
     } else {
-      project.classList.remove('batman-cinematic-ready');
+      project.classList.remove('sol-cinematic-ready');
       title.classList.remove('ffs-hero-title-row');
       titlePanel.prepend(title);
       palette.remove();
@@ -3230,7 +3208,7 @@ document.addEventListener("click", function (event) {
   else mq.addListener(arrange);
 })();
 </script>
-<style id="batman-cinematic-structural-correction">
+<style id="sol-cinematic-structural-correction">
 @media (min-width:901px) {
   .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
     display:block !important; position:relative !important; width:100% !important;
@@ -3283,8 +3261,8 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-desktop-composition { grid-template-columns:260px minmax(0,1fr) !important; column-gap:26px !important; }
 }
 </style>
-<style id="batman-v2-flash-v21-exact-desktop-parity">
-/* Batman desktop styling copied from the approved Flash V21 master. */
+<style id="sol-v2-flash-v21-exact-desktop-parity">
+/* Far From Sol desktop styling copied from the approved Flash V21 master. */
 @media (min-width:901px) {
  .ffs-page .ffs-project-block > .ffs-hero-title-row .ffs-title { color:#F4F8F9 !important; }
  .ffs-page .ffs-desktop-composition { align-items:start !important; }
@@ -3427,7 +3405,7 @@ document.addEventListener("click", function (event) {
 @media (max-width:900px) { .lss-vertical-project-nav {display:none !important;} }
 
 
-/* Batman V2: same final Flash V21 desktop geometry, typography and behavior. */
+/* Far From Sol V2: same final Flash V21 desktop geometry, typography and behavior. */
 @media(min-width:901px) {
  .ffs-page .ffs-project-block > .ffs-hero-title-row .ffs-title {color:#F4F8F9 !important;}
  .ffs-page .lss-unified-details > .ffs-working-title-inline {display:none !important;}
@@ -3489,7 +3467,7 @@ document.addEventListener("click", function (event) {
 .ffs-page .ffs-palette-module::before {content:none !important;display:none !important;}
 
 </style>
-<script id="batman-v2-desktop-unified-layout">
+<script id="sol-v2-desktop-unified-layout">
 (() => {
  const project=document.querySelector('.ffs-project-block');
  const grid=project?.querySelector('.ffs-desktop-composition');
@@ -3510,16 +3488,16 @@ document.addEventListener("click", function (event) {
  disclaimer.textContent='Press and hold the poster to view alternate artwork.';
  const nav=document.createElement('nav');nav.className='lss-vertical-project-nav';nav.setAttribute('aria-label','Movie navigation');
  nav.innerHTML=`
- <a href="crisis.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
+ <a href="superman.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
  <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
- <a href="glass-rooms.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
+ <a href="the-flash.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
  const mq=window.matchMedia('(min-width:901px)');
  function arrange(){
   if(mq.matches){
    right.append(unified);
    unified.append(rating,meta,working,heading,synopsis,nav);
    poster.after(disclaimer);
-   // Batman's original script creates the desktop palette before this one executes.
+   // The template script creates the desktop palette before this one executes.
    const palette=project.querySelector('.ffs-hero-palette');
    if(palette){grid.after(palette);palette.classList.add('lss-floating-palette');}
   }else{
@@ -3535,7 +3513,7 @@ document.addEventListener("click", function (event) {
  if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
 })();
 </script>
-<style id="batman-mobile-cinematic-background-only">
+<style id="sol-mobile-cinematic-background-only">
 /* The mobile wallpaper fades over its own natural image height.
    This keeps the blend seamless even when the browser is zoomed. */
 .lss-mobile-cinematic-wallpaper { display: none; }
@@ -3598,8 +3576,8 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-<!-- Batman: Gotham's Riddle mobile: keep the rating clear of the full-poster shadow. -->
-<style id="batman-mobile-rating-shadow-isolation-fix">
+<!-- Far From Sol mobile: keep the rating clear of the full-poster shadow. -->
+<style id="sol-mobile-rating-shadow-isolation-fix">
 @media (max-width: 900px) {
   /* Keep the rating layered above the poster shadow. */
   .ffs-page .ffs-desktop-composition > #ffs-audience-rating {
