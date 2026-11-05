@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -9,8 +8,8 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" fetchpriority="high"/>
 <link href="../css/styles.css?v=6" rel="stylesheet"/>
-<link as="image" fetchpriority="high" href="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" rel="preload"/>
 <style>
     #lss-splash {
       display: none !important;
@@ -19,17 +18,10 @@
       pointer-events: none !important;
     }
   </style>
-<style id="sol-mobile-synopsis-gap-fix">
-@media (max-width: 900px) {
-  .ffs-poster-panel {
-    margin-bottom: 0 !important;
-  }
 
-  .ffs-info-panel {
-    margin-top: 0 !important;
-  }
-}
-</style>
+
+
+
 <style id="mobile-clean-full-poster-flow">
 @media (max-width: 900px) {
 
@@ -101,55 +93,128 @@
   }
 }
 </style>
-<style id="lss-desktop-inline-editors-note">
+
+
+<style id="batman-mobile-editors-note-reference">
+@media (max-width: 900px) {
+  .ffs-palette-module {
+    display: block !important;
+    position: relative !important;
+    margin: 14px 14px 18px !important;
+    padding: 16px !important;
+    background:
+      linear-gradient(135deg, rgba(0, 174, 222, 0.10), transparent 42%),
+      rgba(255, 255, 255, 0.035) !important;
+    box-shadow:
+      0 0 30px rgba(0, 174, 222, 0.08),
+      inset 0 0 0 1px rgba(0, 174, 222, 0.18) !important;
+    overflow: hidden !important;
+  }
+
+  .ffs-palette-module::before {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    z-index: 3 !important;
+    background:
+      linear-gradient(#00aede, #00aede) left top / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) left top / 2px 28px no-repeat,
+      linear-gradient(#00aede, #00aede) right top / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) right top / 2px 28px no-repeat,
+      linear-gradient(#00aede, #00aede) left bottom / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) left bottom / 2px 28px no-repeat,
+      linear-gradient(#00aede, #00aede) right bottom / 28px 2px no-repeat,
+      linear-gradient(#00aede, #00aede) right bottom / 2px 28px no-repeat !important;
+    opacity: 0.72 !important;
+  }
+
+  .ffs-palette-module > * {
+    position: relative !important;
+    z-index: 4 !important;
+  }
+
+  .ffs-palette-module .ffs-palette-wrap,
+  .ffs-palette-module .ffs-palette {
+    display: none !important;
+  }
+
+  .ffs-palette-module .ffs-editors-note-title {
+    margin: 14px 0 10px !important;
+    font-family: Oxanium, Rajdhani, Arial, sans-serif !important;
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    color: #00aede !important;
+    text-align: center !important;
+  }
+
+  .ffs-palette-module .ffs-editors-note-text {
+    margin: 14px 0 0 !important;
+    font-family: Rajdhani, Arial, sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    line-height: 1.48 !important;
+    color: rgba(186, 199, 213, 0.78) !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+  }
+}
+</style>
+
+<style id="desktop-inline-editors-note-only">
 @media (min-width: 901px) {
   .ffs-palette-module > .ffs-editors-note-title { display: none; }
   .ffs-palette-module .ffs-editors-note-inline-title {
     display: inline;
-    margin-right: 0.5em;
     font-family: Oxanium, Rajdhani, Arial, sans-serif;
     font-size: 21px;
     font-weight: 800;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--cyan);
+    margin-right: 0.5em;
     white-space: nowrap;
   }
 }
 @media (max-width: 900px) {
-  .ffs-palette-module .ffs-editors-note-inline-title { display: none; }
+  .ffs-palette-module .ffs-editors-note-inline-title { display: none !important; }
 }
 </style>
-<style id="lss-desktop-alt-poster">
+
+<style id="desktop-press-hold-alternate-poster">
 @media (min-width: 901px) {
-  .ffs-poster-panel .ffs-poster-click { cursor: pointer; }
-  .ffs-poster-panel .ffs-poster-full { transition: none; user-select: none; -webkit-user-drag: none; }
-}
-</style>
-<style id="lss-poster-hold-hint">
-@media (min-width: 901px) {
-  .ffs-title-panel .ffs-poster-hold-hint {
+  .ffs-poster-panel .ffs-poster-click { position: relative; cursor: pointer; user-select: none; -webkit-user-select: none; }
+  .ffs-poster-panel .ffs-poster-full { position: relative; z-index: 1; }
+  .ffs-poster-panel .ffs-poster-alt {
+    display: block; position: absolute; inset: 0; width: 100%; height: 100%;
+    z-index: 2; object-fit: contain; object-position: center top;
+    opacity: 0; pointer-events: none; transition: none;
+  }
+  .ffs-poster-panel .ffs-poster-click:active .ffs-poster-alt { opacity: 1; }
+  .ffs-poster-hold-hint {
     display: block;
+    width: 100%;
     margin: 10px 0 0;
+    text-align: left;
     font-family: Oxanium, Rajdhani, Arial, sans-serif;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.13em;
+    letter-spacing: .13em;
     text-transform: uppercase;
-    text-align: left;
-    color: rgba(186,199,213,.72);
+    color: rgba(186, 199, 213, .72);
   }
 }
 @media (max-width: 900px) {
-  .ffs-poster-hold-hint { display: none !important; }
+  .ffs-poster-alt, .ffs-poster-hold-hint { display: none !important; }
 }
 </style>
 <style id="lss-audience-rating-style">
 /* Movie ratings: shared style, scoped to this page; retain locked panel dimensions. */
 .ffs-working-title-inline {
   margin: 0;
-  font: 600 14px/1.25 Oxanium, sans-serif;
-  text-transform: uppercase;
+  font: 600 20px/1.25 Rajdhani, sans-serif;
   color: #bac7d5;
   white-space: nowrap;
   overflow: hidden;
@@ -202,7 +267,7 @@
 .ffs-rate-star:disabled { opacity: .55; cursor: wait; }
 .ffs-rating-feedback { color: #91aabb; font: 700 10px Oxanium,sans-serif; letter-spacing: .09em; }
 @media (min-width:901px) {
-  .ffs-title-panel .ffs-working-title-inline { font-size: 14px; }
+  .ffs-title-panel .ffs-working-title-inline { font-size: 20px; }
   .ffs-info-panel .ffs-audience-rating { flex: 0 0 auto; }
 }
 @media (max-width:900px) {
@@ -224,15 +289,45 @@
 }
 @media (prefers-reduced-motion:reduce) { .ffs-rate-star svg { transition: none; } }
 </style>
+
 <style id="lss-rating-empty-state-style">
 .ffs-rating-number strong.is-unrated { font-size: 15px; line-height: 1.35; white-space: nowrap; }
 @media (max-width: 420px) { .ffs-rating-number strong.is-unrated { font-size: 11px; } }
 </style>
-<style id="lss-overtime-reference-mobile-order">
-/* Mobile: preserve the original composition, match Top Gun rating/synopsis/title spacing. */
-.ffs-mobile-working-title { display: none; }
+<style id="lss-working-title-14px-consistent">
+.ffs-title-panel .ffs-working-title-inline,
+.ffs-title-panel .ffs-working-title-inline span,
+.ffs-info-panel .ffs-working-title-mobile,
+.ffs-info-panel .ffs-working-title-mobile span {
+  font-family: Oxanium, sans-serif !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+}
+.ffs-title-panel .ffs-working-title-inline,
+.ffs-info-panel .ffs-working-title-mobile {
+  font-weight: 600;
+  color: #bac7d5;
+}
+.ffs-title-panel .ffs-working-title-inline span,
+.ffs-info-panel .ffs-working-title-mobile span {
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: #00aede;
+}
+.ffs-working-title-mobile { display: none; }
 @media (max-width: 900px) {
-  .ffs-desktop-composition .ffs-info-panel {
+  .ffs-info-panel .ffs-working-title-mobile {
+    display: block !important;
+    margin: 0 0 10px;
+    line-height: 1.4;
+    white-space: normal;
+  }
+}
+</style>
+<style id="lss-far-from-sol-mobile-content-order">
+/* Mobile sequence: poster, audience rating, synopsis, working title, editor's note. */
+@media (max-width: 900px) {
+  .ffs-info-panel {
     display: flex !important;
     flex-direction: column !important;
   }
@@ -243,40 +338,46 @@
   }
   .ffs-info-panel > .ffs-section-label { order: 2; }
   .ffs-info-panel > .ffs-synopsis { order: 3; }
-  .ffs-info-panel > .ffs-mobile-working-title {
+  .ffs-info-panel > .ffs-working-title-mobile { order: 4; }
+}
+</style>
+<style id="far-from-sol-mobile-working-title-reference-match">
+@media (max-width: 900px) {
+  .ffs-info-panel > .ffs-working-title-mobile {
     order: 4;
     display: flex !important;
     align-items: center;
     gap: 8px;
-    margin: 12px 0 8px;
+    width: 100%;
+    margin: 12px 0 8px !important;
     padding: 10px 12px;
-    min-width: 0;
-    background: rgba(255,255,255,.035);
-    box-shadow: inset 0 0 0 1px rgba(0,174,222,.15);
+    background: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0 0 0 1px rgba(0, 174, 222, 0.15);
+    overflow: hidden;
     font-family: Oxanium, Rajdhani, Arial, sans-serif;
+    font-size: 14px !important;
+    font-weight: 600;
+    line-height: 1.15;
+    text-transform: uppercase !important;
+    color: #bac7d5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
-  .ffs-mobile-working-title span {
+  .ffs-info-panel > .ffs-working-title-mobile span {
+    display: inline-flex;
+    align-items: center;
     flex: 0 0 auto;
-    color: #00aede;
-    font-size: 10px;
+    margin: 0;
+    font-size: 10px !important;
     font-weight: 800;
+    line-height: 1;
     letter-spacing: .1em;
     white-space: nowrap;
   }
-  .ffs-mobile-working-title strong {
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: #bac7d5;
-    font-size: 15px;
-  }
 }
 </style>
-<style id="sol-topgun-mobile-rating-position-fix">
+<style id="far-from-sol-topgun-mobile-rating-position-fix">
 @media (max-width: 900px) {
-  /* Top Gun: 16px between poster and rating, 22px below rating. */
   .ffs-poster-panel { margin-bottom: 16px !important; }
   .ffs-mobile-meta { display: none !important; }
   .ffs-info-panel { margin-top: 0 !important; padding-top: 0 !important; }
@@ -287,9 +388,72 @@
   }
 }
 </style>
-<style id="sol-fullbleed-banner-layout">
+<style id="ffs-batman-master-desktop-only">
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-audience-rating { height:102px!important; min-height:102px!important; flex:0 0 102px!important; margin:3px 0 0!important; padding:8px 17px!important; }
+  .ffs-title-panel .ffs-rating-summary { width:180px; height:auto; display:flex; align-items:center; justify-content:center; position:relative; }
+  .ffs-title-panel .ffs-rating-number { position:relative; width:150px!important; height:60px!important; min-height:60px!important; margin:0!important; padding:2px 8px 17px!important; flex:0 0 150px; display:flex; align-items:center; justify-content:center; gap:6px;
+    background:linear-gradient(#00aede,#00aede) left top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right top/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right top/2px 13px no-repeat,linear-gradient(#00aede,#00aede) left bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) left bottom/2px 13px no-repeat,linear-gradient(#00aede,#00aede) right bottom/13px 2px no-repeat,linear-gradient(#00aede,#00aede) right bottom/2px 13px no-repeat; }
+  .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong { font-size:0!important;line-height:1!important; }
+  .ffs-title-panel .ffs-rating-number:has(.is-unrated) strong::before { content:'—';font:800 34px/1 Oxanium,sans-serif; }
+  .ffs-title-panel .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator { display:inline!important;visibility:visible!important; }
+  .ffs-title-panel .ffs-rating-number #ffs-rating-denominator { font-size:25px;font-weight:700;line-height:1; }
+  .ffs-title-panel .ffs-rating-number > .ffs-rating-count { position:absolute;bottom:5px;left:0;width:100%;text-align:center;font-size:10px;white-space:nowrap;line-height:1; }
+  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) .ffs-rating-count { display:none; }
+  .ffs-title-panel .ffs-rating-divider {height:66px;}
+  .ffs-title-panel .ffs-rating-input {gap:5px;}
+  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {display:block;width:100%;text-align:left;font-size:12px;letter-spacing:.13em;}
+  .ffs-info-panel .ffs-meta-row {display:grid;grid-template-columns:.9fr .92fr 1.35fr 1fr .9fr;gap:8px;margin:0 0 15px!important;transform:none!important;flex:0 0 auto;}
+  .ffs-info-panel .ffs-meta-card {min-height:46px;padding:6px 8px;}
+  .ffs-info-panel .ffs-working-title-inline {display:block;margin:0 0 6px!important;}
+  .ffs-info-panel .ffs-poster-hold-hint {display:block;margin:0 0 22px!important;text-align:left;}
+  .ffs-info-panel .ffs-section-label {margin:0 0 9px!important;}
+  .ffs-info-panel .ffs-synopsis {margin:0!important;}
+}
+</style>
+
+<style id="far-from-sol-final-batman-rating-desktop">
+@media (min-width: 901px) {
+  .ffs-title-panel .ffs-audience-rating {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .ffs-title-panel .ffs-rating-summary {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    transform: translateY(8px) !important;
+  }
+  .ffs-title-panel .ffs-rating-number {
+    flex: 0 0 auto !important;
+    width: 150px !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    padding: 2px 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
+    position: static !important;
+    display: block;
+    width: 150px !important;
+    margin: 0 !important;
+    text-align: center !important;
+    font-size: 10px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap;
+  }
+  .ffs-title-panel .ffs-rating-summary:has(.is-unrated) > .ffs-rating-count {
+    display: block !important;
+  }
+}
+</style>
+<style id="ffs-fullbleed-banner-layout">
 /* Banner is a sibling of the constrained page-content container. */
-.sol-wide-banner {
+.ffs-wide-banner {
   position: relative;
   display: block;
   width: 100%;
@@ -298,29 +462,29 @@
   overflow: hidden;
   background: #040E15;
 }
-.sol-wide-banner img {
+.ffs-wide-banner img {
   display: block;
   width: 100%;
   height: auto;
 }
 /* Reserve the full banner space on the FIRST paint, before image download. */
 @media (min-width: 901px) {
-  .sol-wide-banner {
+  .ffs-wide-banner {
     height: 37.5vw;
     aspect-ratio: 8 / 3;
   }
-  .sol-wide-banner > img {
+  .ffs-wide-banner > img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 }
-.sol-wide-banner::after {
+.ffs-wide-banner::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(to bottom, transparent 62%, rgba(4,14,21,.10) 77%, #040E15 100%);
+  background: linear-gradient(to bottom, transparent 62%, rgba(4,14,21,.28) 77%, #040E15 100%);
 }
 /* Keep the existing movie modules inside their original width constraint. */
 @media (min-width: 901px) {
@@ -332,31 +496,55 @@
   main.page-content > .ffs-page { background: transparent !important; }
 }
 @media (max-width: 900px) {
-  .sol-wide-banner { display: none !important; }
-  .sol-wide-banner::after {
+  .ffs-wide-banner { display: none !important; }
+  .ffs-wide-banner::after {
     background: linear-gradient(to bottom, transparent 58%, rgba(4,14,21,.35) 78%, #040E15 100%);
   }
 }
 </style>
-<style id="sol-mobile-ffs-rating-spacing-match">
-/* Match Far From Sol's compact rating numerals on mobile. */
-@media (max-width: 900px) {
-  .ffs-project-block > .ffs-audience-rating {
-    margin: 0 0 16px !important;
+<style id="far-from-sol-v5-single-desktop-title">
+@media (min-width:901px) {
+  html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
+    display:block !important; visibility:visible !important;
+    margin:0 0 22px !important; padding:0 !important;
+    width:100% !important; height:auto !important; min-height:0 !important;
   }
-  .ffs-audience-rating .ffs-rating-number {
-    width: auto !important;
-    min-height: 0 !important;
-    margin-top: 3px !important;
-    padding: 0 !important;
-    gap: 7px !important;
-    align-items: baseline !important;
-    justify-content: flex-start !important;
-    text-align: left !important;
-    background: none !important;
+  html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row .ffs-title {
+    display:block !important; visibility:visible !important;
+    margin:0 !important;
+  }
+  html body .ffs-page .ffs-desktop-composition .ffs-right-column > .ffs-title-panel {
+    display:none !important; margin:0 !important; padding:0 !important;
+    height:0 !important; min-height:0 !important; max-height:0 !important;
   }
 }
 </style>
+<style id="far-from-sol-desktop-details-breathing-room">
+/* Redistribute the contents without changing the poster-matched details box height. */
+@media (min-width: 901px) {
+  html body .ffs-page .lss-unified-details > .ffs-working-title-inline {
+    display: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    margin-bottom: 15px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+    margin-bottom: 17px !important;
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-section-label {
+    margin-bottom: 11px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-details-footer {
+    padding-top: 16px !important;
+  }
+}
+</style>
+
+
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -364,10 +552,10 @@
 <img alt="Light Speed Studios" src="https://light-speed-studios.b-cdn.net/topheaderlogo%20copy.png"/>
 <span class="lss-brand-text">No Spectacle Without Soul</span>
 </a>
-<button aria-expanded="false" aria-label="Open navigation menu" class="hamburger" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);" type="button">
-<span></span>
-<span></span>
-<span></span>
+<button class="hamburger" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="event.stopImmediatePropagation(); toggleMobileMenu(this);">
+  <span></span>
+  <span></span>
+  <span></span>
 </button>
 <nav class="lss-nav-links">
 <a class="lss-nav-item" href="../index.html">Bridge</a>
@@ -377,9 +565,6 @@
 <a class="lss-nav-item" href="../telemetry.html">Telemetry</a>
 </nav>
 </header>
-<section aria-label="Far From Sol banner" class="sol-wide-banner">
-<img alt="Far From Sol cinematic banner" decoding="sync" fetchpriority="high" height="768" loading="eager" src="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" width="2048"/>
-</section>
 <main class="page-content">
 <div class="ffs-page">
 <style>
@@ -1862,7 +2047,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
   outline: none !important;
   box-shadow: none !important;
 }
-
 @media (max-width: 900px) {
   .ffs-cta-panel {
     margin-top: 0;
@@ -2192,80 +2376,87 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 </style>
-<nav aria-label="Project back navigation" class="ffs-project-side-nav ffs-project-side-nav-left">
-<a class="ffs-side-nav-link ffs-side-back" data-project-nav-key="vault" href="../vault.html">
-<span class="ffs-side-nav-line">Back to</span>
-<span class="ffs-side-nav-line">Vault</span>
-</a>
-</nav>
-<nav aria-label="Project sequence navigation" class="ffs-project-side-nav ffs-project-side-nav-right">
-<a class="ffs-side-nav-link ffs-side-prev" data-project-nav-key="prev" href="crisis.html">Prev</a>
-<a class="ffs-side-nav-link ffs-side-next" data-project-nav-key="next" href="glass-rooms.html">Next</a>
-</nav>
+  <nav class="ffs-project-side-nav ffs-project-side-nav-left" aria-label="Project back navigation">
+    <a class="ffs-side-nav-link ffs-side-back" href="../vault.html" data-project-nav-key="vault">
+      <span class="ffs-side-nav-line">Back to</span>
+      <span class="ffs-side-nav-line">Vault</span>
+    </a>
+  </nav>
+
+  <nav class="ffs-project-side-nav ffs-project-side-nav-right" aria-label="Project sequence navigation">
+    <a class="ffs-side-nav-link ffs-side-prev" href="crisis.html" data-project-nav-key="prev">Prev</a>
+    <a class="ffs-side-nav-link ffs-side-next" href="glass-rooms.html" data-project-nav-key="next">Next</a>
+  </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
-<div aria-hidden="true" class="lss-mobile-cinematic-wallpaper"><img alt="" decoding="async" src="https://light-speed-studios.b-cdn.net/FFSBANNER.webp"/></div>
-<img alt="Far From Sol" class="ffs-mobile-project-header" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/ffsheader11.png"/>
+<div class="lss-mobile-cinematic-wallpaper" aria-hidden="true"><img src="https://light-speed-studios.b-cdn.net/FFSBANNER.webp" alt="" decoding="async" /></div>
+<img class="ffs-mobile-project-header" src="https://light-speed-studios.b-cdn.net/ffsheader11.png" alt="Far From Sol" decoding="async" fetchpriority="high"/>
 <div class="ffs-main-grid ffs-desktop-composition">
-<div class="ffs-left-column">
-<div class="ffs-poster-panel">
-<input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
-<label class="ffs-poster-click" for="ffsPosterToggle">
-<img alt="Far From Sol poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/FFS1new.png"/>
-<img alt="Far From Sol mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FFS1new.png"/>
-</label>
-<label class="ffs-poster-expand" for="ffsPosterToggle">
-<span>Click to Enlarge</span>
-</label>
+  <div class="ffs-left-column">
+    <div class="ffs-poster-panel">
+      <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
+      <label class="ffs-poster-click" for="ffsPosterToggle">
+        <img alt="Far From Sol poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/FFS1new.png"/>
+        <img alt="Alternate Far From Sol poster" class="ffs-poster ffs-poster-alt" decoding="async" loading="eager" draggable="false" src="https://light-speed-studios.b-cdn.net/TAPPOSTERcopy.png"/>
+        <img alt="Far From Sol mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FFSmob.png"/>
+      </label>
+      <label class="ffs-poster-expand" for="ffsPosterToggle">
+        <span>Click to Enlarge</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="ffs-right-column">
+    <div class="ffs-title-panel">
+      <div class="ffs-title-row">
+        <h1 class="ffs-title">Far From Sol</h1>
+      </div>
+      <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADON</div>
+      <p class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</p>
+ <div class="ffs-meta-row ffs-desktop-meta">
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">130 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">28 Jun 2026</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">Project Hail Mary 2026</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span><span class="ffs-meta-value">156 min</span></div>
+  <div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.43:1 IMAX</span></div>
 </div>
+    </div>
+
+    <div class="ffs-info-panel">
+      <p class="ffs-section-label">Synopsis</p>
+      <div class="ffs-synopsis">
+        <p>A story about finding home in the void. A linear reconstruction with a renewed backstory for Grace and a stronger emotional core. Far From Sol reimagines the ending into something more personal and character driven.</p>
+      </div>
+
+      <div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADOX</div>
+      <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="far-from-sol" aria-label="Audience rating for Far From Sol">
+  <div class="ffs-rating-summary">
+    <span class="ffs-rating-label">AUDIENCE RATING</span>
+    <div class="ffs-rating-number"><strong id="ffs-rating-average" class="is-unrated">NOT YET RATED</strong><span id="ffs-rating-denominator" hidden>/ 10</span></div>
+    <span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
+  </div>
+  <div class="ffs-rating-divider" aria-hidden="true"></div>
+  <div class="ffs-rating-input">
+    <div class="ffs-rating-stars" role="group" aria-label="Rate this edit from one to ten stars">
+<button type="button" class="ffs-rate-star" data-rating="1" aria-label="Rate 1 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="2" aria-label="Rate 2 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="3" aria-label="Rate 3 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="4" aria-label="Rate 4 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="5" aria-label="Rate 5 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="6" aria-label="Rate 6 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="7" aria-label="Rate 7 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="8" aria-label="Rate 8 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="9" aria-label="Rate 9 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+<button type="button" class="ffs-rate-star" data-rating="10" aria-label="Rate 10 out of 10" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"/></svg></button>
+    </div>
+    <span class="ffs-rating-feedback" id="ffs-rating-feedback" role="status" aria-live="polite">SELECT YOUR RATING</span>
+  </div>
 </div>
-<div class="ffs-right-column">
-<div class="ffs-title-panel">
-<div class="ffs-title-row">
-<h1 class="ffs-title">Far From Sol</h1>
+    </div>
+
+  </div>
 </div>
-<div aria-label="Audience rating for Far From Sol" class="ffs-audience-rating" data-movie-id="far-from-sol" id="ffs-audience-rating">
-<div class="ffs-rating-summary">
-<div class="ffs-rating-number"><strong class="is-unrated" id="ffs-rating-average">NOT YET RATED</strong><span hidden="" id="ffs-rating-denominator">/ 10</span></div>
-<span class="ffs-rating-count" id="ffs-rating-count">0 RATINGS</span>
-</div>
-<div aria-hidden="true" class="ffs-rating-divider"></div>
-<div class="ffs-rating-input">
-<span class="ffs-rating-label">AUDIENCE RATING</span>
-<div aria-label="Rate this edit from one to ten stars" class="ffs-rating-stars" role="group">
-<button aria-label="Rate 1 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="1" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 2 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="2" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 3 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="3" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 4 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="4" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 5 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="5" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 6 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="6" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 7 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="7" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 8 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="8" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 9 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="9" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-<button aria-label="Rate 10 out of 10" aria-pressed="false" class="ffs-rate-star" data-rating="10" type="button"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="m12 2 3.09 6.26 6.91 1.005-5 4.875 1.18 6.885L12 17.77l-6.18 3.255L7 14.14l-5-4.875 6.91-1.005z"></path></svg></button>
-</div>
-<span aria-live="polite" class="ffs-rating-feedback" id="ffs-rating-feedback" role="status">SELECT YOUR RATING</span>
-</div>
-</div>
-</div>
-<div class="ffs-info-panel">
-<div class="ffs-meta-row ffs-desktop-meta">
-<div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">130 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">28 Jun 2026</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">Project Hail Mary 2026</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span><span class="ffs-meta-value">156 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.43:1 IMAX</span></div>
-</div>
-<div class="ffs-working-title-inline"><span>WORKING TITLE:</span> THE ASTROPHAGE PARADON</div>
-<span class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</span>
-<p class="ffs-section-label">Synopsis</p>
-<div class="ffs-synopsis">
-<p>A story about finding home in the void. A linear reconstruction with a renewed backstory for Grace and a stronger emotional core. Far From Sol reimagines the ending into something more personal and character driven.</p>
-</div>
-<div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> <strong>THE ASTROPHAGE PARADOX</strong></div>
-</div>
-</div>
-</div>
+
 <style>
 /* SEPARATE PALETTE + VERTICAL CTA / TRAILER ROW */
 @media (min-width: 901px) {
@@ -2365,10 +2556,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 }
 
 @media (max-width: 900px) {
-  .ffs-palette-module {
-    display: none;
-  }
-
   .ffs-cta-trailer-row {
     display: block;
   }
@@ -2376,14 +2563,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
 /* EDITOR'S NOTE INSIDE PALETTE MODULE */
 .ffs-palette-module .ffs-editors-note-title {
-   margin: 14px 14px 14px;
+  margin: 14px 14px 14px;
   font-family: Oxanium, Rajdhani, Arial, sans-serif;
-  font-size: 21px;
-text-align: center;
+  font-size:  21px;
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--cyan);
+    text-align: center;
 }
 
 .ffs-palette-module .ffs-editors-note-text {
@@ -2396,7 +2583,6 @@ text-align: center;
   text-align: justify;
   text-justify: inter-word;
 }
-
 
 @media (max-width: 900px) {
   .ffs-palette-module {
@@ -2438,12 +2624,11 @@ text-align: center;
 
   .ffs-palette-module .ffs-editors-note-title {
     margin-bottom: 10px;
-      margin: 14px 0 10px;
     font-size: 18px;
   }
 
   .ffs-palette-module .ffs-palette-wrap {
-    display: block;
+    display: block !important;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -2465,6 +2650,7 @@ text-align: center;
   }
 }
 </style>
+
 <!-- Desktop only: inset palette in its own darker borderless box; preserve outer cyan brackets. -->
 <style id="lss-desktop-inset-palette-box">
 @media (min-width: 901px) {
@@ -2484,85 +2670,100 @@ text-align: center;
   }
 }
 </style>
-<section aria-labelledby="ffsEditorsNoteTitle" class="ffs-palette-module">
-<div class="ffs-palette-wrap">
-<img alt="Far From Sol color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/movie%20pallete.png"/>
-</div>
-<h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-<p class="ffs-editors-note-text"><span aria-hidden="true" class="ffs-editors-note-inline-title">Editor's Note</span> Project Hail Mary was a frustrating watch. I loved the premise but felt the film never reached its potential. The ideas were compelling, but I struggled to connect with Grace or believe the emotional weight of his journey. Far From Sol became my attempt to change that by giving Grace a family throughline and a more personal reason for the choices he ultimately makes. I also wanted to pull back the humor, treat Rocky as a genuine intellectual counterpart, and give the story the more grounded emotional weight I felt its premise deserved.</p>
+<section class="ffs-palette-module" aria-labelledby="ffsEditorsNoteTitle">
+  <div class="ffs-palette-wrap">
+    <img alt="Far From Sol color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/movie%20pallete.png"/>
+  </div>
+  <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
+  <p class="ffs-editors-note-text"><span class="ffs-editors-note-inline-title" aria-hidden="true">Editor's Note</span> <em>Project Hail Mary</em> was a frustrating watch. I loved the premise but felt the film never reached its potential. The ideas were compelling, but I struggled to connect with Grace or believe the emotional weight of his journey. <em>Far From Sol</em> became my attempt to change that by giving Grace a family throughline and a more personal reason for the choices he ultimately makes. I also wanted to pull back the humor, treat Rocky as a genuine intellectual counterpart, and give the story the more grounded emotional weight I felt its premise deserved.</p>
 </section>
+
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
-<input class="ffs-soundtrack-modal-toggle" id="ffsLandingSoundtrack" type="checkbox"/>
+<input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack"/>
+
 <div class="ffs-cta-grid">
-<a class="ffs-cta-tile" href="../far-from-sol-changelog.html">
-<span aria-hidden="true" class="ffs-cta-icon">
-<svg viewbox="0 0 64 64">
-<rect height="40" rx="2" width="34" x="15" y="12"></rect>
-<path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
-</svg>
-</span>
-<strong>Changelog</strong>
-</a>
-<label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
-<span aria-hidden="true" class="ffs-cta-icon">
-<svg viewbox="0 0 64 64">
-<path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
-</svg>
-</span>
-<strong>Soundtrack</strong>
-</label>
-<a class="ffs-cta-tile" href="../sol-movie.html">
-<span aria-hidden="true" class="ffs-cta-icon">
-<svg viewbox="0 0 64 64">
-<rect height="22" rx="3" width="30" x="16" y="24"></rect>
-<circle cx="25" cy="35" r="5"></circle>
-<circle cx="38" cy="35" r="5"></circle>
-<path d="M46 30l10-6v22l-10-6z"></path>
-<path d="M22 46l-4 8M40 46l4 8"></path>
-</svg>
-</span>
-<strong>Watch Movie</strong>
-</a>
-<a aria-label="Leave a review on Reddit" class="ffs-cta-tile ffs-reddit-review" href="https://www.reddit.com/r/fanedits/comments/1ui3p5s/far_from_sol_project_hail_mary_fanedit_light/" rel="noopener noreferrer" target="_blank">
-<span aria-hidden="true" class="ffs-cta-icon">
-<svg height="256" version="1.1" viewbox="0 0 256 256" width="256" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <a class="ffs-cta-tile" href="../far-from-sol-changelog-redesign.html">
+    <span class="ffs-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64">
+        <rect x="15" y="12" width="34" height="40" rx="2"></rect>
+        <path d="M22 22h20M22 30h20M22 38h20M22 46h14"></path>
+      </svg>
+    </span>
+    <strong>Changelog</strong>
+  </a>
+
+  <label class="ffs-cta-tile ffs-soundtrack-link" for="ffsLandingSoundtrack">
+    <span class="ffs-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64">
+        <path d="M8 32h6l3-9 4 18 5-27 6 36 6-25 5 14 4-7h9"></path>
+      </svg>
+    </span>
+    <strong>Soundtrack</strong>
+  </label>
+
+  <a class="ffs-cta-tile" href="../far-from-sol-movie.html">
+    <span class="ffs-cta-icon" aria-hidden="true">
+      <svg viewBox="0 0 64 64">
+        <rect x="16" y="24" width="30" height="22" rx="3"></rect>
+        <circle cx="25" cy="35" r="5"></circle>
+        <circle cx="38" cy="35" r="5"></circle>
+        <path d="M46 30l10-6v22l-10-6z"></path>
+        <path d="M22 46l-4 8M40 46l4 8"></path>
+      </svg>
+    </span>
+    <strong>Watch Movie</strong>
+  </a>
+
+      <a
+        class="ffs-cta-tile ffs-reddit-review"
+        href="https://www.reddit.com/r/fanedits/comments/1ui3p5s/far_from_sol_project_hail_mary_fanedit_light/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Leave a review on Reddit"
+      >
+        <span class="ffs-cta-icon" aria-hidden="true">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="256" height="256" viewBox="0 0 256 256" xml:space="preserve">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
-<path d="M 61.951 64.101 c -1.017 -0.509 -2.234 -0.397 -3.143 0.286 c -3.925 2.951 -8.777 4.46 -13.655 4.261 c -0.083 -0.004 -0.167 -0.005 -0.25 0 c -4.878 0.191 -9.726 -1.309 -13.655 -4.262 c -1.324 -0.996 -3.204 -0.729 -4.201 0.596 c -0.995 1.325 -0.729 3.206 0.596 4.201 c 4.732 3.557 10.512 5.482 16.387 5.482 c 0.333 0 0.666 -0.006 0.999 -0.019 c 5.791 0.22 11.526 -1.447 16.32 -4.702 c 1.3 -0.329 2.263 -1.507 2.263 -2.909 v -0.251 C 63.612 65.648 62.969 64.609 61.951 64.101 z" stroke-linecap="round" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: currentColor; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) "></path>
-<path d="M 77.391 33.213 c -2.177 0.076 -4.28 0.737 -6.107 1.899 c -6.924 -4.041 -16.675 -6.539 -24.476 -7.268 l 3.719 -17.482 l 13.879 2.774 c 0.793 3.758 4.127 6.58 8.121 6.58 c 4.585 0 8.302 -3.717 8.302 -8.302 c 0 -4.585 -3.717 -8.302 -8.302 -8.302 c -3.05 0 -5.708 1.649 -7.152 4.1 L 50.797 4.298 c -1.297 -0.291 -2.623 -0.058 -3.742 0.654 c -1.12 0.712 -1.894 1.819 -2.181 3.117 C 44.86 8.133 44.848 8.2 44.838 8.268 l -4.14 19.461 c -7.805 0.513 -15.33 2.907 -22.003 7.001 c -2.029 -1.269 -4.386 -1.918 -6.834 -1.832 c -3.259 0.103 -6.281 1.47 -8.506 3.845 c -2.236 2.378 -3.41 5.484 -3.307 8.747 c 0.103 3.259 1.47 6.281 3.853 8.513 c 0.472 0.441 0.966 0.838 1.479 1.189 c 0.005 0.387 0.02 0.772 0.045 1.157 c 0.078 15.731 17.885 28.512 39.76 28.512 c 21.878 0 39.685 -12.78 39.761 -28.513 c 0.025 -0.408 0.041 -0.818 0.045 -1.229 c 3.187 -2.318 5.12 -6.102 5.049 -10.147 C 89.792 38.261 84.111 32.963 77.391 33.213 z M 80.605 50.788 c -1.082 0.541 -1.733 1.679 -1.651 2.886 c 0.053 0.786 0.053 1.584 0 2.37 c -0.005 0.067 -0.007 0.135 -0.007 0.202 c 0 12.47 -15.145 22.615 -33.761 22.615 c -18.615 0 -33.761 -10.145 -33.761 -22.615 c 0 -0.068 -0.002 -0.136 -0.007 -0.204 c -0.054 -0.785 -0.054 -1.581 0 -2.366 c 0.086 -1.26 -0.626 -2.439 -1.782 -2.948 C 9.069 50.477 8.518 50.104 8 49.62 c -1.208 -1.132 -1.902 -2.666 -1.954 -4.321 c -0.053 -1.659 0.544 -3.238 1.685 -4.451 c 1.131 -1.208 2.666 -1.901 4.321 -1.954 c 0.067 -0.002 0.134 -0.003 0.201 -0.003 c 1.585 0 3.085 0.594 4.245 1.684 c 1.021 0.959 2.573 1.085 3.736 0.299 c 6.793 -4.596 14.712 -7.101 22.906 -7.244 c 7.767 0.181 19.718 2.905 26.632 7.614 c 1.169 0.796 2.734 0.667 3.757 -0.307 c 1.116 -1.063 2.563 -1.677 4.068 -1.729 c 3.401 -0.101 6.32 2.569 6.445 5.927 C 84.084 47.505 82.735 49.723 80.605 50.788 z" stroke-linecap="round" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: currentColor; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) "></path>
-<path d="M 36.416 51.59 c 0 -3.561 -2.904 -6.465 -6.465 -6.465 s -6.465 2.904 -6.465 6.465 s 2.888 6.432 6.465 6.465 C 33.512 58.055 36.416 55.151 36.416 51.59 z" stroke-linecap="round" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: currentColor; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) "></path>
-<path d="M 59.82 45.349 c -3.561 0 -6.465 2.904 -6.465 6.465 c 0 3.561 2.904 6.465 6.465 6.465 l -0.049 0.241 c 0.113 0 0.209 0 0.321 0 c 3.561 -0.145 6.336 -3.143 6.192 -6.706 C 66.284 48.253 63.38 45.349 59.82 45.349 z" stroke-linecap="round" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: currentColor; fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) "></path>
-</g>
-</svg>
-</span>
-<strong>Leave Review</strong>
-</a>
+<path d="M 61.951 64.101 c -1.017 -0.509 -2.234 -0.397 -3.143 0.286 c -3.925 2.951 -8.777 4.46 -13.655 4.261 c -0.083 -0.004 -0.167 -0.005 -0.25 0 c -4.878 0.191 -9.726 -1.309 -13.655 -4.262 c -1.324 -0.996 -3.204 -0.729 -4.201 0.596 c -0.995 1.325 -0.729 3.206 0.596 4.201 c 4.732 3.557 10.512 5.482 16.387 5.482 c 0.333 0 0.666 -0.006 0.999 -0.019 c 5.791 0.22 11.526 -1.447 16.32 -4.702 c 1.3 -0.329 2.263 -1.507 2.263 -2.909 v -0.251 C 63.612 65.648 62.969 64.609 61.951 64.101 z" style="fill: currentColor;"/>
+<path d="M 77.391 33.213 c -2.177 0.076 -4.28 0.737 -6.107 1.899 c -6.924 -4.041 -16.675 -6.539 -24.476 -7.268 l 3.719 -17.482 l 13.879 2.774 c 0.793 3.758 4.127 6.58 8.121 6.58 c 4.585 0 8.302 -3.717 8.302 -8.302 c 0 -4.585 -3.717 -8.302 -8.302 -8.302 c -3.05 0 -5.708 1.649 -7.152 4.1 L 50.797 4.298 c -1.297 -0.291 -2.623 -0.058 -3.742 0.654 c -1.12 0.712 -1.894 1.819 -2.181 3.117 C 44.86 8.133 44.848 8.2 44.838 8.268 l -4.14 19.461 c -7.805 0.513 -15.33 2.907 -22.003 7.001 c -2.029 -1.269 -4.386 -1.918 -6.834 -1.832 c -3.259 0.103 -6.281 1.47 -8.506 3.845 c -2.236 2.378 -3.41 5.484 -3.307 8.747 c 0.103 3.259 1.47 6.281 3.853 8.513 c 0.472 0.441 0.966 0.838 1.479 1.189 c 0.005 0.387 0.02 0.772 0.045 1.157 c 0.078 15.731 17.885 28.512 39.76 28.512 c 21.878 0 39.685 -12.78 39.761 -28.513 c 0.025 -0.408 0.041 -0.818 0.045 -1.229 c 3.187 -2.318 5.12 -6.102 5.049 -10.147 C 89.792 38.261 84.111 32.963 77.391 33.213 z M 80.605 50.788 c -1.082 0.541 -1.733 1.679 -1.651 2.886 c 0.053 0.786 0.053 1.584 0 2.37 c -0.005 0.067 -0.007 0.135 -0.007 0.202 c 0 12.47 -15.145 22.615 -33.761 22.615 c -18.615 0 -33.761 -10.145 -33.761 -22.615 c 0 -0.068 -0.002 -0.136 -0.007 -0.204 c -0.054 -0.785 -0.054 -1.581 0 -2.366 c 0.086 -1.26 -0.626 -2.439 -1.782 -2.948 C 9.069 50.477 8.518 50.104 8 49.62 c -1.208 -1.132 -1.902 -2.666 -1.954 -4.321 c -0.053 -1.659 0.544 -3.238 1.685 -4.451 c 1.131 -1.208 2.666 -1.901 4.321 -1.954 c 0.067 -0.002 0.134 -0.003 0.201 -0.003 c 1.585 0 3.085 0.594 4.245 1.684 c 1.021 0.959 2.573 1.085 3.736 0.299 c 6.793 -4.596 14.712 -7.101 22.906 -7.244 c 7.767 0.181 19.718 2.905 26.632 7.614 c 1.169 0.796 2.734 0.667 3.757 -0.307 c 1.116 -1.063 2.563 -1.677 4.068 -1.729 c 3.401 -0.101 6.32 2.569 6.445 5.927 C 84.084 47.505 82.735 49.723 80.605 50.788 z" style="fill: currentColor;"/>
+<path d="M 36.416 51.59 c 0 -3.561 -2.904 -6.465 -6.465 -6.465 s -6.465 2.904 -6.465 6.465 s 2.888 6.432 6.465 6.465 C 33.512 58.055 36.416 55.151 36.416 51.59 z" style="fill: currentColor;"/>
+<path d="M 59.82 45.349 c -3.561 0 -6.465 2.904 -6.465 6.465 c 0 3.561 2.904 6.465 6.465 6.465 l -0.049 0.241 c 0.113 0 0.209 0 0.321 0 c 3.561 -0.145 6.336 -3.143 6.192 -6.706 C 66.284 48.253 63.38 45.349 59.82 45.349 z" style="fill: currentColor;"/>
+</g></svg>
+        </span>
+        <strong>Leave Review</strong>
+       
+      </a>
 </div>
 </div>
+
 <div class="ffs-trailer-section">
+
 <div class="ffs-video">
 <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/r771Xp-gfBw" title="Far From Sol Trailer">
 </iframe>
 </div>
 </div>
+
 </div>
-<nav aria-label="Project navigation" class="ffs-desktop-cinematic-nav">
-<a data-project-nav-key="vault-desktop" href="../vault.html">Vault</a>
-<a data-project-nav-key="prev-desktop" href="crisis.html">Prev</a>
-<a data-project-nav-key="next-desktop" href="glass-rooms.html">Next</a>
-</nav>
-<nav aria-label="Project mobile navigation" class="ffs-mobile-project-nav">
-<a data-project-nav-key="vault-mobile" href="../vault.html">Vault</a>
-<a data-project-nav-key="prev-mobile" href="crisis.html">Prev</a>
-<a data-project-nav-key="next-mobile" href="glass-rooms.html">Next</a>
-</nav>
+
+<nav class="ffs-mobile-project-nav" aria-label="Project mobile navigation">
+    <a href="../vault.html" data-project-nav-key="vault-mobile">Vault</a>
+    <a href="crisis.html" data-project-nav-key="prev-mobile">Prev</a>
+    <a href="glass-rooms.html" data-project-nav-key="next-mobile">Next</a>
+  </nav>
+
+
 <div class="ffs-footer-logo-block">
-<img alt="Light Speed Studios logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png"/>
+  <img src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png" alt="Light Speed Studios logo" loading="lazy" decoding="async">
 </div>
+
 </div>
+  </div>
 </div>
-</div>
+
 </main>
+
 <script>
 function toggleMobileMenu(button) {
   const navLinks = document.querySelector('.lss-nav-links');
@@ -2589,28 +2790,55 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 </script>
+
 <script src="../js/main.js?v=5"></script>
+
+
 <div class="ffs-soundtrack-modal">
-<div class="ffs-soundtrack-modal-box">
-<div class="ffs-soundtrack-modal-head">
-<div class="ffs-soundtrack-modal-header">
-<div class="ffs-soundtrack-modal-icon">
-<img alt="Soundtrack icon" src="https://light-speed-studios.b-cdn.net/wave1.png"/>
+  <div class="ffs-soundtrack-modal-box">
+    <div class="ffs-soundtrack-modal-head">
+      <div class="ffs-soundtrack-modal-header">
+        <div class="ffs-soundtrack-modal-icon">
+          <img src="https://light-speed-studios.b-cdn.net/wave1.png" alt="Soundtrack icon">
+        </div>
+        <div class="ffs-soundtrack-modal-title">
+          <strong>Soundtrack</strong>
+          <span>Signals and Soundwaves</span>
+        </div>
+      </div>
+      <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
+    </div>
+
+    <div class="ffs-soundtrack-modal-content">
+      <div class="ffs-soundtrack-modal-content-inner">
+<ul>
+  <li>
+    <strong>From Gold | Novo Amor</strong>
+    <p>Grace's ship exploring and crew reflection</p>
+  </li>
+  <li>
+    <strong>Docking at Lovell City | Clinton Shorter (<em>The Expanse</em>)</strong>
+    <p>Adapted into a recurring emotional leitmotif associated with Grace's family memories.</p>
+  </li>
+  <li>
+    <strong>Someday | Sugar Ray</strong>
+    <p>The Journey to Tau Ceti E montage.</p>
+  </li>
+  <li>
+    <strong>Interstellar Countdown | Bill Irwin / <em>Interstellar</em></strong>
+    <p>Grace's mission acceptance montage and decision to join Project Hail Mary.</p>
+  </li>
+  <li>
+    <strong>This Too Shall Pass | OK Go</strong>
+    <p>Final scenes and end credits.</p>
+  </li>
+</ul>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="ffs-soundtrack-modal-title">
-<strong>Soundtrack</strong>
-<span>Signals and Soundwaves</span>
-</div>
-</div>
-<label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
-</div>
-<div class="ffs-soundtrack-modal-content">
-<div class="ffs-soundtrack-modal-content-inner">
-<ul><li><strong>From Gold | Novo Amor</strong><p>Grace's ship exploring and crew reflection.</p></li><li><strong>Docking at Lovell City | Clinton Shorter (The Expanse)</strong><p>Adapted into a recurring emotional leitmotif associated with Grace's family memories.</p></li><li><strong>Someday | Sugar Ray</strong><p>The Journey to Tau Ceti E montage.</p></li><li><strong>Interstellar Countdown | Bill Irwin / Interstellar</strong><p>Grace's mission acceptance montage and decision to join Project Hail Mary.</p></li><li><strong>This Too Shall Pass | OK Go</strong><p>Final scenes and end credits.</p></li></ul>
-</div>
-</div>
-</div>
-</div>
+
+
 <script>
 document.addEventListener("click", function (event) {
   const modal = event.target.closest(".ffs-soundtrack-modal");
@@ -2622,6 +2850,8 @@ document.addEventListener("click", function (event) {
   }
 });
 </script>
+
+
 <style id="mobile-bottom-gap-border-fix">
 @media (max-width: 900px) {
   html,
@@ -2677,6 +2907,8 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+
+
 <style id="far-from-sol-desktop-geometry-lock">
 @media (min-width: 901px) {
   .ffs-title-panel {
@@ -2687,11 +2919,7 @@ document.addEventListener("click", function (event) {
     display: flex !important;
     flex-direction: column !important;
   }
-@media (max-width: 900px) {
-  .ffs-page {
-    background: #08181F !important;
-  }
-}
+
   .ffs-title-panel .ffs-title-row {
     margin-bottom: 4px !important;
   }
@@ -2723,367 +2951,95 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
-<script id="lss-desktop-alt-poster-script">
-(() => {
-  const original = 'https://light-speed-studios.b-cdn.net/FFS1new.png';
-  const alternate = 'https://light-speed-studios.b-cdn.net/TAPPOSTERcopy.png';
-  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-full');
-  const clickArea = document.querySelector('.ffs-poster-panel .ffs-poster-click');
-  if (!poster || !clickArea) return;
-  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
-  const preload = new Image();
-  preload.src = alternate;
-  let pressed = false;
-  function showAlternate(event) {
-    if (!desktop() || (event.pointerType === 'mouse' && event.button !== 0)) return;
-    event.preventDefault();
-    pressed = true;
-    poster.src = alternate;
-  }
-  function restorePoster() {
-    if (!pressed) return;
-    pressed = false;
-    poster.src = original;
-  }
-  clickArea.addEventListener('pointerdown', showAlternate);
-  window.addEventListener('pointerup', restorePoster);
-  window.addEventListener('pointercancel', restorePoster);
-  window.addEventListener('blur', restorePoster);
-  clickArea.addEventListener('click', (event) => {
-    if (desktop()) event.preventDefault();
-  });
-  clickArea.addEventListener('dragstart', (event) => {
-    if (desktop()) event.preventDefault();
-  });
-})();
-</script>
-<script src="../js/movie-ratings.js" type="module"></script>
-<style id="sol-mobile-parent-gap-final-fix">
+
+<script type="module" src="../js/movie-ratings.js"></script>
+
+<style id="far-from-sol-final-mobile-parent-gap-fix">
 @media (max-width: 900px) {
-  .ffs-page .ffs-desktop-composition {
-    display: flex !important;
-    flex-direction: column !important;
+  html body .ffs-page .ffs-main-grid {
+    display: block !important;
     gap: 0 !important;
     row-gap: 0 !important;
   }
-  .ffs-page .ffs-desktop-composition > .ffs-left-column,
-  .ffs-page .ffs-desktop-composition > .ffs-right-column {
-    display: contents !important;
-  }
-  .ffs-page .ffs-mobile-meta { display: none !important; visibility: hidden !important; }
-  .ffs-page .ffs-desktop-composition .ffs-poster-panel {
-    order: 1 !important;
+  html body .ffs-page .ffs-poster-panel {
     margin: 0 0 16px !important;
   }
-  .ffs-page .ffs-desktop-composition .ffs-info-panel {
-    order: 2 !important;
-    margin: 0 !important;
+  html body .ffs-page .ffs-mobile-meta {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  html body .ffs-page .ffs-info-panel {
+    margin-top: 0 !important;
     padding-top: 0 !important;
     display: flex !important;
     flex-direction: column !important;
   }
-  .ffs-page .ffs-info-panel > .ffs-audience-rating {
+  html body .ffs-page .ffs-info-panel > .ffs-audience-rating {
     order: 1 !important;
     margin: 0 0 22px !important;
   }
-  .ffs-page .ffs-info-panel > .ffs-section-label { order: 2 !important; margin-top: 0 !important; }
-  .ffs-page .ffs-info-panel > .ffs-synopsis { order: 3 !important; margin-bottom: 22px !important; }
-  .ffs-page .ffs-info-panel > .ffs-mobile-working-title { order: 4 !important; display: flex !important; margin: 12px 0 8px !important; }
+  html body .ffs-page .ffs-info-panel > .ffs-section-label { order: 2 !important; }
+  html body .ffs-page .ffs-info-panel > .ffs-synopsis { order: 3 !important; margin-bottom: 22px !important; }
+  html body .ffs-page .ffs-info-panel > .ffs-working-title-mobile { order: 4 !important; }
 }
 </style>
-<style id="sol-mobile-rating-above-poster-only">
+
+<script id="far-from-sol-rating-count-wording-only">
+(() => {
+  const count = document.getElementById('ffs-rating-count');
+  if (!count) return;
+  const update = () => {
+    const raw = count.textContent.trim();
+    const match = raw.match(/\b(\d+)\b/);
+    const value = match ? Number(match[1]) : (/no ratings|not yet rated/i.test(raw) ? 0 : null);
+    if (value === null) return;
+    const label = `${value} ${value === 1 ? 'RATING' : 'RATINGS'}`;
+    if (raw !== label) count.textContent = label;
+  };
+  new MutationObserver(update).observe(count, {childList: true, characterData: true, subtree: true});
+  update();
+})();
+</script>
+
+<style id="far-from-sol-mobile-header-rating-only">
 @media (max-width: 900px) {
   .ffs-mobile-project-header { display: none !important; }
   .ffs-project-block > .ffs-audience-rating {
+    display: grid !important;
     margin: 0 0 16px !important;
-  }
-}
-  
-</style>
-<style id="sol-mobile-floating-rating-only">
-@media (max-width: 900px) {
-  .ffs-project-block > .ffs-audience-rating {
     background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-  }
-}
-</style>
-<style id="lss-rating-corner-score-both-layouts">
-/* Score HUD only. Desktop panel and mobile floating layout are unchanged. */
-.ffs-audience-rating .ffs-rating-number {
-  position: relative;
-  width: 168px;
-  max-width: 100%;
-  min-height: 48px;
-  margin-top: 7px;
-  padding: 7px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background:
-    linear-gradient(#00aede,#00aede) left top / 13px 2px no-repeat,
-    linear-gradient(#00aede,#00aede) left top / 2px 13px no-repeat,
-    linear-gradient(#00aede,#00aede) right top / 13px 2px no-repeat,
-    linear-gradient(#00aede,#00aede) right top / 2px 13px no-repeat,
-    linear-gradient(#00aede,#00aede) left bottom / 13px 2px no-repeat,
-    linear-gradient(#00aede,#00aede) left bottom / 2px 13px no-repeat,
-    linear-gradient(#00aede,#00aede) right bottom / 13px 2px no-repeat,
-    linear-gradient(#00aede,#00aede) right bottom / 2px 13px no-repeat;
-}
-.ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong {
-  font-size: 0 !important;
-  line-height: 1 !important;
-}
-.ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
-  content: "—";
-  font: 800 34px/1 Oxanium, sans-serif;
-}
-.ffs-audience-rating .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {
-  display: inline !important;
-  visibility: visible !important;
-}
-.ffs-audience-rating .ffs-rating-summary:has(.is-unrated) .ffs-rating-count {
-  display: none;
-}
-@media (max-width: 900px) {
-  .ffs-audience-rating .ffs-rating-number {
-    width: 100%;
-    min-height: 43px;
-    margin-top: 8px;
-    padding: 6px 4px;
-    gap: 3px;
-    justify-content: flex-start !important;
-    text-align: left !important;
-    background: none !important;
-  }
-  .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
-    font-size: 28px;
-  }
-}
-@media (max-width: 420px) {
-  .ffs-audience-rating .ffs-rating-number {
-    min-height: 39px;
-    padding: 5px 3px;
-  }
-  .ffs-audience-rating .ffs-rating-number:has(.is-unrated) strong::before {
-    font-size: 25px;
-  }
-}
-  
-</style>
-<style id="lss-rating-denominator-size-only">
-/* Increase /10 legibility on desktop and mobile; preserve all other styling. */
-.ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {
-  font-size: 25px;
-  font-weight: 700;
-  line-height: 1;
-}
-@media (max-width: 900px) {
-  .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 21px; }
-}
-@media (max-width: 420px) {
-  .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator { font-size: 19px; }
-}
-</style>
-<style id="sol-desktop-panel-reorganization-only">
-@media (min-width: 901px) {
-  /* Keep both existing panel heights and widths locked. */
-  .ffs-title-panel .ffs-audience-rating {
-    margin: 4px 0 0 !important;
-    min-height: 102px;
-    flex: 0 0 102px;
-  }
-  .ffs-info-panel .ffs-working-title-inline {
-    display: block;
-    margin: 0 0 10px;
-  }
-  .ffs-info-panel .ffs-poster-hold-hint {
-    display: block;
-    margin: 0 0 18px;
-    font-family: Oxanium, Rajdhani, Arial, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-    text-align: left;
-    color: rgba(186,199,213,.72);
-  }
-  .ffs-info-panel .ffs-meta-row {
-    display: grid;
-    grid-template-columns: .9fr .92fr 1.35fr 1fr .9fr;
-    gap: 8px;
-    margin: 0 0 23px;
-    transform: none;
-  }
-  .ffs-info-panel .ffs-meta-card {
-    min-height: 46px;
-    padding: 6px 8px;
-  }
-  .ffs-info-panel .ffs-section-label { margin: 0 0 9px; }
-  .ffs-info-panel .ffs-synopsis { margin: 0; }
-}
-</style>
-<style id="sol-desktop-rating-count-and-details-order">
-@media (min-width: 901px) {
-  /* Existing panel dimensions stay locked; all desktop content fits inside. */
-  .ffs-title-panel .ffs-audience-rating {
-    min-height: 102px !important;
-    height: 102px !important;
-    flex: 0 0 102px !important;
-    padding: 8px 17px !important;
-    margin: 3px 0 0 !important;
-  }
-  .ffs-title-panel .ffs-rating-number {
-    position: relative;
-    width: 150px;
-    height: 60px;
-    min-height: 60px;
-    margin-top: 3px;
-    padding: 2px 8px 17px;
-    align-items: center;
-  }
-  .ffs-title-panel .ffs-rating-number > .ffs-rating-count {
-    position: absolute;
-    bottom: 5px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 10px;
-    white-space: nowrap;
-    line-height: 1;
-  }
-  .ffs-title-panel .ffs-rating-divider { height: 66px; }
-  .ffs-info-panel .ffs-meta-row {
-    margin: 0 0 15px !important;
-    transform: none !important;
-    flex: 0 0 auto;
-  }
-  .ffs-info-panel .ffs-working-title-inline { margin: 0 0 6px !important; }
-  .ffs-info-panel .ffs-poster-hold-hint { margin: 0 0 22px !important; }
-  .ffs-info-panel .ffs-section-label { margin: 0 0 9px !important; }
-  .ffs-info-panel .ffs-synopsis { margin: 0 !important; }
-}
-</style>
-<style id="sol-desktop-center-audience-label-only">
-@media (min-width: 901px) {
-  .ffs-title-panel .ffs-rating-summary > .ffs-rating-label {
-    width: 150px;
-    text-align: center;
-  }
-}
-</style>
-<style id="sol-desktop-rating-heading-and-score-alignment">
-@media (min-width: 901px) {
-  /* Align the score brackets centrally in the left rating column. */
-  .ffs-title-panel .ffs-rating-summary {
-    width: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .ffs-title-panel .ffs-rating-number {
-    margin: 0 !important;
-    flex: 0 0 150px;
-  }
-  /* Heading sits above the stars, with the feedback below them. */
-  .ffs-title-panel .ffs-rating-input {
-    gap: 5px;
-  }
-  .ffs-title-panel .ffs-rating-input > .ffs-rating-label {
-    width: 100%;
-    text-align: left;
-    font-size: 12px;
-    letter-spacing: .13em;
-  }
-}
-</style>
-<style id="sol-desktop-rating-transparent-background-only">
-@media (min-width: 901px) {
-  .ffs-title-panel .ffs-audience-rating {
-    background: transparent !important;
+    border: 0 !important;
     box-shadow: none !important;
   }
 }
 </style>
-<style id="sol-desktop-score-count-below-brackets">
-@media (min-width: 901px) {
-  .ffs-title-panel .ffs-rating-summary {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    /* Center the bracketed score against the star row, not the heading. */
-    transform: translateY(8px);
-  }
-  .ffs-title-panel .ffs-rating-number {
-    flex: 0 0 auto !important;
-    width: 150px !important;
-    height: 60px !important;
-    min-height: 60px !important;
-    box-sizing: border-box;
-    padding: 2px 8px !important;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .ffs-title-panel .ffs-rating-summary > .ffs-rating-count {
-    position: static;
-    display: block;
-    width: 150px;
-    margin: 0;
-    text-align: center;
-    font-size: 10px;
-    line-height: 1.1;
-    white-space: nowrap;
-  }
-}
-</style>
-<script id="sol-responsive-panel-placement-only">
-/* Desktop elements live in their final HTML positions, before first paint.
-   Only rearrange the mobile presentation or restore desktop after resizing. */
+<script id="far-from-sol-mobile-rating-above-poster-only">
 (() => {
-  const rating = document.getElementById('ffs-audience-rating');
-  const grid = document.querySelector('.ffs-desktop-composition');
-  const titlePanel = document.querySelector('.ffs-title-panel');
-  const infoPanel = document.querySelector('.ffs-info-panel');
-  const titleRow = titlePanel?.querySelector('.ffs-title-row');
-  const workingTitle = infoPanel?.querySelector('.ffs-working-title-inline');
-  const posterHint = infoPanel?.querySelector('.ffs-poster-hold-hint');
-  const metadata = infoPanel?.querySelector('.ffs-desktop-meta');
-  const synopsisLabel = infoPanel?.querySelector('.ffs-section-label');
-  const count = rating?.querySelector('.ffs-rating-count');
-  const number = rating?.querySelector('.ffs-rating-number');
-  const summary = rating?.querySelector('.ffs-rating-summary');
-  const label = rating?.querySelector('.ffs-rating-label');
-  const input = rating?.querySelector('.ffs-rating-input');
-  const stars = input?.querySelector('.ffs-rating-stars');
-  if (!rating || !grid || !titlePanel || !infoPanel || !titleRow || !workingTitle || !posterHint || !metadata || !synopsisLabel || !count || !number || !summary || !label || !input || !stars) return;
   const mobile = window.matchMedia('(max-width: 900px)');
-  function positionElements(event) {
-    if (mobile.matches) {
-      grid.parentElement.insertBefore(rating, grid);
-      titleRow.after(workingTitle, posterHint, metadata);
-      number.after(count);
-      summary.insertBefore(label, number);
-    } else if (event) {
-      // Restore final desktop HTML structure only after a live resize.
-      titleRow.after(rating);
-      infoPanel.insertBefore(metadata, synopsisLabel);
-      metadata.after(workingTitle, posterHint);
-      number.after(count);
-      input.insertBefore(label, stars);
+  const moveOnMobile = () => {
+    if (!mobile.matches) return;
+    const rating = document.getElementById('ffs-audience-rating');
+    const grid = document.querySelector('.ffs-project-block > .ffs-main-grid');
+    if (rating && grid) {
+      const info = grid.querySelector('.ffs-info-panel');
+      if (info) info.prepend(rating);
     }
-  }
-  if (mobile.matches) positionElements();
-  mobile.addEventListener('change', positionElements);
+  };
+  // Existing responsive script retains sole control of desktop placement.
+  document.addEventListener('DOMContentLoaded', () => {
+    moveOnMobile();
+    if (mobile.addEventListener) mobile.addEventListener('change', moveOnMobile);
+    else mobile.addListener(moveOnMobile);
+  });
 })();
 </script>
-<style id="lss-sol-cinematic-v1">
+
+<style id="ffs-far-from-sol-overtime-v22-parity">
+/* Reference: lss-crisis-cinematic-v1 */
+
 @media (min-width:901px) {
   body { background:#040E15 !important; }
-  .sol-wide-banner { display:none !important; }
+  
   main.page-content { position:relative !important; width:100% !important; max-width:none !important; background:transparent !important; padding-top:0 !important; overflow:visible !important; }
   .ffs-page { position:relative !important; isolation:isolate; width:100% !important; max-width:none !important; padding:34px 24px 62px !important; background:transparent !important; overflow:visible !important; }
   .ffs-page::before { content:""; position:absolute; z-index:-1; pointer-events:none; top:0; left:0; right:0; height:900px;
@@ -3102,11 +3058,17 @@ document.addEventListener("click", function (event) {
   .ffs-poster-panel .ffs-poster-click { display:block !important; position:relative !important; width:100% !important; height:auto !important; min-height:0 !important; flex:none !important; border:0 !important; box-shadow:none !important; cursor:pointer !important; }
   .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full { display:block !important; width:100% !important; height:auto !important; max-height:none !important; object-fit:contain !important; box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important; }
   .ffs-poster-panel .ffs-poster-click > img.ffs-poster-crop { display:none !important; }
-  /* The existing script swaps the primary poster src while pressed. */
+  /* Preserve the original transparent alternate overlay during press and hold. */
+  .ffs-poster-panel .ffs-poster-click > img.ffs-poster-alt {
+    display:block !important; position:absolute !important; inset:0 !important; width:100% !important; height:100% !important; object-fit:contain !important; object-position:center top !important; opacity:0 !important; pointer-events:none !important; box-shadow:none !important;
+  }
+  .ffs-poster-panel .ffs-poster-click.is-pressing-alt > img.ffs-poster-alt { opacity:1 !important; }
+  /* The original press-and-hold uses :active; override the opacity:0!important above. */
+  .ffs-poster-panel .ffs-poster-click:active > img.ffs-poster-alt { opacity:1 !important; }
   .ffs-poster-expand { display:none !important; }
   .ffs-desktop-composition .ffs-title-panel,.ffs-desktop-composition .ffs-info-panel { display:contents !important; }
   .ffs-title-panel::before,.ffs-title-panel::after,.ffs-info-panel::before,.ffs-info-panel::after { content:none !important; }
-  .ffs-right-column > .ffs-audience-rating { order:1 !important; display:grid !important; width:min(760px,100%) !important; grid-template-columns:minmax(0,170px) 1px minmax(0,1fr) !important; min-height:108px !important; height:auto !important; flex:none !important; gap:18px !important; padding:8px 0 !important; margin:0 !important; background:rgba(4,14,21,.28) !important; box-shadow:none !important; border:0 !important; }
+  .ffs-right-column > .ffs-audience-rating { order:1 !important; display:grid !important; width:min(760px,100%) !important; grid-template-columns:minmax(0,170px) 1px minmax(0,1fr) !important; min-height:108px !important; height:auto !important; flex:none !important; gap:18px !important; padding:8px 0 !important; margin:0 !important; background:rgba(4,14,21,.10) !important; box-shadow:none !important; border:0 !important; }
   .ffs-right-column > .ffs-audience-rating .ffs-rating-summary { width:160px !important; display:flex !important; align-items:center !important; flex-direction:column !important; justify-content:center !important; gap:3px !important; transform:none !important; }
   .ffs-right-column > .ffs-audience-rating .ffs-rating-label { display:block !important; font-size:15px !important; letter-spacing:.10em !important; }
   .ffs-right-column > .ffs-audience-rating .ffs-rating-number { width:auto !important; }
@@ -3141,7 +3103,7 @@ document.addEventListener("click", function (event) {
   .ffs-palette-module { margin:28px 0 22px !important; padding:22px 28px !important; background:rgba(6,22,30,.66) !important; box-shadow:inset 0 0 0 1px rgba(0,174,222,.25) !important; }
   .ffs-palette-module .ffs-palette-wrap,.ffs-palette-module > .ffs-editors-note-title { display:none !important; }
   .ffs-palette-module .ffs-editors-note-text { clear:both !important; margin:0 !important; padding:0 !important; font-size:21px !important; line-height:1.62 !important; text-align:justify !important; text-justify:inter-word; text-shadow:0 2px 6px rgba(0,0,0,.2); }
-  .ffs-palette-module .ffs-editors-note-inline-title { display:inline !important; font-size:22px !important; }
+  .ffs-palette-module .ffs-editors-note-inline { display:inline !important; font:800 22px Oxanium,Rajdhani,sans-serif !important; letter-spacing:.13em !important; margin-right:.5em !important; color:#00aede !important; text-transform:uppercase; }
   .ffs-cta-trailer-row { display:grid !important; grid-template-columns:minmax(0,1fr) minmax(220px,280px) !important; gap:22px !important; margin-top:0 !important; align-items:stretch !important; }
   .ffs-cta-trailer-row .ffs-trailer-section { order:1 !important; display:block !important; padding:0 !important; margin:0 !important; background:#06151d !important; height:100% !important; }
   .ffs-cta-trailer-row .ffs-links-panel { order:2 !important; margin:0 !important; padding:0 !important; background:transparent !important; box-shadow:none !important; contain:none !important; height:100% !important; display:flex !important; align-self:stretch !important; }
@@ -3162,53 +3124,9 @@ document.addEventListener("click", function (event) {
   .ffs-cta-trailer-row { grid-template-columns:minmax(0,1fr) 240px !important; }
 }
 @media (max-width:900px) { .ffs-desktop-cinematic-nav,.ffs-hero-palette { display:none !important; } }
-</style>
-<script id="lss-sol-cinematic-desktop-placement-v2">
-(() => {
-  const project = document.querySelector('.ffs-project-block');
-  const grid = project?.querySelector('.ffs-desktop-composition');
-  const right = grid?.querySelector('.ffs-right-column');
-  const titlePanel = grid?.querySelector('.ffs-title-panel');
-  const info = grid?.querySelector('.ffs-info-panel');
-  if (!project || !grid || !right || !titlePanel || !info) return;
-  const title = grid.querySelector('.ffs-title-row');
-  const rating = document.getElementById('ffs-audience-rating');
-  const meta = grid.querySelector('.ffs-meta-row.ffs-desktop-meta');
-  const working = grid.querySelector('.ffs-working-title-inline');
-  const hint = grid.querySelector('.ffs-poster-hold-hint');
-  const heading = info.querySelector('.ffs-section-label');
-  const synopsis = info.querySelector('.ffs-synopsis');
-  if (![title,rating,meta,working,hint,heading,synopsis].every(Boolean)) return;
-  const mq = window.matchMedia('(min-width:901px)');
-  const palette = document.createElement('div');
-  palette.className = 'ffs-hero-palette';
-  const img = document.createElement('img');
-  img.src = 'https://light-speed-studios.b-cdn.net/movie%20pallete.png';
-  img.alt = "Far From Sol color palette";
-  img.loading = 'lazy';
-  palette.append(img);
-  function arrange() {
-    if (mq.matches) {
-      title.classList.add('ffs-hero-title-row');
-      grid.before(title);
-      right.append(rating,palette,meta,working,hint,heading,synopsis);
-      project.classList.add('sol-cinematic-ready');
-    } else {
-      project.classList.remove('sol-cinematic-ready');
-      title.classList.remove('ffs-hero-title-row');
-      titlePanel.prepend(title);
-      palette.remove();
-      title.after(working,hint,meta);
-      info.prepend(heading,synopsis);
-      grid.before(rating);
-    }
-  }
-  arrange();
-  if (mq.addEventListener) mq.addEventListener('change',arrange);
-  else mq.addListener(arrange);
-})();
-</script>
-<style id="sol-cinematic-structural-correction">
+
+/* Reference: crisis-cinematic-structural-correction */
+
 @media (min-width:901px) {
   .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
     display:block !important; position:relative !important; width:100% !important;
@@ -3238,11 +3156,11 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-poster-panel { padding:0 !important; height:auto !important; background:transparent !important; box-shadow:none !important; overflow:visible !important; }
   .ffs-page .ffs-poster-panel::before { content:none !important; display:none !important; }
   .ffs-page .ffs-poster-panel .ffs-poster-click > .ffs-poster-crop { display:none !important; }
-  .ffs-page .ffs-poster-panel .ffs-poster-click > .ffs-poster-full { display:block !important; width:100% !important; height:auto !important; object-fit:contain !important; box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important; }
+  .ffs-page .ffs-poster-panel .ffs-poster-click > .ffs-poster-full { display:block !important; width:100% !important; height:auto !important; object-fit:contain !important; box-shadow:0 35px 95px 18px rgba(0,0,0,.97) !important; }
   .ffs-page .ffs-right-column > .ffs-audience-rating {
     display:grid !important; order:1 !important; width:min(760px,100%) !important;
     height:auto !important; min-height:108px !important; margin:0 !important;
-    padding:8px 0 !important; background:rgba(4,14,21,.28) !important;
+    padding:8px 0 !important; background:rgba(4,14,21,.10) !important;
     box-shadow:none !important; border:0 !important;
   }
   .ffs-page .ffs-right-column > .ffs-hero-palette { order:2 !important; }
@@ -3252,7 +3170,8 @@ document.addEventListener("click", function (event) {
   .ffs-page .ffs-right-column > .ffs-section-label { order:6 !important; }
   .ffs-page .ffs-right-column > .ffs-synopsis { order:7 !important; }
   .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-number { background:none !important; width:auto !important; height:auto !important; min-height:0 !important; }
-  .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-number strong { font-size:42px !important; }
+  .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-number strong:not(.is-unrated) { font-size:42px !important; }
+  .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-number strong.is-unrated { font-size:16px !important; }
   .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-input::before { content:none !important; }
   .ffs-page .ffs-right-column > .ffs-audience-rating .ffs-rating-input > .ffs-rating-label { display:block !important; }
   .ffs-page .ffs-palette-module { margin-top:28px !important; }
@@ -3260,9 +3179,11 @@ document.addEventListener("click", function (event) {
 @media (min-width:901px) and (max-width:1150px) {
   .ffs-page .ffs-desktop-composition { grid-template-columns:260px minmax(0,1fr) !important; column-gap:26px !important; }
 }
-</style>
-<style id="sol-v2-flash-v21-exact-desktop-parity">
-/* Far From Sol desktop styling copied from the approved Flash V21 master. */
+
+/* Reference: crisis-overtime-v22-final-parity */
+
+/* Styling source: flash-master-sot-overtime-v9-unified-parity */
+/* SOT — desktop parity with the approved Flash Overtime V9 layout. */
 @media (min-width:901px) {
  .ffs-page .ffs-project-block > .ffs-hero-title-row .ffs-title { color:#F4F8F9 !important; }
  .ffs-page .ffs-desktop-composition { align-items:start !important; }
@@ -3288,7 +3209,7 @@ document.addEventListener("click", function (event) {
  .ffs-page .lss-unified-details .ffs-rate-star svg { width:28px !important; }
  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
    order:2 !important; display:grid !important; width:100% !important; min-width:0 !important;
-   grid-template-columns:
+grid-template-columns:
   minmax(0,1fr)
   minmax(0,1.15fr)
   minmax(0,1.45fr)
@@ -3318,6 +3239,11 @@ document.addEventListener("click", function (event) {
    font-size:clamp(12px,.96vw,16px) !important; line-height:1.25 !important;
  }
  .ffs-page .lss-unified-details > .ffs-working-title-inline {order:3 !important; margin:0 0 7px !important; color:#F4F8F9 !important;}
+ .ffs-page .lss-unified-details > .ffs-part-label {
+   order:4 !important; display:flex !important; justify-content:flex-start !important;
+   align-items:center !important; margin:0 0 18px !important; padding:0 !important;
+   width:auto !important; min-height:0 !important; background:transparent !important;
+ }
  .ffs-page .lss-unified-details .ffs-version-box-header {
    position:static !important; display:flex !important; width:auto !important;
    height:auto !important; min-height:34px !important; margin:0 !important;
@@ -3360,6 +3286,24 @@ document.addEventListener("click", function (event) {
  .lss-poster-disclaimer {display:none !important;}
  .lss-unified-details {display:contents !important;}
 }
+/* Styling source: flash-v13-compact-rating-spacing */
+
+/* Desktop only: bring the rating divider and stars closer to the score. */
+@media (min-width: 1131px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    grid-template-columns: minmax(0,130px) 1px minmax(0,1fr) !important;
+    column-gap: 14px !important;
+  }
+}
+@media (min-width:901px) and (max-width:1130px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    grid-template-columns: minmax(0,120px) 1px minmax(0,1fr) !important;
+    column-gap: 12px !important;
+  }
+}
+/* CTA cards retain their shared upward hover movement, without accent lines. */
+
+/* Styling source: flash-v21-horizontal-project-navigation */
 
 /* Three original circular icons now sit inside the lower-right of the details panel. */
 @media (min-width:901px) {
@@ -3404,118 +3348,335 @@ document.addEventListener("click", function (event) {
 }
 @media (max-width:900px) { .lss-vertical-project-nav {display:none !important;} }
 
+/* Styling source: flash-v18-remove-cta-brackets */
 
-/* Far From Sol V2: same final Flash V21 desktop geometry, typography and behavior. */
-@media(min-width:901px) {
- .ffs-page .ffs-project-block > .ffs-hero-title-row .ffs-title {color:#F4F8F9 !important;}
- .ffs-page .lss-unified-details > .ffs-working-title-inline {display:none !important;}
- .ffs-page .lss-unified-details > .ffs-section-label {order:3 !important;}
- .ffs-page .lss-unified-details > .ffs-synopsis {order:4 !important;}
- .ffs-page .lss-unified-details > .lss-vertical-project-nav {order:5 !important;}
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {font-size:clamp(12px,calc(.73vw + 3px),14px) !important;}
- .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {font-size:clamp(15px,calc(.96vw + 3px),19px) !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating {height:auto !important; gap:18px !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-summary {
-   width:auto !important; display:block !important; align-self:center !important;
-   transform:none !important; text-align:left !important; gap:0 !important;
- }
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number {
-   width:auto !important; height:auto !important; min-height:0 !important; padding:0 !important;
-   margin:3px 0 0 !important; display:flex !important; align-items:baseline !important;
-   justify-content:flex-start !important; background:none !important; gap:7px !important;
- }
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong:not(.is-unrated) {font-size:39px !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong.is-unrated {font-size:15px !important;line-height:1.35 !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong.is-unrated::before {content:none !important;display:none !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number #ffs-rating-denominator {font-size:19px !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {display:none !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-count {display:block !important;font-size:11px !important;text-align:left !important;width:auto !important;}
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input {
-   display:flex !important; flex-direction:column !important; align-items:flex-start !important;
-   justify-content:center !important; gap:8px !important;
- }
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input > .ffs-rating-label {
-   display:block !important; width:auto !important; font:800 12px/1.25 Oxanium,sans-serif !important;
-   letter-spacing:.13em !important; text-align:left !important;
- }
- .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-feedback {font-size:10px !important;}
- .ffs-page .ffs-right-column > .ffs-hero-palette {display:none !important;}
- .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
-  order:unset !important; display:block !important; width:100% !important; max-width:none !important;
-  height:auto !important; margin:18px 0 26px !important; padding:0 !important;
-  background:transparent !important; border:0 !important;
-  box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important;
- }
- .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {
-  display:block !important;width:100% !important;height:121px !important;object-fit:fill !important;
-  border:0 !important;box-shadow:none !important;
- }
- .ffs-page .ffs-palette-module {margin-top:0 !important;}
- .ffs-page .ffs-desktop-cinematic-nav {display:none !important;}
- .ffs-page .ffs-right-column > .ffs-poster-hold-hint {display:none !important;}
+/* Remove the decorative cyan corner brackets from the CTA group only. */
+.ffs-page .ffs-cta-trailer-row > .ffs-links-panel::before {
+  content: none !important;
+  display: none !important;
 }
-@media(min-width:1131px) {
- .ffs-page .lss-unified-details > .ffs-audience-rating {grid-template-columns:minmax(0,130px) 1px minmax(0,1fr) !important;column-gap:14px !important;}
+
+/* Styling source: flash-v19-remove-editors-note-brackets */
+
+/* Remove only the decorative cyan corner brackets around Editor's Note. */
+.ffs-page .ffs-palette-module::before {
+  content: none !important;
+  display: none !important;
 }
-@media(min-width:901px) and (max-width:1130px) {
- .ffs-page .lss-unified-details > .ffs-audience-rating {grid-template-columns:minmax(0,120px) 1px minmax(0,1fr) !important;column-gap:12px !important;}
+
+/* Far From Sol: preserve film-specific elements while adopting Overtime V22 geometry. */
+@media (min-width:901px) {
+  .ffs-page .ffs-desktop-composition {min-height:0 !important; align-items:start !important;}
+  .ffs-page .ffs-desktop-composition > .ffs-right-column {height:auto !important;padding:0 !important;min-width:0 !important;}
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    box-sizing:border-box !important;
+    display:flex !important;
+    flex-direction:column !important;
+    width:100% !important;
+    min-height:0 !important;
+    padding:18px 22px 24px !important;
+    background:rgba(4,14,21,.50) !important;
+    box-shadow:0 16px 45px rgba(0,0,0,.75) !important;
+    border:0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    height:auto !important;
+    grid-template-columns:minmax(0,130px) 1px minmax(0,1fr) !important;
+    column-gap:14px !important;
+    min-height:108px !important;
+    margin:0 0 12px !important;
+    padding:6px 0 14px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-summary {
+    width:auto !important; max-width:100% !important; align-items:flex-start !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-label {font-size:12px !important;letter-spacing:.13em !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong:not(.is-unrated) {font-size:39px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-number strong.is-unrated {font-size:15px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-count {font-size:11px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input {justify-content:center !important;gap:8px !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input::before {content:"AUDIENCE RATING" !important;display:block !important;color:#00AEDE !important;font:800 12px/1.25 Oxanium,sans-serif !important;letter-spacing:.13em !important;white-space:nowrap;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-summary > .ffs-rating-label {display:none !important;}
+  .ffs-page .lss-unified-details > .ffs-audience-rating .ffs-rating-input > .ffs-rating-label {display:none !important;}
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {margin-bottom:14px !important;}
+  .ffs-page .lss-unified-details > .ffs-working-title-inline {
+    order:3 !important;display:block !important; font:600 14px/1.3 Oxanium,Rajdhani,sans-serif !important;
+    margin:0 0 16px !important;padding:0 !important;color:#F4F8F9 !important;
+    text-transform:uppercase !important; overflow:visible !important; white-space:normal !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-working-title-inline span {font:800 14px Oxanium,Rajdhani,sans-serif !important;color:#00AEDE !important;}
+  .ffs-page .lss-unified-details > .ffs-working-title-inline strong {color:#F4F8F9 !important;}
+  .ffs-page .lss-unified-details > .ffs-section-label {order:4 !important; margin:0 0 9px !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis {order:5 !important;padding:0 !important;margin:0 !important;background:transparent !important;box-shadow:none !important;border:0 !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis p {font:500 clamp(19px,1.52vw,23px)/1.65 Rajdhani,Arial,sans-serif !important;color:#F4F8F9 !important;text-align:justify !important;}
+  .ffs-page .lss-unified-details > .ffs-details-footer {
+    order:6 !important;display:flex !important;flex-direction:row !important;align-items:center !important;
+    justify-content:flex-end !important;gap:12px !important;width:100% !important;
+    min-height:52px !important;margin:18px 0 0 !important;padding:0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-details-footer > .lss-vertical-project-nav {
+    position:static !important; display:flex !important;flex-direction:row !important;
+    align-items:center !important;justify-content:flex-end !important;
+    gap:20px !important; width:auto !important;margin:0 !important;padding:0 !important;z-index:12;
+  }
+  .ffs-page .ffs-left-column > .ffs-poster-hold-hint {
+    display:block !important; margin:13px 0 0 !important;
+    font:700 12px/1.5 Oxanium,Rajdhani,sans-serif !important; letter-spacing:.09em !important;
+    text-transform:uppercase !important; color:#b7c8d4 !important;text-align:center !important;
+    text-shadow:0 2px 8px rgba(0,0,0,.65) !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
+    display:block !important;width:100% !important;max-width:none !important;
+    margin:18px 0 26px !important;padding:0 !important;background:transparent !important;
+    box-shadow:0 35px 95px 18px rgba(0,0,0,.85) !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {
+    display:block !important;width:100% !important;height:121px !important;object-fit:fill !important;
+    border:0 !important;box-shadow:none !important;
+  }
+  .ffs-page .ffs-palette-module {margin-top:0 !important;}
+  .ffs-page .ffs-desktop-cinematic-nav,.ffs-page .ffs-project-side-nav {display:none !important;}
 }
-/* Remove bottom accent lines across every CTA, retain original translateY(-3px) lift. */
+@media (min-width:901px) and (max-width:1130px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {grid-template-columns:minmax(0,120px) 1px minmax(0,1fr) !important;column-gap:12px !important;}
+  .ffs-page .ffs-right-column > .lss-unified-details {padding:14px 16px 20px !important;}
+}
+@media (max-width:900px) {
+  .lss-unified-details,.ffs-details-footer {display:contents !important;}
+  .lss-vertical-project-nav {display:none !important;}
+}
+/* Remove CTA bottom line while preserving background/glow and -3px hover lift. */
 .ffs-page .ffs-cta-trailer-row .ffs-cta-tile::after {content:none !important;display:none !important;}
-/* Remove ONLY the cyan brackets on CTA container and Editor's Note. */
-.ffs-page .ffs-cta-trailer-row > .ffs-links-panel::before,
-.ffs-page .ffs-palette-module::before {content:none !important;display:none !important;}
+
+
+/* Far From Sol-specific legacy rating frame: remove its cyan corner highlights so it
+   matches the unframed score in Overtime V22 and Crossroads V2. */
+@media (min-width:901px) {
+ .ffs-page .lss-unified-details .ffs-rating-number {
+   width:auto !important; height:auto !important; min-height:0 !important;
+   margin:3px 0 0 !important; padding:0 !important;
+   background:none !important; justify-content:flex-start !important;
+   align-items:baseline !important; text-align:left !important;
+ }
+ .ffs-page .lss-unified-details .ffs-rating-summary {height:auto !important;}
+ .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) strong::before {content:none !important;display:none !important;}
+ .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {display:none !important;}
+ .ffs-page .lss-unified-details .ffs-rating-number #ffs-rating-denominator[hidden] {display:none !important;}
+}
+.ffs-page .ffs-rating-number > [hidden] {display:none !important;}
+
+/* Far From Sol: override the legacy 565px layout minimum; size to the poster/content. */
+@media (min-width:901px) {
+ .ffs-page .ffs-desktop-composition { min-height:0 !important; }
+ .ffs-page .lss-unified-details > .ffs-poster-hold-hint {display:none !important;}
+ .ffs-page .lss-unified-details > .ffs-details-footer {margin-top:auto !important;padding-top:18px !important;}
+ .ffs-page .lss-unified-details > .ffs-details-footer > .lss-vertical-project-nav {display:flex !important;}
+}
+
+
+/* Far From Sol page-specific parity and safeguards. */
+@media (min-width:901px) {
+  .ffs-page .ffs-desktop-composition {min-height:0 !important;align-items:start !important;}
+  .ffs-page .lss-unified-details > .ffs-poster-hold-hint {display:none !important;}
+  .ffs-page .lss-unified-details > .ffs-details-footer { margin-top:auto !important;padding-top:18px !important; }
+  .ffs-page .lss-unified-details > .ffs-details-footer .lss-vertical-project-nav {display:flex !important;}
+  .ffs-page .lss-unified-details .ffs-rating-number {
+    width:auto !important;height:auto !important;min-height:0 !important;
+    margin:3px 0 0 !important;padding:0 !important;background:none !important;
+    justify-content:flex-start !important;align-items:baseline !important;text-align:left !important;
+  }
+  .ffs-page .lss-unified-details .ffs-rating-summary {height:auto !important;transform:none !important;}
+  .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) strong::before {content:none !important;display:none !important;}
+  .ffs-page .lss-unified-details .ffs-rating-number:has(.is-unrated) #ffs-rating-denominator {display:none !important;}
+  .ffs-page .lss-unified-details .ffs-rating-number #ffs-rating-denominator[hidden] {display:none !important;}
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {object-fit:fill !important;}
+}
+.ffs-page .ffs-rating-number > [hidden] {display:none !important;}
+@media (max-width:900px) {
+  .ffs-page .ffs-desktop-cinematic-nav {display:none !important;}
+}
+
+
+/* V3: no standalone film-title band above the poster/details composition. */
+@media (min-width:901px) {
+  .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row,
+  .ffs-page .ffs-right-column .ffs-title-panel .ffs-title-row {
+    display:none !important; height:0 !important; min-height:0 !important;
+    margin:0 !important; padding:0 !important;
+  }
+  /* The original 260px breakpoint caused a 390px-tall poster and an oversized details box. */
+  .ffs-page .ffs-desktop-composition {
+    grid-template-columns:315px minmax(0,1fr) !important;
+    gap:42px !important;
+    min-height:0 !important;
+  }
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    min-height:492px !important;
+    height:auto !important;
+    overflow:visible !important;
+    padding:18px 22px 24px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    min-height:108px !important;
+    height:auto !important;
+    margin:0 0 12px !important;
+    padding:6px 0 14px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+    margin-bottom:14px !important;
+    padding:9px 0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
+    min-height:48px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-working-title-inline {
+    display:block !important;
+    visibility:hidden !important;
+    margin:0 0 16px !important;
+    padding:0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-section-label {
+    margin-bottom:9px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-details-footer {
+    margin-top:auto !important; padding-top:18px !important;
+    min-height:52px !important;
+  }
+}
+@media (min-width:901px) and (max-width:1130px) {
+  .ffs-page .ffs-desktop-composition {gap:28px !important;}
+  .ffs-page .ffs-right-column > .lss-unified-details {padding:12px 16px 16px !important;}
+  .ffs-page .lss-unified-details .ffs-meta-label {font-size:10px !important;}
+  .ffs-page .lss-unified-details .ffs-meta-value {font-size:12px !important;}
+}
 
 </style>
-<script id="sol-v2-desktop-unified-layout">
+
+<style id="far-from-sol-remove-legacy-desktop-header">
+/* The legacy title panel is retained as a JS staging area but must not
+   render or occupy vertical space above the desktop poster/details row. */
+@media (min-width: 901px) {
+  html body .ffs-page .ffs-desktop-composition .ffs-right-column > .ffs-title-panel {
+    display: none !important;
+    height: 0 !important; min-height: 0 !important; max-height: 0 !important;
+    margin: 0 !important; padding: 0 !important; border: 0 !important;
+  }
+}
+</style>
+<script id="ffs-far-from-sol-v22-responsive-layout">
 (() => {
- const project=document.querySelector('.ffs-project-block');
- const grid=project?.querySelector('.ffs-desktop-composition');
- const right=grid?.querySelector('.ffs-right-column');
+ const block=document.querySelector('.ffs-project-block');
+ const grid=block?.querySelector('.ffs-desktop-composition');
  const left=grid?.querySelector('.ffs-left-column');
+ const right=grid?.querySelector('.ffs-right-column');
  const titlePanel=right?.querySelector('.ffs-title-panel');
  const infoPanel=right?.querySelector('.ffs-info-panel');
  const poster=left?.querySelector('.ffs-poster-panel');
+ const title=titlePanel?.querySelector('.ffs-title-row');
  const rating=document.getElementById('ffs-audience-rating');
- const meta=document.querySelector('.ffs-meta-row.ffs-desktop-meta');
- const working=document.querySelector('.ffs-working-title-inline');
- const hint=document.querySelector('.ffs-poster-hold-hint');
- const heading=document.querySelector('.ffs-section-label');
- const synopsis=document.querySelector('.ffs-synopsis');
- if(!project||!grid||!right||!titlePanel||!infoPanel||!poster||!rating||!meta||!working||!hint||!heading||!synopsis) return;
- const unified=document.createElement('div');unified.className='lss-unified-details';
- const disclaimer=document.createElement('p');disclaimer.className='lss-poster-disclaimer';
- disclaimer.textContent='Press and hold the poster to view alternate artwork.';
- const nav=document.createElement('nav');nav.className='lss-vertical-project-nav';nav.setAttribute('aria-label','Movie navigation');
+ const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
+ const working=titlePanel?.querySelector('.ffs-working-title-inline');
+ const hint=titlePanel?.querySelector('.ffs-poster-hold-hint');
+ const heading=infoPanel?.querySelector('.ffs-section-label');
+ const synopsis=infoPanel?.querySelector('.ffs-synopsis');
+ if (![block,grid,left,right,titlePanel,infoPanel,poster,title,rating,metadata,working,heading,synopsis].every(Boolean))return;
+ const palette=document.createElement('div');
+ palette.className='ffs-hero-palette lss-floating-palette';
+ const paletteImg=document.createElement('img');
+ paletteImg.src='https://light-speed-studios.b-cdn.net/movie%20pallete.png';
+ paletteImg.alt='Far From Sol color palette';
+ paletteImg.loading='lazy';
+ palette.append(paletteImg);
+ const unified=document.createElement('div');
+ unified.className='lss-unified-details';
+ const footer=document.createElement('div');
+ footer.className='ffs-details-footer';
+ const nav=document.createElement('nav');
+ nav.className='lss-vertical-project-nav';
+ nav.setAttribute('aria-label','Movie navigation');
  nav.innerHTML=`
- <a href="superman.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
+ <a href="crisis.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
  <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
- <a href="the-flash.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
+ <a href="glass-rooms.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
+ footer.append(nav);
  const mq=window.matchMedia('(min-width:901px)');
+ function syncPanelHeight(){
+   if(!mq.matches)return;
+   const rect=poster.querySelector('.ffs-poster-full')?.getBoundingClientRect();
+   if(rect && rect.height > 0)unified.style.height=`${rect.height}px`;
+ }
+ const posterImage=poster.querySelector('.ffs-poster-full');
+ if(posterImage){
+   posterImage.addEventListener('load',syncPanelHeight);
+   if(typeof ResizeObserver !== 'undefined')new ResizeObserver(syncPanelHeight).observe(posterImage);
+ }
+ window.addEventListener('resize',syncPanelHeight,{passive:true});
  function arrange(){
-  if(mq.matches){
-   right.append(unified);
-   unified.append(rating,meta,working,heading,synopsis,nav);
-   poster.after(disclaimer);
-   // The template script creates the desktop palette before this one executes.
-   const palette=project.querySelector('.ffs-hero-palette');
-   if(palette){grid.after(palette);palette.classList.add('lss-floating-palette');}
-  }else{
-   unified.remove();disclaimer.remove();
-   // Mobile: rating follows the poster inside the movie composition.
-   titlePanel.append(working,hint,meta);
-   infoPanel.prepend(heading,synopsis);
-   left.after(rating);
-   nav.remove();
-  }
+   if(mq.matches){
+     // Keep one movie title above the poster/details row, not in the hidden legacy header.
+     title.classList.add('ffs-hero-title-row');
+     block.insertBefore(title,grid);
+     right.append(unified);
+     unified.append(rating,metadata,working,heading,synopsis,footer);
+     if(hint)poster.after(hint);
+     grid.after(palette);
+     block.classList.add('ffs-cinematic-ready');
+     syncPanelHeight();
+   } else {
+     unified.style.height='';
+     block.classList.remove('ffs-cinematic-ready');
+     title.classList.remove('ffs-hero-title-row');
+     titlePanel.prepend(title);
+     title.after(working);
+     if(hint) working.after(hint);
+     (hint||working).after(metadata);
+     infoPanel.prepend(rating,heading,synopsis);
+     unified.remove();
+     palette.remove();
+   }
  }
  arrange();
- if(mq.addEventListener)mq.addEventListener('change',arrange);else mq.addListener(arrange);
+ if(mq.addEventListener) mq.addEventListener('change',arrange);
+ else mq.addListener(arrange);
 })();
 </script>
-<style id="sol-mobile-cinematic-background-only">
-/* The mobile wallpaper fades over its own natural image height.
-   This keeps the blend seamless even when the browser is zoomed. */
+<style id="far-from-sol-batman-uniform-desktop-final">
+/* Final desktop parity with Batman's actual unified composition. */
+@media (min-width:901px) {
+ html body .ffs-page .ffs-project-block > .ffs-title-row.ffs-hero-title-row {
+  display:block !important; visibility:visible !important; height:auto !important; min-height:0 !important;
+  margin:0 0 22px !important; padding:0 !important;
+ }
+ .ffs-page .ffs-desktop-composition {align-items:start !important;}
+ .ffs-page .ffs-right-column > .lss-unified-details {
+  min-height:492px !important; box-sizing:border-box !important;
+  padding:18px 22px 24px !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-audience-rating {margin-bottom:12px !important;gap:18px !important;}
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+  margin-bottom:14px !important; padding:13px 0 !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {min-height:54px !important;}
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
+  font-size:clamp(12px,calc(.73vw + 3px),14px) !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
+  font-size:clamp(15px,calc(.96vw + 3px),19px) !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-working-title-inline {
+  display:none !important; visibility:hidden !important; margin:0 !important; padding:0 !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-section-label {margin-bottom:9px !important;}
+ .ffs-page .lss-unified-details > .ffs-synopsis p {
+  font:500 clamp(19px,1.52vw,23px)/1.65 Rajdhani,Arial,sans-serif !important;
+ }
+ .ffs-page .lss-unified-details > .ffs-details-footer {padding-top:18px !important;}
+ .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {margin:68px 0 26px !important;}
+}
+</style>
+
+<style id="far-from-sol-mobile-cinematic-background-only">
+/* Match Batman mobile master: the image mask follows its real rendered height. */
 .lss-mobile-cinematic-wallpaper { display: none; }
 @media (max-width: 900px) {
   .ffs-page .ffs-project-block {
@@ -3535,7 +3696,6 @@ document.addEventListener("click", function (event) {
     height: auto !important;
     z-index: 0 !important;
     pointer-events: none !important;
-    /* The mask uses the image's real height, so it has no abrupt cutoff. */
     -webkit-mask-image: linear-gradient(to bottom,
       #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
     mask-image: linear-gradient(to bottom,
@@ -3558,18 +3718,18 @@ document.addEventListener("click", function (event) {
       rgba(4,14,21,.24) 0%, rgba(4,14,21,.07) 55%, transparent 100%);
   }
 
-  /* One uninterrupted order: hanging poster, rating, synopsis and links. */
-  .ffs-page .ffs-desktop-composition > .ffs-audience-rating {
-    order: 2 !important;
-    margin: 0 0 16px !important;
+  /* Poster first, audience rating directly beneath, then synopsis. */
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > .ffs-audience-rating {
+    order: 1 !important;
+    display: grid !important;
+    margin: 0 0 22px !important;
     background: transparent !important;
     box-shadow: none !important;
     border: 0 !important;
   }
-  .ffs-page .ffs-desktop-composition .ffs-info-panel { order: 3 !important; }
 }
 </style>
-<style>
+    <style>
 @media (max-width: 900px) {
   .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full {
     box-shadow: 0 35px 95px 18px rgba(0,0,0,.85) !important;
@@ -3577,17 +3737,17 @@ document.addEventListener("click", function (event) {
 }
 </style>
 <!-- Far From Sol mobile: keep the rating clear of the full-poster shadow. -->
-<style id="sol-mobile-rating-shadow-isolation-fix">
+<style id="far-from-sol-mobile-rating-shadow-isolation-fix">
 @media (max-width: 900px) {
-  /* Keep the rating layered above the poster shadow. */
-  .ffs-page .ffs-desktop-composition > #ffs-audience-rating {
+  /* Keep the mobile audience rating above the poster's shadow. */
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > #ffs-audience-rating {
     position: relative !important;
     z-index: 1 !important;
     isolation: isolate;
   }
 
-  /* Blend the long poster shadow into the page before it reaches the rating. */
-  .ffs-page .ffs-desktop-composition > #ffs-audience-rating::before {
+  /* Soften the poster's extended shadow into the page background before the rating. */
+  .ffs-page .ffs-desktop-composition .ffs-info-panel > #ffs-audience-rating::before {
     content: "" !important;
     display: block !important;
     position: absolute;
