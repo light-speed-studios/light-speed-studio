@@ -28,7 +28,15 @@
             document.getElementById("lss-page-splash") ||
             document.getElementById("lss-splash");
 
-        /* Pages without a splash can begin their content immediately. */
+        /* Desktop opens directly on the welcome or main page. */
+        if (window.matchMedia("(min-width: 901px)").matches) {
+            splash?.remove();
+            document.documentElement.classList.remove("lss-splash-active");
+            announceSplashFinished();
+            return;
+        }
+
+        /* Pages without a mobile splash can begin immediately. */
         if (!splash) {
             announceSplashFinished();
             return;
@@ -53,7 +61,6 @@
 
         sessionStorage.setItem(splashSessionKey, "true");
         splash.dataset.splashReady = "true";
-        document.documentElement.classList.add("lss-splash-active");
 
         const splashDuration = Number(splash.dataset.duration) || 3300;
         let exitTimer = null;
@@ -64,9 +71,6 @@
             hasClosed = true;
 
             window.clearTimeout(exitTimer);
-
-            /* Unlock page scrolling as soon as the splash begins to exit. */
-            document.documentElement.classList.remove("lss-splash-active");
 
             splash.setAttribute("aria-hidden", "true");
             splash.classList.add("is-exiting");
@@ -123,7 +127,7 @@
   }
 
   const autoDelay = 6000;
-  const welcomeDuration = 900;
+  const welcomeDuration = 3900;
   const welcomeFadeTime = 600;
 
   // The seven moving dots use a repeated track for seamless wraparound.
@@ -259,7 +263,7 @@
     window.clearTimeout(welcomeTimer);
     welcomeTimer = null;
 
-    /* Superman is always the first real featured slide. */
+    /* The first featured project follows the welcome slide. */
     showSlide(0);
 
     welcomeSlide.classList.remove('active');
@@ -365,7 +369,7 @@
     // Returning to Bridge skips the welcome and starts the normal 6s rotation.
     const beginRegularSlides = () => {
       if (welcomeAlreadySeen) startAutoPlay();
-      else window.setTimeout(startAutoPlay, 2400);
+      else startAutoPlay();
     };
 
     if (window.lssSplashFinished) {
