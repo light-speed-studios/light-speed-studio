@@ -26,9 +26,7 @@
 
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.webp" media="(max-width: 900px)" fetchpriority="high"/>
 <style id="lss-mobile-only-splash">
-  @media (min-width: 901px) {
-    #lss-splash, #lss-page-splash { display: none !important; }
-  }
+  @media (min-width: 901px) { #lss-splash { display: none !important; } }
 </style>
 
 <style id="bridge-pulse-visual-box-fix">
@@ -3762,11 +3760,9 @@
   <div class="lss-project-search-results" id="lssProjectSearchResults" role="listbox" aria-label="Project search results"></div>
 </div>
 </header>
-<div id="lss-splash" aria-label="Light Speed Studios loading screen">
-<picture class="lss-splash-picture">
-<source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/SPLASHMOB.webp"/>
-<img alt="Light Speed Studios | No Spectacle Without Soul" class="lss-splash-image" decoding="sync" fetchpriority="high" loading="eager" src="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.webp"/>
-</picture>
+<!-- Mobile splash only. No desktop splash image or markup. -->
+<div id="lss-splash" aria-label="Light Speed Studios mobile loading screen">
+  <img alt="Light Speed Studios | No Spectacle Without Soul" class="lss-splash-image" decoding="sync" fetchpriority="high" loading="eager" src="https://light-speed-studios.b-cdn.net/SPLASHMOB.webp"/>
 </div>
 
 <!-- =======================================================
@@ -4388,7 +4384,7 @@
   });
   </script>
 
-  <script src="js/main.js?v=11"></script>
+  <script src="js/main.js?v=12"></script>
   <script type="module" src="js/hero-ratings.js"></script>
 <script>
 (function(){
@@ -4525,7 +4521,7 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   function init() {
     if (!desktop.matches || reducedMotion.matches || !('IntersectionObserver' in window)) return;
-    // Keep the splash, hero, fixed navigation and carousel slides untouched.
+    // Keep the mobile splash, hero, fixed navigation and carousel slides untouched.
     const selectors = [
       '.home-hero-section + .section-heading',
       '.vault-intro-section .vault-intro-eyebrow',
