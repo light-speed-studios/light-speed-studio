@@ -3691,6 +3691,29 @@
   }
 }
 </style>
+
+<style id="orbit-portrait-mobile-2026-2027">
+/* Mobile only: show the complete portrait Orbit artwork at its native ratio. */
+@media (max-width: 900px) {
+  #orbitYearSwitcher .orbit-year-stage {
+    width: 100% !important;
+    aspect-ratio: 768 / 1377 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+  #orbitYearSwitcher .orbit-year-art {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  #orbitYearSwitcher .orbit-year-art img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -4245,12 +4268,12 @@
 
   <div class="orbit-year-stage">
     <picture class="orbit-year-art active" data-orbit-art="2026">
-      <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ORBITNEWWAL.webp">
+      <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ORBITMOB26.jpg">
       <img alt="Light Speed Studios 2026 Orbit Slate" src="https://light-speed-studios.b-cdn.net/ORBITNEWWAL.webp">
     </picture>
 
     <picture class="orbit-year-art" data-orbit-art="2027" aria-hidden="true">
-      <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ORBITNEW2027.webp">
+      <source media="(max-width: 900px)" srcset="https://light-speed-studios.b-cdn.net/ORBITMOB27.jpg">
       <img alt="Light Speed Studios 2027 Orbit Slate" src="https://light-speed-studios.b-cdn.net/ORBITNEW2027.webp">
     </picture>
   </div>
