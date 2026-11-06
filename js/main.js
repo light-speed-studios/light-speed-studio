@@ -358,7 +358,8 @@
       The welcome is already sitting behind the splash, but its countdown
       does NOT begin until the splash has completely finished.
     */
-    if (window.lssSplashFinished) {
+    // Desktop welcome starts immediately. Mobile waits for its own splash.
+    if (window.matchMedia("(min-width: 901px)").matches || window.lssSplashFinished) {
       startWelcomeTimer();
     } else {
       window.addEventListener("lssSplashFinished", startWelcomeTimer, { once: true });
@@ -367,12 +368,9 @@
     showSlide(0);
 
     // Returning to Bridge skips the welcome and starts the normal 6s rotation.
-    const beginRegularSlides = () => {
-      if (welcomeAlreadySeen) startAutoPlay();
-      else startAutoPlay();
-    };
+    const beginRegularSlides = () => startAutoPlay();
 
-    if (window.lssSplashFinished) {
+    if (window.matchMedia("(min-width: 901px)").matches || window.lssSplashFinished) {
       beginRegularSlides();
     } else {
       window.addEventListener("lssSplashFinished", beginRegularSlides, { once: true });
