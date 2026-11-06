@@ -24,8 +24,12 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="css/styles.css?v=9" rel="stylesheet"/>
 
-<link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHDESKTOP.webp" media="(min-width: 901px)" fetchpriority="high"/>
 <link rel="preload" as="image" href="https://light-speed-studios.b-cdn.net/SPLASHMOB.webp" media="(max-width: 900px)" fetchpriority="high"/>
+<style id="lss-mobile-only-splash">
+  @media (min-width: 901px) {
+    #lss-splash, #lss-page-splash { display: none !important; }
+  }
+</style>
 
 <style id="bridge-pulse-visual-box-fix">
 /* =======================================================
@@ -4384,7 +4388,7 @@
   });
   </script>
 
-  <script src="js/main.js?v=10"></script>
+  <script src="js/main.js?v=11"></script>
   <script type="module" src="js/hero-ratings.js"></script>
 <script>
 (function(){
