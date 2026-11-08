@@ -4463,6 +4463,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
         <img alt="The Flash: Overtime poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/TheflashOvertimePoster.jpg"/>
 
+        <img alt="The Flash: Overtime alternate poster" class="ffs-poster-alt" decoding="async" loading="lazy" draggable="false" src="https://light-speed-studios.b-cdn.net/OVERTIME-ALT.jpg"/>
+
         <img alt="The Flash: Overtime mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/TheflashOvertimePostermob.png"/>
 
       </label>
@@ -4475,7 +4477,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 
     </div>
 
-
+    <p class="overtime-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
 
   </div>
 
@@ -6619,6 +6621,76 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+
+<!-- The Flash: Overtime desktop press-and-hold alternate poster. -->
+<style id="overtime-desktop-alt-poster-hold">
+@media (min-width:901px) {
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click {
+    position:relative !important;
+    cursor:pointer !important;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+  }
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-alt {
+    display:block !important;
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    object-position:center top !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+    box-shadow:none !important;
+  }
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click.is-pressing-alt > img.ffs-poster-alt {
+    opacity:1 !important;
+  }
+  html body .ffs-page .ffs-left-column > .overtime-alt-poster-hint {
+    display:block !important;
+    margin:13px 0 0 !important;
+    padding:0 !important;
+    font:700 12px/1.5 Oxanium,Rajdhani,sans-serif !important;
+    letter-spacing:.09em !important;
+    text-transform:uppercase !important;
+    color:#b7c8d4 !important;
+    text-align:center !important;
+    text-shadow:0 2px 8px rgba(0,0,0,.65) !important;
+  }
+}
+@media (max-width:900px) {
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-alt,
+  html body .ffs-page .overtime-alt-poster-hint {
+    display:none !important;
+  }
+}
+</style>
+<script id="overtime-desktop-alt-poster-hold-script">
+(() => {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const reset = () => poster.classList.remove('is-pressing-alt');
+  poster.addEventListener('pointerdown', event => {
+    if (!desktop() || event.button !== 0) return;
+    event.preventDefault();
+    poster.classList.add('is-pressing-alt');
+  });
+  ['pointerup', 'pointercancel', 'pointerleave', 'lostpointercapture'].forEach(type => {
+    poster.addEventListener(type, reset);
+  });
+  poster.addEventListener('click', event => {
+    if (desktop()) event.preventDefault();
+  });
+  poster.addEventListener('dragstart', event => {
+    if (desktop()) event.preventDefault();
+  });
+  window.addEventListener('pointerup', reset);
+  window.addEventListener('blur', reset);
+  window.addEventListener('resize', reset);
+})();
+</script>
 </body>
 
 </html>
