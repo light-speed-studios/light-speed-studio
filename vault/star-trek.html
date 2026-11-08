@@ -2220,12 +2220,14 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
 <label class="ffs-poster-click" for="ffsPosterToggle">
 <img alt="Star Trek: Genesis poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/startrekposter1.png"/>
+<img alt="Star Trek: Genesis alternate poster" class="ffs-poster trek-poster-alt" decoding="async" loading="eager" draggable="false" src="https://light-speed-studios.b-cdn.net/star-trek-alt.png"/>
 <img alt="Star Trek: Genesis mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/startrekpostermob.png"/>
 </label>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
 <span>Click to Enlarge</span>
 </label>
 </div>
+<p class="trek-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
 </div>
 <div class="ffs-right-column">
 <div class="ffs-title-panel">
@@ -3845,7 +3847,7 @@ document.addEventListener("click", function (event) {
   }
   .ffs-page .lss-unified-details > .lss-vertical-project-nav {margin-top:18px !important;padding-top:0 !important;}
   .ffs-page .ffs-poster-panel .ffs-poster-click {cursor:default !important;}
-  /* The Trek poster has no alternate-artwork interaction, so no press-and-hold disclaimer. */
+  /* Hide legacy disclaimer; the dedicated Trek hint is styled below. */
   .ffs-page .ffs-left-column > .lss-poster-disclaimer {display:none !important;}
   /* Avoid extra spaces introduced by legacy mobile-only working-title element. */
   .ffs-page .lss-unified-details > .ffs-mobile-working-title {display:none !important;}
@@ -4019,5 +4021,73 @@ document.addEventListener("click", function (event) {
   }
 }
 </style>
+<!-- Star Trek: Genesis desktop alternate artwork, matched to the Crisis press-and-hold interaction. -->
+<style id="trek-desktop-alt-poster-hold">
+@media (min-width:901px) {
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click {
+    position:relative !important;
+    cursor:pointer !important;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+  }
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click > img.trek-poster-alt {
+    display:block !important;
+    position:absolute !important;
+    inset:0 !important;
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+    object-position:center top !important;
+    opacity:0 !important;
+    pointer-events:none !important;
+    box-shadow:none !important;
+  }
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click.is-pressing-alt > img.trek-poster-alt {
+    opacity:1 !important;
+  }
+  html body .ffs-page .ffs-left-column > .trek-alt-poster-hint {
+    display:block !important;
+    margin:13px 0 0 !important;
+    padding:0 !important;
+    font:700 12px/1.5 Oxanium,Rajdhani,sans-serif !important;
+    letter-spacing:.09em !important;
+    text-transform:uppercase !important;
+    color:#b7c8d4 !important;
+    text-align:center !important;
+    text-shadow:0 2px 8px rgba(0,0,0,.65) !important;
+  }
+}
+@media (max-width:900px) {
+  html body .ffs-page .ffs-poster-panel .ffs-poster-click > img.trek-poster-alt,
+  html body .ffs-page .trek-alt-poster-hint {
+    display:none !important;
+  }
+}
+</style>
+<script id="trek-desktop-alt-poster-hold-script">
+(() => {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster) return;
+  const desktop = () => window.matchMedia('(min-width: 901px)').matches;
+  const reset = () => poster.classList.remove('is-pressing-alt');
+  poster.addEventListener('pointerdown', event => {
+    if (!desktop() || event.button !== 0) return;
+    event.preventDefault();
+    poster.classList.add('is-pressing-alt');
+  });
+  ['pointerup', 'pointercancel', 'pointerleave', 'lostpointercapture'].forEach(type => {
+    poster.addEventListener(type, reset);
+  });
+  poster.addEventListener('click', event => {
+    if (desktop()) event.preventDefault();
+  });
+  poster.addEventListener('dragstart', event => {
+    if (desktop()) event.preventDefault();
+  });
+  window.addEventListener('blur', reset);
+  window.addEventListener('resize', reset);
+})();
+</script>
 </body>
 </html>
