@@ -3503,7 +3503,7 @@ document.addEventListener("click", function (event) {
  paletteImg.loading='lazy';
  const paletteLabel=document.createElement('span');
  paletteLabel.className='lss-palette-dna-label';
- paletteLabel.textContent='VISUAL DNA';
+ paletteLabel.textContent='DNA';
  palette.append(paletteLabel,paletteImg);
  const unified=document.createElement('div');
  unified.className='lss-unified-details';
@@ -3526,9 +3526,9 @@ document.addEventListener("click", function (event) {
    titlePanel.hidden=true;
    right.append(unified);
    working.remove();
-   unified.append(rating,heading,synopsis,metadata,footer);
+   unified.append(nav,rating,heading,synopsis,metadata,footer);
+   footer.append(palette);
    if(hint)poster.after(hint);
-   grid.insertBefore(palette,right);
    if(ctaPanel && ctaRow && notePanel){
      ctaRow.before(ctaPanel);
      ctaRow.append(notePanel);
@@ -4032,5 +4032,108 @@ grid-template-columns:
   schedule();
 })();
 </script>
+
+<!-- Glass Rooms: second-pass desktop placement. Keep all existing content and component skins. -->
+<style id="glass-rooms-dna-horizontal-nav-top-right">
+@media (min-width:901px) {
+  /* Poster and information now share a two-column grid. */
+  .ffs-page .ffs-desktop-composition {
+    grid-template-columns: 315px minmax(0,1fr) !important;
+    column-gap:20px !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-left-column {
+    grid-column:1 !important; grid-row:1 !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column {
+    grid-column:2 !important; grid-row:1 !important;
+  }
+  .ffs-page .ffs-right-column > .lss-unified-details {
+    position:relative !important;
+    padding-top:72px !important;
+  }
+  /* Original circular controls: top-right, immediately above the rating row. */
+  .ffs-page .lss-unified-details > .lss-vertical-project-nav {
+    display:flex !important;
+    position:absolute !important;
+    top:12px !important;
+    right:22px !important;
+    left:auto !important;
+    bottom:auto !important;
+    flex-direction:row !important;
+    align-items:center !important;
+    justify-content:flex-end !important;
+    gap:18px !important;
+    width:auto !important;
+    height:auto !important;
+    margin:0 !important;
+    padding:0 !important;
+    z-index:12 !important;
+  }
+  /* Fill unused space beneath metadata with the original horizontal color bar. */
+  .ffs-page .lss-unified-details > .glass-details-footer {
+    order:5 !important;
+    display:block !important;
+    margin:16px 0 0 !important;
+    padding:0 !important;
+    width:100% !important;
+    min-height:0 !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer > .ffs-hero-palette.lss-floating-palette {
+    display:grid !important;
+    grid-template-columns:52px minmax(0,1fr) !important;
+    align-items:center !important;
+    gap:12px !important;
+    position:relative !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    height:64px !important;
+    max-height:none !important;
+    padding:9px 12px !important;
+    margin:0 !important;
+    overflow:hidden !important;
+    border:1px solid rgba(0,174,222,.26) !important;
+    background:rgba(4,14,21,.56) !important;
+    box-shadow:inset 0 0 0 1px rgba(186,199,213,.035) !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer .lss-palette-dna-label {
+    display:flex !important;
+    position:static !important;
+    width:auto !important;
+    height:auto !important;
+    padding:0 !important;
+    margin:0 !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font:800 12px/1.2 Oxanium,Rajdhani,sans-serif !important;
+    letter-spacing:.10em !important;
+    color:#00aede !important;
+    background:transparent !important;
+    border:0 !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer .ffs-hero-palette.lss-floating-palette img {
+    display:block !important;
+    position:static !important;
+    width:100% !important;
+    max-width:100% !important;
+    height:43px !important;
+    max-height:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    object-fit:fill !important;
+    transform:none !important;
+    box-shadow:none !important;
+  }
+}
+@media (min-width:901px) and (max-width:1150px) {
+  .ffs-page .ffs-desktop-composition {
+    grid-template-columns:260px minmax(0,1fr) !important;
+    column-gap:14px !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer .ffs-hero-palette.lss-floating-palette {
+    grid-template-columns:43px minmax(0,1fr) !important;
+  }
+}
+</style>
 </body>
 </html>
