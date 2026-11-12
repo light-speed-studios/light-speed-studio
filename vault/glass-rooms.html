@@ -4255,7 +4255,7 @@ grid-template-columns:
   /* Tighten the metadata strip so it uses less vertical space. */
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
     margin: 0 0 8px !important;
-    padding: 7px 12px 8px !important;
+    padding: 7px 12px 13px !important; /* 5px taller */
     min-height: 0 !important;
   }
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
@@ -4272,25 +4272,39 @@ grid-template-columns:
     line-height: 1.05 !important;
   }
 
-  /* Remove the extra palette container so the palette sits cleanly on its own. */
-  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
-    margin: 2px 0 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border: 0 !important;
-    outline: 0 !important;
-    min-height: 0 !important;
-    height: auto !important;
+  /* Palette image alone: no enclosing panel, border, padding, or shadow. */
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette {
+    display:block !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:visible !important;
+    background:transparent !important;
+    background-image:none !important;
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
   }
-  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {
-    display: block !important;
-    width: 100% !important;
-    height: 52px !important;
-    margin: 0 !important;
-    object-fit: fill !important;
-    box-shadow: none !important;
-    border: 0 !important;
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette::before,
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette::after {
+    content:none !important;
+    display:none !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette img {
+    position:static !important;
+    display:block !important;
+    width:100% !important;
+    height:43px !important;
+    margin:0 !important;
+    padding:0 !important;
+    object-fit:fill !important;
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
+    transform:none !important;
   }
 }
 </style>
