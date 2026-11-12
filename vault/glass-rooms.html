@@ -3501,7 +3501,10 @@ document.addEventListener("click", function (event) {
  paletteImg.src='https://light-speed-studios.b-cdn.net/GDpallette.png';
  paletteImg.alt='Glass Rooms color palette';
  paletteImg.loading='lazy';
- palette.append(paletteImg);
+ const paletteLabel=document.createElement('span');
+ paletteLabel.className='lss-palette-dna-label';
+ paletteLabel.textContent='VISUAL DNA';
+ palette.append(paletteLabel,paletteImg);
  const unified=document.createElement('div');
  unified.className='lss-unified-details';
  const footer=document.createElement('div');
@@ -3934,5 +3937,100 @@ grid-template-columns:
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {font-size:13px !important;}
 }
 </style>
+<!-- Desktop-specific refinements: retain the existing LSS component skins. -->
+<style id="glass-rooms-visual-dna-nav-cta-editor-fit">
+@media (min-width:901px) {
+  /* Frame the existing vertical palette without changing its film colors. */
+  .ffs-page .ffs-desktop-composition > .ffs-hero-palette.lss-floating-palette {
+    --lss-dna-head: 42px;
+    border:1px solid rgba(0,174,222,.32) !important;
+    background:rgba(4,14,21,.76) !important;
+    box-shadow:inset 0 0 0 1px rgba(186,199,213,.045),0 12px 30px rgba(0,0,0,.28) !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-hero-palette .lss-palette-dna-label {
+    display:flex; position:absolute; z-index:2;
+    left:2px;right:2px;top:2px;height:38px;
+    padding:3px 2px;align-items:center;justify-content:center;text-align:center;
+    font:800 9px/1.25 Oxanium,Rajdhani,sans-serif;
+    letter-spacing:.03em;color:#00aede;
+    border-bottom:1px solid rgba(0,174,222,.2);
+    background:#040e15;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-hero-palette.lss-floating-palette img {
+    top:var(--lss-dna-head) !important;
+    width:calc(var(--lss-palette-length,440px) - var(--lss-dna-head)) !important;
+  }
+  /* Reposition the same round navigation controls into the unused lower left. */
+  .ffs-page .lss-unified-details > .glass-details-footer {
+    justify-content:flex-start !important;
+    margin-top:auto !important;
+    padding-top:14px !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer > .lss-vertical-project-nav {
+    justify-content:flex-start !important;
+  }
+  /* Eliminate the outside corner brackets around the horizontal CTA group only. */
+  .ffs-page .ffs-project-block > .ffs-links-panel.ffs-cta-panel::before,
+  .ffs-page .ffs-project-block > .ffs-links-panel.ffs-cta-panel::after {
+    content:none !important;display:none !important;
+  }
+  /* Keep editor note aligned with trailer; font fitted with ResizeObserver below. */
+  .ffs-page .ffs-cta-trailer-row {align-items:stretch !important;}
+  .ffs-page .ffs-cta-trailer-row > .ffs-palette-module {
+    min-height:0 !important;height:100% !important;overflow:hidden !important;
+    display:flex !important; flex-direction:column !important;
+  }
+  .ffs-page .ffs-cta-trailer-row > .ffs-palette-module .ffs-editors-note-text {
+    display:block !important;flex:0 0 auto !important;
+    font-size:var(--lss-note-fit-font,18px) !important;
+    line-height:1.42 !important;
+    margin:0 !important;
+  }
+  .ffs-page .ffs-cta-trailer-row > .ffs-palette-module .ffs-editors-note-inline,
+  .ffs-page .ffs-cta-trailer-row > .ffs-palette-module .ffs-editors-note-title {
+    font-size:1em !important;
+    line-height:inherit !important;
+  }
+}
+@media (max-width:900px) {
+  .ffs-page .lss-palette-dna-label {display:none !important;}
+}
+</style>
+<script id="glass-rooms-editor-note-fit-script">
+(()=>{
+  const mq=window.matchMedia('(min-width:901px)');
+  const row=document.querySelector('.ffs-cta-trailer-row');
+  const trailer=row?.querySelector('.ffs-trailer-section');
+  const note=row?.querySelector('.ffs-palette-module');
+  const text=note?.querySelector('.ffs-editors-note-text');
+  if(!row || !trailer || !note || !text)return;
+  let pending=false;
+  function fit(){
+    pending=false;
+    if(!mq.matches){note.style.removeProperty('--lss-note-fit-font');return;}
+    const height=trailer.getBoundingClientRect().height;
+    if(height<120 || text.clientWidth<70)return;
+    // Available area inside the note's existing padding.
+    const style=getComputedStyle(note);
+    const padding=parseFloat(style.paddingTop)+parseFloat(style.paddingBottom);
+    const available=Math.max(50,height-padding-5);
+    let low=12, high=26, best=12;
+    for(let i=0;i<13;i++){
+      const mid=(low+high)/2;
+      note.style.setProperty('--lss-note-fit-font',mid.toFixed(2)+'px');
+      if(text.scrollHeight <= available){best=mid;low=mid;}
+      else high=mid;
+    }
+    note.style.setProperty('--lss-note-fit-font',best.toFixed(2)+'px');
+  }
+  function schedule(){if(!pending){pending=true;requestAnimationFrame(fit);}}
+  if(typeof ResizeObserver!=='undefined')new ResizeObserver(schedule).observe(trailer);
+  window.addEventListener('resize',schedule,{passive:true});
+  if(mq.addEventListener)mq.addEventListener('change',schedule);
+  if(document.fonts?.ready)document.fonts.ready.then(schedule);
+  window.addEventListener('load',schedule,{once:true});
+  schedule();
+})();
+</script>
 </body>
 </html>
