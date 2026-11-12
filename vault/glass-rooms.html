@@ -4249,5 +4249,51 @@ grid-template-columns:
   schedule();
 })();
 </script>
+
+<style id="glass-rooms-meta-palette-tighten-fix">
+@media (min-width:901px) {
+  /* Tighten the metadata strip so it uses less vertical space. */
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+    margin: 0 0 8px !important;
+    padding: 7px 12px 8px !important;
+    min-height: 0 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
+    min-height: 0 !important;
+    padding: 0 7px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
+    margin-bottom: 4px !important;
+    font-size: 10px !important;
+    line-height: 1.05 !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
+    font-size: 14px !important;
+    line-height: 1.05 !important;
+  }
+
+  /* Remove the extra palette container so the palette sits cleanly on its own. */
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette {
+    margin: 2px 0 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    outline: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-hero-palette.lss-floating-palette img {
+    display: block !important;
+    width: 100% !important;
+    height: 52px !important;
+    margin: 0 !important;
+    object-fit: fill !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+}
+</style>
+
 </body>
 </html>
