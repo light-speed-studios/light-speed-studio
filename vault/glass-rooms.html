@@ -3492,6 +3492,9 @@ document.addEventListener("click", function (event) {
  const input=rating?.querySelector('.ffs-rating-input');
  const stars=input?.querySelector('.ffs-rating-stars');
  if(![block,grid,left,right,titlePanel,infoPanel,poster,title,rating,metadata,working,heading,synopsis].every(Boolean))return;
+ const ctaRow=block.querySelector('.ffs-cta-trailer-row');
+ const ctaPanel=ctaRow?.querySelector('.ffs-links-panel');
+ const notePanel=block.querySelector('.ffs-palette-module');
  const palette=document.createElement('div');
  palette.className='ffs-hero-palette lss-floating-palette';
  const paletteImg=document.createElement('img');
@@ -3520,9 +3523,13 @@ document.addEventListener("click", function (event) {
    titlePanel.hidden=true;
    right.append(unified);
    working.remove();
-   unified.append(rating,metadata,heading,synopsis,footer);
+   unified.append(rating,heading,synopsis,metadata,footer);
    if(hint)poster.after(hint);
-   grid.after(palette);
+   grid.insertBefore(palette,right);
+   if(ctaPanel && ctaRow && notePanel){
+     ctaRow.before(ctaPanel);
+     ctaRow.append(notePanel);
+   }
    block.classList.add('glass-cinematic-ready');
    if(input && label && stars) input.insertBefore(label,stars);
    if(number && count) number.after(count);
@@ -3540,11 +3547,23 @@ document.addEventListener("click", function (event) {
    if(number && count)number.after(count);
    unified.remove();
    palette.remove();
+   if(ctaPanel && ctaRow && notePanel){
+     ctaRow.prepend(ctaPanel);
+     ctaRow.before(notePanel);
+   }
   }
  }
- arrange();
- if(mq.addEventListener)mq.addEventListener('change',arrange);
- else mq.addListener(arrange);
+ function fitVerticalPalette(){
+   if(!mq.matches || !palette.isConnected)return;
+   const posterHeight=poster.getBoundingClientRect().height;
+   if(posterHeight>0)palette.style.setProperty('--lss-palette-length',`${Math.round(posterHeight)}px`);
+ }
+ const applyLayout=()=>{arrange();requestAnimationFrame(fitVerticalPalette);};
+ applyLayout();
+ window.addEventListener('resize',fitVerticalPalette,{passive:true});
+ if(poster.querySelector('.ffs-poster-full'))poster.querySelector('.ffs-poster-full').addEventListener('load',fitVerticalPalette);
+ if(mq.addEventListener)mq.addEventListener('change',applyLayout);
+ else mq.addListener(applyLayout);
 })();
 </script>
 
@@ -3800,6 +3819,119 @@ grid-template-columns:
       #040E15 40%,
       #040E15 100%);
   }
+}
+</style>
+
+<!-- Glass Rooms: desktop-only layout reflow. Existing typography, fills, and component skins preserved. -->
+<style id="glass-rooms-layout-rearrangement-only">
+@media (min-width:901px) {
+  /* Title remains untouched above the entire movie hero. */
+  .ffs-page .ffs-desktop-composition {
+    display:grid !important;
+    grid-template-columns:315px 64px minmax(0,1fr) !important;
+    column-gap:18px !important;
+    align-items:start !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-left-column {grid-column:1 !important;grid-row:1 !important;}
+  .ffs-page .ffs-desktop-composition > .ffs-hero-palette.lss-floating-palette {
+    grid-column:2 !important;grid-row:1 !important;
+    display:block !important;
+    position:relative !important;
+    width:64px !important;
+    min-width:0 !important;
+    height:var(--lss-palette-length,440px) !important;
+    max-width:64px !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    background:rgba(4,14,21,.50) !important;
+    box-shadow:0 16px 45px rgba(0,0,0,.75) !important;
+  }
+  /* Use the exact existing film-palette asset, turned vertically. */
+  .ffs-page .ffs-desktop-composition > .ffs-hero-palette.lss-floating-palette img {
+    position:absolute !important;
+    top:0 !important;
+    left:64px !important;
+    display:block !important;
+    width:var(--lss-palette-length,440px) !important;
+    max-width:none !important;
+    height:64px !important;
+    margin:0 !important;
+    object-fit:fill !important;
+    transform-origin:top left !important;
+    transform:rotate(90deg) !important;
+    box-shadow:none !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column {grid-column:3 !important;grid-row:1 !important;}
+  /* Retain the same full-width metadata strip, positioned after the synopsis. */
+  .ffs-page .lss-unified-details > .ffs-audience-rating {order:1 !important;}
+  .ffs-page .lss-unified-details > .ffs-section-label {order:2 !important;}
+  .ffs-page .lss-unified-details > .ffs-synopsis {order:3 !important;margin-bottom:14px !important;}
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
+    order:4 !important;
+    margin:0 0 14px !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1.45fr) minmax(0,1.2fr) minmax(0,1fr) !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer {order:5 !important;}
+  /* Original CTA tiles, one continuous horizontal row. */
+  .ffs-page .ffs-project-block > .ffs-links-panel.ffs-cta-panel {
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    margin:26px 0 0 !important;
+    padding:0 !important;
+    background:transparent !important;
+    box-shadow:none !important;
+    contain:none !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-links-panel .ffs-cta-grid {
+    display:grid !important;
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    grid-template-rows:auto !important;
+    gap:14px !important;
+    width:100% !important;
+    height:auto !important;
+  }
+  .ffs-page .ffs-project-block > .ffs-links-panel .ffs-cta-tile {
+    min-height:122px !important;
+    height:auto !important;
+  }
+  /* Trailer left, original Editor's Note panel right, sharing a bottom row. */
+  .ffs-page .ffs-cta-trailer-row {
+    display:grid !important;
+    grid-template-columns:minmax(0,1.8fr) minmax(300px,1fr) !important;
+    gap:22px !important;
+    align-items:stretch !important;
+    margin-top:22px !important;
+  }
+  .ffs-page .ffs-cta-trailer-row > .ffs-trailer-section {
+    grid-column:1 !important;
+    grid-row:1 !important;
+    height:auto !important;
+    margin:0 !important;
+    align-self:start !important;
+  }
+  .ffs-page .ffs-cta-trailer-row > .ffs-palette-module {
+    display:block !important;
+    grid-column:2 !important;
+    grid-row:1 !important;
+    height:100% !important;
+    margin:0 !important;
+    overflow:visible !important;
+  }
+  .ffs-page .ffs-cta-trailer-row > .ffs-palette-module .ffs-palette-wrap {display:none !important;}
+  .ffs-page .ffs-cta-trailer-row > .ffs-palette-module .ffs-editors-note-text {
+    margin:0 !important;
+    font-size:21px !important;
+    line-height:1.62 !important;
+  }
+}
+@media (min-width:901px) and (max-width:1150px) {
+  .ffs-page .ffs-desktop-composition {grid-template-columns:260px 52px minmax(0,1fr) !important;column-gap:14px !important;}
+  .ffs-page .ffs-desktop-composition > .ffs-hero-palette.lss-floating-palette {width:52px !important;max-width:52px !important;}
+  .ffs-page .ffs-desktop-composition > .ffs-hero-palette.lss-floating-palette img {left:52px !important;height:52px !important;}
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {font-size:10px !important;}
+  .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {font-size:13px !important;}
 }
 </style>
 </body>
