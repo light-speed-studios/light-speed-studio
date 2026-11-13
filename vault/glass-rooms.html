@@ -1454,7 +1454,7 @@ body {
   overflow: hidden !important;
   background: rgba(0, 0, 0, 0.72);
 }
-body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
+body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog-modal) {
   display: flex !important;
 }
 .ffs-soundtrack-modal-box {
@@ -3975,6 +3975,68 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     height: 52px !important;
   }
 }
+
+/* MASTER COMPONENT: desktop changelog modal, soundtrack visual language. */
+@media (min-width: 901px) {
+  body:has(#ffsLandingChangelog:checked) .ffs-changelog-modal {
+    display: flex !important;
+  }
+  .ffs-changelog-modal {
+    padding: 54px 48px !important;
+  }
+  .ffs-changelog-modal .ffs-soundtrack-modal-box {
+    width: min(1200px, calc(100vw - 96px)) !important;
+    max-height: calc(100dvh - 108px) !important;
+  }
+  .ffs-changelog-modal .ffs-soundtrack-modal-content {
+    padding: 24px 28px 30px;
+  }
+  .ffs-changelog-modal .lss-changelog-row {
+    display: grid;
+    grid-template-columns: minmax(185px, 260px) minmax(0, 1fr);
+    gap: 24px;
+    margin-bottom: 12px;
+    padding: 20px 22px;
+    background: rgba(255,255,255,.025);
+    box-shadow: inset 0 0 0 1px rgba(186,199,213,.075), inset 4px 0 0 rgba(0,174,222,.55);
+  }
+  .ffs-changelog-modal .lss-changelog-row:last-child { margin-bottom: 0; }
+  .ffs-changelog-modal .lss-changelog-row h3 {
+    margin: 0;
+    padding: 2px 18px 2px 0;
+    border-right: 1px solid rgba(186,199,213,.13);
+    font: 800 17px/1.35 Oxanium, Rajdhani, Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #bac7d5;
+  }
+  .ffs-changelog-modal .lss-changelog-row ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ffs-changelog-modal .lss-changelog-row li {
+    position: relative;
+    margin: 0 0 10px;
+    padding-left: 17px;
+    font: 500 18px/1.45 Rajdhani, Arial, sans-serif;
+    color: rgba(186,199,213,.82);
+  }
+  .ffs-changelog-modal .lss-changelog-row li:last-child { margin-bottom: 0; }
+  .ffs-changelog-modal .lss-changelog-row li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .65em;
+    width: 5px;
+    height: 5px;
+    background: #00aede;
+  }
+  .ffs-changelog-modal .lss-changelog-row em { color: #bac7d5; }
+}
+@media (max-width: 900px) {
+  .ffs-changelog-modal { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -4097,9 +4159,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
     <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack"/>
+    <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingChangelog"/>
 
     <div class="ffs-cta-grid">
-      <a class="ffs-cta-tile" href="../glass-rooms-changelog.html">
+      <a class="ffs-cta-tile lss-changelog-trigger" href="../glass-rooms-changelog.html" aria-haspopup="dialog" aria-controls="lssGlassRoomsChangelog">
         <span class="ffs-cta-icon" aria-hidden="true">
           <svg viewBox="0 0 64 64">
             <rect x="15" y="12" width="34" height="40" rx="2"></rect>
@@ -4236,6 +4299,138 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script src="../js/main.js?v=5"></script>
+
+<div class="ffs-soundtrack-modal ffs-changelog-modal" id="lssGlassRoomsChangelog" role="dialog" aria-modal="true" aria-labelledby="lssChangelogTitle">
+  <div class="ffs-soundtrack-modal-box">
+    <div class="ffs-soundtrack-modal-head">
+      <div class="ffs-soundtrack-modal-header">
+        <div class="ffs-soundtrack-modal-title">
+          <strong id="lssChangelogTitle">Glass Rooms | Changelog</strong>
+          <span>Editorial changes and creative decisions</span>
+        </div>
+      </div>
+      <label class="ffs-soundtrack-modal-close" for="ffsLandingChangelog" aria-label="Close changelog" role="button" tabindex="0">×</label>
+    </div>
+    <div class="ffs-soundtrack-modal-content" tabindex="0">
+      <div class="ffs-soundtrack-modal-content-inner">
+<section class="lss-changelog-row">
+<h3>INTRO &amp; COLD OPEN</h3>
+<ul>
+<li>Added A24 and LSS logos</li>
+<li>All “Ava Session” title cards replaced with "ENTRY // 001"–style text, reflecting Ava’s perspective</li>
+<li>Film opens with Ava cold open</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>GLASS ROOMS TITLE REVEAL</h3>
+<ul>
+<li>Removed original opening sequence of Caleb being selected and surveilled at Blue Book</li>
+<li>First narrative scene now begins with Caleb in helicopter en route to Nathan’s estate</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>ARRIVAL AT NATHAN’S ESTATE</h3>
+<ul>
+<li>Removed Nathan’s “you’re freaked out by the house” dialogue to calm Caleb down</li>
+<li>Extended Nathan’s silent reaction after Caleb’s “there was no party!”</li>
+<li>Trimmed room tour sequence to end on “this is a research facility” and hard cut to NDA papers appearing into view</li>
+<li>Removed Caleb’s “history of man and the history of gods” line during Turing Test discussion</li>
+<li>Replaced with new Caleb reaction shot as Nathan explains the importance of the Turing Test</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>FIRST ENCOUNTER WITH AVA</h3>
+<ul>
+<li>Removed Caleb studying the crack in the glass before Ava appears; the crack is now presented only as a visual clue</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>CALEB’S FIRST MEETING WITH AVA OTHERWISE UNCHANGED</h3>
+<ul>
+<li>Removed the first half of Caleb and Nathan’s discussion on Ava after first meeting</li>
+<li>Removed Nathan’s “you’re not a man, you’re a god” story exchange</li>
+<li>Removed mirror moment where Caleb studies himself before bed</li>
+<li>Trimmed Caleb’s night surveillance sequence to remove Ava interacting with the charging terminal; blackout now interrupts observation before action is revealed</li>
+<li>Replaced Kyoko corridor shot with a clean corridor plate to avoid early visual rhyme with Ava</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>CALEB &amp; AVA RELATIONSHIP DEVELOPMENT</h3>
+<ul>
+<li>Trimmed Ava dressing up montage to only show Caleb’s point of view</li>
+<li>Added extended shots of Caleb waiting; Ava is only revealed fully dressed when she walks back</li>
+<li>Removed surveillance montage of Ava undressing; Caleb’s attraction is now implied through Ava’s dialogue and reinforced later in Caleb/Nathan discussion</li>
+<li>Removed Ava’s line “I don’t want to make you uncomfortable” and replaced it with a silent reaction shot of Ava giving Caleb a warm smile</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>NATHAN &amp; CALEB ESCALATION</h3>
+<ul>
+<li>Removed Nathan/Kyoko dance sequence; scene now cuts from Nathan telling Caleb “You can’t talk to her” directly to Caleb helping Nathan to bed</li>
+<li>Kept Caleb’s Oppenheimer quote but removed the banter that follows</li>
+<li>Replaced nude Kyoko sofa shot with clothed insert, presented as a slow push-in reveal</li>
+<li>Removed Caleb's mannequin storage room discovery sequence; Kyoko’s AI identity is now implied through Caleb’s realization rather than explicitly demonstrated</li>
+<li>Removed scene where Caleb cuts himself in the bathroom to test if he is AI, removing an unnecessary subplot and keeping the narrative focused on Ava</li>
+<li>Removed Nathan’s later comment referencing security footage of Caleb cutting himself</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>FINAL CONFRONTATION</h3>
+<ul>
+<li>Removed two shots revealing Kyoko holding the knife during the final confrontation</li>
+<li>Knife is now only revealed when Nathan backs into it, strengthening the surprise</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>AVA’S TRANSFORMATION &amp; ESCAPE</h3>
+<ul>
+<li>Trimmed Ava reconstruction sequence; retained arm replacement and skin application while removing extended mirror body reveal</li>
+<li>Removed prolonged mirror shot showing Ava’s full body; mirror moment now shown only from the neck up</li>
+<li>Removed interior house wandering sequence after Ava exits containment</li>
+<li>Transition now cuts directly from Caleb calling for Ava to the exterior forest shot and Ava leaving the facility</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>NEW ENDING EPILOGUE</h3>
+<ul>
+<li>Extended original ending with custom epilogue of Ava observing the city through her point of view among humans, accompanied by a new ADR monologue and music cue</li>
+<li>Visual concept inspired by a scene Alex Garland originally envisioned where Ava perceives the world through pulses and signals</li>
+</ul>
+</section>
+      </div>
+    </div>
+  </div>
+</div>
+<script id="lss-changelog-modal-controls">
+(function () {
+  const toggle = document.getElementById('ffsLandingChangelog');
+  const trigger = document.querySelector('.lss-changelog-trigger');
+  const modal = document.getElementById('lssGlassRoomsChangelog');
+  if (!toggle || !trigger || !modal) return;
+  trigger.addEventListener('click', function (event) {
+    if (window.matchMedia('(min-width: 901px)').matches) {
+      event.preventDefault();
+      toggle.checked = true;
+      modal.querySelector('.ffs-soundtrack-modal-content').scrollTop = 0;
+    }
+  });
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) toggle.checked = false;
+  });
+  modal.querySelector('.ffs-soundtrack-modal-close').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggle.checked = false;
+    }
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && toggle.checked) toggle.checked = false;
+  });
+  window.matchMedia('(max-width: 900px)').addEventListener('change', function (event) {
+    if (event.matches) toggle.checked = false;
+  });
+})();
+</script>
 
 <div class="ffs-soundtrack-modal">
   <div class="ffs-soundtrack-modal-box">
