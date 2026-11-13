@@ -4091,6 +4091,17 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width:900px) {
   .ffs-page .ffs-alt-poster-hint { display:none !important; }
 }
+
+/* Desktop master: reserve Far From Sol's three-line synopsis slot.
+   Two-line synopses leave the remaining line empty so the metadata row
+   and palette retain the same vertical positions. Mobile is untouched. */
+@media (min-width: 901px) {
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    min-height: clamp(94.05px, 7.524vw, 113.85px) !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 14px !important;
+  }
+}
 </style>
 </head>
 <body>
