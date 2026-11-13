@@ -1454,7 +1454,7 @@ body {
   overflow: hidden !important;
   background: rgba(0, 0, 0, 0.72);
 }
-body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
+body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog-modal) {
   display: flex !important;
 }
 .ffs-soundtrack-modal-box {
@@ -3975,6 +3975,67 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
     height: 52px !important;
   }
 }
+/* MASTER COMPONENT: desktop changelog modal, soundtrack visual language. */
+@media (min-width: 901px) {
+  body:has(#ffsLandingChangelog:checked) .ffs-changelog-modal {
+    display: flex !important;
+  }
+  .ffs-changelog-modal {
+    padding: 54px 48px !important;
+  }
+  .ffs-changelog-modal .ffs-soundtrack-modal-box {
+    width: min(1200px, calc(100vw - 96px)) !important;
+    max-height: calc(100dvh - 108px) !important;
+  }
+  .ffs-changelog-modal .ffs-soundtrack-modal-content {
+    padding: 24px 28px 30px;
+  }
+  .ffs-changelog-modal .lss-changelog-row {
+    display: grid;
+    grid-template-columns: minmax(185px, 260px) minmax(0, 1fr);
+    gap: 24px;
+    margin-bottom: 12px;
+    padding: 20px 22px;
+    background: rgba(255,255,255,.025);
+    box-shadow: inset 0 0 0 1px rgba(186,199,213,.075), inset 4px 0 0 rgba(0,174,222,.55);
+  }
+  .ffs-changelog-modal .lss-changelog-row:last-child { margin-bottom: 0; }
+  .ffs-changelog-modal .lss-changelog-row h3 {
+    margin: 0;
+    padding: 2px 18px 2px 0;
+    border-right: 1px solid rgba(186,199,213,.13);
+    font: 800 17px/1.35 Oxanium, Rajdhani, Arial, sans-serif;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #bac7d5;
+  }
+  .ffs-changelog-modal .lss-changelog-row ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .ffs-changelog-modal .lss-changelog-row li {
+    position: relative;
+    margin: 0 0 10px;
+    padding-left: 17px;
+    font: 500 18px/1.45 Rajdhani, Arial, sans-serif;
+    color: rgba(186,199,213,.82);
+  }
+  .ffs-changelog-modal .lss-changelog-row li:last-child { margin-bottom: 0; }
+  .ffs-changelog-modal .lss-changelog-row li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: .65em;
+    width: 5px;
+    height: 5px;
+    background: #00aede;
+  }
+  .ffs-changelog-modal .lss-changelog-row em { color: #bac7d5; }
+}
+@media (max-width: 900px) {
+  .ffs-changelog-modal { display: none !important; }
+}
 </style>
 </head>
 <body>
@@ -4095,9 +4156,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal {
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
     <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingSoundtrack"/>
+    <input class="ffs-soundtrack-modal-toggle" type="checkbox" id="ffsLandingChangelog"/>
 
     <div class="ffs-cta-grid">
-      <a class="ffs-cta-tile" href="../batman-gothams-riddle-changelog.html">
+      <a class="ffs-cta-tile lss-changelog-trigger" href="../batman-gothams-riddle-changelog.html" aria-haspopup="dialog" aria-controls="lssBatmanChangelog">
         <span class="ffs-cta-icon" aria-hidden="true">
           <svg viewBox="0 0 64 64">
             <rect x="15" y="12" width="34" height="40" rx="2"></rect>
@@ -4234,6 +4296,179 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script src="../js/main.js?v=5"></script>
+
+<div class="ffs-soundtrack-modal ffs-changelog-modal" id="lssBatmanChangelog" role="dialog" aria-modal="true" aria-labelledby="lssChangelogTitle">
+  <div class="ffs-soundtrack-modal-box">
+    <div class="ffs-soundtrack-modal-head">
+      <div class="ffs-soundtrack-modal-header">
+        <div class="ffs-soundtrack-modal-title">
+          <strong id="lssChangelogTitle">Changelog</strong>
+        </div>
+      </div>
+      <label class="ffs-soundtrack-modal-close" for="ffsLandingChangelog" aria-label="Close changelog" role="button" tabindex="0">×</label>
+    </div>
+    <div class="ffs-soundtrack-modal-content" tabindex="0">
+      <div class="ffs-soundtrack-modal-content-inner">
+<section class="lss-changelog-row">
+<h3>GLOBAL CHANGES</h3>
+<ul>
+<li>Retitled the film to Batman: Gotham’s Riddle.</li>
+<li>Removed the entire third act involving the city flood and Riddler’s bomb plot.</li>
+<li>Rescored with “Disoriented” (Annihilation OST).</li>
+<li>Added dates and Location text overlays in multiple scenes.</li>
+<li>Removed all on-screen Riddler attack scenes to preserve mystery and maintain tension.</li>
+<li>Applied new LUTs to adjust color tone throughout the film</li>
+<li>Recreated the Penguin series title card effect for Batman logo.</li>
+<li>Replaced all lines referring to Batman as “vengeance.”</li>
+<li>Each act is now bookmarked with one of Riddler's 3 riddles.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>OPENING &amp; ACT ONE</h3>
+<ul>
+<li>Opened with Bruce’s narration about Halloween night. All new ADR. Rescored</li>
+<li>Trimmed dialogue. Added line about the Bat Symbol being forged by the gun that took his parents.</li>
+<li>Removed civilian’s “Don’t hurt me” line. Moved Title Card to after fight with goons.</li>
+<li>Trimmed Martinez’s interaction at the Mitchell crime scene. Now he only mutters “goddamn freak.”</li>
+<li>Removed the Commissioner’s dialogue with Batman. Now he simply says, “I want him out... now.”</li>
+<li>Extended Batman's point of view shot of entering the Batcave.</li>
+<li>Removed the diary entry scene. Bruce goes to reviews lens footage now.</li>
+<li>Cut Bruce’s “You’re not my father” exchange with Alfred.</li>
+<li>Bruce exits after “I don’t care what happens to me.”</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>THUMB DRIVE &amp; CLUB INFILTRATION</h3>
+<ul>
+<li>Shortened USB thumb drive sequence.</li>
+<li>After Batman identifies the USB, the scene transitions straight to the Batcave.</li>
+<li>Removed the moment where Mitchell’s photos are emailed from Gordon’s account.</li>
+<li>Rescored club fight scene.</li>
+<li>Replaced Penguin "Vengeance here don't bite.”</li>
+<li>Reworked Batman looking at Selina/Annika through the binoculars.</li>
+<li>Removed guard interrupting Bat/Cat fight.</li>
+<li>Skipped the bike riding transition. Now a quick engine rev leads directly to the apartment arrival.</li>
+<li>Removed Riddler's comical "Goodbye"</li>
+<li>Added Batman reaction shot.</li>
+<li>Removed Batman's “You’ve got a lot of cats” lines.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>JOKER SCENE &amp; CLUB SEQUENCE</h3>
+<ul>
+<li>Inserted Joker’s deleted Arkham scene after Batman and Gordon scene. Rescored.</li>
+<li>2nd Riddle Card marks the starts of the 2nd act after Joker scene.</li>
+<li>Removed the scene where Batman gives Selina the lens.</li>
+<li>Rescored the club sequence.</li>
+<li>Added the deleted Catwoman and Penguin scene, showing her obtaining the hospitality card.</li>
+<li>The Rat &amp; Funeral</li>
+<li>Trimmed the DA’s “rat” explanation. The scene now moves more swiftly to the "Russian girl" reference.</li>
+<li>Rescored the scene when Bruce arrives at the funeral.</li>
+<li>Removed Falcone’s laugh about the Hippocratic Oath.</li>
+<li>Removed Bruce’s interactions with the shady guy and Bella Real at the funeral.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>DA BOMB SEQUENCE</h3>
+<ul>
+<li>Removed Riddler’s livestream footage during the DA’s interrogation.</li>
+<li>Cut Riddler’s “You're a part of this too."</li>
+<li>Overlaid the DA’s desperate “Jesus, can we get somebody in here?” during Riddler’s conversation with Batman.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>GCPD ESCAPE &amp; CAR CHASE</h3>
+<ul>
+<li>Trimmed Batman’s police station fight; Gordon stops him earlier.</li>
+<li>Reworked glide sequence. no comical crash. its implied through SFX he survived the landing.</li>
+<li>Removed the “pulling your punch” joke.</li>
+<li>Trimmed everyone waiting for Batmobile to restart. now the scene moves quick.</li>
+<li>Trimmed the chase’s early beats; Penguin now rams the other car immediately.</li>
+<li>Flipped Batman’s walk toward Penguin’s flipped car to be upright for visual impact.</li>
+<li>Scene now fades out as Batman approaches, removing the slow head reveal inside the car.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>PENGUIN INTERROGATION &amp; ORPHANAGE</h3>
+<ul>
+<li>Trimmed Penguin’s interrogation; removed Gordon showing him photos and yelling "open your eyes.”</li>
+<li>Removed the drophead encounter at the orphange. They now enter straight into the projector room.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>WAYNE TOWER &amp; FAMILY SECRETS</h3>
+<ul>
+<li>Shortened Batman’s return to Wayne Tower. Removed unanswered phone calls. Rescored</li>
+<li>Trimmed rooftop conversation with Selina in a couple of parts . Rescored</li>
+<li>Selina’s vengeance line changed to “I thought you believed me.”</li>
+<li>Third riddle marks the start of the 3rd act as we hear Thomas Wayne political ad.</li>
+<li>Removed Bruce’s visit to Falcone for answers.</li>
+<li>Scene now transitions directly to Alfred’s hospital scene.</li>
+<li>Trimmed redundant dialogue and empty reaction shots during Bruce/Alfred scene. Rescored</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>FALCONE’S DEATH &amp; CLUB SEQUENCE</h3>
+<ul>
+<li>Removed Catwoman’s “nine lives” line.</li>
+<li>Batman’s arrival at the club to stop Catwoman is now a surprise</li>
+<li>No buildup shots of Batman making his way through the club. just the one "tunnel gun lit” scene.</li>
+<li>Removed Riddler’s question mark latte art.</li>
+<li>Trimmed the apartment search scene. Now cuts straight to Riddler’s “My confession” card and immediate phone call.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>RIDDLER REVEAL &amp; FINAL CHANGES</h3>
+<ul>
+<li>Moved “black and blue” line earlier in the Riddler interrogation.</li>
+<li>Removed “You should’ve seen me in my mask.”</li>
+<li>As Riddler screams “No!”, added a new shot of batman with new line.</li>
+<li>Affter Batman's line the scene transitions to Riddler sobbing in Arkham.</li>
+</ul>
+</section>
+<section class="lss-changelog-row">
+<h3>ENDING SEQUENCE</h3>
+<ul>
+<li>Trimmed the bike riding scene. Rescored</li>
+<li>Added new Batman ADR during bike ride.</li>
+<li>New title card and end credits.</li>
+</ul>
+</section>
+      </div>
+    </div>
+  </div>
+</div>
+<script id="lss-changelog-modal-controls">
+(function () {
+  const toggle = document.getElementById('ffsLandingChangelog');
+  const trigger = document.querySelector('.lss-changelog-trigger');
+  const modal = document.getElementById('lssBatmanChangelog');
+  if (!toggle || !trigger || !modal) return;
+  trigger.addEventListener('click', function (event) {
+    if (window.matchMedia('(min-width: 901px)').matches) {
+      event.preventDefault();
+      toggle.checked = true;
+      modal.querySelector('.ffs-soundtrack-modal-content').scrollTop = 0;
+    }
+  });
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) toggle.checked = false;
+  });
+  modal.querySelector('.ffs-soundtrack-modal-close').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggle.checked = false;
+    }
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && toggle.checked) toggle.checked = false;
+  });
+  window.matchMedia('(max-width: 900px)').addEventListener('change', function (event) {
+    if (event.matches) toggle.checked = false;
+  });
+})();
+</script>
+
 
 <div class="ffs-soundtrack-modal">
   <div class="ffs-soundtrack-modal-box">
