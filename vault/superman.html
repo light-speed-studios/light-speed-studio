@@ -4076,6 +4076,54 @@ body:has(#ffsColorGradeModal:checked) .ffs-version2-modal { display:flex !import
   .ffs-page .ffs-project-block > .lss-version2-button { display:flex; margin:12px auto 22px; }
   .ffs-version2-modal .ffs-soundtrack-modal-box { width:100% !important; }
 }
+
+
+/* Standardized Far From Sol desktop synopsis/metadata/palette geometry. */
+@media (min-width: 901px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    min-height: 108px !important;
+    margin-bottom: 12px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    min-height: clamp(94.05px, 7.524vw, 113.85px) !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 14px !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer {
+    margin-top: auto !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette {
+    padding: 8px 0 !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette img {
+    height: 52px !important;
+    object-fit: fill !important;
+  }
+}
+/* Version 2 is anchored beside SYNOPSIS and takes no layout height. */
+.ffs-page .ffs-section-label:has(> .lss-version2-button) {
+  position: relative !important;
+  padding-right: 130px !important;
+}
+.ffs-page .ffs-section-label > .lss-version2-button {
+  display: inline-flex !important;
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  align-self: auto !important;
+  width: auto !important;
+  min-width: 100px !important;
+  min-height: 28px !important;
+  margin: 0 !important;
+  padding: 5px 12px !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+@media (max-width: 900px) {
+  .ffs-page .ffs-section-label:has(> .lss-version2-button) { padding-right: 115px !important; }
+  .ffs-page .ffs-section-label > .lss-version2-button { min-width: 94px !important; }
+}
 </style>
 </head>
 <body>
@@ -4618,7 +4666,8 @@ document.addEventListener("click", function (event) {
    right.append(unified);
    working.remove();
    unified.append(nav,rating,heading,synopsis,metadata,footer);
-   footer.append(palette,versionButton);
+   footer.append(palette);
+   heading.append(versionButton);
    if(hint)poster.after(hint);
    if(ctaPanel && ctaRow && notePanel){
      ctaRow.before(ctaPanel);
@@ -4641,7 +4690,7 @@ document.addEventListener("click", function (event) {
    if(number && count)number.after(count);
    unified.remove();
    palette.remove();
-   notePanel.after(versionButton);
+   heading.append(versionButton);
    if(ctaPanel && ctaRow && notePanel){
      ctaRow.prepend(ctaPanel);
      ctaRow.before(notePanel);
@@ -4722,9 +4771,9 @@ document.addEventListener("click", function (event) {
   schedule();
 })();
 </script>
-<div class="ffs-soundtrack-modal ffs-version2-modal" id="lssSupermanVersion2Modal" role="dialog" aria-modal="true" aria-labelledby="lssSupermanVersion2Title">
+<div aria-labelledby="lssSupermanVersion2Title" aria-modal="true" class="ffs-soundtrack-modal ffs-version2-modal" id="lssSupermanVersion2Modal" role="dialog">
 <div class="ffs-soundtrack-modal-box">
-<div class="ffs-soundtrack-modal-head"><div class="ffs-soundtrack-modal-header"><div class="ffs-soundtrack-modal-title"><strong id="lssSupermanVersion2Title">VERSION 2</strong><span>Updated Changes | September '26</span></div></div><label class="ffs-soundtrack-modal-close lss-version2-close" for="ffsColorGradeModal" role="button" tabindex="0" aria-label="Close Version 2">×</label></div>
+<div class="ffs-soundtrack-modal-head"><div class="ffs-soundtrack-modal-header"><div class="ffs-soundtrack-modal-title"><strong id="lssSupermanVersion2Title">VERSION 2</strong><span>Updated Changes | September '26</span></div></div><label aria-label="Close Version 2" class="ffs-soundtrack-modal-close lss-version2-close" for="ffsColorGradeModal" role="button" tabindex="0">×</label></div>
 <div class="ffs-soundtrack-modal-content" tabindex="0"><div class="ffs-soundtrack-modal-content-inner"><ul class="ffs-color-grade-list"><li><strong>Color Grading:</strong> Regraded with deeper blacks, richer contrast and a more vibrant palette.</li><li><strong>Fortress Attack:</strong> Removed Engineer’s line about giving up her humanity to defeat Superman.</li><li><strong>Kaiju Fight Edit:</strong> Removed Superman "Be Careful" as Hawkgirl strikes at Kaiju's eye</li><li><strong>Mr. Terrific ADR Fix:</strong> Fixed Mr Terrific line about the El's message by add corrent lip syncing.</li><li><strong>Added Flight VFX:</strong> Reowrked Superman's flight back to the Fortress post Lex message, added VFX.</li><li><strong>Superman Interrogation Scene:</strong> Reworked the scene by digitally removing Vasil Ghurkos, the Boravian leader.</li><li><strong>Mr. Terrific vs. Raptors:</strong> Replaced “Keepin’ Da Faith” with “Pump It” by The Black Eyed Peas.</li><li><strong>Lois Lane's Final ADR:</strong> Redone entire ADR for better flow</li></ul></div></div>
 </div></div><script id="lss-superman-version-and-alt-poster">
 (() => {
