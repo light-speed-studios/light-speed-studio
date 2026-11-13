@@ -4035,6 +4035,42 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width: 900px) {
   .ffs-changelog-modal { display: none !important; }
 }
+/* Desktop layout reference: Far From Sol, 13 Nov 2026.
+   Reserve a full three-line synopsis and keep metadata/palette anchors fixed. */
+@media (min-width: 901px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    min-height: 108px !important;
+    margin-bottom: 12px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    min-height: clamp(94.05px, 7.524vw, 113.85px) !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 14px !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer {
+    margin-top: auto !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette {
+    padding: 8px 0 !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette img {
+    height: 52px !important;
+    object-fit: fill !important;
+  }
+  .ffs-page .ffs-left-column > .ffs-alt-poster-hint {
+    display: block !important;
+    margin: 13px 0 0 !important;
+    font: 700 12px/1.5 Oxanium, Rajdhani, sans-serif !important;
+    letter-spacing: .09em !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    color: #626A70 !important;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-page .ffs-alt-poster-hint { display: none !important; }
+}
+
 </style>
 </head>
 <body>
@@ -4079,6 +4115,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <label class="ffs-poster-click" for="ffsPosterToggle">
 <img alt="Star Trek: Genesis poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/startrekposter1.png"/>
 <img alt="Star Trek: Genesis mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/startrekpostermob.png"/>
+<img alt="Star Trek: Genesis alternate artwork" class="ffs-poster-alt" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/startrekpostermob.png"/>
 </label>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
 <span>Click to Enlarge</span>
@@ -4091,6 +4128,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <h1 class="ffs-title">Star Trek: Genesis</h1>
 </div>
 <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> Star Trek: Between Worlds</div>
+<p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
 
 <div class="ffs-meta-row ffs-desktop-meta">
 <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
@@ -4390,6 +4428,31 @@ document.addEventListener("click", function (event) {
 });
 </script>
 
+<script id="glass-rooms-desktop-hold-alt-poster-script">
+(function () {
+  const poster = document.querySelector('.ffs-poster-panel .ffs-poster-click');
+  if (!poster) return;
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const stop = () => poster.classList.remove('is-holding-alt');
+  poster.addEventListener('pointerdown', function (event) {
+    if (!desktop.matches || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    event.preventDefault();
+    poster.classList.add('is-holding-alt');
+  });
+  poster.addEventListener('pointerup', stop);
+  poster.addEventListener('pointercancel', stop);
+  poster.addEventListener('pointerleave', stop);
+  window.addEventListener('pointerup', stop);
+  window.addEventListener('blur', stop);
+  desktop.addEventListener('change', stop);
+  poster.addEventListener('click', function (event) {
+    if (desktop.matches) event.preventDefault();
+  });
+  poster.addEventListener('contextmenu', function (event) {
+    if (desktop.matches) event.preventDefault();
+  });
+})();
+</script>
 <script src="../js/movie-ratings.js" type="module"></script>
 <script id="glass-rooms-rating-count-wording-only">
 (() => {
