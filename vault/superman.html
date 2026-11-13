@@ -1453,7 +1453,7 @@ body {
   overflow: hidden !important;
   background: rgba(0, 0, 0, 0.72);
 }
-body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog-modal) {
+body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog-modal):not(.ffs-version2-modal) {
   display: flex !important;
 }
 .ffs-soundtrack-modal-box {
@@ -4036,6 +4036,46 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width: 900px) {
   .ffs-changelog-modal { display: none !important; }
 }
+
+/* Superman Version 2: compact palette button and soundtrack-style update modal. */
+.ffs-color-grade-modal-toggle { display: none !important; }
+.ffs-working-title-inline,
+.ffs-working-title-mobile-order { display: none !important; }
+.lss-version2-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: fit-content;
+  min-width: 112px;
+  min-height: 34px;
+  margin: 12px auto 0;
+  padding: 7px 18px;
+  border: 1px solid rgba(0,174,222,.38);
+  background: rgba(4,14,21,.90);
+  box-shadow: 0 5px 18px rgba(0,0,0,.35);
+  font: 800 11px/1.3 Oxanium,Rajdhani,Arial,sans-serif;
+  letter-spacing: .13em;
+  color: #00AEDE;
+  cursor: pointer;
+  user-select: none;
+  transition: background .2s, border-color .2s;
+}
+.lss-version2-button:hover { background: rgba(0,174,222,.12); border-color:#00AEDE; }
+.lss-version2-button:focus-visible { outline: 2px solid #00AEDE; outline-offset:3px; }
+body:has(#ffsColorGradeModal:checked) .ffs-version2-modal { display:flex !important; }
+.ffs-version2-modal .ffs-soundtrack-modal-box { width:min(770px,94vw) !important; }
+.ffs-version2-modal .ffs-color-grade-list { list-style:none; padding-left:0; }
+.ffs-version2-modal .ffs-color-grade-list li { padding-bottom:14px; border-bottom:1px solid rgba(186,199,213,.10); }
+.ffs-version2-modal .ffs-color-grade-list li:last-child { border-bottom:0; }
+.ffs-version2-modal .ffs-color-grade-list li strong { display:inline; font-size:18px; margin:0 7px 0 0; }
+@media (min-width:901px) {
+  .ffs-page .glass-details-footer .lss-version2-button { display:flex; margin:12px auto 0; }
+}
+@media (max-width:900px) {
+  .ffs-page .ffs-project-block > .lss-version2-button { display:flex; margin:12px auto 22px; }
+  .ffs-version2-modal .ffs-soundtrack-modal-box { width:100% !important; }
+}
 </style>
 </head>
 <body>
@@ -4111,7 +4151,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <p>
     A reimagining of the warmth, morality, and humanity behind the world’s greatest hero. No forced comedy, just heart. With a renewed emotional core, this edit reminds us that even the strongest longs to belong.
   </p>
-</div><label class="lss-version-pill" for="ffsColorGradeModal" role="button" tabindex="0"><span>Version 2</span><strong>Updated Changes</strong></label><div class="ffs-working-title ffs-working-title-mobile-order"><span>WORKING TITLE</span><strong>SUPERMAN: FLYBY</strong></div>
+</div><div class="ffs-working-title ffs-working-title-mobile-order"><span>WORKING TITLE</span><strong>SUPERMAN: FLYBY</strong></div>
 <div aria-label="Audience rating for Superman: Son of Tomorrow" class="ffs-audience-rating" data-movie-id="superman-son-of-tomorrow" id="ffs-audience-rating">
 <div class="ffs-rating-summary">
 <span class="ffs-rating-label">AUDIENCE RATING</span>
@@ -4541,6 +4581,14 @@ document.addEventListener("click", function (event) {
  const ctaRow=block.querySelector('.ffs-cta-trailer-row');
  const ctaPanel=ctaRow?.querySelector('.ffs-links-panel');
  const notePanel=block.querySelector('.ffs-palette-module');
+ const versionButton=document.createElement('label');
+ versionButton.className='lss-version2-button';
+ versionButton.htmlFor='ffsColorGradeModal';
+ versionButton.setAttribute('role','button');
+ versionButton.setAttribute('tabindex','0');
+ versionButton.setAttribute('aria-haspopup','dialog');
+ versionButton.setAttribute('aria-controls','lssSupermanVersion2Modal');
+ versionButton.textContent='VERSION 2';
  const palette=document.createElement('div');
  palette.className='ffs-hero-palette lss-floating-palette';
  const paletteImg=document.createElement('img');
@@ -4570,7 +4618,7 @@ document.addEventListener("click", function (event) {
    right.append(unified);
    working.remove();
    unified.append(nav,rating,heading,synopsis,metadata,footer);
-   footer.append(palette);
+   footer.append(palette,versionButton);
    if(hint)poster.after(hint);
    if(ctaPanel && ctaRow && notePanel){
      ctaRow.before(ctaPanel);
@@ -4593,6 +4641,7 @@ document.addEventListener("click", function (event) {
    if(number && count)number.after(count);
    unified.remove();
    palette.remove();
+   notePanel.after(versionButton);
    if(ctaPanel && ctaRow && notePanel){
      ctaRow.prepend(ctaPanel);
      ctaRow.before(notePanel);
@@ -4673,29 +4722,11 @@ document.addEventListener("click", function (event) {
   schedule();
 })();
 </script>
-<div class="ffs-color-grade-modal">
-<div class="ffs-color-grade-modal-box">
-<div class="ffs-color-grade-modal-head">
-<div class="ffs-color-grade-modal-title">
-<strong>Updated Changes</strong>
-<span>Version 2 | SEPTEMBER '26</span>
-</div>
-<label class="ffs-color-grade-modal-close" for="ffsColorGradeModal">×</label>
-</div>
-<div class="ffs-color-grade-modal-content">
-<ul class="ffs-color-grade-list">
-<li><strong>Color Grading:</strong> Regraded with deeper blacks, richer contrast and a more vibrant palette.</li>
-<li><strong>Fortress Attack:</strong> Removed Engineer’s line about giving up her humanity to defeat Superman.</li>
-<li><strong>Kaiju Fight Edit:</strong> Removed Superman "Be Careful" as Hawkgirl strikes at Kaiju's eye</li>
-<li><strong>Mr. Terrific ADR Fix:</strong> Fixed Mr Terrific line about the El's message by add corrent lip syncing.</li>
-<li><strong>Added Flight VFX:</strong> Reowrked Superman's flight back to the Fortress post Lex message, added VFX.</li>
-<li><strong>Superman Interrogation Scene:</strong> Reworked the scene by digitally removing Vasil Ghurkos, the Boravian leader.</li>
-<li><strong>Mr. Terrific vs. Raptors:</strong> Replaced “Keepin’ Da Faith” with “Pump It” by The Black Eyed Peas.</li>
-<li><strong>Lois Lane's Final ADR:</strong> Redone entire ADR for better flow</li>
-</ul>
-</div>
-</div>
-</div><script id="lss-superman-version-and-alt-poster">
+<div class="ffs-soundtrack-modal ffs-version2-modal" id="lssSupermanVersion2Modal" role="dialog" aria-modal="true" aria-labelledby="lssSupermanVersion2Title">
+<div class="ffs-soundtrack-modal-box">
+<div class="ffs-soundtrack-modal-head"><div class="ffs-soundtrack-modal-header"><div class="ffs-soundtrack-modal-title"><strong id="lssSupermanVersion2Title">VERSION 2</strong><span>Updated Changes | September '26</span></div></div><label class="ffs-soundtrack-modal-close lss-version2-close" for="ffsColorGradeModal" role="button" tabindex="0" aria-label="Close Version 2">×</label></div>
+<div class="ffs-soundtrack-modal-content" tabindex="0"><div class="ffs-soundtrack-modal-content-inner"><ul class="ffs-color-grade-list"><li><strong>Color Grading:</strong> Regraded with deeper blacks, richer contrast and a more vibrant palette.</li><li><strong>Fortress Attack:</strong> Removed Engineer’s line about giving up her humanity to defeat Superman.</li><li><strong>Kaiju Fight Edit:</strong> Removed Superman "Be Careful" as Hawkgirl strikes at Kaiju's eye</li><li><strong>Mr. Terrific ADR Fix:</strong> Fixed Mr Terrific line about the El's message by add corrent lip syncing.</li><li><strong>Added Flight VFX:</strong> Reowrked Superman's flight back to the Fortress post Lex message, added VFX.</li><li><strong>Superman Interrogation Scene:</strong> Reworked the scene by digitally removing Vasil Ghurkos, the Boravian leader.</li><li><strong>Mr. Terrific vs. Raptors:</strong> Replaced “Keepin’ Da Faith” with “Pump It” by The Black Eyed Peas.</li><li><strong>Lois Lane's Final ADR:</strong> Redone entire ADR for better flow</li></ul></div></div>
+</div></div><script id="lss-superman-version-and-alt-poster">
 (() => {
  const media=window.matchMedia('(min-width:901px)');
  const poster=document.querySelector('.ffs-poster-panel .ffs-poster-click');
@@ -4707,11 +4738,12 @@ document.addEventListener("click", function (event) {
   poster.addEventListener('contextmenu',e=>{if(media.matches)e.preventDefault();});
  }
  const toggle=document.getElementById('ffsColorGradeModal');
- const modal=document.querySelector('.ffs-color-grade-modal');
+ const modal=document.querySelector('.ffs-version2-modal');
  if(toggle&&modal){
   modal.addEventListener('click',e=>{if(e.target===modal)toggle.checked=false;});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&toggle.checked)toggle.checked=false;});
-  document.querySelectorAll('.lss-version-pill').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle.checked=!toggle.checked;}}));
+  document.querySelectorAll('.lss-version2-button').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle.checked=!toggle.checked;}}));
+  modal.querySelector('.lss-version2-close')?.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle.checked=false;}});
  }
 })();
 </script></body>
