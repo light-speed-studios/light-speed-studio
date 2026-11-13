@@ -4036,6 +4036,42 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width: 900px) {
   .ffs-changelog-modal { display: none !important; }
 }
+
+/* Desktop layout reference: Far From Sol, 13 Nov 2026.
+   Reserve a full three-line synopsis and keep metadata/palette anchors fixed. */
+@media (min-width: 901px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    min-height: 108px !important;
+    margin-bottom: 12px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    min-height: clamp(94.05px, 7.524vw, 113.85px) !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 14px !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer {
+    margin-top: auto !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette {
+    padding: 8px 0 !important;
+  }
+  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette img {
+    height: 52px !important;
+    object-fit: fill !important;
+  }
+  .ffs-page .ffs-left-column > .ffs-alt-poster-hint {
+    display: block !important;
+    margin: 13px 0 0 !important;
+    font: 700 12px/1.5 Oxanium, Rajdhani, sans-serif !important;
+    letter-spacing: .09em !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    color: #626A70 !important;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-page .ffs-alt-poster-hint { display: none !important; }
+}
 </style>
 </head>
 <body>
