@@ -4047,6 +4047,27 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   display:block; color:#00AEDE; font-size:1.2em; letter-spacing:.16em;
 }
 .ffs-changelog-modal .lss-changelog-row .cl-section-label { display:block; }
+
+
+/* OVERTIME FINAL: aligned desktop poster and information panel; muted poster hints. */
+.ffs-page .ffs-poster-expand,
+.ffs-page .ffs-poster-expand span,
+.ffs-page .ffs-poster-hold-hint,
+.ffs-page .ffs-alt-poster-hint {
+  color: #626A70 !important;
+}
+@media (min-width: 901px) {
+  .ffs-page .ffs-desktop-composition > .ffs-left-column,
+  .ffs-page .ffs-desktop-composition > .ffs-right-column {
+    min-height: 0 !important;
+  }
+  .ffs-page .ffs-desktop-composition > .ffs-right-column > .lss-unified-details {
+    box-sizing: border-box !important;
+    height: var(--lss-poster-height, auto) !important;
+    min-height: var(--lss-poster-height, 0px) !important;
+    max-height: var(--lss-poster-height, none) !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -4103,7 +4124,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <div class="ffs-title-row">
 <h1 class="ffs-title">The Flash: Overtime</h1>
 </div>
-<p class="ffs-working-title-inline"><span>WORKING TITLE:</span> THE FLASH: SPEED TRAP</p>
+
 <p class="ffs-part-label">PART 1 OF 2</p>
 <span class="ffs-poster-hold-hint">Press and hold the poster to view alternate artwork.</span><div class="ffs-meta-row ffs-desktop-meta">
 <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">160 min</span></div>
@@ -4118,7 +4139,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <div class="ffs-synopsis">
 <p>A coming-of-age superhero story rebuilt around Barry’s first year as The Flash. Less romance. Fewer detours. As The Flash learns to balance his two lives, he’s ultimately forced to face the demon of his past.</p>
 </div>
-<div class="ffs-mobile-working-title"><span>WORKING TITLE:</span> <strong>THE FLASH: SPEED TRAP</strong></div>
+
 <div aria-label="Audience rating for The Flash: Overtime" class="ffs-audience-rating" data-movie-id="flash-overtime" id="ffs-audience-rating">
 <div class="ffs-rating-summary">
 <span class="ffs-rating-label">AUDIENCE RATING</span>
@@ -4514,7 +4535,6 @@ document.addEventListener("click", function (event) {
  const title=titlePanel?.querySelector('.ffs-title-row');
  const rating=document.getElementById('ffs-audience-rating');
  const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
- const working=titlePanel?.querySelector('.ffs-working-title-inline');
  const hint=titlePanel?.querySelector('.ffs-poster-hold-hint');
  const part=titlePanel?.querySelector('.ffs-part-label');
  const heading=infoPanel?.querySelector('.ffs-section-label');
@@ -4525,7 +4545,7 @@ document.addEventListener("click", function (event) {
  const count=summary?.querySelector('.ffs-rating-count');
  const input=rating?.querySelector('.ffs-rating-input');
  const stars=input?.querySelector('.ffs-rating-stars');
- if(![block,grid,left,right,titlePanel,infoPanel,poster,title,rating,metadata,working,heading,synopsis].every(Boolean))return;
+ if(![block,grid,left,right,titlePanel,infoPanel,poster,title,rating,metadata,heading,synopsis].every(Boolean))return;
  const ctaRow=block.querySelector('.ffs-cta-trailer-row');
  const ctaPanel=ctaRow?.querySelector('.ffs-links-panel');
  const notePanel=block.querySelector('.ffs-palette-module');
@@ -4556,7 +4576,6 @@ document.addEventListener("click", function (event) {
    block.insertBefore(title,grid);
    titlePanel.hidden=true;
    right.append(unified);
-   working.remove();
    unified.append(nav,rating,heading,synopsis,...(part?[part]:[]),metadata,footer);
    footer.append(palette);
    if(hint)poster.after(hint);
@@ -4572,10 +4591,9 @@ document.addEventListener("click", function (event) {
    title.classList.remove('ffs-hero-title-row');
    titlePanel.hidden=false;
    titlePanel.prepend(title);
-   title.after(working);
    if(part)titlePanel.insertBefore(part,metadata);
-   if(hint)working.after(hint);
-   (hint||working).after(metadata);
+   if(hint) title.after(hint);
+   (hint||title).after(metadata);
    infoPanel.prepend(heading,synopsis);
    grid.insertBefore(rating,right); /* Mobile: rating follows the full poster and precedes the synopsis. */
    if(summary && label && number) summary.insertBefore(label,number);
