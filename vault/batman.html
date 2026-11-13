@@ -4036,6 +4036,15 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width: 900px) {
   .ffs-changelog-modal { display: none !important; }
 }
+
+/* LSS desktop spacing standard: reserve three synopsis lines as in Far From Sol.
+   Short synopsis copy leaves space below it; metadata and palette retain their positions. */
+@media (min-width: 901px) {
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    min-height: calc(3 * 1.65 * clamp(19px, 1.52vw, 23px)) !important;
+    flex-shrink: 0 !important;
+  }
+}
 </style>
 </head>
 <body>
