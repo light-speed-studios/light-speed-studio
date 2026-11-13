@@ -4071,20 +4071,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 
 /* Reference geometry: Far From Sol, 13 Nov 2026. Film-specific content is unchanged. */
 @media (min-width:901px) {
-  /* Part designation occupies the film heading without shifting the details-panel contents. */
-  .ffs-page .ffs-hero-title-row { position: relative !important; }
-  .ffs-page .ffs-hero-title-row > .ffs-part-label {
-    display: inline-flex !important;
-    vertical-align: middle !important;
-    margin: 0 0 0 18px !important;
-    padding: 4px 8px !important;
-    font: 800 11px/1.1 Oxanium,Rajdhani,sans-serif !important;
-    letter-spacing: .12em !important;
-    color: #00AEDE !important;
-    background: rgba(0,174,222,.08) !important;
-    border: 1px solid rgba(0,174,222,.22) !important;
-    white-space: nowrap !important;
-  }
   /* Use the original reference's hint positioning below the desktop poster. */
   .ffs-page .ffs-left-column > .ffs-alt-poster-hint {
     display: block !important;
@@ -4161,7 +4147,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <div class="ffs-title-row">
 <h1 class="ffs-title">The Flash: Overtime</h1>
 </div>
-<p class="ffs-part-label">PART 1 OF 2</p>
 <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p><div class="ffs-meta-row ffs-desktop-meta">
 <div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">160 min</span></div>
 <div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">02 Oct 2026</span></div>
@@ -4571,7 +4556,6 @@ document.addEventListener("click", function (event) {
  const rating=document.getElementById('ffs-audience-rating');
  const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
  const hint=titlePanel?.querySelector('.ffs-alt-poster-hint');
- const part=titlePanel?.querySelector('.ffs-part-label');
  const heading=infoPanel?.querySelector('.ffs-section-label');
  const synopsis=infoPanel?.querySelector('.ffs-synopsis');
  const number=rating?.querySelector('.ffs-rating-number');
@@ -4612,8 +4596,6 @@ document.addEventListener("click", function (event) {
    titlePanel.hidden=true;
    right.append(unified);
    unified.append(nav,rating,heading,synopsis,metadata,footer);
-   // Keep the part designation with the title; preserve reference details-panel spacing.
-   if(part)title.append(part);
    footer.append(palette);
    if(hint)poster.after(hint);
    if(ctaPanel && ctaRow && notePanel){
@@ -4628,7 +4610,6 @@ document.addEventListener("click", function (event) {
    title.classList.remove('ffs-hero-title-row');
    titlePanel.hidden=false;
    titlePanel.prepend(title);
-   if(part)titlePanel.insertBefore(part,metadata);
    if(hint) title.after(hint);
    (hint||title).after(metadata);
    infoPanel.prepend(heading,synopsis);
