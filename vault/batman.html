@@ -4045,6 +4045,18 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     flex-shrink: 0 !important;
   }
 }
+/* Batman custom title artwork: desktop heading only. */
+@media (min-width:901px) {
+  .ffs-page .ffs-hero-title-row .ffs-title-art {
+    display: block;
+    width: min(980px, 100%);
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+    object-position: left center;
+    filter: brightness(0) invert(1);
+  }
+}
 </style>
 </head>
 <body>
@@ -4101,7 +4113,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <div class="ffs-right-column">
 <div class="ffs-title-panel">
 <div class="ffs-title-row">
-<h1 class="ffs-title">Batman: Gotham's Riddle</h1>
+<h1 class="ffs-title"><img class="ffs-title-art" src="https://light-speed-studios.b-cdn.net/BATMANRDFONT.png" alt="Batman: Gotham's Riddle" decoding="async" fetchpriority="high"/></h1>
 </div>
 <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> Batman: The Long Halloween</div>
 <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
