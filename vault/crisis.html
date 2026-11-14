@@ -12,6 +12,19 @@
 <link href="../css/styles.css?v=6" rel="stylesheet"/>
 
 <style id="lss-movie-master-styles">
+/* Crisis custom desktop title artwork: preserve PNG native colors. */
+@media (min-width: 901px) {
+  .ffs-page .ffs-hero-title-row .ffs-custom-title-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: clamp(30px, 3.3vw, 53px);
+    object-fit: contain;
+    object-position: left center;
+    filter: none;
+  }
+}
+
 #lss-splash {
   display: none !important;
   visibility: hidden !important;
@@ -4128,7 +4141,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <div class="ffs-right-column">
 <div class="ffs-title-panel">
 <div class="ffs-title-row">
-<h1 class="ffs-title">Crisis: Red Skies</h1>
+<h1 class="ffs-title"><img class="ffs-custom-title-image" src="https://light-speed-studios.b-cdn.net/CRISISFONT.png" alt="Crisis: Red Skies" decoding="async" fetchpriority="high" /></h1>
 </div>
 <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> CRISIS ON TWO WORLDS</div>
 <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
