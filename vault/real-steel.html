@@ -4072,6 +4072,20 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width: 900px) {
   .ffs-page .ffs-alt-poster-hint { display: none !important; }
 }
+
+
+/* LSS standard desktop custom title image */
+@media (min-width: 901px) {
+  html body .ffs-page .ffs-project-block .ffs-title-row .ffs-title-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: clamp(30px, 3.3vw, 53px);
+    object-fit: contain;
+    object-position: left center;
+    filter: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -4126,7 +4140,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <div class="ffs-right-column">
 <div class="ffs-title-panel">
 <div class="ffs-title-row">
-<h1 class="ffs-title">Real Steel: The Last Round</h1>
+<h1 class="ffs-title"><img class="ffs-title-image" src="https://light-speed-studios.b-cdn.net/REALSTEELFONT.png" alt="Real Steel: The Last Round" decoding="async"/></h1>
 </div>
 <div class="ffs-working-title-inline"><span>WORKING TITLE:</span> Real Steel: Redemption</div>
 <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
