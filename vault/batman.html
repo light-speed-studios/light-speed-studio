@@ -4049,9 +4049,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (min-width:901px) {
   .ffs-page .ffs-hero-title-row .ffs-title-art {
     display: block;
-    width: min(980px, 100%);
-    height: auto;
-    max-height: 100px;
+    width: auto;
+    max-width: 100%;
+    height: clamp(30px, 3.3vw, 53px);
     object-fit: contain;
     object-position: left center;
     filter: none;
