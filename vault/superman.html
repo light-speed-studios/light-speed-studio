@@ -4124,6 +4124,19 @@ body:has(#ffsColorGradeModal:checked) .ffs-version2-modal { display:flex !import
   .ffs-page .ffs-section-label:has(> .lss-version2-button) { padding-right: 115px !important; }
   .ffs-page .ffs-section-label > .lss-version2-button { min-width: 94px !important; }
 }
+
+/* LSS standard desktop custom title image */
+@media (min-width: 901px) {
+  html body .ffs-page .ffs-project-block .ffs-title-row .ffs-title-image {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: clamp(30px, 3.3vw, 53px);
+    object-fit: contain;
+    object-position: left center;
+    filter: none;
+  }
+}
 </style>
 </head>
 <body>
@@ -4177,7 +4190,7 @@ body:has(#ffsColorGradeModal:checked) .ffs-version2-modal { display:flex !import
 <div class="ffs-right-column">
 <div class="ffs-title-panel">
 <div class="ffs-title-row">
-<h1 class="ffs-title">Superman: Son of Tomorrow</h1>
+<h1 class="ffs-title"><img class="ffs-title-image" src="https://light-speed-studios.b-cdn.net/sotfont.png" alt="Superman: Son of Tomorrow" decoding="async"/></h1>
 </div>
 <p class="ffs-working-title-inline"><span>WORKING TITLE:</span> SUPERMAN: FLYBY</p><p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
 <div class="ffs-meta-row ffs-desktop-meta">
