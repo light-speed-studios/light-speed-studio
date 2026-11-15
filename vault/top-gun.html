@@ -4111,6 +4111,52 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     filter: none;
   }
 }
+/* Glass Rooms two-tier desktop header: rating/navigation then compact film credits. */
+.ffs-film-credits { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.55fr); gap: 14px; min-width: 0; }
+.ffs-film-credit { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+.ffs-film-credit-label { flex: 0 0 auto; color: #00aede; font: 800 11px/1.2 Oxanium,Rajdhani,sans-serif; letter-spacing: .10em; text-transform: uppercase; }
+.ffs-film-credit-value { min-width: 0; color: #e4edf2; font: 600 16px/1.2 Rajdhani,Arial,sans-serif; }
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits {
+    order: 1 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0,.8fr) minmax(0,1.65fr);
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    padding: 8px 2px;
+    margin: 0 0 9px;
+    border-top: 1px solid rgba(186,199,213,.25);
+    border-bottom: 1px solid rgba(186,199,213,.25);
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    margin-bottom: 4px !important;
+    min-height: 100px !important;
+    padding-bottom: 6px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-section-label { margin-bottom: 5px !important; }
+  .ffs-page .lss-unified-details > .ffs-synopsis p {
+    font-size: var(--lss-fit-synopsis-font, clamp(19px,1.52vw,23px)) !important;
+    line-height: 1.54 !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer { padding-top: 7px !important; }
+  .ffs-page .ffs-right-column > .lss-unified-details { overflow-y: hidden !important; scrollbar-width: none !important; }
+}
+@media (min-width:901px) and (max-width:1150px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits { gap: 10px; }
+  .ffs-film-credit { gap: 6px; }
+  .ffs-film-credit-label { font-size: 9px; }
+  .ffs-film-credit-value { font-size: 12px; }
+}
+@media (max-width:900px) {
+  .ffs-page .ffs-info-panel > .ffs-film-credits {
+    order: 4; display: grid; grid-template-columns: 1fr; gap: 10px;
+    width: 100%; margin: 0 0 20px; padding: 0;
+  }
+  .ffs-page .ffs-film-credit { display: block; }
+  .ffs-page .ffs-film-credit-label { display: block; margin-bottom: 3px; }
+  .ffs-page .ffs-film-credit-value { display: block; font-size: 15px; }
+}
 </style>
 </head>
 <body>
@@ -4188,6 +4234,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <p>
    This is Top Gun with the nostalgia. No Danger Zone. With a reworked relationship between Mav and Rooster, and a sharper pacex Top Gun: Ascension reimagines the ending into something more personal.
   </p>
+</div>
+<div class="ffs-film-credits" aria-label="Original film credits">
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Directed By</span><span class="ffs-film-credit-value">Joseph Kosinski</span></div>
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Starring</span><span class="ffs-film-credit-value">Tom Cruise, Miles Teller, Jennifer Connelly, Jon Hamm, Glen Powell, Monica Barbaro</span></div>
 </div>
 <div aria-label="Audience rating for Top Gun: Ascension" class="ffs-audience-rating" data-movie-id="top-gun-ascension" id="ffs-audience-rating">
 <div class="ffs-rating-summary">
@@ -4534,6 +4584,7 @@ document.addEventListener("click", function (event) {
  const poster=left?.querySelector('.ffs-poster-panel');
  const title=titlePanel?.querySelector('.ffs-title-row');
  const rating=document.getElementById('ffs-audience-rating');
+ const credits=infoPanel?.querySelector('.ffs-film-credits');
  const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
  const working=titlePanel?.querySelector('.ffs-working-title-inline');
  const hint=titlePanel?.querySelector('.ffs-alt-poster-hint');
@@ -4577,7 +4628,7 @@ document.addEventListener("click", function (event) {
    titlePanel.hidden=true;
    right.append(unified);
    working.remove();
-   unified.append(nav,rating,heading,synopsis,metadata,footer);
+   unified.append(nav,rating,credits,heading,synopsis,metadata,footer);
    footer.append(palette);
    if(hint)poster.after(hint);
    if(ctaPanel && ctaRow && notePanel){
@@ -4595,7 +4646,7 @@ document.addEventListener("click", function (event) {
    title.after(working);
    if(hint)working.after(hint);
    (hint||working).after(metadata);
-   infoPanel.prepend(heading,synopsis);
+   infoPanel.prepend(heading,synopsis,credits);
    grid.insertBefore(rating,right); /* Mobile: rating follows the full poster and precedes the synopsis. */
    if(summary && label && number) summary.insertBefore(label,number);
    if(number && count)number.after(count);
