@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -3692,6 +3690,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     height: 52px !important;
   }
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
+    padding-top: 2px !important;
     font-size: 10px !important;
   }
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-value {
@@ -3809,7 +3808,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   .ffs-page .lss-unified-details > .glass-details-footer {
     order: 5 !important;
     display: block !important;
-    margin: 16px 0 0 !important;
+    margin: 11px 0 0 !important;
+    transform: translateY(-5px) !important;
     padding: 0 !important;
     width: 100% !important;
     min-height: 0 !important;
@@ -3917,7 +3917,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (min-width:901px) {
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
     margin: 0 0 8px !important;
-    padding: 7px 12px 18px !important;
+    padding: 7px 12px 16px !important;
     min-height: 0 !important;
   }
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
@@ -4069,40 +4069,6 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   }
 }
 
-/* Reference geometry: Far From Sol, 13 Nov 2026. Film-specific content is unchanged. */
-@media (min-width:901px) {
-  /* Use the original reference's hint positioning below the desktop poster. */
-  .ffs-page .ffs-left-column > .ffs-alt-poster-hint {
-    display: block !important;
-    margin: 13px 0 0 !important;
-    font: 700 12px/1.5 Oxanium,Rajdhani,sans-serif !important;
-    letter-spacing: .09em !important;
-    text-transform: uppercase !important;
-    text-align: center !important;
-    color: #626A70 !important;
-  }
-  /* Match Far From Sol's consistent panel rhythm and palette bar. */
-  .ffs-page .lss-unified-details > .ffs-audience-rating { min-height:108px !important; margin-bottom:12px !important; }
-  .ffs-page .lss-unified-details > .ffs-synopsis { margin-bottom:14px !important; }
-  .ffs-page .lss-unified-details > .glass-details-footer { margin-top:auto !important; }
-  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette { padding:8px 0 !important; }
-  .ffs-page .lss-unified-details .glass-details-footer > .ffs-hero-palette.lss-floating-palette img { height:52px !important; object-fit:fill !important; }
-}
-@media (max-width:900px) {
-  .ffs-page .ffs-alt-poster-hint { display:none !important; }
-}
-
-/* Desktop master: reserve Far From Sol's three-line synopsis slot.
-   Two-line synopses leave the remaining line empty so the metadata row
-   and palette retain the same vertical positions. Mobile is untouched. */
-@media (min-width: 901px) {
-  .ffs-page .lss-unified-details > .ffs-synopsis {
-    min-height: clamp(94.05px, 7.524vw, 113.85px) !important;
-    flex-shrink: 0 !important;
-    margin-bottom: 14px !important;
-  }
-}
-
 /* LSS standard desktop custom title image */
 @media (min-width: 901px) {
   html body .ffs-page .ffs-project-block .ffs-title-row .ffs-title-image {
@@ -4114,6 +4080,52 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     object-position: left center;
     filter: none;
   }
+}
+/* Glass Rooms two-tier desktop header: rating/navigation then compact film credits. */
+.ffs-film-credits { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.55fr); gap: 14px; min-width: 0; }
+.ffs-film-credit { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+.ffs-film-credit-label { flex: 0 0 auto; color: #00aede; font: 800 11px/1.2 Oxanium,Rajdhani,sans-serif; letter-spacing: .10em; text-transform: uppercase; }
+.ffs-film-credit-value { min-width: 0; color: #e4edf2; font: 600 16px/1.2 Rajdhani,Arial,sans-serif; }
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits {
+    order: 1 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0,.8fr) minmax(0,1.65fr);
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    padding: 8px 2px;
+    margin: 0 0 9px;
+    border-top: 1px solid rgba(186,199,213,.25);
+    border-bottom: 1px solid rgba(186,199,213,.25);
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    margin-bottom: 4px !important;
+    min-height: 100px !important;
+    padding-bottom: 6px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-section-label { margin-bottom: 5px !important; }
+  .ffs-page .lss-unified-details > .ffs-synopsis p {
+    font-size: var(--lss-fit-synopsis-font, clamp(19px,1.52vw,23px)) !important;
+    line-height: 1.54 !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer { padding-top: 7px !important; }
+  .ffs-page .ffs-right-column > .lss-unified-details { overflow-y: hidden !important; scrollbar-width: none !important; }
+}
+@media (min-width:901px) and (max-width:1150px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits { gap: 10px; }
+  .ffs-film-credit { gap: 6px; }
+  .ffs-film-credit-label { font-size: 9px; }
+  .ffs-film-credit-value { font-size: 12px; }
+}
+@media (max-width:900px) {
+  .ffs-page .ffs-info-panel > .ffs-film-credits {
+    order: 4; display: grid; grid-template-columns: 1fr; gap: 10px;
+    width: 100%; margin: 0 0 20px; padding: 0;
+  }
+  .ffs-page .ffs-film-credit { display: block; }
+  .ffs-page .ffs-film-credit-label { display: block; margin-bottom: 3px; }
+  .ffs-page .ffs-film-credit-value { display: block; font-size: 15px; }
 }
 </style>
 </head>
@@ -4183,6 +4195,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <p class="ffs-section-label">Synopsis</p>
 <div class="ffs-synopsis">
 <p>A coming-of-age superhero story rebuilt around Barry’s first year as The Flash. Less romance. Fewer detours. As The Flash learns to balance his two lives, he’s ultimately forced to face the demon of his past.</p>
+</div>
+<div class="ffs-film-credits" aria-label="Original production credits">
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Directed By</span><span class="ffs-film-credit-value">Ralph Hemecker</span></div>
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Starring</span><span class="ffs-film-credit-value">Grant Gustin, Candice Patton, Danielle Panabaker, Carlos Valdes, Tom Cavanagh, Jesse L. Martin</span></div>
 </div>
 <div aria-label="Audience rating for The Flash: Overtime" class="ffs-audience-rating" data-movie-id="flash-overtime" id="ffs-audience-rating">
 <div class="ffs-rating-summary">
@@ -4578,6 +4594,7 @@ document.addEventListener("click", function (event) {
  const poster=left?.querySelector('.ffs-poster-panel');
  const title=titlePanel?.querySelector('.ffs-title-row');
  const rating=document.getElementById('ffs-audience-rating');
+ const credits=infoPanel?.querySelector('.ffs-film-credits');
  const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
  const hint=titlePanel?.querySelector('.ffs-alt-poster-hint');
  const heading=infoPanel?.querySelector('.ffs-section-label');
@@ -4619,7 +4636,7 @@ document.addEventListener("click", function (event) {
    block.insertBefore(title,grid);
    titlePanel.hidden=true;
    right.append(unified);
-   unified.append(nav,rating,heading,synopsis,metadata,footer);
+   unified.append(nav,rating,credits,heading,synopsis,metadata,footer);
    footer.append(palette);
    if(hint)poster.after(hint);
    if(ctaPanel && ctaRow && notePanel){
@@ -4636,7 +4653,7 @@ document.addEventListener("click", function (event) {
    titlePanel.prepend(title);
    if(hint) title.after(hint);
    (hint||title).after(metadata);
-   infoPanel.prepend(heading,synopsis);
+   infoPanel.prepend(heading,synopsis,credits);
    grid.insertBefore(rating,right); /* Mobile: rating follows the full poster and precedes the synopsis. */
    if(summary && label && number) summary.insertBefore(label,number);
    if(number && count)number.after(count);
@@ -4710,7 +4727,18 @@ document.addEventListener("click", function (event) {
     queued=false;
     if(!media.matches){details.style.removeProperty('--lss-poster-height');return;}
     const height=Math.round(poster.getBoundingClientRect().height);
-    if(height>100)details.style.setProperty('--lss-poster-height',height+'px');
+    if(height>100){
+      details.style.setProperty('--lss-poster-height',height+'px');
+      details.style.removeProperty('--lss-fit-synopsis-font');
+      const synopsis=details.querySelector('.ffs-synopsis p');
+      if(synopsis && details.scrollHeight>details.clientHeight+2){
+        let font=Math.min(23,parseFloat(getComputedStyle(synopsis).fontSize));
+        while(font>16 && details.scrollHeight>details.clientHeight+2){
+          font-=.5;
+          details.style.setProperty('--lss-fit-synopsis-font',font+'px');
+        }
+      }
+    }
   }
   function schedule(){if(!queued){queued=true;requestAnimationFrame(size);}}
   if(typeof ResizeObserver!=='undefined')new ResizeObserver(schedule).observe(poster);
