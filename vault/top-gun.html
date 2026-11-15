@@ -4158,6 +4158,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   .ffs-page .ffs-film-credit-value { display: block; font-size: 15px; }
 }
 </style>
+<link rel="stylesheet" href="../css/lss-video-player.css?v=3"/>
+<script defer src="../js/lss-video-player.js?v=3"></script>
 </head>
 <body>
 <header class="lss-nav-bar">
@@ -4323,8 +4325,32 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 </div>
 <div class="ffs-trailer-section">
 <div class="ffs-video">
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" loading="lazy" src="https://www.youtube.com/embed/ZML-djb_fz4" title="Top Gun: Ascension Trailer">
-</iframe>
+<div class="lss-video-player" role="group" aria-label="Top Gun: Ascension trailer player">
+    <video class="lss-vp-video" playsinline preload="metadata" poster="https://light-speed-studios.b-cdn.net/tgatraILER.png" aria-label="Top Gun: Ascension trailer">
+      <source src="https://light-speed-studios.b-cdn.net/tga-trailer.mp4" type="video/mp4">
+    </video>
+    <div class="lss-vp-shade" aria-hidden="true"></div>
+    <span class="lss-vp-label">TRAILER</span>
+    <div class="lss-vp-controls">
+      <div class="lss-vp-seek" role="slider" tabindex="0" aria-label="Seek trailer" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0">
+        <div class="lss-vp-track"><div class="lss-vp-buffer"></div><div class="lss-vp-fill"></div></div>
+      </div>
+      <div class="lss-vp-times"><span class="lss-vp-current">0:00</span><span class="lss-vp-duration">0:00</span></div>
+      <div class="lss-vp-actions">
+        <button class="lss-vp-button lss-vp-play" type="button" aria-label="Play trailer"></button>
+        <div class="lss-vp-side">
+          <div class="lss-vp-volume-group">
+            <div class="lss-vp-volume-panel" id="lss-tga-volume-panel" hidden>
+              <input class="lss-vp-volume" type="range" min="0" max="100" value="100" step="1" aria-label="Trailer volume">
+            </div>
+            <button class="lss-vp-button lss-vp-mute" type="button" aria-label="Show volume slider" aria-expanded="false" aria-controls="lss-tga-volume-panel"></button>
+          </div>
+          <button class="lss-vp-button lss-vp-full" type="button" aria-label="Enter fullscreen"></button>
+        </div>
+      </div>
+    </div>
+    <div class="lss-vp-error" role="alert">Trailer unavailable. Please try again later.</div>
+  </div>
 </div>
 </div>
 </div>
