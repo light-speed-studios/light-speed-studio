@@ -3806,7 +3806,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   .ffs-page .lss-unified-details > .glass-details-footer {
     order: 5 !important;
     display: block !important;
-    margin: 16px 0 0 !important;
+    margin: 11px 0 0 !important;
+    transform: translateY(-5px) !important;
     padding: 0 !important;
     width: 100% !important;
     min-height: 0 !important;
@@ -3914,7 +3915,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (min-width:901px) {
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta {
     margin: 0 0 8px !important;
-    padding: 7px 12px 18px !important;
+    padding: 7px 12px 16px !important;
     min-height: 0 !important;
   }
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta > .ffs-meta-card {
@@ -3923,6 +3924,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   }
   .ffs-page .lss-unified-details > .ffs-meta-row.ffs-desktop-meta .ffs-meta-label {
     margin-bottom: 4px !important;
+    padding-top: 2px !important;
     font-size: 15px !important;
     line-height: 1.05 !important;
   }
@@ -4048,6 +4050,52 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     filter: none;
   }
 }
+/* Glass Rooms two-tier desktop header: rating/navigation then compact film credits. */
+.ffs-film-credits { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.55fr); gap: 14px; min-width: 0; }
+.ffs-film-credit { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+.ffs-film-credit-label { flex: 0 0 auto; color: #00aede; font: 800 11px/1.2 Oxanium,Rajdhani,sans-serif; letter-spacing: .10em; text-transform: uppercase; }
+.ffs-film-credit-value { min-width: 0; color: #e4edf2; font: 600 16px/1.2 Rajdhani,Arial,sans-serif; }
+@media (min-width:901px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits {
+    order: 1 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0,.8fr) minmax(0,1.65fr);
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    padding: 8px 2px;
+    margin: 0 0 9px;
+    border-top: 1px solid rgba(186,199,213,.25);
+    border-bottom: 1px solid rgba(186,199,213,.25);
+  }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    margin-bottom: 4px !important;
+    min-height: 100px !important;
+    padding-bottom: 6px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-section-label { margin-bottom: 5px !important; }
+  .ffs-page .lss-unified-details > .ffs-synopsis p {
+    font-size: var(--lss-fit-synopsis-font, clamp(19px,1.52vw,23px)) !important;
+    line-height: 1.54 !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer { padding-top: 7px !important; }
+  .ffs-page .ffs-right-column > .lss-unified-details { overflow-y: hidden !important; scrollbar-width: none !important; }
+}
+@media (min-width:901px) and (max-width:1150px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits { gap: 10px; }
+  .ffs-film-credit { gap: 6px; }
+  .ffs-film-credit-label { font-size: 9px; }
+  .ffs-film-credit-value { font-size: 12px; }
+}
+@media (max-width:900px) {
+  .ffs-page .ffs-info-panel > .ffs-film-credits {
+    order: 4; display: grid; grid-template-columns: 1fr; gap: 10px;
+    width: 100%; margin: 0 0 20px; padding: 0;
+  }
+  .ffs-page .ffs-film-credit { display: block; }
+  .ffs-page .ffs-film-credit-label { display: block; margin-bottom: 3px; }
+  .ffs-page .ffs-film-credit-value { display: block; font-size: 15px; }
+}
 </style>
 </head>
 <body>
@@ -4125,6 +4173,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     A story about legacy and the weight of a brother’s influence. With less of Spritle’s chaos and the world around Royalton tightened. Mach 6 sharpens the story of Speed without losing the soul that holds the Racer family together.
   </p>
 </div><div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> <strong>Speed Racer: Full Throttle</strong></div>
+<div class="ffs-film-credits" aria-label="Original film credits">
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Directed By</span><span class="ffs-film-credit-value">The Wachowskis</span></div>
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Starring</span><span class="ffs-film-credit-value">Emile Hirsch, Christina Ricci, John Goodman, Susan Sarandon, Matthew Fox</span></div>
+</div>
 <div aria-label="Audience rating for Speed Racer: Mach 6" class="ffs-audience-rating" data-movie-id="speed-racer-mach-6" id="ffs-audience-rating">
 <div class="ffs-rating-summary">
 <span class="ffs-rating-label">AUDIENCE RATING</span>
