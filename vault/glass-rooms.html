@@ -4046,6 +4046,64 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width: 900px) {
   .ffs-changelog-modal { display: none !important; }
 }
+
+/* Film credits: use the open space between audience rating and movie navigation. */
+.ffs-film-credits {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+.ffs-film-credit { min-width: 0; }
+.ffs-film-credit-label {
+  display: block;
+  margin-bottom: 3px;
+  color: #00aede;
+  font: 800 11px/1.2 Oxanium, Rajdhani, sans-serif;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
+.ffs-film-credit-value {
+  display: block;
+  color: #e4edf2;
+  font: 600 14px/1.35 Rajdhani, Arial, sans-serif;
+}
+@media (min-width: 1600px) {
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    width: calc(100% - 530px) !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-film-credits {
+    position: absolute;
+    top: 31px;
+    right: 226px;
+    width: 282px;
+    max-width: calc(100% - 226px);
+    margin: 0;
+    z-index: 5;
+  }
+}
+@media (min-width: 901px) and (max-width: 1599px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits {
+    order: 2 !important;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    gap: 14px;
+    margin: 2px 0 10px;
+    padding: 0;
+  }
+}
+@media (max-width: 900px) {
+  .ffs-page .ffs-info-panel > .ffs-film-credits {
+    order: 4;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+    margin: 0 0 20px;
+    padding: 0;
+  }
+  .ffs-page .ffs-film-credit-value { font-size: 15px; }
+}
 </style>
 </head>
 <body>
@@ -4129,6 +4187,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <p>
     A cold procedural following the calibration of an artificial mind. No god complexes. No distractions. By delaying key realizations and stripping away early signals, Glass Rooms presents a world where sentience is no longer a human monopoly.
   </p>
+</div>
+
+<div class="ffs-film-credits" aria-label="Original film credits">
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Directed By</span><span class="ffs-film-credit-value">Alex Garland</span></div>
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Starring</span><span class="ffs-film-credit-value">Alicia Vikander, Domhnall Gleeson, Oscar Isaac</span></div>
 </div>
 
 <div class="ffs-audience-rating" id="ffs-audience-rating" data-movie-id="glass-rooms" aria-label="Audience rating for Glass Rooms">
@@ -4531,6 +4594,7 @@ document.addEventListener("click", function (event) {
  const poster=left?.querySelector('.ffs-poster-panel');
  const title=titlePanel?.querySelector('.ffs-title-row');
  const rating=document.getElementById('ffs-audience-rating');
+ const credits=infoPanel?.querySelector('.ffs-film-credits');
  const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
  const working=titlePanel?.querySelector('.ffs-working-title-inline');
  const hint=titlePanel?.querySelector('.ffs-alt-poster-hint');
@@ -4574,7 +4638,7 @@ document.addEventListener("click", function (event) {
    titlePanel.hidden=true;
    right.append(unified);
    working.remove();
-   unified.append(nav,rating,heading,synopsis,metadata,footer);
+   unified.append(nav,rating,credits,heading,synopsis,metadata,footer);
    footer.append(palette);
    if(hint)poster.after(hint);
    if(ctaPanel && ctaRow && notePanel){
@@ -4592,7 +4656,7 @@ document.addEventListener("click", function (event) {
    title.after(working);
    if(hint)working.after(hint);
    (hint||working).after(metadata);
-   infoPanel.prepend(heading,synopsis);
+   infoPanel.prepend(heading,synopsis,credits);
    grid.insertBefore(rating,right); /* Mobile: rating follows the full poster and precedes the synopsis. */
    if(summary && label && number) summary.insertBefore(label,number);
    if(number && count)number.after(count);
