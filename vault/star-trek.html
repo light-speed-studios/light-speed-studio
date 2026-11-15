@@ -4583,6 +4583,7 @@ document.addEventListener("click", function (event) {
  const poster=left?.querySelector('.ffs-poster-panel');
  const title=titlePanel?.querySelector('.ffs-title-row');
  const rating=document.getElementById('ffs-audience-rating');
+ const credits=infoPanel?.querySelector('.ffs-film-credits');
  const metadata=titlePanel?.querySelector('.ffs-meta-row.ffs-desktop-meta');
  const working=titlePanel?.querySelector('.ffs-working-title-inline');
  const hint=titlePanel?.querySelector('.ffs-alt-poster-hint');
@@ -4626,7 +4627,7 @@ document.addEventListener("click", function (event) {
    titlePanel.hidden=true;
    right.append(unified);
    working.remove();
-   unified.append(nav,rating,heading,synopsis,metadata,footer);
+   unified.append(nav,rating,credits,heading,synopsis,metadata,footer);
    footer.append(palette);
    if(hint)poster.after(hint);
    if(ctaPanel && ctaRow && notePanel){
@@ -4644,7 +4645,7 @@ document.addEventListener("click", function (event) {
    title.after(working);
    if(hint)working.after(hint);
    (hint||working).after(metadata);
-   infoPanel.prepend(heading,synopsis);
+   infoPanel.prepend(heading,synopsis,credits);
    grid.insertBefore(rating,right); /* Mobile: rating follows the full poster and precedes the synopsis. */
    if(summary && label && number) summary.insertBefore(label,number);
    if(number && count)number.after(count);
