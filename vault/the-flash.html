@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Top Gun: Ascension | LSS</title>
-<link as="image" fetchpriority="high" href="https://light-speed-studios.b-cdn.net/TGABANNERR.webp" media="(min-width: 901px)" rel="preload"/>
+<title>The Flash: Crossroads | LSS</title>
+<link as="image" fetchpriority="high" href="https://light-speed-studios.b-cdn.net/CROSSROADSBANNER.webp" media="(min-width: 901px)" rel="preload"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Oxanium:wght@400;600;700;800&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
@@ -2486,7 +2485,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     height: min(900px, calc(100vh - 61px));
     opacity: var(--lss-fixed-banner-opacity, 1);
     will-change: opacity;
-    background-image: linear-gradient(to bottom,rgba(4,14,21,.24) 0%,rgba(4,14,21,.32) 30%,rgba(4,14,21,.54) 56%,rgba(4,14,21,.86) 79%,#040E15 100%),linear-gradient(to right,rgba(4,14,21,.9) 0%,rgba(4,14,21,.79) 32%,rgba(4,14,21,.36) 65%,rgba(4,14,21,.1) 100%),url("https://light-speed-studios.b-cdn.net/TGABANNERR.webp");
+    background-image: linear-gradient(to bottom,rgba(4,14,21,.24) 0%,rgba(4,14,21,.32) 30%,rgba(4,14,21,.54) 56%,rgba(4,14,21,.86) 79%,#040E15 100%),linear-gradient(to right,rgba(4,14,21,.9) 0%,rgba(4,14,21,.79) 32%,rgba(4,14,21,.36) 65%,rgba(4,14,21,.1) 100%),url("https://light-speed-studios.b-cdn.net/CROSSROADSBANNER.webp");
     background-size: cover,cover,cover;
     background-position: center,center,center 45%;
     background-repeat: no-repeat;
@@ -4038,7 +4037,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   .ffs-changelog-modal { display: none !important; }
 }
 
-/* LSS Far From Sol desktop geometry and restored Top Gun alternate-poster controls. */
+/* Desktop layout reference: Far From Sol, 13 Nov 2026.
+   Reserve a full three-line synopsis and keep metadata/palette anchors fixed. */
 @media (min-width: 901px) {
   .ffs-page .lss-unified-details > .ffs-audience-rating {
     min-height: 108px !important;
@@ -4061,38 +4061,12 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   }
   .ffs-page .ffs-left-column > .ffs-alt-poster-hint {
     display: block !important;
-    width: 100% !important;
     margin: 13px 0 0 !important;
     font: 700 12px/1.5 Oxanium, Rajdhani, sans-serif !important;
     letter-spacing: .09em !important;
     text-transform: uppercase !important;
     text-align: center !important;
     color: #626A70 !important;
-    text-shadow: none !important;
-  }
-  .ffs-page .ffs-poster-panel .ffs-poster-click { position: relative !important; isolation: isolate; }
-  .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-full {
-    position: relative !important;
-    z-index: 1 !important;
-  }
-  .ffs-page .ffs-poster-panel .ffs-poster-click > img.ffs-poster-alt {
-    display: block !important;
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    z-index: 2 !important;
-    object-fit: cover !important;
-    object-position: center top !important;
-    background: #040E15 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
-  .ffs-page .ffs-poster-panel .ffs-poster-click.is-holding-alt > img.ffs-poster-alt {
-    opacity: 1 !important;
-  }
-  .ffs-page .ffs-poster-panel .ffs-poster-click.is-holding-alt > img.ffs-poster-full {
-    opacity: 0 !important;
   }
 }
 @media (max-width: 900px) {
@@ -4194,16 +4168,15 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 </nav>
 <div class="ffs-shell">
 <div class="ffs-project-block">
-<div aria-hidden="true" class="lss-mobile-cinematic-wallpaper"><img alt="" decoding="async" src="https://light-speed-studios.b-cdn.net/TGABANNERR.webp"/></div>
-<img alt="Top Gun: Ascension" class="ffs-mobile-project-header" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/Topgunheader11.png"/>
+<div aria-hidden="true" class="lss-mobile-cinematic-wallpaper"><img alt="" decoding="async" src="https://light-speed-studios.b-cdn.net/CROSSROADSBANNER.webp"/></div>
+<img alt="The Flash: Crossroads" class="ffs-mobile-project-header" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/theflashheader1.png"/>
 <div class="ffs-desktop-composition">
 <div class="ffs-left-column">
 <div class="ffs-poster-panel">
 <input class="ffs-poster-toggle" id="ffsPosterToggle" type="checkbox"/>
 <label class="ffs-poster-click" for="ffsPosterToggle">
-<img alt="Top Gun: Ascension poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/TopGunPosterA.png"/>
-<img alt="Top Gun: Ascension alternate poster" class="ffs-poster-alt" decoding="async" loading="eager" src="https://light-speed-studios.b-cdn.net/topgunpossteralt.png"/>
-<img alt="Top Gun: Ascension mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/topgunpossterMOB.png"/>
+<img alt="The Flash: Crossroads poster" class="ffs-poster ffs-poster-full" decoding="async" fetchpriority="high" src="https://light-speed-studios.b-cdn.net/theflashposterCross.png"/><img alt="The Flash: Crossroads alternate poster" class="ffs-poster-alt" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/flashposteralt.png"/>
+<img alt="The Flash: Crossroads mobile poster" class="ffs-poster ffs-poster-crop" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/flashpostermob1.png"/>
 </label>
 <label class="ffs-poster-expand" for="ffsPosterToggle">
 <span>Click to Enlarge</span>
@@ -4213,35 +4186,28 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <div class="ffs-right-column">
 <div class="ffs-title-panel">
 <div class="ffs-title-row">
-<h1 class="ffs-title"><img class="ffs-title-image" src="https://light-speed-studios.b-cdn.net/TOPGUNFONT.png" alt="Top Gun: Ascension" decoding="async"/></h1>
+<h1 class="ffs-title"><img class="ffs-title-image" src="https://light-speed-studios.b-cdn.net/CROSSFONTS.png" alt="The Flash: Crossroads" decoding="async"/></h1>
 </div>
-<div class="ffs-working-title-inline"><span>WORKING TITLE:</span> TOP GUN: DAGGER ATTACK</div>
+<div class="ffs-working-title-inline"><span>WORKING TITLE:</span> <strong>THE FLASH: OUT OF TIME</strong></div>
 <p class="ffs-alt-poster-hint">Press and hold the poster to view alternate artwork.</p>
 <div class="ffs-meta-row ffs-desktop-meta">
-<div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span>
-<span class="ffs-meta-value">107 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span>
-<span class="ffs-meta-value">17 Apr 2025</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span>
-<span class="ffs-meta-value">Top Gun: Maverick 2022</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span>
-<span class="ffs-meta-value">131 min</span></div>
-<div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span>
-<span class="ffs-meta-value">1.90:1 IMAX</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Edit Runtime</span><span class="ffs-meta-value">117 min</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Release Date</span><span class="ffs-meta-value">20 Sep 2023</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Original Film Source</span><span class="ffs-meta-value">The Flash 2023</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Original Runtime</span><span class="ffs-meta-value">144 min</span></div>
+<div class="ffs-meta-card"><span class="ffs-meta-label">Aspect Ratio</span><span class="ffs-meta-value">1.85:1</span></div>
 </div>
 </div>
 <div class="ffs-info-panel">
 <p class="ffs-section-label">Synopsis</p>
 <div class="ffs-synopsis">
-<p>
-   This is Top Gun with the nostalgia. No Danger Zone. With a reworked relationship between Mav and Rooster, and a sharper pacex Top Gun: Ascension reimagines the ending into something more personal.
-  </p>
-</div>
+<p>A story about grief and learning to let go. Barry’s journey is refocused around the cost of holding on. No roommates. No cameos. Dark Flash’s role is reworked to bring Barry’s journey back full circle.</p>
+</div><div class="ffs-working-title ffs-working-title-mobile"><span>WORKING TITLE</span><strong>THE FLASH: OUT OF TIME</strong></div>
 <div class="ffs-film-credits" aria-label="Original film credits">
-  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Directed By</span><span class="ffs-film-credit-value">Joseph Kosinski</span></div>
-  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Starring</span><span class="ffs-film-credit-value">Tom Cruise, Miles Teller, Jennifer Connelly, Jon Hamm, Glen Powell, Monica Barbaro</span></div>
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Directed By</span><span class="ffs-film-credit-value">Andy Muschietti</span></div>
+  <div class="ffs-film-credit"><span class="ffs-film-credit-label">Starring</span><span class="ffs-film-credit-value">Ezra Miller, Michael Keaton, Sasha Calle, Michael Shannon, Ron Livingston, Maribel Verdú</span></div>
 </div>
-<div aria-label="Audience rating for Top Gun: Ascension" class="ffs-audience-rating" data-movie-id="top-gun-ascension" id="ffs-audience-rating">
+<div aria-label="Audience rating for The Flash: Crossroads" class="ffs-audience-rating" data-movie-id="flash-crossroads" id="ffs-audience-rating">
 <div class="ffs-rating-summary">
 <span class="ffs-rating-label">AUDIENCE RATING</span>
 <div class="ffs-rating-number"><strong class="is-unrated" id="ffs-rating-average">NOT YET RATED</strong><span hidden="" id="ffs-rating-denominator">/ 10</span></div>
@@ -4264,23 +4230,22 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 <span aria-live="polite" class="ffs-rating-feedback" id="ffs-rating-feedback" role="status">SELECT YOUR RATING</span>
 </div>
 </div>
-<div class="ffs-working-title-mobile"><span>WORKING TITLE:</span> <strong>TOP GUN: DAGGER ATTACK</strong></div>
 </div>
 </div>
 </div>
 <section aria-labelledby="ffsEditorsNoteTitle" class="ffs-palette-module">
 <div class="ffs-palette-wrap">
-<img alt="Top Gun: Ascension color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/FINAL%20PALLETTE%20copy.png"/>
+<img alt="The Flash: Crossroads color palette" class="ffs-palette" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/Flash%20Pallete.png"/>
 </div>
 <h2 class="ffs-editors-note-title" id="ffsEditorsNoteTitle">Editor's Note</h2>
-<p class="ffs-editors-note-text"><span aria-hidden="true" class="ffs-editors-note-inline-title">Editor's Note</span> <em>Top Gun: Maverick</em> was already a film I loved, which made <em>Ascension</em> a very different kind of project for me. The story, characters, and emotion were already there, so I approached the edit with restraint, looking for places where the film could carry a little more weight and trust the audience a little more. I wanted to sharpen Maverick and Rooster’s relationship, pull back some of the legacy fan service, and let their trust in each other become the heart of the film.</p>
+<p class="ffs-editors-note-text"><span aria-hidden="true" class="ffs-editors-note-inline-title">Editor's Note</span> <em>The Flash</em> is my favorite superhero, so there was something frustrating about seeing a story with so much emotional potential buried beneath tonal whiplash and comedy. At its core, I saw a story about grief, regret, and the temptation to rewrite the moments that hurt us most. With <em>Crossroads</em>, I wanted to bring that story forward, centering Barry’s journey around accepting loss and learning when to let go.</p>
 </section>
 <div class="ffs-cta-trailer-row">
 <div class="ffs-links-panel ffs-cta-panel">
 <input class="ffs-soundtrack-modal-toggle" id="ffsLandingSoundtrack" type="checkbox"/>
 <input class="ffs-soundtrack-modal-toggle" id="ffsLandingChangelog" type="checkbox"/>
 <div class="ffs-cta-grid">
-<a aria-controls="lssTopGunAscensionChangelog" aria-haspopup="dialog" class="ffs-cta-tile lss-changelog-trigger" href="../top-gun-ascension-changelog.html">
+<a aria-controls="lssFlashCrossroadsChangelog" aria-haspopup="dialog" class="ffs-cta-tile lss-changelog-trigger" href="../the-flash-crossroads-changelog.html">
 <span aria-hidden="true" class="ffs-cta-icon">
 <svg viewbox="0 0 64 64">
 <rect height="40" rx="2" width="34" x="15" y="12"></rect>
@@ -4297,7 +4262,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 </span>
 <strong>Soundtrack</strong>
 </label>
-<a class="ffs-cta-tile" href="../top-gun-ascension-movie.html">
+<a class="ffs-cta-tile" href="../the-flash-crossroads-movie.html">
 <span aria-hidden="true" class="ffs-cta-icon">
 <svg viewbox="0 0 64 64">
 <rect height="22" rx="3" width="30" x="16" y="24"></rect>
@@ -4309,7 +4274,7 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 </span>
 <strong>Watch Movie</strong>
 </a>
-<a aria-label="Leave a review on Reddit" class="ffs-cta-tile ffs-reddit-review" href="https://www.reddit.com/r/fanedits/comments/1jihkpz/top_gun_ascension_a_fanfix_of_top_gun_maverick/" rel="noopener noreferrer" target="_blank">
+<a aria-label="Leave a review on Reddit" class="ffs-cta-tile ffs-reddit-review" href="https://www.reddit.com/r/fanedits/comments/1j7gl72/the_flash_crossroads/" rel="noopener noreferrer" target="_blank">
 <span aria-hidden="true" class="ffs-cta-icon">
 <svg height="256" version="1.1" viewbox="0 0 256 256" width="256" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -4325,9 +4290,9 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 </div>
 <div class="ffs-trailer-section">
 <div class="ffs-video">
-<div class="lss-video-player" role="group" aria-label="Top Gun: Ascension trailer player">
-    <video class="lss-vp-video" playsinline preload="metadata" poster="https://light-speed-studios.b-cdn.net/tgatraILER.png" aria-label="Top Gun: Ascension trailer">
-      <source src="https://light-speed-studios.b-cdn.net/tga-trailer.mp4" type="video/mp4">
+<div class="lss-video-player" role="group" aria-label="The Flash: Crossroads trailer player">
+    <video class="lss-vp-video" playsinline preload="metadata" poster="https://light-speed-studios.b-cdn.net/crosstrailer.png" aria-label="The Flash: Crossroads trailer">
+      <source src="https://light-speed-studios.b-cdn.net/cross-trailer.mp4" type="video/mp4">
     </video>
     <div class="lss-vp-shade" aria-hidden="true"></div>
     <span class="lss-vp-label">TRAILER</span>
@@ -4340,10 +4305,10 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
         <button class="lss-vp-button lss-vp-play" type="button" aria-label="Play trailer"></button>
         <div class="lss-vp-side">
           <div class="lss-vp-volume-group">
-            <div class="lss-vp-volume-panel" id="lss-tga-volume-panel" hidden>
+            <div class="lss-vp-volume-panel" id="lss-crossroads-volume-panel" hidden>
               <input class="lss-vp-volume" type="range" min="0" max="100" value="100" step="1" aria-label="Trailer volume">
             </div>
-            <button class="lss-vp-button lss-vp-mute" type="button" aria-label="Show volume slider" aria-expanded="false" aria-controls="lss-tga-volume-panel"></button>
+            <button class="lss-vp-button lss-vp-mute" type="button" aria-label="Show volume slider" aria-expanded="false" aria-controls="lss-crossroads-volume-panel"></button>
           </div>
           <button class="lss-vp-button lss-vp-full" type="button" aria-label="Enter fullscreen"></button>
         </div>
@@ -4356,8 +4321,8 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 </div>
 <nav aria-label="Project mobile navigation" class="ffs-mobile-project-nav">
 <a data-project-nav-key="vault-mobile" href="../vault.html">Vault</a>
-<a data-project-nav-key="prev-mobile" href="speed-racer.html">Prev</a>
-<a data-project-nav-key="next-mobile" href="overtime.html">Next</a>
+<a data-project-nav-key="prev-mobile" href="batman.html">Prev</a>
+<a data-project-nav-key="next-mobile" href="crisis.html">Next</a>
 </nav>
 <div class="ffs-footer-logo-block">
 <img alt="Light Speed Studios logo" decoding="async" loading="lazy" src="https://light-speed-studios.b-cdn.net/landingnewfooter11%20copy.png"/>
@@ -4427,7 +4392,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <script src="../js/main.js?v=5"></script>
-<div aria-labelledby="lssChangelogTitle" aria-modal="true" class="ffs-soundtrack-modal ffs-changelog-modal" id="lssTopGunAscensionChangelog" role="dialog">
+<div aria-labelledby="lssChangelogTitle" aria-modal="true" class="ffs-soundtrack-modal ffs-changelog-modal" id="lssFlashCrossroadsChangelog" role="dialog">
 <div class="ffs-soundtrack-modal-box">
 <div class="ffs-soundtrack-modal-head">
 <div class="ffs-soundtrack-modal-header">
@@ -4438,57 +4403,101 @@ document.addEventListener('DOMContentLoaded', function () {
 <label aria-label="Close changelog" class="ffs-soundtrack-modal-close" for="ffsLandingChangelog" role="button" tabindex="0">×</label>
 </div>
 <div class="ffs-soundtrack-modal-content" tabindex="0">
-<div class="ffs-soundtrack-modal-content-inner"><section class="lss-changelog-row"><h3>REDONE INTRO</h3><ul>
-<li>Added Light Speed Studios Logo</li>
-<li>No “Danger Zone” montage. Scene starts with Maverick at the hanger.</li>
-<li>Trimmed dialogue in Darkstar sequence and Chester Cain scene.</li>
-<li>Removed Hondo saying, “He’s the fastest man alive.”</li>
-<li>Removed “Put that in your Pentagon budget.”</li>
-<li>Removed Mav saying, “it's one of life’s mysteries.”</li>
-<li>Removed the “Your kind is headed for extinction” and “Not today” lines.</li>
-</ul></section><section class="lss-changelog-row"><h3>DEBRIEF DIALOGUE CHANGES</h3><ul>
-<li>Removed Mav saying “Someone’s not coming home from this.”</li>
-<li>Removed “What was his call sign again?” “Goose” sequence.</li>
-</ul></section><section class="lss-changelog-row"><h3>REDUCED BAR SCENE</h3><ul>
-<li>Removed the song segment from the bar scene. Cut to “Attention on deck.”</li>
-</ul></section><section class="lss-changelog-row"><h3>MAVERICK/ROOSTER DIALOGUE</h3><ul>
-<li>Removed dialogue between Maverick and Rooster to maintain the mystery.</li>
-</ul></section><section class="lss-changelog-row"><h3>PHOENIX/ROOSTER INTERACTION</h3><ul>
-<li>Removed Phoenix/Rooster interaction discussing what Maverick did.</li>
-</ul></section><section class="lss-changelog-row"><h3>MAVERICK’S BAD TIMING</h3><ul>
-<li>Removed Warlock telling Mav to learn about timing.</li>
-<li>Reduced boat scene considerably.</li>
-</ul></section><section class="lss-changelog-row"><h3>HANGMAN/ROOSTER FIGHT</h3><ul>
-<li>Removed the dialogue where Hangman says Rooster isn't ready.</li>
-</ul></section><section class="lss-changelog-row"><h3>PENNY/MAVERICK SCENE</h3><ul>
-<li>Removed Penny/Maverick scene after “Dogfight Football” scene.</li>
-</ul></section><section class="lss-changelog-row"><h3>BIRD STRIKE AND DIALOGUE CHANGE</h3><ul>
-<li>Removed bird strike and crash.</li>
-<li>Modified dialogue in the next scene so Mav only mentions Coyote being checked out.</li>
-<li>This is where we find out what the conflict between Rooster and Maverick is. Mav pulled Rooster's papers not because of a request, but Mav not believing Rooster was ready.</li>
-</ul></section><section class="lss-changelog-row"><h3>MAVERICK APPOINTED TEAM LEADER</h3><ul>
-<li>Removed Warlock saying, “Was asking a rhetorical question.”</li>
-</ul></section><section class="lss-changelog-row"><h3>MISSION BRIEFING EXPLANATION</h3><ul>
-<li>Removed Warlock explaining the mission.</li>
-<li>Kept the scene and music but muted the exposition.</li>
-</ul></section><section class="lss-changelog-row"><h3>HONDO GOODBYE</h3><ul>
-<li>Removed Mav’s “If I don’t see you again” part of Hondo’s goodbye.</li>
-</ul></section><section class="lss-changelog-row"><h3>MISSION DIALOGUE CHANGES</h3><ul>
-<li>Removed Warlock saying, “Long range patrol?”</li>
-<li>Removed Cyclone saying, “Now they’re in coffin corner.”</li>
-<li>Scene fades to dark quicker after Bob says, “Mav’s gone.”</li>
-</ul></section><section class="lss-changelog-row"><h3>GENERAL DIALOGUE CUTS</h3><ul>
-<li>Removed dialogue about tracking an F-14</li>
-<li>Removed Warlock saying “it... it can't be”</li>
-<li>Removed Cyclone saying “Maverick!”</li>
-<li>Scene cuts after Cyclone says “In what?”</li>
-<li>Removed Mav telling Rooster to pull the ejection handle first time around.</li>
-</ul></section><section class="lss-changelog-row"><h3>HANGMAN HUMBLED</h3><ul>
-<li>Removed Hangman saying “I am good.” The point is he got humbled.</li>
-</ul></section><section class="lss-changelog-row"><h3>CHANGE IN HANGER SCENE</h3><ul>
-<li>Now when Mav sees through the plane, he sees Penny not Amelia.</li>
-</ul></section><section class="lss-changelog-row"><h3>END CREDITS</h3><ul>
-<li>Rearranged end credits. Rescored with More than a feeling by Boston.</li>
+<div class="ffs-soundtrack-modal-content-inner"><section class="lss-changelog-row"><h3>VISUAL &amp; INTRO CHANGES</h3><ul>
+<li>Custom Warner Bros. and DC Studios intros with lightning animation</li>
+<li>Added Light Speed Studios logo</li>
+<li>All flashtime and ChronoBowl scenes recolored (less red, more orange/yellow; reduced brightness)</li>
+</ul></section><section class="lss-changelog-row"><h3>OPENING SEQUENCE</h3><ul>
+<li>New Barry monologue over montage, rescored.</li>
+<li>Barry runs through the city before reaching Gotham (TV show footage)</li>
+<li>Alfred calls while Barry runs; AI-assisted dialogue implies Barry is hungry</li>
+<li>Rescored city run.</li>
+<li>First Flash run fully redone with new VFX by NomadR Productions; title card and cast credits integrated</li>
+<li>Removed “fleeing the scene” line and water gag; Bat-chase trimmed and rescored</li>
+<li>Audio reworked; “East wing’s fine” dubbed over “my speed is lagging”</li>
+<li>Baby rescue scene streamlined, recolored, and rescored.</li>
+</ul></section><section class="lss-changelog-row"><h3>BRIDGE CHASE TRIMMED; EXPLOSION HAPPENS SOONER</h3><ul>
+<li>Removed driver falling out, lasso of truth gag, Alfred breakfast line</li>
+<li>Barry and Iris’ work interaction plays as is, rescored.</li>
+<li>Rescored scene as Barry walks to his apartment.</li>
+<li>Removed young Barry running outside in flashback.</li>
+<li>Removed Barry running into the Speed Force. moved to later.</li>
+<li>Transitioned directly from flashback to Barry and Bruce discussing time travel.</li>
+<li>Recut dialogue to establish Barry has already traveled back in time</li>
+<li>Ally scene rescored.</li>
+<li>Modified Bruce’s dialogue to support the change.</li>
+<li>Added a fun line from Barry about Bruce's car.</li>
+</ul></section><section class="lss-changelog-row"><h3>IRIS APARTMENT &amp; TIME TRAVEL</h3><ul>
+<li>Rescored parts of when Iris arrives at Barry's apartment.</li>
+<li>Rescored Barry’s dilemma explanation.</li>
+<li>Moved Speed Force run (saving mom) to this section. Rescored.</li>
+<li>Rescored “don’t forget the tomatoes” and “please work” scenes.</li>
+<li>Reinserted and recolored deleted Mom/Dad/Barry scene.</li>
+</ul></section><section class="lss-changelog-row"><h3>BARRY 1 &amp; 2 INTERACTION CHANGES</h3><ul>
+<li>Removed/redubbed juvenile Barry 2 dialogue: “superhero,” “bug sputter,” “are you 40?”</li>
+<li>Removed Barry 1 calling Barry 2 annoying, “Powers??” line.</li>
+<li>Removed teeth gag post-accident.</li>
+<li>Added lightning effect to Barry 2’s whole body during powers reveal.</li>
+<li>Removed bed-jumping and Speedy Gonzales reference.</li>
+<li>Recut entire powers scene; rescored.</li>
+<li>Trimmed crash sequence and eating gag.</li>
+<li>Removed Barry 1 explaining suit.</li>
+<li>Cut suit size joke, Eric Stoltz and Back to the Future references.</li>
+<li>Removed Barry 2’s screaming in the café when lights go out.</li>
+<li>Trimmed Zod attack recap and rescored.</li>
+<li>Removed roommates scene.</li>
+</ul></section><section class="lss-changelog-row"><h3>WAYNE MANOR &amp; BATCAVE</h3><ul>
+<li>Added Barry line in taxi to Wayne Manor.</li>
+<li>Removed “Is this hell?” and kitchen painting scene.</li>
+<li>Rescored kitchen fight.</li>
+<li>Removed “retro causal” and “ontological paradox” lines.</li>
+<li>Trimmed chewing and “pass the salt?” bits.</li>
+<li>Added Barry 2 deleted phasing scene and extended cave run.</li>
+<li>Removed Batmobile scene and “being mean to me?” line.</li>
+<li>Rescored Bruce/Barry cave convo.</li>
+</ul></section><section class="lss-changelog-row"><h3>BULLET SCENE &amp; RUSSIA FIGHT</h3><ul>
+<li>Added deleted bullet scene (VFX finished byEcho27), rescored.</li>
+<li>Rescored Bruce v Russians fight.</li>
+<li>Added Barry 2 discovering Supergirl’s ship and suit.</li>
+<li>Removed scrotum joke, “tried all the combinations,” and Batman intimidating scientist.</li>
+<li>Trimmed tunnel chase and recolored.</li>
+</ul></section><section class="lss-changelog-row"><h3>SUPERGIRL &amp; TEAM DYNAMICS</h3><ul>
+<li>Reworked Supergirl fight: replaced SFX, improved motion, rescored.</li>
+<li>Included deleted Barry 2 scene of him covering Supergirl with blanket.</li>
+<li>Trimmed roof scene; removed throat sound and Supergirl leaving.</li>
+<li>Supergirl now stays with the team.</li>
+<li>Added new Keaton retirement scene inspired by Dr. Flashpoint; rescored. Dialogue redone and trimmed.</li>
+<li>Added deleted kite scene, recolored; removed sponge and “bad idea” line.</li>
+<li>Rescored Supergirl helping Barry power up, added SFX.</li>
+<li>Removed “scared the sh*t out of me” line.</li>
+</ul></section><section class="lss-changelog-row"><h3>FINAL BATTLE PREP &amp; COMBAT</h3><ul>
+<li>Reworked Barry 2 suit scene.</li>
+<li>Removed Barry 2's “dude” and Barry 1's “what are you doing?”</li>
+<li>Removed Barry 1's “you came back” line.</li>
+<li>Removed Barry 2’s comedic “Supergirl??” and “hope??” responses.</li>
+<li>Supergirl speech and team-up scene rescored.</li>
+<li>Added Barry 1's line about things getting nuts (inspired by Dr. Flashpoint).</li>
+<li>Removed Barry 2/Supergirl kid talk in plane.</li>
+<li>Removed Supergirl punching rocket, Barry 2 scream</li>
+<li>Barbie line is replaced with AI-generated “Run, Barry, run” (Ezra voice), added SFX.</li>
+<li>Final fight rescored, reordered scenes, redone SFX.</li>
+<li>Trimmed Supergirl grunts and close-ups during fights.</li>
+<li>Removed Barry 1 saying “yes please take him out” line.</li>
+</ul></section><section class="lss-changelog-row"><h3>DARK FLASH &amp; FINAL ACT</h3><ul>
+<li>Trimmed Dark Flash entrance; no electric shock, Scene flipped.</li>
+<li>Removed Dark Flash's “living more than I can dream” line.</li>
+<li>Major rewrite of Dark Flash motive and backstory (co-written with Thriller2Rayne)</li>
+<li>Redone Dark Flash's voiceover.</li>
+<li>Whole scene is rescored.</li>
+<li>Removed all cameos.</li>
+<li>Rescored Barry’s goodbye to his mom and courtroom scene.</li>
+<li>Removed outside courtroom sequence.</li>
+<li>Added final running montage and monologue as epilogue.</li>
+<li>End credits redone and rescored.</li>
+</ul></section><section class="lss-changelog-row"><h3>SPECIAL THANKS</h3><ul>
+<li>NomadR Productions – for fully recreating the new Flash run</li>
+<li>Echo27 – for completing and enhancing the deleted bullet scene</li>
+<li>Thriller2Rayne – for collaborating on the Dark Flash rewrite</li>
 </ul></section></div>
 </div>
 </div>
@@ -4497,7 +4506,7 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
   const toggle = document.getElementById('ffsLandingChangelog');
   const trigger = document.querySelector('.lss-changelog-trigger');
-  const modal = document.getElementById('lssTopGunAscensionChangelog');
+  const modal = document.getElementById('lssFlashCrossroadsChangelog');
   if (!toggle || !trigger || !modal) return;
   trigger.addEventListener('click', function (event) {
     if (window.matchMedia('(min-width: 901px)').matches) {
@@ -4532,7 +4541,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <div class="ffs-soundtrack-modal-title">
 <strong>Soundtrack</strong>
-<span>One Track - Full Throttle</span>
+<span>Vibrations across the timeline</span>
 </div>
 </div>
 <label class="ffs-soundtrack-modal-close" for="ffsLandingSoundtrack">×</label>
@@ -4540,7 +4549,102 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="ffs-soundtrack-modal-content">
 <div class="ffs-soundtrack-modal-content-inner">
 <ul>
-<li><strong>More Than a Feeling | Boston</strong><p>Final Penny/Mav scene &amp; rearranged end credits.</p></li>
+<li>
+<strong>Wake Up | Slingshot OST</strong>
+<p>The opening monologue and the court scene epilogue.</p>
+</li>
+<li>
+<strong>Midnight City | M83</strong>
+<p>The opening Flash run into Gotham City.</p>
+</li>
+<li>
+<strong>Don't Fear the Reaper (Extended Mix) | Blue Oyster Cult</strong>
+<p>The baby rescue sequence.</p>
+</li>
+<li>
+<strong>Songs to the Siren (Piano Cover) | Various Artists</strong>
+<p>Barry and Iris’s first meeting outside of work.</p>
+</li>
+<li>
+<strong>Here in Spirit | Jim James</strong>
+<p>Barry walking away from Iris after their conversation.</p>
+</li>
+<li>
+<strong>Arrival | Tron: Legacy OST</strong>
+<p>Bruce and Barry’s conversation about time travel.</p>
+</li>
+<li>
+<strong>Electric Love (Instrumental) | BØRNS</strong>
+<p>Barry and Iris’s apartment scene.</p>
+</li>
+<li>
+<strong>Roosevelt Station (alt ver. 1 and 2) | The Amazing Spider-Man OST</strong>
+<p>Barry explaining his dilemma to Iris, blending both versions.</p>
+</li>
+<li>
+<strong>Ceilings of Majesty | Avalon Zero</strong>
+<p>Barry’s run into the Speed Force.</p>
+</li>
+<li>
+<strong>Day Zero | Avalon Zero</strong>
+<p>The “don’t forget the tomatoes” and “please work” sequences.</p>
+</li>
+<li>
+<strong>Time to Pretend | MGMT</strong>
+<p>B2 gaining his powers.</p>
+</li>
+<li>
+<strong>The Call | Everest OST</strong>
+<p>Zod’s arrival and the Metropolis attack flashback.</p>
+</li>
+<li>
+<strong>Sabotage | Beastie Boys</strong>
+<p>The Wayne Manor kitchen fight scene.</p>
+</li>
+<li>
+<strong>Ocean | The Expanse OST</strong>
+<p>Bruce and Barry’s moment in the cave.</p>
+</li>
+<li>
+<strong>Faster Than Bullets | Flashpoint Paradox OST</strong>
+<p>The restored deleted bullet sequence.</p>
+</li>
+<li>
+<strong>Paranoid | Black Sabbath</strong>
+<p>Batman versus the Russians.</p>
+</li>
+<li>
+<strong>Flight | Man of Steel OST</strong>
+<p>Supergirl versus the Russians.</p>
+</li>
+<li>
+<strong>End of the World | Ivan Shpilevsky</strong>
+<p>Supergirl helping B1 regain his powers.</p>
+</li>
+<li>
+<strong>JL Animated Theme | DC Animated Universe</strong>
+<p>B2 suiting up alongside Supergirl, B1, and Batman.</p>
+</li>
+<li>
+<strong>Run Boy Run | Woodkid</strong>
+<p>The Flash, Supergirl, and Batman versus the Kryptonians final battle.</p>
+</li>
+<li>
+<strong>At the Speed of Force | Zack Snyder’s Justice League OST</strong>
+<p>The B1, Dark Flash, and B2 confrontation.</p>
+</li>
+<li>
+<strong>I'm Leaving | Slingshot OST</strong>
+<p>Barry and Nora’s goodbye scene.</p>
+</li>
+<li>
+<strong>Wake Up | Slingshot OST</strong>
+<p>The second movement of the track, linking the court scene to the opening.</p>
+</li>
+<li>
+<strong>Time (Epic Remix) | Pink Floyd</strong>
+<p>The reworked end credits with a remix of a classic.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -4629,8 +4733,8 @@ document.addEventListener("click", function (event) {
  const palette=document.createElement('div');
  palette.className='ffs-hero-palette lss-floating-palette';
  const paletteImg=document.createElement('img');
- paletteImg.src='https://light-speed-studios.b-cdn.net/FINAL%20PALLETTE%20copy.png';
- paletteImg.alt='Top Gun: Ascension color palette';
+ paletteImg.src='https://light-speed-studios.b-cdn.net/Speed%20racer%20pallete.png';
+ paletteImg.alt='The Flash: Crossroads color palette';
  paletteImg.loading='lazy';
  palette.append(paletteImg);
  const unified=document.createElement('div');
@@ -4641,9 +4745,9 @@ document.addEventListener("click", function (event) {
  nav.className='lss-vertical-project-nav';
  nav.setAttribute('aria-label','Movie navigation');
  nav.innerHTML=`
-  <a href="speed-racer.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
+  <a href="batman.html" data-project-nav-key="prev-desktop" aria-label="Previous movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4-8 8 8 8"/></svg></span></a>
   <a href="../vault.html" data-project-nav-key="vault-desktop" aria-label="Return to Vault"><span class="lss-nav-circle"><svg class="lss-vault-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span></a>
-  <a href="overtime.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
+  <a href="crisis.html" data-project-nav-key="next-desktop" aria-label="Next movie"><span class="lss-nav-circle"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4 8 8-8 8"/></svg></span></a>`;
  footer.append(nav);
  const mq=window.matchMedia('(min-width:901px)');
  function arrange(){
