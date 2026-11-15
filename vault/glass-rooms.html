@@ -4047,62 +4047,51 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
   .ffs-changelog-modal { display: none !important; }
 }
 
-/* Film credits: use the open space between audience rating and movie navigation. */
-.ffs-film-credits {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  min-width: 0;
-}
-.ffs-film-credit { min-width: 0; }
-.ffs-film-credit-label {
-  display: block;
-  margin-bottom: 3px;
-  color: #00aede;
-  font: 800 11px/1.2 Oxanium, Rajdhani, sans-serif;
-  letter-spacing: .10em;
-  text-transform: uppercase;
-}
-.ffs-film-credit-value {
-  display: block;
-  color: #e4edf2;
-  font: 600 14px/1.35 Rajdhani, Arial, sans-serif;
-}
-@media (min-width: 1600px) {
-  .ffs-page .lss-unified-details > .ffs-audience-rating {
-    width: calc(100% - 530px) !important;
-  }
+/* Glass Rooms two-tier desktop header: rating/navigation then compact film credits. */
+.ffs-film-credits { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.55fr); gap: 14px; min-width: 0; }
+.ffs-film-credit { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+.ffs-film-credit-label { flex: 0 0 auto; color: #00aede; font: 800 11px/1.2 Oxanium,Rajdhani,sans-serif; letter-spacing: .10em; text-transform: uppercase; }
+.ffs-film-credit-value { min-width: 0; color: #e4edf2; font: 600 14px/1.2 Rajdhani,Arial,sans-serif; }
+@media (min-width:901px) {
   .ffs-page .lss-unified-details > .ffs-film-credits {
-    position: absolute;
-    top: 31px;
-    right: 226px;
-    width: 282px;
-    max-width: calc(100% - 226px);
-    margin: 0;
-    z-index: 5;
-  }
-}
-@media (min-width: 901px) and (max-width: 1599px) {
-  .ffs-page .lss-unified-details > .ffs-film-credits {
-    order: 2 !important;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-    gap: 14px;
-    margin: 2px 0 10px;
-    padding: 0;
-  }
-}
-@media (max-width: 900px) {
-  .ffs-page .ffs-info-panel > .ffs-film-credits {
-    order: 4;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
+    order: 1 !important;
+    display: grid !important;
+    grid-template-columns: minmax(0,.8fr) minmax(0,1.65fr);
+    gap: 16px;
+    align-items: center;
     width: 100%;
-    margin: 0 0 20px;
-    padding: 0;
+    padding: 8px 2px;
+    margin: 0 0 9px;
+    border-top: 1px solid rgba(186,199,213,.25);
+    border-bottom: 1px solid rgba(186,199,213,.25);
   }
-  .ffs-page .ffs-film-credit-value { font-size: 15px; }
+  .ffs-page .lss-unified-details > .ffs-audience-rating {
+    margin-bottom: 4px !important;
+    min-height: 100px !important;
+    padding-bottom: 6px !important;
+  }
+  .ffs-page .lss-unified-details > .ffs-section-label { margin-bottom: 5px !important; }
+  .ffs-page .lss-unified-details > .ffs-synopsis p {
+    font-size: var(--lss-fit-synopsis-font, clamp(19px,1.52vw,23px)) !important;
+    line-height: 1.54 !important;
+  }
+  .ffs-page .lss-unified-details > .glass-details-footer { padding-top: 7px !important; }
+  .ffs-page .ffs-right-column > .lss-unified-details { overflow-y: hidden !important; scrollbar-width: none !important; }
+}
+@media (min-width:901px) and (max-width:1150px) {
+  .ffs-page .lss-unified-details > .ffs-film-credits { gap: 10px; }
+  .ffs-film-credit { gap: 6px; }
+  .ffs-film-credit-label { font-size: 9px; }
+  .ffs-film-credit-value { font-size: 12px; }
+}
+@media (max-width:900px) {
+  .ffs-page .ffs-info-panel > .ffs-film-credits {
+    order: 4; display: grid; grid-template-columns: 1fr; gap: 10px;
+    width: 100%; margin: 0 0 20px; padding: 0;
+  }
+  .ffs-page .ffs-film-credit { display: block; }
+  .ffs-page .ffs-film-credit-label { display: block; margin-bottom: 3px; }
+  .ffs-page .ffs-film-credit-value { display: block; font-size: 15px; }
 }
 </style>
 </head>
@@ -4734,7 +4723,21 @@ document.addEventListener("click", function (event) {
     queued=false;
     if(!media.matches){details.style.removeProperty('--lss-poster-height');return;}
     const height=Math.round(poster.getBoundingClientRect().height);
-    if(height>100)details.style.setProperty('--lss-poster-height',height+'px');
+    if(height>100){
+      details.style.setProperty('--lss-poster-height',height+'px');
+      details.style.removeProperty('--lss-fit-synopsis-font');
+      // Keep the original panel height; fit synopsis typography only when required.
+      const synopsis=details.querySelector('.ffs-synopsis p');
+      if(synopsis && details.scrollHeight>details.clientHeight+2){
+        let font=23;
+        const preferred=parseFloat(getComputedStyle(synopsis).fontSize);
+        font=Math.min(font,preferred);
+        while(font>16 && details.scrollHeight>details.clientHeight+2){
+          font-=.5;
+          details.style.setProperty('--lss-fit-synopsis-font',font+'px');
+        }
+      }
+    }
   }
   function schedule(){if(!queued){queued=true;requestAnimationFrame(size);}}
   if(typeof ResizeObserver!=='undefined')new ResizeObserver(schedule).observe(poster);
