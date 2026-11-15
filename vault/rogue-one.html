@@ -4065,6 +4065,15 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
     filter: none;
   }
 }
+/* Desktop synopsis spacing: reserve three lines as on Crossroads. */
+@media (min-width: 901px) {
+  .ffs-page .lss-unified-details > .ffs-synopsis {
+    min-height: clamp(94.05px, 7.524vw, 113.85px) !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 14px !important;
+  }
+}
+
 /* Glass Rooms two-tier desktop header: rating/navigation then compact film credits. */
 .ffs-film-credits { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.55fr); gap: 14px; min-width: 0; }
 .ffs-film-credit { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
