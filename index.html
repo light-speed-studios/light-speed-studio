@@ -3348,18 +3348,29 @@
 }
 </style>
 
-<style id="lss-bridge-latest-review-notice">
+<style id="lss-bridge-dual-review-notices">
+/* Two independent review links sharing the original Bridge announcement position. */
+.lss-bridge-review-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(1000px, calc(100% - 40px));
+  margin: 16px auto 28px;
+  box-sizing: border-box;
+}
 .lss-bridge-review-notice {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
   align-items: center;
-  gap: 20px;
+  column-gap: 10px;
+  row-gap: 7px;
+  min-width: 0;
+  min-height: 66px;
+  padding: 11px 14px;
   box-sizing: border-box;
-  width: min(1220px, calc(100% - 40px));
-  min-height: 60px;
-  margin: 16px auto 28px;
-  padding: 12px 24px;
-  background: rgba(4,14,21,.50);
+  background: rgba(4,14,21,.66);
   box-shadow: 0 0 16px rgba(0,174,222,.07), inset 0 0 0 1px rgba(0,174,222,.28);
   color: #BAC7D5;
   text-decoration: none;
@@ -3373,125 +3384,118 @@
   pointer-events: none;
   opacity: .86;
   background:
-    linear-gradient(#00AEDE,#00AEDE) left top / 24px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) left top / 2px 24px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right top / 24px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right top / 2px 24px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) left bottom / 24px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 24px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right bottom / 24px 2px no-repeat,
-    linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 24px no-repeat;
+    linear-gradient(#00AEDE,#00AEDE) left top / 18px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left top / 2px 18px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 18px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right top / 2px 18px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 18px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) left bottom / 2px 18px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 18px 2px no-repeat,
+    linear-gradient(#00AEDE,#00AEDE) right bottom / 2px 18px no-repeat;
 }
 .lss-bridge-review-notice:hover,
 .lss-bridge-review-notice:focus-visible {
-  background: rgba(4,14,21,.50);
-  box-shadow: 0 0 19px rgba(0,174,222,.14), inset 0 0 0 1px rgba(0,174,222,.42);
+  background: rgba(0,174,222,.10);
+  box-shadow: 0 0 19px rgba(0,174,222,.14), inset 0 0 0 1px rgba(0,174,222,.48);
 }
 .lss-review-notice-label {
+  grid-column: 1;
+  grid-row: 1;
   border: 1px solid rgba(0,174,222,.55);
-  padding: 7px 10px;
-  font-size: 12px;
-  letter-spacing: .12em;
+  padding: 5px 7px;
+  font-size: 9px;
+  letter-spacing: .08em;
   white-space: nowrap;
   color: #00AEDE;
   font-weight: 700;
 }
-.lss-review-notice-title { font-weight: 700; font-size: 17px; letter-spacing: .065em; white-space: nowrap; }
+.lss-review-notice-title {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: .025em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .lss-review-notice-year { font-weight: 500; }
-.lss-review-notice-score { font-size: 16px; white-space: nowrap; }
-.lss-review-notice-quote { color: rgba(186,199,213,.78); font: italic 18px/1.2 Rajdhani,Arial,sans-serif; }
-.lss-review-notice-action { margin-left: auto; color: #00AEDE; font-size: 12px; font-weight: 700; letter-spacing: .08em; white-space: nowrap; }
-/* Position the notice inside the hero image on desktop only. */
-@media (min-width:901px) {
+.lss-review-notice-score { grid-column: 3; grid-row: 1; font-size: 13px; white-space: nowrap; }
+.lss-review-notice-quote {
+  grid-column: 1 / 3;
+  grid-row: 2;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: rgba(186,199,213,.78);
+  font: italic 16px/1.2 Rajdhani,Arial,sans-serif;
+}
+.lss-review-notice-action {
+  grid-column: 3;
+  grid-row: 2;
+  justify-self: end;
+  color: #00AEDE;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+@media (min-width: 901px) {
   .home-hero-section { position: relative !important; }
-  .home-hero-section > .lss-bridge-review-notice {
+  .home-hero-section > .lss-bridge-review-row {
     position: absolute !important;
     z-index: 125 !important;
-    top: 575px !important; /* Review notice sits below the raised metadata bar and dots. */
+    top: var(--lss-reviews-top, 575px) !important;
+    left: var(--lss-reviews-left, 50%) !important;
+    right: auto !important;
     bottom: auto !important;
-    left: 50% !important;
     transform: translateX(-50%) !important;
     width: min(1000px, calc(100% - 180px)) !important;
-    min-height: 52px !important;
+    max-width: calc(100% - 32px) !important;
     margin: 0 !important;
-    padding: 10px 18px !important;
-    gap: 16px !important;
   }
-  .home-hero-section > .lss-bridge-review-notice .lss-review-notice-quote {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-}
-@media (max-width:900px) {
-  .lss-bridge-review-notice { width: calc(100% - 28px); flex-wrap: wrap; gap: 9px 12px; min-height: 0; margin: 14px auto 20px; padding: 13px 15px; }
-  .lss-review-notice-label { font-size: 10px; padding: 5px 7px; }
-  .lss-review-notice-title { font-size: 14px; }
-  .lss-review-notice-score { font-size: 14px; }
-  .lss-review-notice-quote { display: none; }
-  .lss-review-notice-action { width: 100%; margin-left: 0; font-size: 11px; }
-}
-</style>
-
-
-<style id="lss-welcome-over-review-notice">
-/* Desktop: the one-time welcome slide takes visual priority over the
-   separate Clayface announcement. Reveal it when the welcome finishes. */
-@media (min-width: 901px) {
-  .home-hero-section:has(#heroCarousel.welcome-active) > .lss-bridge-review-notice {
+  /* Welcome screen remains unobstructed. */
+  .home-hero-section:has(#heroCarousel.welcome-active) > .lss-bridge-review-row {
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
   }
 }
-</style>
-
-<style id="lss-mobile-review-notice-inline">
-/* Mobile notice is a single line immediately above the BRIDGE heading. */
-.lss-review-action-short { display: none; }
 @media (max-width: 900px) {
-  .home-hero-section > .lss-bridge-review-notice {
+  /* Keep both reviews side by side; use compact stacked content inside each. */
+  .home-hero-section > .lss-bridge-review-row {
     position: relative !important;
     inset: auto !important;
     transform: none !important;
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-    justify-content: space-between !important;
     width: calc(100% - 28px) !important;
     max-width: none !important;
-    min-height: 39px !important;
-    margin: 12px auto 12px !important;
-    padding: 7px 9px !important;
-    gap: 5px !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 12px auto !important;
   }
-  .home-hero-section .lss-bridge-review-notice .lss-review-notice-label {
-    flex: 0 0 auto;
-    padding: 5px 6px;
-    font-size: 9px;
-    letter-spacing: .02em;
-  }
-  .home-hero-section .lss-bridge-review-notice .lss-review-notice-title {
-    flex: 0 1 auto;
+  .home-hero-section .lss-bridge-review-notice {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5px;
     min-width: 0;
-    font-size: clamp(10px, 2.8vw, 13px);
-    letter-spacing: 0;
+    min-height: 104px;
+    padding: 9px 10px;
   }
-  .home-hero-section .lss-bridge-review-notice .lss-review-notice-score {
-    flex: 0 0 auto;
-    font-size: 11px;
+  .home-hero-section .lss-review-notice-label { padding: 4px 5px; font-size: 8px; }
+  .home-hero-section .lss-review-notice-title {
+    width: 100%;
+    font-size: clamp(10px, 2.65vw, 13px);
+    white-space: normal;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
   }
-  .home-hero-section .lss-bridge-review-notice .lss-review-notice-quote { display: none !important; }
-  .home-hero-section .lss-bridge-review-notice .lss-review-notice-action {
-    flex: 0 0 auto;
-    width: auto !important;
-    margin: 0 !important;
-    padding: 0;
-    font-size: 10px;
-    letter-spacing: 0;
-  }
-  .lss-review-action-full { display: none; }
-  .lss-review-action-short { display: inline; }
+  .home-hero-section .lss-review-notice-score { font-size: 11px; }
+  .home-hero-section .lss-review-notice-quote { display: none; }
+  .home-hero-section .lss-review-notice-action { font-size: 10px; margin-top: auto; }
 }
 </style>
 
@@ -4005,14 +4009,23 @@
 </div>
 </section>
 </div>
-<!-- New review notice: desktop overlay, mobile directly above BRIDGE heading. -->
-<a class="lss-bridge-review-notice" href="telemetry.html?review=clayface" aria-label="Read new Clayface 2026 review rated 8 out of 10 on Telemetry">
-  <span class="lss-review-notice-label">NEW REVIEW</span>
-  <span class="lss-review-notice-title">CLAYFACE <span class="lss-review-notice-year">(2026)</span></span>
-  <span class="lss-review-notice-score">8/10 <span aria-hidden="true">🌕</span></span>
-  <span class="lss-review-notice-quote">“I want my life back.”</span>
-  <span class="lss-review-notice-action"><span class="lss-review-action-full">READ ON TELEMETRY</span><span class="lss-review-action-short">READ</span> <span aria-hidden="true">↗</span></span>
-</a>
+<!-- Latest reviews: separate links, aligned as one row beneath hero navigation. -->
+<div class="lss-bridge-review-row" aria-label="Latest film reviews">
+  <a class="lss-bridge-review-notice" href="telemetry.html?review=clayface" aria-label="Read Clayface review, rated 8 out of 10, on Telemetry">
+    <span class="lss-review-notice-label">NEW REVIEW</span>
+    <span class="lss-review-notice-title">CLAYFACE <span class="lss-review-notice-year">(2026)</span></span>
+    <span class="lss-review-notice-score">8/10 <span aria-hidden="true">🌕</span></span>
+    <span class="lss-review-notice-quote">“I want my life back.”</span>
+    <span class="lss-review-notice-action">READ REVIEW <span aria-hidden="true">↗</span></span>
+  </a>
+  <a class="lss-bridge-review-notice" href="telemetry.html?review=godzilla-minus-zero" aria-label="Read Godzilla Minus Zero review, rated 6 out of 10, on Telemetry">
+    <span class="lss-review-notice-label">NEW REVIEW</span>
+    <span class="lss-review-notice-title">GODZILLA MINUS ZERO</span>
+    <span class="lss-review-notice-score">6/10 <span aria-hidden="true">🌒</span></span>
+    <span class="lss-review-notice-quote">“Disappointing Sequel”</span>
+    <span class="lss-review-notice-action">READ REVIEW <span aria-hidden="true">↗</span></span>
+  </a>
+</div>
 <div class="section-heading orbit-desktop-only">
 <span class="lead">B</span><span class="rest">RIDGE</span>
 </div>
@@ -4589,122 +4602,52 @@
   else init();
 })();
 </script>
-  <!-- REPLACEMENT for the previous lss-bridge-clayface-review-zoom-fix STYLE + SCRIPT.
-     Remove both older blocks before installing this one. -->
-<style id="lss-bridge-clayface-centered-zoom-fix">
+  <style id="lss-bridge-review-row-zoom-fix">
 @media (min-width: 901px) {
-  /* A shared coordinate space. The dots retain every existing layout rule. */
-  .home-hero-section {
-    position: relative !important;
-    overflow: visible !important;
-  }
-
-  /* Only the review banner is positioned; the dots do not move. */
-  .home-hero-section > .lss-clayface-follows-dots {
-    position: absolute !important;
-    top: var(--lss-clayface-top, 0px) !important;
-    left: var(--lss-clayface-left, 50%) !important;
-    right: auto !important;
-    bottom: auto !important;
-    transform: translateX(-50%) !important;
-    margin: 0 !important;
-    z-index: 40 !important;
-    width: max-content;
-    max-width: calc(100% - 32px) !important;
-    box-sizing: border-box;
-  }
+  .home-hero-section { position: relative !important; overflow: visible !important; }
 }
 </style>
-<script id="lss-bridge-clayface-centered-zoom-script">
+<script id="lss-bridge-review-row-zoom-script">
 (() => {
   const desktop = window.matchMedia('(min-width: 901px)');
-  let bar, originalMarker, watchingDots;
+  const bar = document.querySelector('.lss-bridge-review-row');
+  if (!bar) return;
+  let marker = null;
+  let watchedDots = null;
   let frameRequested = false;
-
-  function getHero() {
-    return document.querySelector('.home-hero-section');
-  }
-
-  function getDots() {
-    return getHero()?.querySelector('.indicators');
-  }
-
-  function findReviewBar() {
-    const selectors = [
-      '[class*="clayface-review" i]', '[id*="clayface-review" i]',
-      '[class*="latest-review" i]', '[id*="latest-review" i]',
-      '[class*="review-banner" i]', '[class*="review-bar" i]',
-      '[class*="review-callout" i]'
-    ];
-    for (const selector of selectors) {
-      const el = [...document.querySelectorAll(selector)].find(el =>
-        !el.closest('head, .telemetry-shell, .ffs-file-modal') &&
-        /clayface/i.test(el.textContent || '') &&
-        !(el.matches('.lss-review-dots-stack'))
-      );
-      if (el) return el;
-    }
-
-    const leaves = [...document.querySelectorAll('a, aside, article, div, section')]
-      .filter(el => {
-        const t = (el.textContent || '').trim();
-        return /clayface/i.test(t) && /review/i.test(t) &&
-          t.length >= 10 && t.length <= 260 &&
-          !el.matches('.home-hero-section, .hero-carousel') &&
-          !el.closest('.telemetry-shell, .ffs-file-modal');
-      });
-    if (!leaves.length) return null;
-    let el = leaves[leaves.length - 1];
-    while (el.parentElement &&
-           !el.parentElement.matches('body, main, .home-hero-section, .hero-carousel') &&
-           (el.parentElement.textContent || '').trim().length <= 260 &&
-           el.parentElement.matches('a, aside, article, div, section')) {
-      el = el.parentElement;
-    }
-    return el;
-  }
+  const getHero = () => document.querySelector('.home-hero-section');
+  const getDots = () => getHero()?.querySelector('.indicators');
 
   function restore() {
-    if (!bar) return;
-    if (originalMarker?.parentNode && originalMarker.nextSibling !== bar) {
-      originalMarker.after(bar);
-    }
-    bar.classList.remove('lss-clayface-follows-dots');
-    bar.style.removeProperty('--lss-clayface-left');
-    bar.style.removeProperty('--lss-clayface-top');
+    if (marker?.parentNode && marker.nextSibling !== bar) marker.after(bar);
+    bar.style.removeProperty('--lss-reviews-left');
+    bar.style.removeProperty('--lss-reviews-top');
   }
 
   function align() {
     frameRequested = false;
     if (!desktop.matches) { restore(); return; }
-
     const hero = getHero();
     const dots = getDots();
     if (!hero || !dots) return;
-    if (!bar || !bar.isConnected) bar = findReviewBar();
-    if (!bar || bar === dots || bar.contains(dots)) return;
-
-    if (!originalMarker) {
-      originalMarker = document.createComment('Original Clayface review banner position');
-      bar.before(originalMarker);
+    if (!marker) {
+      marker = document.createComment('Original dual review row position');
+      bar.before(marker);
     }
     if (bar.parentElement !== hero) hero.append(bar);
-    bar.classList.add('lss-clayface-follows-dots');
 
-    /* Follow the dots' ACTUAL rendered center and bottom at this zoom level. */
+    // Position below the actual navigation dots at every browser zoom level.
     const dotBox = dots.getBoundingClientRect();
     const heroBox = hero.getBoundingClientRect();
-    // Convert viewport coordinates to this hero element's CSS pixel coordinates.
-    // This avoids drifting at 110%, 125% and other browser zoom settings.
     const scaleX = hero.offsetWidth ? heroBox.width / hero.offsetWidth : 1;
     const scaleY = hero.offsetHeight ? heroBox.height / hero.offsetHeight : 1;
     const left = (dotBox.left + dotBox.width / 2 - heroBox.left) / scaleX;
     const top = (dotBox.bottom - heroBox.top) / scaleY + 16;
-    bar.style.setProperty('--lss-clayface-left', `${left}px`);
-    bar.style.setProperty('--lss-clayface-top', `${top}px`);
+    bar.style.setProperty('--lss-reviews-left', `${left}px`);
+    bar.style.setProperty('--lss-reviews-top', `${top}px`);
 
-    if (watchingDots !== dots && 'ResizeObserver' in window) {
-      watchingDots = dots;
+    if (watchedDots !== dots && 'ResizeObserver' in window) {
+      watchedDots = dots;
       new ResizeObserver(requestAlign).observe(dots);
     }
   }
@@ -4714,22 +4657,16 @@
     frameRequested = true;
     requestAnimationFrame(align);
   }
-
   desktop.addEventListener('change', requestAlign);
-  window.addEventListener('resize', requestAlign); // responds to 110%, 125% zoom etc.
+  window.addEventListener('resize', requestAlign);
   document.addEventListener('DOMContentLoaded', requestAlign, { once: true });
   window.addEventListener('load', requestAlign, { once: true });
-  // Recalculate after the active navigation dash changes width.
   document.addEventListener('transitionend', e => {
     if (e.target.closest?.('.home-hero-section .indicators')) requestAlign();
   });
   document.addEventListener('click', e => {
     if (e.target.closest?.('.home-hero-section .indicator')) requestAlign();
   });
-  // If another script adds the Clayface banner after load, pick it up once.
-  if (!document.readyState || document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', requestAlign, { once: true });
-  }
   if (document.readyState !== 'loading') requestAlign();
 })();
 </script>
