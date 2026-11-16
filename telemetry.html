@@ -1040,19 +1040,24 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="js/main.js"></script>
 <script id="lss-telemetry-deep-link">
 (function () {
-  const params = new URLSearchParams(window.location.search);
-  if ((params.get('review') || '').toLowerCase() !== 'clayface') return;
-  function openClayfaceReview() {
-    const toggle = document.getElementById('modalClayface');
+  const review = (new URLSearchParams(window.location.search).get('review') || '').toLowerCase();
+  const reviewToggles = {
+    'clayface': 'modalClayface',
+    'godzilla-minus-zero': 'modalGodzillaMinusZero'
+  };
+  const targetId = reviewToggles[review];
+  if (!targetId) return;
+  function openRequestedReview() {
+    const toggle = document.getElementById(targetId);
     if (!toggle) return;
+    document.querySelectorAll('.ffs-file-modal-toggle:checked').forEach(input => { input.checked = false; });
     toggle.checked = true;
-    // Keep the review list behind the dialog instead of jumping to another item.
     window.scrollTo(0, 0);
   }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', openClayfaceReview, { once: true });
+    document.addEventListener('DOMContentLoaded', openRequestedReview, { once: true });
   } else {
-    openClayfaceReview();
+    openRequestedReview();
   }
 })();
 </script>
