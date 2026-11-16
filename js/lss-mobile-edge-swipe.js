@@ -1,127 +1,122 @@
-/* LSS Mobile Edge Swipe v2: 50% deliberate swipe, responsive arrow, fade. */
+/* LSS mobile Pull Up for Next Movie, v1.
+   Uses each movie page's existing data-project-nav-key="next-mobile" link.
+   The gesture starts only on the dedicated handle below the mobile Prev/Next nav.
+*/
 (() => {
   'use strict';
   const mobile = window.matchMedia('(max-width: 900px)');
-  const EDGE_MIN = 18;          // Avoid the OS-reserved extreme edge on some phones.
-  const EDGE_MAX = 90;          // Easy-to-reach inward activation band.
-  const COMMIT = 0.50;          // Must drag across 50% of viewport width.
-  const DIM_AT_COMMIT = 0.26;   // Gentle dimming while dragging.
-  const INTENT = 10;
-  const HORIZONTAL_BIAS = 1.35;
+  const COMMIT_FRACTION = 0.50; // 50% of the visible viewport HEIGHT.
+  const MAX_DIM = 0.24;        // Subtle darkening before commitment.
 
   function init() {
+    if (document.querySelector('.lss-pull-next')) return;
     const nav = document.querySelector('.ffs-mobile-project-nav');
     if (!nav) return;
+    const next = nav.querySelector('[data-project-nav-key="next-mobile"]');
+    if (!next || !next.getAttribute('href') || next.getAttribute('aria-disabled') === 'true') return;
+
+    const handle = document.createElement('div');
+    handle.className = 'lss-pull-next';
+    handle.innerHTML = '<span class="lss-pull-next-icon" aria-hidden="true">⌄</span>' +
+      '<span class="lss-pull-next-copy">PULL UP FOR NEXT MOVIE</span>' +
+      '<span class="lss-pull-next-percent" aria-hidden="true">0%</span>';
+    handle.setAttribute('role', 'button');
+    handle.setAttribute('tabindex', '0');
+    handle.setAttribute('aria-label', 'Pull up to open next movie, or press Enter');
+    nav.insertAdjacentElement('afterend', handle);
 
     const shade = document.createElement('div');
-    shade.className = 'lss-swipe-shade';
+    shade.className = 'lss-pull-next-shade';
     shade.setAttribute('aria-hidden', 'true');
-    const track = document.createElement('div');
-    track.className = 'lss-swipe-track';
-    track.setAttribute('aria-hidden', 'true');
-    track.dataset.ready = 'false';
-    const arrow = document.createElement('span');
-    arrow.className = 'lss-swipe-arrow';
-    track.append(arrow);
-    document.body.append(shade, track);
+    const progress = document.createElement('div');
+    progress.className = 'lss-pull-next-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    progress.innerHTML = '<div class="lss-pull-next-progress-head"><span>↑</span> <b>NEXT MOVIE</b></div>';
+    document.body.append(shade, progress);
 
+    const label = handle.querySelector('.lss-pull-next-copy');
+    const percent = handle.querySelector('.lss-pull-next-percent');
+    const icon = handle.querySelector('.lss-pull-next-icon');
     let gesture = null;
-    let suppressClickUntil = 0;
+    let navigating = false;
+
+    function viewportHeight() {
+      return window.visualViewport?.height || window.innerHeight;
+    }
+    function modalVisible() {
+      return !!document.querySelector('body:has(#ffsLandingSoundtrack:checked), body:has(#ffsLandingChangelog:checked)');
+    }
+    function render(px) {
+      const threshold = Math.max(1, viewportHeight() * COMMIT_FRACTION);
+      const fraction = Math.min(1, px / threshold);
+      const ready = px >= threshold;
+      progress.style.height = `${Math.round(px)}px`;
+      shade.style.opacity = String(MAX_DIM * fraction);
+      percent.textContent = `${Math.round(fraction * 100)}%`;
+      label.textContent = ready ? 'RELEASE FOR NEXT MOVIE' : 'PULL UP FOR NEXT MOVIE';
+      icon.textContent = ready ? '↑' : '⌃';
+      handle.classList.toggle('is-ready', ready);
+      progress.classList.toggle('is-ready', ready);
+    }
     function reset() {
       gesture = null;
-      shade.classList.remove('lss-swipe-active');
-      track.classList.remove('lss-swipe-active');
+      handle.classList.remove('is-dragging', 'is-ready');
+      progress.classList.remove('is-dragging', 'is-ready');
+      shade.classList.remove('is-dragging');
+      progress.style.height = '0px';
       shade.style.opacity = '0';
-      track.style.width = '0px';
-      track.style.opacity = '0';
-      track.dataset.ready = 'false';
+      percent.textContent = '0%';
+      label.textContent = 'PULL UP FOR NEXT MOVIE';
+      icon.textContent = '⌄';
     }
-    function isInteractive(target) {
-      // Poster is intentionally swipeable. Keep form controls, player and links safe.
-      const excluded = target.closest('a, button, input, textarea, select, iframe, video, [contenteditable="true"], .ffs-rating-stars');
-      if (excluded) return true;
-      // Labels on the poster may be dragged; other interactive labels remain protected.
-      const label = target.closest('label');
-      return !!(label && !label.closest('.ffs-poster-panel'));
+    function navigate() {
+      if (navigating) return;
+      navigating = true;
+      const url = next.href;
+      if (!url) { navigating = false; reset(); return; }
+      label.textContent = 'OPENING NEXT MOVIE';
+      shade.classList.remove('is-dragging');
+      progress.classList.remove('is-dragging');
+      shade.style.opacity = '0.45';
+      progress.style.height = `${Math.round(viewportHeight() * 0.5)}px`;
+      // Short settle lets the user see the completed gesture, then navigates.
+      window.setTimeout(() => window.location.assign(url), 140);
     }
-    function blocked() {
-      return !!document.querySelector('#ffsLandingSoundtrack:checked, .ffs-changelog-modal-toggle:checked, .ffs-poster-toggle:checked, dialog[open]');
-    }
-
-    document.addEventListener('touchstart', event => {
-      if (!mobile.matches || event.touches.length !== 1 || isInteractive(event.target) || blocked()) return;
-      const touch = event.touches[0];
-      const x = touch.clientX;
-      const width = document.documentElement.clientWidth || window.innerWidth;
-      const left = x >= EDGE_MIN && x <= EDGE_MAX;
-      const right = x >= width - EDGE_MAX && x <= width - EDGE_MIN;
-      if (!left && !right) return;
-      const side = left ? 'left' : 'right';
-      const key = left ? 'prev-mobile' : 'next-mobile';
-      const link = nav.querySelector(`[data-project-nav-key="${key}"]`);
-      if (!link?.href || link.getAttribute('aria-disabled') === 'true') return;
-      gesture = { x, y: touch.clientY, dir: left ? 1 : -1, side, href: link.href,
-                  axis: null, fraction: 0, id: touch.identifier, moved: false };
-    }, { passive: true });
-
-    document.addEventListener('touchmove', event => {
-      const g = gesture;
-      if (!g || event.touches.length !== 1) return;
-      const touch = [...event.touches].find(t => t.identifier === g.id);
-      if (!touch) { reset(); return; }
-      const dx = touch.clientX - g.x;
-      const dy = touch.clientY - g.y;
-      if (g.axis === null) {
-        if (Math.max(Math.abs(dx), Math.abs(dy)) < INTENT) return;
-        if (Math.abs(dx) <= Math.abs(dy) * HORIZONTAL_BIAS || dx * g.dir <= 0) {
-          reset();
-          return;
-        }
-        g.axis = 'horizontal';
-        track.dataset.side = g.side;
-        arrow.textContent = g.side === 'left' ? '›' : '‹';
-        shade.classList.add('lss-swipe-active');
-        track.classList.add('lss-swipe-active');
-      }
-      if (event.cancelable) event.preventDefault();
-      g.moved = true;
-      const width = document.documentElement.clientWidth || window.innerWidth;
-      const distance = Math.min(width, Math.max(0, dx * g.dir));
-      g.fraction = distance / width;
-      track.style.width = `${distance}px`;
-      track.style.opacity = '1';
-      shade.style.opacity = String(DIM_AT_COMMIT * Math.min(1, g.fraction / COMMIT));
-      track.dataset.ready = g.fraction >= COMMIT ? 'true' : 'false';
-    }, { passive: false });
-
-    document.addEventListener('touchend', event => {
-      const g = gesture;
-      if (!g || ![...event.changedTouches].some(t => t.identifier === g.id)) return;
-      if (g.moved) suppressClickUntil = performance.now() + 450;
-      if (g.axis === 'horizontal' && g.fraction >= COMMIT) {
-        gesture = null;
-        track.classList.remove('lss-swipe-active');
-        shade.classList.remove('lss-swipe-active');
-        track.style.width = '100vw';
-        track.dataset.ready = 'true';
-        shade.style.opacity = '.38';
-        window.location.assign(g.href);
-      } else {
-        reset();
-      }
-    }, { passive: true });
-    document.addEventListener('touchcancel', reset, { passive: true });
-    // Avoid accidental poster-toggle clicks after a horizontal swipe gesture.
-    document.addEventListener('click', event => {
-      if (performance.now() < suppressClickUntil && event.target.closest('.ffs-poster-panel')) {
+    handle.addEventListener('pointerdown', event => {
+      if (!mobile.matches || navigating || modalVisible() || !event.isPrimary) return;
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      gesture = { id: event.pointerId, startY: event.clientY, distance: 0 };
+      handle.classList.add('is-dragging');
+      progress.classList.add('is-dragging');
+      shade.classList.add('is-dragging');
+      handle.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+    handle.addEventListener('pointermove', event => {
+      if (!gesture || gesture.id !== event.pointerId) return;
+      const distance = Math.max(0, gesture.startY - event.clientY);
+      gesture.distance = distance;
+      render(distance);
+    });
+    handle.addEventListener('pointerup', event => {
+      if (!gesture || gesture.id !== event.pointerId) return;
+      const committed = gesture.distance >= viewportHeight() * COMMIT_FRACTION;
+      if (handle.hasPointerCapture(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+      gesture = null;
+      if (committed) navigate();
+      else reset();
+    });
+    handle.addEventListener('pointercancel', reset);
+    handle.addEventListener('lostpointercapture', () => { if (gesture && !navigating) reset(); });
+    handle.addEventListener('keydown', event => {
+      if (!mobile.matches || navigating) return;
+      if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        event.stopPropagation();
+        navigate();
       }
-    }, true);
-    window.addEventListener('pageshow', reset);
-    mobile.addEventListener('change', reset);
+    });
+    window.addEventListener('pageshow', () => { navigating = false; reset(); });
   }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once: true});
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, {once:true});
   else init();
 })();
