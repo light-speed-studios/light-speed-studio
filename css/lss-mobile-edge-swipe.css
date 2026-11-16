@@ -1,0 +1,67 @@
+/* LSS: mobile edge swipe navigation and cross-document crossfade */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: 350ms ease-in both lss-page-out; }
+::view-transition-new(root) { animation: 350ms ease-out both lss-page-in; }
+@keyframes lss-page-out { to { opacity: 0; } }
+@keyframes lss-page-in { from { opacity: 0; } }
+
+@media (max-width: 900px) {
+  .lss-swipe-shade {
+    position: fixed;
+    inset: 0;
+    z-index: 2147483000;
+    background: #040E15;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 240ms ease;
+  }
+  .lss-swipe-track {
+    position: fixed;
+    top: 50%;
+    height: 56px;
+    width: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 2147483001;
+    pointer-events: none;
+    overflow: visible;
+    opacity: 0;
+    transform: translateY(-50%);
+    transition: width 260ms cubic-bezier(.2,.8,.2,1), opacity 180ms ease;
+  }
+  .lss-swipe-track[data-side="left"] {
+    left: 0;
+    justify-content: flex-end;
+    border-radius: 0 28px 28px 0;
+    background: linear-gradient(90deg, rgba(0,174,222,.02), rgba(0,174,222,.23));
+    border-right: 1px solid rgba(126,220,245,.5);
+  }
+  .lss-swipe-track[data-side="right"] {
+    right: 0;
+    justify-content: flex-start;
+    border-radius: 28px 0 0 28px;
+    background: linear-gradient(270deg, rgba(0,174,222,.02), rgba(0,174,222,.23));
+    border-left: 1px solid rgba(126,220,245,.5);
+  }
+  .lss-swipe-arrow {
+    width: 42px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 42px;
+    font: 500 31px/1 Arial,sans-serif;
+    color: #b2ecff;
+    text-shadow: 0 0 13px rgba(0,174,222,.5);
+  }
+  .lss-swipe-track[data-ready="true"] .lss-swipe-arrow { color: #fff; }
+  .lss-swipe-shade.lss-swipe-active,
+  .lss-swipe-track.lss-swipe-active { transition: none; }
+}
+@media (min-width: 901px) {
+  .lss-swipe-shade, .lss-swipe-track { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .01ms; }
+  .lss-swipe-shade, .lss-swipe-track { transition-duration: .01ms !important; }
+}
