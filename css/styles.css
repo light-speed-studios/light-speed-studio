@@ -6580,3 +6580,29 @@ body .lss-image-block.orbit-image-frame::before {
     scroll-snap-stop: always !important;
   }
 }
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 350ms ease-in both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 350ms ease-out both fade-in;
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.01ms;
+  }
+}
