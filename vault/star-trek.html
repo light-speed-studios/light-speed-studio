@@ -4040,17 +4040,11 @@ body:has(#ffsLandingSoundtrack:checked) .ffs-soundtrack-modal:not(.ffs-changelog
 @media (max-width: 900px) {
   .ffs-changelog-modal { display: none !important; }
 }
-/* Desktop layout reference: Far From Sol, 13 Nov 2026.
-   Reserve a full three-line synopsis and keep metadata/palette anchors fixed. */
+/* Desktop layout reference: Far From Sol, 13 Nov 2026. */
 @media (min-width: 901px) {
   .ffs-page .lss-unified-details > .ffs-audience-rating {
     min-height: 108px !important;
     margin-bottom: 12px !important;
-  }
-  .ffs-page .lss-unified-details > .ffs-synopsis {
-    min-height: clamp(94.05px, 7.524vw, 113.85px) !important;
-    flex-shrink: 0 !important;
-    margin-bottom: 14px !important;
   }
   .ffs-page .lss-unified-details > .glass-details-footer {
     margin-top: auto !important;
