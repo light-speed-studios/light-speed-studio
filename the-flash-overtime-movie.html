@@ -331,6 +331,58 @@
       }
     }
 
+
+  /* Cinematic wallpaper adapted from the Overtime landing page. */
+  .lss-watch-page {
+    position: relative;
+    isolation: isolate;
+    background: #040e15;
+  }
+  .lss-watch-shell {
+    position: relative;
+    z-index: 1;
+  }
+  @media (min-width: 901px) {
+    .lss-watch-page::before {
+      content: "";
+      position: fixed;
+      top: 61px;
+      left: 0;
+      right: 0;
+      height: min(900px, calc(100vh - 61px));
+      z-index: 0;
+      pointer-events: none;
+      opacity: var(--lss-fixed-banner-opacity, 1);
+      will-change: opacity;
+      background-image:
+        linear-gradient(to bottom, rgba(4,14,21,.24) 0%, rgba(4,14,21,.32) 30%, rgba(4,14,21,.54) 56%, rgba(4,14,21,.86) 79%, #040E15 100%),
+        linear-gradient(to right, rgba(4,14,21,.9) 0%, rgba(4,14,21,.79) 32%, rgba(4,14,21,.36) 65%, rgba(4,14,21,.1) 100%),
+        url("https://light-speed-studios.b-cdn.net/OVERTIMEBANNER.webp");
+      background-size: cover, cover, cover;
+      background-position: center, center, center 45%;
+      background-repeat: no-repeat;
+    }
+  }
+  @media (max-width: 900px) {
+    .lss-watch-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 110%;
+      height: min(80vw, 520px);
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(4,14,21,.24) 0%, rgba(4,14,21,.07) 55%, transparent 100%),
+        url("https://light-speed-studios.b-cdn.net/OVERTIMEBANNER.webp");
+      background-repeat: no-repeat;
+      background-size: cover, cover;
+      background-position: center, right top;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+    }
+  }
 </style>
 </head>
 
@@ -434,6 +486,37 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<script id="lss-desktop-pinned-banner">
+(() => {
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const page = document.querySelector('.lss-watch-page');
+  if (!page) return;
+  let queued = false;
+  function update() {
+    queued = false;
+    if (!desktop.matches) {
+      page.style.removeProperty('--lss-fixed-banner-opacity');
+      return;
+    }
+    const player = document.querySelector('.movie-video-wrap');
+    const playerBottom = player ? player.getBoundingClientRect().bottom + window.scrollY : 1000;
+    const pageTop = page.getBoundingClientRect().top + window.scrollY;
+    const fadeStart = Math.max(0, pageTop + 100);
+    const fadeEnd = Math.max(fadeStart + 260, playerBottom - window.innerHeight * 0.35);
+    const progress = Math.max(0, Math.min(1, (window.scrollY - fadeStart) / (fadeEnd - fadeStart)));
+    page.style.setProperty('--lss-fixed-banner-opacity', (1 - progress).toFixed(3));
+  }
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule, { passive: true });
+  if (desktop.addEventListener) desktop.addEventListener('change', schedule);
+  schedule();
+})();
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
