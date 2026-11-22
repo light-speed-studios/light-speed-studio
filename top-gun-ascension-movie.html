@@ -51,31 +51,14 @@
       justify-content: space-between;
       align-items: center;
       gap: 20px;
-      background:
-        linear-gradient(90deg, rgba(0, 174, 222, 0.11), transparent 55%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018)),
-        var(--panel-bg);
-      box-shadow:
-        inset 0 0 0 1px rgba(0, 174, 222, 0.22),
-        0 0 28px rgba(0, 0, 0, 0.28);
-      overflow: hidden;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
     }
 
     .watch-header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
-      opacity: 0.64;
+      content: none;
+      display: none;
     }
 
     .watch-header > * {
@@ -92,6 +75,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--cyan);
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
     }
 
     .watch-header h1 {
@@ -105,7 +89,7 @@
       color: var(--text-main);
       text-shadow:
         0 0 16px rgba(0, 174, 222, 0.14),
-        0 5px 22px rgba(0, 0, 0, 0.45);
+        0 5px 22px rgba(0, 0, 0, 0.85);
     }
 
     .watch-runtime {
@@ -118,33 +102,20 @@
       white-space: nowrap;
     }
 
+    /* Desktop: download replaces the runtime in the header. */
+    .watch-header .watch-runtime { display: none; }
+    .desktop-header-download { flex-shrink: 0; }
+
     .movie-video-wrap {
       position: relative;
-      padding: 14px;
-      background:
-        linear-gradient(135deg, rgba(0, 174, 222, 0.12), transparent 42%),
-        rgba(255, 255, 255, 0.035);
-      box-shadow:
-        0 0 34px rgba(0, 174, 222, 0.10),
-        inset 0 0 0 1px rgba(0, 174, 222, 0.22);
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
     }
 
     .movie-video-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 3;
-      background:
-        linear-gradient(var(--cyan), var(--cyan)) left top / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) left top / 2px 42px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right top / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right top / 2px 42px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) left bottom / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) left bottom / 2px 42px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right bottom / 42px 2px no-repeat,
-        linear-gradient(var(--cyan), var(--cyan)) right bottom / 2px 42px no-repeat;
-      opacity: 0.72;
+      content: none;
+      display: none;
     }
 
 .movie-video {
@@ -154,7 +125,7 @@
   aspect-ratio: 16 / 9;
   background: #000;
   overflow: hidden;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75), 0 0 34px rgba(0, 174, 222, 0.14);
 }
 
     .movie-video iframe {
@@ -232,6 +203,8 @@
     }
 
     @media (max-width: 700px) {
+      .watch-header .watch-runtime { display: inline; }
+      .desktop-header-download { display: none; }
       .lss-watch-page {
         padding: 16px 12px 44px;
       }
@@ -325,15 +298,112 @@
     }
 
 
-    /* Desktop header download; mobile layout remains unchanged. */
-    @media (min-width: 701px) {
-      .watch-header .watch-runtime { display: none; }
-      .watch-actions { display: none; }
+
+  /* Cinematic wallpaper adapted from the Overtime landing page. */
+  .lss-watch-page {
+    position: relative;
+    isolation: isolate;
+    background: #040e15;
+  }
+  .lss-watch-shell {
+    position: relative;
+    z-index: 1;
+  }
+  @media (min-width: 901px) {
+    .lss-watch-page::before {
+      content: "";
+      position: fixed;
+      top: 61px;
+      left: 0;
+      right: 0;
+      height: min(900px, calc(100vh - 61px));
+      z-index: 0;
+      pointer-events: none;
+      opacity: var(--lss-fixed-banner-opacity, 1);
+      will-change: opacity;
+      background-image:
+        linear-gradient(to bottom, rgba(4,14,21,.24) 0%, rgba(4,14,21,.32) 30%, rgba(4,14,21,.54) 56%, rgba(4,14,21,.86) 79%, #040E15 100%),
+        linear-gradient(to right, rgba(4,14,21,.9) 0%, rgba(4,14,21,.79) 32%, rgba(4,14,21,.36) 65%, rgba(4,14,21,.1) 100%),
+        url("https://light-speed-studios.b-cdn.net/TGABANNERR.webp");
+      background-size: cover, cover, cover;
+      background-position: center, center, center 45%;
+      background-repeat: no-repeat;
     }
-    @media (max-width: 700px) {
-      .watch-header .desktop-header-download { display: none; }
+  }
+  @media (max-width: 900px) {
+    .lss-watch-page::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 110%;
+      height: min(80vw, 520px);
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(4,14,21,.24) 0%, rgba(4,14,21,.07) 55%, transparent 100%),
+        url("https://light-speed-studios.b-cdn.net/TGABANNERR.webp");
+      background-repeat: no-repeat;
+      background-size: cover, cover;
+      background-position: center, right top;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
+    }
+  }
+    /* Single-line Download CTA matching the updated Overtime watch page. */
+    .lss-watch-page .watch-button.lss-download-cta {
+      position: relative;
+      min-width: 170px;
+      min-height: 48px;
+      padding: 12px 22px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--cyan);
+      background: linear-gradient(180deg, rgba(0,174,222,.07), rgba(255,255,255,.018)), rgba(4,14,21,.72);
+      box-shadow: inset 0 0 0 1px rgba(0,174,222,.18), 0 10px 24px rgba(0,0,0,.18);
+      border: 0;
+      border-radius: 0;
+      transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+    .lss-download-cta strong {
+      position: relative;
+      z-index: 1;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+    .lss-watch-page .watch-button.lss-download-cta:hover {
+      transform: scale(1.05);
+      background: linear-gradient(180deg, rgba(0,174,222,.07), rgba(255,255,255,.018)), rgba(4,14,21,.72);
+      box-shadow: none;
+      outline: none;
+    }
+    .lss-watch-page .watch-button.lss-download-cta:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+    }
+    @media (max-width: 900px) {
+      .lss-watch-page .watch-button.lss-download-cta {
+        min-height: 48px;
+        padding: 12px 18px;
+      }
+      .lss-download-cta strong { font-size: 13px; letter-spacing: .13em; }
     }
 
+    /* Preserve Top Gun’s existing action visibility. */
+    @media (min-width: 701px) { .watch-actions { display: none; } }
 </style>
 </head>
 
@@ -367,7 +437,7 @@
         </div>
 
         <span class="watch-runtime">107 min</span>
-        <a class="watch-button desktop-header-download" href="https://drive.usercontent.google.com/download?id=1zLl9OnPdsg9BuKI5W0n10lRtFM2kbz-G&export=download&authuser=0" target="_blank" rel="noopener">Download</a>
+        <a class="watch-button lss-download-cta desktop-header-download" href="https://drive.usercontent.google.com/download?id=1zLl9OnPdsg9BuKI5W0n10lRtFM2kbz-G&export=download&authuser=0" target="_blank" rel="noopener"><strong>DOWNLOAD</strong></a>
       </div>
 
       <div class="mobile-desktop-viewing-note">
@@ -389,13 +459,10 @@
       </div>
 
       <div class="watch-actions">
-        <a
-          class="watch-button"
+        <a class="watch-button lss-download-cta"
           href="https://drive.usercontent.google.com/download?id=1zLl9OnPdsg9BuKI5W0n10lRtFM2kbz-G&export=download&authuser=0"
           target="_blank"
-          rel="noopener">
-          Download
-        </a>
+          rel="noopener"><strong>DOWNLOAD</strong></a>
       </div>
 
       <div class="mobile-actions">
@@ -407,13 +474,10 @@
           Open in Google Drive
         </a>
 
-        <a
-          class="watch-button"
+        <a class="watch-button lss-download-cta"
           href="https://drive.usercontent.google.com/download?id=1zLl9OnPdsg9BuKI5W0n10lRtFM2kbz-G&export=download&authuser=0"
           target="_blank"
-          rel="noopener">
-          Download
-        </a>
+          rel="noopener"><strong>DOWNLOAD</strong></a>
       </div>
 
         </div>
@@ -447,6 +511,37 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<script id="lss-desktop-pinned-banner">
+(() => {
+  const desktop = window.matchMedia('(min-width: 901px)');
+  const page = document.querySelector('.lss-watch-page');
+  if (!page) return;
+  let queued = false;
+  function update() {
+    queued = false;
+    if (!desktop.matches) {
+      page.style.removeProperty('--lss-fixed-banner-opacity');
+      return;
+    }
+    const player = document.querySelector('.movie-video-wrap');
+    const playerBottom = player ? player.getBoundingClientRect().bottom + window.scrollY : 1000;
+    const pageTop = page.getBoundingClientRect().top + window.scrollY;
+    const fadeStart = Math.max(0, pageTop + 100);
+    const fadeEnd = Math.max(fadeStart + 260, playerBottom - window.innerHeight * 0.35);
+    const progress = Math.max(0, Math.min(1, (window.scrollY - fadeStart) / (fadeEnd - fadeStart)));
+    page.style.setProperty('--lss-fixed-banner-opacity', (1 - progress).toFixed(3));
+  }
+  function schedule() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule, { passive: true });
+  if (desktop.addEventListener) desktop.addEventListener('change', schedule);
+  schedule();
+})();
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
