@@ -11,7 +11,8 @@
 
   <link rel="stylesheet" href="css/styles.css" />
 
- <h1 class="ffs-title"><img class="ffs-title-art" src="https://light-speed-studios.b-cdn.net/BATMANRDFONT.png" alt="Batman: Gotham's Riddle" decoding="async" fetchpriority="high"/></h1>
+  <title>Batman: Gotham's Riddle | LSS</title>
+
   <style>
     .lss-watch-page {
       --site-bg: #040e15;
@@ -89,6 +90,22 @@
       text-shadow:
         0 0 16px rgba(0, 174, 222, 0.14),
         0 5px 22px rgba(0, 0, 0, 0.85);
+    }
+
+
+    .watch-title-block {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .watch-title-image {
+      display: block;
+      width: min(100%, 520px);
+      max-width: 100%;
+      height: auto;
+      filter:
+        drop-shadow(0 0 16px rgba(0, 174, 222, 0.14))
+        drop-shadow(0 5px 22px rgba(0, 0, 0, 0.85));
     }
 
     .watch-runtime {
@@ -232,6 +249,12 @@
 .watch-header h1 {
   font-size: clamp(24px, 2.4vw, 38px);
 }
+      .watch-title-block {
+        width: 100%;
+      }
+      .watch-title-image {
+        width: min(100%, 360px);
+      }
       .watch-runtime {
         font-size: 10px;
         letter-spacing: 0.1em;
@@ -429,9 +452,11 @@
   <div class="lss-watch-page">
     <div class="lss-watch-shell">
       <div class="watch-header">
-        <div>
+        <div class="watch-title-block">
           <span class="watch-kicker">Now Playing</span>
-          <h1>Batman: Gotham's Riddle</h1>
+          <h1 aria-label="Batman: Gotham's Riddle">
+            <img class="watch-title-image" src="https://light-speed-studios.b-cdn.net/BATMANRDFONT.png" alt="Batman: Gotham's Riddle" />
+          </h1>
         </div>
 
         <a class="watch-button header-download lss-download-cta" href="https://drive.usercontent.google.com/download?id=1wO0dXZNYPeSz4kIc7gn8APcN609ww-_w&amp;export=download&amp;authuser=0" target="_blank" rel="noopener"><strong>Download</strong></a>
