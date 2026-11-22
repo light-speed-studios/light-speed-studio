@@ -92,6 +92,24 @@
         0 5px 22px rgba(0, 0, 0, 0.85);
     }
 
+
+    .watch-title-block {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .watch-title-image {
+      display: block;
+      width: min(100%, 500px);
+      max-width: 100%;
+      height: auto;
+      filter:
+        drop-shadow(0 0 16px rgba(0, 174, 222, 0.14))
+        drop-shadow(0 5px 22px rgba(0, 0, 0, 0.85));
+    }
+
     .watch-runtime {
       font-family: Oxanium, Rajdhani, Arial, sans-serif;
       font-size: 13px;
@@ -232,6 +250,12 @@
 .watch-header h1 {
   font-size: clamp(24px, 2.4vw, 38px);
 }
+      .watch-title-block {
+        width: 100%;
+      }
+      .watch-title-image {
+        width: min(100%, 340px);
+      }
       .watch-runtime {
         font-size: 10px;
         letter-spacing: 0.1em;
@@ -428,9 +452,10 @@
   <div class="lss-watch-page">
     <div class="lss-watch-shell">
       <div class="watch-header">
-        <div>
-          <span class="watch-kicker">Now Playing</span>
-          <h1>Crisis: Red Skies</h1>
+        <div class="watch-title-block">
+          <h1 aria-label="Crisis: Red Skies">
+            <img class="watch-title-image" src="https://light-speed-studios.b-cdn.net/CRISISFONT.png" alt="Crisis: Red Skies" />
+          </h1>
         </div>
 
         <span class="watch-runtime">124 min</span>
