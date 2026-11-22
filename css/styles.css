@@ -71,7 +71,19 @@
     background: rgba(224, 243, 249, .93) !important;
     transform: none !important;
   }
+/* GLOBAL: Hide legacy scrollbars across all pages */
+html,
+body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
   .home-hero-section .lss-center-indicators .lss-pagination-track > .indicator.lss-center-hidden {
     opacity: 0 !important;
     pointer-events: none !important;
