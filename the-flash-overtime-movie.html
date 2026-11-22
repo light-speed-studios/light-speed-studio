@@ -75,7 +75,7 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--cyan);
-      text-shadow: 0 3px 12px rgba(0,0,0,.9);
+      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
     }
 
     .watch-header h1 {
@@ -89,7 +89,7 @@
       color: var(--text-main);
       text-shadow:
         0 0 16px rgba(0, 174, 222, 0.14),
-        0 5px 22px rgba(0, 0, 0, 0.8);
+        0 5px 22px rgba(0, 0, 0, 0.85);
     }
 
     .watch-runtime {
@@ -128,7 +128,7 @@
       aspect-ratio: 16 / 9;
       background: #000;
       overflow: hidden;
-      box-shadow: 0 24px 70px rgba(0,0,0,.7), 0 0 32px rgba(0,174,222,.12);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75), 0 0 34px rgba(0, 174, 222, 0.14);
     }
 
     .movie-video iframe {
@@ -153,19 +153,29 @@
     }
 
     .watch-button,
-
     .watch-secondary {
-      color: #d7f7ff;
-      background: transparent;
-      box-shadow: none;
-      text-shadow: 0 3px 12px rgba(0,0,0,.95), 0 0 16px rgba(0,174,222,.48);
+      min-width: 170px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease;
     }
 
     .watch-button {
-      color: #d7f7ff;
-      background: transparent;
-      box-shadow: none;
-      text-shadow: 0 3px 12px rgba(0,0,0,.95), 0 0 16px rgba(0,174,222,.48);
+      color: var(--site-bg);
+      background: var(--cyan);
+      box-shadow: 0 0 18px rgba(0, 174, 222, 0.22);
     }
 
     .watch-secondary {
@@ -177,9 +187,7 @@
     .watch-button:hover,
     .watch-secondary:hover {
       transform: translateY(-2px);
-      box-shadow: none;
-      color: #fff;
-      text-shadow: 0 4px 16px rgba(0,0,0,.95), 0 0 22px rgba(0,174,222,.75);
+      box-shadow: 0 0 26px rgba(0, 174, 222, 0.24);
     }
 
     .watch-note {
