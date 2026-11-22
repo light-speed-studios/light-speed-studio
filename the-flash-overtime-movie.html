@@ -350,6 +350,81 @@
       mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.96) 23%, rgba(0,0,0,.47) 62%, transparent 100%);
     }
   }
+
+
+    /* Download CTA treatment from the Batman landing-page CTA tiles. */
+    .lss-watch-page .watch-button.lss-download-cta {
+      position: relative;
+      min-width: 170px;
+      min-height: 122px;
+      padding: 18px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--cyan);
+      background: linear-gradient(180deg, rgba(0,174,222,.07), rgba(255,255,255,.018)), rgba(4,14,21,.72);
+      box-shadow: inset 0 0 0 1px rgba(0,174,222,.18), 0 10px 24px rgba(0,0,0,.18);
+      border: 0;
+      border-radius: 0;
+      transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+    .lss-download-cta .lss-download-cta-icon {
+      position: relative;
+      z-index: 1;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      filter: drop-shadow(0 0 8px rgba(0,174,222,.34)) drop-shadow(0 0 18px rgba(0,174,222,.16));
+    }
+    .lss-download-cta .lss-download-cta-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .lss-download-cta strong {
+      position: relative;
+      z-index: 1;
+      font-family: Oxanium, Rajdhani, Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      text-align: center;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+    .lss-watch-page .watch-button.lss-download-cta:hover {
+      transform: scale(1.05);
+      background: linear-gradient(180deg, rgba(0,174,222,.07), rgba(255,255,255,.018)), rgba(4,14,21,.72);
+      box-shadow: none;
+      outline: none;
+    }
+    .lss-watch-page .watch-button.lss-download-cta:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+    }
+    @media (max-width: 900px) {
+      .lss-watch-page .watch-button.lss-download-cta {
+        min-height: 82px;
+        padding: 10px 5px 9px;
+        gap: 6px;
+      }
+      .lss-download-cta .lss-download-cta-icon { width: 34px; height: 34px; }
+      .lss-download-cta strong { font-size: clamp(8px, 2.35vw, 10px); letter-spacing: .06em; }
+    }
 </style>
 </head>
 
@@ -383,7 +458,7 @@
         </div>
 
         <span class="watch-runtime">160 min</span>
-        <a class="watch-button desktop-header-download" href="https://drive.usercontent.google.com/download?id=1-14coKi_TkL46NDO7gh_UpwOLRgf095p&export=download&authuser=0" target="_blank" rel="noopener">Download</a>
+        <a class="watch-button desktop-header-download lss-download-cta" href="https://drive.usercontent.google.com/download?id=1-14coKi_TkL46NDO7gh_UpwOLRgf095p&export=download&authuser=0" target="_blank" rel="noopener"><span class="lss-download-cta-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 9v31M20 29l12 12 12-12"/><path d="M13 43v10h38V43"/></svg></span><strong>Download</strong></a>
       </div>
 
       <div class="mobile-desktop-viewing-note">
@@ -414,11 +489,11 @@
         </a>
 
         <a
-          class="watch-button"
+          class="watch-button lss-download-cta"
           href="https://drive.usercontent.google.com/download?id=1-14coKi_TkL46NDO7gh_UpwOLRgf095p&export=download&authuser=0"
           target="_blank"
           rel="noopener">
-          Download
+          <span class="lss-download-cta-icon" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 9v31M20 29l12 12 12-12"/><path d="M13 43v10h38V43"/></svg></span><strong>Download</strong>
         </a>
       </div>
 
