@@ -404,6 +404,24 @@
 
     /* Preserve Top Gun’s existing action visibility. */
     @media (min-width: 701px) { .watch-actions { display: none; } }
+
+    .watch-title-block {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .watch-title-image {
+      display: block;
+      width: min(100%, 500px);
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 16px rgba(0,174,222,.14)) drop-shadow(0 5px 22px rgba(0,0,0,.85));
+    }
+
+    @media (max-width: 700px) {
+      .watch-title-block { width: 100%; }
+      .watch-title-image { width: min(100%, 340px); }
+    }
 </style>
 </head>
 
@@ -431,9 +449,10 @@
   <div class="lss-watch-page">
     <div class="lss-watch-shell">
       <div class="watch-header">
-        <div>
-          <span class="watch-kicker">Now Playing</span>
-          <h1>Top Gun: Ascension</h1>
+        <div class="watch-title-block">
+          <h1 aria-label="Top Gun: Ascension">
+            <img class="watch-title-image" src="https://light-speed-studios.b-cdn.net/TOPGUNFONT.png" alt="Top Gun: Ascension" />
+          </h1>
         </div>
 
         <span class="watch-runtime">107 min</span>
