@@ -772,19 +772,25 @@ document.addEventListener("DOMContentLoaded", () => {
       return (cardWidth + gap) * cardsPerMove;
     }
 
-    prev.addEventListener("click", () => {
-      track.scrollBy({
-        left: -getScrollAmount(),
-        behavior: "smooth"
-      });
-    });
+    function moveRail(direction) {
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      const cards = Array.from(track.querySelectorAll('.vault-archive-card'));
+      const cardsPerView = window.innerWidth <= 900 ? 1 : 4;
 
-    next.addEventListener("click", () => {
-      track.scrollBy({
-        left: getScrollAmount(),
-        behavior: "smooth"
-      });
-    });
+      // When there is only one extra desktop card, align the rail to its
+      // exact end so the fifth card is completely visible.
+      if (window.innerWidth > 900 && cards.length === cardsPerView + 1) {
+        track.scrollTo({ left: direction > 0 ? maxScroll : 0, behavior: 'smooth' });
+        return;
+      }
+
+      const target = Math.max(0, Math.min(maxScroll,
+        track.scrollLeft + direction * getScrollAmount()));
+      track.scrollTo({ left: target, behavior: 'smooth' });
+    }
+
+    prev.addEventListener("click", () => moveRail(-1));
+    next.addEventListener("click", () => moveRail(1));
   });
 });
 
