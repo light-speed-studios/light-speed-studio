@@ -6673,16 +6673,16 @@ body .lss-image-block.orbit-image-frame::before {
     animation-duration: 0.01ms;
   }
 }
-./* VAULT: VISIBLE FLOATING SHADOWS */
+/* VAULT: VISIBLE FLOATING SHADOWS */
 @media (min-width: 901px) {
-  .vault-page .vault-rail-track {
-    padding-top: 35px !important;
-    padding-bottom: 45px !important;
-  }
-
   .vault-page .vault-archive-card {
     box-shadow:
-      0 8px 16px rgba(0, 0, 0, 0.6),
-      0 12px 28px rgba(160, 190, 210, 0.45) !important;
+      0 10px 24px rgba(0, 0, 0, 0.65),
+      0 6px 22px rgba(160, 190, 210, 0.55) !important;
+  }
+  .vault-page .vault-rail-track .vault-archive-card:hover {
+    box-shadow:
+      0 12px 26px rgba(0, 0, 0, 0.65),
+      0 7px 24px rgba(160, 190, 210, 0.65) !important;
   }
 }
