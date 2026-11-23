@@ -3362,7 +3362,8 @@ html::-webkit-scrollbar-corner {
 
 .vault-page .vault-rail-track {
   gap: 14px;
-  padding: 12px 0 18px;
+  /* Inset protects the outer cards and their shadows at either rail end. */
+  padding: 12px 12px 22px;
 }
 
 .vault-page .vault-archive-card {
@@ -3370,7 +3371,7 @@ html::-webkit-scrollbar-corner {
   flex: 0 0 calc((100% - 42px) / 4);
   min-width: 0;
   border: 0;
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 0 9px 20px rgba(0,0,0,.5), 0 3px 8px rgba(0,0,0,.3);
   transition: transform .32s ease, filter .32s ease, box-shadow .32s ease;
 }
@@ -3385,7 +3386,15 @@ html::-webkit-scrollbar-corner {
   box-shadow: 0 14px 28px rgba(0,0,0,.65), 0 4px 12px rgba(0,0,0,.35);
 }
 
+/* Mouse clicks should not leave a rectangular outline around the arrow. */
+.vault-page .vault-rail-arrow:focus:not(:focus-visible) {
+  outline: none;
+}
+
 @media (max-width: 900px) {
+  .vault-page .vault-rail-track {
+    padding: 12px 0 18px;
+  }
   .vault-page .vault-archive-card {
     flex: 0 0 calc(100% - 16px);
     min-width: calc(100% - 16px);
