@@ -6673,6 +6673,16 @@ body .lss-image-block.orbit-image-frame::before {
     animation-duration: 0.01ms;
   }
 }
-.vault-page .vault-archive-card {
-  box-shadow: 0 0 25px rgba(255, 255, 255, 0.7) !important;
+./* VAULT: VISIBLE FLOATING SHADOWS */
+@media (min-width: 901px) {
+  .vault-page .vault-rail-track {
+    padding-top: 35px !important;
+    padding-bottom: 45px !important;
+  }
+
+  .vault-page .vault-archive-card {
+    box-shadow:
+      0 8px 16px rgba(0, 0, 0, 0.6),
+      0 12px 28px rgba(160, 190, 210, 0.45) !important;
+  }
 }
