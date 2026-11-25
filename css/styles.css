@@ -6741,3 +6741,8 @@ body .lss-image-block.orbit-image-frame::before {
     bottom: var(--lss-keyboard-offset, 0px) !important;
   }
 }
+@media (max-width: 900px) {
+  .vault-page > .vault-archive-hero {
+    margin-top: 30px !important;
+  }
+}
