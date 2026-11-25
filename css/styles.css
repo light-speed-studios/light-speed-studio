@@ -6687,6 +6687,8 @@ body .lss-image-block.orbit-image-frame::before {
   }
 }
 
+} /* Close earlier prefers-reduced-motion scope; make bottom navigation apply to all mobile users. */
+
 /* =======================================================
    GLOBAL MOBILE BOTTOM NAVIGATION
    Desktop navbar and all existing navigation interactions remain unchanged.
