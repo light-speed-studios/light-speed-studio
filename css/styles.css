@@ -6746,3 +6746,9 @@ body .lss-image-block.orbit-image-frame::before {
     margin-top: 30px !important;
   }
 }
+/* MOBILE: Extra clearance for fixed bottom navbar */
+@media (max-width: 900px) {
+  .ffs-page {
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
