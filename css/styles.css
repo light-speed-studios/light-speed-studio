@@ -6752,3 +6752,9 @@ body .lss-image-block.orbit-image-frame::before {
     padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+/* MOBILE MOVIE PAGES: CLEAR FIXED BOTTOM NAVBAR */
+@media (max-width: 900px) {
+  html body .ffs-page .ffs-mobile-project-nav {
+    margin-bottom: calc(110px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
