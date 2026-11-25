@@ -236,6 +236,18 @@
       }
     }
   </style>
+  <style id="lab-mobile-footer-spacing-fix">
+    /* Remove extra space below Lab footer on mobile only. */
+    @media (max-width: 900px) {
+      html body .vault-page.lab-page {
+        padding-bottom: 0 !important;
+      }
+      html body .vault-page.lab-page > .footer-logo-block.speed-trap-footer {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
