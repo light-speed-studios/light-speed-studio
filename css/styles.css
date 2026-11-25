@@ -6686,3 +6686,40 @@ body .lss-image-block.orbit-image-frame::before {
       0 7px 24px rgba(160, 190, 210, 0.65) !important;
   }
 }
+
+/* =======================================================
+   GLOBAL MOBILE BOTTOM NAVIGATION
+   Desktop navbar and all existing navigation interactions remain unchanged.
+   ======================================================= */
+@media (max-width: 900px) {
+  body {
+    padding-top: 0 !important;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .lss-nav-bar {
+    top: auto !important;
+    bottom: 0 !important;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    border-bottom: 0 !important;
+    border-top: 1px solid #1a2a3a !important;
+    box-shadow: 0 -6px 22px rgba(0, 0, 0, .42) !important;
+  }
+
+  /* The hamburger opens the existing links above the bottom bar. */
+  .lss-nav-bar .lss-nav-links {
+    top: auto !important;
+    bottom: 100% !important;
+    max-height: calc(100dvh - 90px - env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    border-bottom: 0 !important;
+    border-top: 1px solid #00AEDE !important;
+  }
+
+  /* Project search suggestions also expand upward into the viewport. */
+  .lss-nav-bar .lss-project-search-results {
+    top: auto !important;
+    bottom: calc(100% + 10px) !important;
+    max-height: min(430px, calc(100dvh - 115px - env(safe-area-inset-bottom, 0px))) !important;
+  }
+}
