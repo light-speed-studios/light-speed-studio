@@ -485,5 +485,44 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 </script>
+<style id="vault-mobile-rail-polish">
+/* Mobile Vault: smaller headings and pagination, full-card rails, tighter shadows. */
+@media (max-width: 900px) {
+  .vault-page .vault-archive-heading h2 {
+    font-size: calc(1rem - 5px) !important;
+  }
+
+  .vault-page .vault-age-dashes {
+    gap: 7px;
+  }
+  .vault-page .vault-age-dash,
+  .vault-page .vault-age-dash.active {
+    width: 24px;
+    height: 3px;
+  }
+
+  /* Give each card its own complete viewport so the next card cannot peek. */
+  .vault-page .vault-rail-window {
+    overflow: hidden;
+  }
+  .vault-page .vault-rail-track.lss-vault-rail {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 8px 16px !important;
+    gap: 14px;
+    scroll-padding-inline: 8px;
+  }
+  .vault-page .vault-rail-track.lss-vault-rail > .vault-archive-card {
+    box-sizing: border-box;
+    flex: 0 0 calc(100% - 16px) !important;
+    width: calc(100% - 16px) !important;
+    min-width: 0 !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,.35), 0 2px 5px rgba(0,0,0,.24) !important;
+  }
+  .vault-page .vault-rail-track.lss-vault-rail > .vault-archive-card:hover {
+    box-shadow: 0 5px 12px rgba(0,0,0,.4), 0 2px 5px rgba(0,0,0,.26) !important;
+  }
+}
+</style>
 </body>
 </html>
