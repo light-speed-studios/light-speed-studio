@@ -1299,3 +1299,51 @@ document.addEventListener("DOMContentLoaded", () => {
     revealMovieLayout();
   }
 })();
+
+/* =======================================================
+   LSS MOBILE SEARCH | KEYBOARD-AWARE BOTTOM NAV
+   Keeps the bottom navigation/search field visible above the keyboard.
+   Desktop and other page interactions are unchanged.
+======================================================= */
+(function () {
+  const viewport = window.visualViewport;
+  if (!viewport) return;
+
+  const searchInputId = 'lssProjectSearchInput';
+  let frame = 0;
+
+  function update() {
+    frame = 0;
+    const root = document.documentElement;
+    const input = document.getElementById(searchInputId);
+    const isSearchFocused = input && document.activeElement === input;
+
+    if (window.innerWidth > 900 || !isSearchFocused) {
+      root.style.removeProperty('--lss-keyboard-offset');
+      return;
+    }
+
+    // visualViewport describes the actually visible portion of the page
+    // after the software keyboard occupies the bottom of the screen.
+    const covered = Math.max(0,
+      window.innerHeight - viewport.height - viewport.offsetTop
+    );
+
+    // Ignore tiny changes caused by a mobile browser's address bar.
+    root.style.setProperty('--lss-keyboard-offset',
+      (covered > 100 ? Math.round(covered) : 0) + 'px'
+    );
+  }
+
+  function schedule() {
+    if (frame) cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(update);
+  }
+
+  viewport.addEventListener('resize', schedule);
+  viewport.addEventListener('scroll', schedule);
+  window.addEventListener('resize', schedule);
+  document.addEventListener('focusin', schedule);
+  document.addEventListener('focusout', schedule);
+  schedule();
+})();
