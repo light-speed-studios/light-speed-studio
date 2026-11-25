@@ -279,11 +279,11 @@ body::-webkit-scrollbar {
   transform: translateX(-50%);
 }
 
-/* Open state: clean centered downward chevron */
+/* Open state: centered upward chevron */
 .hamburger.active span:nth-child(1) {
   top: 18px;
   width: 16px;
-  transform: translateX(calc(-50% - 5px)) rotate(45deg);
+  transform: translateX(calc(-50% - 5px)) rotate(-45deg);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -294,9 +294,8 @@ body::-webkit-scrollbar {
 .hamburger.active span:nth-child(3) {
   top: 18px;
   width: 16px;
-  transform: translateX(calc(-50% + 5px)) rotate(-45deg);
+  transform: translateX(calc(-50% + 5px)) rotate(45deg);
 }
-
 @media (max-width: 900px) {
   .hamburger {
     display: block;
