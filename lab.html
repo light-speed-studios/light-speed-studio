@@ -211,26 +211,26 @@
   </style>
 
   <style id="lab-mobile-poster-shadow-clearance">
-    /* Mobile Lab: reserve a shadow-safe inset INSIDE the scrolling track.
-       Keep the outer window clipping the next poster horizontally. */
+    /* LAB MOBILE: shadow belongs to the OUTSIDE of the carousel viewport.
+       The scrolling track clips its own children, so shadows on individual
+       cards get cut off. Shadowing the viewport avoids that hard edge. */
     @media (max-width: 900px) {
       .lab-page .vault-rail-window {
         overflow: hidden !important;
-        height: auto !important;
+        border-radius: 22px !important;
+        box-shadow: 0 15px 22px -9px rgba(0, 0, 0, .88),
+                    0 7px 12px -5px rgba(0, 0, 0, .68) !important;
+        filter: none !important;
       }
       .lab-page .vault-rail-track.lss-vault-rail {
-        box-sizing: border-box !important;
-        padding: 16px 0 52px !important;
+        padding: 0 !important;
         margin: 0 !important;
-        align-items: flex-start !important;
         overflow-x: auto !important;
         overflow-y: hidden !important;
         scroll-snap-type: x mandatory !important;
       }
       .lab-page .vault-rail-track.lss-vault-rail > .vault-archive-card.lab-poster-card {
-        box-shadow:
-          0 12px 20px -7px rgba(0, 0, 0, .82),
-          0 19px 27px -12px rgba(0, 0, 0, .58) !important;
+        box-shadow: none !important;
         filter: none !important;
         transform: none !important;
       }
