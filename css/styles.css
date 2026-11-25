@@ -6725,3 +6725,14 @@ body .lss-image-block.orbit-image-frame::before {
     max-height: min(430px, calc(100dvh - 115px - env(safe-area-inset-bottom, 0px))) !important;
   }
 }
+@media (max-width: 900px) {
+  .lss-nav-bar {
+    bottom: var(--lss-keyboard-offset, 0px) !important;
+    top: auto !important;
+    transition: bottom 0.15s ease;
+  }
+
+  .lss-nav-bar:focus-within {
+    transition: none;
+  }
+}
