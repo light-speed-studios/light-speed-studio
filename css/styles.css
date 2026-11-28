@@ -6758,3 +6758,25 @@ body .lss-image-block.orbit-image-frame::before {
     margin-bottom: calc(110px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+
+/* LSS movie pages: Edit Highlights */
+.lss-edit-highlights { width: 100%; min-width: 0; margin: 26px 0 24px; }
+.lss-edit-highlights-heading { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; }
+.lss-edit-highlights-heading h2 { margin: 0; color: #00AEDE; font: 700 15px/1.2 Oxanium, sans-serif; letter-spacing: .12em; white-space: nowrap; }
+.lss-edit-highlights-divider { width: 1px; height: 17px; flex: 0 0 1px; background: #00AEDE; }
+.lss-edit-highlights-subtitle { color: #91AABB; font: 500 16px/1.2 Rajdhani, sans-serif; white-space: nowrap; }
+.lss-edit-highlights-line { flex: 1 1 auto; min-width: 8px; height: 1px; background: #00AEDE; }
+.lss-edit-highlights-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.lss-edit-highlights-grid a { display: block; min-width: 0; border-radius: 8px; overflow: hidden; box-shadow: 0 5px 14px rgba(0,0,0,.48); cursor: zoom-in; outline-offset: 3px; }
+.lss-edit-highlights-grid img { display: block; width: 100%; aspect-ratio: 11 / 6; object-fit: cover; }
+.lss-edit-highlights-grid a:hover, .lss-edit-highlights-grid a:focus-visible { outline: 1px solid #00AEDE; }
+.lss-edit-lightbox { position: fixed; inset: 0; margin: auto; padding: 0; border: 0; background: transparent; max-width: 85vw; max-height: 85dvh; overflow: visible; }
+.lss-edit-lightbox::backdrop { background: rgba(0,0,0,.88); cursor: zoom-out; }
+.lss-edit-lightbox img { display: block; width: auto; height: auto; max-width: 85vw; max-height: 85dvh; object-fit: contain; box-shadow: 0 12px 42px rgba(0,0,0,.65); }
+@media (max-width: 900px) {
+  .lss-edit-highlights-grid { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 70%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 3px 3px 12px; scrollbar-width: none; }
+  .lss-edit-highlights-grid a { scroll-snap-align: start; }
+  .lss-edit-highlights-heading { gap: 8px; }
+  .lss-edit-highlights-heading h2 { font-size: 12px; letter-spacing: .06em; }
+  .lss-edit-highlights-subtitle { font-size: 13px; white-space: normal; }
+}
