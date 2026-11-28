@@ -6760,7 +6760,7 @@ body .lss-image-block.orbit-image-frame::before {
 }
 
 /* LSS movie pages: Edit Highlights */
-.lss-edit-highlights { width: 100%; min-width: 0; margin: 26px 0 24px; }
+.lss-edit-highlights { width: 100%; min-width: 0; margin: 26px 0 8px; }
 .lss-edit-highlights-heading { display: flex; align-items: center; gap: 12px; margin: 0 0 14px; }
 .lss-edit-highlights-heading h2 { margin: 0; color: #00AEDE; font: 700 15px/1.2 Oxanium, sans-serif; letter-spacing: .12em; white-space: nowrap; }
 .lss-edit-highlights-divider { width: 1px; height: 17px; flex: 0 0 1px; background: #00AEDE; }
