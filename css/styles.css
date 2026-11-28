@@ -6780,3 +6780,20 @@ body .lss-image-block.orbit-image-frame::before {
   .lss-edit-highlights-heading h2 { font-size: 12px; letter-spacing: .06em; }
   .lss-edit-highlights-subtitle { font-size: 13px; white-space: normal; }
 }
+/* Hide Edit Highlights on mobile */
+@media (max-width: 900px) {
+  .lss-edit-highlights {
+    display: none !important;
+  }
+}
+
+/* Reduce spacing below thumbnails on desktop */
+@media (min-width: 901px) {
+  .lss-edit-highlights {
+    margin-bottom: 0 !important;
+  }
+
+  html body .ffs-page {
+    padding-bottom: 12px !important;
+  }
+}
